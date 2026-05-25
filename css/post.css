@@ -218,9 +218,24 @@
 
   .cv-post-kicker,
   .cv-post-byline,
+  .cv-post-source,
+  .post-meta,
+  .feat-meta,
+  .sec-sub,
+  .rsub,
+  .about-bio,
+  .hero-role,
+  .hero-sub,
+  .hero-eyebrow,
+  .footer-left,
+  .footer-right a {
+    color: #222 !important;
+  }
+
+  .cv-post-kicker,
+  .cv-post-byline,
   .cv-post-source {
     font-size: 9pt;
-    color: #444;
   }
 
   .cv-post-tags {
@@ -332,6 +347,13 @@
   * {
     box-shadow: none !important;
     text-shadow: none !important;
+  }
+
+  /* Force ALL text to readable dark — catches any remaining var(--text2/3) */
+  .cv-post-body *,
+  .cv-post-header *,
+  .cv-post-wrap * {
+    color: inherit;
   }
 
   /* Force black text on colored elements */
