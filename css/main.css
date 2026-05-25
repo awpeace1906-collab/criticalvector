@@ -764,3 +764,68 @@ img { max-width: 100%; display: block; }
   .nav-hamburger { display: flex; }
   .sidebar { grid-template-columns: 1fr; }
 }
+
+/* ============================================================
+   PRINT / PDF — Section & Index Pages
+   ============================================================ */
+
+@media print {
+  @page {
+    margin: 0.55in 0.6in;
+    size: letter;
+  }
+
+  body {
+    font-size: 12px;
+    color: #000 !important;
+    background: #fff !important;
+  }
+
+  .nav,
+  .footer,
+  .mode-toggle,
+  .nav-hamburger {
+    display: none !important;
+  }
+
+  .hero-bg { display: none; }
+
+  .hero-inner,
+  .main-grid,
+  .section-hero,
+  .section-grid,
+  .about-page {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .hero-title { font-size: 22pt; color: #000; }
+  .hero-sub   { font-size: 11pt; color: #333; }
+  .hero-eyebrow { color: #333; }
+  .hero-role  { color: #555; }
+
+  .htag {
+    border: 1pt solid #ccc;
+    color: #333 !important;
+    background: #f5f5f5 !important;
+    box-shadow: none;
+  }
+
+  .featured-card,
+  .post-list,
+  .sidebar-card,
+  .about-card,
+  .sections-card {
+    page-break-inside: avoid;
+    box-shadow: none !important;
+    border: 1pt solid #ccc !important;
+  }
+
+  .post-title { color: #000; }
+  .post-meta  { color: #555; }
+
+  .main-grid { grid-template-columns: 1fr; }
+  .sidebar   { display: none; }
+
+  * { box-shadow: none !important; text-shadow: none !important; }
+}
