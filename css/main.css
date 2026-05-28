@@ -600,6 +600,8 @@ img { max-width: 100%; display: block; }
 .nav-link.workshop:hover  { border-bottom-color: var(--teal); }
 .nav-link.locker    { color: var(--amber-tag); }
 .nav-link.locker:hover    { border-bottom-color: var(--amber-tag); }
+.nav-link.flightdeck { color: var(--red-tag); }
+.nav-link.flightdeck:hover { border-bottom-color: var(--red-tag); }
 .nav-link.stack     { color: var(--purple); }
 .nav-link.stack:hover     { border-bottom-color: var(--purple); }
 .nav-link.about     { color: var(--text2); }
@@ -666,7 +668,8 @@ img { max-width: 100%; display: block; }
 .continuum-label { color: var(--blue); }
 .workshop-label  { color: var(--teal); }
 .locker-label    { color: var(--amber-tag); }
-.stack-label     { color: var(--purple); }
+.flightdeck-label    { color: var(--red-tag); }
+.flightdeck-type     { color: var(--red-tag); }
 
 /* ── FEATURED CARD ── */
 .featured-card { border: 1px solid var(--border); border-radius: 10px; background: var(--surface); margin-bottom: 36px; overflow: hidden; transition: border-color 0.2s; cursor: pointer; }
@@ -717,6 +720,7 @@ img { max-width: 100%; display: block; }
 .continuum-name { color: var(--blue); }
 .workshop-name  { color: var(--teal); }
 .locker-name    { color: var(--amber-tag); }
+.flightdeck-name { color: var(--red-tag); }
 .stack-name     { color: var(--purple); }
 .sidebar-card { border: 1px solid var(--border); border-radius: 10px; background: var(--surface); padding: 18px 20px; }
 .sidebar-title { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 13px; }

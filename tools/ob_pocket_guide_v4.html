@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<style>
+/* Offline font fallbacks — replaces Google Fonts for file:// compatibility */
+@font-face { font-family: 'Syne'; src: local('Arial Black'), local('Impact'), local('.AppleSystemUIFont'); font-weight: 400 800; }
+@font-face { font-family: 'DM Mono'; src: local('Menlo'), local('Consolas'), local('Courier New'); font-weight: 400 500; }
+@font-face { font-family: 'Source Serif 4'; src: local('Georgia'), local('Times New Roman'); font-weight: 300 400; }
+</style>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OB/GYN Pocket Guide</title>
@@ -141,9 +147,6 @@ body{background:var(--bg);color:var(--tx);font-family:var(--fn);display:flex;fle
 .sbbd.vis{display:block;}
 @media(max-width:640px){.mbt{display:flex;align-items:center;}.hsub,.chip,.chip2{display:none;}.hdr{padding:0 10px;}.hrt{gap:4px;}.hbtn{padding:4px 7px;font-size:9.5px;}.sb{position:fixed;top:0;left:0;bottom:0;width:240px;z-index:150;transform:translateX(-100%);transition:transform .22s ease;box-shadow:4px 0 24px rgba(0,0,0,.5);}.sb.open{transform:translateX(0);}.sbcls{display:block;}.bwrap{flex-direction:column;}.co{flex:1;padding:12px;}.qrp{position:fixed;inset:0;width:100%!important;z-index:300;display:none;border-left:none;transform:translateY(100%);transition:transform .25s ease;}.qrp.mopen{transform:translateY(0);display:block!important;}.cg,.c2{grid-template-columns:1fr!important;}.g4{grid-template-columns:1fr 1fr!important;}.nav{height:44px;}.nt{padding:6px 12px;font-size:12px;}.srch{height:46px;}.si{font-size:16px;}.stbl{font-size:10.5px;}.stbl th,.stbl td{padding:5px 6px;}.il{width:120px;font-size:9.5px;}.cb{padding:9px 10px;}.ch{padding:7px 10px;}}
 @media print{body{background:#fff;color:#000;height:auto;overflow:visible;}.hdr,.srch,.nav,.sb,.qrp,.kbo,.mbt,.sbbd{display:none!important;}.bwrap{display:block;}.co{overflow:visible;padding:0;}.card{border:1px solid #ccc;margin-bottom:8px;break-inside:avoid;}.ch{background:#f0fafa;}.cb.cl{display:block!important;}.dn{color:#000;}.dd{color:#065f46;}.d2{color:#444;}.fml{background:#f0fafa;border:1px solid #a7d7d4;color:#065f46;}.al{background:#f5f5f5;border:1px solid #ccc;color:#333;}.stbl th{background:#e0f7f5;color:#444;}}
-
-.conn-online{color:var(--a6)!important;background:var(--a6-bg)!important;border-color:var(--a6-b)!important;}
-
 .bkm-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.78);z-index:600;align-items:center;justify-content:center;}
 .bkm-overlay.open{display:flex;}
 .bkm-modal{background:var(--sf2);border:1px solid var(--b2);border-radius:10px;width:min(480px,92vw);max-height:82vh;overflow-y:auto;padding:20px 22px 18px;}
@@ -160,14 +163,10 @@ body{background:var(--bg);color:var(--tx);font-family:var(--fn);display:flex;fle
 .bkm-txt strong{color:var(--a4);}
 .bkm-note{font-size:10.5px;color:var(--td);margin-top:10px;padding:8px 10px;background:var(--sf3);border:1px solid var(--b1);border-radius:6px;line-height:1.5;}
 .bkm-close{float:right;background:none;border:none;color:var(--td);font-size:16px;cursor:pointer;padding:0 0 0 10px;line-height:1;}
-
+.conn-online{color:var(--a6)!important;background:var(--a6-bg)!important;border-color:var(--a6-b)!important;}
+/* v4 contrast boost */
 .thr>div{color:var(--td);}
 .stbl th{color:var(--tx)!important;background:var(--sf3)!important;}
-.il{color:var(--tx)!important;}
-.cn{color:var(--tx)!important;}
-.fl{color:var(--tx)!important;}
-.ct{color:var(--tx)!important;}
-.efmt{color:var(--tx)!important;}
 </style>
 </head>
 <body>
@@ -194,8 +193,8 @@ body{background:var(--bg);color:var(--tx);font-family:var(--fn);display:flex;fle
     </div>
   </div>
   <div class="hrt">
-    <span class="chip">v4 &middot; 2026</span>
-    <span class="chip2" id="connChip">&#10003; OFFLINE</span><button class="hbtn" onclick="document.getElementById('bkmOverlay').classList.add('open')" style="margin-left:4px">&#128204; Save</button>
+    <span class="chip">v4 · 2026</span>
+    <span class="chip2" id="connChip">✓ OFFLINE</span><button class="hbtn" onclick="document.getElementById(\'bkmOverlay\').classList.add(\'open\')" title="Save for offline use" style="margin-left:4px">📌 Save</button>
     <button class="hbtn" id="btnQ" onclick="toggleQ()">&#128138; Drug Ref</button>
     <button class="hbtn" onclick="window.print()">&#128424;</button>
     <button class="hbtn" onclick="kbo()">?</button>
@@ -619,6 +618,234 @@ gynemerg:{label:"GYN Emergencies",icon:"&#x1F6A8;",subs:{
 </div></div>
 </div>`},
 }},
+pocus:{label:"POCUS",icon:"&#x1F50D;",subs:{
+  obpocus:{label:"OB POCUS",updated:"ACOG 2024",content:()=>`
+<div class="cf"><div class="card a1"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">OB Emergencies — POCUS</span><span class="bd bd1">ACOG 2024</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="sl">ECTOPIC PREGNANCY</div>
+<div class="tr g3"><div class="dn">Empty uterus + free fluid</div><div class="dd">Ectopic until proven otherwise</div><div class="d2">Unstable + empty uterus + free fluid = presumed ruptured ectopic → OR immediately; no further imaging</div></div>
+<div class="tr g3"><div class="dn">IUP confirmed</div><div class="dd">Gestational sac + yolk sac or fetal pole</div><div class="d2">IUP does not exclude heterotopic (rare, 1:30,000; higher with ART); confirm landmarks carefully</div></div>
+<div class="tr g3"><div class="dn">Free pelvic fluid</div><div class="dd">Anechoic fluid in Pouch of Douglas</div><div class="d2">Small physiologic amount OK; large or echogenic fluid (blood) = ruptured ectopic until proven otherwise</div></div>
+<div class="tr g3"><div class="dn">Adnexal mass</div><div class="dd">Ring of fire sign (color Doppler)</div><div class="d2">Hyperemic ring = ectopic; may see tubal ring adjacent to ovary; direct visualization uncommon</div></div>
+<div class="sl" style="margin-top:10px">FETAL ASSESSMENT</div>
+<div class="tr g3"><div class="dn">Fetal heart rate</div><div class="dd">M-mode over fetal heart</div><div class="d2">Normal 110–160 bpm; avoid prolonged Doppler in 1st trimester; M-mode preferred for documentation</div></div>
+<div class="tr g3"><div class="dn">Fetal presentation</div><div class="dd">Subpubic transverse sweep</div><div class="d2">Identify presenting part; cephalic (round skull) vs breech (spine/abdomen); relevant for emergent delivery decisions</div></div>
+<div class="tr g3"><div class="dn">Placental localization</div><div class="dd">Anterior / posterior / fundal / previa</div><div class="d2">Previa: placenta covers or approaches os; low-lying if &lt;2cm from os; AVOID digital exam if previa suspected</div></div>
+<div class="tr g3"><div class="dn">Amniotic fluid (AFI)</div><div class="dd">4-quadrant AFI or single deepest pocket</div><div class="d2">Oligohydramnios: AFI &lt;5cm or SDP &lt;2cm; polyhydramnios: AFI &gt;24cm; emergent if non-reassuring FHR</div></div>
+</div></div>
+
+<div class="card a2"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Maternal Cardiac POCUS</span><span class="bd bd2">Peripartum Cardiomyopathy / Preeclampsia</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div style="margin:12px 0 16px;overflow:hidden;">
+<svg viewBox="0 0 560 320" style="width:100%;max-width:560px;display:block;margin:0 auto;" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="ah" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#c9a227" opacity="0.7"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="560" height="320" fill="#0d1623" rx="8"/>
+
+  <!-- Title -->
+  <text x="280" y="18" text-anchor="middle" font-size="9" fill="#c9a227" font-family="monospace" font-weight="700" letter-spacing="1">BEDSIDE ECHO — GOLDEN SPIRAL · 5 VIEWS</text>
+
+  <!-- Center chest schematic -->
+  <!-- Chest outline simple -->
+  <ellipse cx="280" cy="155" rx="68" ry="80" fill="none" stroke="#1e3050" stroke-width="1.5"/>
+  <!-- Sternum -->
+  <line x1="280" y1="90" x2="280" y2="210" stroke="#1e3050" stroke-width="1" stroke-dasharray="3,3"/>
+  <!-- Ribs suggestion -->
+  <ellipse cx="280" cy="140" rx="45" ry="28" fill="none" stroke="#162030" stroke-width="1"/>
+  <ellipse cx="280" cy="160" rx="52" ry="32" fill="none" stroke="#162030" stroke-width="1"/>
+  <ellipse cx="280" cy="180" rx="58" ry="35" fill="none" stroke="#162030" stroke-width="1"/>
+
+  <!-- Golden circle -->
+  <circle cx="272" cy="148" r="42" fill="none" stroke="#c9a227" stroke-width="2" opacity="0.8"/>
+  <!-- Spiral arrow -->
+  <path d="M272,106 Q316,106 316,148 Q316,190 272,190 Q242,190 234,166" fill="none" stroke="#c9a227" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.55" marker-end="url(#ah)"/>
+
+  <!-- ── POSITION 1: PLAX ── upper left -->
+  <circle cx="262" cy="130" r="9" fill="#7c3aed" stroke="#c4b5fd" stroke-width="1.5"/>
+  <text x="262" y="134" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">1</text>
+  <!-- connector -->
+  <line x1="215" y1="68" x2="258" y2="126" stroke="#7c3aed" stroke-width="0.8" opacity="0.6"/>
+  <!-- label box -->
+  <rect x="50" y="30" width="164" height="44" rx="4" fill="#1a0f35" stroke="#7c3aed" stroke-width="1.2"/>
+  <text x="132" y="45" text-anchor="middle" font-size="8.5" fill="#c4b5fd" font-weight="700" font-family="monospace">PARASTERNAL LONG (PLAX)</text>
+  <text x="132" y="57" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">3-4 ICS LSB · probe → R shoulder</text>
+  <text x="132" y="68" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">LVOT, MV, Ao root, pericardium</text>
+
+  <!-- ── POSITION 2: PSAX ── upper right -->
+  <circle cx="282" cy="130" r="9" fill="#2563eb" stroke="#93c5fd" stroke-width="1.5"/>
+  <text x="282" y="134" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">2</text>
+  <line x1="346" y1="68" x2="286" y2="126" stroke="#2563eb" stroke-width="0.8" opacity="0.6"/>
+  <rect x="346" y="30" width="164" height="44" rx="4" fill="#0f1f35" stroke="#2563eb" stroke-width="1.2"/>
+  <text x="428" y="45" text-anchor="middle" font-size="8.5" fill="#93c5fd" font-weight="700" font-family="monospace">PARASTERNAL SHORT (PSAX)</text>
+  <text x="428" y="57" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">Same spot · rotate 90° CW</text>
+  <text x="428" y="68" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">Papillary level: D-sign, RV size</text>
+
+  <!-- ── POSITION 3: A4C ── mid right -->
+  <circle cx="258" cy="162" r="9" fill="#059669" stroke="#6ee7b7" stroke-width="1.5"/>
+  <text x="258" y="166" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">3</text>
+  <line x1="346" y1="178" x2="266" y2="162" stroke="#059669" stroke-width="0.8" opacity="0.6"/>
+  <rect x="346" y="155" width="164" height="44" rx="4" fill="#0a2018" stroke="#059669" stroke-width="1.2"/>
+  <text x="428" y="170" text-anchor="middle" font-size="8.5" fill="#6ee7b7" font-weight="700" font-family="monospace">APICAL 4-CHAMBER (A4C)</text>
+  <text x="428" y="182" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">5th ICS MCL · probe → L shoulder</text>
+  <text x="428" y="193" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">EF, RV:LV ratio, valves, LVOT VTI</text>
+
+  <!-- ── POSITION 4: Subxiphoid ── lower right -->
+  <circle cx="280" cy="192" r="9" fill="#d97706" stroke="#fcd34d" stroke-width="1.5"/>
+  <text x="280" y="196" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">4</text>
+  <line x1="346" y1="248" x2="282" y2="198" stroke="#d97706" stroke-width="0.8" opacity="0.6"/>
+  <rect x="346" y="225" width="164" height="44" rx="4" fill="#251500" stroke="#d97706" stroke-width="1.2"/>
+  <text x="428" y="240" text-anchor="middle" font-size="8.5" fill="#fcd34d" font-weight="700" font-family="monospace">SUBXIPHOID (SC4C)</text>
+  <text x="428" y="252" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">Probe flat · aim at L shoulder</text>
+  <text x="428" y="263" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">Pericardial effusion, tamponade</text>
+
+  <!-- ── POSITION 5: IVC ── lower left -->
+  <circle cx="280" cy="210" r="9" fill="#dc2626" stroke="#fca5a5" stroke-width="1.5"/>
+  <text x="280" y="214" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">5</text>
+  <line x1="215" y1="248" x2="276" y2="212" stroke="#dc2626" stroke-width="0.8" opacity="0.6"/>
+  <rect x="50" y="225" width="164" height="44" rx="4" fill="#250a0a" stroke="#dc2626" stroke-width="1.2"/>
+  <text x="132" y="240" text-anchor="middle" font-size="8.5" fill="#fca5a5" font-weight="700" font-family="monospace">IVC / FLUID STATUS</text>
+  <text x="132" y="252" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">Rotate 90° from pos 4 · sagittal</text>
+  <text x="132" y="263" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">&lt;1.5cm collapsing = hypovolemia</text>
+
+  <!-- Golden Circle legend -->
+  <rect x="50" y="140" width="164" height="60" rx="4" fill="#1a1500" stroke="#c9a227" stroke-width="1"/>
+  <text x="132" y="154" text-anchor="middle" font-size="8" fill="#fcd34d" font-weight="700" font-family="monospace">GOLDEN CIRCLE</text>
+  <text x="132" y="165" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">Rotate probe CW position-to-position</text>
+  <text x="132" y="175" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">1→2: rotate 90° CW (same location)</text>
+  <text x="132" y="185" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">2→3: slide to apex · 4→5: rotate 90°</text>
+  <text x="132" y="195" text-anchor="middle" font-size="7" fill="#c9a227" font-family="monospace">Start: PLAX · End: IVC view</text>
+
+  <!-- Footer -->
+  <text x="280" y="310" text-anchor="middle" font-size="7.5" fill="#374151" font-family="monospace">After DocScribbles · ASE 2022 · SCA 2023</text>
+</svg>
+</div>
+<div class="sl">PERIPARTUM CARDIOMYOPATHY (PPCM)</div>
+<div class="tr g2"><div class="dn">Diagnostic criteria</div><div class="dd">New HF in last month of pregnancy or within 5 months postpartum; LVEF &lt;45%; no prior cardiac disease</div></div>
+<div class="tr g2"><div class="dn">POCUS findings</div><div class="dd">Dilated LV + poor systolic function; B-lines bilateral; IVC plethoric; pleural effusions</div></div>
+<div class="tr g2"><div class="dn">POCUS in preeclampsia</div><div class="dd">Volume status: IVC collapsibility; pulmonary edema: B-lines (common with aggressive IVF); cardiac: preserved EF typical; diastolic dysfunction may be present</div></div>
+<table class="stbl"><tr><th>IVC Diameter</th><th>Collapsibility (sniff)</th><th>Interpretation</th></tr>
+<tr><td>&lt;1.5 cm</td><td>&gt;50%</td><td>Hypovolemia — volume responsive</td></tr>
+<tr><td>1.5–2.5 cm</td><td>&gt;50%</td><td>Normal / borderline — likely responsive</td></tr>
+<tr><td>1.5–2.5 cm</td><td>&lt;50%</td><td>Euvolemic — less predictable</td></tr>
+<tr><td>&gt;2.5 cm</td><td>&lt;50%</td><td>Elevated RAP / hypervolemia — unlikely responsive</td></tr>
+</table>
+<div class="tr g2" style="margin-top:6px"><div class="dn">Limitations</div><div class="d2">Mechanical ventilation, high PEEP, and elevated IAP reduce IVC collapsibility reliability. Use alongside clinical context and other hemodynamic data.</div></div>
+</div></div>
+
+<div class="card a3"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">FAST in Pregnant Trauma</span><span class="bd bd3">eFAST Modifications</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div style="margin:12px 0 16px;overflow:hidden;">
+<svg viewBox="0 0 560 300" style="width:100%;max-width:560px;display:block;margin:0 auto;" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="560" height="300" fill="#0d1623" rx="8"/>
+
+  <!-- Title -->
+  <text x="280" y="18" text-anchor="middle" font-size="9" fill="#00d4aa" font-family="monospace" font-weight="700" letter-spacing="1">eFAST EXAM — 6 VIEWS · CURVILINEAR OR PHASED ARRAY</text>
+
+  <!-- Simple torso outline - just geometric shapes, no bad silhouette -->
+  <!-- Chest rectangle -->
+  <rect x="228" y="35" width="104" height="110" rx="12" fill="#0f1e35" stroke="#1e3050" stroke-width="1.5"/>
+  <!-- Abdomen -->
+  <rect x="228" y="140" width="104" height="80" rx="8" fill="#0f1e35" stroke="#1e3050" stroke-width="1.5"/>
+  <!-- Midline -->
+  <line x1="280" y1="35" x2="280" y2="220" stroke="#1e2a40" stroke-width="1" stroke-dasharray="3,3"/>
+  <!-- Xiphoid marker -->
+  <line x1="265" y1="142" x2="295" y2="142" stroke="#2e4060" stroke-width="1"/>
+  <text x="280" y="135" text-anchor="middle" font-size="6" fill="#374151" font-family="monospace">XIPHOID</text>
+  <!-- Chest label -->
+  <text x="280" y="58" text-anchor="middle" font-size="6.5" fill="#1e3050" font-family="monospace">CHEST</text>
+  <!-- L/R labels -->
+  <text x="240" y="75" text-anchor="middle" font-size="6" fill="#2e4060" font-family="monospace">L</text>
+  <text x="320" y="75" text-anchor="middle" font-size="6" fill="#2e4060" font-family="monospace">R</text>
+
+  <!-- ── 1: R LUNG ── -->
+  <circle cx="315" cy="65" r="9" fill="#dc2626" stroke="#fca5a5" stroke-width="1.5"/>
+  <text x="315" y="69" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">1</text>
+  <line x1="345" y1="42" x2="320" y2="62" stroke="#dc2626" stroke-width="0.8" opacity="0.6"/>
+  <rect x="345" y="25" width="168" height="36" rx="4" fill="#250a0a" stroke="#dc2626" stroke-width="1.2"/>
+  <text x="429" y="38" text-anchor="middle" font-size="8" fill="#fca5a5" font-weight="700" font-family="monospace">R LUNG — PTX / Hemothorax</text>
+  <text x="429" y="50" text-anchor="middle" font-size="6.5" fill="#9ca3af" font-family="monospace">2nd–4th ICS MCL · sliding / barcode / seashore</text>
+
+  <!-- ── 2: L LUNG ── -->
+  <circle cx="245" cy="65" r="9" fill="#0891b2" stroke="#67e8f9" stroke-width="1.5"/>
+  <text x="245" y="69" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">2</text>
+  <line x1="213" y1="42" x2="240" y2="62" stroke="#0891b2" stroke-width="0.8" opacity="0.6"/>
+  <rect x="47" y="25" width="164" height="36" rx="4" fill="#050f20" stroke="#0891b2" stroke-width="1.2"/>
+  <text x="129" y="38" text-anchor="middle" font-size="8" fill="#67e8f9" font-weight="700" font-family="monospace">L LUNG — PTX / Hemothorax</text>
+  <text x="129" y="50" text-anchor="middle" font-size="6.5" fill="#9ca3af" font-family="monospace">2nd–4th ICS MCL · mirror of right side</text>
+
+  <!-- ── 3: Subxiphoid cardiac ── -->
+  <circle cx="280" cy="148" r="9" fill="#7c3aed" stroke="#c4b5fd" stroke-width="1.5"/>
+  <text x="280" y="152" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">3</text>
+  <line x1="345" y1="130" x2="287" y2="148" stroke="#7c3aed" stroke-width="0.8" opacity="0.6"/>
+  <rect x="345" y="112" width="168" height="36" rx="4" fill="#1a0f35" stroke="#7c3aed" stroke-width="1.2"/>
+  <text x="429" y="125" text-anchor="middle" font-size="8" fill="#c4b5fd" font-weight="700" font-family="monospace">SUBXIPHOID CARDIAC</text>
+  <text x="429" y="137" text-anchor="middle" font-size="6.5" fill="#9ca3af" font-family="monospace">Probe flat · pericardial effusion / tamponade</text>
+
+  <!-- ── 4: RUQ ── -->
+  <circle cx="318" cy="175" r="9" fill="#059669" stroke="#6ee7b7" stroke-width="1.5"/>
+  <text x="318" y="179" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">4</text>
+  <line x1="345" y1="185" x2="325" y2="176" stroke="#059669" stroke-width="0.8" opacity="0.6"/>
+  <rect x="345" y="165" width="168" height="36" rx="4" fill="#0a2018" stroke="#059669" stroke-width="1.2"/>
+  <text x="429" y="178" text-anchor="middle" font-size="8" fill="#6ee7b7" font-weight="700" font-family="monospace">RUQ — Morrison's Pouch</text>
+  <text x="429" y="190" text-anchor="middle" font-size="6.5" fill="#9ca3af" font-family="monospace">MAL · 10th ICS · hepatorenal space + above Hemi</text>
+
+  <!-- ── 5: LUQ ── -->
+  <circle cx="242" cy="175" r="9" fill="#2563eb" stroke="#93c5fd" stroke-width="1.5"/>
+  <text x="242" y="179" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">5</text>
+  <line x1="211" y1="185" x2="235" y2="176" stroke="#2563eb" stroke-width="0.8" opacity="0.6"/>
+  <rect x="47" y="165" width="164" height="36" rx="4" fill="#0f1f35" stroke="#2563eb" stroke-width="1.2"/>
+  <text x="129" y="178" text-anchor="middle" font-size="8" fill="#93c5fd" font-weight="700" font-family="monospace">LUQ — Splenorenal</text>
+  <text x="129" y="190" text-anchor="middle" font-size="6.5" fill="#9ca3af" font-family="monospace">Post MAL · 8-9th ICS · Koller's pouch + above Hemi</text>
+
+  <!-- ── 6: Pelvic ── -->
+  <circle cx="280" cy="215" r="9" fill="#d97706" stroke="#fcd34d" stroke-width="1.5"/>
+  <text x="280" y="219" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">6</text>
+  <line x1="280" y1="224" x2="280" y2="245" stroke="#d97706" stroke-width="0.8" opacity="0.6"/>
+  <rect x="196" y="245" width="168" height="36" rx="4" fill="#251500" stroke="#d97706" stroke-width="1.2"/>
+  <text x="280" y="258" text-anchor="middle" font-size="8" fill="#fcd34d" font-weight="700" font-family="monospace">PELVIC / SUPRAPUBIC</text>
+  <text x="280" y="270" text-anchor="middle" font-size="6.5" fill="#9ca3af" font-family="monospace">Rectovesical ♂ · Pouch of Douglas ♀ · sagittal + transverse</text>
+
+  <!-- Sequence arrow hint around torso -->
+  <path d="M315,65 Q340,110 318,175 Q300,210 280,215 Q260,210 242,175 Q215,120 245,65" 
+        fill="none" stroke="#00d4aa" stroke-width="1" stroke-dasharray="4,4" opacity="0.3"/>
+
+  <!-- Footer -->
+  <text x="280" y="292" text-anchor="middle" font-size="7.5" fill="#374151" font-family="monospace">ACEP 2023 · 6 Views · Sensitivity: free fluid ~80%, PTX ~49-99%</text>
+</svg>
+</div>
+<div class="sl">OB TRAUMA CONSIDERATIONS</div>
+<div class="tr g2"><div class="dn">Standard views</div><div class="dd">RUQ, LUQ, subxiphoid, pelvic, bilateral lungs — same as standard eFAST; sensitivity maintained in pregnancy</div></div>
+<div class="tr g2"><div class="dn">Pelvic view</div><div class="dd">Uterus fills pelvic/abdominal window in 3rd trimester; free fluid may be harder to identify posterior to gravid uterus; scan flanks carefully</div></div>
+<div class="tr g2"><div class="dn">Fetal assessment</div><div class="dd">FHR and presentation after maternal stabilization; fetal bradycardia / absent cardiac activity = urgent delivery decision</div></div>
+<div class="tr g2"><div class="dn">Abruption</div><div class="dd">POCUS poor sensitivity for placental abruption (&lt;25%); clinical diagnosis + CTG monitoring primary; do not use negative POCUS to exclude abruption</div></div>
+<div class="tr g2"><div class="dn">Perimortem C/S</div><div class="dd">If &ge;20 weeks (or uterine fundus at umbilicus) + maternal arrest: begin within 4 min, deliver by 5 min; POCUS confirms fetal viability if time permits — do not delay</div></div>
+</div></div>
+
+<div class="card a4"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Lung + Volume POCUS in OB</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<table class="stbl"><tr><th>Finding</th><th>Appearance</th><th>Suggests</th></tr>
+<tr><td>A-lines</td><td>Horizontal reverberation artifacts</td><td>Normal aerated lung / PTX</td></tr>
+<tr><td>Lung sliding</td><td>Shimmering at pleural line</td><td>Pleural apposition — rules out PTX at that point</td></tr>
+<tr><td>B-lines (≥3/view)</td><td>Vertical laser-like artifacts to screen edge</td><td>Interstitial edema / pulmonary edema</td></tr>
+<tr><td>Consolidation</td><td>Tissue-like echogenicity ± air bronchograms</td><td>Pneumonia / atelectasis</td></tr>
+<tr><td>Lung point</td><td>Transition between sliding and no sliding</td><td>Confirms PTX (100% specific)</td></tr>
+<tr><td>Barcode sign (M-mode)</td><td>Horizontal lines throughout (no seashore)</td><td>PTX — absent lung sliding</td></tr>
+<tr><td>Seashore sign (M-mode)</td><td>Grainy below pleural line</td><td>Normal lung sliding present</td></tr>
+<tr><td>Pleural effusion</td><td>Anechoic/hypoechoic space above diaphragm</td><td>Hemothorax, transudates, empyema</td></tr>
+</table>
+<div class="sl" style="margin-top:10px">OB-SPECIFIC APPLICATIONS</div>
+<div class="tr g2"><div class="dn">Pulmonary edema in preeclampsia</div><div class="dd">B-lines (≥3 per view, bilateral) = interstitial edema; common with aggressive fluid resuscitation in severe preeclampsia; guide diuresis</div></div>
+<div class="tr g2"><div class="dn">Amniotic fluid embolism</div><div class="dd">Acute RV strain (D-sign, McConnell), severe RV dilation, bilateral B-lines, cardiovascular collapse — no POCUS finding is specific but supports diagnosis</div></div>
+<div class="tr g2"><div class="dn">PE in pregnancy</div><div class="dd">RV:LV &gt;1, D-sign, McConnell sign, IVC plethora — POCUS supports diagnosis; CT-PA remains diagnostic standard; consider if contrast/radiation concerns</div></div>
+</div></div>
+</div>`},
+}},
 gyn:{label:"Gynecology",icon:"&#x1F52C;",subs:{
   aub:{label:"Abnormal Uterine Bleeding",updated:"FIGO 2023",content:()=>`
 <div class="cf"><div class="card a7"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">AUB &mdash; PALM-COEIN Classification</span><span class="bd bd7">FIGO 2023</span></div><span class="ca o">&#9662;</span></div>
@@ -814,16 +1041,16 @@ window.addEventListener('offline', updateConn);
 document.addEventListener('DOMContentLoaded', updateConn);
 
 function bkmTab(el, id) {
-  document.querySelectorAll('.bkm-tab').forEach(function(t){t.classList.remove('on');});
-  document.querySelectorAll('.bkm-pane').forEach(function(p){p.classList.remove('on');});
+  document.querySelectorAll('.bkm-tab').forEach(t => t.classList.remove('on'));
+  document.querySelectorAll('.bkm-pane').forEach(p => p.classList.remove('on'));
   el.classList.add('on');
   document.getElementById('bkm-' + id).classList.add('on');
 }
 </script>
 <div class="bkm-overlay" id="bkmOverlay">
 <div class="bkm-modal">
-  <div class="bkm-title"><span>&#128204; Save for Offline Use</span><button class="bkm-close" onclick="document.getElementById('bkmOverlay').classList.remove('open')">&#x2715;</button></div>
-  <div class="bkm-sub">This file works entirely offline &#8212; no internet needed after saving.</div>
+  <div class="bkm-title"><span>📌 Save for Offline Use</span><button class="bkm-close" onclick="document.getElementById('bkmOverlay').classList.remove('open')">&#x2715;</button></div>
+  <div class="bkm-sub">This file works entirely offline — no internet needed after saving.</div>
   <div class="bkm-tabs">
     <button class="bkm-tab on" onclick="bkmTab(this,'ios')">iPhone / iPad</button>
     <button class="bkm-tab" onclick="bkmTab(this,'android')">Android</button>
@@ -832,32 +1059,32 @@ function bkmTab(el, id) {
   </div>
   <div class="bkm-pane on" id="bkm-ios">
     <div class="bkm-step"><div class="bkm-num">1</div><div class="bkm-txt"><strong>AirDrop or email</strong> the .html file to your iPhone/iPad</div></div>
-    <div class="bkm-step"><div class="bkm-num">2</div><div class="bkm-txt">Tap the file &#8212; it opens in <strong>Safari</strong> (use Safari, not Chrome)</div></div>
+    <div class="bkm-step"><div class="bkm-num">2</div><div class="bkm-txt">Tap the file — it opens in <strong>Safari</strong> (use Safari, not Chrome)</div></div>
     <div class="bkm-step"><div class="bkm-num">3</div><div class="bkm-txt">Tap the <strong>Share button</strong> (box with arrow) at the bottom</div></div>
-    <div class="bkm-step"><div class="bkm-num">4</div><div class="bkm-txt">Scroll down &#8594; tap <strong>"Add to Home Screen"</strong></div></div>
-    <div class="bkm-step"><div class="bkm-num">5</div><div class="bkm-txt">Name it and tap <strong>Add</strong> &#8212; launches like an app, works offline</div></div>
-    <div class="bkm-note">&#9888; Must open in <strong>Safari</strong> &#8212; Chrome on iOS cannot add to Home Screen from local files.</div>
+    <div class="bkm-step"><div class="bkm-num">4</div><div class="bkm-txt">Scroll down → tap <strong>"Add to Home Screen"</strong></div></div>
+    <div class="bkm-step"><div class="bkm-num">5</div><div class="bkm-txt">Name it and tap <strong>Add</strong> — launches like an app, works offline</div></div>
+    <div class="bkm-note">⚠ Must open in <strong>Safari</strong> — Chrome on iOS cannot add to Home Screen from local files. The file stays in your Files app at <strong>On My iPhone › Downloads</strong> as a backup.</div>
   </div>
   <div class="bkm-pane" id="bkm-android">
     <div class="bkm-step"><div class="bkm-num">1</div><div class="bkm-txt"><strong>Download or transfer</strong> the .html file to your device</div></div>
-    <div class="bkm-step"><div class="bkm-num">2</div><div class="bkm-txt">Open <strong>Chrome</strong> &#8594; tap the address bar &#8594; type <strong>file:///sdcard/Download/</strong> and navigate to the file</div></div>
-    <div class="bkm-step"><div class="bkm-num">3</div><div class="bkm-txt">Tap the <strong>three-dot menu</strong> (&#8942;) &#8594; <strong>"Add to Home screen"</strong></div></div>
-    <div class="bkm-step"><div class="bkm-num">4</div><div class="bkm-txt">Tap <strong>Add</strong> &#8212; shortcut appears on your home screen</div></div>
-    <div class="bkm-note">&#128161; Alternatively: open with <strong>Firefox for Android</strong> via your file manager &#8212; handles local HTML more reliably on some devices.</div>
+    <div class="bkm-step"><div class="bkm-num">2</div><div class="bkm-txt">Open <strong>Chrome</strong> → tap the address bar → type <strong>file:///sdcard/Download/</strong> and navigate to the file</div></div>
+    <div class="bkm-step"><div class="bkm-num">3</div><div class="bkm-txt">Tap the <strong>three-dot menu</strong> (⋮) → <strong>"Add to Home screen"</strong></div></div>
+    <div class="bkm-step"><div class="bkm-num">4</div><div class="bkm-txt">Tap <strong>Add</strong> — shortcut appears on your home screen</div></div>
+    <div class="bkm-note">💡 Alternatively: open the file with <strong>Firefox for Android</strong> via your file manager app — it handles local HTML files more reliably than Chrome on some devices.</div>
   </div>
   <div class="bkm-pane" id="bkm-mac">
-    <div class="bkm-step"><div class="bkm-num">1</div><div class="bkm-txt"><strong>Save the file</strong> somewhere permanent (Documents, not Downloads)</div></div>
-    <div class="bkm-step"><div class="bkm-num">2</div><div class="bkm-txt">Open in <strong>Safari or Chrome</strong> &#8212; double-click or drag to browser</div></div>
-    <div class="bkm-step"><div class="bkm-num">3</div><div class="bkm-txt">Press <strong>&#8984; D</strong> to bookmark, or drag the tab to your Dock / desktop</div></div>
-    <div class="bkm-step"><div class="bkm-num">4</div><div class="bkm-txt"><strong>Safari tip:</strong> File &#8594; Add to Dock &#8212; creates a standalone launcher</div></div>
-    <div class="bkm-note">&#128161; To sync to iPhone: save in <strong>iCloud Drive</strong> and open in Safari on iOS &#8594; Add to Home Screen.</div>
+    <div class="bkm-step"><div class="bkm-num">1</div><div class="bkm-txt"><strong>Save the file</strong> somewhere permanent (Documents, not Downloads — Downloads may get cleared)</div></div>
+    <div class="bkm-step"><div class="bkm-num">2</div><div class="bkm-txt">Open the file in <strong>Safari or Chrome</strong> — double-click or drag to browser</div></div>
+    <div class="bkm-step"><div class="bkm-num">3</div><div class="bkm-txt">Press <strong>⌘ D</strong> to bookmark it, or drag the URL bar tab to your Dock / desktop</div></div>
+    <div class="bkm-step"><div class="bkm-num">4</div><div class="bkm-txt"><strong>Safari tip:</strong> File → Add to Dock — creates a standalone app-like launcher in your Dock</div></div>
+    <div class="bkm-note">💡 To sync to iPhone: save in <strong>iCloud Drive</strong> and open in Safari on iOS → Add to Home Screen.</div>
   </div>
   <div class="bkm-pane" id="bkm-win">
     <div class="bkm-step"><div class="bkm-num">1</div><div class="bkm-txt"><strong>Save the file</strong> somewhere permanent (Documents folder recommended)</div></div>
-    <div class="bkm-step"><div class="bkm-num">2</div><div class="bkm-txt">Open in <strong>Chrome or Edge</strong> &#8212; double-click the file</div></div>
-    <div class="bkm-step"><div class="bkm-num">3</div><div class="bkm-txt">Press <strong>Ctrl + D</strong> to bookmark, or drag the address bar icon to your desktop</div></div>
-    <div class="bkm-step"><div class="bkm-num">4</div><div class="bkm-txt"><strong>Edge tip:</strong> Apps &#8594; Install this site as an app &#8212; creates a standalone launcher</div></div>
-    <div class="bkm-note">&#128161; <strong>Edge</strong> handles local HTML files best on Windows.</div>
+    <div class="bkm-step"><div class="bkm-num">2</div><div class="bkm-txt">Open in <strong>Chrome or Edge</strong> — double-click the file</div></div>
+    <div class="bkm-step"><div class="bkm-num">3</div><div class="bkm-txt">Press <strong>Ctrl + D</strong> to bookmark, or drag the icon from the address bar to your desktop/taskbar</div></div>
+    <div class="bkm-step"><div class="bkm-num">4</div><div class="bkm-txt"><strong>Edge tip:</strong> Apps → Install this site as an app — creates a standalone window launcher</div></div>
+    <div class="bkm-note">💡 <strong>Edge</strong> handles local HTML files best on Windows — Chrome may prompt about file access on some versions.</div>
   </div>
 </div>
 </div>

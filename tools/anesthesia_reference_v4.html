@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<style>
+/* Offline font fallbacks — replaces Google Fonts for file:// compatibility */
+@font-face { font-family: 'Syne'; src: local('Arial Black'), local('Impact'), local('.AppleSystemUIFont'); font-weight: 400 800; }
+@font-face { font-family: 'DM Mono'; src: local('Menlo'), local('Consolas'), local('Courier New'); font-weight: 400 500; }
+@font-face { font-family: 'Source Serif 4'; src: local('Georgia'), local('Times New Roman'); font-weight: 300 400; }
+
+/* Ultra-specificity panel show/hide */
+div.panel:not(.on) { display: none !important; visibility: hidden !important; height: 0 !important; overflow: hidden !important; padding: 0 !important; margin: 0 !important; }
+div.panel.on { display: block !important; visibility: visible !important; height: auto !important; overflow: visible !important; }
+</style>
 <meta charset="UTF-8">
 <meta name="description" content="Pocket Anesthesia Reference - Offline Version">
 <meta name="theme-color" content="#002D72">
@@ -18,6 +28,11 @@
   letter-spacing: 0.5px;
   vertical-align: middle;
 }
+
+/* POCUS panel force-show */
+#tab-pocus.on { display: block !important; }
+#tab-pocus.on .card { display: block !important; background: var(--bg2) !important; }
+#tab-pocus.on .cb { display: block !important; }
 </style>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>Pocket Anesthesia Reference v4</title>
@@ -26,6 +41,9 @@
 body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif !important; }
 
 /* v4 contrast boost */
+
+.pocus-svg{width:100%;max-width:480px;display:block;margin:8px auto 14px;}
+
 .rt th{color:var(--t1)!important;background:var(--bg3)!important;}
 .sl{color:var(--t2)!important;}
 .dn{color:var(--t1)!important;}
@@ -255,6 +273,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg0);color:var(--t1);min-
   <button class="tb" onclick="showTab('ob',this)">OB</button>
   <button class="tb" onclick="showTab('peds',this)">Peds</button>
   <button class="tb" onclick="showTab('meds',this)">Meds A–Z</button>
+  <button class="tb" onclick="showTab('pocus',this)">POCUS</button>
   <button class="tb" onclick="showTab('abx',this)">Abx</button>
   <button class="tb" onclick="showTab('astm',this)">ASTM</button>
 </nav>
@@ -264,7 +283,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg0);color:var(--t1);min-
 <!-- ═══════════════════════════════════════
      GENERAL
 ═══════════════════════════════════════ -->
-<div class="panel on" id="tab-general">
+<div class="panel on" id="tab-general" style="display:block">
   <div class="card">
     <div class="ch"><div class="ci ib">✓</div><h2>Pre-Induction Checklist — MSMAID</h2></div>
     <div class="cb">
@@ -360,7 +379,171 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg0);color:var(--t1);min-
 <!-- ═══════════════════════════════════════
      NEURAXIAL
 ═══════════════════════════════════════ -->
-<div class="panel" id="tab-neuraxial">
+<div class="panel" style="display:none" id="tab-pocus">
+
+<div class="card">
+  <div class="ch"><h2>Airway Ultrasound</h2><span class="upd" style="margin-left:auto;font-size:9px">Difficult Airway Society 2015 · ASA 2022</span></div>
+  <div class="cb">
+    <div class="sl">CRICOTHYROID MEMBRANE IDENTIFICATION</div>
+    <div class="tr g3"><div class="dn">Technique</div><div class="dd">Linear probe, transverse, midline neck</div><div class="d2">Slide caudally from thyroid cartilage; CTM = hyperechoic flat line between thyroid and cricoid; mark before induction in anticipated difficult airway</div></div>
+    <div class="tr g3"><div class="dn">Thyroid cartilage</div><div class="dd">Hypoechoic paired structures, inverted V</div><div class="d2">Acoustic shadow posterior; slide inferiorly to find CTM</div></div>
+    <div class="tr g3"><div class="dn">CTM mark</div><div class="dd">Skin mark with pen before positioning</div><div class="d2">Critical for FONA (scalpel-bougie technique); identify in any predicted or known difficult airway</div></div>
+    <div class="sl" style="margin-top:10px">ETT CONFIRMATION</div>
+    <div class="tr g3"><div class="dn">Tracheal ring sign</div><div class="dd">Transverse at suprasternal notch</div><div class="d2">Single ring with ETT = tracheal; two rings (snow globe sign) = esophageal — more sensitive than capnography in low-flow states</div></div>
+    <div class="tr g3"><div class="dn">Bilateral lung sliding</div><div class="dd">Anterior chest bilaterally post-intubation</div><div class="d2">Bilateral sliding = bilateral ventilation; unilateral = mainstem → withdraw 1–2 cm; faster than auscultation in noisy ORs</div></div>
+    <div class="tr g2"><div class="dn">Gastric ultrasound (pre-induction)</div><div class="dd">Grade 0 = empty bilaterally (antral CSA &lt;340 mm²) → standard induction; Grade 1 = clear fluid one position only → consider modified RSI; Grade 2 = solid content or bilat clear fluid → RSI or awake; subcostal view, right lateral decubitus or supine, curvilinear probe</div></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="ch"><h2>Neuraxial Ultrasound</h2><span class="upd" style="margin-left:auto;font-size:9px">ASRA 2023</span></div>
+  <div class="cb">
+    <div class="tr g3"><div class="dn">Paramedian sagittal oblique</div><div class="dd">Curvilinear, lateral to midline, cephalad tilt</div><div class="d2">Identify laminae (saw-tooth pattern), LFD complex (lig. flavum-dura); count levels from sacrum cephalad</div></div>
+    <div class="tr g3"><div class="dn">Transverse interlaminar</div><div class="dd">Midline transverse between spinous processes</div><div class="d2">Spinous process acoustic shadow at top; identify interspinous space; measure depth skin to LFD complex</div></div>
+    <div class="tr g3"><div class="dn">Depth to epidural space</div><div class="dd">Skin to LFD complex on US = Tuohy depth</div><div class="d2">Typical 4–8 cm; varies widely; critical in obese patients; reduces needle passes</div></div>
+    <div class="tr g3"><div class="dn">Level identification</div><div class="dd">Count from sacrum (L5-S1 junction)</div><div class="d2">Tuffier's line ≈ L4; US significantly more accurate than palpation in obese / scoliotic / prior spine surgery patients</div></div>
+    <div class="tr g2"><div class="dn">OB epidural pre-scan</div><div class="dd">Pre-procedure scan reduces needle attempts and complications; mark optimal site before positioning; high-value in difficult anatomy (obesity BMI &gt;35, scoliosis, prior instrumentation)</div></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="ch"><h2>Cardiac POCUS — Golden Spiral (5 Views)</h2><span class="upd" style="margin-left:auto;font-size:9px">ASE 2022 · SCA 2023</span></div>
+  <div class="cb">
+<div style="margin:12px 0 16px;overflow:hidden;">
+<svg viewBox="0 0 560 320" style="width:100%;max-width:560px;display:block;margin:0 auto;" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="ah" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#c9a227" opacity="0.7"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="560" height="320" fill="#0d1623" rx="8"/>
+
+  <!-- Title -->
+  <text x="280" y="18" text-anchor="middle" font-size="9" fill="#c9a227" font-family="monospace" font-weight="700" letter-spacing="1">BEDSIDE ECHO — GOLDEN SPIRAL · 5 VIEWS</text>
+
+  <!-- Center chest schematic -->
+  <!-- Chest outline simple -->
+  <ellipse cx="280" cy="155" rx="68" ry="80" fill="none" stroke="#1e3050" stroke-width="1.5"/>
+  <!-- Sternum -->
+  <line x1="280" y1="90" x2="280" y2="210" stroke="#1e3050" stroke-width="1" stroke-dasharray="3,3"/>
+  <!-- Ribs suggestion -->
+  <ellipse cx="280" cy="140" rx="45" ry="28" fill="none" stroke="#162030" stroke-width="1"/>
+  <ellipse cx="280" cy="160" rx="52" ry="32" fill="none" stroke="#162030" stroke-width="1"/>
+  <ellipse cx="280" cy="180" rx="58" ry="35" fill="none" stroke="#162030" stroke-width="1"/>
+
+  <!-- Golden circle -->
+  <circle cx="272" cy="148" r="42" fill="none" stroke="#c9a227" stroke-width="2" opacity="0.8"/>
+  <!-- Spiral arrow -->
+  <path d="M272,106 Q316,106 316,148 Q316,190 272,190 Q242,190 234,166" fill="none" stroke="#c9a227" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.55" marker-end="url(#ah)"/>
+
+  <!-- ── POSITION 1: PLAX ── upper left -->
+  <circle cx="262" cy="130" r="9" fill="#7c3aed" stroke="#c4b5fd" stroke-width="1.5"/>
+  <text x="262" y="134" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">1</text>
+  <!-- connector -->
+  <line x1="215" y1="68" x2="258" y2="126" stroke="#7c3aed" stroke-width="0.8" opacity="0.6"/>
+  <!-- label box -->
+  <rect x="50" y="30" width="164" height="44" rx="4" fill="#1a0f35" stroke="#7c3aed" stroke-width="1.2"/>
+  <text x="132" y="45" text-anchor="middle" font-size="8.5" fill="#c4b5fd" font-weight="700" font-family="monospace">PARASTERNAL LONG (PLAX)</text>
+  <text x="132" y="57" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">3-4 ICS LSB · probe → R shoulder</text>
+  <text x="132" y="68" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">LVOT, MV, Ao root, pericardium</text>
+
+  <!-- ── POSITION 2: PSAX ── upper right -->
+  <circle cx="282" cy="130" r="9" fill="#2563eb" stroke="#93c5fd" stroke-width="1.5"/>
+  <text x="282" y="134" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">2</text>
+  <line x1="346" y1="68" x2="286" y2="126" stroke="#2563eb" stroke-width="0.8" opacity="0.6"/>
+  <rect x="346" y="30" width="164" height="44" rx="4" fill="#0f1f35" stroke="#2563eb" stroke-width="1.2"/>
+  <text x="428" y="45" text-anchor="middle" font-size="8.5" fill="#93c5fd" font-weight="700" font-family="monospace">PARASTERNAL SHORT (PSAX)</text>
+  <text x="428" y="57" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">Same spot · rotate 90° CW</text>
+  <text x="428" y="68" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">Papillary level: D-sign, RV size</text>
+
+  <!-- ── POSITION 3: A4C ── mid right -->
+  <circle cx="258" cy="162" r="9" fill="#059669" stroke="#6ee7b7" stroke-width="1.5"/>
+  <text x="258" y="166" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">3</text>
+  <line x1="346" y1="178" x2="266" y2="162" stroke="#059669" stroke-width="0.8" opacity="0.6"/>
+  <rect x="346" y="155" width="164" height="44" rx="4" fill="#0a2018" stroke="#059669" stroke-width="1.2"/>
+  <text x="428" y="170" text-anchor="middle" font-size="8.5" fill="#6ee7b7" font-weight="700" font-family="monospace">APICAL 4-CHAMBER (A4C)</text>
+  <text x="428" y="182" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">5th ICS MCL · probe → L shoulder</text>
+  <text x="428" y="193" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">EF, RV:LV ratio, valves, LVOT VTI</text>
+
+  <!-- ── POSITION 4: Subxiphoid ── lower right -->
+  <circle cx="280" cy="192" r="9" fill="#d97706" stroke="#fcd34d" stroke-width="1.5"/>
+  <text x="280" y="196" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">4</text>
+  <line x1="346" y1="248" x2="282" y2="198" stroke="#d97706" stroke-width="0.8" opacity="0.6"/>
+  <rect x="346" y="225" width="164" height="44" rx="4" fill="#251500" stroke="#d97706" stroke-width="1.2"/>
+  <text x="428" y="240" text-anchor="middle" font-size="8.5" fill="#fcd34d" font-weight="700" font-family="monospace">SUBXIPHOID (SC4C)</text>
+  <text x="428" y="252" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">Probe flat · aim at L shoulder</text>
+  <text x="428" y="263" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">Pericardial effusion, tamponade</text>
+
+  <!-- ── POSITION 5: IVC ── lower left -->
+  <circle cx="280" cy="210" r="9" fill="#dc2626" stroke="#fca5a5" stroke-width="1.5"/>
+  <text x="280" y="214" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">5</text>
+  <line x1="215" y1="248" x2="276" y2="212" stroke="#dc2626" stroke-width="0.8" opacity="0.6"/>
+  <rect x="50" y="225" width="164" height="44" rx="4" fill="#250a0a" stroke="#dc2626" stroke-width="1.2"/>
+  <text x="132" y="240" text-anchor="middle" font-size="8.5" fill="#fca5a5" font-weight="700" font-family="monospace">IVC / FLUID STATUS</text>
+  <text x="132" y="252" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">Rotate 90° from pos 4 · sagittal</text>
+  <text x="132" y="263" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">&lt;1.5cm collapsing = hypovolemia</text>
+
+  <!-- Golden Circle legend -->
+  <rect x="50" y="140" width="164" height="60" rx="4" fill="#1a1500" stroke="#c9a227" stroke-width="1"/>
+  <text x="132" y="154" text-anchor="middle" font-size="8" fill="#fcd34d" font-weight="700" font-family="monospace">GOLDEN CIRCLE</text>
+  <text x="132" y="165" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">Rotate probe CW position-to-position</text>
+  <text x="132" y="175" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">1→2: rotate 90° CW (same location)</text>
+  <text x="132" y="185" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">2→3: slide to apex · 4→5: rotate 90°</text>
+  <text x="132" y="195" text-anchor="middle" font-size="7" fill="#c9a227" font-family="monospace">Start: PLAX · End: IVC view</text>
+
+  <!-- Footer -->
+  <text x="280" y="310" text-anchor="middle" font-size="7.5" fill="#374151" font-family="monospace">After DocScribbles · ASE 2022 · SCA 2023</text>
+</svg>
+</div>
+    <div class="sl">PRE-INDUCTION ASSESSMENT</div>
+    <div class="tr g2"><div class="dn">LVEF (eyeball)</div><div class="dd">Good (&gt;55%) / moderate (30–55%) / poor (&lt;30%); EPSS &gt;8 mm = reduced EF; guides induction agent choice and dose titration</div></div>
+    <div class="tr g2"><div class="dn">RWMA</div><div class="dd">Regional wall motion abnormality — hypo/akinesis in coronary territory; document pre-operatively; may change surgical or anesthetic plan</div></div>
+    <div class="tr g2"><div class="dn">Pericardial effusion</div><div class="dd">RV diastolic collapse + RA systolic collapse + IVC plethora = tamponade physiology; absolute concern for neuraxial if hemodynamically significant</div></div>
+    <div class="sl" style="margin-top:10px">INTRAOPERATIVE HYPOTENSION DIFFERENTIAL</div>
+    <div class="tr g2"><div class="dn">Hypovolemia</div><div class="dd">Hyperdynamic LV, kissing walls in systole, flat/collapsing IVC &lt;1.5 cm — treat: volume</div></div>
+    <div class="tr g2"><div class="dn">Vasodilation</div><div class="dd">Hyperdynamic LV, flat IVC — distributive pattern — treat: norepinephrine / phenylephrine</div></div>
+    <div class="tr g2"><div class="dn">Cardiogenic</div><div class="dd">Poor EF, dilated LV, plethoric IVC &gt;2.5 cm, B-lines — treat: inotropes, reduce volatile agent</div></div>
+    <div class="tr g2"><div class="dn">Obstructive</div><div class="dd">RV strain (D-sign, McConnell), tamponade (effusion + RV collapse), PTX (absent sliding) — treat: cause</div></div>
+    <table class="rt" style="margin-top:10px">
+      <tr><th>IVC Diameter</th><th>Collapsibility</th><th>Interpretation</th></tr>
+      <tr><td>&lt;1.5 cm</td><td>&gt;50%</td><td>Hypovolemia — volume responsive</td></tr>
+      <tr><td>1.5–2.5 cm</td><td>&gt;50%</td><td>Borderline / likely responsive</td></tr>
+      <tr><td>1.5–2.5 cm</td><td>&lt;50%</td><td>Euvolemic</td></tr>
+      <tr><td>&gt;2.5 cm</td><td>&lt;50%</td><td>Elevated RAP / volume overload</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="ch"><h2>Vascular Access POCUS</h2></div>
+  <div class="cb">
+    <div class="tr g3"><div class="dn">Internal jugular</div><div class="dd">Short-axis transverse at neck</div><div class="d2">IJ lateral to carotid; compressible = vein; confirm wire in vein before dilation; dynamic tip visualization reduces complications</div></div>
+    <div class="tr g3"><div class="dn">Subclavian / axillary</div><div class="dd">Infraclavicular, in-plane long-axis</div><div class="d2">Axillary vein medial to artery; real-time guidance reduces PTX risk vs landmark technique</div></div>
+    <div class="tr g3"><div class="dn">Radial artery</div><div class="dd">Short-axis or long-axis at wrist</div><div class="d2">Pulsatile, non-compressible; long-axis improves first-pass success; high value in vasoconsticted/hypotensive patients</div></div>
+    <div class="tr g3"><div class="dn">Femoral access</div><div class="dd">CFV medial to CFA at inguinal crease</div><div class="d2">Short-axis; compress to differentiate vein from artery; Doppler confirms venous flow; avoid below femoral bifurcation</div></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="ch"><h2>Lung Ultrasound — OR Context</h2></div>
+  <div class="cb">
+    <table class="rt">
+      <tr><th>Finding</th><th>Suggests</th><th>Action</th></tr>
+      <tr><td>Bilateral sliding + A-lines</td><td>Normal ventilation</td><td>Continue monitoring</td></tr>
+      <tr><td>Absent sliding (unilateral)</td><td>Mainstem ETT or PTX</td><td>Withdraw ETT 1–2 cm or needle decompression</td></tr>
+      <tr><td>B-lines bilateral</td><td>Pulmonary edema</td><td>Diuresis, reduce fluids, increase PEEP</td></tr>
+      <tr><td>Barcode sign (M-mode)</td><td>PTX confirmed</td><td>Decompress; find lung point to localize</td></tr>
+      <tr><td>Absent sliding post-CVC</td><td>Iatrogenic PTX</td><td>Chest tube vs needle per hemodynamics</td></tr>
+    </table>
+    <div class="tr g3" style="margin-top:8px"><div class="dn">One-lung ventilation</div><div class="dd">Confirm absent sliding on operative side, present on ventilated side</div><div class="d2">More reliable than auscultation in noisy OR; dynamically verify DLT or bronchial blocker position</div></div>
+    <div class="tr g3"><div class="dn">Post-intubation PTX check</div><div class="dd">After CVC or high-risk intubation</div><div class="d2">Bilateral anterior chest; absent sliding = PTX until proven otherwise; M-mode barcode confirms</div></div>
+  </div>
+</div>
+
+</div>
+<div class="panel" style="display:none" id="tab-neuraxial">
   <div class="card">
     <div class="ch"><div class="ci ir">⚠</div><h2>Contraindications to Neuraxial</h2></div>
     <div class="cb">
@@ -473,7 +656,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg0);color:var(--t1);min-
 <!-- ═══════════════════════════════════════
      LOCAL ANES
 ═══════════════════════════════════════ -->
-<div class="panel" id="tab-localanes">
+<div class="panel" style="display:none" id="tab-localanes">
   <div class="card">
     <div class="ch"><div class="ci ib">💊</div><h2>Local Anesthetic Properties — ASRA 2023</h2></div>
     <div class="cb">
@@ -522,7 +705,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg0);color:var(--t1);min-
 <!-- ═══════════════════════════════════════
      LAST
 ═══════════════════════════════════════ -->
-<div class="panel" id="tab-last">
+<div class="panel" style="display:none" id="tab-last">
   <div class="al al-r" style="margin-bottom:11px;"><div class="al-t">🚨 LOCAL ANESTHETIC SYSTEMIC TOXICITY — ASRA 2023</div>Delayed onset up to 60 min post-injection. Maintain vigilance. Stock Intralipid wherever regional anesthesia is performed.</div>
   <div class="g2">
     <div class="card">
@@ -589,7 +772,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg0);color:var(--t1);min-
 <!-- ═══════════════════════════════════════
      NERVE BLOCKS
 ═══════════════════════════════════════ -->
-<div class="panel" id="tab-blocks">
+<div class="panel" style="display:none" id="tab-blocks">
   <div class="al al-b" style="margin-bottom:11px;"><div class="al-t">Regional Anesthesia — General Principles</div>Use ultrasound guidance (standard of care). Fractionated injection. Epinephrine test dose. Have Intralipid stocked. Document pre-block neuro exam. New CPT codes effective Jan 1, 2025 for thoracic + lower extremity fascial plane blocks.</div>
 
   <p class="sl">UPPER EXTREMITY</p>
@@ -1022,7 +1205,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg0);color:var(--t1);min-
 <!-- ═══════════════════════════════════════
      NMT / TOF
 ═══════════════════════════════════════ -->
-<div class="panel" id="tab-nmt">
+<div class="panel" style="display:none" id="tab-nmt">
   <div class="al al-y" style="margin-bottom:11px;"><div class="al-t">ASA/APSF/ESAIC 2023 — NMB Monitoring Standard</div>Quantitative neuromuscular monitoring at adductor pollicis (ulnar nerve stimulation) is the ONLY reliable method to confirm TOF ratio ≥0.9 before extubation. Clinical tests (head lift, hand grip, tongue depressor) do NOT reliably detect residual block. Residual NMB rate: 30–65% without quantitative monitoring.</div>
 
   <div class="card">
@@ -1130,7 +1313,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg0);color:var(--t1);min-
 <!-- ═══════════════════════════════════════
      EMERGENCIES
 ═══════════════════════════════════════ -->
-<div class="panel" id="tab-emergency">
+<div class="panel" style="display:none" id="tab-emergency">
 
   <div class="card">
     <div class="ch"><div class="ci ir">🚨</div><h2>High / Total Spinal</h2></div>
@@ -1232,7 +1415,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg0);color:var(--t1);min-
 <!-- ═══════════════════════════════════════
      OB
 ═══════════════════════════════════════ -->
-<div class="panel" id="tab-ob">
+<div class="panel" style="display:none" id="tab-ob">
   <div class="card">
     <div class="ch"><div class="ci ir">🍼</div><h2>Post-Partum Hemorrhage (PPH)</h2></div>
     <div class="cb">
@@ -1314,7 +1497,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg0);color:var(--t1);min-
 <!-- ═══════════════════════════════════════
      PEDS
 ═══════════════════════════════════════ -->
-<div class="panel" id="tab-peds">
+<div class="panel" style="display:none" id="tab-peds">
   <div class="card">
     <div class="ch"><div class="ci ib">👶</div><h2>Pediatric Normal Parameters</h2></div>
     <div class="cb">
@@ -1368,7 +1551,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg0);color:var(--t1);min-
 <!-- ═══════════════════════════════════════
      MEDS A–Z
 ═══════════════════════════════════════ -->
-<div class="panel" id="tab-meds">
+<div class="panel" style="display:none" id="tab-meds">
   <div class="srch"><span class="sico">🔍</span><input type="text" class="si" id="dSearch" placeholder="Search drugs by name or class..." oninput="filterDrugs(this.value)"></div>
   <div id="dList"></div>
 </div>
@@ -1376,7 +1559,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg0);color:var(--t1);min-
 <!-- ═══════════════════════════════════════
      ABX
 ═══════════════════════════════════════ -->
-<div class="panel" id="tab-abx">
+<div class="panel" style="display:none" id="tab-abx">
   <div class="card">
     <div class="ch"><div class="ci io">Rx</div><h2>Surgical Antibiotic Prophylaxis — ASHP/IDSA/SHEA 2023</h2></div>
     <div class="cb">
@@ -1419,7 +1602,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg0);color:var(--t1);min-
 <!-- ═══════════════════════════════════════
      ASTM
 ═══════════════════════════════════════ -->
-<div class="panel" id="tab-astm">
+<div class="panel" style="display:none" id="tab-astm">
   <div class="card">
     <div class="ch"><div class="ci ig">🎨</div><h2>ASTM D4774-24 / ISO 26825 — Verified Color Reference</h2></div>
     <div class="cb">
@@ -1542,7 +1725,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg0);color:var(--t1);min-
         </div>
       </div>
 
-
 </main>
 
 <div class="foot">
@@ -1575,9 +1757,13 @@ function bkmTab(el, id) {
 
 // ── TABS ──
 function showTab(id, btn) {
-  document.querySelectorAll('.panel').forEach(p => p.classList.remove('on'));
-  document.querySelectorAll('.tb').forEach(b => b.classList.remove('on'));
-  document.getElementById('tab-' + id).classList.add('on');
+  document.querySelectorAll('.panel').forEach(function(p) {
+    p.classList.remove('on');
+    p.style.display = 'none';
+  });
+  document.querySelectorAll('.tb').forEach(function(b) { b.classList.remove('on'); });
+  var panel = document.getElementById('tab-'+id);
+  if (panel) { panel.classList.add('on'); panel.style.display = 'block'; }
   btn.classList.add('on');
   if (id === 'meds' && document.getElementById('dList').innerHTML === '') renderDrugs(drugs);
 }
@@ -1697,9 +1883,16 @@ function filterDrugs(q) {
 // Init drugs when tab first opened
 const origShow = window.showTab;
 window.showTab = function(id, btn) {
-  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
-  document.querySelectorAll('.tb').forEach(b=>b.classList.remove('on'));
-  document.getElementById('tab-'+id).classList.add('on');
+  document.querySelectorAll('.panel').forEach(function(p) {
+    p.classList.remove('on');
+    p.style.display = 'none';
+  });
+  document.querySelectorAll('.tb').forEach(function(b) { b.classList.remove('on'); });
+  var panel = document.getElementById('tab-'+id);
+  if (panel) {
+    panel.classList.add('on');
+    panel.style.display = 'block';
+  }
   btn.classList.add('on');
   if (id === 'meds' && document.getElementById('dList').innerHTML === '') renderDrugs(drugs);
 };
@@ -1747,3 +1940,6 @@ window.showTab = function(id, btn) {
 </div>
 </body>
 </html>
+
+
+

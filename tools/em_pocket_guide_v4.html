@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<style>
+/* Offline font fallbacks — replaces Google Fonts for file:// compatibility */
+@font-face { font-family: 'Syne'; src: local('Arial Black'), local('Impact'), local('.AppleSystemUIFont'); font-weight: 400 800; }
+@font-face { font-family: 'DM Mono'; src: local('Menlo'), local('Consolas'), local('Courier New'); font-weight: 400 500; }
+@font-face { font-family: 'Source Serif 4'; src: local('Georgia'), local('Times New Roman'); font-weight: 300 400; }
+</style>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>EM Pocket Guide</title>
@@ -136,9 +142,6 @@ body{background:var(--bg);color:var(--tx);font-family:var(--fn);display:flex;fle
 .sbbd.vis{display:block;}
 @media(max-width:640px){.mbt{display:flex;align-items:center;}.hsub,.chip,.chip2{display:none;}.hdr{padding:0 10px;}.hrt{gap:4px;}.hbtn{padding:4px 7px;font-size:9.5px;}.sb{position:fixed;top:0;left:0;bottom:0;width:240px;z-index:150;transform:translateX(-100%);transition:transform .22s ease;box-shadow:4px 0 24px rgba(0,0,0,.5);}.sb.open{transform:translateX(0);}.sbcls{display:block;}.bwrap{flex-direction:column;}.co{flex:1;padding:12px;}.qrp{position:fixed;inset:0;width:100%!important;z-index:300;display:none;border-left:none;transform:translateY(100%);transition:transform .25s ease;}.qrp.mopen{transform:translateY(0);display:block!important;}.cg,.c2{grid-template-columns:1fr!important;}.g4{grid-template-columns:1fr 1fr!important;}.nav{height:44px;}.nt{padding:6px 12px;font-size:12px;}.srch{height:46px;}.si{font-size:16px;}.stbl{font-size:10.5px;}.stbl th,.stbl td{padding:5px 6px;}.il{width:120px;font-size:9.5px;}.cb{padding:9px 10px;}.ch{padding:7px 10px;}}
 @media print{body{background:#fff;color:#000;height:auto;overflow:visible;}.hdr,.srch,.nav,.sb,.qrp,.kbo,.mbt,.sbbd{display:none!important;}.bwrap{display:block;}.co{overflow:visible;padding:0;}.card{border:1px solid #ccc;margin-bottom:8px;break-inside:avoid;}.ch{background:#f5f0ff;}.cb.cl{display:block!important;}.dn{color:#000;}.dd{color:#4c1d95;}.d2{color:#444;}.fml{background:#f5f0ff;border:1px solid #c4b5fd;color:#4c1d95;}.al{background:#f5f5f5;border:1px solid #ccc;color:#333;}.stbl th{background:#f5f0ff;color:#444;}}
-
-.conn-online{color:var(--a6)!important;background:var(--a6-bg)!important;border-color:var(--a6-b)!important;}
-
 .bkm-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.78);z-index:600;align-items:center;justify-content:center;}
 .bkm-overlay.open{display:flex;}
 .bkm-modal{background:var(--sf2);border:1px solid var(--b2);border-radius:10px;width:min(480px,92vw);max-height:82vh;overflow-y:auto;padding:20px 22px 18px;}
@@ -155,14 +158,10 @@ body{background:var(--bg);color:var(--tx);font-family:var(--fn);display:flex;fle
 .bkm-txt strong{color:var(--a4);}
 .bkm-note{font-size:10.5px;color:var(--td);margin-top:10px;padding:8px 10px;background:var(--sf3);border:1px solid var(--b1);border-radius:6px;line-height:1.5;}
 .bkm-close{float:right;background:none;border:none;color:var(--td);font-size:16px;cursor:pointer;padding:0 0 0 10px;line-height:1;}
-
+.conn-online{color:var(--a6)!important;background:var(--a6-bg)!important;border-color:var(--a6-b)!important;}
+/* v4 contrast boost */
 .thr>div{color:var(--td);}
 .stbl th{color:var(--tx)!important;background:var(--sf3)!important;}
-.il{color:var(--tx)!important;}
-.cn{color:var(--tx)!important;}
-.fl{color:var(--tx)!important;}
-.ct{color:var(--tx)!important;}
-.efmt{color:var(--tx)!important;}
 </style>
 </head>
 <body>
@@ -189,8 +188,8 @@ body{background:var(--bg);color:var(--tx);font-family:var(--fn);display:flex;fle
     </div>
   </div>
   <div class="hrt">
-    <span class="chip">v4 &middot; 2026</span>
-    <span class="chip2" id="connChip">&#10003; OFFLINE</span><button class="hbtn" onclick="document.getElementById('bkmOverlay').classList.add('open')" style="margin-left:4px">&#128204; Save</button>
+    <span class="chip">v4 · 2026</span>
+    <span class="chip2" id="connChip">✓ OFFLINE</span><button class="hbtn" onclick="document.getElementById(\'bkmOverlay\').classList.add(\'open\')" title="Save for offline use" style="margin-left:4px">📌 Save</button>
     <button class="hbtn" id="btnQ" onclick="toggleQ()">&#128138; Drug Ref</button>
     <button class="hbtn" onclick="window.print()">&#128424;</button>
     <button class="hbtn" onclick="kbo()">?</button>
@@ -395,29 +394,8 @@ shock:{label:"Shock",icon:"&#x26A1;",subs:{
 <tr><td class="dn">Neurogenic</td><td>Sympathetic disruption</td><td class="dd">Warm, dry, bradycardia</td><td>&darr;HR, &darr;BP</td><td>Fluids; phenylephrine/NE; MAP &ge;85</td></tr>
 </table>
 </div></div></div>`},
-  hemorrhagic:{label:"Hemorrhagic Shock / MTP",updated:"ATLS 11th 2024",content:()=>`
-<div class="cg">
-<div class="card a1"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">ATLS Hemorrhagic Shock Classification</span><span class="bd bd1">ATLS 11th</span></div><span class="ca o">&#9662;</span></div>
-<div class="cb">
-<table class="stbl"><tr><th>Class</th><th>Blood Loss</th><th>HR</th><th>BP</th><th>UO mL/hr</th><th>Mental</th></tr>
-<tr><td class="dn">I</td><td>&lt;750mL (&lt;15%)</td><td>&lt;100</td><td class="dd">Normal</td><td>&ge;30</td><td>Normal</td></tr>
-<tr><td class="dn">II</td><td>750&ndash;1500mL</td><td>100&ndash;120</td><td class="dd">Normal</td><td>20&ndash;30</td><td>Anxious</td></tr>
-<tr><td class="dn">III</td><td>1500&ndash;2000mL</td><td>120&ndash;140</td><td style="color:var(--a5)">Decreased</td><td>5&ndash;15</td><td>Confused</td></tr>
-<tr><td class="dn">IV</td><td>&gt;2000mL (&gt;40%)</td><td>&gt;140</td><td style="color:var(--ac)">Very low</td><td>Negligible</td><td>Lethargic</td></tr>
-</table>
-</div></div>
-<div class="card"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Massive Transfusion Protocol</span><span class="bd bd5">MTP</span></div><span class="ca o">&#9662;</span></div>
-<div class="cb">
-<div class="al e"><span class="ali">&#9888;</span>Activate MTP: uncontrolled hemorrhage requiring &ge;3 units pRBC in 1hr, or anticipated &ge;10 units/24hr.</div>
-<div class="ir"><div class="il">Ratio</div><div class="iv m">pRBC : FFP : Plt = 1:1:1</div></div>
-<div class="ir"><div class="il">TXA</div><div class="iv">1g IV within 3hr of injury (CRASH-2); 2nd dose 1g over 8hr</div></div>
-<div class="ir"><div class="il">Calcium</div><div class="iv">CaCl&#8322; 1g IV after every 4 units pRBC (citrate chelation)</div></div>
-<div class="ir"><div class="il">Fibrinogen target</div><div class="iv m">&gt;200 mg/dL &mdash; cryoprecipitate 10 units if low</div></div>
-<div class="ir"><div class="il">Platelet target</div><div class="iv m">&ge;50k; &ge;100k if TBI</div></div>
-<div class="ir"><div class="il">Permissive hypotension</div><div class="iv">SBP 80&ndash;90 until hemorrhage controlled (except TBI: MAP &ge;80)</div></div>
-</div></div>
-</div>`},
 }},
+
 neuro:{label:"Neurology",icon:"&#x1F9E0;",subs:{
   stroke:{label:"Stroke / TIA",updated:"AHA 2023",content:()=>`
 <div class="cf"><div class="card a2"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Acute Ischemic Stroke &mdash; Time-Based Algorithm</span><span class="bd bd2">AHA 2023</span></div><span class="ca o">&#9662;</span></div>
@@ -540,6 +518,346 @@ trauma:{label:"Trauma",icon:"&#x1FA7A;",subs:{
 <div class="cb">
 <div class="crit"><div class="ct">E-FAST Windows</div><ul><li><strong>RUQ:</strong> Morrison's pouch (hepatorenal) &mdash; most sensitive abdominal window</li><li><strong>LUQ:</strong> Splenorenal recess &mdash; harder to see fluid</li><li><strong>Pelvic:</strong> Pouch of Douglas / rectovesical pouch</li><li><strong>Subxiphoid:</strong> Pericardial &mdash; tamponade; compare to IVC</li><li><strong>Bilateral pleura:</strong> Lung sliding present = no PTX (97% sens)</li></ul></div>
 <div class="al i" style="margin-top:6px"><span class="ali">&#8505;</span>Absent lung sliding &rarr; suspect PTX. M-mode: seashore sign (sliding) vs barcode sign (PTX).</div>
+</div></div>
+</div>`},
+hemorrhagic:{label:"Hemorrhagic Shock / MTP",updated:"ATLS 11th 2024",content:()=>`
+<div class="cg">
+<div class="card a1"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">ATLS Hemorrhagic Shock Classification</span><span class="bd bd1">ATLS 11th</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<table class="stbl"><tr><th>Class</th><th>Blood Loss</th><th>HR</th><th>BP</th><th>UO mL/hr</th><th>Mental</th></tr>
+<tr><td class="dn">I</td><td>&lt;750mL (&lt;15%)</td><td>&lt;100</td><td class="dd">Normal</td><td>&ge;30</td><td>Normal</td></tr>
+<tr><td class="dn">II</td><td>750&ndash;1500mL</td><td>100&ndash;120</td><td class="dd">Normal</td><td>20&ndash;30</td><td>Anxious</td></tr>
+<tr><td class="dn">III</td><td>1500&ndash;2000mL</td><td>120&ndash;140</td><td style="color:var(--a5)">Decreased</td><td>5&ndash;15</td><td>Confused</td></tr>
+<tr><td class="dn">IV</td><td>&gt;2000mL (&gt;40%)</td><td>&gt;140</td><td style="color:var(--ac)">Very low</td><td>Negligible</td><td>Lethargic</td></tr>
+</table>
+</div></div>
+<div class="card"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Massive Transfusion Protocol</span><span class="bd bd5">MTP</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="al e"><span class="ali">&#9888;</span>Activate MTP: uncontrolled hemorrhage requiring &ge;3 units pRBC in 1hr, or anticipated &ge;10 units/24hr.</div>
+<div class="ir"><div class="il">Ratio</div><div class="iv m">pRBC : FFP : Plt = 1:1:1</div></div>
+<div class="ir"><div class="il">TXA</div><div class="iv">1g IV within 3hr of injury (CRASH-2); 2nd dose 1g over 8hr</div></div>
+<div class="ir"><div class="il">Calcium</div><div class="iv">CaCl&#8322; 1g IV after every 4 units pRBC (citrate chelation)</div></div>
+<div class="ir"><div class="il">Fibrinogen target</div><div class="iv m">&gt;200 mg/dL &mdash; cryoprecipitate 10 units if low</div></div>
+<div class="ir"><div class="il">Platelet target</div><div class="iv m">&ge;50k; &ge;100k if TBI</div></div>
+<div class="ir"><div class="il">Permissive hypotension</div><div class="iv">SBP 80&ndash;90 until hemorrhage controlled (except TBI: MAP &ge;80)</div></div>
+</div></div>
+</div>`},
+trauma_activation:{label:"Trauma Activation",updated:"ACS-COT 2021 · CDC FTG 2021",content:()=>`
+<div class="cf">
+<div class="card a1"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Trauma Team Activation — 3-Tier Framework</span><span class="bd bd1">ACS-COT · TQIP 2023</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="sl">LEVEL 1 — LIFE-THREATENING (Immediate full team)</div>
+<div class="tr g2"><div class="dn">Physiologic</div><div class="dd">SBP &lt;90 mmHg at any point &bull; Shock Index (HR&gt;SBP) &bull; Absent radial/femoral/carotid pulse &bull; GCS &lt;9 without sedation &bull; Airway compromise or failed prehospital intubation &bull; Field intubation &bull; Peds (&lt;10 yr): SBP &lt;70+2&times;age</div></div>
+<div class="tr g2"><div class="dn">Anatomic</div><div class="dd">Penetrating injury to neck/chest/abdomen/proximal extremity &bull; Open or unstable pelvic fracture &bull; Amputation/crush proximal to elbow or knee &bull; Suspected spinal cord injury &bull; Major torso impalement &bull; Tourniquet applied prehospital &bull; Major vascular injury</div></div>
+<div class="tr g2"><div class="dn">Transfer L1</div><div class="dd">Receiving blood products or &gt;1L crystalloid for shock &bull; HR&gt;SBP &bull; Penetrating thoracoabdominal trauma &bull; Intubated transfer patient &bull; Acute decompensation en route</div></div>
+
+<div class="sl" style="margin-top:10px">LEVEL 2 — POTENTIALLY LIFE-THREATENING (Modified team)</div>
+<div class="tr g2"><div class="dn">Anatomic</div><div class="dd">Flail chest or multiple rib fractures &bull; Open/depressed skull fracture &bull; &ge;2 long bone fractures &bull; Extremity trauma with absent distal pulse or sensation &bull; Burns &gt;20% BSA grade 2–3 or inhalation injury &bull; GCS 9–13 &bull; Severe maxillofacial injury with stable airway</div></div>
+<div class="tr g2"><div class="dn">Mechanism</div><div class="dd">Ejection from vehicle &bull; Extrication &gt;20 min &bull; Death of same-vehicle occupant &bull; Impact &gt;50 mph &bull; Pedestrian struck &gt;10 mph &bull; Fall &gt;20 ft &bull; Motorcycle/ATV crash &gt;20 mph or separation from bike &bull; Seatbelt sign</div></div>
+<div class="tr g2"><div class="dn">Special</div><div class="dd">Age &ge;65 with HR&gt;90 or SBP&lt;110 &bull; Anticoagulated with supraclavicular injury &bull; Pregnancy &gt;20 weeks (without higher criteria) &bull; Penetrating distal extremity injury &bull; Near drowning</div></div>
+
+<div class="sl" style="margin-top:10px">LEVEL 3 — SCREENED / OBSERVATION (Attending + nurse)</div>
+<div class="tr g2"><div class="dn">Criteria</div><div class="dd">MVC with rollover or &gt;12 in compartment intrusion &bull; Age &gt;65 (any mechanism) &bull; Stable pelvic fracture &bull; Single-system injury with high-suspicion mechanism &bull; Multi-system trauma not meeting L1/L2 &bull; Hypothermia &lt;35&deg;C or hyperthermia &gt;39&deg;C &bull; Physician discretion</div></div>
+<div class="tr g2"><div class="dn">Undertriage goal</div><div class="dd">ACS-COT acceptable undertriage rate &lt;5%; overtriage &lt;50%; undertriage is the more dangerous error — when in doubt, activate up</div></div>
+</div></div>
+
+<div class="card a3"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">2021 CDC / ACS-COT Field Triage Guidelines</span><span class="bd bd3">CDC·MMWR 2022 &bull; J Trauma 2022</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="sl">HIGH-RISK (RED BOX) — Transport to highest-level trauma center</div>
+<div class="tr g2"><div class="dn">Mental Status &amp; Vital Signs</div><div class="dd">GCS &le;13 &bull; SBP &lt;90 mmHg &bull; RR &lt;10 or &gt;29 breaths/min &bull; Shock Index &gt;1.0 (adults) &bull; Need for ventilatory support</div></div>
+<div class="tr g2"><div class="dn">Injury Patterns</div><div class="dd">All penetrating injuries to head/neck/torso/proximal extremities &bull; Chest wall instability or deformity (flail) &bull; Two or more proximal long bone fractures &bull; Crushed/degloved/mangled extremity &bull; Amputation proximal to wrist/ankle &bull; Pelvic fractures &bull; Open/depressed skull fracture &bull; Paralysis</div></div>
+
+<div class="sl" style="margin-top:10px">MODERATE-RISK (YELLOW BOX) — Consider trauma center</div>
+<div class="tr g2"><div class="dn">Mechanism of Injury</div><div class="dd">Falls: adults &gt;20 ft (1 story = ~10 ft); children &gt;10 ft or 2–3&times; child height &bull; High-risk MVC: intrusion &gt;12 in occupant site or &gt;18 in other site; ejection; death of occupant; dashboard deformity &bull; Pedestrian/cyclist thrown, run over, or with significant impact &bull; Motorcycle crash &gt;20 mph</div></div>
+<div class="tr g2"><div class="dn">Special Considerations</div><div class="dd">Age &ge;65: SBP &lt;110 may indicate shock; lower injury threshold for activation &bull; Anticoagulants/bleeding disorders &bull; Burns (with trauma) &bull; End-stage renal disease on dialysis &bull; Pregnancy &gt;20 weeks &bull; EMS provider judgment</div></div>
+
+<div class="sl" style="margin-top:10px">TRIAGE PERFORMANCE TARGETS</div>
+<table class="stbl"><tr><th>Metric</th><th>ACS-COT Target</th><th>Notes</th></tr>
+<tr><td>Sensitivity (undertriage)</td><td>&ge;95%</td><td>&lt;5% of major trauma patients missed</td></tr>
+<tr><td>Specificity (overtriage)</td><td>&ge;65%</td><td>&lt;50% overtriage acceptable operationally</td></tr>
+<tr><td>Undertriage</td><td>&lt;5%</td><td>More dangerous error — injury mortality ↑</td></tr>
+<tr><td>Overtriage</td><td>&lt;35–50%</td><td>Resource burden; acceptable to avoid undertriage</td></tr>
+</table>
+</div></div>
+
+<div class="card a4"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Trauma Page — What to Communicate</span><span class="bd bd4">SBAR for Trauma Activation</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="sl">MINIMUM REQUIRED ON TRAUMA ACTIVATION PAGE</div>
+<div class="tr g2"><div class="dn">Content</div><div class="dd">Level of activation (1/2/3) &bull; Mechanism of injury (GSW chest, MVC, fall &bull; SBP / HR / GCS &bull; Mode of arrival (air/ground/POV) &bull; ETA &bull; Trauma band number if available</div></div>
+<div class="sl" style="margin-top:10px">TIMING THRESHOLDS</div>
+<div class="tr g3"><div class="dn">ETA &lt;15 min</div><div class="dd">Activate immediately</div><div class="d2">Team must be bedside ready on arrival</div></div>
+<div class="tr g3"><div class="dn">ETA &gt;15 min</div><div class="dd">Heads-up page now + repeat at 15 min</div><div class="d2">Allows staged team assembly; reduces crew fatigue</div></div>
+<div class="tr g3"><div class="dn">ETA unknown</div><div class="dd">Same as &gt;15 min; repeat when ETA established</div><div class="d2">Do not delay activation waiting for ETA</div></div>
+<div class="sl" style="margin-top:10px">GERIATRIC TRAUMA CONSIDERATIONS (ACS TQIP 2023)</div>
+<div class="tr g2"><div class="dn">Lower thresholds</div><div class="dd">Age &ge;65: SBP &lt;110 = physiologic instability (not 90); HR &gt;90 with SBP &lt;110 = L2 regardless of mechanism; anticoagulation dramatically increases intracranial hemorrhage risk from minor mechanisms</div></div>
+<div class="tr g2"><div class="dn">Common undertriage pitfalls</div><div class="dd">Normal vital signs masking significant injury (beta-blockers blunt HR) &bull; Baseline cognitive impairment masking GCS change &bull; Low-energy falls causing major intracranial injury in anticoagulated elderly &bull; Rib fractures causing respiratory failure over 24–48 hrs</div></div>
+<div class="tr g2"><div class="dn">Pediatric differences</div><div class="dd">Age-adjusted SBP: 70+2&times;age mmHg &bull; Normal HR higher — tachycardia threshold varies by age &bull; Compensate late — vital signs normal until decompensation; treat mechanism + anatomy as primary drivers</div></div>
+</div></div>
+
+<div class="card a2"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Massive Transfusion Protocol (MTP) Triggers</span><span class="bd bd2">ATLS 11th &bull; EAST 2023</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="sl">CLINICAL TRIGGERS</div>
+<div class="tr g3"><div class="dn">ABC Score &ge;2</div><div class="dd">Activate MTP</div><div class="d2">SBP&le;90 + HR&ge;120 + penetrating mechanism + FAST positive = 1pt each; &ge;2 = activate</div></div>
+<div class="tr g3"><div class="dn">Shock Index &gt;1.0</div><div class="dd">High risk for MTP need</div><div class="d2">SI &gt;1.5 = very high risk; initiate early balanced resuscitation</div></div>
+<div class="tr g3"><div class="dn">Uncontrolled hemorrhage</div><div class="dd">Activate regardless of labs</div><div class="d2">Do not wait for CBC/coags; clinical assessment drives activation</div></div>
+<div class="sl" style="margin-top:10px">MTP RATIO TARGET</div>
+<div class="tr g3"><div class="dn">PROPPR Trial</div><div class="dd">1:1:1 (pRBC:FFP:platelets)</div><div class="d2">Survival benefit vs 1:1:2; target ratio from the start; minimize crystalloid</div></div>
+<div class="tr g3"><div class="dn">Permissive hypotension</div><div class="dd">SBP 80–90 mmHg until hemorrhage controlled</div><div class="d2">Avoid in TBI (maintain CPP); exceptions: elderly, known cardiac disease</div></div>
+<div class="tr g3"><div class="dn">TXA</div><div class="dd">1g IV over 10 min within 3 hr of injury</div><div class="d2">CRASH-2 / MATTERs; &lt;3 hr mortality benefit; &gt;3 hr possible harm; second 1g over 8 hr if ongoing hemorrhage</div></div>
+<div class="tr g3"><div class="dn">Calcium</div><div class="dd">1g CaCl IV per 4U pRBC</div><div class="d2">Citrate chelates calcium during massive transfusion; ionized Ca &lt;1.1 mmol/L = replace; do not wait</div></div>
+</div></div>
+</div>`},
+
+}},
+pocus:{label:"POCUS",icon:"&#x1F50D;",subs:{
+  efast:{label:"eFAST",updated:"ACEP 2023",content:()=>`
+<div class="cf"><div class="card a1"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">eFAST — 6 Views</span><span class="bd bd1">ACEP 2023</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div style="margin:12px 0 16px;overflow:hidden;">
+<svg viewBox="0 0 560 300" style="width:100%;max-width:560px;display:block;margin:0 auto;" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="560" height="300" fill="#0d1623" rx="8"/>
+
+  <!-- Title -->
+  <text x="280" y="18" text-anchor="middle" font-size="9" fill="#00d4aa" font-family="monospace" font-weight="700" letter-spacing="1">eFAST EXAM — 6 VIEWS · CURVILINEAR OR PHASED ARRAY</text>
+
+  <!-- Simple torso outline - just geometric shapes, no bad silhouette -->
+  <!-- Chest rectangle -->
+  <rect x="228" y="35" width="104" height="110" rx="12" fill="#0f1e35" stroke="#1e3050" stroke-width="1.5"/>
+  <!-- Abdomen -->
+  <rect x="228" y="140" width="104" height="80" rx="8" fill="#0f1e35" stroke="#1e3050" stroke-width="1.5"/>
+  <!-- Midline -->
+  <line x1="280" y1="35" x2="280" y2="220" stroke="#1e2a40" stroke-width="1" stroke-dasharray="3,3"/>
+  <!-- Xiphoid marker -->
+  <line x1="265" y1="142" x2="295" y2="142" stroke="#2e4060" stroke-width="1"/>
+  <text x="280" y="135" text-anchor="middle" font-size="6" fill="#374151" font-family="monospace">XIPHOID</text>
+  <!-- Chest label -->
+  <text x="280" y="58" text-anchor="middle" font-size="6.5" fill="#1e3050" font-family="monospace">CHEST</text>
+  <!-- L/R labels -->
+  <text x="240" y="75" text-anchor="middle" font-size="6" fill="#2e4060" font-family="monospace">L</text>
+  <text x="320" y="75" text-anchor="middle" font-size="6" fill="#2e4060" font-family="monospace">R</text>
+
+  <!-- ── 1: R LUNG ── -->
+  <circle cx="315" cy="65" r="9" fill="#dc2626" stroke="#fca5a5" stroke-width="1.5"/>
+  <text x="315" y="69" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">1</text>
+  <line x1="345" y1="42" x2="320" y2="62" stroke="#dc2626" stroke-width="0.8" opacity="0.6"/>
+  <rect x="345" y="25" width="168" height="36" rx="4" fill="#250a0a" stroke="#dc2626" stroke-width="1.2"/>
+  <text x="429" y="38" text-anchor="middle" font-size="8" fill="#fca5a5" font-weight="700" font-family="monospace">R LUNG — PTX / Hemothorax</text>
+  <text x="429" y="50" text-anchor="middle" font-size="6.5" fill="#9ca3af" font-family="monospace">2nd–4th ICS MCL · sliding / barcode / seashore</text>
+
+  <!-- ── 2: L LUNG ── -->
+  <circle cx="245" cy="65" r="9" fill="#0891b2" stroke="#67e8f9" stroke-width="1.5"/>
+  <text x="245" y="69" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">2</text>
+  <line x1="213" y1="42" x2="240" y2="62" stroke="#0891b2" stroke-width="0.8" opacity="0.6"/>
+  <rect x="47" y="25" width="164" height="36" rx="4" fill="#050f20" stroke="#0891b2" stroke-width="1.2"/>
+  <text x="129" y="38" text-anchor="middle" font-size="8" fill="#67e8f9" font-weight="700" font-family="monospace">L LUNG — PTX / Hemothorax</text>
+  <text x="129" y="50" text-anchor="middle" font-size="6.5" fill="#9ca3af" font-family="monospace">2nd–4th ICS MCL · mirror of right side</text>
+
+  <!-- ── 3: Subxiphoid cardiac ── -->
+  <circle cx="280" cy="148" r="9" fill="#7c3aed" stroke="#c4b5fd" stroke-width="1.5"/>
+  <text x="280" y="152" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">3</text>
+  <line x1="345" y1="130" x2="287" y2="148" stroke="#7c3aed" stroke-width="0.8" opacity="0.6"/>
+  <rect x="345" y="112" width="168" height="36" rx="4" fill="#1a0f35" stroke="#7c3aed" stroke-width="1.2"/>
+  <text x="429" y="125" text-anchor="middle" font-size="8" fill="#c4b5fd" font-weight="700" font-family="monospace">SUBXIPHOID CARDIAC</text>
+  <text x="429" y="137" text-anchor="middle" font-size="6.5" fill="#9ca3af" font-family="monospace">Probe flat · pericardial effusion / tamponade</text>
+
+  <!-- ── 4: RUQ ── -->
+  <circle cx="318" cy="175" r="9" fill="#059669" stroke="#6ee7b7" stroke-width="1.5"/>
+  <text x="318" y="179" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">4</text>
+  <line x1="345" y1="185" x2="325" y2="176" stroke="#059669" stroke-width="0.8" opacity="0.6"/>
+  <rect x="345" y="165" width="168" height="36" rx="4" fill="#0a2018" stroke="#059669" stroke-width="1.2"/>
+  <text x="429" y="178" text-anchor="middle" font-size="8" fill="#6ee7b7" font-weight="700" font-family="monospace">RUQ — Morrison's Pouch</text>
+  <text x="429" y="190" text-anchor="middle" font-size="6.5" fill="#9ca3af" font-family="monospace">MAL · 10th ICS · hepatorenal space + above Hemi</text>
+
+  <!-- ── 5: LUQ ── -->
+  <circle cx="242" cy="175" r="9" fill="#2563eb" stroke="#93c5fd" stroke-width="1.5"/>
+  <text x="242" y="179" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">5</text>
+  <line x1="211" y1="185" x2="235" y2="176" stroke="#2563eb" stroke-width="0.8" opacity="0.6"/>
+  <rect x="47" y="165" width="164" height="36" rx="4" fill="#0f1f35" stroke="#2563eb" stroke-width="1.2"/>
+  <text x="129" y="178" text-anchor="middle" font-size="8" fill="#93c5fd" font-weight="700" font-family="monospace">LUQ — Splenorenal</text>
+  <text x="129" y="190" text-anchor="middle" font-size="6.5" fill="#9ca3af" font-family="monospace">Post MAL · 8-9th ICS · Koller's pouch + above Hemi</text>
+
+  <!-- ── 6: Pelvic ── -->
+  <circle cx="280" cy="215" r="9" fill="#d97706" stroke="#fcd34d" stroke-width="1.5"/>
+  <text x="280" y="219" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">6</text>
+  <line x1="280" y1="224" x2="280" y2="245" stroke="#d97706" stroke-width="0.8" opacity="0.6"/>
+  <rect x="196" y="245" width="168" height="36" rx="4" fill="#251500" stroke="#d97706" stroke-width="1.2"/>
+  <text x="280" y="258" text-anchor="middle" font-size="8" fill="#fcd34d" font-weight="700" font-family="monospace">PELVIC / SUPRAPUBIC</text>
+  <text x="280" y="270" text-anchor="middle" font-size="6.5" fill="#9ca3af" font-family="monospace">Rectovesical ♂ · Pouch of Douglas ♀ · sagittal + transverse</text>
+
+  <!-- Sequence arrow hint around torso -->
+  <path d="M315,65 Q340,110 318,175 Q300,210 280,215 Q260,210 242,175 Q215,120 245,65" 
+        fill="none" stroke="#00d4aa" stroke-width="1" stroke-dasharray="4,4" opacity="0.3"/>
+
+  <!-- Footer -->
+  <text x="280" y="292" text-anchor="middle" font-size="7.5" fill="#374151" font-family="monospace">ACEP 2023 · 6 Views · Sensitivity: free fluid ~80%, PTX ~49-99%</text>
+</svg>
+</div>
+<div class="sl">SEQUENCE</div>
+<div class="tr g3"><div class="dn">1 · RUQ</div><div class="dd">Morrison's pouch (hepatorenal)</div><div class="d2">MAL 10th ICS · also scan above diaphragm for hemothorax · probe indicator cephalad</div></div>
+<div class="tr g3"><div class="dn">2 · Subxiphoid</div><div class="dd">Pericardial effusion / tamponade</div><div class="d2">Probe flat, aim toward L shoulder · 4-chamber view · look for free pericardial fluid</div></div>
+<div class="tr g3"><div class="dn">3 · LUQ</div><div class="dd">Splenorenal (Koller's pouch)</div><div class="d2">Posterior MAL 8th–9th ICS · scan above diaphragm · harder to obtain than RUQ</div></div>
+<div class="tr g3"><div class="dn">4 · Pelvis</div><div class="dd">Rectovesical ♂ · Pouch of Douglas ♀</div><div class="d2">Suprapubic · sagittal + transverse · bladder as window · aim into pelvis</div></div>
+<div class="tr g3"><div class="dn">5 · R Lung</div><div class="dd">Lung sliding vs barcode sign</div><div class="d2">2nd–4th ICS MCL · anterior chest · M-mode: seashore=sliding, barcode=PTX</div></div>
+<div class="tr g3"><div class="dn">6 · L Lung</div><div class="dd">Mirror of right</div><div class="d2">Same landmarks left side · always bilateral for PTX assessment</div></div>
+<div class="sl" style="margin-top:10px">POSITIVE eFAST — ACTIONS</div>
+<div class="tr g3"><div class="dn">Free fluid + unstable</div><div class="dd">Emergent surgery</div><div class="d2">Do not delay for CT; activate trauma surgery</div></div>
+<div class="tr g3"><div class="dn">Free fluid + stable</div><div class="dd">CT abdomen/pelvis with contrast</div><div class="d2">Characterize injury; ongoing monitoring</div></div>
+<div class="tr g3"><div class="dn">Pericardial effusion</div><div class="dd">Pericardiocentesis if tamponade</div><div class="d2">Subxiphoid or parasternal approach; US-guided preferred</div></div>
+<div class="tr g3"><div class="dn">PTX (no sliding)</div><div class="dd">Needle decompression ± chest tube</div><div class="d2">Must have lung point to confirm; absent sliding alone not specific</div></div>
+<div class="tr g2"><div class="dn">Sensitivity</div><div class="dd">Free fluid ~73–88%; PTX ~49–99% (varies by study and operator)</div></div>
+<div class="tr g2"><div class="dn">Negative eFAST</div><div class="dd">Does NOT exclude solid organ injury — CT remains standard for stable patients with mechanism</div></div>
+</div></div>
+
+<div class="card a3"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">RUSH Protocol — Shock</span><span class="bd bd3">Undifferentiated Shock</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="sl">PUMP — TANK — PIPES</div>
+<div class="tr g3"><div class="dn">PUMP · Cardiac</div><div class="dd">Subxiphoid / parasternal</div><div class="d2">LVEF (eyeball): good/moderate/poor · RV:LV ratio (&gt;1 = strain) · pericardial effusion · wall motion</div></div>
+<div class="tr g3"><div class="dn">TANK · Full or empty</div><div class="dd">IVC + lungs</div><div class="d2">IVC collapsed = empty tank (hypovolemia); IVC plethoric = full (obstructive/cardiogenic); B-lines = wet</div></div>
+<div class="tr g3"><div class="dn">PIPES · Aorta / DVT</div><div class="dd">Aorta + femoral/popliteal</div><div class="d2">AAA: measure max diameter; DVT: compressibility at common femoral, popliteal (non-compressible = DVT)</div></div>
+<div class="sl" style="margin-top:10px">SHOCK PATTERN RECOGNITION</div>
+<table class="stbl"><tr><th>Shock Type</th><th>Cardiac</th><th>IVC</th><th>Lungs</th><th>Other</th></tr>
+<tr><td>Hypovolemic</td><td>Hyperdynamic</td><td>Flat, collapsing</td><td>A-lines</td><td>No effusion</td></tr>
+<tr><td>Cardiogenic</td><td>Poor EF / dilated</td><td>Plethoric</td><td>B-lines bilateral</td><td>Effusion possible</td></tr>
+<tr><td>Obstructive (PE)</td><td>RV strain, D-sign</td><td>Plethoric</td><td>A-lines / peripheral wedge</td><td>McConnell sign</td></tr>
+<tr><td>Obstructive (Tamponade)</td><td>Effusion + RV collapse</td><td>Plethoric</td><td>A-lines</td><td>Swinging heart</td></tr>
+<tr><td>Distributive</td><td>Hyperdynamic</td><td>Small but variable</td><td>A-lines</td><td>End-diastolic kissing</td></tr>
+</table>
+</div></div>
+
+<div class="card a2"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Cardiac POCUS — Bedside Echo Golden Spiral</span><span class="bd bd2">5 Views</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div style="margin:12px 0 16px;overflow:hidden;">
+<svg viewBox="0 0 560 320" style="width:100%;max-width:560px;display:block;margin:0 auto;" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="ah" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#c9a227" opacity="0.7"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="560" height="320" fill="#0d1623" rx="8"/>
+
+  <!-- Title -->
+  <text x="280" y="18" text-anchor="middle" font-size="9" fill="#c9a227" font-family="monospace" font-weight="700" letter-spacing="1">BEDSIDE ECHO — GOLDEN SPIRAL · 5 VIEWS</text>
+
+  <!-- Center chest schematic -->
+  <!-- Chest outline simple -->
+  <ellipse cx="280" cy="155" rx="68" ry="80" fill="none" stroke="#1e3050" stroke-width="1.5"/>
+  <!-- Sternum -->
+  <line x1="280" y1="90" x2="280" y2="210" stroke="#1e3050" stroke-width="1" stroke-dasharray="3,3"/>
+  <!-- Ribs suggestion -->
+  <ellipse cx="280" cy="140" rx="45" ry="28" fill="none" stroke="#162030" stroke-width="1"/>
+  <ellipse cx="280" cy="160" rx="52" ry="32" fill="none" stroke="#162030" stroke-width="1"/>
+  <ellipse cx="280" cy="180" rx="58" ry="35" fill="none" stroke="#162030" stroke-width="1"/>
+
+  <!-- Golden circle -->
+  <circle cx="272" cy="148" r="42" fill="none" stroke="#c9a227" stroke-width="2" opacity="0.8"/>
+  <!-- Spiral arrow -->
+  <path d="M272,106 Q316,106 316,148 Q316,190 272,190 Q242,190 234,166" fill="none" stroke="#c9a227" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.55" marker-end="url(#ah)"/>
+
+  <!-- ── POSITION 1: PLAX ── upper left -->
+  <circle cx="262" cy="130" r="9" fill="#7c3aed" stroke="#c4b5fd" stroke-width="1.5"/>
+  <text x="262" y="134" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">1</text>
+  <!-- connector -->
+  <line x1="215" y1="68" x2="258" y2="126" stroke="#7c3aed" stroke-width="0.8" opacity="0.6"/>
+  <!-- label box -->
+  <rect x="50" y="30" width="164" height="44" rx="4" fill="#1a0f35" stroke="#7c3aed" stroke-width="1.2"/>
+  <text x="132" y="45" text-anchor="middle" font-size="8.5" fill="#c4b5fd" font-weight="700" font-family="monospace">PARASTERNAL LONG (PLAX)</text>
+  <text x="132" y="57" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">3-4 ICS LSB · probe → R shoulder</text>
+  <text x="132" y="68" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">LVOT, MV, Ao root, pericardium</text>
+
+  <!-- ── POSITION 2: PSAX ── upper right -->
+  <circle cx="282" cy="130" r="9" fill="#2563eb" stroke="#93c5fd" stroke-width="1.5"/>
+  <text x="282" y="134" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">2</text>
+  <line x1="346" y1="68" x2="286" y2="126" stroke="#2563eb" stroke-width="0.8" opacity="0.6"/>
+  <rect x="346" y="30" width="164" height="44" rx="4" fill="#0f1f35" stroke="#2563eb" stroke-width="1.2"/>
+  <text x="428" y="45" text-anchor="middle" font-size="8.5" fill="#93c5fd" font-weight="700" font-family="monospace">PARASTERNAL SHORT (PSAX)</text>
+  <text x="428" y="57" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">Same spot · rotate 90° CW</text>
+  <text x="428" y="68" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">Papillary level: D-sign, RV size</text>
+
+  <!-- ── POSITION 3: A4C ── mid right -->
+  <circle cx="258" cy="162" r="9" fill="#059669" stroke="#6ee7b7" stroke-width="1.5"/>
+  <text x="258" y="166" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">3</text>
+  <line x1="346" y1="178" x2="266" y2="162" stroke="#059669" stroke-width="0.8" opacity="0.6"/>
+  <rect x="346" y="155" width="164" height="44" rx="4" fill="#0a2018" stroke="#059669" stroke-width="1.2"/>
+  <text x="428" y="170" text-anchor="middle" font-size="8.5" fill="#6ee7b7" font-weight="700" font-family="monospace">APICAL 4-CHAMBER (A4C)</text>
+  <text x="428" y="182" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">5th ICS MCL · probe → L shoulder</text>
+  <text x="428" y="193" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">EF, RV:LV ratio, valves, LVOT VTI</text>
+
+  <!-- ── POSITION 4: Subxiphoid ── lower right -->
+  <circle cx="280" cy="192" r="9" fill="#d97706" stroke="#fcd34d" stroke-width="1.5"/>
+  <text x="280" y="196" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">4</text>
+  <line x1="346" y1="248" x2="282" y2="198" stroke="#d97706" stroke-width="0.8" opacity="0.6"/>
+  <rect x="346" y="225" width="164" height="44" rx="4" fill="#251500" stroke="#d97706" stroke-width="1.2"/>
+  <text x="428" y="240" text-anchor="middle" font-size="8.5" fill="#fcd34d" font-weight="700" font-family="monospace">SUBXIPHOID (SC4C)</text>
+  <text x="428" y="252" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">Probe flat · aim at L shoulder</text>
+  <text x="428" y="263" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">Pericardial effusion, tamponade</text>
+
+  <!-- ── POSITION 5: IVC ── lower left -->
+  <circle cx="280" cy="210" r="9" fill="#dc2626" stroke="#fca5a5" stroke-width="1.5"/>
+  <text x="280" y="214" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">5</text>
+  <line x1="215" y1="248" x2="276" y2="212" stroke="#dc2626" stroke-width="0.8" opacity="0.6"/>
+  <rect x="50" y="225" width="164" height="44" rx="4" fill="#250a0a" stroke="#dc2626" stroke-width="1.2"/>
+  <text x="132" y="240" text-anchor="middle" font-size="8.5" fill="#fca5a5" font-weight="700" font-family="monospace">IVC / FLUID STATUS</text>
+  <text x="132" y="252" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">Rotate 90° from pos 4 · sagittal</text>
+  <text x="132" y="263" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">&lt;1.5cm collapsing = hypovolemia</text>
+
+  <!-- Golden Circle legend -->
+  <rect x="50" y="140" width="164" height="60" rx="4" fill="#1a1500" stroke="#c9a227" stroke-width="1"/>
+  <text x="132" y="154" text-anchor="middle" font-size="8" fill="#fcd34d" font-weight="700" font-family="monospace">GOLDEN CIRCLE</text>
+  <text x="132" y="165" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">Rotate probe CW position-to-position</text>
+  <text x="132" y="175" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">1→2: rotate 90° CW (same location)</text>
+  <text x="132" y="185" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">2→3: slide to apex · 4→5: rotate 90°</text>
+  <text x="132" y="195" text-anchor="middle" font-size="7" fill="#c9a227" font-family="monospace">Start: PLAX · End: IVC view</text>
+
+  <!-- Footer -->
+  <text x="280" y="310" text-anchor="middle" font-size="7.5" fill="#374151" font-family="monospace">After DocScribbles · ASE 2022 · SCA 2023</text>
+</svg>
+</div>
+<div class="sl">WHAT TO ASSESS</div>
+<div class="tr g2"><div class="dn">LVEF (global)</div><div class="dd">Eyeball: good (&gt;55%) / moderate (30–55%) / poor (&lt;30%); E-point septal separation (EPSS): &gt;8mm = reduced EF</div></div>
+<div class="tr g2"><div class="dn">Pericardial effusion</div><div class="dd">Anechoic fluid around heart; tamponade: RV diastolic collapse + IVC plethora + clinical shock</div></div>
+<div class="tr g2"><div class="dn">RV strain</div><td class="dd">RV:LV &gt;1 (A4C) · McConnell sign (free wall akinesis, apex spared) · D-sign on PSAX · consider PE</div></div>
+<div class="tr g2"><div class="dn">IVC collapsibility</div><div class="dd">See IVC table below — volume status assessment</div></div>
+<table class="stbl"><tr><th>IVC Diameter</th><th>Collapsibility (sniff)</th><th>Interpretation</th></tr>
+<tr><td>&lt;1.5 cm</td><td>&gt;50%</td><td>Hypovolemia — volume responsive</td></tr>
+<tr><td>1.5–2.5 cm</td><td>&gt;50%</td><td>Normal / borderline — likely responsive</td></tr>
+<tr><td>1.5–2.5 cm</td><td>&lt;50%</td><td>Euvolemic — less predictable</td></tr>
+<tr><td>&gt;2.5 cm</td><td>&lt;50%</td><td>Elevated RAP / hypervolemia — unlikely responsive</td></tr>
+</table>
+<div class="tr g2" style="margin-top:6px"><div class="dn">Limitations</div><div class="d2">Mechanical ventilation, high PEEP, and elevated IAP reduce IVC collapsibility reliability. Use alongside clinical context and other hemodynamic data.</div></div>
+</div></div>
+
+<div class="card a4"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Lung Ultrasound</span><span class="bd bd4">BLUE Protocol</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<table class="stbl"><tr><th>Finding</th><th>Appearance</th><th>Suggests</th></tr>
+<tr><td>A-lines</td><td>Horizontal reverberation artifacts</td><td>Normal aerated lung / PTX</td></tr>
+<tr><td>Lung sliding</td><td>Shimmering at pleural line</td><td>Pleural apposition — rules out PTX at that point</td></tr>
+<tr><td>B-lines (≥3/view)</td><td>Vertical laser-like artifacts to screen edge</td><td>Interstitial edema / pulmonary edema</td></tr>
+<tr><td>Consolidation</td><td>Tissue-like echogenicity ± air bronchograms</td><td>Pneumonia / atelectasis</td></tr>
+<tr><td>Lung point</td><td>Transition between sliding and no sliding</td><td>Confirms PTX (100% specific)</td></tr>
+<tr><td>Barcode sign (M-mode)</td><td>Horizontal lines throughout (no seashore)</td><td>PTX — absent lung sliding</td></tr>
+<tr><td>Seashore sign (M-mode)</td><td>Grainy below pleural line</td><td>Normal lung sliding present</td></tr>
+<tr><td>Pleural effusion</td><td>Anechoic/hypoechoic space above diaphragm</td><td>Hemothorax, transudates, empyema</td></tr>
+</table>
+<div class="sl" style="margin-top:10px">BLUE PROTOCOL — Acute Dyspnea</div>
+<div class="tr g2"><div class="dn">A-lines + sliding bilat</div><div class="dd">PE or obstructive pattern → check RUSH; if no sliding → PTX</div></div>
+<div class="tr g2"><div class="dn">B-lines bilateral (&gt;3)</div><div class="dd">Pulmonary edema (cardiogenic or non-cardiogenic ARDS)</div></div>
+<div class="tr g2"><div class="dn">B-lines unilateral</div><div class="dd">Pneumonia or contusion</div></div>
+<div class="tr g2"><div class="dn">Consolidation</div><div class="dd">Pneumonia (air bronchograms) or atelectasis (fluid bronchograms)</div></div>
+<div class="tr g2"><div class="dn">Anterior A-lines + no sliding</div><div class="dd">PTX until proven otherwise — seek lung point to confirm</div></div>
+</div></div>
+
+<div class="card a5"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Procedural POCUS — EM Applications</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="tr g3"><div class="dn">Central venous access</div><div class="dd">IJ / subclavian / femoral</div><div class="d2">Real-time short-axis or long-axis; confirm wire in vein before dilating; post-procedure PTX check</div></div>
+<div class="tr g3"><div class="dn">Pericardiocentesis</div><div class="dd">Subxiphoid or parasternal approach</div><div class="d2">18g spinal needle; aim toward L shoulder; agitated saline to confirm pericardial placement</div></div>
+<div class="tr g3"><div class="dn">Thoracentesis</div><div class="dd">Posterior lateral chest</div><div class="d2">Mark site with probe; real-time preferred; target largest safe pocket; avoid diaphragm</div></div>
+<div class="tr g3"><div class="dn">Lumbar puncture</div><div class="dd">Interspinous space identification</div><div class="d2">Transverse for midline; sagittal for level counting; improves success in obese/prior spine surgery</div></div>
+<div class="tr g3"><div class="dn">Abscess / soft tissue</div><div class="dd">High-frequency linear probe</div><div class="d2">Differentiate cellulitis (cobblestoning) from abscess (anechoic with posterior enhancement); guide I&amp;D</div></div>
+<div class="tr g3"><div class="dn">Ocular POCUS</div><div class="dd">High-frequency linear probe over closed lid</div><div class="d2">ONSD &gt;5mm = ↑ICP; retinal detachment (tethered); vitreous hemorrhage; lens dislocation</div></div>
+<div class="tr g3"><div class="dn">DVT assessment</div><div class="dd">Femoral + popliteal compressibility</div><div class="d2">2-point compression (CFV, popliteal); non-compressible = DVT; sensitivity ~95% proximal DVT</div></div>
 </div></div>
 </div>`},
 }},
@@ -683,16 +1001,16 @@ window.addEventListener('offline', updateConn);
 document.addEventListener('DOMContentLoaded', updateConn);
 
 function bkmTab(el, id) {
-  document.querySelectorAll('.bkm-tab').forEach(function(t){t.classList.remove('on');});
-  document.querySelectorAll('.bkm-pane').forEach(function(p){p.classList.remove('on');});
+  document.querySelectorAll('.bkm-tab').forEach(t => t.classList.remove('on'));
+  document.querySelectorAll('.bkm-pane').forEach(p => p.classList.remove('on'));
   el.classList.add('on');
   document.getElementById('bkm-' + id).classList.add('on');
 }
 </script>
 <div class="bkm-overlay" id="bkmOverlay">
 <div class="bkm-modal">
-  <div class="bkm-title"><span>&#128204; Save for Offline Use</span><button class="bkm-close" onclick="document.getElementById('bkmOverlay').classList.remove('open')">&#x2715;</button></div>
-  <div class="bkm-sub">This file works entirely offline &#8212; no internet needed after saving.</div>
+  <div class="bkm-title"><span>📌 Save for Offline Use</span><button class="bkm-close" onclick="document.getElementById('bkmOverlay').classList.remove('open')">&#x2715;</button></div>
+  <div class="bkm-sub">This file works entirely offline — no internet needed after saving.</div>
   <div class="bkm-tabs">
     <button class="bkm-tab on" onclick="bkmTab(this,'ios')">iPhone / iPad</button>
     <button class="bkm-tab" onclick="bkmTab(this,'android')">Android</button>
@@ -701,32 +1019,32 @@ function bkmTab(el, id) {
   </div>
   <div class="bkm-pane on" id="bkm-ios">
     <div class="bkm-step"><div class="bkm-num">1</div><div class="bkm-txt"><strong>AirDrop or email</strong> the .html file to your iPhone/iPad</div></div>
-    <div class="bkm-step"><div class="bkm-num">2</div><div class="bkm-txt">Tap the file &#8212; it opens in <strong>Safari</strong> (use Safari, not Chrome)</div></div>
+    <div class="bkm-step"><div class="bkm-num">2</div><div class="bkm-txt">Tap the file — it opens in <strong>Safari</strong> (use Safari, not Chrome)</div></div>
     <div class="bkm-step"><div class="bkm-num">3</div><div class="bkm-txt">Tap the <strong>Share button</strong> (box with arrow) at the bottom</div></div>
-    <div class="bkm-step"><div class="bkm-num">4</div><div class="bkm-txt">Scroll down &#8594; tap <strong>"Add to Home Screen"</strong></div></div>
-    <div class="bkm-step"><div class="bkm-num">5</div><div class="bkm-txt">Name it and tap <strong>Add</strong> &#8212; launches like an app, works offline</div></div>
-    <div class="bkm-note">&#9888; Must open in <strong>Safari</strong> &#8212; Chrome on iOS cannot add to Home Screen from local files.</div>
+    <div class="bkm-step"><div class="bkm-num">4</div><div class="bkm-txt">Scroll down → tap <strong>"Add to Home Screen"</strong></div></div>
+    <div class="bkm-step"><div class="bkm-num">5</div><div class="bkm-txt">Name it and tap <strong>Add</strong> — launches like an app, works offline</div></div>
+    <div class="bkm-note">⚠ Must open in <strong>Safari</strong> — Chrome on iOS cannot add to Home Screen from local files. The file stays in your Files app at <strong>On My iPhone › Downloads</strong> as a backup.</div>
   </div>
   <div class="bkm-pane" id="bkm-android">
     <div class="bkm-step"><div class="bkm-num">1</div><div class="bkm-txt"><strong>Download or transfer</strong> the .html file to your device</div></div>
-    <div class="bkm-step"><div class="bkm-num">2</div><div class="bkm-txt">Open <strong>Chrome</strong> &#8594; tap the address bar &#8594; type <strong>file:///sdcard/Download/</strong> and navigate to the file</div></div>
-    <div class="bkm-step"><div class="bkm-num">3</div><div class="bkm-txt">Tap the <strong>three-dot menu</strong> (&#8942;) &#8594; <strong>"Add to Home screen"</strong></div></div>
-    <div class="bkm-step"><div class="bkm-num">4</div><div class="bkm-txt">Tap <strong>Add</strong> &#8212; shortcut appears on your home screen</div></div>
-    <div class="bkm-note">&#128161; Alternatively: open with <strong>Firefox for Android</strong> via your file manager &#8212; handles local HTML more reliably on some devices.</div>
+    <div class="bkm-step"><div class="bkm-num">2</div><div class="bkm-txt">Open <strong>Chrome</strong> → tap the address bar → type <strong>file:///sdcard/Download/</strong> and navigate to the file</div></div>
+    <div class="bkm-step"><div class="bkm-num">3</div><div class="bkm-txt">Tap the <strong>three-dot menu</strong> (⋮) → <strong>"Add to Home screen"</strong></div></div>
+    <div class="bkm-step"><div class="bkm-num">4</div><div class="bkm-txt">Tap <strong>Add</strong> — shortcut appears on your home screen</div></div>
+    <div class="bkm-note">💡 Alternatively: open the file with <strong>Firefox for Android</strong> via your file manager app — it handles local HTML files more reliably than Chrome on some devices.</div>
   </div>
   <div class="bkm-pane" id="bkm-mac">
-    <div class="bkm-step"><div class="bkm-num">1</div><div class="bkm-txt"><strong>Save the file</strong> somewhere permanent (Documents, not Downloads)</div></div>
-    <div class="bkm-step"><div class="bkm-num">2</div><div class="bkm-txt">Open in <strong>Safari or Chrome</strong> &#8212; double-click or drag to browser</div></div>
-    <div class="bkm-step"><div class="bkm-num">3</div><div class="bkm-txt">Press <strong>&#8984; D</strong> to bookmark, or drag the tab to your Dock / desktop</div></div>
-    <div class="bkm-step"><div class="bkm-num">4</div><div class="bkm-txt"><strong>Safari tip:</strong> File &#8594; Add to Dock &#8212; creates a standalone launcher</div></div>
-    <div class="bkm-note">&#128161; To sync to iPhone: save in <strong>iCloud Drive</strong> and open in Safari on iOS &#8594; Add to Home Screen.</div>
+    <div class="bkm-step"><div class="bkm-num">1</div><div class="bkm-txt"><strong>Save the file</strong> somewhere permanent (Documents, not Downloads — Downloads may get cleared)</div></div>
+    <div class="bkm-step"><div class="bkm-num">2</div><div class="bkm-txt">Open the file in <strong>Safari or Chrome</strong> — double-click or drag to browser</div></div>
+    <div class="bkm-step"><div class="bkm-num">3</div><div class="bkm-txt">Press <strong>⌘ D</strong> to bookmark it, or drag the URL bar tab to your Dock / desktop</div></div>
+    <div class="bkm-step"><div class="bkm-num">4</div><div class="bkm-txt"><strong>Safari tip:</strong> File → Add to Dock — creates a standalone app-like launcher in your Dock</div></div>
+    <div class="bkm-note">💡 To sync to iPhone: save in <strong>iCloud Drive</strong> and open in Safari on iOS → Add to Home Screen.</div>
   </div>
   <div class="bkm-pane" id="bkm-win">
     <div class="bkm-step"><div class="bkm-num">1</div><div class="bkm-txt"><strong>Save the file</strong> somewhere permanent (Documents folder recommended)</div></div>
-    <div class="bkm-step"><div class="bkm-num">2</div><div class="bkm-txt">Open in <strong>Chrome or Edge</strong> &#8212; double-click the file</div></div>
-    <div class="bkm-step"><div class="bkm-num">3</div><div class="bkm-txt">Press <strong>Ctrl + D</strong> to bookmark, or drag the address bar icon to your desktop</div></div>
-    <div class="bkm-step"><div class="bkm-num">4</div><div class="bkm-txt"><strong>Edge tip:</strong> Apps &#8594; Install this site as an app &#8212; creates a standalone launcher</div></div>
-    <div class="bkm-note">&#128161; <strong>Edge</strong> handles local HTML files best on Windows.</div>
+    <div class="bkm-step"><div class="bkm-num">2</div><div class="bkm-txt">Open in <strong>Chrome or Edge</strong> — double-click the file</div></div>
+    <div class="bkm-step"><div class="bkm-num">3</div><div class="bkm-txt">Press <strong>Ctrl + D</strong> to bookmark, or drag the icon from the address bar to your desktop/taskbar</div></div>
+    <div class="bkm-step"><div class="bkm-num">4</div><div class="bkm-txt"><strong>Edge tip:</strong> Apps → Install this site as an app — creates a standalone window launcher</div></div>
+    <div class="bkm-note">💡 <strong>Edge</strong> handles local HTML files best on Windows — Chrome may prompt about file access on some versions.</div>
   </div>
 </div>
 </div>

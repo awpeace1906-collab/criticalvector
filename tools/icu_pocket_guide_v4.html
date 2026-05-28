@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<style>
+/* Offline font fallbacks — replaces Google Fonts for file:// compatibility */
+@font-face { font-family: 'Syne'; src: local('Arial Black'), local('Impact'), local('.AppleSystemUIFont'); font-weight: 400 800; }
+@font-face { font-family: 'DM Mono'; src: local('Menlo'), local('Consolas'), local('Courier New'); font-weight: 400 500; }
+@font-face { font-family: 'Source Serif 4'; src: local('Georgia'), local('Times New Roman'); font-weight: 300 400; }
+</style>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ICU Pocket Guide v4</title>
@@ -184,9 +190,6 @@ body{background:var(--bg);color:var(--tx);font-family:var(--fn);display:flex;fle
   .al{background:#f5f5f5;border:1px solid #ccc;color:#333;}
   .stbl th{background:#e8eef8;color:#444;}
 }
-
-.conn-online{color:var(--a6)!important;background:var(--a6-bg)!important;border-color:var(--a6-b)!important;}
-
 .bkm-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.78);z-index:600;align-items:center;justify-content:center;}
 .bkm-overlay.open{display:flex;}
 .bkm-modal{background:var(--sf2);border:1px solid var(--b2);border-radius:10px;width:min(480px,92vw);max-height:82vh;overflow-y:auto;padding:20px 22px 18px;}
@@ -203,14 +206,10 @@ body{background:var(--bg);color:var(--tx);font-family:var(--fn);display:flex;fle
 .bkm-txt strong{color:var(--a4);}
 .bkm-note{font-size:10.5px;color:var(--td);margin-top:10px;padding:8px 10px;background:var(--sf3);border:1px solid var(--b1);border-radius:6px;line-height:1.5;}
 .bkm-close{float:right;background:none;border:none;color:var(--td);font-size:16px;cursor:pointer;padding:0 0 0 10px;line-height:1;}
-
+.conn-online{color:var(--a6)!important;background:var(--a6-bg)!important;border-color:var(--a6-b)!important;}
+/* v4 contrast boost */
 .thr>div{color:var(--td);}
 .stbl th{color:var(--tx)!important;background:var(--sf3)!important;}
-.il{color:var(--tx)!important;}
-.cn{color:var(--tx)!important;}
-.fl{color:var(--tx)!important;}
-.ct{color:var(--tx)!important;}
-.efmt{color:var(--tx)!important;}
 </style>
 </head>
 <body>
@@ -237,8 +236,8 @@ body{background:var(--bg);color:var(--tx);font-family:var(--fn);display:flex;fle
     </div>
   </div>
   <div class="hrt">
-    <span class="chip">v4 &middot; 2026</span>
-    <span class="chip2" id="connChip">&#10003; OFFLINE</span><button class="hbtn" onclick="document.getElementById('bkmOverlay').classList.add('open')" style="margin-left:4px">&#128204; Save</button>
+    <span class="chip">v4 · 2026</span>
+    <span class="chip2" id="connChip">✓ OFFLINE</span><button class="hbtn" onclick="document.getElementById(\'bkmOverlay\').classList.add(\'open\')" title="Save for offline use" style="margin-left:4px">📌 Save</button>
     <button class="hbtn" id="btnQ" onclick="toggleQ()">&#128138; Drug Ref</button>
     <button class="hbtn" onclick="window.print()">&#128424;</button>
     <button class="hbtn" onclick="kbo()">?</button>
@@ -598,6 +597,158 @@ heme:{label:"Hematology",icon:"&#x1FA78;",subs:{
 </div></div>
 </div>`},
 }},
+pocus:{label:"POCUS",icon:"&#x1F50D;",subs:{
+  cardiac:{label:"Cardiac POCUS",updated:"2024",content:()=>`
+<div class="cf"><div class="card a1"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Cardiac POCUS — Golden Spiral</span><span class="bd bd1">Bedside Echo</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div style="margin:12px 0 16px;overflow:hidden;">
+<svg viewBox="0 0 560 320" style="width:100%;max-width:560px;display:block;margin:0 auto;" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="ah" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#c9a227" opacity="0.7"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="560" height="320" fill="#0d1623" rx="8"/>
+
+  <!-- Title -->
+  <text x="280" y="18" text-anchor="middle" font-size="9" fill="#c9a227" font-family="monospace" font-weight="700" letter-spacing="1">BEDSIDE ECHO — GOLDEN SPIRAL · 5 VIEWS</text>
+
+  <!-- Center chest schematic -->
+  <!-- Chest outline simple -->
+  <ellipse cx="280" cy="155" rx="68" ry="80" fill="none" stroke="#1e3050" stroke-width="1.5"/>
+  <!-- Sternum -->
+  <line x1="280" y1="90" x2="280" y2="210" stroke="#1e3050" stroke-width="1" stroke-dasharray="3,3"/>
+  <!-- Ribs suggestion -->
+  <ellipse cx="280" cy="140" rx="45" ry="28" fill="none" stroke="#162030" stroke-width="1"/>
+  <ellipse cx="280" cy="160" rx="52" ry="32" fill="none" stroke="#162030" stroke-width="1"/>
+  <ellipse cx="280" cy="180" rx="58" ry="35" fill="none" stroke="#162030" stroke-width="1"/>
+
+  <!-- Golden circle -->
+  <circle cx="272" cy="148" r="42" fill="none" stroke="#c9a227" stroke-width="2" opacity="0.8"/>
+  <!-- Spiral arrow -->
+  <path d="M272,106 Q316,106 316,148 Q316,190 272,190 Q242,190 234,166" fill="none" stroke="#c9a227" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.55" marker-end="url(#ah)"/>
+
+  <!-- ── POSITION 1: PLAX ── upper left -->
+  <circle cx="262" cy="130" r="9" fill="#7c3aed" stroke="#c4b5fd" stroke-width="1.5"/>
+  <text x="262" y="134" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">1</text>
+  <!-- connector -->
+  <line x1="215" y1="68" x2="258" y2="126" stroke="#7c3aed" stroke-width="0.8" opacity="0.6"/>
+  <!-- label box -->
+  <rect x="50" y="30" width="164" height="44" rx="4" fill="#1a0f35" stroke="#7c3aed" stroke-width="1.2"/>
+  <text x="132" y="45" text-anchor="middle" font-size="8.5" fill="#c4b5fd" font-weight="700" font-family="monospace">PARASTERNAL LONG (PLAX)</text>
+  <text x="132" y="57" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">3-4 ICS LSB · probe → R shoulder</text>
+  <text x="132" y="68" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">LVOT, MV, Ao root, pericardium</text>
+
+  <!-- ── POSITION 2: PSAX ── upper right -->
+  <circle cx="282" cy="130" r="9" fill="#2563eb" stroke="#93c5fd" stroke-width="1.5"/>
+  <text x="282" y="134" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">2</text>
+  <line x1="346" y1="68" x2="286" y2="126" stroke="#2563eb" stroke-width="0.8" opacity="0.6"/>
+  <rect x="346" y="30" width="164" height="44" rx="4" fill="#0f1f35" stroke="#2563eb" stroke-width="1.2"/>
+  <text x="428" y="45" text-anchor="middle" font-size="8.5" fill="#93c5fd" font-weight="700" font-family="monospace">PARASTERNAL SHORT (PSAX)</text>
+  <text x="428" y="57" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">Same spot · rotate 90° CW</text>
+  <text x="428" y="68" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">Papillary level: D-sign, RV size</text>
+
+  <!-- ── POSITION 3: A4C ── mid right -->
+  <circle cx="258" cy="162" r="9" fill="#059669" stroke="#6ee7b7" stroke-width="1.5"/>
+  <text x="258" y="166" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">3</text>
+  <line x1="346" y1="178" x2="266" y2="162" stroke="#059669" stroke-width="0.8" opacity="0.6"/>
+  <rect x="346" y="155" width="164" height="44" rx="4" fill="#0a2018" stroke="#059669" stroke-width="1.2"/>
+  <text x="428" y="170" text-anchor="middle" font-size="8.5" fill="#6ee7b7" font-weight="700" font-family="monospace">APICAL 4-CHAMBER (A4C)</text>
+  <text x="428" y="182" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">5th ICS MCL · probe → L shoulder</text>
+  <text x="428" y="193" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">EF, RV:LV ratio, valves, LVOT VTI</text>
+
+  <!-- ── POSITION 4: Subxiphoid ── lower right -->
+  <circle cx="280" cy="192" r="9" fill="#d97706" stroke="#fcd34d" stroke-width="1.5"/>
+  <text x="280" y="196" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">4</text>
+  <line x1="346" y1="248" x2="282" y2="198" stroke="#d97706" stroke-width="0.8" opacity="0.6"/>
+  <rect x="346" y="225" width="164" height="44" rx="4" fill="#251500" stroke="#d97706" stroke-width="1.2"/>
+  <text x="428" y="240" text-anchor="middle" font-size="8.5" fill="#fcd34d" font-weight="700" font-family="monospace">SUBXIPHOID (SC4C)</text>
+  <text x="428" y="252" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">Probe flat · aim at L shoulder</text>
+  <text x="428" y="263" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">Pericardial effusion, tamponade</text>
+
+  <!-- ── POSITION 5: IVC ── lower left -->
+  <circle cx="280" cy="210" r="9" fill="#dc2626" stroke="#fca5a5" stroke-width="1.5"/>
+  <text x="280" y="214" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">5</text>
+  <line x1="215" y1="248" x2="276" y2="212" stroke="#dc2626" stroke-width="0.8" opacity="0.6"/>
+  <rect x="50" y="225" width="164" height="44" rx="4" fill="#250a0a" stroke="#dc2626" stroke-width="1.2"/>
+  <text x="132" y="240" text-anchor="middle" font-size="8.5" fill="#fca5a5" font-weight="700" font-family="monospace">IVC / FLUID STATUS</text>
+  <text x="132" y="252" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">Rotate 90° from pos 4 · sagittal</text>
+  <text x="132" y="263" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">&lt;1.5cm collapsing = hypovolemia</text>
+
+  <!-- Golden Circle legend -->
+  <rect x="50" y="140" width="164" height="60" rx="4" fill="#1a1500" stroke="#c9a227" stroke-width="1"/>
+  <text x="132" y="154" text-anchor="middle" font-size="8" fill="#fcd34d" font-weight="700" font-family="monospace">GOLDEN CIRCLE</text>
+  <text x="132" y="165" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">Rotate probe CW position-to-position</text>
+  <text x="132" y="175" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">1→2: rotate 90° CW (same location)</text>
+  <text x="132" y="185" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">2→3: slide to apex · 4→5: rotate 90°</text>
+  <text x="132" y="195" text-anchor="middle" font-size="7" fill="#c9a227" font-family="monospace">Start: PLAX · End: IVC view</text>
+
+  <!-- Footer -->
+  <text x="280" y="310" text-anchor="middle" font-size="7.5" fill="#374151" font-family="monospace">After DocScribbles · ASE 2022 · SCA 2023</text>
+</svg>
+</div>
+<div class="sl">ICU CARDIAC ASSESSMENT</div>
+<div class="tr g2"><div class="dn">LVEF (eyeball)</div><div class="dd">Good &gt;55% / Moderate 30–55% / Poor &lt;30%; EPSS &gt;8mm suggests reduced EF; Simpson's biplane if quantitative needed</div></div>
+<div class="tr g2"><div class="dn">RV function (TAPSE)</div><div class="dd">M-mode at tricuspid annulus on A4C; TAPSE &lt;17mm = RV dysfunction; RV:LV &gt;1 = dilation; McConnell sign = PE pattern</div></div>
+<div class="tr g2"><div class="dn">Septal flattening (D-sign)</div><div class="dd">PSAX: D-shaped LV in systole = pressure overload (PE, PHTN); D-shape in diastole = volume overload</div></div>
+<div class="tr g2"><div class="dn">Pericardial effusion</div><div class="dd">Tamponade: RV free wall diastolic collapse + RA systolic collapse + IVC plethora + pulsus paradoxus &gt;10mmHg</div></div>
+<div class="tr g2"><div class="dn">Valves</div><div class="dd">Gross MR/AR/AS assessment; flail leaflet; vegetation (IE concern) — formal echo for quantification</div></div>
+</div></div>
+
+<div class="card a2"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Volume Responsiveness</span><span class="bd bd2">IVC + PLR</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<table class="stbl"><tr><th>IVC Diameter</th><th>Collapsibility (sniff)</th><th>Interpretation</th></tr>
+<tr><td>&lt;1.5 cm</td><td>&gt;50%</td><td>Hypovolemia — volume responsive</td></tr>
+<tr><td>1.5–2.5 cm</td><td>&gt;50%</td><td>Normal / borderline — likely responsive</td></tr>
+<tr><td>1.5–2.5 cm</td><td>&lt;50%</td><td>Euvolemic — less predictable</td></tr>
+<tr><td>&gt;2.5 cm</td><td>&lt;50%</td><td>Elevated RAP / hypervolemia — unlikely responsive</td></tr>
+</table>
+<div class="tr g2" style="margin-top:6px"><div class="dn">Limitations</div><div class="d2">Mechanical ventilation, high PEEP, and elevated IAP reduce IVC collapsibility reliability. Use alongside clinical context and other hemodynamic data.</div></div>
+<div class="sl" style="margin-top:10px">PASSIVE LEG RAISE (PLR) TEST</div>
+<div class="tr g2"><div class="dn">Technique</div><div class="dd">Supine → raise legs 45° for 1 min (auto-transfuses ~300 mL); measure CO/stroke volume change by POCUS (LVOT VTI)</div></div>
+<div class="tr g2"><div class="dn">Interpretation</div><div class="dd">LVOT VTI increase &gt;12–15% = volume responsive; reversible test — safe even in ARDS; superior to IVC alone in ventilated patients</div></div>
+<div class="tr g2"><div class="dn">LVOT VTI technique</div><div class="dd">A5C view; PW Doppler at LVOT; trace velocity time integral; repeat after PLR; calculate % change</div></div>
+</div></div>
+
+<div class="card a3"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Lung Ultrasound — ICU</span><span class="bd bd3">Ventilation Monitoring</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<table class="stbl"><tr><th>Finding</th><th>Appearance</th><th>Suggests</th></tr>
+<tr><td>A-lines</td><td>Horizontal reverberation artifacts</td><td>Normal aerated lung / PTX</td></tr>
+<tr><td>Lung sliding</td><td>Shimmering at pleural line</td><td>Pleural apposition — rules out PTX at that point</td></tr>
+<tr><td>B-lines (≥3/view)</td><td>Vertical laser-like artifacts to screen edge</td><td>Interstitial edema / pulmonary edema</td></tr>
+<tr><td>Consolidation</td><td>Tissue-like echogenicity ± air bronchograms</td><td>Pneumonia / atelectasis</td></tr>
+<tr><td>Lung point</td><td>Transition between sliding and no sliding</td><td>Confirms PTX (100% specific)</td></tr>
+<tr><td>Barcode sign (M-mode)</td><td>Horizontal lines throughout (no seashore)</td><td>PTX — absent lung sliding</td></tr>
+<tr><td>Seashore sign (M-mode)</td><td>Grainy below pleural line</td><td>Normal lung sliding present</td></tr>
+<tr><td>Pleural effusion</td><td>Anechoic/hypoechoic space above diaphragm</td><td>Hemothorax, transudates, empyema</td></tr>
+</table>
+<div class="sl" style="margin-top:10px">ICU-SPECIFIC APPLICATIONS</div>
+<div class="tr g3"><div class="dn">ARDS monitoring</div><div class="dd">LUS score (0–36)</div><div class="d2">Count B-lines per zone (12 zones); score &gt;14 = non-aerable lung &gt;10%; tracks derecruitment</div></div>
+<div class="tr g3"><div class="dn">Recruitment assessment</div><div class="dd">Before/after PEEP change</div><div class="d2">↑ aeration (B→A transition) = recruitable; ↑ consolidation = overdistension risk</div></div>
+<div class="tr g3"><div class="dn">Weaning prediction</div><div class="dd">LUS + diaphragm</div><div class="d2">LUS score &lt;14 predicts successful extubation (sensitivity ~85%); combine with diaphragm TF</div></div>
+<div class="tr g3"><div class="dn">Pleural effusion</div><div class="dd">Quantification + thoracentesis guidance</div><div class="d2">PLAPS point (post-lat); effusion depth &gt;3.5cm suggests &gt;500mL; real-time guidance preferred</div></div>
+<div class="tr g3"><div class="dn">VAP assessment</div><div class="dd">New consolidation + air bronchograms</div><div class="d2">Posterior/lateral lower lobes; dynamic air bronchograms = pneumonia vs atelectasis</div></div>
+</div></div>
+
+<div class="card a4"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Diaphragm POCUS — Weaning Readiness</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="tr g3"><div class="dn">Thickening Fraction (TF)</div><div class="dd">TF = (Tei&minus;Tee)/Tee</div><div class="d2">Zone of apposition (8th–10th ICS, MAL); linear probe; TF &gt;20–30% = adequate effort; &lt;20% = dysfunction/atrophy</div></div>
+<div class="tr g3"><div class="dn">Excursion (M-mode)</div><div class="dd">Subcostal M-mode on right hemidiaphragm</div><div class="d2">Normal: &gt;10mm (quiet breathing) / &gt;18mm (deep); &lt;10mm or paradoxical = dysfunction; predicts extubation failure</div></div>
+<div class="tr g3"><div class="dn">Atrophy assessment</div><div class="dd">Diaphragm thickness at end-expiration</div><div class="d2">Normal end-exp thickness: 2–4mm; &lt;2mm = significant atrophy after prolonged MV; correlates with weaning difficulty</div></div>
+</div></div>
+
+<div class="card a5"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Procedural POCUS — ICU</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="tr g3"><div class="dn">CVC insertion</div><div class="dd">IJ / subclavian / femoral</div><div class="d2">Real-time guidance; confirm wire in vein before dilation; post-procedure: pneumothorax check + CXR for tip position</div></div>
+<div class="tr g3"><div class="dn">Arterial line</div><div class="dd">Radial / femoral</div><div class="d2">Short-axis for needle visualization; long-axis for catheter threading; confirm pulsatile waveform before securing</div></div>
+<div class="tr g3"><div class="dn">Thoracentesis</div><div class="dd">Posterior thorax, largest safe window</div><div class="d2">Mark site or real-time; target largest avascular pocket; avoid diaphragm; post-procedure lung sliding confirms no PTX</div></div>
+<div class="tr g3"><div class="dn">Paracentesis</div><div class="dd">Left lower quadrant preferred</div><div class="d2">Identify pocket, avoid bowel/bladder/vessels; Doppler to avoid epigastric vessels; real-time or marked</div></div>
+<div class="tr g3"><div class="dn">Lumbar puncture</div><div class="dd">Interspinous space ID</div><div class="d2">Sagittal for level counting; transverse for midline/depth; helpful in obese patients and post-spine surgery</div></div>
+</div></div>
+</div>`},
+}},
 scores:{label:"Scores &amp; Tools",icon:"&#x1F4CA;",subs:{
   scores:{label:"Critical Care Scores",updated:"2024",content:()=>`
 <div class="cf"><div class="card a1"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">SOFA Score</span><span class="bd bd1">Sepsis-3</span></div><span class="ca o">&#9662;</span></div>
@@ -749,16 +900,16 @@ window.addEventListener('offline', updateConn);
 document.addEventListener('DOMContentLoaded', updateConn);
 
 function bkmTab(el, id) {
-  document.querySelectorAll('.bkm-tab').forEach(function(t){t.classList.remove('on');});
-  document.querySelectorAll('.bkm-pane').forEach(function(p){p.classList.remove('on');});
+  document.querySelectorAll('.bkm-tab').forEach(t => t.classList.remove('on'));
+  document.querySelectorAll('.bkm-pane').forEach(p => p.classList.remove('on'));
   el.classList.add('on');
   document.getElementById('bkm-' + id).classList.add('on');
 }
 </script>
 <div class="bkm-overlay" id="bkmOverlay">
 <div class="bkm-modal">
-  <div class="bkm-title"><span>&#128204; Save for Offline Use</span><button class="bkm-close" onclick="document.getElementById('bkmOverlay').classList.remove('open')">&#x2715;</button></div>
-  <div class="bkm-sub">This file works entirely offline &#8212; no internet needed after saving.</div>
+  <div class="bkm-title"><span>📌 Save for Offline Use</span><button class="bkm-close" onclick="document.getElementById('bkmOverlay').classList.remove('open')">&#x2715;</button></div>
+  <div class="bkm-sub">This file works entirely offline — no internet needed after saving.</div>
   <div class="bkm-tabs">
     <button class="bkm-tab on" onclick="bkmTab(this,'ios')">iPhone / iPad</button>
     <button class="bkm-tab" onclick="bkmTab(this,'android')">Android</button>
@@ -767,32 +918,32 @@ function bkmTab(el, id) {
   </div>
   <div class="bkm-pane on" id="bkm-ios">
     <div class="bkm-step"><div class="bkm-num">1</div><div class="bkm-txt"><strong>AirDrop or email</strong> the .html file to your iPhone/iPad</div></div>
-    <div class="bkm-step"><div class="bkm-num">2</div><div class="bkm-txt">Tap the file &#8212; it opens in <strong>Safari</strong> (use Safari, not Chrome)</div></div>
+    <div class="bkm-step"><div class="bkm-num">2</div><div class="bkm-txt">Tap the file — it opens in <strong>Safari</strong> (use Safari, not Chrome)</div></div>
     <div class="bkm-step"><div class="bkm-num">3</div><div class="bkm-txt">Tap the <strong>Share button</strong> (box with arrow) at the bottom</div></div>
-    <div class="bkm-step"><div class="bkm-num">4</div><div class="bkm-txt">Scroll down &#8594; tap <strong>"Add to Home Screen"</strong></div></div>
-    <div class="bkm-step"><div class="bkm-num">5</div><div class="bkm-txt">Name it and tap <strong>Add</strong> &#8212; launches like an app, works offline</div></div>
-    <div class="bkm-note">&#9888; Must open in <strong>Safari</strong> &#8212; Chrome on iOS cannot add to Home Screen from local files.</div>
+    <div class="bkm-step"><div class="bkm-num">4</div><div class="bkm-txt">Scroll down → tap <strong>"Add to Home Screen"</strong></div></div>
+    <div class="bkm-step"><div class="bkm-num">5</div><div class="bkm-txt">Name it and tap <strong>Add</strong> — launches like an app, works offline</div></div>
+    <div class="bkm-note">⚠ Must open in <strong>Safari</strong> — Chrome on iOS cannot add to Home Screen from local files. The file stays in your Files app at <strong>On My iPhone › Downloads</strong> as a backup.</div>
   </div>
   <div class="bkm-pane" id="bkm-android">
     <div class="bkm-step"><div class="bkm-num">1</div><div class="bkm-txt"><strong>Download or transfer</strong> the .html file to your device</div></div>
-    <div class="bkm-step"><div class="bkm-num">2</div><div class="bkm-txt">Open <strong>Chrome</strong> &#8594; tap the address bar &#8594; type <strong>file:///sdcard/Download/</strong> and navigate to the file</div></div>
-    <div class="bkm-step"><div class="bkm-num">3</div><div class="bkm-txt">Tap the <strong>three-dot menu</strong> (&#8942;) &#8594; <strong>"Add to Home screen"</strong></div></div>
-    <div class="bkm-step"><div class="bkm-num">4</div><div class="bkm-txt">Tap <strong>Add</strong> &#8212; shortcut appears on your home screen</div></div>
-    <div class="bkm-note">&#128161; Alternatively: open with <strong>Firefox for Android</strong> via your file manager &#8212; handles local HTML more reliably on some devices.</div>
+    <div class="bkm-step"><div class="bkm-num">2</div><div class="bkm-txt">Open <strong>Chrome</strong> → tap the address bar → type <strong>file:///sdcard/Download/</strong> and navigate to the file</div></div>
+    <div class="bkm-step"><div class="bkm-num">3</div><div class="bkm-txt">Tap the <strong>three-dot menu</strong> (⋮) → <strong>"Add to Home screen"</strong></div></div>
+    <div class="bkm-step"><div class="bkm-num">4</div><div class="bkm-txt">Tap <strong>Add</strong> — shortcut appears on your home screen</div></div>
+    <div class="bkm-note">💡 Alternatively: open the file with <strong>Firefox for Android</strong> via your file manager app — it handles local HTML files more reliably than Chrome on some devices.</div>
   </div>
   <div class="bkm-pane" id="bkm-mac">
-    <div class="bkm-step"><div class="bkm-num">1</div><div class="bkm-txt"><strong>Save the file</strong> somewhere permanent (Documents, not Downloads)</div></div>
-    <div class="bkm-step"><div class="bkm-num">2</div><div class="bkm-txt">Open in <strong>Safari or Chrome</strong> &#8212; double-click or drag to browser</div></div>
-    <div class="bkm-step"><div class="bkm-num">3</div><div class="bkm-txt">Press <strong>&#8984; D</strong> to bookmark, or drag the tab to your Dock / desktop</div></div>
-    <div class="bkm-step"><div class="bkm-num">4</div><div class="bkm-txt"><strong>Safari tip:</strong> File &#8594; Add to Dock &#8212; creates a standalone launcher</div></div>
-    <div class="bkm-note">&#128161; To sync to iPhone: save in <strong>iCloud Drive</strong> and open in Safari on iOS &#8594; Add to Home Screen.</div>
+    <div class="bkm-step"><div class="bkm-num">1</div><div class="bkm-txt"><strong>Save the file</strong> somewhere permanent (Documents, not Downloads — Downloads may get cleared)</div></div>
+    <div class="bkm-step"><div class="bkm-num">2</div><div class="bkm-txt">Open the file in <strong>Safari or Chrome</strong> — double-click or drag to browser</div></div>
+    <div class="bkm-step"><div class="bkm-num">3</div><div class="bkm-txt">Press <strong>⌘ D</strong> to bookmark it, or drag the URL bar tab to your Dock / desktop</div></div>
+    <div class="bkm-step"><div class="bkm-num">4</div><div class="bkm-txt"><strong>Safari tip:</strong> File → Add to Dock — creates a standalone app-like launcher in your Dock</div></div>
+    <div class="bkm-note">💡 To sync to iPhone: save in <strong>iCloud Drive</strong> and open in Safari on iOS → Add to Home Screen.</div>
   </div>
   <div class="bkm-pane" id="bkm-win">
     <div class="bkm-step"><div class="bkm-num">1</div><div class="bkm-txt"><strong>Save the file</strong> somewhere permanent (Documents folder recommended)</div></div>
-    <div class="bkm-step"><div class="bkm-num">2</div><div class="bkm-txt">Open in <strong>Chrome or Edge</strong> &#8212; double-click the file</div></div>
-    <div class="bkm-step"><div class="bkm-num">3</div><div class="bkm-txt">Press <strong>Ctrl + D</strong> to bookmark, or drag the address bar icon to your desktop</div></div>
-    <div class="bkm-step"><div class="bkm-num">4</div><div class="bkm-txt"><strong>Edge tip:</strong> Apps &#8594; Install this site as an app &#8212; creates a standalone launcher</div></div>
-    <div class="bkm-note">&#128161; <strong>Edge</strong> handles local HTML files best on Windows.</div>
+    <div class="bkm-step"><div class="bkm-num">2</div><div class="bkm-txt">Open in <strong>Chrome or Edge</strong> — double-click the file</div></div>
+    <div class="bkm-step"><div class="bkm-num">3</div><div class="bkm-txt">Press <strong>Ctrl + D</strong> to bookmark, or drag the icon from the address bar to your desktop/taskbar</div></div>
+    <div class="bkm-step"><div class="bkm-num">4</div><div class="bkm-txt"><strong>Edge tip:</strong> Apps → Install this site as an app — creates a standalone window launcher</div></div>
+    <div class="bkm-note">💡 <strong>Edge</strong> handles local HTML files best on Windows — Chrome may prompt about file access on some versions.</div>
   </div>
 </div>
 </div>
