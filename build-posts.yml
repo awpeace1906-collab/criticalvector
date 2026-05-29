@@ -1,0 +1,34 @@
+name: Build Post Lists
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'posts.json'
+      - 'posts/**'
+      - 'scripts/build-post-lists.js'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run build script
+        run: node scripts/build-post-lists.js
+
+      - name: Commit updated section pages
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add continuum.html workshop.html locker.html flightdeck.html
+          git diff --staged --quiet || git commit -m "chore: rebuild post lists [skip ci]"
+          git push
