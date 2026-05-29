@@ -11,12 +11,11 @@ const posts = JSON.parse(fs.readFileSync(path.join(ROOT, 'posts.json'), 'utf8'))
 // Sort newest first by date
 posts.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-// Which section pages to update and their sentinel comments
 const SECTIONS = {
-  continuum: 'continuum.html',
-  workshop:  'workshop.html',
-  locker:    'locker.html',
-  flightdeck:'flightdeck.html',
+  continuum:  'continuum.html',
+  workshop:   'workshop.html',
+  locker:     'locker.html',
+  flightdeck: 'flightdeck.html',
 };
 
 const SENTINEL_START = '<!-- CV:POST-LIST-START -->';
@@ -25,7 +24,6 @@ const SENTINEL_END   = '<!-- CV:POST-LIST-END -->';
 function buildRows(section) {
   const sectionPosts = posts.filter(p => p.section === section);
   if (sectionPosts.length === 0) return '';
-
   return sectionPosts.map(p => `      <a href="${p.file}" class="post-row">
         <div class="post-info">
           <div class="post-type ${p.typeClass}">${p.type}</div>
@@ -58,7 +56,7 @@ for (const [section, filename] of Object.entries(SECTIONS)) {
   const newHtml = html.slice(0, before) + '\n' + rows + '\n    ' + html.slice(after);
 
   fs.writeFileSync(filepath, newHtml, 'utf8');
-  console.log(`Updated ${filename} with ${posts.filter(p => p.section === section).length} posts`);
+  console.log(`Updated ${filename} with ${posts.filter(p => p.section === section).length} post(s)`);
   updated++;
 }
 

@@ -25,5 +25,23 @@
     "title": "What Flight Paramedicine Actually Taught Me About Anesthesia",
     "meta": "Personal essay · The Continuum · Feb 2026",
     "date": "2026-02-01"
+  },
+  {
+    "file": "posts/cardiac-arrest-volume.html",
+    "section": "locker",
+    "type": "Critical Care · Meta-Analysis",
+    "typeClass": "cc-type",
+    "title": "Volume Therapy in Cardiac Arrest: 710,000 Patients and Still No Clear Answer",
+    "meta": "Resuscitation Plus · Apr 2026",
+    "date": "2026-04-01"
+  },
+  {
+    "file": "posts/mountainair-parafluorofentanyl.html",
+    "section": "flightdeck",
+    "type": "Editorial · Toxicology",
+    "typeClass": "flightdeck-type",
+    "title": "Mountainair: Three Deaths and the Misdirected Response",
+    "meta": "Para-fluorofentanyl · Public Health · May 2026",
+    "date": "2026-05-15"
   }
 ]
