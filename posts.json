@@ -6,7 +6,17 @@
     "typeClass": "prehospital-type",
     "title": "Whole Blood at the Front Door",
     "meta": "Prehospital · Transfusion · NAEMSP · May 2026",
-    "date": "2026-05-29"
+    "date": "2026-05-29",
+    "featured": true,
+    "featuredLabel": "The Continuum — Featured",
+    "featuredSectionClass": "continuum-label",
+    "featuredBadges": [
+      { "text": "Prehospital", "class": "pre" },
+      { "text": "The Continuum", "class": "cont" },
+      { "text": "Transfusion", "class": "amb" }
+    ],
+    "featuredMeta": "NAEMSP · Prehosp Emerg Care · 2025",
+    "featuredBlurb": "NAEMSP's 2025 position statement makes the case for low titer group O whole blood as the first-choice prehospital product — and backs it with 66 articles, three PICO questions, and the clearest guidance EMS medicine has issued on prehospital transfusion yet. The crystalloid era is over. The question now is whether your system is built to replace it."
   },
   {
     "file": "posts/uterine-rupture-retrieval.html",
