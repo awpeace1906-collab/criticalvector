@@ -1,6 +1,6 @@
-# Critical Vector
+# The Critical Vector
 
-> Medicine. Technology. The Continuum.
+> The Critical Vector — Medicine. Technology. The Continuum.
 
 A blog at the intersection of emergency medicine, anesthesiology, critical care, and the tools we build to serve patients better. Written by a physician-in-training with a critical care background.
 

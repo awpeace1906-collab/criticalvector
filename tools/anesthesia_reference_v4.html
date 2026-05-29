@@ -1,0 +1,1953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+/* Offline font fallbacks — replaces Google Fonts for file:// compatibility */
+@font-face { font-family: 'Syne'; src: local('Arial Black'), local('Impact'), local('.AppleSystemUIFont'); font-weight: 400 800; }
+@font-face { font-family: 'DM Mono'; src: local('Menlo'), local('Consolas'), local('Courier New'); font-weight: 400 500; }
+@font-face { font-family: 'Source Serif 4'; src: local('Georgia'), local('Times New Roman'); font-weight: 300 400; }
+
+/* Ultra-specificity panel show/hide */
+div.panel:not(.on) { display: none !important; visibility: hidden !important; height: 0 !important; overflow: hidden !important; padding: 0 !important; margin: 0 !important; }
+div.panel.on { display: block !important; visibility: visible !important; height: auto !important; overflow: visible !important; }
+
+/* v4 overflow fix */
+.tr > div { min-width: 0; overflow-wrap: break-word; word-break: break-word; }
+.rt td, .rt th { overflow-wrap: break-word; word-break: break-word; max-width: 200px; }
+
+/* v4 table alignment fix */
+.rt { table-layout: fixed; width: 100%; }
+.rt th, .rt td { vertical-align: top; overflow-wrap: break-word; word-break: break-word; white-space: normal; hyphens: auto; }
+</style>
+<meta charset="UTF-8">
+<meta name="description" content="Pocket Anesthesia Reference - Offline Version">
+<meta name="theme-color" content="#002D72">
+<style>
+.offline-badge {
+  display: inline-block;
+  background: rgba(27,107,58,0.2);
+  border: 1px solid rgba(27,107,58,0.5);
+  color: #2ECC71;
+  font-size: 9px;
+  padding: 1px 6px;
+  border-radius: 3px;
+  margin-left: 8px;
+  font-family: monospace;
+  letter-spacing: 0.5px;
+  vertical-align: middle;
+}
+
+/* POCUS panel force-show */
+#tab-pocus.on { display: block !important; }
+#tab-pocus.on .card { display: block !important; background: var(--bg2) !important; }
+#tab-pocus.on .cb { display: block !important; }
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Pocket Anesthesia Reference v4</title>
+<style>
+/* Offline font fallbacks — Google Fonts replaced for offline use */
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif !important; }
+
+/* v4 contrast boost */
+
+.pocus-svg{width:100%;max-width:480px;display:block;margin:8px auto 14px;}
+
+.rt th{color:var(--t1)!important;background:var(--bg3)!important;vertical-align:top;overflow-wrap:break-word;word-break:break-word;white-space:normal;}
+.sl{color:var(--t2)!important;}
+.dn{color:var(--t1)!important;min-width:0;overflow-wrap:break-word;word-break:break-word;}
+.st{color:var(--t1)!important;}
+.kk{color:var(--t2)!important;}
+
+.hdr-title, .ch h2, .dn, .at, .st, .sl, .dbt, .tof-label, .bc-name, .an2, .algo-title, .step-title {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif !important;
+  font-weight: 700 !important;
+}
+.rt, .dl, .adose, .algo-dose, .dose-line, .kv2, .d, .dr, .dy, .dg, .mono, .dc, .bc-meta, .ad {
+  font-family: 'Courier New', Courier, monospace !important;
+}
+</style>
+<style>
+:root{
+  --hb:#002D72;--hg:#E8C84B;--hl:#005EB8;
+  --ar:#B22222;--ao:#D45500;--ag:#1B6B3A;
+  --bg0:#0A0F1E;--bg1:#0D1428;--bg2:#111827;--bg3:#1A2340;
+  --t1:#F0F4FF;--t2:#94A3C4;--t3:#5A6B8A;
+  --bd:rgba(0,93,184,.22);--bdb:rgba(0,93,184,.45);
+  --gl:rgba(0,94,184,.12);
+  --em:#C0392B;--emb:rgba(192,57,43,.11);
+  --wn:#D45500;--wnb:rgba(212,85,0,.09);
+  --ok:#1B6B3A;--okb:rgba(27,107,58,.11);
+  --inf:#005EB8;--infb:rgba(0,94,184,.11);
+  --r:7px;--th:50px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg0);color:var(--t1);min-height:100vh;font-size:13px;line-height:1.5;}
+
+/* HEADER */
+.hdr{background:linear-gradient(135deg,var(--hb) 0%,#001845 100%);border-bottom:2px solid var(--hg);padding:12px 16px 10px;position:sticky;top:0;z-index:100;box-shadow:0 4px 28px rgba(0,0,0,.55);}
+.hdr-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
+.hdr-title{font-family:'Syne',sans-serif;font-weight:800;font-size:17px;color:var(--t1);}
+.hdr-title span{color:var(--hg);}
+
+.bkm-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.78);z-index:600;align-items:center;justify-content:center;}
+.bkm-overlay.open{display:flex;}
+.bkm-modal{background:var(--bg2);border:1px solid var(--bdb);border-radius:10px;width:min(480px,92vw);max-height:82vh;overflow-y:auto;padding:20px 22px 18px;}
+.bkm-title{font-size:14px;font-weight:700;color:var(--t1);margin-bottom:4px;display:flex;align-items:center;gap:8px;font-family:'Syne',sans-serif;}
+.bkm-sub{font-size:11px;color:var(--t2);margin-bottom:14px;}
+.bkm-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;}
+.bkm-tab{font-size:10.5px;font-family:'DM Mono',monospace;padding:4px 10px;border-radius:4px;border:1px solid var(--bd);background:var(--bg3);color:var(--t2);cursor:pointer;transition:all .12s;}
+.bkm-tab.on{background:var(--bg4);color:var(--t1);border-color:var(--bdb);}
+.bkm-pane{display:none;}
+.bkm-pane.on{display:block;}
+.bkm-step{display:flex;gap:10px;align-items:flex-start;margin-bottom:10px;}
+.bkm-num{flex-shrink:0;width:20px;height:20px;border-radius:50%;background:var(--bg4);border:1px solid var(--bdb);font-size:10px;font-weight:700;color:var(--hg);display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;}
+.bkm-txt{font-size:11.5px;color:var(--t1);line-height:1.55;}
+.bkm-txt strong{color:var(--hg);}
+.bkm-note{font-size:10.5px;color:var(--t2);margin-top:10px;padding:8px 10px;background:var(--bg3);border:1px solid var(--bd);border-radius:6px;line-height:1.5;}
+.bkm-close{float:right;background:none;border:none;color:var(--t3);font-size:16px;cursor:pointer;padding:0 0 0 10px;line-height:1;}
+
+.hdr-badge{font-family:'DM Mono',monospace;font-size:10px;background:rgba(232,200,75,.13);border:1px solid rgba(232,200,75,.38);color:var(--hg);padding:2px 7px;border-radius:3px;letter-spacing:.5px;}
+.disc{font-size:10px;color:rgba(240,244,255,.45);font-style:italic;line-height:1.3;border-top:1px solid rgba(232,200,75,.18);padding-top:7px;}
+
+/* NAV */
+.nav{background:var(--bg1);border-bottom:1px solid var(--bd);display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;position:sticky;top:88px;z-index:99;}
+.nav::-webkit-scrollbar{display:none;}
+.tb{flex-shrink:0;height:var(--th);padding:0 13px;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:.4px;color:var(--t3);background:none;border:none;border-bottom:2px solid transparent;cursor:pointer;transition:all .2s;white-space:nowrap;text-transform:uppercase;}
+.tb:hover{color:var(--t2);}
+.tb.on{color:var(--hg);border-bottom-color:var(--hg);}
+.tb.em.on{color:var(--ar);border-bottom-color:var(--ar);}
+
+/* CONTENT */
+.content{max-width:920px;margin:0 auto;padding:14px 12px 80px;}
+.panel{display:none;} .panel.on{display:block;}
+
+/* CARD */
+.card{background:var(--bg2);border:1px solid var(--bd);border-radius:var(--r);margin-bottom:11px;overflow:hidden;}
+.ch{background:var(--bg3);border-bottom:1px solid var(--bd);padding:9px 13px;display:flex;align-items:center;gap:8px;}
+.ch h2{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--t1);}
+.ci{width:20px;height:20px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:10px;flex-shrink:0;}
+.ib{background:var(--infb);color:var(--hl);border:1px solid var(--bdb);}
+.ir{background:var(--emb);color:var(--ar);border:1px solid rgba(192,57,43,.28);}
+.ig{background:rgba(232,200,75,.09);color:var(--hg);border:1px solid rgba(232,200,75,.28);}
+.io{background:var(--okb);color:#2ECC71;border:1px solid rgba(46,204,113,.28);}
+.iw{background:var(--wnb);color:var(--ao);border:1px solid rgba(212,85,0,.28);}
+.cb{padding:11px 13px;}
+
+/* ALERTS */
+.al{border-radius:5px;padding:9px 11px;margin-bottom:9px;font-size:12px;border-left:3px solid;}
+.al-r{background:var(--emb);border-color:var(--ar);}
+.al-o{background:var(--wnb);border-color:var(--ao);}
+.al-b{background:var(--infb);border-color:var(--inf);}
+.al-g{background:var(--okb);border-color:var(--ag);}
+.al-y{background:rgba(232,200,75,.07);border-color:var(--hg);}
+.al-t{font-family:'Syne',sans-serif;font-weight:700;font-size:10px;letter-spacing:.5px;text-transform:uppercase;margin-bottom:3px;}
+.al-r .al-t{color:#E74C3C;} .al-o .al-t{color:var(--ao);} .al-b .al-t{color:#5BA4F5;} .al-g .al-t{color:#2ECC71;} .al-y .al-t{color:var(--hg);}
+
+/* TABLES */
+.rt{width:100%;border-collapse:collapse;font-size:12px;font-family:'DM Mono',monospace;table-layout:fixed;}
+.rt th{background:var(--bg3);color:var(--t1);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.5px;padding:6px 9px;text-align:left;border-bottom:1px solid var(--bd);vertical-align:top;overflow-wrap:break-word;word-break:break-word;white-space:normal;}
+.rt td{padding:6px 9px;border-bottom:1px solid rgba(0,93,184,.09);color:var(--t1);vertical-align:top;vertical-align:top;overflow-wrap:break-word;word-break:break-word;white-space:normal;}
+.rt tr:last-child td{border-bottom:none;}
+.rt tr:hover td{background:rgba(0,94,184,.05);}
+.rt .sm{font-size:10px;color:var(--t3);font-family:'DM Sans',sans-serif;display:block;margin-top:2px;}
+
+/* DOSE BADGES */
+.d{display:inline-block;background:var(--infb);border:1px solid var(--bdb);color:#7EB8F7;font-family:'DM Mono',monospace;font-size:11px;padding:1px 5px;border-radius:3px;white-space:nowrap;}
+.dr{background:var(--emb);border-color:rgba(192,57,43,.38);color:#E87070;}
+.dy{background:rgba(232,200,75,.07);border-color:rgba(232,200,75,.28);color:var(--hg);}
+.dg{background:var(--okb);border-color:rgba(46,204,113,.28);color:#2ECC71;}
+
+/* BULLETS */
+.bl{list-style:none;padding:0;}
+.bl li{padding:4px 0 4px 13px;position:relative;font-size:12px;color:var(--t1);border-bottom:1px solid rgba(0,93,184,.07);}
+.bl li:last-child{border-bottom:none;}
+.bl li::before{content:'▸';position:absolute;left:0;color:var(--hl);font-size:10px;top:5px;}
+.bl li.w::before{color:var(--ao);}
+.bl li.x::before{color:var(--ar);}
+.bl li.ok::before{color:#2ECC71;}
+
+/* GRID */
+.g2{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,2fr);gap:10px;}
+@media(max-width:520px){}
+
+/* SECTION LABEL */
+.sl{font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--t2);margin:13px 0 5px;padding-bottom:3px;border-bottom:1px solid var(--bd);}
+
+/* KV */
+.kv{display:flex;justify-content:space-between;align-items:baseline;padding:5px 0;border-bottom:1px solid rgba(0,93,184,.07);font-size:12px;gap:8px;}
+.kv:last-child{border-bottom:none;}
+.kk{color:var(--t2);flex-shrink:0;}
+.kv2{color:var(--t1);font-family:'DM Mono',monospace;text-align:right;font-size:11px;}
+
+/* STEPS */
+.step{display:flex;gap:9px;padding:7px 0;border-bottom:1px solid rgba(0,93,184,.07);align-items:flex-start;}
+.step:last-child{border-bottom:none;}
+.sn{width:22px;height:22px;border-radius:50%;background:var(--infb);border:1px solid var(--bdb);color:#7EB8F7;font-family:'DM Mono',monospace;font-size:11px;font-weight:500;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.sn.r{background:var(--emb);border-color:rgba(192,57,43,.38);color:#E87070;}
+.sc{flex:1;font-size:12px;}
+.st{font-weight:600;color:var(--t1);margin-bottom:2px;}
+.sd{color:var(--t2);font-size:11px;}
+
+/* TAGS */
+.tag{display:inline-block;font-family:'DM Mono',monospace;font-size:9px;padding:1px 4px;border-radius:3px;margin-left:3px;vertical-align:middle;font-weight:500;letter-spacing:.3px;}
+.t-r{background:var(--emb);color:#E87070;border:1px solid rgba(192,57,43,.28);}
+.t-o{background:var(--wnb);color:var(--ao);border:1px solid rgba(212,85,0,.28);}
+.t-y{background:rgba(232,200,75,.07);color:var(--hg);border:1px solid rgba(232,200,75,.28);}
+.t-g{background:var(--okb);color:#2ECC71;border:1px solid rgba(46,204,113,.28);}
+.t-b{background:var(--infb);color:#7EB8F7;border:1px solid var(--bdb);}
+
+/* DRUG SEARCH */
+.srch{position:relative;margin-bottom:11px;}
+.si{width:100%;background:var(--bg3);border:1px solid var(--bdb);border-radius:6px;padding:9px 13px 9px 35px;color:var(--t1);font-family:'DM Sans',sans-serif;font-size:13px;outline:none;transition:border-color .2s;}
+.si:focus{border-color:var(--hg);}
+.sico{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--t3);font-size:14px;}
+.de{background:var(--bg2);border:1px solid var(--bd);border-radius:6px;margin-bottom:7px;overflow:hidden;}
+.dh{display:flex;align-items:center;justify-content:space-between;padding:9px 13px;cursor:pointer;transition:background .15s;}
+.dh:hover{background:var(--bg3);}
+.dn{font-family:'Syne',sans-serif;font-weight:700;font-size:13px;color:var(--t1);min-width:0;overflow-wrap:break-word;word-break:break-word;}
+.dc{font-family:'DM Mono',monospace;font-size:10px;color:var(--t3);margin-top:1px;}
+.dchv{color:var(--t3);font-size:12px;transition:transform .2s;}
+.de.open .dchv{transform:rotate(180deg);}
+.db{display:none;padding:0 13px 11px;border-top:1px solid var(--bd);}
+.de.open .db{display:block;}
+.dbt{font-size:10px;font-weight:600;color:var(--t3);text-transform:uppercase;letter-spacing:.5px;margin:8px 0 3px;}
+.dl{font-family:'DM Mono',monospace;font-size:11px;color:var(--t1);padding:3px 0;border-bottom:1px solid rgba(0,93,184,.07);}
+.dl:last-child{border-bottom:none;}
+.dl .lbl{color:var(--t2);display:inline-block;min-width:72px;}
+
+/* ALGO FLOW */
+.af{display:flex;flex-direction:column;}
+.as{display:flex;gap:11px;padding:9px 0;border-bottom:1px solid rgba(0,93,184,.09);align-items:flex-start;}
+.as:last-child{border-bottom:none;}
+.an{width:27px;height:27px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:13px;font-weight:800;flex-shrink:0;margin-top:1px;}
+.an.r{background:var(--emb);color:var(--ar);border:2px solid rgba(192,57,43,.45);}
+.an.b{background:var(--infb);color:#7EB8F7;border:2px solid var(--bdb);}
+.an.y{background:rgba(232,200,75,.09);color:var(--hg);border:2px solid rgba(232,200,75,.38);}
+.ac{flex:1;}
+.at{font-weight:700;font-size:13px;color:var(--t1);margin-bottom:4px;}
+.ab{font-size:12px;color:var(--t2);}
+.adose{font-family:'DM Mono',monospace;color:var(--t1);background:var(--bg3);border:1px solid var(--bd);padding:6px 9px;border-radius:4px;margin-top:5px;font-size:11px;line-height:1.85;}
+
+/* ASTM SWATCHES */
+.arow{display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid rgba(0,93,184,.07);}
+.arow:last-child{border-bottom:none;}
+.asw{width:34px;height:21px;border-radius:3px;border:1px solid rgba(255,255,255,.13);flex-shrink:0;}
+.an2{font-weight:600;color:var(--t1);font-size:12px;}
+.ad{font-size:10px;color:var(--t3);font-family:'DM Mono',monospace;}
+
+/* TOF VISUAL */
+.tof-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:8px 0;}
+.tof-dot{width:100%;aspect-ratio:1;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:11px;font-weight:500;}
+.tof-on{background:var(--infb);border:2px solid var(--bdb);color:#7EB8F7;}
+.tof-off{background:rgba(255,255,255,.04);border:2px solid rgba(255,255,255,.08);color:var(--t3);}
+.tof-section{margin-bottom:12px;}
+.tof-label{font-family:'Syne',sans-serif;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--t3);margin-bottom:4px;}
+
+/* BLOCK PANEL */
+.block-card{background:var(--bg2);border:1px solid var(--bd);border-radius:var(--r);margin-bottom:9px;overflow:hidden;}
+.bc-h{display:flex;align-items:center;justify-content:space-between;padding:10px 13px;cursor:pointer;background:var(--bg3);transition:background .15s;}
+.bc-h:hover{background:var(--bg3);}
+.bc-name{font-family:'Syne',sans-serif;font-weight:700;font-size:13px;color:var(--t1);}
+.bc-meta{font-size:10px;color:var(--t3);margin-top:1px;font-family:'DM Mono',monospace;}
+.bc-body{display:none;padding:11px 13px;border-top:1px solid var(--bd);}
+.block-card.open .bc-body{display:block;}
+.block-card.open .dchv{transform:rotate(180deg);}
+
+/* FOOTER */
+.foot{position:fixed;bottom:0;left:0;right:0;background:var(--bg1);border-top:1px solid var(--bd);padding:7px 15px;display:flex;justify-content:space-between;align-items:center;font-size:10px;color:var(--t3);z-index:97;}
+.foot .upd{color:var(--t2);}
+
+.mono{font-family:'DM Mono',monospace;}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <div class="hdr-top">
+    <div class="hdr-title">Pocket <span>Anesthesia</span> Reference</div>
+    <div class="hdr-badge">v4 · 2026</div><span class="offline-badge" id="connChip">✓ OFFLINE</span><button onclick="document.getElementById('bkmOverlay').classList.add('open')" style="font-family:'DM Mono',monospace;font-size:9px;color:var(--t2);background:var(--bg3);border:1px solid var(--bd);padding:2px 8px;border-radius:3px;cursor:pointer;margin-left:5px;letter-spacing:.3px;">📌 Save</button>
+  </div>
+  <div class="disc">OFFLINE VERSION — Educational reference only — not a substitute for clinical judgment. Verify all doses against current institutional protocols. Sources: ASRA 2023/2025 update, ASA 2023, ACOG 2023, ASHP/IDSA/SHEA 2023, WHO 2023, APSF 2024, MHAUS/EMHG 2024, AHA 2025, SPAQI 2025, ASTM D4774-24.</div>
+</header>
+
+<nav class="nav" id="nav">
+  <button class="tb on" onclick="showTab('general',this)">General</button>
+  <button class="tb" onclick="showTab('neuraxial',this)">Neuraxial</button>
+  <button class="tb" onclick="showTab('localanes',this)">Local Anes</button>
+  <button class="tb" onclick="showTab('last',this)">LAST</button>
+  <button class="tb" onclick="showTab('blocks',this)">Blocks</button>
+  <button class="tb" onclick="showTab('nmt',this)">NMT/TOF</button>
+  <button class="tb em" onclick="showTab('emergency',this)">Emergency</button>
+  <button class="tb" onclick="showTab('ob',this)">OB</button>
+  <button class="tb" onclick="showTab('peds',this)">Peds</button>
+  <button class="tb" onclick="showTab('meds',this)">Meds A–Z</button>
+  <button class="tb" onclick="showTab('pocus',this)">POCUS</button>
+  <button class="tb" onclick="showTab('abx',this)">Abx</button>
+  <button class="tb" onclick="showTab('astm',this)">ASTM</button>
+</nav>
+
+<main class="content">
+
+<!-- ═══════════════════════════════════════
+     GENERAL
+═══════════════════════════════════════ -->
+<div class="panel on" id="tab-general" style="display:block">
+  <div class="card">
+    <div class="ch"><div class="ci ib">✓</div><h2>Pre-Induction Checklist — MSMAID</h2></div>
+    <div class="cb">
+      <p style="font-size:10px;color:var(--t3);margin-bottom:8px;">Gelb et al., Anesthesiology 2018 · WFSA/WHO endorsed</p>
+      <div class="step"><div class="sn">M</div><div class="sc"><div class="st">Machine</div><div class="sd">Complete standard machine check (APSF protocol). Backup ventilation + O₂ confirmed accessible.</div></div></div>
+      <div class="step"><div class="sn">S</div><div class="sc"><div class="st">Suction</div><div class="sd">Functional and within reach. Yankauer immediately available.</div></div></div>
+      <div class="step"><div class="sn">M</div><div class="sc"><div class="st">Monitors</div><div class="sd">SpO₂, NIBP, 3-lead ECG, EtCO₂, Temperature (standard). Adjuncts per case: arterial line, BIS/entropy, NMT (quantitative strongly recommended — ASA 2023).</div></div></div>
+      <div class="step"><div class="sn">A</div><div class="sc"><div class="st">Airway</div><div class="sd">Confirm primary + backup plan. Mask · ETT/LMA · VL + DL · bougie · stylet · tape. Optimize: sniff position, ramping PRN.</div></div></div>
+      <div class="step"><div class="sn">I</div><div class="sc"><div class="st">IV Access</div><div class="sd">Adequate gauge, number, flow confirmed. Lines flushed and labeled.</div></div></div>
+      <div class="step"><div class="sn">D</div><div class="sc"><div class="st">Drugs</div><div class="sd">Standard induction agents drawn + ASTM-labeled. Emergency meds accessible: epi, atropine, sux, vasopressors, Intralipid (if blocks planned).</div></div></div>
+      <div class="al al-y" style="margin-top:9px;"><div class="al-t">Always know who to call for help</div></div>
+    </div>
+  </div>
+
+  <div class="g2">
+    <div class="card">
+      <div class="ch"><div class="ci ib">💧</div><h2>Maintenance Fluids — 4-2-1</h2></div>
+      <div class="cb">
+        <div class="al al-b" style="margin-bottom:8px;"><div class="al-t">Holliday-Segar Rule</div>4 mL/kg/hr → first 10 kg<br>2 mL/kg/hr → next 10 kg<br>1 mL/kg/hr → each kg &gt;20 kg</div>
+        <div class="kv"><span class="kk">22 kg</span><span class="kv2">40+20+2 = 62 mL/hr</span></div>
+        <div class="kv"><span class="kk">70 kg adult</span><span class="kv2">40+20+50 = 110 mL/hr</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="ch"><div class="ci ib">🩸</div><h2>Avg Blood Volume</h2></div>
+      <div class="cb">
+        <div class="kv"><span class="kk">Premature</span><span class="kv2">90–100 mL/kg</span></div>
+        <div class="kv"><span class="kk">Term neonate</span><span class="kv2">80–85 mL/kg</span></div>
+        <div class="kv"><span class="kk">Infant 1 yr</span><span class="kv2">75 mL/kg</span></div>
+        <div class="kv"><span class="kk">Child</span><span class="kv2">70–75 mL/kg</span></div>
+        <div class="kv"><span class="kk">Adult ♂</span><span class="kv2">70 mL/kg</span></div>
+        <div class="kv"><span class="kk">Adult ♀</span><span class="kv2">65 mL/kg</span></div>
+        <p style="font-size:10px;color:var(--t3);margin-top:6px;">ABL = EBV × (Hgb₀−Hgb_min) / Hgb₀</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ch"><div class="ci ig">⏱</div><h2>NPO Guidelines — ASA 2023</h2></div>
+    <div class="cb">
+      <table class="rt">
+        <thead><tr><th>Intake</th><th>Fast (hr)</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Clear liquids</td><td><span class="d">2</span></td><td>Water, pulp-free juice, black coffee, clear tea, carbonated drinks. <b>Carbohydrate-containing clear liquids (e.g. Gatorade, maltodextrin drinks) included</b> — reduce hunger/thirst vs. water alone; no added aspiration risk (ASA 2023)</td></tr>
+          <tr><td>Breast milk</td><td><span class="d">4</span></td><td>Infants</td></tr>
+          <tr><td>Infant formula</td><td><span class="d">6</span></td><td></td></tr>
+          <tr><td>Non-human milk / light meal</td><td><span class="d">6</span></td><td>Toast + clear liquid = light meal</td></tr>
+          <tr><td>Full / fatty meal</td><td><span class="d">8</span></td><td>May need longer; clinical judgment</td></tr>
+          <tr><td>Chewing gum</td><td><span class="d">No hold</span></td><td>ASA 2023: no evidence of increased aspiration risk; proceed per standard NPO. Inform patient to avoid swallowing excess saliva.</td></tr>
+          <tr><td style="color:#f5a623;font-weight:600">GLP-1 agonists (semaglutide, tirzepatide, etc.)</td><td><span class="d" style="color:#f05050">⚠ See note</span></td><td><b>ASA 2023:</b> Hold 1 day (daily) or 1 week (weekly) before elective procedures + standard fasting. <b>SPAQI 2025 update:</b> GI symptoms (nausea, vomiting, bloating) → treat as full stomach regardless of fasting; consider gastric US (POCUS) preop. Discontinuation may worsen glycemic control — individualize with endocrinology. No aspiration risk reduction if held &lt;4–5 half-lives.</td></tr>
+        </tbody>
+      </table>
+      <div class="al al-o" style="margin-top:8px;"><div class="al-t">GLP-1 Agonists (2024 Update)</div>Semaglutide, liraglutide, tirzepatide — ↓ gastric motility. Consider extended NPO or 24-hr hold before elective cases. Assess for gastroparesis risk. Point-of-care US gastric assessment emerging option. Individualize.</div>
+      <div class="al al-b" style="margin-top:6px;"><div class="al-t">Carbohydrate Loading — Endorsed ASA 2023</div>Clear carbohydrate drink (e.g., 50 g CHO) up to 2 hr pre-op: ↓insulin resistance, ↓PONV, ↓anxiety. Appropriate for elective non-diabetic adults.</div>
+    </div>
+  </div>
+
+  <div class="g2">
+    <div class="card">
+      <div class="ch"><div class="ci ib">🧮</div><h2>Drug Concentration Math</h2></div>
+      <div class="cb">
+        <div class="kv"><span class="kk">% → mg/mL</span><span class="kv2">% × 10</span></div>
+        <div class="kv"><span class="kk">1% = 1:100</span><span class="kv2">10 mg/mL</span></div>
+        <div class="kv"><span class="kk">0.25% bupiv</span><span class="kv2">2.5 mg/mL</span></div>
+        <div class="kv"><span class="kk">0.5% bupiv</span><span class="kv2">5 mg/mL</span></div>
+        <div class="kv"><span class="kk">0.75% bupiv</span><span class="kv2">7.5 mg/mL</span></div>
+        <div class="kv"><span class="kk">2% lido</span><span class="kv2">20 mg/mL</span></div>
+        <div class="kv"><span class="kk">1:200,000 epi</span><span class="kv2">5 mcg/mL</span></div>
+        <div class="kv"><span class="kk">1:10,000 epi</span><span class="kv2">0.1 mg/mL</span></div>
+        <div class="kv"><span class="kk">1:1,000 epi</span><span class="kv2">1 mg/mL</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="ch"><div class="ci ib">🫁</div><h2>MAC Values (%)</h2></div>
+      <div class="cb">
+        <table class="rt">
+          <thead><tr><th>Agent</th><th>Adult</th><th>&gt;60yr</th></tr></thead>
+          <tbody>
+            <tr><td><b>Sevoflurane</b> <span class="tag t-g">preferred</span></td><td>2.0–2.6</td><td>1.4–1.7</td></tr>
+            <tr><td><b>Isoflurane</b></td><td>1.2</td><td>1.0</td></tr>
+            <tr><td><b>Desflurane</b> <span class="tag t-o">⚠ Phasing out</span></td><td>6.0–7.3</td><td>5.2</td></tr>
+            <tr><td colspan="3" style="font-size:10px;color:var(--t3);padding:2px 6px;">Desflurane: GWP ~2500× CO₂; many institutions eliminating. Sevoflurane preferred. AHA 2025 endorses desflurane phase-out for climate/sustainability.</td></tr>
+            <tr><td><b>N₂O</b></td><td colspan="2">105% (adjunct only)</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:10px;color:var(--t3);margin-top:5px;">MAC awake ≈ 0.3 · MAC BAR ≈ 1.3–1.5 · N₂O ≈ 0.5 MAC equiv</p>
+        <div class="al al-o" style="margin-top:6px;font-size:11px;"><div class="al-t">Desflurane</div>~20× higher GWP vs sevo. FDA removed mask induction indication 2023. Use where available; favor alternatives.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     NEURAXIAL
+═══════════════════════════════════════ -->
+<div class="panel" style="display:none" id="tab-pocus">
+
+<div class="card">
+  <div class="ch"><h2>Airway Ultrasound</h2><span class="upd" style="margin-left:auto;font-size:9px">Difficult Airway Society 2015 · ASA 2022</span></div>
+  <div class="cb">
+    <div class="sl">CRICOTHYROID MEMBRANE IDENTIFICATION</div>
+    <div class="tr g3"><div class="dn">Technique</div><div class="dd">Linear probe, transverse, midline neck</div><div class="d2">Slide caudally from thyroid cartilage; CTM = hyperechoic flat line between thyroid and cricoid; mark before induction in anticipated difficult airway</div></div>
+    <div class="tr g3"><div class="dn">Thyroid cartilage</div><div class="dd">Hypoechoic paired structures, inverted V</div><div class="d2">Acoustic shadow posterior; slide inferiorly to find CTM</div></div>
+    <div class="tr g3"><div class="dn">CTM mark</div><div class="dd">Skin mark with pen before positioning</div><div class="d2">Critical for FONA (scalpel-bougie technique); identify in any predicted or known difficult airway</div></div>
+    <div class="sl" style="margin-top:10px">ETT CONFIRMATION</div>
+    <div class="tr g3"><div class="dn">Tracheal ring sign</div><div class="dd">Transverse at suprasternal notch</div><div class="d2">Single ring with ETT = tracheal; two rings (snow globe sign) = esophageal — more sensitive than capnography in low-flow states</div></div>
+    <div class="tr g3"><div class="dn">Bilateral lung sliding</div><div class="dd">Anterior chest bilaterally post-intubation</div><div class="d2">Bilateral sliding = bilateral ventilation; unilateral = mainstem → withdraw 1–2 cm; faster than auscultation in noisy ORs</div></div>
+    <div class="tr g2"><div class="dn">Gastric ultrasound (pre-induction)</div><div class="dd">Grade 0 = empty bilaterally (antral CSA &lt;340 mm²) → standard induction; Grade 1 = clear fluid one position only → consider modified RSI; Grade 2 = solid content or bilat clear fluid → RSI or awake; subcostal view, right lateral decubitus or supine, curvilinear probe</div></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="ch"><h2>Neuraxial Ultrasound</h2><span class="upd" style="margin-left:auto;font-size:9px">ASRA 2023</span></div>
+  <div class="cb">
+    <div class="tr g3"><div class="dn">Paramedian sagittal oblique</div><div class="dd">Curvilinear, lateral to midline, cephalad tilt</div><div class="d2">Identify laminae (saw-tooth pattern), LFD complex (lig. flavum-dura); count levels from sacrum cephalad</div></div>
+    <div class="tr g3"><div class="dn">Transverse interlaminar</div><div class="dd">Midline transverse between spinous processes</div><div class="d2">Spinous process acoustic shadow at top; identify interspinous space; measure depth skin to LFD complex</div></div>
+    <div class="tr g3"><div class="dn">Depth to epidural space</div><div class="dd">Skin to LFD complex on US = Tuohy depth</div><div class="d2">Typical 4–8 cm; varies widely; critical in obese patients; reduces needle passes</div></div>
+    <div class="tr g3"><div class="dn">Level identification</div><div class="dd">Count from sacrum (L5-S1 junction)</div><div class="d2">Tuffier's line ≈ L4; US significantly more accurate than palpation in obese / scoliotic / prior spine surgery patients</div></div>
+    <div class="tr g2"><div class="dn">OB epidural pre-scan</div><div class="dd">Pre-procedure scan reduces needle attempts and complications; mark optimal site before positioning; high-value in difficult anatomy (obesity BMI &gt;35, scoliosis, prior instrumentation)</div></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="ch"><h2>Cardiac POCUS — Golden Spiral (5 Views)</h2><span class="upd" style="margin-left:auto;font-size:9px">ASE 2022 · SCA 2023</span></div>
+  <div class="cb">
+<div style="margin:12px 0 16px;overflow:hidden;">
+<svg viewBox="0 0 560 320" style="width:100%;max-width:560px;display:block;margin:0 auto;" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="ah" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#c9a227" opacity="0.7"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="560" height="320" fill="#0d1623" rx="8"/>
+
+  <!-- Title -->
+  <text x="280" y="18" text-anchor="middle" font-size="9" fill="#c9a227" font-family="monospace" font-weight="700" letter-spacing="1">BEDSIDE ECHO — GOLDEN SPIRAL · 5 VIEWS</text>
+
+  <!-- Center chest schematic -->
+  <!-- Chest outline simple -->
+  <ellipse cx="280" cy="155" rx="68" ry="80" fill="none" stroke="#1e3050" stroke-width="1.5"/>
+  <!-- Sternum -->
+  <line x1="280" y1="90" x2="280" y2="210" stroke="#1e3050" stroke-width="1" stroke-dasharray="3,3"/>
+  <!-- Ribs suggestion -->
+  <ellipse cx="280" cy="140" rx="45" ry="28" fill="none" stroke="#162030" stroke-width="1"/>
+  <ellipse cx="280" cy="160" rx="52" ry="32" fill="none" stroke="#162030" stroke-width="1"/>
+  <ellipse cx="280" cy="180" rx="58" ry="35" fill="none" stroke="#162030" stroke-width="1"/>
+
+  <!-- Golden circle -->
+  <circle cx="272" cy="148" r="42" fill="none" stroke="#c9a227" stroke-width="2" opacity="0.8"/>
+  <!-- Spiral arrow -->
+  <path d="M272,106 Q316,106 316,148 Q316,190 272,190 Q242,190 234,166" fill="none" stroke="#c9a227" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.55" marker-end="url(#ah)"/>
+
+  <!-- ── POSITION 1: PLAX ── upper left -->
+  <circle cx="262" cy="130" r="9" fill="#7c3aed" stroke="#c4b5fd" stroke-width="1.5"/>
+  <text x="262" y="134" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">1</text>
+  <!-- connector -->
+  <line x1="215" y1="68" x2="258" y2="126" stroke="#7c3aed" stroke-width="0.8" opacity="0.6"/>
+  <!-- label box -->
+  <rect x="50" y="30" width="164" height="44" rx="4" fill="#1a0f35" stroke="#7c3aed" stroke-width="1.2"/>
+  <text x="132" y="45" text-anchor="middle" font-size="8.5" fill="#c4b5fd" font-weight="700" font-family="monospace">PARASTERNAL LONG (PLAX)</text>
+  <text x="132" y="57" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">3-4 ICS LSB · probe → R shoulder</text>
+  <text x="132" y="68" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">LVOT, MV, Ao root, pericardium</text>
+
+  <!-- ── POSITION 2: PSAX ── upper right -->
+  <circle cx="282" cy="130" r="9" fill="#2563eb" stroke="#93c5fd" stroke-width="1.5"/>
+  <text x="282" y="134" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">2</text>
+  <line x1="346" y1="68" x2="286" y2="126" stroke="#2563eb" stroke-width="0.8" opacity="0.6"/>
+  <rect x="346" y="30" width="164" height="44" rx="4" fill="#0f1f35" stroke="#2563eb" stroke-width="1.2"/>
+  <text x="428" y="45" text-anchor="middle" font-size="8.5" fill="#93c5fd" font-weight="700" font-family="monospace">PARASTERNAL SHORT (PSAX)</text>
+  <text x="428" y="57" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">Same spot · rotate 90° CW</text>
+  <text x="428" y="68" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">Papillary level: D-sign, RV size</text>
+
+  <!-- ── POSITION 3: A4C ── mid right -->
+  <circle cx="258" cy="162" r="9" fill="#059669" stroke="#6ee7b7" stroke-width="1.5"/>
+  <text x="258" y="166" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">3</text>
+  <line x1="346" y1="178" x2="266" y2="162" stroke="#059669" stroke-width="0.8" opacity="0.6"/>
+  <rect x="346" y="155" width="164" height="44" rx="4" fill="#0a2018" stroke="#059669" stroke-width="1.2"/>
+  <text x="428" y="170" text-anchor="middle" font-size="8.5" fill="#6ee7b7" font-weight="700" font-family="monospace">APICAL 4-CHAMBER (A4C)</text>
+  <text x="428" y="182" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">5th ICS MCL · probe → L shoulder</text>
+  <text x="428" y="193" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">EF, RV:LV ratio, valves, LVOT VTI</text>
+
+  <!-- ── POSITION 4: Subxiphoid ── lower right -->
+  <circle cx="280" cy="192" r="9" fill="#d97706" stroke="#fcd34d" stroke-width="1.5"/>
+  <text x="280" y="196" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">4</text>
+  <line x1="346" y1="248" x2="282" y2="198" stroke="#d97706" stroke-width="0.8" opacity="0.6"/>
+  <rect x="346" y="225" width="164" height="44" rx="4" fill="#251500" stroke="#d97706" stroke-width="1.2"/>
+  <text x="428" y="240" text-anchor="middle" font-size="8.5" fill="#fcd34d" font-weight="700" font-family="monospace">SUBXIPHOID (SC4C)</text>
+  <text x="428" y="252" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">Probe flat · aim at L shoulder</text>
+  <text x="428" y="263" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">Pericardial effusion, tamponade</text>
+
+  <!-- ── POSITION 5: IVC ── lower left -->
+  <circle cx="280" cy="210" r="9" fill="#dc2626" stroke="#fca5a5" stroke-width="1.5"/>
+  <text x="280" y="214" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">5</text>
+  <line x1="215" y1="248" x2="276" y2="212" stroke="#dc2626" stroke-width="0.8" opacity="0.6"/>
+  <rect x="50" y="225" width="164" height="44" rx="4" fill="#250a0a" stroke="#dc2626" stroke-width="1.2"/>
+  <text x="132" y="240" text-anchor="middle" font-size="8.5" fill="#fca5a5" font-weight="700" font-family="monospace">IVC / FLUID STATUS</text>
+  <text x="132" y="252" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">Rotate 90° from pos 4 · sagittal</text>
+  <text x="132" y="263" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">&lt;1.5cm collapsing = hypovolemia</text>
+
+  <!-- Golden Circle legend -->
+  <rect x="50" y="140" width="164" height="60" rx="4" fill="#1a1500" stroke="#c9a227" stroke-width="1"/>
+  <text x="132" y="154" text-anchor="middle" font-size="8" fill="#fcd34d" font-weight="700" font-family="monospace">GOLDEN CIRCLE</text>
+  <text x="132" y="165" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">Rotate probe CW position-to-position</text>
+  <text x="132" y="175" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">1→2: rotate 90° CW (same location)</text>
+  <text x="132" y="185" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">2→3: slide to apex · 4→5: rotate 90°</text>
+  <text x="132" y="195" text-anchor="middle" font-size="7" fill="#c9a227" font-family="monospace">Start: PLAX · End: IVC view</text>
+
+  <!-- Footer -->
+  <text x="280" y="310" text-anchor="middle" font-size="7.5" fill="#374151" font-family="monospace">After DocScribbles · ASE 2022 · SCA 2023</text>
+</svg>
+</div>
+    <div class="sl">PRE-INDUCTION ASSESSMENT</div>
+    <div class="tr g2"><div class="dn">LVEF (eyeball)</div><div class="dd">Good (&gt;55%) / moderate (30–55%) / poor (&lt;30%); EPSS &gt;8 mm = reduced EF; guides induction agent choice and dose titration</div></div>
+    <div class="tr g2"><div class="dn">RWMA</div><div class="dd">Regional wall motion abnormality — hypo/akinesis in coronary territory; document pre-operatively; may change surgical or anesthetic plan</div></div>
+    <div class="tr g2"><div class="dn">Pericardial effusion</div><div class="dd">RV diastolic collapse + RA systolic collapse + IVC plethora = tamponade physiology; absolute concern for neuraxial if hemodynamically significant</div></div>
+    <div class="sl" style="margin-top:10px">INTRAOPERATIVE HYPOTENSION DIFFERENTIAL</div>
+    <div class="tr g2"><div class="dn">Hypovolemia</div><div class="dd">Hyperdynamic LV, kissing walls in systole, flat/collapsing IVC &lt;1.5 cm — treat: volume</div></div>
+    <div class="tr g2"><div class="dn">Vasodilation</div><div class="dd">Hyperdynamic LV, flat IVC — distributive pattern — treat: norepinephrine / phenylephrine</div></div>
+    <div class="tr g2"><div class="dn">Cardiogenic</div><div class="dd">Poor EF, dilated LV, plethoric IVC &gt;2.5 cm, B-lines — treat: inotropes, reduce volatile agent</div></div>
+    <div class="tr g2"><div class="dn">Obstructive</div><div class="dd">RV strain (D-sign, McConnell), tamponade (effusion + RV collapse), PTX (absent sliding) — treat: cause</div></div>
+    <table class="rt" style="margin-top:10px">
+      <tr><th>IVC Diameter</th><th>Collapsibility</th><th>Interpretation</th></tr>
+      <tr><td>&lt;1.5 cm</td><td>&gt;50%</td><td>Hypovolemia — volume responsive</td></tr>
+      <tr><td>1.5–2.5 cm</td><td>&gt;50%</td><td>Borderline / likely responsive</td></tr>
+      <tr><td>1.5–2.5 cm</td><td>&lt;50%</td><td>Euvolemic</td></tr>
+      <tr><td>&gt;2.5 cm</td><td>&lt;50%</td><td>Elevated RAP / volume overload</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="ch"><h2>Vascular Access POCUS</h2></div>
+  <div class="cb">
+    <div class="tr g3"><div class="dn">Internal jugular</div><div class="dd">Short-axis transverse at neck</div><div class="d2">IJ lateral to carotid; compressible = vein; confirm wire in vein before dilation; dynamic tip visualization reduces complications</div></div>
+    <div class="tr g3"><div class="dn">Subclavian / axillary</div><div class="dd">Infraclavicular, in-plane long-axis</div><div class="d2">Axillary vein medial to artery; real-time guidance reduces PTX risk vs landmark technique</div></div>
+    <div class="tr g3"><div class="dn">Radial artery</div><div class="dd">Short-axis or long-axis at wrist</div><div class="d2">Pulsatile, non-compressible; long-axis improves first-pass success; high value in vasoconsticted/hypotensive patients</div></div>
+    <div class="tr g3"><div class="dn">Femoral access</div><div class="dd">CFV medial to CFA at inguinal crease</div><div class="d2">Short-axis; compress to differentiate vein from artery; Doppler confirms venous flow; avoid below femoral bifurcation</div></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="ch"><h2>Lung Ultrasound — OR Context</h2></div>
+  <div class="cb">
+    <table class="rt">
+      <tr><th>Finding</th><th>Suggests</th><th>Action</th></tr>
+      <tr><td>Bilateral sliding + A-lines</td><td>Normal ventilation</td><td>Continue monitoring</td></tr>
+      <tr><td>Absent sliding (unilateral)</td><td>Mainstem ETT or PTX</td><td>Withdraw ETT 1–2 cm or needle decompression</td></tr>
+      <tr><td>B-lines bilateral</td><td>Pulmonary edema</td><td>Diuresis, reduce fluids, increase PEEP</td></tr>
+      <tr><td>Barcode sign (M-mode)</td><td>PTX confirmed</td><td>Decompress; find lung point to localize</td></tr>
+      <tr><td>Absent sliding post-CVC</td><td>Iatrogenic PTX</td><td>Chest tube vs needle per hemodynamics</td></tr>
+    </table>
+    <div class="tr g3" style="margin-top:8px"><div class="dn">One-lung ventilation</div><div class="dd">Confirm absent sliding on operative side, present on ventilated side</div><div class="d2">More reliable than auscultation in noisy OR; dynamically verify DLT or bronchial blocker position</div></div>
+    <div class="tr g3"><div class="dn">Post-intubation PTX check</div><div class="dd">After CVC or high-risk intubation</div><div class="d2">Bilateral anterior chest; absent sliding = PTX until proven otherwise; M-mode barcode confirms</div></div>
+  </div>
+</div>
+
+</div>
+<div class="panel" style="display:none" id="tab-neuraxial">
+  <div class="card">
+    <div class="ch"><div class="ci ir">⚠</div><h2>Contraindications to Neuraxial</h2></div>
+    <div class="cb">
+      <p class="sl">Absolute</p>
+      <ul class="bl">
+        <li class="x">Patient refusal</li>
+        <li class="x">Coagulopathy: INR &gt;1.5 · Plt &lt;80×10⁹/L (ASRA 2023)</li>
+        <li class="x">Active therapeutic anticoagulation — see ASRA intervals below</li>
+        <li class="x">Skin infection at injection site</li>
+        <li class="x">Elevated ICP / mass lesion (herniation risk)</li>
+        <li class="x">Lack of resuscitation equipment or monitoring</li>
+      </ul>
+      <p class="sl">Relative</p>
+      <ul class="bl">
+        <li class="w">Hypovolemia — stabilize first</li>
+        <li class="w">Pre-existing neurologic disease — document baseline</li>
+        <li class="w">Severe AS/MS (↓ SVR → ↓ CO)</li>
+        <li class="w">Systemic infection (bacteremia) — individualize risk/benefit</li>
+        <li class="w">Indeterminate surgical duration</li>
+      </ul>
+      <div class="al al-b" style="margin-top:10px;">
+        <div class="al-t">ASRA 2023 — Anticoagulant Hold Times (Neuraxial / Deep Block)</div>
+        <table class="rt" style="margin-top:4px;">
+          <thead><tr><th>Drug</th><th>Hold Before</th><th>Resume After</th></tr></thead>
+          <tbody>
+            <tr><td>UFH prophylactic SC</td><td>4–6 hr + nl aPTT</td><td>1 hr</td></tr>
+            <tr><td>UFH therapeutic IV</td><td>4–6 hr + nl aPTT</td><td>1 hr</td></tr>
+            <tr><td>LMWH prophylactic</td><td>12 hr</td><td>4 hr</td></tr>
+            <tr><td>LMWH therapeutic</td><td>24 hr</td><td>4 hr</td></tr>
+            <tr><td>Warfarin</td><td><b>5 days</b>; confirm INR ≤1.5 before block (ASRA 5th ed)</td><td>After catheter removal</td></tr>
+            <tr><td>Dabigatran</td><td>72–96 hr (CrCl-based); residual level &lt;30 ng/mL acceptable</td><td>6 hr</td></tr>
+            <tr><td>Rivaroxaban</td><td>72 hr (high dose) / 24 hr (low); anti-Xa ≤0.1 IU/mL acceptable (ASRA 2025)</td><td>6 hr</td></tr>
+            <tr><td>Apixaban</td><td>72 hr (high) / 36 hr (low); anti-Xa ≤0.1 IU/mL acceptable (ASRA 2025)</td><td>6 hr</td></tr>
+            <tr><td>Aspirin</td><td>No hold required</td><td>Immediately</td></tr>
+            <tr><td>Clopidogrel</td><td>7 days</td><td>After catheter removal</td></tr>
+            <tr><td>Prasugrel</td><td>7–10 days</td><td>6 hr</td></tr>
+            <tr><td>Ticagrelor</td><td>5–7 days</td><td>6 hr</td></tr>
+            <tr><td>Cangrelor (IV)</td><td><b>3 hr</b> (ASRA); short-acting GP IIb/IIIa-like; hold infusion before block</td><td>8 hr</td></tr>
+          </tbody>
+        </table>
+        <div style="font-size:10px;color:var(--t2);margin-top:4px;">ASRA 5th ed (2022) + 2025 update: anti-Xa level calibrated to specific DOAC acceptable as alternative to fixed hold times. Plt threshold for neuraxial: ≥80×10⁹/L (ASRA 2023).</div>     </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ch"><div class="ci ib">💉</div><h2>Spinal Anesthesia — Agents</h2></div>
+    <div class="cb">
+      <table class="rt">
+        <thead><tr><th>Agent</th><th>Dose (mg)</th><th>Plain (min)</th><th>+Epi (min)</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td><b>Chloroprocaine 3%</b> <span class="tag t-g">short/amb</span></td><td>30–60</td><td>60–80</td><td>N/A</td><td>Fastest offset; ambulatory preferred</td></tr>
+          <tr><td><b>Bupivacaine 0.5% isobaric</b></td><td>8–15</td><td>90–120</td><td>100–150</td><td>Standard workhorse</td></tr>
+          <tr><td><b>Bupivacaine 0.75% hyperbaric</b> <span class="tag t-y">OB</span></td><td>8–12</td><td>90–120</td><td>120–180</td><td>C/S standard: 10–12 mg typical</td></tr>
+          <tr><td><b>Ropivacaine 0.5–0.75%</b></td><td>15–25</td><td>100–150</td><td>—</td><td>↓ cardiac toxicity vs bupiv</td></tr>
+          <tr><td><b>Tetracaine 0.5%</b></td><td>6–20</td><td>90–120</td><td>120–240</td><td>Long procedures</td></tr>
+          <tr><td><b>Lidocaine 2%</b> <span class="tag t-r">TNS risk</span></td><td>40–80</td><td>60–90</td><td>70–100</td><td>Avoid spinal — use chloroprocaine instead</td></tr>
+        </tbody>
+      </table>
+      <p class="sl" style="margin-top:12px;">Intrathecal Adjuncts</p>
+      <table class="rt">
+        <thead><tr><th>Drug</th><th>Dose</th><th>Effect / Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Fentanyl PF</td><td>10–25 mcg</td><td>Intraop analgesia; reduces LA dose needed</td></tr>
+          <tr><td>Morphine PF</td><td>50–300 mcg</td><td>Postop pain; delayed respiratory depression 6–18 hr → monitor 18–24 hr</td></tr>
+          <tr><td>Hydromorphone PF</td><td>50–100 mcg</td><td>Alternative to morphine; shorter monitoring window ~12 hr</td></tr>
+          <tr><td>Epinephrine</td><td>100–200 mcg</td><td>↑ duration 30–50%; use as test dose component</td></tr>
+          <tr><td>Clonidine</td><td>15–75 mcg</td><td>↑ duration; sedation; ↓ shivering. ⚠ BBW maternal hypotension/bradycardia</td></tr>
+          <tr><td>Dexmedetomidine</td><td>3–10 mcg</td><td>Off-label; ↑ duration + sedation; hypotension/bradycardia risk</td></tr>
+        </tbody>
+      </table>
+      <div class="al al-b" style="margin-top:9px;"><div class="al-t">Standard C/S Spinal Mix</div>Hyperbaric bupivacaine 0.75% <b>10–12 mg</b> + fentanyl PF <b>10–15 mcg</b> + morphine PF <b>100–150 mcg</b> ± epi 100–200 mcg</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ch"><div class="ci iw">↓BP</div><h2>Spinal Hypotension</h2></div>
+    <div class="cb">
+      <div class="al al-b"><div class="al-t">Prevention</div>Co-load 500–1000 mL crystalloid at block placement (not pre-load). Preemptive phenylephrine infusion 25–50 mcg/min OR norepinephrine 0.05–0.1 mcg/kg/min started at block. Ondansetron 4 mg IV reduces vasovagal component.</div>
+      <p class="sl">Treatment</p>
+      <ul class="bl">
+        <li>Phenylephrine <span class="d">50–200 mcg IV</span> bolus → infusion <span class="d">25–100 mcg/min</span></li>
+        <li>Norepinephrine <span class="d">5–10 mcg IV</span> bolus → infusion <span class="d">0.05–0.1 mcg/kg/min</span> — OB preferred (↓ reflex brady vs phenylephrine)</li>
+        <li>Ephedrine <span class="d">5–10 mg IV</span> — prefer if bradycardia + hypotension coexist</li>
+        <li>Atropine <span class="d">0.5 mg IV</span> for isolated bradycardia; low threshold for epi</li>
+        <li>IV fluid bolus if hypovolemic component</li>
+        <li>LUD if parturient</li>
+      </ul>
+      <div class="al al-y" style="margin-top:8px;"><div class="al-t">2024 OB Update</div>Norepinephrine now equivalent or superior to phenylephrine for OB spinal hypotension — better HR maintenance, similar neonatal outcomes. Consider as first-line where available.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ch"><div class="ci ib">📋</div><h2>Epidural — Levels & Dosing</h2></div>
+    <div class="cb">
+      <table class="rt">
+        <thead><tr><th>Indication</th><th>Level</th><th>Regimen</th></tr></thead>
+        <tbody>
+          <tr><td>Thoracic / cardiac</td><td>T4–T6</td><td>PCEA: 0.0625–0.1% bupiv + fentanyl 2 mcg/mL; 5 mL bolus/10 min lockout/8 mL/hr basal</td></tr>
+          <tr><td>Upper abdomen</td><td>T7–T10</td><td>Same above</td></tr>
+          <tr><td>Lower abdomen / C/S / LE</td><td>T10–L2</td><td>PIB 0.0625–0.1% bupiv 5–10 mL/30 min or PCEA 5 mL/10 min lockout</td></tr>
+          <tr><td>Labor analgesia</td><td>T10–L1</td><td>PCEA: 0.0625% bupiv + fentanyl 2 mcg/mL; 5–8 mL bolus/15 min lockout/6–10 mL/hr basal</td></tr>
+        </tbody>
+      </table>
+      <div class="al al-b" style="margin-top:8px;"><div class="al-t">Urgent C/S Top-Up from Existing Labor Epidural</div>2% lidocaine + epi 1:200,000 → 15–20 mL in 5 mL increments q3–5 min. Add NaHCO₃ 1 mEq/10 mL to ↑ speed. Onset 10–15 min. Alt: 0.5% bupivacaine 15–20 mL.</div>
+      <div class="al al-o" style="margin-top:6px;"><div class="al-t">PDPH Management</div>Conservative 24–48 hr: hydration, caffeine 300 mg PO. EBP gold standard: 15–20 mL autologous blood; 1 hr flat after. Cosyntropin 1 mg IV single dose — emerging evidence.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     LOCAL ANES
+═══════════════════════════════════════ -->
+<div class="panel" style="display:none" id="tab-localanes">
+  <div class="card">
+    <div class="ch"><div class="ci ib">💊</div><h2>Local Anesthetic Properties — ASRA 2023</h2></div>
+    <div class="cb">
+      <div style="overflow-x:auto;">
+        <table class="rt">
+          <thead><tr><th>Agent</th><th>Class</th><th>Onset</th><th>Plain (hr)</th><th>+Epi (hr)</th><th>Max Plain (mg/kg)</th><th>Max +Epi (mg/kg)</th></tr></thead>
+          <tbody>
+            <tr><td><b>Lidocaine 1–2%</b></td><td>Amide</td><td>Fast</td><td>1–1.5</td><td>2–3</td><td>4.5 (max 300 mg)</td><td>7 (max 500 mg)</td></tr>
+            <tr><td><b>Bupivacaine 0.25–0.5%</b></td><td>Amide</td><td>Mod</td><td>3–8</td><td>4–12</td><td>2.5 (max 175 mg)</td><td>3 (max 225 mg)</td></tr>
+            <tr><td><b>Ropivacaine 0.2–1%</b></td><td>Amide</td><td>Mod</td><td>3–8</td><td>4–10</td><td>3 (max 200–300 mg)</td><td>Similar</td></tr>
+            <tr><td><b>Levobupivacaine 0.25–0.75%</b></td><td>Amide</td><td>Mod</td><td>3–8</td><td>4–12</td><td>2.5 (max 150 mg)</td><td>3 (max 225 mg)</td></tr>
+            <tr><td><b>Mepivacaine 1–2%</b></td><td>Amide</td><td>Mod</td><td>2–3</td><td>3–4</td><td>5 (max 400 mg)</td><td>7 (max 550 mg)</td></tr>
+            <tr><td><b>Chloroprocaine 2–3%</b></td><td>Ester</td><td>Fast</td><td>0.5–1</td><td>1–1.5</td><td>11 (max 800 mg)</td><td>14 (max 1000 mg)</td></tr>
+            <tr><td><b>Procaine 1–2%</b></td><td>Ester</td><td>Fast</td><td>0.5–1</td><td>0.75–1.5</td><td>7 (max 500 mg)</td><td>9</td></tr>
+            <tr><td><b>Tetracaine 0.5%</b></td><td>Ester</td><td>Slow</td><td>3–6</td><td>4–8</td><td>1.5</td><td>2.5</td></tr>
+            <tr><td><b>Prilocaine 2–4%</b></td><td>Amide</td><td>Fast</td><td>1–3</td><td>2–4</td><td>6 (max 400 mg)</td><td>8</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="al al-r" style="margin-top:9px;"><div class="al-t">⚠ Maximum Dose Caveats</div>Highly site-dependent. Intercostal = highest systemic absorption. Epidural &gt; brachial plexus &gt; femoral &gt; sciatic. Reduce by 25–30% in elderly, hepatic failure, cardiac disease, low protein. These are absolute maximums — clinical doses are often much lower.</div>
+      <div class="al al-b" style="margin-top:6px;"><div class="al-t">Block Duration Adjuncts</div>Dexamethasone <b>8 mg IV</b> (systemic &gt; perineural for duration) · Dexmedetomidine <b>0.5–1 mcg/kg</b> perineural (off-label; ↑ duration 3–6 hr) · Buprenorphine <b>0.3 mg</b> perineural · Clonidine <b>75–150 mcg</b> perineural (↓ BP risk)</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="ch"><div class="ci ir">☠</div><h2>Vascularity Hierarchy — LAST Risk</h2></div>
+    <div class="cb">
+      <p style="font-size:12px;color:var(--t2);margin-bottom:8px;">Highest → lowest systemic absorption:</p>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;">
+        <span class="d dr">Intercostal</span>
+        <span style="color:var(--t3);align-self:center;">→</span>
+        <span class="d dr">Paracervical</span>
+        <span style="color:var(--t3);align-self:center;">→</span>
+        <span class="d" style="background:rgba(212,85,0,.09);border-color:rgba(212,85,0,.35);color:var(--ao);">Epidural</span>
+        <span style="color:var(--t3);align-self:center;">→</span>
+        <span class="d" style="background:rgba(212,85,0,.09);border-color:rgba(212,85,0,.35);color:var(--ao);">Brachial plexus</span>
+        <span style="color:var(--t3);align-self:center;">→</span>
+        <span class="d">Femoral / Sciatic</span>
+        <span style="color:var(--t3);align-self:center;">→</span>
+        <span class="d dg">Subcutaneous</span>
+      </div>
+      <p style="font-size:11px;color:var(--t3);margin-top:8px;">→ See LAST tab for full treatment protocol</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     LAST
+═══════════════════════════════════════ -->
+<div class="panel" style="display:none" id="tab-last">
+  <div class="al al-r" style="margin-bottom:11px;"><div class="al-t">🚨 LOCAL ANESTHETIC SYSTEMIC TOXICITY — ASRA 2023</div>Delayed onset up to 60 min post-injection. Maintain vigilance. Stock Intralipid wherever regional anesthesia is performed.</div>
+  <div class="g2">
+    <div class="card">
+      <div class="ch"><div class="ci ir">⚡</div><h2>CNS Signs</h2></div>
+      <div class="cb">
+        <ul class="bl">
+          <li class="x">Perioral / tongue numbness</li>
+          <li class="x">Metallic taste, tinnitus</li>
+          <li class="x">Lightheadedness, visual Δ</li>
+          <li class="x">Agitation, confusion, slurred speech</li>
+          <li class="x">Muscle twitching → seizures</li>
+          <li class="x">Coma, respiratory arrest</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card">
+      <div class="ch"><div class="ci ir">💓</div><h2>CV Signs</h2></div>
+      <div class="cb">
+        <ul class="bl">
+          <li class="w">Hypertension (early)</li>
+          <li class="x">QRS widening, PR prolongation</li>
+          <li class="x">Bradycardia, heart block</li>
+          <li class="x">Hypotension, ventricular arrhythmias</li>
+          <li class="x">VT/VF — resistant to std ACLS</li>
+          <li class="x">Cardiac arrest</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="al al-o" style="margin-bottom:11px;"><div class="al-t">Bupivacaine Warning</div>CV collapse may be FIRST sign — minimal CNS prodrome. Delayed onset &gt;5 min reported with large depot injections. Ultrasound guidance reduces but does NOT eliminate LAST risk.</div>
+
+  <div class="card">
+    <div class="ch"><div class="ci ir">🚑</div><h2>LAST Treatment Algorithm — ASRA 2023</h2></div>
+    <div class="cb">
+      <div class="af">
+        <div class="as"><div class="an r">1</div><div class="ac"><div class="at">Stop Injection + Call for Help</div><div class="ab">Immediately stop LA. Announce LAST. Activate code team. Notify nearest ECMO center early if arrest seems likely.</div></div></div>
+        <div class="as"><div class="an r">2</div><div class="ac"><div class="at">Airway — 100% O₂</div><div class="ab">Maintain patent airway. 100% O₂ via NRB or BVM. Intubate if necessary. Hypoxia + acidosis ↑↑ cardiotoxicity. Avoid propofol for intubation if hemodynamically compromised.</div></div></div>
+        <div class="as"><div class="an r">3</div><div class="ac"><div class="at">Seizure Control — Benzos First</div><div class="ab">Benzodiazepines preferred. Small propofol doses acceptable if hemodynamically stable only.</div><div class="adose">Midazolam: <b>1–5 mg IV</b> (titrate)<br>Lorazepam: <b>2–4 mg IV</b><br>Propofol: <b>0.5–1 mg/kg IV</b> — only if CV stable<br>Phenobarbital: <b>15–20 mg/kg IV</b> if refractory</div></div></div>
+        <div class="as"><div class="an b">4</div><div class="ac"><div class="at">Intralipid 20% — Start Immediately</div><div class="ab">Do NOT delay for cardiac arrest. Use ideal body weight. Max cumulative ~12 mL/kg.</div><div class="adose"><b>Bolus:</b> 1.5 mL/kg IBW IV over 2–3 min<br><b>Infusion:</b> 0.25 mL/kg/min (↑ to 0.5 mL/kg/min if refractory)<br><b>Repeat bolus</b> × 1–2 for refractory arrest<br><b>70 kg example:</b> ~105 mL bolus → ~18 mL/min infusion<br><b>Max cumulative:</b> ≤12 mL/kg (≈ 840 mL for 70 kg)</div></div></div>
+        <div class="as"><div class="an r">5</div><div class="ac"><div class="at">Cardiac Arrest — Modified ACLS</div><div class="ab">Key deviations from standard ACLS:</div><div class="adose">✅ <b>Epinephrine:</b> ≤1 mcg/kg IV boluses (↓ dose — large doses worsen VF + impair lipid resuscitation)<br>✅ <b>Amiodarone 150 mg IV</b> for refractory VT/VF<br>✅ <b>Continue Intralipid throughout CPR</b><br>✅ <b>Prolonged CPR</b> — 60–90 min; recovery reported<br>❌ <b>Avoid vasopressin</b> — worsens outcomes in LAST<br>❌ <b>Avoid Ca-channel blockers / beta-blockers</b><br>❌ <b>Avoid lidocaine</b> as antiarrhythmic</div></div></div>
+        <div class="as"><div class="an y">6</div><div class="ac"><div class="at">ECMO / Cardiopulmonary Bypass</div><div class="ab">Refractory arrest despite optimal resuscitation + LET → activate ECMO team. Best outcomes with early institution. ECMO provides circulatory support while LA redistributes.</div></div></div>
+        <div class="as"><div class="an y">7</div><div class="ac"><div class="at">Post-Event Monitoring ≥ 2 hr</div><div class="ab">Delayed recurrence reported. ICU admission recommended after severe LAST. Intralipid may interfere with: triglycerides, lipase, LFTs, some drug assays.</div></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="ch"><div class="ci ig">📋</div><h2>LAST Prevention</h2></div>
+    <div class="cb">
+      <ul class="bl">
+        <li class="ok">Use ultrasound guidance — ↓ incidence but does NOT eliminate risk</li>
+        <li class="ok">Fractionated injection: 3–5 mL increments with 30–60 sec pauses</li>
+        <li class="ok">Epinephrine test dose each increment: ↑HR &gt;10 bpm = intravascular</li>
+        <li class="ok">Aspirate before each injection</li>
+        <li class="ok">Use minimum effective dose and concentration</li>
+        <li class="ok">Prefer ropivacaine or levobupivacaine over bupivacaine for large-volume blocks</li>
+        <li class="ok">Stock Intralipid 20% wherever blocks are performed</li>
+        <li class="w">High-risk patients: extremes of age, cardiac/hepatic disease, low protein, pregnancy</li>
+      </ul>
+      <div class="al al-b" style="margin-top:8px;"><div class="al-t">Intralipid Stocking (ASRA 2023)</div>20% Intralipid must be immediately available (≤60 sec) wherever large-volume regional anesthesia performed. Typical stocking: 4–6 × 250 mL bags or equivalent. IO administration acceptable if no IV access.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     NERVE BLOCKS
+═══════════════════════════════════════ -->
+<div class="panel" style="display:none" id="tab-blocks">
+  <div class="al al-b" style="margin-bottom:11px;"><div class="al-t">Regional Anesthesia — General Principles</div>Use ultrasound guidance (standard of care). Fractionated injection. Epinephrine test dose. Have Intralipid stocked. Document pre-block neuro exam. New CPT codes effective Jan 1, 2025 for thoracic + lower extremity fascial plane blocks.</div>
+
+  <p class="sl">UPPER EXTREMITY</p>
+
+  <!-- Interscalene -->
+  <div class="block-card" id="bc-is">
+    <div class="bc-h" onclick="toggleBlock('is')">
+      <div><div class="bc-name">Interscalene Block</div><div class="bc-meta">C5–C6 (shoulder/prox humerus) · US-guided</div></div>
+      <span class="dchv">▼</span>
+    </div>
+    <div class="bc-body">
+      <div class="g2">
+        <div>
+          <p class="sl">Coverage</p>
+          <ul class="bl"><li>Shoulder surgery, proximal humerus, AC joint</li><li>C5–C6 (C7 variable)</li><li>Spares: ulnar nerve (C8–T1), medial arm</li></ul>
+          <p class="sl">Dosing</p>
+          <div class="kv"><span class="kk">Volume</span><span class="kv2">15–20 mL</span></div>
+          <div class="kv"><span class="kk">Bupivacaine 0.5%</span><span class="kv2">15–20 mL</span></div>
+          <div class="kv"><span class="kk">Ropivacaine 0.5%</span><span class="kv2">15–20 mL</span></div>
+          <div class="kv"><span class="kk">Continuous</span><span class="kv2">0.2% rop 5–8 mL/hr</span></div>
+        </div>
+        <div>
+          <p class="sl">Complications</p>
+          <ul class="bl">
+            <li class="x">Phrenic nerve block (100%) → ↓ ipsilateral diaphragm — avoid in severe contralateral lung disease</li>
+            <li class="x">Pneumothorax (&lt;1% US-guided)</li>
+            <li class="w">Horner syndrome (ptosis, miosis, anhidrosis)</li>
+            <li class="w">Recurrent laryngeal nerve block → hoarseness</li>
+            <li class="w">Vertebral artery injection (rare)</li>
+          </ul>
+          <p class="sl">Notes</p>
+          <p style="font-size:12px;color:var(--t2);">US: probe at neck; identify SCM, scalene muscles, C5/C6 roots between ASM/MSM. Low-volume (10 mL) reduces phrenic palsy. Superficial injection target.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Supraclavicular -->
+  <div class="block-card" id="bc-sc">
+    <div class="bc-h" onclick="toggleBlock('sc')">
+      <div><div class="bc-name">Supraclavicular Block</div><div class="bc-meta">C5–T1 (entire upper extremity below shoulder) · US-guided</div></div>
+      <span class="dchv">▼</span>
+    </div>
+    <div class="bc-body">
+      <div class="g2">
+        <div>
+          <p class="sl">Coverage</p>
+          <ul class="bl"><li>Elbow, forearm, wrist, hand surgery</li><li>All trunks of brachial plexus at compact point</li><li>Fastest onset of brachial plexus approaches</li></ul>
+          <p class="sl">Dosing</p>
+          <div class="kv"><span class="kk">Volume</span><span class="kv2">20–35 mL</span></div>
+          <div class="kv"><span class="kk">Bupivacaine 0.375–0.5%</span><span class="kv2">20–30 mL</span></div>
+          <div class="kv"><span class="kk">Ropivacaine 0.5%</span><span class="kv2">20–30 mL</span></div>
+        </div>
+        <div>
+          <p class="sl">Complications</p>
+          <ul class="bl">
+            <li class="x">Pneumothorax (~0.5–1% US-guided)</li>
+            <li class="x">Phrenic nerve (50–67% incidence)</li>
+            <li class="w">Vascular puncture (subclavian artery)</li>
+            <li class="w">Horner syndrome</li>
+          </ul>
+          <p class="sl">Notes</p>
+          <p style="font-size:12px;color:var(--t2);">US: lateral-to-medial needle approach above clavicle; target corner pocket of subclavian artery. "Corner pocket" injection most reliable. Deep block — high LAST risk site.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Infraclavicular -->
+  <div class="block-card" id="bc-ic">
+    <div class="bc-h" onclick="toggleBlock('ic')">
+      <div><div class="bc-name">Infraclavicular Block</div><div class="bc-meta">Cords of brachial plexus · Good for catheters · US-guided</div></div>
+      <span class="dchv">▼</span>
+    </div>
+    <div class="bc-body">
+      <div class="g2">
+        <div>
+          <p class="sl">Coverage</p>
+          <ul class="bl"><li>Elbow to hand; proximal arm variable</li><li>Lateral, posterior, medial cords</li><li>Excellent catheter site (arm position maintained)</li></ul>
+          <p class="sl">Dosing</p>
+          <div class="kv"><span class="kk">Volume</span><span class="kv2">25–35 mL</span></div>
+          <div class="kv"><span class="kk">Ropivacaine 0.5%</span><span class="kv2">25–30 mL</span></div>
+          <div class="kv"><span class="kk">Continuous</span><span class="kv2">0.2% rop 5–8 mL/hr</span></div>
+        </div>
+        <div>
+          <p class="sl">Notes</p>
+          <p style="font-size:12px;color:var(--t2);">US: probe below clavicle medial to coracoid; identify axillary artery. Target: posterior cord (U-distribution around artery). Deep — keep angle steep. Lower pneumothorax risk than supraclavicular.</p>
+          <p class="sl">Complications</p>
+          <ul class="bl"><li class="x">Vascular puncture</li><li class="w">Pneumothorax (rare)</li><li class="w">Phrenic nerve (uncommon)</li></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Axillary -->
+  <div class="block-card" id="bc-ax">
+    <div class="bc-h" onclick="toggleBlock('ax')">
+      <div><div class="bc-name">Axillary Block</div><div class="bc-meta">Musculocutaneous + terminal branches · Safest brachial approach</div></div>
+      <span class="dchv">▼</span>
+    </div>
+    <div class="bc-body">
+      <div class="g2">
+        <div>
+          <p class="sl">Coverage</p>
+          <ul class="bl"><li>Forearm, wrist, hand (medial biceps/elbow variable)</li><li>Four terminal branches: median, ulnar, radial + musculocutaneous separately</li></ul>
+          <p class="sl">Dosing</p>
+          <div class="kv"><span class="kk">Volume (total)</span><span class="kv2">30–40 mL divided</span></div>
+          <div class="kv"><span class="kk">Per nerve</span><span class="kv2">5–10 mL each</span></div>
+          <div class="kv"><span class="kk">Agent</span><span class="kv2">Bupiv 0.25–0.5% or rop 0.5%</span></div>
+        </div>
+        <div>
+          <p class="sl">Notes</p>
+          <p style="font-size:12px;color:var(--t2);">Safest approach — no pneumothorax, no phrenic nerve. Requires abduction. US: identify axillary artery; four injection approach (inject each nerve separately). Musculocutaneous in coracobrachialis muscle.</p>
+          <p class="sl">Complications</p>
+          <ul class="bl"><li class="w">Vascular puncture / hematoma</li><li class="w">Multiple injections required</li></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Wrist blocks -->
+  <div class="block-card" id="bc-wr">
+    <div class="bc-h" onclick="toggleBlock('wr')">
+      <div><div class="bc-name">Wrist Blocks</div><div class="bc-meta">Median · Ulnar · Radial (superficial) · Hand surgery</div></div>
+      <span class="dchv">▼</span>
+    </div>
+    <div class="bc-body">
+      <table class="rt">
+        <thead><tr><th>Nerve</th><th>Location</th><th>Volume</th><th>Coverage</th></tr></thead>
+        <tbody>
+          <tr><td><b>Median</b></td><td>Medial to FCR tendon at wrist crease</td><td>3–5 mL</td><td>Palmar thumb, index, middle, radial ring; thenar eminence</td></tr>
+          <tr><td><b>Ulnar</b></td><td>Medial to FCU, lateral to ulnar artery</td><td>3–5 mL</td><td>Ulnar ring, little finger, hypothenar</td></tr>
+          <tr><td><b>Radial (superficial)</b></td><td>Subcutaneous ring lateral wrist/dorsum</td><td>5–8 mL SC</td><td>Dorsal radial hand + thumb</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:11px;color:var(--t3);margin-top:6px;">Use short-acting LA (lido 1–2% or mepivacaine) for outpatient procedures. Digital blocks: 1–2 mL each side of base of digit (avoid epi in digital blocks — controversial but widely practiced).</p>
+    </div>
+  </div>
+
+  <p class="sl">LOWER EXTREMITY</p>
+
+  <!-- Femoral / ACB -->
+  <div class="block-card" id="bc-fem">
+    <div class="bc-h" onclick="toggleBlock('fem')">
+      <div><div class="bc-name">Femoral Nerve Block / Adductor Canal Block (ACB)</div><div class="bc-meta">Knee analgesia · Motor-sparing ACB preferred for TKA</div></div>
+      <span class="dchv">▼</span>
+    </div>
+    <div class="bc-body">
+      <div class="g2">
+        <div>
+          <p class="sl">Femoral Nerve Block</p>
+          <div class="kv"><span class="kk">Volume</span><span class="kv2">20–30 mL</span></div>
+          <div class="kv"><span class="kk">Agent</span><span class="kv2">Bupiv 0.25–0.5% or rop 0.2–0.5%</span></div>
+          <div class="kv"><span class="kk">Continuous</span><span class="kv2">0.1–0.2% rop 5–10 mL/hr</span></div>
+          <p style="font-size:11px;color:var(--t3);margin-top:4px;">⚠ Quad weakness → fall risk. Largely replaced by ACB for TKA.</p>
+          <p class="sl" style="margin-top:10px;">Adductor Canal Block (Saphenous Block)</p>
+          <div class="kv"><span class="kk">Volume</span><span class="kv2">15–20 mL</span></div>
+          <div class="kv"><span class="kk">Agent</span><span class="kv2">Ropivacaine 0.2–0.5%</span></div>
+          <div class="kv"><span class="kk">Target</span><span class="kv2">Saphenous + NIFP in adductor canal</span></div>
+          <p style="font-size:11px;color:var(--t3);margin-top:4px;">Motor-sparing. Preferred for TKA — ↓ fall risk, allows PT. Often combined with IPACK.</p>
+        </div>
+        <div>
+          <p class="sl">Coverage</p>
+          <ul class="bl">
+            <li>FNB: Anterior knee + anteromedial thigh + medial leg</li>
+            <li>ACB: Medial knee + medial leg (saphenous)</li>
+            <li>For full knee coverage: ACB + IPACK + local infiltration</li>
+          </ul>
+          <p class="sl">IPACK Block</p>
+          <p style="font-size:12px;color:var(--t2);">Infiltration between popliteal artery and posterior knee capsule. Posterior knee pain coverage. Volume: 20 mL ropivacaine 0.2%. Target: space between PA and PCK under US.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sciatic -->
+  <div class="block-card" id="bc-sci">
+    <div class="bc-h" onclick="toggleBlock('sci')">
+      <div><div class="bc-name">Sciatic Nerve Block</div><div class="bc-meta">Posterior thigh/leg/foot · Multiple approaches</div></div>
+      <span class="dchv">▼</span>
+    </div>
+    <div class="bc-body">
+      <div class="g2">
+        <div>
+          <p class="sl">Approaches</p>
+          <ul class="bl">
+            <li><b>Subgluteal</b> — prone or lateral; 20–30 mL; foot/ankle/leg</li>
+            <li><b>Popliteal</b> — prone or lateral; 20–30 mL; foot/ankle (below knee); most common for ankle/foot</li>
+            <li><b>Parasacral</b> — hip/pelvis coverage + sciatic</li>
+          </ul>
+          <p class="sl" style="margin-top:8px;">Popliteal Dosing</p>
+          <div class="kv"><span class="kk">Volume</span><span class="kv2">20–30 mL</span></div>
+          <div class="kv"><span class="kk">Ropivacaine 0.5%</span><span class="kv2">20–25 mL</span></div>
+          <div class="kv"><span class="kk">Bupivacaine 0.25–0.5%</span><span class="kv2">20–25 mL</span></div>
+          <div class="kv"><span class="kk">Continuous</span><span class="kv2">0.2% rop 5–8 mL/hr</span></div>
+        </div>
+        <div>
+          <p class="sl">Coverage</p>
+          <ul class="bl">
+            <li>Posterior thigh (to knee), entire leg below knee, dorsal + plantar foot</li>
+            <li>Split into tibial + common peroneal at popliteal fossa</li>
+            <li>Inject proximal to bifurcation for most reliable block</li>
+          </ul>
+          <p class="sl">Notes</p>
+          <p style="font-size:12px;color:var(--t2);">Foot/ankle surgery: popliteal sciatic ± saphenous block. Ankle block (5-nerve) alternative for distal foot.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PENG / Fascia Iliaca -->
+  <div class="block-card" id="bc-peng">
+    <div class="bc-h" onclick="toggleBlock('peng')">
+      <div><div class="bc-name">PENG Block / Fascia Iliaca Block</div><div class="bc-meta">Hip analgesia · Motor-sparing · Hip fracture</div></div>
+      <span class="dchv">▼</span>
+    </div>
+    <div class="bc-body">
+      <div class="g2">
+        <div>
+          <p class="sl">PENG Block (Pericapsular Nerve Group)</p>
+          <div class="kv"><span class="kk">Target</span><span class="kv2">Articular branches femoral + accessory obturator nerves</span></div>
+          <div class="kv"><span class="kk">Volume</span><span class="kv2">20 mL</span></div>
+          <div class="kv"><span class="kk">Agent</span><span class="kv2">Ropivacaine 0.2–0.375%</span></div>
+          <div class="kv"><span class="kk">Landmark</span><span class="kv2">Iliopubic eminence / femoral head junction</span></div>
+          <p style="font-size:11px;color:var(--t3);margin-top:4px;">Motor-sparing. Preferred for hip fracture, THA analgesia. Allows early PT. Often replaces femoral block for hip.</p>
+        </div>
+        <div>
+          <p class="sl">Fascia Iliaca Block</p>
+          <div class="kv"><span class="kk">Volume</span><span class="kv2">30–40 mL</span></div>
+          <div class="kv"><span class="kk">Agent</span><span class="kv2">Bupiv 0.25% or rop 0.2%</span></div>
+          <div class="kv"><span class="kk">Coverage</span><span class="kv2">Femoral + lateral femoral cutaneous + obturator (partial)</span></div>
+          <p style="font-size:11px;color:var(--t3);margin-top:4px;">High-volume required for reliable 3-in-1 coverage. US-guided subfascial injection lateral to femoral nerve.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="sl">TRUNCAL</p>
+
+  <!-- TAP -->
+  <div class="block-card" id="bc-tap">
+    <div class="bc-h" onclick="toggleBlock('tap')">
+      <div><div class="bc-name">TAP Block — Transversus Abdominis Plane</div><div class="bc-meta">Abdominal wall analgesia T6–L1 · Multiple approaches</div></div>
+      <span class="dchv">▼</span>
+    </div>
+    <div class="bc-body">
+      <div class="g2">
+        <div>
+          <p class="sl">Approaches & Coverage</p>
+          <ul class="bl">
+            <li><b>Lateral TAP</b> — T10–L1; umbilical-level incisions, lower abdominal, C/S</li>
+            <li><b>Subcostal TAP</b> — T6–T10; upper abdominal, laparotomy</li>
+            <li><b>Posterior TAP</b> — T10–L1 with visceral component; laparoscopic</li>
+          </ul>
+          <p class="sl" style="margin-top:8px;">Dosing (per side, bilateral for most)</p>
+          <div class="kv"><span class="kk">Volume / side</span><span class="kv2">15–20 mL</span></div>
+          <div class="kv"><span class="kk">Ropivacaine 0.25–0.375%</span><span class="kv2">15–20 mL/side</span></div>
+          <div class="kv"><span class="kk">Bupivacaine 0.25%</span><span class="kv2">15–20 mL/side</span></div>
+          <div class="kv"><span class="kk">Total bilateral</span><span class="kv2">≤3 mg/kg (check LAST max)</span></div>
+        </div>
+        <div>
+          <p class="sl">Common Indications</p>
+          <ul class="bl">
+            <li>C-section (bilateral) — significant opioid sparing</li>
+            <li>Laparoscopic cholecystectomy, appendectomy</li>
+            <li>Colectomy, hysterectomy</li>
+            <li>Hernia repair</li>
+          </ul>
+          <p class="sl">Notes</p>
+          <p style="font-size:12px;color:var(--t2);">Somatic analgesia only — does not cover visceral pain. Combine with IV acetaminophen, NSAIDs, ketorolac for optimal multimodal. CPT 64486–64489 (US bundled). Liposomal bupivacaine (Exparel) used by some for extended duration — institutional protocols vary.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ESP -->
+  <div class="block-card" id="bc-esp">
+    <div class="bc-h" onclick="toggleBlock('esp')">
+      <div><div class="bc-name">Erector Spinae Plane (ESP) Block</div><div class="bc-meta">Thoracic + abdominal analgesia · Versatile · Emerging evidence</div></div>
+      <span class="dchv">▼</span>
+    </div>
+    <div class="bc-body">
+      <div class="g2">
+        <div>
+          <p class="sl">Mechanism</p>
+          <p style="font-size:12px;color:var(--t2);margin-bottom:8px;">LA injected between erector spinae muscle and transverse process → spreads to paravertebral space → blocks dorsal and ventral rami. Some visceral coverage via communicating rami.</p>
+          <p class="sl">Dosing</p>
+          <div class="kv"><span class="kk">Volume / side</span><span class="kv2">20–30 mL</span></div>
+          <div class="kv"><span class="kk">Ropivacaine 0.25–0.375%</span><span class="kv2">20–30 mL</span></div>
+          <div class="kv"><span class="kk">Level (thoracic)</span><span class="kv2">T4–T5 for thorax / T7–T9 for upper abd</span></div>
+          <div class="kv"><span class="kk">Level (lumbar)</span><span class="kv2">L2–L3 for lower abd/flank</span></div>
+          <div class="kv"><span class="kk">Continuous</span><span class="kv2">0.2% rop 5–10 mL/hr</span></div>
+        </div>
+        <div>
+          <p class="sl">Indications</p>
+          <ul class="bl">
+            <li>Rib fractures (multiple)</li>
+            <li>Thoracotomy (VATS/open) — alternative to PVB/epidural</li>
+            <li>Breast surgery</li>
+            <li>Laparoscopic / open abdominal surgery</li>
+            <li>C-section — emerging alternative to TAP</li>
+          </ul>
+          <p class="sl">Notes</p>
+          <p style="font-size:12px;color:var(--t2);">Easier and safer than PVB — superficial target. Evidence shows comparable analgesia to TAP for some indications. Variability in spread. No CPT code yet (billed separately — institutional guidance).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Serratus Anterior -->
+  <div class="block-card" id="bc-sap">
+    <div class="bc-h" onclick="toggleBlock('sap')">
+      <div><div class="bc-name">Serratus Anterior Plane (SAP) Block</div><div class="bc-meta">Lateral chest wall · Rib fractures · Thoracic surgery</div></div>
+      <span class="dchv">▼</span>
+    </div>
+    <div class="bc-body">
+      <div class="g2">
+        <div>
+          <p class="sl">Coverage</p>
+          <ul class="bl"><li>T2–T9 lateral chest wall</li><li>Long thoracic nerve (serratus), lateral cutaneous branches intercostal nerves</li><li>Does NOT cover medial chest</li></ul>
+          <p class="sl">Dosing</p>
+          <div class="kv"><span class="kk">Volume</span><span class="kv2">20–30 mL</span></div>
+          <div class="kv"><span class="kk">Agent</span><span class="kv2">Ropivacaine 0.25–0.375%</span></div>
+          <div class="kv"><span class="kk">Target</span><span class="kv2">Superficial to serratus (preferred) or deep</span></div>
+        </div>
+        <div>
+          <p class="sl">Indications</p>
+          <ul class="bl"><li>Multiple rib fractures</li><li>VATS / thoracic procedures</li><li>Breast surgery (lateral)</li><li>Chest tube analgesia</li></ul>
+          <p class="sl">Notes</p>
+          <p style="font-size:12px;color:var(--t2);">US-guided at midaxillary line, 4th–5th rib level. Superficial plane (between serratus and latissimus) preferred — ↓ pneumothorax risk. Safe, reproducible, effective for lateral chest pain.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PECS -->
+  <div class="block-card" id="bc-pecs">
+    <div class="bc-h" onclick="toggleBlock('pecs')">
+      <div><div class="bc-name">PECS I & II Blocks</div><div class="bc-meta">Breast surgery · Chest wall · Axillary dissection</div></div>
+      <span class="dchv">▼</span>
+    </div>
+    <div class="bc-body">
+      <div class="g2">
+        <div>
+          <p class="sl">PECS I</p>
+          <div class="kv"><span class="kk">Target</span><span class="kv2">Between pect major and pect minor</span></div>
+          <div class="kv"><span class="kk">Volume</span><span class="kv2">10 mL</span></div>
+          <div class="kv"><span class="kk">Coverage</span><span class="kv2">Lateral pectoral nerve → medial breast</span></div>
+          <p class="sl" style="margin-top:8px;">PECS II</p>
+          <div class="kv"><span class="kk">Target</span><span class="kv2">Between pect minor and serratus</span></div>
+          <div class="kv"><span class="kk">Volume</span><span class="kv2">20 mL</span></div>
+          <div class="kv"><span class="kk">Coverage</span><span class="kv2">Intercostobrachial, medial pectoral, lateral intercostals</span></div>
+        </div>
+        <div>
+          <p class="sl">Combined PECS I+II</p>
+          <ul class="bl"><li>Mastectomy, lumpectomy, tissue expander</li><li>Axillary node dissection coverage</li><li>Total volume: 30 mL (10+20)</li><li>Agent: Ropivacaine 0.25–0.375% or bupivacaine 0.25%</li></ul>
+          <p class="sl">Notes</p>
+          <p style="font-size:12px;color:var(--t2);">US-guided infraclavicular approach. Identify pec major, pec minor, serratus, ribs. Safe — superficial fascial planes. Effective opioid-sparing for breast surgery.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Paravertebral -->
+  <div class="block-card" id="bc-pvb">
+    <div class="bc-h" onclick="toggleBlock('pvb')">
+      <div><div class="bc-name">Thoracic Paravertebral Block (PVB)</div><div class="bc-meta">Unilateral thoracic/chest analgesia · Thoracotomy</div></div>
+      <span class="dchv">▼</span>
+    </div>
+    <div class="bc-body">
+      <div class="g2">
+        <div>
+          <p class="sl">Coverage</p>
+          <ul class="bl"><li>Unilateral somatic + visceral (T1–T12, one level at a time)</li><li>Thoracotomy, mastectomy, rib fractures</li><li>Epidural-equivalent for unilateral pain</li></ul>
+          <p class="sl">Dosing</p>
+          <div class="kv"><span class="kk">Single-level volume</span><span class="kv2">15–20 mL</span></div>
+          <div class="kv"><span class="kk">Multi-level</span><span class="kv2">5 mL per level × 3–4 levels</span></div>
+          <div class="kv"><span class="kk">Agent</span><span class="kv2">Ropivacaine 0.375–0.5%</span></div>
+          <div class="kv"><span class="kk">Continuous</span><span class="kv2">0.1–0.2% rop 5–8 mL/hr</span></div>
+        </div>
+        <div>
+          <p class="sl">Complications</p>
+          <ul class="bl">
+            <li class="x">Pneumothorax (1–5%)</li>
+            <li class="x">Vascular puncture — high LAST risk (deep vascular site)</li>
+            <li class="x">Epidural spread → bilateral block</li>
+            <li class="w">Hypotension</li>
+          </ul>
+          <p class="sl">Notes</p>
+          <p style="font-size:12px;color:var(--t2);">US-guided: paramedian sagittal view. Needle tip just through costotransverse ligament. High LAST risk — treat as deep/vascular site per ASRA. ESB increasingly preferred for safety.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="sl">NEURAXIAL-ADJACENT</p>
+
+  <!-- Lumbar plexus -->
+  <div class="block-card" id="bc-lp">
+    <div class="bc-h" onclick="toggleBlock('lp')">
+      <div><div class="bc-name">Lumbar Plexus Block (Psoas Compartment)</div><div class="bc-meta">L1–L4 · Hip/knee/thigh · Deep — treat as neuraxial risk</div></div>
+      <span class="dchv">▼</span>
+    </div>
+    <div class="bc-body">
+      <div class="g2">
+        <div>
+          <p class="sl">Coverage</p>
+          <ul class="bl"><li>Femoral + obturator + lateral femoral cutaneous nerves (L1–L4)</li><li>Hip, anterior thigh, knee</li><li>Combine with sciatic for full leg anesthesia</li></ul>
+          <p class="sl">Dosing</p>
+          <div class="kv"><span class="kk">Volume</span><span class="kv2">25–35 mL</span></div>
+          <div class="kv"><span class="kk">Ropivacaine 0.5%</span><span class="kv2">30 mL</span></div>
+          <div class="kv"><span class="kk">Max single dose</span><span class="kv2">~3 mg/kg (high-absorb site)</span></div>
+        </div>
+        <div>
+          <p class="sl">Complications</p>
+          <ul class="bl">
+            <li class="x">Epidural spread (10–15%)</li>
+            <li class="x">Hematoma — treat as neuraxial for anticoag timing</li>
+            <li class="x">Renal/vascular puncture</li>
+            <li class="w">Quad weakness → fall risk</li>
+          </ul>
+          <p class="sl">Notes</p>
+          <p style="font-size:12px;color:var(--t2);">Deep block — ASRA treats same as neuraxial for anticoagulation. US-guided (probe transverse L4) or landmark + nerve stimulator. High-risk for LAST and epidural spread.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     NMT / TOF
+═══════════════════════════════════════ -->
+<div class="panel" style="display:none" id="tab-nmt">
+  <div class="al al-y" style="margin-bottom:11px;"><div class="al-t">ASA/APSF/ESAIC 2023 — NMB Monitoring Standard</div>Quantitative neuromuscular monitoring at adductor pollicis (ulnar nerve stimulation) is the ONLY reliable method to confirm TOF ratio ≥0.9 before extubation. Clinical tests (head lift, hand grip, tongue depressor) do NOT reliably detect residual block. Residual NMB rate: 30–65% without quantitative monitoring.</div>
+
+  <div class="card">
+    <div class="ch"><div class="ci ib">🔬</div><h2>TOF — Depth Classification (ASA 2023)</h2></div>
+    <div class="cb">
+
+      <div class="tof-section">
+        <div class="tof-label">Deep Block — PTC &lt;10, TOF count = 0</div>
+        <div class="tof-grid">
+          <div class="tof-dot tof-off">1</div>
+          <div class="tof-dot tof-off">2</div>
+          <div class="tof-dot tof-off">3</div>
+          <div class="tof-dot tof-off">4</div>
+        </div>
+        <div class="al al-r"><div class="al-t">Reversal</div><b>Sugammadex 4 mg/kg IV</b> (PTC 1–2) or <b>16 mg/kg</b> (immediate emergent reversal after roc 1.2 mg/kg). Neostigmine cannot reverse deep block.</div>
+      </div>
+
+      <div class="tof-section">
+        <div class="tof-label">Moderate Block — TOF count 1–3</div>
+        <div class="tof-grid">
+          <div class="tof-dot tof-on">1</div>
+          <div class="tof-dot tof-off">2</div>
+          <div class="tof-dot tof-off">3</div>
+          <div class="tof-dot tof-off">4</div>
+        </div>
+        <div class="al al-o"><div class="al-t">Reversal</div><b>Sugammadex 2 mg/kg IV</b> (rocuronium/vecuronium) — recommended. Neostigmine NOT recommended at this depth.</div>
+      </div>
+
+      <div class="tof-section">
+        <div class="tof-label">Shallow Block — TOF count = 4, ratio &lt;0.4</div>
+        <div class="tof-grid">
+          <div class="tof-dot tof-on">1</div>
+          <div class="tof-dot tof-on">2</div>
+          <div class="tof-dot tof-on">3</div>
+          <div class="tof-dot tof-on">4</div>
+        </div>
+        <p style="font-size:11px;color:var(--t3);margin-bottom:4px;">Fade present on qualitative assessment</p>
+        <div class="al al-o"><div class="al-t">Reversal</div><b>Sugammadex 2 mg/kg IV</b> recommended. Neostigmine 15–40 mcg/kg acceptable alternative with quantitative monitoring confirmation TOF ≥0.4.</div>
+      </div>
+
+      <div class="tof-section">
+        <div class="tof-label">Minimal Block — TOF ratio 0.4–&lt;0.9</div>
+        <div class="tof-grid">
+          <div class="tof-dot tof-on" style="opacity:.6;">1</div>
+          <div class="tof-dot tof-on" style="opacity:.7;">2</div>
+          <div class="tof-dot tof-on" style="opacity:.85;">3</div>
+          <div class="tof-dot tof-on">4</div>
+        </div>
+        <p style="font-size:11px;color:var(--t3);margin-bottom:4px;">Fade present on quantitative — not reliably detectable qualitatively</p>
+        <div class="al al-b"><div class="al-t">Reversal</div>Sugammadex 2 mg/kg (preferred, rocuronium/vecuronium) OR Neostigmine 15–40 mcg/kg + glycopyrrolate 0.01 mg/kg (acceptable alternative for minimal block). Cisatracurium: neostigmine only (sugammadex does not reverse).</div>
+      </div>
+
+      <div class="tof-section">
+        <div class="tof-label">Adequate Recovery — TOF ratio ≥ 0.9</div>
+        <div class="tof-grid">
+          <div class="tof-dot tof-on">1</div>
+          <div class="tof-dot tof-on">2</div>
+          <div class="tof-dot tof-on">3</div>
+          <div class="tof-dot tof-on">4</div>
+        </div>
+        <div class="al al-g"><div class="al-t">No Pharmacologic Reversal Needed</div>TOF ratio ≥0.9 confirmed by quantitative monitoring = adequate recovery. Safe to extubate. Note: Cannot reliably confirm ≥0.9 by qualitative (visual/tactile) assessment alone.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ch"><div class="ci ig">💉</div><h2>Reversal Dosing — Quick Reference</h2></div>
+    <div class="cb">
+      <table class="rt">
+        <thead><tr><th>Agent</th><th>Indication</th><th>Dose</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td><b>Sugammadex</b> <span class="tag t-g">preferred</span></td><td>Moderate (TOF 2+)</td><td><span class="d">2 mg/kg IV</span></td><td>Rocuronium / vecuronium only. Time to TOF ≥0.9: ~2–3 min</td></tr>
+          <tr><td><b>Sugammadex</b></td><td>Deep (PTC 1–2)</td><td><span class="d">4 mg/kg IV</span></td><td>Time to TOF ≥0.9: ~3–5 min</td></tr>
+          <tr><td><b>Sugammadex</b></td><td>Immediate/emergent</td><td><span class="d">16 mg/kg IV</span></td><td>After roc 1.2 mg/kg RSI; onset ~3 min. CICO rescue option.</td></tr>
+          <tr><td><b>Neostigmine</b> <span class="tag t-b">minimal block only</span></td><td>TOF ratio 0.4–&lt;0.9</td><td><span class="d">15–40 mcg/kg IV</span> (max 5 mg)</td><td>ALWAYS pair with glycopyrrolate 0.01 mg/kg or atropine 0.02 mg/kg. Time to TOF ≥0.9: 10–15+ min</td></tr>
+          <tr><td><b>Neostigmine</b></td><td>Cisatracurium (any depth)</td><td><span class="d">40–70 mcg/kg IV</span></td><td>Sugammadex does NOT reverse benzylisoquinoliniums</td></tr>
+          <tr><td><b>Glycopyrrolate</b></td><td>With neostigmine</td><td><span class="d">0.01 mg/kg IV</span></td><td>Ratio: glycopyrrolate 0.2 mg : neostigmine 1 mg</td></tr>
+        </tbody>
+      </table>
+      <div class="al al-o" style="margin-top:9px;"><div class="al-t">Sugammadex Caveats</div>Only encapsulates aminosteroids (rocuronium, vecuronium). No effect on succinylcholine, atracurium, cisatracurium, benzylisoquinoliniums. Re-curarization rare but monitor ≥30 min. Caution in severe renal failure (accumulation of complex) — however, 2024 data show rocuronium+sugammadex superior to cis+neostigmine even in CrCl &lt;30. QTc prolongation reported at 32 mg/kg doses. Pregnancy: crosses placenta → monitor neonate.</div>
+      <div class="al al-b" style="margin-top:6px;"><div class="al-t">Monitoring Best Practice (ASA 2023)</div>Use quantitative monitor (acceleromyography EMG preferred) at adductor pollicis (ulnar nerve). Calibrate before induction. Always confirm TOF ≥0.9 before extubation. Qualitative (visual/tactile fade) is unreliable — do NOT use as sole criterion for extubation.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ch"><div class="ci ib">⏱</div><h2>NMB Drug Duration Reference</h2></div>
+    <div class="cb">
+      <table class="rt">
+        <thead><tr><th>Drug</th><th>Type</th><th>Intubation Dose</th><th>Clinical Duration</th><th>Reversible With</th></tr></thead>
+        <tbody>
+          <tr><td><b>Succinylcholine</b></td><td>Depolarizing</td><td>1.5 mg/kg</td><td>6–10 min</td><td>Spontaneous (pseudocholinesterase)</td></tr>
+          <tr><td><b>Rocuronium</b> (RSI)</td><td>Aminosteroid</td><td>1.2 mg/kg</td><td>60–90 min</td><td>Sugammadex 16 mg/kg (immediate)</td></tr>
+          <tr><td><b>Rocuronium</b> (standard)</td><td>Aminosteroid</td><td>0.6 mg/kg</td><td>30–45 min</td><td>Sugammadex 2–4 mg/kg</td></tr>
+          <tr><td><b>Vecuronium</b></td><td>Aminosteroid</td><td>0.1 mg/kg</td><td>25–40 min</td><td>Sugammadex 2–4 mg/kg</td></tr>
+          <tr><td><b>Cisatracurium</b></td><td>Benzylisoquinolinium</td><td>0.15–0.2 mg/kg</td><td>40–60 min</td><td>Neostigmine (hofmann elim.)</td></tr>
+          <tr><td><b>Atracurium</b></td><td>Benzylisoquinolinium</td><td>0.5 mg/kg</td><td>25–35 min</td><td>Neostigmine (hofmann elim.)</td></tr>
+          <tr><td><b>Pancuronium</b></td><td>Aminosteroid</td><td>0.1 mg/kg</td><td>90–120 min</td><td>Sugammadex (↓ use — renal accum.)</td></tr>
+        </tbody>
+      </table>
+      <div class="al al-b" style="margin-top:8px;"><div class="al-t">Factors Prolonging NMB Duration</div>Hypothermia · Hypermagnesemia · Acidosis · Aminoglycoside antibiotics · Volatile anesthetics (potentiate) · Hepatic failure (aminosteroids) · Renal failure (pancuronium, vecuronium) · Pseudocholinesterase deficiency (succinylcholine)</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     EMERGENCIES
+═══════════════════════════════════════ -->
+<div class="panel" style="display:none" id="tab-emergency">
+
+  <div class="card">
+    <div class="ch"><div class="ci ir">🚨</div><h2>High / Total Spinal</h2></div>
+    <div class="cb">
+      <ul class="bl">
+        <li class="x">Rapid unexpected cephalad spread of block</li>
+        <li class="x">Numbness / paresthesia / weakness of upper extremities</li>
+        <li class="x">SOB, apnea, anxiety, nausea</li>
+        <li class="x">Bradycardia ± hypotension</li>
+        <li class="x">Loss of consciousness → cardiac arrest (total spinal)</li>
+      </ul>
+      <p class="sl">Treatment</p>
+      <ul class="bl">
+        <li>Call for help, code cart, inform surgical team immediately</li>
+        <li>If cardiac arrest: CPR + ACLS protocol</li>
+        <li>Support ventilation — intubate if apneic</li>
+        <li>Epi <span class="d dr">10 mcg IV boluses</span> for bradycardia/hypotension; titrate up</li>
+        <li>Atropine <span class="d">0.5 mg IV</span> for mild bradycardia; low threshold for epi</li>
+        <li>IV fluid bolus wide open</li>
+      </ul>
+      <div class="al al-r" style="margin-top:8px;"><div class="al-t">IF PARTURIENT</div>LUD immediately. Alert OB team. Prepare for perimortem C/S. Monitor fetal HR. If arrest → ACLS in Pregnancy protocol.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ch"><div class="ci ir">🌡</div><h2>Malignant Hyperthermia (MH)</h2></div>
+    <div class="cb">
+      <div class="g2">
+        <div>
+          <p class="sl">Trigger Agents</p>
+          <ul class="bl">
+            <li class="x">All volatile agents (sevo, iso, des, halothane)</li>
+            <li class="x">Succinylcholine</li>
+            <li class="ok">SAFE: propofol, ketamine, opioids, benzos, NdNMBs, N₂O, local anesthetics</li>
+          </ul>
+        </div>
+        <div>
+          <p class="sl">Early Signs</p>
+          <ul class="bl">
+            <li class="x">↑ EtCO₂ (first reliable sign)</li>
+            <li class="x">Masseter spasm / generalized rigidity</li>
+            <li class="x">↑ HR, ↑ RR, hyperthermia (&gt;1°C/5 min)</li>
+            <li class="x">Metabolic acidosis, ↑ K⁺, myoglobinuria</li>
+          </ul>
+        </div>
+      </div>
+      <p class="sl" style="margin-top:8px;">Treatment — MHAUS Hotline: <span class="d">1-800-644-9737</span></p>
+      <div class="step"><div class="sn r">1</div><div class="sc"><div class="st">Dantrolene — Immediately</div><div class="sd"><span class="d dr">2.5 mg/kg IV rapid bolus</span> → repeat <b>2.5 mg/kg q5 min PRN</b> (MHAUS/EMHG 2024: repeat full 2.5 mg/kg dose, not 1 mg/kg); max 10 mg/kg (up to 20 mg/kg if refractory). <b>Maintenance post-crisis: 1 mg/kg IV q4–6h × ≥24h</b> to prevent recrudescence (occurs in ~20% of cases, median 9h after crisis). Ryanodex 250 mg/5 mL DW (faster reconstitution than standard 20 mg/vial).</div></div></div>
+      <div class="step"><div class="sn r">2</div><div class="sc"><div class="st">Discontinue All Triggers</div><div class="sd">Stop volatile agents. Switch to TIVA (propofol ± opioid). Hyperventilate 100% O₂ ≥10 L/min. Change circuit and soda lime when time permits.</div></div></div>
+      <div class="step"><div class="sn">3</div><div class="sc"><div class="st">Active Cooling</div><div class="sd">Ice to groin/axilla/neck. Cold IVF lavage. Cool body cavities if open. Stop cooling at 38.5°C (overshoot risk).</div></div></div>
+      <div class="step"><div class="sn">4</div><div class="sc"><div class="st">Treat Metabolic Consequences</div><div class="sd">Bicarb for acidosis. CaCl for hyperkalemia. Insulin + D50 for K⁺. Amiodarone for arrhythmias. UO &gt;1 mL/kg/hr; alkalinize urine for rhabdomyolysis.</div></div></div>
+      <div class="step"><div class="sn">5</div><div class="sc"><div class="st">ICU — ≥24h Post-Crisis</div><div class="sd"><b>Dantrolene 1 mg/kg IV q4–6h × ≥24h</b> (MHAUS: bolus preferred over infusion; allows clinical reassessment at each interval). Recrudescence in ~20% — monitor for return of rigidity, ↑EtCO₂, ↑CK. Monitor: CK, BMP, UA q6h. CK peaks 12–24h. Oral dantrolene 4–8 mg/kg/day ÷ 4 doses × 1–3 days if transitioning off IV. Refer patient + family for RYR1 genetic testing (CHCT or DNA).</div></div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ch"><div class="ci ir">⚠</div><h2>Anaphylaxis</h2></div>
+    <div class="cb">
+      <p style="font-size:12px;color:var(--t2);margin-bottom:8px;">Common triggers: Antibiotics · NMBDs (roc, sux) · Latex · Chlorhexidine · Contrast · Colloids · Opioids</p>
+      <div class="step"><div class="sn r">1</div><div class="sc"><div class="st">Epinephrine — First and Only First Line</div><div class="sd">Arrest: <span class="d dr">0.5–1 mg IV</span> → ACLS. Hypotension/bronchospasm: <span class="d dr">10–50 mcg IV</span> q1–2 min. No IV: <span class="d dr">300–500 mcg IM</span> (anterolateral thigh). Infusion: <span class="d">0.05–1 mcg/kg/min</span></div></div></div>
+      <div class="step"><div class="sn">2</div><div class="sc"><div class="st">Airway + 100% O₂</div><div class="sd">Intubate early if airway edema developing. Albuterol 2.5 mg neb for bronchospasm.</div></div></div>
+      <div class="step"><div class="sn">3</div><div class="sc"><div class="st">Volume + Vasopressors</div><div class="sd">1–2 L crystalloid IV rapidly. Vasopressin 0.03–0.04 units/min for epi-refractory hypotension. Norepinephrine infusion if needed.</div></div></div>
+      <div class="step"><div class="sn">4</div><div class="sc"><div class="st">Adjuncts (Secondary)</div><div class="sd">Diphenhydramine <span class="d">25–50 mg IV</span> · Famotidine <span class="d">20 mg IV</span> (H₂; ranitidine RECALLED — NDMA) · Methylprednisolone <span class="d">125 mg IV</span> · Glucagon <span class="d">1–5 mg IV</span> if beta-blocked</div></div></div>
+      <div class="al al-b" style="margin-top:8px;"><div class="al-t">Rocuronium/Vecuronium Anaphylaxis</div>Sugammadex 16 mg/kg IV — encapsulates the antigenic NMBD, removes ongoing stimulus. Does NOT treat the anaphylaxis itself — still requires full anaphylaxis treatment.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ch"><div class="ci ir">🫁</div><h2>CICO — Cannot Intubate Cannot Oxygenate</h2></div>
+    <div class="cb">
+      <div class="al al-r"><div class="al-t">CICO = Surgical Emergency — Declare It</div></div>
+      <div class="step"><div class="sn r">1</div><div class="sc"><div class="st">Declare CICO — Call for Help</div><div class="sd">Max 3 laryngoscopy attempts total (including video). 2nd-gen SGA (i-gel, ProSeal LMA). If SpO₂ falling with no oxygenation after SGA → CICO declared.</div></div></div>
+      <div class="step"><div class="sn r">2</div><div class="sc"><div class="st">Front of Neck Access (FONA) — Scalpel First</div><div class="sd">Preferred: Scalpel-bougie-tube technique (DAS 2015). Do NOT attempt needle cric as primary CICO in adults.<br><br><b>Scalpel cric:</b> Horizontal stab incision through CTM → digital dilate → 6.0 cuffed ETT or trach tube<br><b>Commercial devices:</b> Melker, Portex — only if trained<br><b>Needle cric + jet vent:</b> temporizing bridge only (&lt;45 min; barotrauma risk)</div></div></div>
+      <p style="font-size:11px;color:var(--t3);margin-top:8px;">DAS 2015 · NAP4 · ASA 2022 Difficult Airway Practice Guidelines</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ch"><div class="ci iw">K⁺</div><h2>Hyperkalemia</h2></div>
+    <div class="cb">
+      <table class="rt">
+        <thead><tr><th>Mechanism</th><th>Drug</th><th>Dose</th><th>Onset</th></tr></thead>
+        <tbody>
+          <tr><td>Membrane stabilize</td><td><b>Calcium chloride 10%</b> <span class="tag t-g">first</span></td><td><span class="d">0.5–1 g IV</span> over 2–5 min</td><td>Immediate</td></tr>
+          <tr><td>Membrane stabilize</td><td>Calcium gluconate 10%</td><td><span class="d">1–3 g IV</span> over 10 min</td><td>1–3 min</td></tr>
+          <tr><td>Redistribution</td><td>Regular insulin + D50</td><td><span class="d">10 U + 50 mL D50W IV</span></td><td>15–30 min</td></tr>
+          <tr><td>Redistribution</td><td>Sodium bicarbonate</td><td><span class="d">50–100 mEq IV</span></td><td>15–30 min</td></tr>
+          <tr><td>Redistribution</td><td>Albuterol</td><td><span class="d">10–20 mg neb</span></td><td>30 min</td></tr>
+          <tr><td>Elimination</td><td>Furosemide</td><td><span class="d">40–80 mg IV</span></td><td>30–60 min</td></tr>
+          <tr><td>Elimination</td><td>Kayexalate / Patiromer</td><td><span class="d">15–30 g PO/PR</span> or <span class="d">8.4 g PO</span></td><td>Hours</td></tr>
+          <tr><td>Elimination</td><td>Hemodialysis</td><td>Definitive for severe/refractory</td><td>Rapid</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:11px;color:var(--t3);margin-top:7px;">CaCl: ~3× elemental Ca²⁺ vs gluconate — prefer CaCl in arrest. Incompatible with NaHCO₃ in same line.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     OB
+═══════════════════════════════════════ -->
+<div class="panel" style="display:none" id="tab-ob">
+  <div class="card">
+    <div class="ch"><div class="ci ir">🍼</div><h2>Post-Partum Hemorrhage (PPH)</h2></div>
+    <div class="cb">
+      <div class="al al-r"><div class="al-t">EBL Thresholds</div>Vaginal: &gt;500 mL · C-section: &gt;1000 mL · Severe PPH: &gt;1500 mL</div>
+      <p class="sl" style="margin-top:8px;">4 T's Etiology</p>
+      <p style="font-size:12px;color:var(--t2);margin-bottom:8px;"><b>Tone</b> (atony 80%) · <b>Trauma</b> (lacerations/rupture) · <b>Tissue</b> (retained products) · <b>Thrombin</b> (coagulopathy)</p>
+      <table class="rt">
+        <thead><tr><th>Drug</th><th>Dose</th><th>Route</th><th>Key Notes</th></tr></thead>
+        <tbody>
+          <tr><td><b>Oxytocin</b> <span class="tag t-g">1st line</span></td><td>Rule of 3s: 3 U load over 30 sec → repeat q3min × 3 doses → 3 U/hr infusion up to 9 hr</td><td>IV/IM/IU</td><td>WHO: 10 U IM/IV. Do NOT rapid IV bolus → hypotension, coronary spasm</td></tr>
+          <tr><td><b>TXA</b> <span class="tag t-g">early — all PPH</span></td><td>1 g IV over 10 min; repeat × 1 after 30 min if continued bleeding</td><td>IV only</td><td>WHO 2023: recommended for ALL PPH. Give within 3 hr delivery. WOMAN trial: ↓ mortality 19%. Does not ↑ thrombosis.</td></tr>
+          <tr><td><b>Methylergonovine</b></td><td>0.2 mg IM q5–10 min × max 2 doses; then q2–4 hr</td><td>IM preferred (avoid rapid IV)</td><td>CI: HTN, pre-eclampsia, Raynaud's, CAD. SE: HTN, coronary spasm</td></tr>
+          <tr><td><b>Carboprost (Hemabate)</b></td><td>0.25 mg IM q15–90 min; max 2 mg/24 hr</td><td>IM or IU only</td><td>CI: asthma. SE: bronchospasm, N/V/D, flushing</td></tr>
+          <tr><td><b>Misoprostol</b></td><td>600–1000 mcg</td><td>Buccal/SL/PR/PO</td><td>Onset 10 min buccal. SE: fever ≤38.5°C, shivering, N/V</td></tr>
+          <tr><td><b>Fibrinogen conc. (RiaSTAP)</b></td><td>2–4 g IV; target fib &gt;2 g/L</td><td>IV</td><td>DIC/AFE/major hemorrhage. ROTEM/TEG-guided preferred. 2 g ≈ 10–20 cryo units.</td></tr>
+        </tbody>
+      </table>
+      <div class="al al-b" style="margin-top:8px;"><div class="al-t">Escalation</div>↑ IV access (2 large bore) · MTP activation · Cell salvage · CaCl 1 g q4U pRBC · Warm patient · POC coag (ROTEM/TEG) · IR embolization · Prepare for hysterectomy</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ch"><div class="ci ir">BP↑</div><h2>Hypertensive Disorders of Pregnancy</h2></div>
+    <div class="cb">
+      <div class="al al-o"><div class="al-t">Pre-Eclampsia</div>BP &gt;140/90 ×2 (≥4 hr apart) after 20 wks + proteinuria OR any severe feature: BP &gt;160/110, plt &lt;100k, Cr &gt;1.1, LFTs 2×ULN, pulmonary edema, new HA/visual changes</div>
+      <p class="sl">Seizure Prophylaxis</p>
+      <div class="kv"><span class="kk">Mg load</span><span class="kv2">4–6 g IV over 15–20 min</span></div>
+      <div class="kv"><span class="kk">Mg infusion</span><span class="kv2">1–2 g/hr × 24 hr post-delivery — do NOT stop intraop</span></div>
+      <div class="kv"><span class="kk">Mg toxicity</span><span class="kv2">↓ DTRs (4–5) → resp paralysis (6–7) → arrest (&gt;10 mEq/L)</span></div>
+      <div class="kv"><span class="kk">Antidote</span><span class="kv2">CaCl 1 g IV or CaGluconate 2–3 g IV</span></div>
+      <p class="sl" style="margin-top:10px;">Severe HTN (SBP ≥160 / DBP ≥110) — Treat within <b>15–30 min</b> (OBLS 2024); ACOG: 60 min</p>
+      <table class="rt">
+        <thead><tr><th>Drug</th><th>Dose</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td><b>Labetalol</b> <span class="tag t-g">1st line</span></td><td>20 mg IV; then 40–80 mg q10 min; max 300 mg. Infusion 1–2 mg/min</td><td>Avoid: severe asthma, bradycardia</td></tr>
+          <tr><td><b>Hydralazine</b> <span class="tag t-g">1st line</span></td><td>5–10 mg IV q20 min; max 30 mg</td><td>Onset 15–20 min; unpredictable</td></tr>
+          <tr><td><b>Nifedipine IR</b> <span class="tag t-g">1st line</span></td><td>10–20 mg PO; repeat 20 mg q30 min PRN; max 50 mg/episode</td><td>PO only — DO NOT give IV. OK with Mg (prior concern unfounded)</td></tr>
+          <tr><td><b>Nicardipine</b> <span class="tag t-b">alt</span></td><td>0.5–10 mg/hr IV infusion</td><td>Smooth/titratable; peripartum ICU preferred</td></tr>
+        </tbody>
+      </table>
+      <div class="al al-r" style="margin-top:8px;"><div class="al-t">HELLP Syndrome</div>Hemolysis + ↑ LFTs + Plt &lt;100k. Plt &lt;50k → transfuse if C/S. GA if C/S — control BP at laryngoscopy (risk intracranial hemorrhage). No neuraxial if plt &lt;80k.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ch"><div class="ci ib">✂</div><h2>Emergent GA for C-Section</h2></div>
+    <div class="cb">
+      <div class="al al-r" style="margin-bottom:8px;"><div class="al-t">ENSURE OB TEAM PREPPED & DRAPED BEFORE INDUCTION</div></div>
+      <ul class="bl">
+        <li>Pre-oxygenate: 3 min tidal breathing OR 8 vital capacity breaths 100% O₂</li>
+        <li>Sodium citrate 0.3M 30 mL PO within 30 min of induction</li>
+        <li>Left uterine displacement (wedge or manual)</li>
+        <li>RSI with cricoid pressure (Sellick) — controversial but standard</li>
+      </ul>
+      <table class="rt" style="margin-top:8px;">
+        <thead><tr><th>Drug</th><th>Dose</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Succinylcholine</td><td><span class="d">1.5 mg/kg IV</span></td><td>Standard RSI agent</td></tr>
+          <tr><td>Rocuronium (RSI)</td><td><span class="d">1.2 mg/kg IV</span></td><td>Reverse with sugammadex 16 mg/kg if needed</td></tr>
+          <tr><td>Propofol</td><td><span class="d">2–2.5 mg/kg IV</span></td><td>Preferred if non-hemorrhagic</td></tr>
+          <tr><td>Ketamine</td><td><span class="d">1–2 mg/kg IV</span></td><td>Preferred if hemorrhage/hypotension or asthma</td></tr>
+          <tr><td>Etomidate</td><td><span class="d">0.3 mg/kg IV</span></td><td>Hemodynamically stable; single dose acceptable</td></tr>
+        </tbody>
+      </table>
+      <p class="sl" style="margin-top:10px;">C/S Antibiotics — ACOG 2023</p>
+      <table class="rt">
+        <thead><tr><th>Indication</th><th>Regimen</th></tr></thead>
+        <tbody>
+          <tr><td>Standard</td><td>Cefazolin <span class="d">2 g IV</span> (3 g if ≥120 kg) within 60 min of incision</td></tr>
+          <tr><td>High-risk endometritis†</td><td>Cefazolin as above + Azithromycin <span class="d">500 mg IV × 1</span> over 60 min (no re-dose)</td></tr>
+          <tr><td>PCN-allergic (IgE-mediated)</td><td>Clindamycin <span class="d">900 mg IV</span> + Gentamicin <span class="d">5 mg/kg IV × 1</span></td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:11px;color:var(--t3);margin-top:5px;">†High-risk: prolonged labor, prolonged ROM, multiple vaginal exams, chorioamnionitis, obesity. Redose cefazolin q4h if EBL &gt;1500 mL.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PEDS
+═══════════════════════════════════════ -->
+<div class="panel" style="display:none" id="tab-peds">
+  <div class="card">
+    <div class="ch"><div class="ci ib">👶</div><h2>Pediatric Normal Parameters</h2></div>
+    <div class="cb">
+      <div style="overflow-x:auto;">
+        <table class="rt">
+          <thead><tr><th>Age</th><th>Wt(kg)</th><th>HR</th><th>SBP</th><th>RR</th><th>LMA</th><th>Blade</th><th>ETT(mm)</th><th>Depth</th></tr></thead>
+          <tbody>
+            <tr><td>Premature</td><td>&lt;1</td><td>140–160</td><td>30–45</td><td>40–60</td><td>1</td><td>Miller 0</td><td>2.5–3.0</td><td>6–8 cm</td></tr>
+            <tr><td>0–1 mo (1–2 kg)</td><td>1–2</td><td>130–140</td><td>35–55</td><td>30–50</td><td>1</td><td>Miller 0</td><td>3.0</td><td>8 cm</td></tr>
+            <tr><td>0–1 mo (2–3 kg)</td><td>2–3</td><td>130–140</td><td>45–60</td><td>30–50</td><td>1</td><td>Miller 0–1</td><td>3.5</td><td>9 cm</td></tr>
+            <tr><td>0–1 mo (&gt;3 kg)</td><td>&gt;3</td><td>125–145</td><td>55–70</td><td>30–50</td><td>1</td><td>Miller 0–1</td><td>3.5–4.0</td><td>10 cm</td></tr>
+            <tr><td>1–6 mo</td><td>4–6</td><td>120–140</td><td>65–80</td><td>24–30</td><td>1–1.5</td><td>Miller 1</td><td>3.5–4.0</td><td>12 cm</td></tr>
+            <tr><td>6 mo–1 yr</td><td>6–10</td><td>110–130</td><td>70–90</td><td>22–26</td><td>1.5</td><td>Wis 1.5</td><td>4.0</td><td>13 cm</td></tr>
+            <tr><td>1–2 yr</td><td>10–12</td><td>105–120</td><td>75–95</td><td>20–24</td><td>2</td><td>Wis 1.5</td><td>4.5</td><td>14 cm</td></tr>
+            <tr><td>2–4 yr</td><td>12–16</td><td>95–115</td><td>80–100</td><td>18–22</td><td>2</td><td>Mac 2</td><td>5.0</td><td>15 cm</td></tr>
+            <tr><td>4–6 yr</td><td>16–20</td><td>85–110</td><td>85–105</td><td>16–20</td><td>2–2.5</td><td>Mac 2</td><td>5.5</td><td>16 cm</td></tr>
+            <tr><td>6–8 yr</td><td>20–30</td><td>80–100</td><td>90–110</td><td>16–20</td><td>2.5</td><td>Mac 2</td><td>6.0</td><td>17 cm</td></tr>
+            <tr><td>9–12 yr</td><td>30–45</td><td>70–90</td><td>95–115</td><td>12–18</td><td>3</td><td>Mac 2–3</td><td>6.5–7.0</td><td>18 cm</td></tr>
+            <tr><td>&gt;14 yr</td><td>&gt;50</td><td>60–80</td><td>100–130</td><td>10–16</td><td>4</td><td>Mac 3</td><td>7.0</td><td>20–22 cm</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="sl" style="margin-top:12px;">Quick Formulas</p>
+      <div class="kv"><span class="kk">ETT uncuffed</span><span class="kv2">(Age÷4) + 4</span></div>
+      <div class="kv"><span class="kk">ETT cuffed</span><span class="kv2">(Age÷4) + 3.5</span></div>
+      <div class="kv"><span class="kk">ETT depth (lips)</span><span class="kv2">Age + 10 cm (or 3 × ETT size)</span></div>
+      <div class="kv"><span class="kk">ETT depth (nose)</span><span class="kv2">(Height cm÷10) + 5</span></div>
+      <div class="kv"><span class="kk">Weight &gt;1 yr</span><span class="kv2">(Age × 2) + 8 kg</span></div>
+      <div class="kv"><span class="kk">Low SBP (1–10 yr)</span><span class="kv2">70 + (Age × 2) mmHg</span></div>
+      <div class="al al-b" style="margin-top:9px;"><div class="al-t">Neonatal Rules</div>MAP (mmHg) ≈ weeks PCA. By DOL 5: MAP = weeks PCA + 5. Neonatal 1-2-3 kg / 7-8-9 cm Rule (ETT depth at lip).</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="ch"><div class="ci ig">🍬</div><h2>Intraop Glucose — Infants & Neonates</h2></div>
+    <div class="cb">
+      <p class="sl">Check glucose intraoperatively:</p>
+      <ul class="bl">
+        <li class="w">Any NPO infant &lt;6 months</li>
+        <li class="w">&lt;44 weeks PCA (premature / IUGR / SGA)</li>
+        <li class="w">Born to diabetic mothers</li>
+        <li class="w">On TPN or D10W</li>
+        <li class="w">Sepsis, fever, or shock</li>
+        <li class="w">Long procedures (&gt;2 hr)</li>
+        <li class="w">Suspected inborn errors of metabolism</li>
+      </ul>
+      <div class="al al-b" style="margin-top:8px;"><div class="al-t">Targets & Dosing</div>Neonate target: 50–150 mg/dL. Basal glucose requirement: 5–8 mg/kg/min. Run D5LR or D5NS at maintenance if concern. Check q30–60 min if supplementing. Adjust rate PRN.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     MEDS A–Z
+═══════════════════════════════════════ -->
+<div class="panel" style="display:none" id="tab-meds">
+  <div class="srch"><span class="sico">🔍</span><input type="text" class="si" id="dSearch" placeholder="Search drugs by name or class..." oninput="filterDrugs(this.value)"></div>
+  <div id="dList"></div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     ABX
+═══════════════════════════════════════ -->
+<div class="panel" style="display:none" id="tab-abx">
+  <div class="card">
+    <div class="ch"><div class="ci io">Rx</div><h2>Surgical Antibiotic Prophylaxis — ASHP/IDSA/SHEA 2023</h2></div>
+    <div class="cb">
+      <div class="al al-b" style="margin-bottom:9px;"><div class="al-t">General Principles</div>Administer within 60 min of incision (120 min for vancomycin/fluoroquinolones). Redose at 1–2× drug half-life or EBL &gt;1500 mL. Discontinue within 24 hr post-op (cardiac surgery: 48 hr). Single dose adequate for most procedures.</div>
+      <table class="rt">
+        <thead><tr><th>Drug</th><th>Adult Dose</th><th>Peds Dose</th><th>Redose Interval</th></tr></thead>
+        <tbody>
+          <tr><td><b>Cefazolin</b> <span class="tag t-g">1st line most cases</span></td><td>2 g IV (3 g if ≥120 kg)</td><td>30 mg/kg IV (max 2 g)</td><td>q4h</td></tr>
+          <tr><td>Cefoxitin</td><td>2 g IV</td><td>40 mg/kg IV (max 2 g)</td><td>q2h</td></tr>
+          <tr><td>Cefuroxime</td><td>1.5 g IV</td><td>50 mg/kg IV (max 1.5 g)</td><td>q4h</td></tr>
+          <tr><td>Ceftriaxone</td><td>2 g IV</td><td>50 mg/kg IV (max 2 g)</td><td>q12–24h</td></tr>
+          <tr><td>Ampicillin-sulbactam</td><td>3 g IV</td><td>50 mg/kg amp IV</td><td>q2h</td></tr>
+          <tr><td>Pip-tazo</td><td>3.375 g IV</td><td>100 mg/kg pip IV</td><td>q2h</td></tr>
+          <tr><td>Clindamycin <span class="tag t-b">PCN-allergic alt</span></td><td>900 mg IV</td><td>10 mg/kg IV (max 900 mg)</td><td>q6h</td></tr>
+          <tr><td>Vancomycin <span class="tag t-b">MRSA/PCN allergy</span></td><td>15–20 mg/kg IV (max 3 g); <b>AUC/MIC-guided — target AUC 400–600 mg·h/L</b> (ASHP/IDSA/SHEA 2020; trough-only monitoring no longer recommended)</td><td>15 mg/kg IV</td><td>q6–12h</td></tr>
+          <tr><td>Gentamicin</td><td>5 mg/kg IV × 1 (single dose preferred)</td><td>2.5 mg/kg IV</td><td>q24h</td></tr>
+          <tr><td>Metronidazole <span class="tag t-b">colorectal</span></td><td>500 mg IV</td><td>15 mg/kg IV (max 500 mg)</td><td>q8h</td></tr>
+          <tr><td>Azithromycin <span class="tag t-y">OB add-on</span></td><td>500 mg IV × 1 over 60 min only</td><td>—</td><td>Single dose — no redose</td></tr>
+        </tbody>
+      </table>
+      <p class="sl" style="margin-top:13px;">Procedure-Specific Selection</p>
+      <table class="rt">
+        <thead><tr><th>Procedure</th><th>Preferred</th><th>PCN Allergy Alternative</th></tr></thead>
+        <tbody>
+          <tr><td>Cardiac / thoracic / vascular</td><td>Cefazolin 2 g</td><td>Vancomycin + gent</td></tr>
+          <tr><td>Orthopedic (implant)</td><td>Cefazolin 2 g</td><td>Vancomycin ± gent (MRSA risk)</td></tr>
+          <tr><td>Colorectal</td><td>Cefoxitin 2 g OR cefazolin + metronidazole</td><td>Clindamycin + gent or aztreonam</td></tr>
+          <tr><td>Appendectomy (uncomplicated)</td><td>Cefoxitin 2 g</td><td>Clindamycin + gent</td></tr>
+          <tr><td>Gynecologic</td><td>Cefazolin 2 g</td><td>Clindamycin + gent</td></tr>
+          <tr><td>C-section</td><td>Cefazolin 2–3 g ± azithromycin 500 mg</td><td>Clindamycin 900 mg + gent 5 mg/kg</td></tr>
+          <tr><td>Head/neck (clean-contaminated)</td><td>Ampicillin-sulbactam 3 g</td><td>Clindamycin + gent</td></tr>
+          <tr><td>Urologic</td><td>Cefazolin 2 g or TMP-SMX</td><td>Fluoroquinolone (watch resistance)</td></tr>
+          <tr><td>Neurosurgery (craniotomy)</td><td>Cefazolin 2 g</td><td>Clindamycin 900 mg</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     ASTM
+═══════════════════════════════════════ -->
+<div class="panel" style="display:none" id="tab-astm">
+  <div class="card">
+    <div class="ch"><div class="ci ig">🎨</div><h2>ASTM D4774-24 / ISO 26825 — Verified Color Reference</h2></div>
+    <div class="cb">
+      <div class="al al-b" style="margin-bottom:10px;">
+        <div class="al-t">ASTM D4774-24 — 9 Drug Classes (ASA / APSF Endorsed)</div>
+        Standardizes user-applied syringe label colors in anesthesiology. Current standard: D4774-24. ISO 26825 covers 8 classes (excludes beta-blockers). Text is BLACK on background color for agonists. Antagonists use WHITE DIAGONAL STRIPES over the parent class color.
+      </div>
+
+      <p class="sl">THE 9 OFFICIAL ASTM D4774-24 CLASSES</p>
+
+      <!-- 1. Induction agents -->
+      <div class="arow">
+        <div class="asw" style="background:#FFFF00;border:1px solid #bbb;"></div>
+        <div style="flex:1;">
+          <div class="an2">Yellow <span class="tag t-b" style="font-size:9px;">Class 1</span></div>
+          <div class="ad">INDUCTION AGENTS — propofol, etomidate, ketamine, thiopental, methohexital</div>
+          <div class="ad" style="color:var(--ao);margin-top:2px;">⚠ Note: Benzodiazepines are a SEPARATE class (orange) — NOT grouped here</div>
+        </div>
+      </div>
+
+      <!-- 2. Benzodiazepines -->
+      <div class="arow">
+        <div class="asw" style="background:#FF8C00;"></div>
+        <div style="flex:1;">
+          <div class="an2">Orange <span class="tag t-b" style="font-size:9px;">Class 2</span></div>
+          <div class="ad">BENZODIAZEPINES — midazolam, diazepam, lorazepam</div>
+        </div>
+      </div>
+
+      <!-- 2 antagonist: flumazenil -->
+      <div class="arow" style="padding-left:10px;opacity:0.9;">
+        <div class="asw" style="background:repeating-linear-gradient(135deg,#FF8C00 0px,#FF8C00 4px,#fff 4px,#fff 7px);border:1px solid #bbb;"></div>
+        <div style="flex:1;">
+          <div class="an2" style="font-size:11px;">Orange + White Diagonal Stripes <span class="tag t-r" style="font-size:9px;">ANTAGONIST</span></div>
+          <div class="ad">Benzodiazepine antagonist — flumazenil</div>
+        </div>
+      </div>
+
+      <!-- 3. NMBDs -->
+      <div class="arow">
+        <div class="asw" style="background:#FF0000;"></div>
+        <div style="flex:1;">
+          <div class="an2">Fluorescent Red <span class="tag t-b" style="font-size:9px;">Class 3</span></div>
+          <div class="ad">NEUROMUSCULAR BLOCKING AGENTS — succinylcholine, rocuronium, vecuronium, cisatracurium, atracurium, pancuronium</div>
+          <div class="ad" style="color:var(--ao);margin-top:2px;">⚠ Succinylcholine + Epinephrine use REVERSED PLATE (white text on red) per D4774 Fig. 3</div>
+        </div>
+      </div>
+
+      <!-- 3 antagonist: neostigmine/sugammadex -->
+      <div class="arow" style="padding-left:10px;opacity:0.9;">
+        <div class="asw" style="background:repeating-linear-gradient(135deg,#FF0000 0px,#FF0000 4px,#fff 4px,#fff 7px);border:1px solid #bbb;"></div>
+        <div style="flex:1;">
+          <div class="an2" style="font-size:11px;">Red + White Diagonal Stripes <span class="tag t-r" style="font-size:9px;">ANTAGONIST</span></div>
+          <div class="ad">NMB reversal agents — neostigmine, pyridostigmine, sugammadex, edrophonium</div>
+        </div>
+      </div>
+
+      <!-- 4. Opioids -->
+      <div class="arow">
+        <div class="asw" style="background:#4169E1;"></div>
+        <div style="flex:1;">
+          <div class="an2">Blue <span class="tag t-b" style="font-size:9px;">Class 4</span></div>
+          <div class="ad">OPIOIDS — fentanyl, morphine, hydromorphone, sufentanil, remifentanil, meperidine, methadone, codeine, oxycodone</div>
+        </div>
+      </div>
+
+      <!-- 4 antagonist: naloxone -->
+      <div class="arow" style="padding-left:10px;opacity:0.9;">
+        <div class="asw" style="background:repeating-linear-gradient(135deg,#4169E1 0px,#4169E1 4px,#fff 4px,#fff 7px);border:1px solid #bbb;"></div>
+        <div style="flex:1;">
+          <div class="an2" style="font-size:11px;">Blue + White Diagonal Stripes <span class="tag t-r" style="font-size:9px;">ANTAGONIST</span></div>
+          <div class="ad">Opioid antagonist — naloxone</div>
+        </div>
+      </div>
+
+      <!-- 5. Antiemetics -->
+      <div class="arow">
+        <div class="asw" style="background:#00CED1;"></div>
+        <div style="flex:1;">
+          <div class="an2">Aqua / Teal <span class="tag t-b" style="font-size:9px;">Class 5</span></div>
+          <div class="ad">ANTIEMETICS — ondansetron, metoclopramide, droperidol, prochlorperazine, promethazine</div>
+        </div>
+      </div>
+
+      <!-- 6. Vasopressors -->
+      <div class="arow">
+        <div class="asw" style="background:#8B008B;"></div>
+        <div style="flex:1;">
+          <div class="an2">Violet / Purple <span class="tag t-b" style="font-size:9px;">Class 6</span></div>
+          <div class="ad">VASOPRESSORS &amp; HYPOTENSIVES — epinephrine, norepinephrine, phenylephrine, vasopressin, ephedrine, dopamine, dobutamine, nitroglycerin, nitroprusside, hydralazine, nicardipine</div>
+          <div class="ad" style="color:var(--ao);margin-top:2px;">⚠ Epinephrine uses REVERSED PLATE (white text on violet) per D4774 Fig. 3</div>
+        </div>
+      </div>
+
+      <!-- 7. Local Anesthetics -->
+      <div class="arow">
+        <div class="asw" style="background:#808080;"></div>
+        <div style="flex:1;">
+          <div class="an2">Gray / Silver <span class="tag t-b" style="font-size:9px;">Class 7</span></div>
+          <div class="ad">LOCAL ANESTHETICS — lidocaine, bupivacaine, ropivacaine, mepivacaine, chloroprocaine, tetracaine, prilocaine, levobupivacaine</div>
+        </div>
+      </div>
+
+      <!-- 8. Anticholinergics -->
+      <div class="arow">
+        <div class="asw" style="background:#228B22;"></div>
+        <div style="flex:1;">
+          <div class="an2">Green <span class="tag t-b" style="font-size:9px;">Class 8</span></div>
+          <div class="ad">ANTICHOLINERGIC AGENTS — atropine, glycopyrrolate, scopolamine</div>
+        </div>
+      </div>
+
+      <!-- 9. Beta-blockers -->
+      <div class="arow">
+        <div class="asw" style="background:#4169E1;background:repeating-linear-gradient(135deg,#4169E1 0px,#4169E1 6px,#fff 6px,#fff 10px);border:1px solid #bbb;"></div>
+        <div style="flex:1;">
+          <div class="an2">Blue + White Diagonal Stripes <span class="tag t-b" style="font-size:9px;">Class 9</span></div>
+          <div class="ad">BETA-BLOCKERS — esmolol, labetalol, metoprolol, propranolol, atenolol</div>
+          <div class="ad" style="color:var(--t3);margin-top:2px;">Added in D4774 revision; not in ISO 26825. Uses same base blue as opioid class but pattern only (no solid blue background)</div>
+        </div>
+      </div>
+
+</main>
+
+<div class="foot">
+  <span>Pocket Anesthesia Reference v4</span>
+  <span class="upd">ASRA · ASA · ACOG · ASHP · WHO 2023–2025</span>
+</div>
+
+<script>
+
+// ── CONNECTIVITY STATUS ──
+function updateConn() {
+  var b = document.getElementById('connChip');
+  if (!b) return;
+  var online = navigator.onLine && location.protocol !== 'file:';
+  b.textContent = online ? '⟳ ONLINE' : '✓ OFFLINE';
+  b.style.color = online ? 'var(--ab)' : '';
+  b.style.background = online ? 'rgba(74,159,219,.1)' : '';
+  b.style.borderColor = online ? 'rgba(74,159,219,.35)' : '';
+}
+window.addEventListener('online', updateConn);
+window.addEventListener('offline', updateConn);
+document.addEventListener('DOMContentLoaded', updateConn);
+
+function bkmTab(el, id) {
+  document.querySelectorAll('.bkm-tab').forEach(t => t.classList.remove('on'));
+  document.querySelectorAll('.bkm-pane').forEach(p => p.classList.remove('on'));
+  el.classList.add('on');
+  document.getElementById('bkm-' + id).classList.add('on');
+}
+
+// ── TABS ──
+function showTab(id, btn) {
+  document.querySelectorAll('.panel').forEach(function(p) {
+    p.classList.remove('on');
+    p.style.display = 'none';
+  });
+  document.querySelectorAll('.tb').forEach(function(b) { b.classList.remove('on'); });
+  var panel = document.getElementById('tab-'+id);
+  if (panel) { panel.classList.add('on'); panel.style.display = 'block'; }
+  btn.classList.add('on');
+  if (id === 'meds' && document.getElementById('dList').innerHTML === '') renderDrugs(drugs);
+}
+
+// ── BLOCKS ──
+function toggleBlock(id) {
+  const el = document.getElementById('bc-' + id);
+  el.classList.toggle('open');
+}
+
+// ── DRUG DATA ──
+const drugs = [
+  {n:'Acetaminophen (Paracetamol)',c:'Analgesic / Non-opioid',a:[{l:'PO/IV',v:'325–1000 mg q4–6h; max 4 g/day (2 g/day hepatic/EtOH)'},{l:'IV (wt<50 kg)',v:'15 mg/kg IV over 15 min'}],p:[{l:'PO/IV',v:'10–15 mg/kg q4–6h; max 75 mg/kg/day'}],note:'↓ opioid requirement ~30% when scheduled. Hepatotoxicity risk with overdose, chronic EtOH, or fasting. No anti-inflammatory effect.'},
+  {n:'Adenosine',c:'Antiarrhythmic — SVT',a:[{l:'SVT 1st dose',v:'6 mg IV rapid push + 20 mL flush'},{l:'SVT 2nd/3rd dose',v:'12 mg IV rapid push; max 18 mg total'}],p:[{l:'SVT',v:'0.1 mg/kg IV (max 6 mg); repeat 0.2 mg/kg (max 12 mg)'}],note:'t½ <10 sec. Must give rapid IV push at antecubital or larger + immediate flush. Warn pt: chest pressure, flushing, dyspnea. Contraindicated: WPW + AF. Ineffective through peripheral small IVs.'},
+  {n:'Albuterol (Salbutamol)',c:'Beta-2 agonist / Bronchodilator',a:[{l:'Bronchodilation neb',v:'2.5 mg in 3 mL NS q20 min PRN (continuous: 10–15 mg/hr)'},{l:'Anaphylaxis bronchospasm',v:'2.5–5 mg neb'},{l:'Hyperkalemia',v:'10–20 mg neb (high dose)'}],p:[{l:'Neb',v:'0.15 mg/kg (min 2.5 mg) q20 min PRN'}],note:'Tachycardia and hypokalemia at high doses. IV formulation available in some countries (250 mcg bolus). MDI: 4–8 puffs = 1 neb treatment.'},
+  {n:'Amiodarone',c:'Antiarrhythmic Class III — ASTM BLUE (induction context)',a:[{l:'VF/pVT arrest',v:'300 mg IV push; repeat 150 mg PRN'},{l:'Stable VT',v:'150 mg IV over 10 min; infusion 1 mg/min × 6 hr, then 0.5 mg/min × 18 hr'},{l:'LAST — VT/VF',v:'150 mg IV (acceptable in LAST; see LAST protocol)'}],p:[{l:'VF/VT',v:'5 mg/kg IV (max 300 mg) over 20–60 min; infusion 5–15 mcg/kg/min'}],note:'Do NOT use as antiarrhythmic in LAST — not preferred. Pulmonary toxicity, hypothyroidism, corneal deposits with chronic use. Multiple drug interactions. t½ 40–55 days. Requires non-PVC tubing for prolonged infusion (adsorbs to PVC).'},
+  {n:'Atracurium',c:'NdNMB (benzylisoquinolinium) — ASTM RED',a:[{l:'Intubation',v:'0.4–0.5 mg/kg IV; maintenance 0.1 mg/kg q20–25 min'},{l:'Infusion',v:'5–10 mcg/kg/min'}],p:[{l:'Same',v:'0.3–0.5 mg/kg IV'}],note:'Hofmann elimination — organ-independent; preferred in renal/hepatic failure. Histamine release risk (bronchospasm, flushing). Duration ~25–35 min. Laudanosine metabolite — CNS stimulant at very high doses. Sugammadex does NOT reverse.'},
+  {n:'Atropine',c:'Anticholinergic — ASTM VIOLET',a:[{l:'Bradycardia',v:'0.5 mg IV q3–5 min; max 3 mg'},{l:'Arrest',v:'0.5–1 mg IV (limited ACLS role 2023)'},{l:'Reversal adjunct',v:'0.02 mg/kg IV with neostigmine'}],p:[{l:'Brady',v:'0.02 mg/kg IV (min 0.1 mg, max 0.5 mg); repeat × 1'},{l:'Reversal',v:'0.01–0.02 mg/kg IV'}],note:'Min pediatric dose 0.1 mg (paradoxical bradycardia with smaller doses). ETT dose 2–3× IV dose. Vagolytic — ↑ HR/bronchodilation/↓ secretions. Low threshold for epinephrine over atropine in hemodynamic compromise.'},
+  {n:'Bupivacaine',c:'Local Anesthetic (amide) — ASTM LIME GREEN',a:[{l:'Spinal (hyperbaric 0.75%)',v:'8–15 mg (C/S: 10–12 mg typical)'},{l:'Epidural 0.0625–0.5%',v:'Per indication'},{l:'Nerve block max',v:'2.5 mg/kg plain; 3 mg/kg + epi (max 175 mg / 225 mg)'}],p:[{l:'Regional',v:'2 mg/kg max plain; 2.5 mg/kg + epi'}],note:'⚠ HIGH CARDIAC TOXICITY — resistant to standard ACLS. Intralipid mandatory wherever used for blocks. Prefer ropivacaine or levobupivacaine for large-volume peripheral blocks. See LAST protocol tab.'},
+  {n:'Calcium Chloride 10%',c:'Electrolyte / Membrane stabilizer',a:[{l:'Cardiac arrest / CCB OD',v:'1 g IV slowly (repeat q10 min PRN)'},{l:'Hyperkalemia',v:'0.5–1 g IV over 2–5 min'},{l:'MTP (each 4 U pRBC)',v:'1 g IV'}],p:[{l:'Arrest/CCB OD',v:'20 mg/kg IV (max 2 g); repeat q10 min'}],note:'10% CaCl = 100 mg/mL = 6.8 mEq Ca²⁺/mL. ~3× more elemental Ca²⁺ than gluconate — prefer CaCl in emergencies. Causes tissue necrosis if extravasated → central line preferred for large doses. Incompatible with NaHCO₃ (precipitate).'},
+  {n:'Carboprost (Hemabate)',c:'Prostaglandin F2α — Uterotonic',a:[{l:'PPH',v:'0.25 mg IM q15–90 min; max 2 mg/24 hr'}],p:[],note:'Intramuscular or intrauterine only — avoid IV. Contraindicated in asthma (bronchospasm). SE: N/V/D, flushing, fever, bronchospasm. Consider alternative if cardiac disease.'},
+  {n:'Cisatracurium',c:'NdNMB (benzylisoquinolinium) — ASTM RED',a:[{l:'Intubation',v:'0.15–0.2 mg/kg IV'},{l:'Infusion',v:'0.5–10 mcg/kg/min'}],p:[{l:'2–12 yr',v:'0.1–0.15 mg/kg IV; infusion 0.5–4 mcg/kg/min'}],note:'Hofmann elimination — preferred in renal/hepatic failure. No histamine release (advantage over atracurium). Duration ~45–60 min. Reverse with neostigmine (sugammadex ineffective). Stable in ICU for prolonged NMB.'},
+  {n:'Clonidine',c:'Alpha-2 agonist — Antihypertensive / Neuraxial adjunct',a:[{l:'Neuraxial adjunct (intrathecal)',v:'15–75 mcg'},{l:'Epidural adjunct',v:'1–2 mcg/kg (max 150 mcg)'},{l:'Perineural adjunct',v:'75–150 mcg'},{l:'Oral antihypertensive',v:'0.1–0.3 mg BID'}],p:[{l:'Regional adjunct',v:'0.5–1 mcg/kg'}],note:'⚠ BBW: maternal hypotension/bradycardia when used intrathecally in parturients. Sedation, hypotension, bradycardia. Use with caution. ↓ shivering. Analgesic sparing. Rebound HTN with abrupt PO cessation.'},
+  {n:'Dantrolene',c:'Muscle relaxant (RYR1 inhibitor) — MH treatment',a:[{l:'MH treatment',v:'2.5 mg/kg IV rapid bolus → 1 mg/kg q5 min PRN; max 10 mg/kg'}],p:[{l:'Same dosing',v:'2.5 mg/kg IV; same escalation'}],note:'Ryanodex 250 mg/vial in 5 mL DW (fast reconstitution). Standard formulation 20 mg/vial — slower. Continue 1 mg/kg q6h × 24 hr post-crisis. Muscle weakness after administration — support ventilation. MHAUS hotline: 1-800-644-9737.'},
+  {n:'Dexamethasone',c:'Corticosteroid',a:[{l:'PONV prophylaxis',v:'4–8 mg IV at induction'},{l:'Airway edema',v:'0.5 mg/kg IV q6h (max 8 mg/dose)'},{l:'Block duration adjunct',v:'8–10 mg IV (systemic preferred over perineural)'}],p:[{l:'PONV',v:'0.15 mg/kg IV (max 8 mg)'},{l:'Airway edema',v:'0.5 mg/kg IV q6h'}],note:'Give at induction for PONV (not emergence). Transient glucose ↑ — monitor diabetics. Adrenal suppression minimal with single dose. IV single dose equivalent to perineural for block duration (safer). Reduces opioid requirement 10–30%.'},
+  {n:'Dexmedetomidine',c:'Alpha-2 agonist — Sedative / Analgesic (FDA approved)',a:[{l:'Loading dose',v:'0.5–1 mcg/kg IV over 10 min (omit if hemodynamically unstable)'},{l:'Infusion (ICU)',v:'0.2–1.5 mcg/kg/hr IV'},{l:'Procedural sedation',v:'0.5–1 mcg/kg load; 0.2–1 mcg/kg/hr'},{l:'Intrathecal (off-label)',v:'3–10 mcg'},{l:'Perineural adjunct',v:'0.5–1 mcg/kg'}],p:[{l:'Load',v:'0.5–1 mcg/kg over 10 min'},{l:'Infusion',v:'0.2–1 mcg/kg/hr'}],note:'No respiratory depression (major advantage). Rousable sedation. Bradycardia + hypotension common, especially with loading dose — omit load in hemodynamically compromised. FDA-approved: ICU sedation + procedural sedation (non-intubated). Off-label: awake intubation adjunct, spinal adjunct, perineural extension. Reduces MAC 15–30%.'},
+  {n:'Diazepam',c:'Benzodiazepine — Anxiolytic / Anticonvulsant',a:[{l:'Seizure',v:'5–10 mg IV q5–10 min (max 30 mg)'},{l:'Anxiolysis',v:'2–5 mg IV/PO'}],p:[{l:'Seizure',v:'0.2–0.3 mg/kg IV (max 10 mg); 0.5 mg/kg PR'}],note:'Long t½ (20–100 hr) + active metabolites — accumulation with repeat dosing. Propylene glycol diluent — painful IV, thrombophlebitis. Prefer midazolam for most intraoperative uses. Oral: 2–10 mg TID–QID for muscle spasm.'},
+  {n:'Digoxin',c:'Cardiac glycoside — Rate control',a:[{l:'IV load (rate control)',v:'0.25 mg IV q6h × 3 doses (total 0.75 mg); maintenance 0.125–0.25 mg/day'},{l:'PO load',v:'0.5 mg PO, then 0.25 mg q6h × 2'}],p:[{l:'Load',v:'20–35 mcg/kg total divided doses'}],note:'Narrow therapeutic window (0.5–2 ng/mL). Toxicity: bradyarrhythmias, heart block, N/V, visual changes (xanthopsia). Drug interactions: amiodarone, quinidine (↑ levels 2×). Renal clearance — reduce in renal failure. Hypokalemia ↑ toxicity.'},
+  {n:'Dobutamine',c:'Inotrope (beta-1 > beta-2)',a:[{l:'Infusion',v:'2–20 mcg/kg/min IV (start low, titrate)'}],p:[{l:'Same',v:'0.5–20 mcg/kg/min IV'}],note:'Positive inotrope + chronotrope. ↑ CO without major SVR change. May ↓ SVR and BP in volume-depleted patients. Tachycardia/arrhythmia risk. Use cautiously in outflow tract obstruction (HOCM). Tachyphylaxis after 72 hr.'},
+  {n:'Dopamine',c:'Catecholamine — Dose-dependent effects',a:[{l:'Low dose (renal)',v:'1–5 mcg/kg/min (historically; limited evidence for renoprotection)'},{l:'Inotropic',v:'5–10 mcg/kg/min'},{l:'Vasopressor',v:'10–20 mcg/kg/min'}],p:[{l:'Same dose ranges',v:'0.5–20 mcg/kg/min'}],note:'Dose-dependent receptor activity (D1/D2 → β → α). Current evidence: low-dose dopamine for renoprotection NOT supported — use norepinephrine instead in septic shock. ↑ splanchnic/renal blood flow at low doses debated. Extravasation → tissue necrosis (antidote: phentolamine).'},
+  {n:'Ephedrine',c:'Indirect sympathomimetic — ASTM GRAY',a:[{l:'Hypotension (bolus)',v:'5–10 mg IV PRN q2–3 min; max ~50 mg/episode'}],p:[{l:'Hypotension',v:'0.1–0.2 mg/kg IV'}],note:'Both α and β effects via NE release (indirect). Preferred over phenylephrine when bradycardia accompanies hypotension. Tachyphylaxis with repeated dosing. Crosses placenta — fetal HR ↑; use cautiously in OB (norepinephrine now often preferred for OB spinal hypotension).'},
+  {n:'Epinephrine (Adrenaline)',c:'Catecholamine — ASTM GRAY',a:[{l:'Cardiac arrest ACLS',v:'1 mg IV q3–5 min'},{l:'LAST-related arrest',v:'≤1 mcg/kg IV boluses (↓ dose — see LAST protocol)'},{l:'Anaphylaxis IV',v:'10–50 mcg IV q1–2 min; infusion 0.05–0.5 mcg/kg/min'},{l:'Anaphylaxis IM',v:'300–500 mcg IM (anterolateral thigh) q5–15 min PRN'},{l:'Vasopressor infusion',v:'0.05–2 mcg/kg/min IV'}],p:[{l:'Arrest',v:'10 mcg/kg IV (max 1 mg) q3–5 min'},{l:'Anaphylaxis IM',v:'0.01 mg/kg IM (max 0.5 mg)'},{l:'Infusion',v:'0.05–1 mcg/kg/min IV'}],note:'1:1,000 = 1 mg/mL (IM use). 1:10,000 = 0.1 mg/mL (IV use). In LAST: avoid large doses (impair lipid resuscitation). Racemic epi 2.25% 0.5 mL in 3 mL NS for croup/airway edema (children: 0.25–0.5 mL). LA with epi: 1:200,000 = 5 mcg/mL (do not exceed 200–400 mcg total for digital blocks — avoid).'},
+  {n:'Ergometrine (Ergonovine)',c:'Ergot alkaloid — Uterotonic',a:[{l:'PPH',v:'0.25 mg IM (or 0.5 mg IM); repeat q2–4 hr'},{l:'IV (very slow if needed)',v:'0.2 mg in 10 mL NS over 5 min'}],p:[],note:'CI: hypertension, pre-eclampsia, Raynaud\'s, CAD, sepsis, hepatic/renal failure. IV use risks severe HTN, stroke, MI. Primarily IM. Syntometrine = oxytocin 5 U + ergometrine 0.5 mg (fixed combination).'},
+  {n:'Esmolol',c:'Beta-1 selective blocker (ultra-short acting)',a:[{l:'Rate control/attenuation',v:'0.5 mg/kg IV bolus over 1 min; infusion 50–300 mcg/kg/min'},{l:'Intubation attenuation',v:'1–2 mg/kg IV 60–90 sec before laryngoscopy'}],p:[{l:'SVT',v:'0.1–0.5 mg/kg IV bolus; infusion 50–200 mcg/kg/min'}],note:'t½ ~9 min (RBC esterase metabolism). Useful for brief HR control. ⚠ Fetal bradycardia in OB — use with caution. Avoid in decompensated HF, severe bronchospasm, bradycardia, WPW.'},
+  {n:'Etomidate',c:'Hypnotic / Induction agent — ASTM AQUA',a:[{l:'Induction',v:'0.3 mg/kg IV (reduce to 0.1–0.2 mg/kg in elderly/cardiac)'},{l:'Procedural sedation',v:'0.1–0.2 mg/kg IV; titrate'}],p:[{l:'Induction',v:'0.2–0.3 mg/kg IV'}],note:'Minimal hemodynamic effect — preferred in hemodynamically compromised. Adrenal suppression with single dose (transient — clinically significant mainly in critically ill/septic; avoid infusion). Myoclonus common (pretreat with midazolam or opioid). No analgesia. Onset 30–60 sec; duration 3–8 min.'},
+  {n:'Famotidine',c:'H₂ blocker — Antiemetic adjunct / Anaphylaxis adjunct',a:[{l:'Anaphylaxis adjunct',v:'20 mg IV'},{l:'Aspiration prophylaxis',v:'20 mg IV 30–60 min pre-op'},{l:'PO',v:'20–40 mg PO'}],p:[{l:'PO/IV',v:'0.5 mg/kg (max 20 mg)'}],note:'Replaces ranitidine (permanently recalled — NDMA contamination). H₂ adjunct in anaphylaxis (secondary to epi). For aspiration prophylaxis combine with sodium citrate.'},
+  {n:'Fentanyl',c:'Opioid µ-agonist — ASTM YELLOW',a:[{l:'Intraop analgesia',v:'25–100 mcg IV PRN; infusion 25–200 mcg/hr'},{l:'Spinal adjunct',v:'10–25 mcg IT (PF)'},{l:'Intranasal',v:'1.5–2 mcg/kg (max 100 mcg)'},{l:'SL/buccal (Actiq)',v:'200–1600 mcg; titrate'}],p:[{l:'Analgesia',v:'0.5–2 mcg/kg IV PRN'},{l:'Intranasal',v:'1.5–2 mcg/kg (max 100 mcg)'},{l:'Infusion',v:'0.5–3 mcg/kg/hr'}],note:'Highly lipophilic — context-sensitive t½ with prolonged infusion. Chest wall rigidity at high IV doses (>5 mcg/kg IV rapid push) → treat with sux or NMBD. Potency: fentanyl 100 mcg ≈ morphine 10 mg ≈ hydromorphone 1.5 mg. Dose reduce 25–50% elderly.'},
+  {n:'Flumazenil',c:'Benzodiazepine antagonist',a:[{l:'Benzo reversal',v:'0.2 mg IV q1 min; max 1 mg (3 mg if benzo OD)'},{l:'Procedural sedation reversal',v:'0.2 mg IV titrate'}],p:[{l:'Reversal',v:'0.01 mg/kg IV (max 0.2 mg/dose); max 1 mg total'}],note:'t½ 60 min (shorter than most benzos — resedation likely). Contraindicated if benzo used to control seizure disorder or if TCA OD (seizure risk). Do NOT rely as substitute for airway management. Works poorly for flunitrazepam, clonazepam.'},
+  {n:'Furosemide',c:'Loop diuretic',a:[{l:'Acute diuresis',v:'20–80 mg IV (40 mg if diuretic-naive); double dose q1–2 hr if no response'},{l:'Pulmonary edema',v:'40–80 mg IV'},{l:'Hyperkalemia elimination',v:'40–80 mg IV'}],p:[{l:'Diuresis',v:'0.5–1 mg/kg IV (max 6 mg/kg/day)'}],note:'Hypokalemia, hypomagnesemia, ototoxicity (high doses, rapid infusion). Alkalosis. Effective in renal failure at higher doses. Metabolic alkalosis with chronic use. Monitor lytes with therapy.'},
+  {n:'Glycopyrrolate',c:'Anticholinergic — ASTM VIOLET',a:[{l:'Reversal adjunct (with neostigmine)',v:'0.2 mg per 1 mg neostigmine IV'},{l:'Antisialogogue',v:'0.1–0.2 mg IV or 0.4 mg IM'},{l:'Bowel motility (chronic)',v:'1–2 mg PO TID'}],p:[{l:'Reversal',v:'0.01–0.015 mg/kg IV'},{l:'Antisialogogue',v:'4–8 mcg/kg IM'}],note:'Does not cross BBB (no CNS SE — preferred over atropine). Less tachycardia. Preferred antisialogogue for awake intubation (0.2 mg IV or 0.4 mg IM 30–60 min before). Ratio with neostigmine: 1:5 (glycopyrrolate 0.2 mg per neostigmine 1 mg).'},
+  {n:'Haloperidol',c:'Antipsychotic / Antiemetic (off-label)',a:[{l:'PONV rescue (off-label)',v:'0.5–2 mg IV/IM at end of surgery'},{l:'Delirium (ICU)',v:'2–5 mg IV/IM q4–8h PRN'}],p:[{l:'Delirium',v:'0.01–0.05 mg/kg IV/IM'}],note:'QTc prolongation — monitor ECG especially if ≥2 mg IV. Better PONV evidence for droperidol but haloperidol widely used where droperidol unavailable. Extrapyramidal reactions (treat with diphenhydramine 25–50 mg IV). Off-label for PONV per current evidence.'},
+  {n:'Heparin (UFH)',c:'Anticoagulant',a:[{l:'Cardiac/vascular prophylaxis',v:'5000 U SC q8–12h'},{l:'VTE treatment',v:'80 U/kg IV bolus; 18 U/kg/hr infusion; titrate per aPTT'},{l:'Heparin flush (line)',v:'2–5 mL of 10–100 U/mL'}],p:[{l:'Therapeutic',v:'75–100 U/kg IV bolus; 15–25 U/kg/hr infusion'}],note:'Reversal: protamine 1 mg per 100 U heparin (max 50 mg; give slowly). HIT risk: check plt q2–3 days during therapy. ASRA neuraxial: hold 4–6 hr before; nl aPTT required.'},
+  {n:'Hydralazine',c:'Vasodilator (direct arterial)',a:[{l:'Hypertensive urgency (OB)',v:'5–10 mg IV q20 min; max 30 mg/episode'},{l:'Chronic HTN (oral)',v:'25–100 mg PO BID–QID'}],p:[{l:'Hypertension',v:'0.1–0.5 mg/kg IV q4–6h'}],note:'Onset 15–20 min; duration 3–8 hr. Unpredictable dose-response. Reflex tachycardia. First-line for acute severe HTN in pregnancy per ACOG. Avoid in aortic dissection. Drug-induced lupus with chronic use.'},
+  {n:'Hydromorphone',c:'Opioid µ-agonist — ASTM YELLOW',a:[{l:'Analgesia IV',v:'0.2–1 mg IV q3–4h PRN; infusion 0.2–1 mg/hr'},{l:'PO',v:'2–4 mg q4–6h'},{l:'Intrathecal (PF)',v:'50–100 mcg (monitor 12–18 hr)'}],p:[{l:'Analgesia IV',v:'0.01–0.02 mg/kg IV q3–4h'}],note:'5–7× more potent than morphine IV. Active glucuronide metabolites — use caution in renal failure. Less histamine release than morphine. IT: shorter monitoring window than morphine IT (~12 hr respiratory depression risk). Oral:IV ratio ~5:1.'},
+  {n:'Hydrocortisone',c:'Corticosteroid — Stress dose',a:[{l:'Stress dose periop',v:'50–100 mg IV q8h (minor: 25 mg; major: 100 mg)'},{l:'Anaphylaxis',v:'200 mg IV'},{l:'Adrenal crisis',v:'100 mg IV bolus, then 50–75 mg q6–8h or 200 mg/24 hr infusion'}],p:[{l:'Stress dose',v:'1–2 mg/kg IV'},{l:'Anaphylaxis',v:'4 mg/kg IV (max 250 mg)'}],note:'Physiologic replacement: cortisol 20–30 mg/day equivalent → periop dosing per Hahner 2021 updated protocol. Surgical stress: minor (25 mg hydrocortisone equivalent), moderate (50–75 mg), major (100–150 mg day 1, taper to usual dose by day 2–3).'},
+  {n:'Insulin (Regular)',c:'Hypoglycemic agent — Hyperkalemia treatment',a:[{l:'DKA/HHS',v:'0.1 U/kg IV bolus then 0.1 U/kg/hr infusion'},{l:'Hyperkalemia (shift)',v:'10 U IV with D50W 50 mL'},{l:'Glucose control (ICU)',v:'Infusion per protocol; target 140–180 mg/dL'}],p:[{l:'DKA',v:'0.05–0.1 U/kg/hr infusion'},{l:'Neonatal hypoglycemia',v:'0.05–0.1 U/kg/hr; dextrose supplementation'}],note:'Always pair insulin with glucose in hyperkalemia treatment. Hypokalemia with DKA treatment — replace potassium aggressively. Monitor glucose q1h during insulin infusions. Subcutaneous absorption unpredictable in hypotensive patients — use IV.'},
+  {n:'Intralipid 20% (Lipid Emulsion)',c:'LAST treatment — Lipid sink',a:[{l:'LAST bolus (IBW-based)',v:'1.5 mL/kg IV over 2–3 min'},{l:'LAST infusion',v:'0.25 mL/kg/min (↑ to 0.5 mL/kg/min if refractory)'},{l:'70 kg adult example',v:'105 mL bolus → ~18 mL/min infusion'},{l:'Max cumulative dose',v:'12 mL/kg (≈ 840 mL for 70 kg)'}],p:[{l:'Same',v:'1.5 mL/kg bolus; 0.25 mL/kg/min infusion; max 12 mL/kg'}],note:'See full LAST tab for algorithm. Start immediately on LAST suspicion — do NOT delay. Repeat bolus for refractory arrest. May interfere with subsequent lab values (TG, lipase, some drug assays). Stock 4–6 × 250 mL bags wherever blocks performed. IO administration acceptable if no IV.'},
+  {n:'Ketamine',c:'Dissociative anesthetic / Analgesic — ASTM AQUA',a:[{l:'Induction IV',v:'1–2 mg/kg IV; 4–6 mg/kg IM'},{l:'Sub-dissociative analgesia',v:'0.1–0.5 mg/kg IV'},{l:'Analgesic infusion',v:'0.1–0.3 mg/kg/hr IV'},{l:'RSI adjunct (OB, hemorrhage)',v:'1–2 mg/kg IV'},{l:'Bronchospasm',v:'0.5–1 mg/kg IV'}],p:[{l:'Induction IV',v:'1–2 mg/kg IV; 4–8 mg/kg IM'},{l:'Procedural',v:'0.5–1 mg/kg IV; 2–4 mg/kg IM'}],note:'Maintains airway reflexes, bronchodilator, analgesic, sympathomimetic (↑HR/BP). Useful in hemorrhagic shock, asthmatic, OB. Emergence phenomena: ↓ with midazolam 0.02 mg/kg IV or dexmedetomidine. Does NOT ↑ ICP when airway controlled and normocapnia maintained (prior concern debunked). NMDA antagonist — reduces opioid-induced hyperalgesia.'},
+  {n:'Ketorolac',c:'NSAID — Non-opioid analgesic',a:[{l:'IV/IM',v:'15–30 mg IV/IM q6h (max 5 days total; max 120 mg/day)'},{l:'PO (continuation)',v:'10 mg PO q4–6h'}],p:[{l:'IV',v:'0.5 mg/kg IV q6h (max 30 mg/dose)'}],note:'↓ opioid requirement ~25–30%. Use shortest duration (≤5 days). Avoid: renal impairment (↑ Cr), coagulopathy, active peptic ulcer, procedures with high bleeding risk. Elderly: reduce dose 50%, monitor renal function. Oral equivalent to IV for postop (Cochrane evidence).'},
+  {n:'Labetalol',c:'Alpha+Beta blocker — Antihypertensive',a:[{l:'Acute HTN urgency',v:'10–20 mg IV; then 40–80 mg q10–15 min; max 300 mg'},{l:'Infusion',v:'1–2 mg/min IV'},{l:'Intubation attenuation',v:'0.5–1 mg/kg IV 1–2 min pre-laryngoscopy'},{l:'OB severe HTN',v:'20 mg IV initial dose'}],p:[{l:'Hypertension',v:'0.1–0.5 mg/kg IV q5–10 min'}],note:'IV α:β ratio 1:7. Preferred for OB severe HTN, aortic dissection. Onset 2–5 min; duration 6–8 hr. Avoid: significant asthma, severe bradycardia, decompensated HF. Does not impair uteroplacental flow.'},
+  {n:'Lidocaine',c:'LA (amide) + Class Ib antiarrhythmic — ASTM LIME GREEN',a:[{l:'VF/VT arrest (if amio unavailable)',v:'1–1.5 mg/kg IV; 0.5–0.75 mg/kg q5–10 min (max 3 mg/kg); infusion 1–4 mg/min'},{l:'IV analgesia/opioid-sparing',v:'1–1.5 mg/kg IV over 10 min; infusion 1–3 mg/kg/hr'},{l:'Intubation attenuation',v:'1.5 mg/kg IV 90 sec before laryngoscopy'},{l:'Topical airway',v:'4% solution 2–4 mL atomized/neb'}],p:[{l:'Arrest',v:'1 mg/kg IV; infusion 20–50 mcg/kg/min'}],note:'⚠ DO NOT use as antiarrhythmic in LAST — will worsen toxicity. IV lidocaine: ↓ opioid consumption, PONV, ↑ return of bowel function (multimodal benefit — Cochrane meta-analysis). Topical: 10 mg/kg max topical. Spinal: avoid (TNS risk) — use chloroprocaine instead.'},
+  {n:'Lorazepam',c:'Benzodiazepine — Anxiolytic / Anticonvulsant',a:[{l:'Seizure (first-line status)',v:'4 mg IV; repeat × 1 after 5–10 min'},{l:'Procedural anxiolysis',v:'1–4 mg IV titrated; 1–4 mg IM'},{l:'ICU sedation',v:'0.02–0.06 mg/kg IV q2–4h PRN or 0.01–0.1 mg/kg/hr infusion'}],p:[{l:'Seizure',v:'0.05–0.1 mg/kg IV (max 4 mg/dose); 0.05–0.1 mg/kg IM'},{l:'Sedation',v:'0.02–0.05 mg/kg IV q4–8h'}],note:'Active metabolite of diazepam. t½ 10–20 hr. Useful for status epilepticus (first-line IV). Propylene glycol vehicle → metabolic acidosis with prolonged high-dose infusion. Respiratory depression + amnesia.'},
+  {n:'Magnesium Sulfate',c:'Electrolyte / Neuroprotectant / Tocolytic',a:[{l:'Pre-eclampsia/eclampsia load',v:'4–6 g IV over 15–20 min'},{l:'Mg maintenance',v:'1–2 g/hr IV infusion (×24 hr post-delivery)'},{l:'TdP',v:'2 g IV over 5–10 min; infusion 0.5–1 g/hr'},{l:'Asthma (refractory)',v:'2 g IV over 20 min'},{l:'Analgesic adjunct',v:'30–50 mg/kg IV load; 6–10 mg/kg/hr infusion'}],p:[{l:'Asthma',v:'25–75 mg/kg IV (max 2 g) over 20 min'},{l:'TdP',v:'25–50 mg/kg IV (max 2 g)'}],note:'Toxicity progression: loss DTRs (4–5 mEq/L) → resp paralysis (6–7) → cardiac arrest (&gt;10). Antidote: CaCl 1 g IV. Monitor UO (renal elimination). Potentiates NMBDs. Neuroprotection for preterm neonate delivery &lt;32 wks (4–6 g load, 2 g/hr).'},
+  {n:'Mannitol',c:'Osmotic diuretic / ICP reducer',a:[{l:'ICP reduction',v:'0.25–2 g/kg IV over 15–30 min (max 1–2 g/kg/dose); target serum osm &lt;320 mOsm'},{l:'Renal protection (oliguric)',v:'0.5 g/kg IV test dose'}],p:[{l:'ICP',v:'0.25–1 g/kg IV'}],note:'Volume expansion initially → osmotic diuresis 30–60 min. Monitor electrolytes and serum osmolality. Avoid in severe renal failure (accumulation, pulmonary edema). Rebound ICP elevation possible. Hypertonic saline (3% NaCl) alternative with fewer rebound concerns.'},
+  {n:'Metaraminol',c:'Vasopressor (direct + indirect alpha) — ASTM GRAY',a:[{l:'Hypotension',v:'0.5–2 mg IV bolus q2–3 min PRN'},{l:'Infusion',v:'2–8 mg/hr IV (dilute to 0.5–1 mg/mL)'}],p:[],note:'Predominantly alpha-adrenergic (↑ SVR). Short duration. Less available in USA — common in UK/Aus/NZ. May cause reflex bradycardia. Extravasation → tissue ischemia.'},
+  {n:'Methadone',c:'Opioid µ-agonist + NMDA antagonist — ASTM YELLOW',a:[{l:'Acute pain adjunct',v:'0.1–0.3 mg/kg IV (single dose intraop — emerging practice)'},{l:'Chronic pain',v:'2.5–10 mg PO/IV q8–12h (tolerance-dependent)'}],p:[{l:'Analgesia',v:'0.05–0.1 mg/kg IV/PO q12–24h'}],note:'t½ 24–36 hr — prolonged monitoring required. Single intraop dose reduces 48-hr postop opioid consumption significantly (evidence growing). QTc prolongation risk — screen ECG. Complex equianalgesic calculations. Induction of P450 metabolism (multiple drug interactions). Long-acting — titrate carefully.'},
+  {n:'Methylene Blue',c:'Oxidizing agent / Vasopressin-resistant vasoplegic treatment',a:[{l:'Vasoplegic syndrome (refractory shock)',v:'1–2 mg/kg IV over 15–60 min; may repeat 1 mg/kg'},{l:'Methemoglobinemia treatment',v:'1–2 mg/kg IV over 5 min; repeat if needed'}],p:[{l:'Same doses',v:'1–2 mg/kg IV'}],note:'Inhibits iNOS → ↑ vascular tone. Use for vasoplegic shock (post-cardiac surgery, sepsis, protamine reaction) refractory to pressors. Contraindicated: G6PD deficiency (hemolysis), serotonin syndrome (potentiates). Stains: skin/urine blue, interferes with SpO₂ monitoring (falsely low for ~2 hr).'},
+  {n:'Methylergonovine (Methergine)',c:'Ergot alkaloid — Uterotonic',a:[{l:'PPH first line',v:'0.2 mg IM q5–10 min; max 2 IM doses; then 0.2 mg IM q2–4 hr'}],p:[],note:'IM preferred — avoid IV (severe HTN, stroke risk). If IV necessary: 0.2 mg in 10 mL NS, give 2 mL/min. CI: HTN, pre-eclampsia, CAD, Raynaud\'s, sepsis, HIV on protease inhibitors (↑ ergot levels → vasospasm). SE: severe HTN, coronary spasm, N/V.'},
+  {n:'Metoclopramide',c:'Antiemetic (D2 antagonist) — ASTM LIGHT BLUE',a:[{l:'PONV prophylaxis/rescue',v:'10–20 mg IV/PO q6h'},{l:'Gastroparesis',v:'10 mg IV/PO before meals'}],p:[{l:'PONV',v:'0.1–0.15 mg/kg IV q6h (max 0.5 mg/kg/day)'}],note:'Extrapyramidal reactions (dystonia, akathisia) — treat with diphenhydramine 25–50 mg IV or benztropine. QTc prolongation. Tardive dyskinesia with chronic use. Black box warning prolonged use. Promotes gastric emptying (↑ LES tone). Reduced efficacy vs ondansetron for PONV.'},
+  {n:'Midazolam',c:'Benzodiazepine — ASTM AQUA',a:[{l:'Premedication',v:'1–3 mg IV; 5–10 mg IM; 10–15 mg PO'},{l:'Seizure/status',v:'5 mg IV; 10 mg IM (RAMPART trial: IM preferred for status out-of-hospital)'},{l:'Sedation infusion',v:'0.02–0.1 mg/kg/hr IV'},{l:'Anxiolysis',v:'1–2.5 mg IV titrated'}],p:[{l:'Premedication PO',v:'0.5 mg/kg PO (max 20 mg); IV 0.05–0.1 mg/kg'},{l:'IM',v:'0.1–0.15 mg/kg'}],note:'Water-soluble (no propylene glycol). Active metabolite (1-OH-midazolam) — prolonged in renal failure. Amnestic, anxiolytic, anticonvulsant. Reduce dose 25–50% elderly. Flumazenil reversal possible (t½ shorter — resedation risk). 2× potency vs diazepam.'},
+  {n:'Misoprostol (Cytotec)',c:'Prostaglandin E1 analog — Uterotonic',a:[{l:'PPH',v:'600–1000 mcg buccal/SL/PR/PO'},{l:'Cervical ripening',v:'25–50 mcg vaginally q4–6h (under OB direction)'}],p:[],note:'Onset ~10 min (buccal/SL). SE: fever (≤38.5°C), shivering, N/V/D. Used where parenteral uterotonics unavailable (resource-limited settings). WHO recommends in conjunction with oxytocin for PPH.'},
+  {n:'Morphine Sulfate',c:'Opioid µ-agonist — ASTM YELLOW',a:[{l:'Analgesia IV',v:'2–4 mg IV q4h PRN; infusion 1–5 mg/hr'},{l:'Intrathecal (PF)',v:'100–300 mcg; monitor 18–24 hr'},{l:'PO (IR)',v:'15–30 mg q4h PRN'},{l:'PO (ER)',v:'15–30 mg q8–12h'}],p:[{l:'Analgesia',v:'0.05–0.1 mg/kg IV q4h'}],note:'M6G (active metabolite) accumulates in renal failure → prolonged respiratory depression. Histamine release (high doses/rapid push). IT: delayed respiratory depression 6–18 hr — ICU monitoring protocol. Oral:IV ratio 3:1. 10 mg IV morphine reference standard for opioid equivalence.'},
+  {n:'Naloxone',c:'Opioid antagonist',a:[{l:'Opioid OD reversal',v:'0.4–2 mg IV/IM/IN q2–3 min PRN; max 10 mg'},{l:'Partial reversal (resp depression)',v:'0.04–0.1 mg IV q2–3 min — titrate to respiratory effort; NOT full reversal'},{l:'Infusion (prevent re-narcotization)',v:'2/3 of effective bolus/hr IV'},{l:'Intranasal',v:'4 mg/0.1 mL each nostril (Narcan nasal)'}],p:[{l:'OD',v:'0.01 mg/kg IV/IM q2–3 min'},{l:'Partial reversal',v:'0.001–0.005 mg/kg IV titrated'}],note:'t½ 30–90 min — shorter than most opioids. Full reversal = pain + catecholamine surge (↑HR/BP, arrhythmia, pulmonary edema). Titrate carefully perioperatively. Resedation risk — infusion consideration. Intranasal 4 mg per nostril for community overdose response.'},
+  {n:'Neostigmine',c:'Acetylcholinesterase inhibitor — ASTM ORANGE',a:[{l:'NMB reversal (minimal block)',v:'15–40 mcg/kg IV (max 5 mg) + glycopyrrolate 0.01 mg/kg'},{l:'Cisatracurium',v:'40–70 mcg/kg IV + glycopyrrolate'}],p:[{l:'Reversal',v:'0.04–0.07 mg/kg IV (max 2.5 mg) + glycopyrrolate'}],note:'ASA 2023: Sugammadex RECOMMENDED for deep/moderate rocuronium/vecuronium. Neostigmine: acceptable ALTERNATIVE for minimal block (TOF ratio 0.4–0.9) or cisatracurium. ALWAYS pair with anticholinergic (glycopyrrolate preferred). Cannot fully reverse deep block. Give when TOF count ≥2 for reliable reversal. Avoid with TCA or glaucoma.'},
+  {n:'Nicardipine',c:'CCB (dihydropyridine) — Antihypertensive',a:[{l:'Hypertensive urgency infusion',v:'5 mg/hr IV; ↑ 2.5 mg/hr q5–15 min; max 15 mg/hr; reduce to 3 mg/hr when target reached'},{l:'Acute severe HTN (OB)',v:'0.5–10 mg/hr IV infusion'}],p:[{l:'Hypertensive crisis',v:'0.5–3 mcg/kg/min IV'}],note:'Smooth, predictable, titratable. Preferred in peripartum ICU, aortic dissection, neurological HTN emergency. No reflex tachycardia. Does not cross placenta significantly. Selective arterial vasodilator.'},
+  {n:'Nitroglycerin (GTN)',c:'Vasodilator (nitrate)',a:[{l:'Hypertensive crisis infusion',v:'5–200 mcg/min IV; titrate'},{l:'Uterine relaxation (tocolysis)',v:'400 mcg SL spray (1–2 sprays PRN; onset ~1 min)'},{l:'Angina SL tablet',v:'0.4 mg SL q5 min × 3'}],p:[{l:'Infusion',v:'0.5–5 mcg/kg/min IV'}],note:'Adsorbs to PVC tubing — use non-PVC or glass for infusions. Tachyphylaxis with continuous use. Methemoglobinemia at very high doses. SL spray fast onset for uterine relaxation in shoulder dystocia / retained placenta / version. Headache common.'},
+  {n:'Norepinephrine',c:'Vasopressor (α-1 &gt; β-1) — ASTM GRAY',a:[{l:'Vasopressor infusion',v:'0.05–2 mcg/kg/min IV; typical start 0.1–0.2 mcg/kg/min'},{l:'OB spinal hypotension',v:'Bolus 5–10 mcg IV; infusion 0.05–0.1 mcg/kg/min'}],p:[{l:'Vasopressor',v:'0.05–2 mcg/kg/min IV infusion'}],note:'First-line vasopressor in septic shock (Surviving Sepsis 2021). Predominantly α-1 (↑SVR) with modest β-1 (maintains CO). Now evidence supports as first-line in OB spinal hypotension — better HR preservation than phenylephrine. Extravasation → tissue necrosis (antidote: phentolamine 5–10 mg SC around site). Central line preferred.'},
+  {n:'Ondansetron',c:'Antiemetic (5-HT3 antagonist) — ASTM LIGHT BLUE',a:[{l:'PONV prophylaxis',v:'4–8 mg IV at end of surgery (timing matters — NOT at induction)'},{l:'PONV rescue',v:'4 mg IV; repeat q4–8 hr PRN'},{l:'Anaphylaxis vasovagal adjunct',v:'4 mg IV (reduces vasovagal component of spinal hypotension)'}],p:[{l:'PONV',v:'0.1–0.15 mg/kg IV (max 4 mg)'}],note:'Give at end of surgery (not induction) for prophylaxis. Apfel score (4 risk factors = ~70% PONV risk): female, non-smoker, Hx PONV/motion sickness, postop opioids. Each factor ~20% risk. QTc prolongation at high doses (avoid IV doses &gt;32 mg; 16 mg max single IV). Headache SE.'},
+  {n:'Oxytocin (Pitocin)',c:'Uterotonic — First-line PPH',a:[{l:'Rule of 3s (post-delivery)',v:'3 U IV load over 30 sec → repeat 3 U q3 min × 3 doses max → infusion 3 U/hr up to 9 hr'},{l:'WHO alternative',v:'10 U IM or slow IV'}],p:[],note:'Do NOT rapid IV bolus (hypotension, coronary vasospasm, arrhythmia). Communicate with OB team re: uterine tone q3 min. Dilute if IV (0.5–1 U/mL). Tachyphylaxis with prolonged infusion. SE: hypotension, N/V, coronary spasm, hyponatremia (SIADH-like).'},
+  {n:'Pancuronium',c:'NdNMB (aminosteroid, long-acting) — ASTM RED',a:[{l:'Intubation',v:'0.08–0.1 mg/kg IV'},{l:'Maintenance',v:'0.01–0.015 mg/kg q40–60 min'}],p:[{l:'Same',v:'0.1 mg/kg IV'}],note:'Long duration ~90–120 min. Vagolytic → ↑ HR (may be beneficial in bradycardia-prone). Accumulates in renal failure. Largely replaced by vecuronium/rocuronium in modern practice. Reverse with sugammadex (preferred) or neostigmine at moderate depth.'},
+  {n:'Phenobarbital',c:'Barbiturate — Anticonvulsant',a:[{l:'Status epilepticus',v:'15–20 mg/kg IV at 50–100 mg/min; may repeat 5–10 mg/kg × 1'},{l:'Refractory seizure',v:'Additional 5–10 mg/kg after 10 min PRN'}],p:[{l:'Status epilepticus',v:'15–20 mg/kg IV at 1 mg/kg/min (max 30 mg/min)'}],note:'Respiratory depression + hypotension (especially with benzos — have airway ready). Second-line after benzos fail for status epilepticus. t½ 50–100 hr. Induces P450 — many drug interactions. Consider phenytoin as alternative.'},
+  {n:'Phenylephrine',c:'Alpha-1 agonist (pure) — ASTM GRAY',a:[{l:'Bolus',v:'50–200 mcg IV q1–2 min PRN'},{l:'Infusion',v:'25–100 mcg/min IV; titrate to MAP'},{l:'OB spinal hypotension bolus',v:'100 mcg IV (traditional); 50 mcg also effective'}],p:[{l:'Bolus',v:'5–10 mcg/kg IV'}],note:'No β effect — ↑ SVR; may cause reflex bradycardia (treat with atropine). OB: maintains uteroplacental blood flow effectively. Infusion preferred over boluses in OB spinal hypotension — more stable BP. Less effective if bradycardia component present (use ephedrine or norepinephrine).'},
+  {n:'Phentolamine',c:'Alpha blocker — Vasopressor extravasation antidote',a:[{l:'Vasopressor extravasation',v:'5–10 mg in 10 mL NS SC around affected area within 12 hr'},{l:'Hypertensive emergency (pheochromocytoma)',v:'1–5 mg IV bolus'}],p:[{l:'Extravasation',v:'0.1–0.2 mg/kg SC around site (max 10 mg)'}],note:'Antidote for norepinephrine, epinephrine, dopamine, vasopressin extravasation. Give within 12 hr for best results. Dilute and inject subcutaneously in multiple small aliquots around the extravasation site.'},
+  {n:'Propofol',c:'Hypnotic / Induction agent — ASTM AQUA',a:[{l:'Induction',v:'1–2.5 mg/kg IV (elderly: 1–1.5 mg/kg; HD-compromised: 0.5–1 mg/kg)'},{l:'TIVA maintenance',v:'50–150 mcg/kg/min IV'},{l:'Procedural sedation',v:'10–75 mcg/kg/min IV'},{l:'PONV rescue',v:'10–20 mg IV sub-hypnotic dose'}],p:[{l:'Induction',v:'2.5–3.5 mg/kg IV (higher than adult)'},{l:'Infusion',v:'125–300 mcg/kg/min'}],note:'⚠ PRIS (Propofol Infusion Syndrome): rates &gt;4 mg/kg/hr for &gt;48 hr in ICU — metabolic acidosis, rhabdomyolysis, cardiac failure. Injection pain: pretreat with lidocaine 1 mg/kg IV + tourniquet, or use medium-chain triglyceride formulation. Egg/soy allergy: protein not present — no longer contraindicated. Antimicrobial: discard open vials after 6–12 hr.'},
+  {n:'Protamine Sulfate',c:'Heparin reversal',a:[{l:'UFH reversal (IV heparin)',v:'1 mg per 100 U heparin given in preceding 2–3 hr; max 50 mg IV (give slowly over 10 min)'},{l:'LMWH reversal (partial)',v:'1 mg per 1 mg enoxaparin (max 50 mg); repeat 0.5 mg/mg if bleeding continues'}],p:[{l:'Same weight-based',v:'1 mg per 100 U UFH IV'}],note:'Anaphylactic reactions (fish allergy, prior vasectomy, prior protamine exposure, NPH insulin users). Have epi, diphenhydramine, steroids available. Pulmonary hypertension with rapid infusion. Heparin rebound may occur 4–8 hr later.'},
+  {n:'Ranitidine',c:'H₂ blocker — RECALLED',a:[],p:[],note:'⚠ PERMANENTLY RECALLED (FDA 2020) — NDMA contamination (probable carcinogen). DO NOT USE. Replace with FAMOTIDINE 20 mg IV/40 mg PO or CIMETIDINE 300 mg IV/800 mg PO.'},
+  {n:'Remifentanil',c:'Opioid µ-agonist (ultrashort) — ASTM YELLOW',a:[{l:'Intraop analgesia infusion',v:'0.05–0.5 mcg/kg/min IV'},{l:'Bolus',v:'0.5–1 mcg/kg IV over 30–60 sec'},{l:'Awake intubation adjunct',v:'0.05–0.1 mcg/kg/min infusion'}],p:[{l:'Infusion',v:'0.05–1 mcg/kg/min IV'}],note:'Plasma esterase hydrolysis — context-insensitive t½ ~3–5 min regardless of infusion duration. Plan multimodal analgesia at least 15–30 min before emergence. ↑ opioid-induced hyperalgesia risk with prolonged infusion. No renal/hepatic dose adjustment needed. Cannot use IM.'},
+  {n:'Rocuronium',c:'NdNMB (aminosteroid, intermediate) — ASTM RED',a:[{l:'Standard intubation',v:'0.6 mg/kg IV (onset ~90 sec; duration 30–45 min)'},{l:'RSI',v:'1.2 mg/kg IV (onset ~60 sec — comparable to sux; duration 60–90 min)'},{l:'Maintenance bolus',v:'0.1–0.2 mg/kg IV q20–30 min'},{l:'Infusion',v:'5–12 mcg/kg/min'}],p:[{l:'Intubation',v:'0.6–1.2 mg/kg IV'}],note:'Reversible with sugammadex 16 mg/kg (immediate, after 1.2 mg/kg RSI dose). RSI roc now equivalent alternative to sux in many institutions. Hepatic elimination → prolonged in liver failure. No histamine release. ↑ duration in hypothermia, Mg, acidosis, volatile agents.'},
+  {n:'Scopolamine (Hyoscine)',c:'Anticholinergic — PONV prophylaxis',a:[{l:'PONV prophylaxis (patch)',v:'1.5 mg transdermal patch applied 4 hr before OR (covers 72 hr)'},{l:'IV (antisialogogue)',v:'0.2–0.4 mg IV/IM'}],p:[{l:'Antiemetic IV',v:'6 mcg/kg IV (max 0.3 mg)'}],note:'Transdermal patch: apply behind ear the night before or ≥4 hr pre-op. SE: dry mouth, sedation, urinary retention, blurred vision, confusion (especially elderly). Anticholinergic delirium risk in elderly — use with caution. Remove patch post-op and wash hands.'},
+  {n:'Sodium Bicarbonate',c:'Alkalinizing agent / Buffer',a:[{l:'Metabolic acidosis',v:'1–2 mEq/kg IV; titrate per base deficit (0.3 × weight × base deficit)'},{l:'Hyperkalemia (redistribution)',v:'50–100 mEq IV'},{l:'TCA OD',v:'1–2 mEq/kg IV bolus; repeat PRN + infusion; target pH 7.45–7.55'},{l:'Urinary alkalinization (rhabdo)',v:'1–2 mEq/kg IV; infuse with D5W to maintain urine pH &gt;6.5'}],p:[{l:'Acidosis',v:'1–2 mEq/kg IV'}],note:'Incompatible with CaCl (precipitate). Hypernatremia + fluid overload risk. May paradoxically worsen intracellular acidosis (CO₂ crosses cell membrane faster than HCO₃⁻). Useful in TCA OD (↑ protein binding of TCAs). 1 amp = 50 mL 8.4% = 50 mEq.'},
+  {n:'Sodium Citrate (Bicitra)',c:'Non-particulate antacid — Aspiration prophylaxis',a:[{l:'Aspiration prophylaxis',v:'15–30 mL PO within 30 min of induction'}],p:[{l:'≥2 yr',v:'1–1.5 mL/kg PO (max 30 mL)'}],note:'Non-particulate antacid — neutralizes gastric acid (contrast to particulate antacids which worsen pneumonitis if aspirated). Used for full-stomach/OB/emergency patients. Onset immediate. Combine with H₂ blocker and/or metoclopramide for comprehensive aspiration prophylaxis.'},
+  {n:'Succinylcholine (Suxamethonium)',c:'Depolarizing NMB — ASTM RED',a:[{l:'RSI IV',v:'1.5 mg/kg IV (1–2 mg/kg range)'},{l:'IM (no IV access)',v:'3–4 mg/kg IM (onset ~3 min; max 5 mL/site)'}],p:[{l:'IV',v:'2 mg/kg (infants &lt;2 yr); 1–1.5 mg/kg (children)'},{l:'IM',v:'4–5 mg/kg'}],note:'⚠ BBW: risk of acute rhabdomyolysis/hyperkalemia in undiagnosed myopathies (Duchenne — avoid in peds except emergency). Contraindications: burns/crush &gt;24–48 hr, denervation, paralysis, hyperkalemia, personal/family Hx MH, penetrating eye injury (relative). Pseudocholinesterase deficiency → prolonged block (dibucaine number). Bradycardia with repeat/high doses (especially children — atropine pretreatment). Fasciculations → ↑ intragastric pressure (no evidence ↑ aspiration risk).'},
+  {n:'Sufentanil',c:'Opioid µ-agonist (highly lipophilic) — ASTM YELLOW',a:[{l:'Intraop analgesia',v:'0.5–2 mcg/kg IV; infusion 0.05–2 mcg/kg/hr'},{l:'Intrathecal',v:'2–10 mcg (off-label; very potent)'}],p:[{l:'Infusion',v:'0.05–0.5 mcg/kg/hr'}],note:'5–10× more potent than fentanyl. Very lipophilic — rapid onset, short CNS duration but long terminal t½. Used in cardiac anesthesia high-dose opioid technique. Relatively uncommon outside cardiac/neuroanesthesia.'},
+  {n:'Sugammadex',c:'Selective NMB reversal (γ-cyclodextrin) — ASTM PINK',a:[{l:'Moderate block (TOF count ≥2)',v:'2 mg/kg IV'},{l:'Deep block (PTC 1–2, TOF count 0–1)',v:'4 mg/kg IV'},{l:'Immediate emergent reversal (after roc 1.2 mg/kg)',v:'16 mg/kg IV'}],p:[{l:'≥2 yr, moderate',v:'2 mg/kg IV'},{l:'Deep',v:'4 mg/kg IV'}],note:'ASA/ESAIC 2023: Preferred reversal agent for rocuronium/vecuronium at deep, moderate, and shallow depths. Only encapsulates aminosteroids (rocuronium/vecuronium — NOT cisatracurium/atracurium/sux). Re-curarization rare — monitor ≥30 min. Pregnancy: crosses placenta → may reverse neuromuscular effects in fetus/neonate. QTc prolongation at 32 mg/kg. No dose reduction for renal failure (complex excreted renally — but accumulation evidence in severe renal failure — use with monitoring). 2024 RCT: roc+sugammadex superior to cis+neostigmine even in CrCl &lt;30 mL/min.'},
+  {n:'Terbutaline',c:'Beta-2 agonist — Tocolytic / Bronchodilator',a:[{l:'Tocolysis (uterine relaxation)',v:'0.25 mg SC; may repeat after 15 min (max 0.5 mg/4 hr)'},{l:'Bronchospasm (ER)',v:'0.25 mg SC; repeat after 15–30 min PRN'},{l:'SPOILT protocol',v:'0.25 mg SC (fetal distress — ↓ uterine activity)'}],p:[{l:'Bronchospasm',v:'0.01 mg/kg SC (max 0.3 mg)'}],note:'Short-term tocolysis only (FDA BBW: oral terbutaline for preterm labor contraindicated beyond 48–72 hr — maternal cardiac events). Tachycardia, ↑ fetal HR, hypokalemia, hyperglycemia. SL NTG often preferred for acute intraop uterine relaxation (faster onset).'},
+  {n:'Thiopental (Thiopentone)',c:'Barbiturate — Induction agent — ASTM AQUA',a:[{l:'Induction',v:'3–6 mg/kg IV (reduce 25–50% with premedication or elderly)'},{l:'ICP reduction',v:'1–3 mg/kg IV bolus PRN'}],p:[{l:'Induction',v:'5–7 mg/kg IV (higher than adults)'}],note:'Yellow alkaline solution — incompatible with many drugs. Laryngospasm/bronchospasm in reactive airway. Decreases CBF and CMRO₂ (ICP management). High context-sensitive t½ with infusion (days). Largely replaced by propofol. No analgesia. Porphyria contraindication.'},
+  {n:'Tranexamic Acid (TXA)',c:'Antifibrinolytic',a:[{l:'PPH (WHO 2023)',v:'1 g IV over 10 min; repeat × 1 after 30 min if continued bleeding'},{l:'Surgical prophylaxis',v:'10–30 mg/kg IV; or 15 mg/kg load + 5 mg/kg/hr infusion'},{l:'Trauma (within 3 hr of injury)',v:'1 g IV over 10 min, then 1 g over 8 hr (CRASH-2)'},{l:'Cardiac surgery',v:'10–100 mg/kg IV (institution-specific)'}],p:[{l:'Surgical',v:'10–100 mg/kg IV (cardiac: 100 mg/kg + 10 mg/kg/hr; orthopedic: 15–30 mg/kg)'}],note:'⚠ 2023 WHO update: TXA recommended for ALL PPH within 3 hr of delivery. WOMAN trial: 19% ↓ death from bleeding in PPH. CRASH-2: give within 3 hr trauma (↑ mortality if &gt;3 hr). Seizure risk at high doses (&gt;30 mg/kg): inhibits glycine receptors. Avoid in DIC until clots established. Reduces perioperative transfusion 25–30%.'},
+  {n:'Vasopressin (ADH)',c:'Vasopressor (V1/V2 agonist) — ASTM GRAY',a:[{l:'Septic shock adjunct (fixed)',v:'0.03–0.04 units/min IV infusion (do NOT titrate as primary vasopressor)'},{l:'Cardiac arrest (ACLS)',v:'40 units IV × 1 (may replace 1st or 2nd epi dose per 2010 guidelines; removed from 2020 ACLS as primary recommendation)'},{l:'Refractory vasoplegia',v:'0.01–0.07 units/min IV'}],p:[{l:'Vasodilatory shock',v:'0.0003–0.002 units/kg/min IV infusion'}],note:'⚠ AVOID in LAST (worsens outcomes). Nonadrenergic — maintains vasopressor effect in severe acidosis where catecholamines fail. V1 (vasoconstriction) + V2 (ADH, water retention) → watch Na⁺. Splanchnic/pulmonary vasoconstriction at high doses. Coronary/mesenteric ischemia risk.'},
+  {n:'Vecuronium',c:'NdNMB (aminosteroid, intermediate) — ASTM RED',a:[{l:'Intubation',v:'0.1 mg/kg IV'},{l:'Maintenance',v:'0.01–0.015 mg/kg q25–40 min'},{l:'Infusion',v:'1–2 mcg/kg/min'}],p:[{l:'Same',v:'0.1 mg/kg IV'}],note:'No cardiovascular effects (no vagolytic/sympathomimetic — advantage in cardiac). Hepatic/renal elimination → prolonged in liver/renal failure. Duration ~25–40 min. Stored as powder (reconstitute). Reversible with sugammadex (preferred) or neostigmine at minimal block.'},
+  {n:'Verapamil',c:'CCB (non-dihydropyridine) — Rate control',a:[{l:'SVT rate control',v:'2.5–5 mg IV over 2 min; repeat 5–10 mg q15–30 min (max 20 mg)'},{l:'AVNRT',v:'5–10 mg IV'},{l:'PO rate control (AF)',v:'120–480 mg/day in 3–4 divided doses'}],p:[{l:'SVT',v:'0.1–0.2 mg/kg IV (max 5 mg)'}],note:'Negative chronotrope + inotrope (↓HR/contractility). Avoid in AF/flutter with WPW (paradoxical ↑ rate via accessory pathway). Avoid with beta-blockers IV (complete heart block). Severe hypotension + bradycardia risk. Avoid in decompensated HF.'}
+];
+
+function renderDrugs(list) {
+  const c = document.getElementById('dList');
+  if (!list.length) { c.innerHTML='<p style="color:var(--t3);text-align:center;padding:20px;">No matches found.</p>'; return; }
+  c.innerHTML = list.map((d,i)=>`
+    <div class="de" id="drug${i}">
+      <div class="dh" onclick="toggleDrug(${i})">
+        <div><div class="dn">${d.n}</div><div class="dc">${d.c}</div></div>
+        <span class="dchv">▼</span>
+      </div>
+      <div class="db">
+        ${d.a.length?`<div class="dbt">Adult</div>${d.a.map(x=>`<div class="dl"><span class="lbl">${x.l}:</span> ${x.v}</div>`).join('')}`:''}
+        ${d.p.length?`<div class="dbt" style="margin-top:6px;">Pediatric</div>${d.p.map(x=>`<div class="dl"><span class="lbl">${x.l}:</span> ${x.v}</div>`).join('')}`:''}
+        ${d.note?`<div class="al al-b" style="margin-top:7px;font-size:11px;">${d.note}</div>`:''}
+      </div>
+    </div>`).join('');
+}
+
+function toggleDrug(i) { document.getElementById('drug'+i).classList.toggle('open'); }
+
+function filterDrugs(q) {
+  const lq = q.toLowerCase();
+  renderDrugs(drugs.filter(d => d.n.toLowerCase().includes(lq) || d.c.toLowerCase().includes(lq)));
+}
+
+// Init drugs when tab first opened
+const origShow = window.showTab;
+window.showTab = function(id, btn) {
+  document.querySelectorAll('.panel').forEach(function(p) {
+    p.classList.remove('on');
+    p.style.display = 'none';
+  });
+  document.querySelectorAll('.tb').forEach(function(b) { b.classList.remove('on'); });
+  var panel = document.getElementById('tab-'+id);
+  if (panel) {
+    panel.classList.add('on');
+    panel.style.display = 'block';
+  }
+  btn.classList.add('on');
+  if (id === 'meds' && document.getElementById('dList').innerHTML === '') renderDrugs(drugs);
+};
+</script>
+<div class="bkm-overlay" id="bkmOverlay">
+<div class="bkm-modal">
+  <div class="bkm-title"><span>📌 Save for Offline Use</span><button class="bkm-close" onclick="document.getElementById('bkmOverlay').classList.remove('open')">&#x2715;</button></div>
+  <div class="bkm-sub">This file works entirely offline — no internet needed after saving.</div>
+  <div class="bkm-tabs">
+    <button class="bkm-tab on" onclick="bkmTab(this,'ios')">iPhone / iPad</button>
+    <button class="bkm-tab" onclick="bkmTab(this,'android')">Android</button>
+    <button class="bkm-tab" onclick="bkmTab(this,'mac')">Mac</button>
+    <button class="bkm-tab" onclick="bkmTab(this,'win')">Windows / PC</button>
+  </div>
+  <div class="bkm-pane on" id="bkm-ios">
+    <div class="bkm-step"><div class="bkm-num">1</div><div class="bkm-txt"><strong>AirDrop or email</strong> the .html file to your iPhone/iPad</div></div>
+    <div class="bkm-step"><div class="bkm-num">2</div><div class="bkm-txt">Tap the file — it opens in <strong>Safari</strong> (use Safari, not Chrome)</div></div>
+    <div class="bkm-step"><div class="bkm-num">3</div><div class="bkm-txt">Tap the <strong>Share button</strong> (box with arrow) at the bottom</div></div>
+    <div class="bkm-step"><div class="bkm-num">4</div><div class="bkm-txt">Scroll down → tap <strong>"Add to Home Screen"</strong></div></div>
+    <div class="bkm-step"><div class="bkm-num">5</div><div class="bkm-txt">Name it and tap <strong>Add</strong> — launches like an app, works offline</div></div>
+    <div class="bkm-note">⚠ Must open in <strong>Safari</strong> — Chrome on iOS cannot add to Home Screen from local files. The file stays in your Files app at <strong>On My iPhone › Downloads</strong> as a backup.</div>
+  </div>
+  <div class="bkm-pane" id="bkm-android">
+    <div class="bkm-step"><div class="bkm-num">1</div><div class="bkm-txt"><strong>Download or transfer</strong> the .html file to your device</div></div>
+    <div class="bkm-step"><div class="bkm-num">2</div><div class="bkm-txt">Open <strong>Chrome</strong> → tap the address bar → type <strong>file:///sdcard/Download/</strong> and navigate to the file</div></div>
+    <div class="bkm-step"><div class="bkm-num">3</div><div class="bkm-txt">Tap the <strong>three-dot menu</strong> (⋮) → <strong>"Add to Home screen"</strong></div></div>
+    <div class="bkm-step"><div class="bkm-num">4</div><div class="bkm-txt">Tap <strong>Add</strong> — shortcut appears on your home screen</div></div>
+    <div class="bkm-note">💡 Alternatively: open the file with <strong>Firefox for Android</strong> via your file manager app — it handles local HTML files more reliably than Chrome on some devices.</div>
+  </div>
+  <div class="bkm-pane" id="bkm-mac">
+    <div class="bkm-step"><div class="bkm-num">1</div><div class="bkm-txt"><strong>Save the file</strong> somewhere permanent (Documents, not Downloads)</div></div>
+    <div class="bkm-step"><div class="bkm-num">2</div><div class="bkm-txt">Open the file in <strong>Safari or Chrome</strong> — double-click or drag to browser</div></div>
+    <div class="bkm-step"><div class="bkm-num">3</div><div class="bkm-txt">Press <strong>⌘ D</strong> to bookmark, or drag the tab to your Dock / desktop</div></div>
+    <div class="bkm-step"><div class="bkm-num">4</div><div class="bkm-txt"><strong>Safari tip:</strong> File → Add to Dock — creates a standalone launcher in your Dock</div></div>
+    <div class="bkm-note">💡 To sync to iPhone: save in <strong>iCloud Drive</strong> and open in Safari on iOS → Add to Home Screen.</div>
+  </div>
+  <div class="bkm-pane" id="bkm-win">
+    <div class="bkm-step"><div class="bkm-num">1</div><div class="bkm-txt"><strong>Save the file</strong> somewhere permanent (Documents folder recommended)</div></div>
+    <div class="bkm-step"><div class="bkm-num">2</div><div class="bkm-txt">Open in <strong>Chrome or Edge</strong> — double-click the file</div></div>
+    <div class="bkm-step"><div class="bkm-num">3</div><div class="bkm-txt">Press <strong>Ctrl + D</strong> to bookmark, or drag the icon from the address bar to your desktop</div></div>
+    <div class="bkm-step"><div class="bkm-num">4</div><div class="bkm-txt"><strong>Edge tip:</strong> Apps → Install this site as an app — creates a standalone window launcher</div></div>
+    <div class="bkm-note">💡 <strong>Edge</strong> handles local HTML files best on Windows — Chrome may prompt about file access on some versions.</div>
+  </div>
+</div>
+</div>
+</body>
+</html>
+
+
+

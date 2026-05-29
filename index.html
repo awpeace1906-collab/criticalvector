@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Critical Vector</title>
-  <meta name="description" content="A physician-in-the-making writing at the intersection of emergency medicine, critical care, and anesthesiology." />
+  <title>The Critical Vector</title>
+  <meta name="description" content="A physician-in-training writing at the intersection of emergency medicine, critical care, and anesthesiology." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300;1,8..60,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/main.css" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23111720'/><polyline points='2,18 7,18 9,10 12,24 15,14 17,20 19,8 22,22 24,16 30,16' stroke='%2300d4aa' stroke-width='1.8' stroke-linejoin='round' stroke-linecap='round' fill='none'/><circle cx='19' cy='8' r='2' fill='%2300d4aa'/></svg>" />
 </head>
 <body>
 
   <nav class="nav" id="nav">
-    <a href="index.html" class="nav-logo" aria-label="Critical Vector Home">
+    <a href="index.html" class="nav-logo" aria-label="The Critical Vector Home">
       <svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true">
         <rect width="32" height="32" rx="6" fill="#111720"/>
         <polyline points="2,18 7,18 9,10 12,24 15,14 17,20 19,8 22,22 24,16 30,16" stroke="#00d4aa" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
@@ -22,7 +22,7 @@
         <line x1="22" y1="8" x2="29" y2="4" stroke="#00d4aa" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/>
         <line x1="22" y1="8" x2="29" y2="12" stroke="#00d4aa" stroke-width="1.2" stroke-linecap="round" opacity="0.3"/>
       </svg>
-      <span class="nav-logo-name">Critical<em>Vector</em></span>
+      <span class="nav-logo-name">The Critical<em>Vector</em></span>
     </a>
     <button class="nav-hamburger" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -31,6 +31,7 @@
       <a href="continuum.html" class="nav-link continuum">The Continuum</a>
       <a href="workshop.html" class="nav-link workshop">The Workshop</a>
       <a href="locker.html" class="nav-link locker">The Evidence Locker</a>
+      <a href="flightdeck.html" class="nav-link flightdeck">From the Flight Deck</a>
       <a href="stack.html" class="nav-link stack">The Stack</a>
       <a href="about.html" class="nav-link about">About</a>
       <button class="mode-toggle" id="modeToggle" aria-label="Toggle light/dark mode">
@@ -46,7 +47,7 @@
     <div class="hero-inner">
       <div class="hero-eyebrow">Emergency Medicine · Critical Care · Anesthesiology</div>
       <h1 class="hero-title">Where the<br/>call to care<br/>meets <em>precision</em>.</h1>
-      <p class="hero-sub">A physician-in-the-making writing at the intersection of emergency medicine, critical care, and anesthesiology — from prehospital to the OR and everywhere in between.</p>
+      <p class="hero-sub">A physician-in-training writing at the intersection of emergency medicine, critical care, and anesthesiology — from prehospital to the OR and everywhere in between.</p>
       <div class="hero-tags">
         <span class="htag prehospital">Prehospital</span>
         <span class="htag em">Emergency Medicine</span>
@@ -73,18 +74,27 @@
         <div class="feat-body">
           <h2>Uterine Rupture at Altitude: When the Retrieval Is the Resuscitation</h2>
           <p>A case from <em>Air Medical Journal</em> drops you into a flight crew managing catastrophic hemorrhage from uterine rupture — simultaneous hemodynamic collapse and refractory hypoxemia, massive transfusion en route, REBOA on the differential, and TACO waiting at the end of the line. This is The Continuum at its most compressed: prehospital and critical care occupying the same airframe at the same time.</p>
-          <a href="posts/uterine-rupture-altitude.html" class="read-more">Read the breakdown →</a>
+          <a href="posts/uterine-rupture-retrieval.html" class="read-more">Read the breakdown →</a>
         </div>
       </article>
 
       <div class="section-label workshop-label">Recent Posts</div>
 
       <div class="post-list">
-        <a href="posts/uterine-rupture-altitude.html" class="post-row">
+        <a href="posts/uterine-rupture-retrieval.html" class="post-row">
           <div class="post-info">
             <div class="post-type continuum-type">The Continuum</div>
             <div class="post-title">Uterine Rupture at Altitude: When the Retrieval Is the Resuscitation</div>
             <div class="post-meta">Prehospital · Critical Care · Air Med J · May 2026</div>
+          </div>
+          <span class="post-arrow">›</span>
+        </a>
+        
+        <a href="posts/mountainair-parafluorofentanyl.html" class="post-row">
+          <div class="post-info">
+            <div class="post-type flightdeck-type">From the Flight Deck</div>
+            <div class="post-title">Mountainair: Three Deaths and the Misdirected Response</div>
+            <div class="post-meta">The Evidence Locker · Public Health · May 2026</div>
           </div>
           <span class="post-arrow">›</span>
         </a>
@@ -96,11 +106,11 @@
           </div>
           <span class="post-arrow">›</span>
         </a>
-        <a href="posts/obgyn-guide.html" class="post-row">
+        <a href="tools/em_pocket_guide_v4.html" class="post-row">
           <div class="post-info">
             <div class="post-type workshop-type">The Workshop</div>
-            <div class="post-title">OB/GYN EFM + AUB Visual Guide — Now Offline-Ready</div>
-            <div class="post-meta">HTML guide · Clinical tool · Jan 2026</div>
+            <div class="post-title">Pocket Guides v4 — EM, ICU, OB &amp; Anesthesia Now Live</div>
+            <div class="post-meta">Offline-ready HTML guides · v4 · May 2026</div>
           </div>
           <span class="post-arrow">›</span>
         </a>
@@ -139,6 +149,11 @@
           <span class="sec-dot" style="background:var(--amber)"></span>
           <div><div class="sec-name locker-name">The Evidence Locker</div><div class="sec-sub">Research, lit reviews, cases</div></div>
         </a>
+        
+        <a href="flightdeck.html" class="sec-row">
+          <span class="sec-dot" style="background:var(--red-tag)"></span>
+          <div><div class="sec-name flightdeck-name">From the Flight Deck</div><div class="sec-sub">Opinion, editorial, field perspective</div></div>
+        </a>
         <a href="stack.html" class="sec-row">
           <span class="sec-dot" style="background:var(--purple)"></span>
           <div><div class="sec-name stack-name">The Stack</div><div class="sec-sub">FOAM &amp; external resources</div></div>
@@ -147,12 +162,24 @@
 
       <div class="sidebar-card">
         <div class="sidebar-title workshop-label">The Workshop</div>
-        <a href="posts/obgyn-guide.html" class="rrow">
-          <span class="rico teal-ico">📋</span>
-          <div><div class="rname">OB/GYN Visual Guide</div><div class="rsub">HTML · EFM + AUB · Offline</div></div>
+        <a href="tools/anesthesia_reference_v4.html" class="rrow">
+          <span class="rico teal-ico">💉</span>
+          <div><div class="rname">Pocket Anesthesia Reference</div><div class="rsub">Neuraxial · LAST · OB · NMT · v4</div></div>
+        </a>
+        <a href="tools/em_pocket_guide_v4.html" class="rrow">
+          <span class="rico red-ico">🚨</span>
+          <div><div class="rname">EM Pocket Guide</div><div class="rsub">RSI · Airway · Tox · Trauma · v4</div></div>
+        </a>
+        <a href="tools/icu_pocket_guide_v4.html" class="rrow">
+          <span class="rico blue-ico">🫁</span>
+          <div><div class="rname">ICU Pocket Guide</div><div class="rsub">Vent · Pressors · Sepsis · v4</div></div>
+        </a>
+        <a href="tools/ob_pocket_guide_v4.html" class="rrow">
+          <span class="rico purple-ico">🏥</span>
+          <div><div class="rname">OB Pocket Guide</div><div class="rsub">PPH · Preeclampsia · EFM · v4</div></div>
         </a>
         <a href="posts/nerve-block-curriculum.html" class="rrow">
-          <span class="rico red-ico">🔬</span>
+          <span class="rico amber-ico">🔬</span>
           <div><div class="rname">US Nerve Block Curriculum</div><div class="rsub">Procedural education</div></div>
         </a>
       </div>
@@ -181,7 +208,7 @@
   </main>
 
   <footer class="footer"><div class="footer-inner">
-    <div class="footer-left">© 2026 Critical Vector · Physician-in-the-Making</div>
+    <div class="footer-left">© 2026 The Critical Vector · Physician-in-the-Making</div>
     <div class="footer-right">
       <a href="https://github.com/awpeace1906-collab/criticalvector" target="_blank" rel="noopener">GitHub</a>
       <a href="https://pubmed.ncbi.nlm.nih.gov" target="_blank" rel="noopener">PubMed</a>

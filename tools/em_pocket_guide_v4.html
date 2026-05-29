@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+/* Offline font fallbacks — replaces Google Fonts for file:// compatibility */
+@font-face { font-family: 'Syne'; src: local('Arial Black'), local('Impact'), local('.AppleSystemUIFont'); font-weight: 400 800; }
+@font-face { font-family: 'DM Mono'; src: local('Menlo'), local('Consolas'), local('Courier New'); font-weight: 400 500; }
+@font-face { font-family: 'Source Serif 4'; src: local('Georgia'), local('Times New Roman'); font-weight: 300 400; }
+
+/* v4 overflow fix */
+.tr > div { min-width: 0; overflow-wrap: break-word; word-break: break-word; }
+.g3 { grid-template-columns: minmax(0,1fr) minmax(0,1.4fr) minmax(0,1.2fr); }
+.g2 { grid-template-columns: minmax(0,1.1fr) minmax(0,2fr); }
+.dn, .dd, .d2, .il, .iv, .cn, .fl, .ct { overflow-wrap: break-word; word-break: break-word; }
+.il { width: auto; min-width: 0; max-width: 160px; }
+.stbl td, .stbl th { overflow-wrap: break-word; word-break: break-word; max-width: 240px; }
+@media (max-width: 500px) {
+  .g3 { grid-template-columns: 1fr; }
+  .g2 { grid-template-columns: 1fr; }
+}
+
+/* v4 table alignment fix */
+.stbl { table-layout: fixed; width: 100%; }
+.stbl th, .stbl td { vertical-align: top; overflow-wrap: break-word; word-break: break-word; white-space: normal; hyphens: auto; }
+.stbl th { padding: 6px 8px; }
+.stbl td { padding: 6px 8px; }
+.stbl col, .stbl th:first-child, .stbl td:first-child { width: 28%; }
+.thr > div { min-width: 0; overflow-wrap: break-word; word-break: break-word; }
+</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EM Pocket Guide</title>
+<style>
+:root{--fn:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;--fm:'Menlo','Consolas','Courier New',monospace;--bg:#07050f;--sf1:#0d0a1e;--sf2:#130e28;--sf3:#1a1335;--b1:#251a40;--b2:#301d55;--b3:#3d2570;--tx:#e8d8ff;--td:#8060c0;--tm:#3d2a70;--ac:#e8394a;--ac-bg:rgba(232,57,74,.09);--ac-b:rgba(232,57,74,.30);--ac-tx:#fca5a5;--a2:#c084fc;--a2-bg:rgba(192,132,252,.09);--a2-b:rgba(192,132,252,.28);--a2-tx:#e9d5ff;--a3:#4ade80;--a3-bg:rgba(74,222,128,.08);--a3-b:rgba(74,222,128,.25);--a3-tx:#bbf7d0;--a4:#fbbf24;--a4-bg:rgba(251,191,36,.08);--a4-b:rgba(251,191,36,.25);--a4-tx:#fde68a;--a5:#f97316;--a5-bg:rgba(249,115,22,.08);--a5-b:rgba(249,115,22,.25);--a5-tx:#fed7aa;--a6:#38bdf8;--a6-bg:rgba(56,189,248,.09);--a6-b:rgba(56,189,248,.28);--a6-tx:#bae6fd;--a7:#fb923c;--a7-bg:rgba(251,146,60,.08);--a7-b:rgba(251,146,60,.25);--a7-tx:#fed7aa;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html,body{height:100%;}
+body{background:var(--bg);color:var(--tx);font-family:var(--fn);display:flex;flex-direction:column;height:100vh;overflow:hidden;}
+.hdr{flex-shrink:0;height:50px;background:var(--sf1);border-bottom:1px solid var(--b1);display:flex;align-items:center;padding:0 16px;gap:10px;z-index:200;}
+.mbt{display:none;background:none;border:none;cursor:pointer;color:var(--td);font-size:19px;padding:2px 4px;flex-shrink:0;line-height:1;}
+.hbrand{display:flex;align-items:center;gap:10px;flex:1;}
+.hlogo{width:28px;height:28px;border-radius:6px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:14px;background:linear-gradient(135deg,#7c3aed 0%,#e8394a 100%);box-shadow:0 0 12px rgba(232,57,74,.35);}
+.htitle{font-size:14px;font-weight:700;letter-spacing:.05em;}
+.hsub{font-family:var(--fm);font-size:9px;color:var(--tm);letter-spacing:.1em;margin-top:2px;}
+.hrt{display:flex;align-items:center;gap:5px;flex-shrink:0;}
+.hbtn{font-family:var(--fm);font-size:10px;cursor:pointer;background:var(--sf2);border:1px solid var(--b2);color:var(--td);padding:4px 9px;border-radius:4px;transition:all .12s;white-space:nowrap;}
+.hbtn:hover{border-color:var(--b3);color:var(--tx);}
+.hbtn.on{background:var(--ac-bg);border-color:var(--ac-b);color:var(--ac);}
+.chip{font-family:var(--fm);font-size:9px;color:var(--ac);background:var(--ac-bg);border:1px solid var(--ac-b);padding:3px 8px;border-radius:4px;letter-spacing:.06em;}
+.chip2{font-family:var(--fm);font-size:9px;color:var(--a3);background:var(--a3-bg);border:1px solid var(--a3-b);padding:3px 8px;border-radius:4px;letter-spacing:.06em;}
+.srch{flex-shrink:0;height:42px;background:var(--sf1);border-bottom:1px solid var(--b1);display:flex;align-items:center;padding:0 14px;gap:8px;}
+.si{flex:1;background:transparent;border:none;outline:none;color:var(--tx);font-family:var(--fn);font-size:13px;}
+.si::placeholder{color:var(--tm);}
+.sc{cursor:pointer;color:var(--tm);font-size:10px;background:var(--sf3);border:1px solid var(--b2);border-radius:3px;padding:2px 6px;display:none;font-family:var(--fm);}
+.sc.vis{display:block;}
+.shc{font-family:var(--fm);font-size:10px;color:var(--ac);flex-shrink:0;}
+.nav{flex-shrink:0;height:38px;background:var(--sf1);border-bottom:1px solid var(--b1);display:flex;align-items:center;overflow-x:auto;padding:0 10px;gap:2px;scrollbar-width:none;}
+.nav::-webkit-scrollbar{display:none;}
+.nt{flex-shrink:0;border:none;cursor:pointer;background:transparent;color:var(--td);padding:4px 11px;border-radius:5px;font-size:11.5px;font-weight:500;transition:all .12s;display:flex;align-items:center;gap:5px;font-family:var(--fn);}
+.nt:hover{background:var(--sf2);color:var(--tx);}
+.nt.on{background:var(--sf3);color:var(--tx);border:1px solid var(--b2);}
+.bwrap{display:flex;flex:1;overflow:hidden;}
+.sb{width:190px;flex-shrink:0;overflow-y:auto;border-right:1px solid var(--b1);background:var(--sf1);scrollbar-width:thin;}
+.sb::-webkit-scrollbar{width:3px;}
+.sb::-webkit-scrollbar-thumb{background:var(--b2);border-radius:2px;}
+.sbl{font-family:var(--fm);font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--tm);padding:10px 13px 4px;}
+.sbi{padding:7px 13px;font-size:12px;cursor:pointer;color:var(--td);border-left:2px solid transparent;transition:all .1s;line-height:1.35;}
+.sbi:hover{background:var(--sf2);color:var(--tx);}
+.sbi.on{color:var(--tx);background:var(--sf2);border-left-color:var(--ac);}
+.sbcls{display:none;background:none;border:none;cursor:pointer;color:var(--tm);font-family:var(--fm);font-size:11px;padding:8px 13px 4px;width:100%;text-align:right;}
+.co{flex:1;overflow-y:auto;padding:16px 18px;scrollbar-width:thin;}
+.co::-webkit-scrollbar{width:4px;}
+.co::-webkit-scrollbar-thumb{background:var(--b2);border-radius:2px;}
+.shdr{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:14px;padding-bottom:11px;border-bottom:1px solid var(--b1);}
+.stitle{font-size:17px;font-weight:700;}
+.smeta{font-family:var(--fm);font-size:10px;color:var(--tm);margin-top:3px;}
+.supd{font-family:var(--fm);font-size:9px;color:var(--tm);text-align:right;}
+.ssrc{font-family:var(--fm);font-size:8px;color:var(--ac);letter-spacing:.06em;}
+.cg{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:9px;margin-bottom:9px;}
+.cf{margin-bottom:9px;}
+.c2{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:9px;}
+.card{background:var(--sf1);border:1px solid var(--b1);border-radius:7px;overflow:hidden;}
+.card:hover{border-color:var(--b2);}
+.card.a1{border-left:3px solid var(--ac);}
+.card.a2{border-left:3px solid var(--a2);}
+.card.a3{border-left:3px solid var(--a3);}
+.card.a4{border-left:3px solid var(--a4);}
+.card.a5{border-left:3px solid var(--a5);}
+.card.a6{border-left:3px solid var(--a6);}
+.card.a7{border-left:3px solid var(--a7);}
+.ch{padding:8px 12px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--b1);cursor:pointer;gap:7px;user-select:none;}
+.ch:hover{background:var(--sf2);}
+.chl{display:flex;align-items:center;gap:6px;flex:1;}
+.cn{font-size:12.5px;font-weight:600;}
+.ca{color:var(--tm);font-size:10px;transition:transform .15s;}
+.ca.o{transform:rotate(180deg);}
+.cb{padding:10px 12px;}
+.cb.cl{display:none;}
+.bd{font-family:var(--fm);font-size:8.5px;font-weight:600;padding:2px 6px;border-radius:3px;letter-spacing:.06em;text-transform:uppercase;flex-shrink:0;white-space:nowrap;}
+.bd1{background:var(--ac-bg);color:var(--ac);border:1px solid var(--ac-b);}
+.bd2{background:var(--a2-bg);color:var(--a2);border:1px solid var(--a2-b);}
+.bd3{background:var(--a3-bg);color:var(--a3);border:1px solid var(--a3-b);}
+.bd4{background:var(--a4-bg);color:var(--a4);border:1px solid var(--a4-b);}
+.bd5{background:var(--a5-bg);color:var(--a5);border:1px solid var(--a5-b);}
+.bd6{background:var(--a6-bg);color:var(--a6);border:1px solid var(--a6-b);}
+.bd7{background:var(--a7-bg);color:var(--a7);border:1px solid var(--a7-b);}
+.thr,.tr{display:grid;gap:5px;padding:5px 0;align-items:start;}
+.thr{font-family:var(--fm);font-size:9px;font-weight:600;color:var(--td);border-bottom:1px solid var(--b1);text-transform:uppercase;letter-spacing:.06em;padding-bottom:6px;min-width:0;overflow-wrap:break-word;}
+.tr{border-bottom:1px solid var(--b1);font-size:11.5px;}
+.tr:last-child{border-bottom:none;}
+.tr:hover{background:rgba(255,255,255,.015);margin:0 -12px;padding-left:12px;padding-right:12px;}
+.g2{grid-template-columns:minmax(0,1.1fr) minmax(0,2fr);}
+.g3{grid-template-columns:minmax(0,1fr) minmax(0,1.4fr) minmax(0,1.2fr);}
+.g4{grid-template-columns:1.1fr 1.3fr 0.9fr 1fr;}
+.dn{font-weight:600;color:var(--tx);min-width:0;overflow-wrap:break-word;word-break:break-word;}
+.dd{font-family:var(--fm);font-size:11px;color:var(--ac);min-width:0;overflow-wrap:break-word;word-break:break-word;}
+.d2{font-size:11px;color:var(--td);line-height:1.4;min-width:0;overflow-wrap:break-word;word-break:break-word;}
+.ir{display:flex;justify-content:space-between;align-items:flex-start;padding:5px 0;border-bottom:1px solid var(--b1);gap:8px;}
+.ir:last-child{border-bottom:none;}
+.il{font-family:var(--fm);font-size:10px;color:var(--tm);flex-shrink:0;width:150px;}
+.iv{font-size:12px;color:var(--tx);text-align:right;line-height:1.4;}
+.iv.m{font-family:var(--fm);font-size:11px;color:var(--ac);}
+.al{border-radius:5px;padding:8px 11px;font-size:11.5px;margin-bottom:8px;display:flex;gap:8px;align-items:flex-start;line-height:1.5;}
+.ali{font-size:13px;flex-shrink:0;margin-top:1px;}
+.al.e{background:var(--ac-bg);border:1px solid var(--ac-b);color:var(--ac-tx);}
+.al.w{background:var(--a4-bg);border:1px solid var(--a4-b);color:var(--a4-tx);}
+.al.i{background:var(--a6-bg);border:1px solid var(--a6-b);color:var(--a6-tx);}
+.al.s{background:var(--a3-bg);border:1px solid var(--a3-b);color:var(--a3-tx);}
+.al.g{background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.28);color:#fbbf24;}
+.fml{background:var(--sf2);border:1px solid var(--b2);border-left:3px solid var(--ac);border-radius:5px;padding:8px 12px;margin-bottom:7px;font-family:var(--fm);font-size:11.5px;color:var(--ac);line-height:1.5;}
+.fl{color:var(--tm);font-size:9px;margin-bottom:3px;letter-spacing:.06em;text-transform:uppercase;}
+.crit{background:var(--sf2);border:1px solid var(--b2);border-radius:5px;padding:8px 11px;margin-bottom:6px;}
+.ct{font-weight:600;font-size:11.5px;margin-bottom:4px;color:var(--tx);}
+.crit ul{padding-left:14px;}
+.crit li{font-size:11px;color:var(--td);margin-top:2px;line-height:1.45;}
+.sl{list-style:none;}
+.sl li{display:flex;gap:9px;align-items:flex-start;padding:5px 0;font-size:12px;line-height:1.45;}
+.sn{font-family:var(--fm);font-size:9.5px;font-weight:600;color:var(--a4);background:var(--a4-bg);border:1px solid var(--a4-b);width:20px;height:20px;border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.stbl{width:100%;border-collapse:collapse;font-size:11.5px;table-layout:fixed;}
+.stbl th{background:var(--sf2);padding:6px 8px;text-align:left;font-family:var(--fm);font-size:9px;color:var(--tx);font-weight:600;border-bottom:1px solid var(--b2);vertical-align:top;overflow-wrap:break-word;word-break:break-word;white-space:normal;}
+.stbl td{padding:6px 8px;border-bottom:1px solid var(--b1);vertical-align:top;overflow-wrap:break-word;word-break:break-word;white-space:normal;}
+.stbl tr:last-child td{border-bottom:none;}
+.stbl tr:hover td{background:var(--sf2);}
+.dv{height:1px;background:var(--b1);margin:9px 0;}
+.qrp{width:210px;flex-shrink:0;border-left:1px solid var(--b1);overflow-y:auto;display:none;background:var(--sf1);}
+.qrl{font-family:var(--fm);font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--tm);padding:8px 12px 4px;}
+.qri{padding:6px 12px;border-bottom:1px solid var(--b1);}
+.qri-n{font-size:12px;font-weight:600;color:var(--tx);}
+.qri-d{font-family:var(--fm);font-size:10px;color:var(--ac);margin-top:1px;}
+.qri-t{font-size:10px;color:var(--td);margin-top:1px;line-height:1.35;}
+.qhdr{display:flex;justify-content:space-between;align-items:center;padding:10px 14px 6px;border-bottom:1px solid var(--b1);font-family:var(--fm);font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--tm);background:var(--sf1);position:sticky;top:0;}
+.qcls{background:none;border:none;cursor:pointer;color:var(--td);font-size:13px;padding:0;}
+.kbo{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:500;display:none;align-items:center;justify-content:center;}
+.kbo.vis{display:flex;}
+.kbx{background:var(--sf1);border:1px solid var(--b2);border-radius:10px;padding:20px 24px;min-width:300px;max-width:90vw;}
+.kbr{display:flex;justify-content:space-between;align-items:center;padding:5px 0;font-size:12px;}
+.kbk{font-family:var(--fm);font-size:10px;background:var(--sf2);border:1px solid var(--b2);color:var(--a4);padding:2px 7px;border-radius:4px;}
+.kd{color:var(--td);}
+.empty{text-align:center;padding:60px 20px;color:var(--tm);}
+.srb{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--sf1);border:1px solid var(--b1);border-radius:7px;cursor:pointer;color:var(--tx);font-family:var(--fn);font-size:12px;width:100%;margin-bottom:6px;transition:border-color .1s;text-align:left;}
+.srb:hover{border-color:var(--ac-b);}
+.sbbd{display:none;position:fixed;inset:0;z-index:149;background:rgba(0,0,0,.6);}
+.sbbd.vis{display:block;}
+@media(max-width:640px){.mbt{display:flex;align-items:center;}.hsub,.chip,.chip2{display:none;}.hdr{padding:0 10px;}.hrt{gap:4px;}.hbtn{padding:4px 7px;font-size:9.5px;}.sb{position:fixed;top:0;left:0;bottom:0;width:240px;z-index:150;transform:translateX(-100%);transition:transform .22s ease;box-shadow:4px 0 24px rgba(0,0,0,.5);}.sb.open{transform:translateX(0);}.sbcls{display:block;}.bwrap{flex-direction:column;}.co{flex:1;padding:12px;}.qrp{position:fixed;inset:0;width:100%!important;z-index:300;display:none;border-left:none;transform:translateY(100%);transition:transform .25s ease;}.qrp.mopen{transform:translateY(0);display:block!important;}.cg,.c2{grid-template-columns:1fr!important;}.g4{grid-template-columns:1fr 1fr!important;}.nav{height:44px;}.nt{padding:6px 12px;font-size:12px;}.srch{height:46px;}.si{font-size:16px;}.stbl th,.stbl td{padding:6px 8px;border-bottom:1px solid var(--b1);vertical-align:top;overflow-wrap:break-word;word-break:break-word;white-space:normal;}.il{width:120px;font-size:9.5px;}.cb{padding:9px 10px;}.ch{padding:7px 10px;}}
+@media print{body{background:#fff;color:#000;height:auto;overflow:visible;}.hdr,.srch,.nav,.sb,.qrp,.kbo,.mbt,.sbbd{display:none!important;}.bwrap{display:block;}.co{overflow:visible;padding:0;}.card{border:1px solid #ccc;margin-bottom:8px;break-inside:avoid;}.ch{background:#f5f0ff;}.cb.cl{display:block!important;}.dn{color:#000;min-width:0;overflow-wrap:break-word;word-break:break-word;}.dd{color:#4c1d95;min-width:0;overflow-wrap:break-word;word-break:break-word;}.d2{color:#444;min-width:0;overflow-wrap:break-word;word-break:break-word;}.fml{background:#f5f0ff;border:1px solid #c4b5fd;color:#4c1d95;}.al{background:#f5f5f5;border:1px solid #ccc;color:#333;}.stbl th{background:var(--sf2);padding:6px 8px;text-align:left;font-family:var(--fm);font-size:9px;color:var(--tx);font-weight:600;border-bottom:1px solid var(--b2);vertical-align:top;overflow-wrap:break-word;word-break:break-word;white-space:normal;}}
+.bkm-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.78);z-index:600;align-items:center;justify-content:center;}
+.bkm-overlay.open{display:flex;}
+.bkm-modal{background:var(--sf2);border:1px solid var(--b2);border-radius:10px;width:min(480px,92vw);max-height:82vh;overflow-y:auto;padding:20px 22px 18px;}
+.bkm-title{font-size:14px;font-weight:600;color:var(--tx);margin-bottom:4px;display:flex;align-items:center;gap:8px;}
+.bkm-sub{font-size:11px;color:var(--td);margin-bottom:14px;}
+.bkm-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;}
+.bkm-tab{font-size:10.5px;font-family:var(--fm);padding:4px 10px;border-radius:4px;border:1px solid var(--b2);background:var(--sf3);color:var(--td);cursor:pointer;transition:all .12s;}
+.bkm-tab.on{background:var(--b2);color:var(--tx);border-color:var(--b3);}
+.bkm-pane{display:none;}
+.bkm-pane.on{display:block;}
+.bkm-step{display:flex;gap:10px;align-items:flex-start;margin-bottom:10px;}
+.bkm-num{flex-shrink:0;width:20px;height:20px;border-radius:50%;background:var(--b2);border:1px solid var(--b3);font-size:10px;font-weight:700;color:var(--tx);display:flex;align-items:center;justify-content:center;font-family:var(--fm);}
+.bkm-txt{font-size:11.5px;color:var(--tx);line-height:1.55;}
+.bkm-txt strong{color:var(--a4);}
+.bkm-note{font-size:10.5px;color:var(--td);margin-top:10px;padding:8px 10px;background:var(--sf3);border:1px solid var(--b1);border-radius:6px;line-height:1.5;}
+.bkm-close{float:right;background:none;border:none;color:var(--td);font-size:16px;cursor:pointer;padding:0 0 0 10px;line-height:1;}
+.conn-online{color:var(--a6)!important;background:var(--a6-bg)!important;border-color:var(--a6-b)!important;}
+/* v4 contrast boost */
+.thr>div{color:var(--td);}
+.stbl th{background:var(--sf2);padding:6px 8px;text-align:left;font-family:var(--fm);font-size:9px;color:var(--tx);font-weight:600;border-bottom:1px solid var(--b2);vertical-align:top;overflow-wrap:break-word;word-break:break-word;white-space:normal;}
+</style>
+</head>
+<body>
+<div class="sbbd" id="sbbd"></div>
+<div class="kbo" id="kbo" onclick="if(event.target===this)kbo()">
+  <div class="kbx">
+    <h3 style="font-size:13px;font-weight:700;margin-bottom:14px">&#9000; Keyboard Shortcuts</h3>
+    <div class="kbr"><span class="kbk">/</span><span class="kd">Focus search</span></div>
+    <div class="kbr"><span class="kbk">Esc</span><span class="kd">Clear / close</span></div>
+    <div class="kbr"><span class="kbk">Tab</span><span class="kd">Next section</span></div>
+    <div class="kbr"><span class="kbk">R</span><span class="kd">Toggle drug ref</span></div>
+    <div class="kbr"><span class="kbk">P</span><span class="kd">Print</span></div>
+    <div class="kbr"><span class="kbk">?</span><span class="kd">This overlay</span></div>
+    <div style="margin-top:14px;text-align:right"><button class="hbtn" onclick="kbo()">Close</button></div>
+  </div>
+</div>
+<div class="hdr">
+  <button class="mbt" onclick="openSb()">&#9776;</button>
+  <div class="hbrand">
+    <div class="hlogo">&#x1F6A8;</div>
+    <div>
+      <div class="htitle">EM Pocket Guide</div>
+      <div class="hsub">EMERGENCY MEDICINE &middot; RESUSCITATION &middot; EVIDENCE-BASED</div>
+    </div>
+  </div>
+  <div class="hrt">
+    <span class="chip">v4 · 2026</span>
+    <span class="chip2" id="connChip">✓ OFFLINE</span><button class="hbtn" onclick="document.getElementById(\'bkmOverlay\').classList.add(\'open\')" title="Save for offline use" style="margin-left:4px">📌 Save</button>
+    <button class="hbtn" id="btnQ" onclick="toggleQ()">&#128138; Drug Ref</button>
+    <button class="hbtn" onclick="window.print()">&#128424;</button>
+    <button class="hbtn" onclick="kbo()">?</button>
+  </div>
+</div>
+<div class="srch">
+  <span style="color:var(--tm);font-size:14px">&#9906;</span>
+  <input class="si" id="si" type="text" placeholder="Search ACLS, RSI, shock, stroke, tox, trauma, scores&hellip;" oninput="srch(this.value)" autocomplete="off">
+  <span class="sc" id="sc" onclick="clr()">&times; clear</span>
+  <span class="shc" id="shc"></span>
+</div>
+<div class="nav" id="nav"></div>
+<div class="bwrap">
+  <div class="sb" id="sb"></div>
+  <div class="co" id="co"></div>
+  <div class="qrp" id="qr"></div>
+</div>
+<script>
+const SRC="AHA 2023 &middot; ACEP &middot; ATLS 11th &middot; ACLS 2020 &middot; ESETT";
+const DRUGS=[
+  {cat:"RESUSCITATION",items:[
+    {n:"Epinephrine (arrest)",d:"1mg IV/IO q3&ndash;5min",t:"PALS: 0.01mg/kg; no role for high-dose"},
+    {n:"Amiodarone (VF/pVT)",d:"300mg IV &rarr; 150mg",t:"1st: 300mg bolus; 2nd: 150mg"},
+    {n:"Lidocaine (alt VF/pVT)",d:"1&ndash;1.5 mg/kg IV",t:"Alternative to amiodarone; 0.5&ndash;0.75mg/kg repeat"},
+    {n:"Adenosine (SVT)",d:"6mg rapid IV &rarr; 12mg &rarr; 12mg",t:"Rapid push large bore; flush immediately"},
+    {n:"Atropine (bradycardia)",d:"0.5mg IV q3&ndash;5min (max 3mg)",t:"AV block, symptomatic sinus brady"},
+    {n:"Calcium chloride",d:"1g IV over 3&ndash;5 min",t:"Hyperkalemia, hypocalcemia, CCB OD"},
+  ]},
+  {cat:"RSI DRUGS",items:[
+    {n:"Succinylcholine",d:"1.5 mg/kg IV",t:"Fastest NMB; CI: burns >48h, hyperK, denervation"},
+    {n:"Rocuronium",d:"1.2 mg/kg IV",t:"Sugammadex-reversible; safer in hyperK"},
+    {n:"Ketamine (induction)",d:"1.5&ndash;2 mg/kg IV",t:"Hemodynamically neutral; bronchodilator; 1st choice in shock"},
+    {n:"Etomidate (induction)",d:"0.3 mg/kg IV",t:"Most hemodynamically stable; single dose only"},
+    {n:"Propofol (induction)",d:"1.5&ndash;2 mg/kg IV",t:"Avoid in hypotension; good for status epilepticus"},
+  ]},
+  {cat:"SHOCK / VASOPRESSORS",items:[
+    {n:"Epinephrine (anaphylaxis)",d:"0.3&ndash;0.5mg IM (1:1000) lateral thigh",t:"1st-line ALWAYS; no contraindication in anaphylaxis"},
+    {n:"Norepinephrine",d:"0.01&ndash;3 mcg/kg/min",t:"1st-line septic/distributive shock"},
+    {n:"Phenylephrine (bolus)",d:"100&ndash;200 mcg IV bolus",t:"Neurogenic shock; pure alpha; avoid low-CO"},
+    {n:"Dopamine",d:"5&ndash;20 mcg/kg/min",t:"Cardiogenic + hypotension; arrhythmogenic"},
+  ]},
+  {cat:"NEUROLOGY",items:[
+    {n:"Lorazepam (SE)",d:"0.1mg/kg IV (max 4mg) q5min x2",t:"1st-line benzo for status epilepticus"},
+    {n:"Levetiracetam (SE)",d:"60 mg/kg IV (max 4500mg)",t:"2nd-line; equal to fosphenytoin (ESETT trial)"},
+    {n:"Alteplase (stroke)",d:"0.9mg/kg IV (max 90mg); 10% bolus then 60 min",t:"Within 4.5hr; AHA 2023"},
+    {n:"Alteplase (massive PE)",d:"100mg IV over 2hr",t:"Or 0.6mg/kg over 15min if arrest"},
+  ]},
+  {cat:"TOXICOLOGY",items:[
+    {n:"N-acetylcysteine (APAP)",d:"150mg/kg/60min &rarr; 50mg/kg/4hr &rarr; 100mg/kg/16hr",t:"Best <8hr; use Rumack nomogram"},
+    {n:"Naloxone (opioid OD)",d:"0.4&ndash;2mg IV/IM/IN q2&ndash;3min",t:"Titrate to respirations; infusion at 2/3 effective dose/hr"},
+    {n:"Physostigmine",d:"1&ndash;2mg IV slow (5 min)",t:"Anticholinergic toxidrome; monitor for cholinergic excess"},
+    {n:"NaHCO3 (TCA)",d:"1&ndash;2 mEq/kg IV; target pH 7.50&ndash;7.55",t:"QRS >100ms, hypotension, or arrhythmia from TCA"},
+  ]},
+  {cat:"ANALGESIA",items:[
+    {n:"Ketamine (sub-diss)",d:"0.1&ndash;0.3 mg/kg IV slow",t:"Excellent opioid-sparing EM analgesic"},
+    {n:"Fentanyl IV",d:"1 mcg/kg IV (max 100mcg/dose)",t:"Preferred IV opioid; fast onset; titrate"},
+    {n:"Ketorolac",d:"15&ndash;30mg IV/IM",t:"Renal stone, MSK pain; limit 5 days"},
+  ]},
+];
+const D={
+resus:{label:"Resuscitation",icon:"&#x2764;&#xFE0F;",subs:{
+  acls:{label:"ACLS / Cardiac Arrest",updated:"AHA 2020",content:()=>`
+<div class="cf"><div class="card a1"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Cardiac Arrest &mdash; Shockable vs Non-Shockable</span><span class="bd bd1">AHA 2020</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="al e"><span class="ali">&#9888;</span>CPR quality is the most impactful intervention. Push hard (&ge;2 in / 5 cm), push fast (100&ndash;120/min), full recoil, minimize interruptions (&lt;10 sec). Avoid excessive ventilation.</div>
+<div class="c2">
+<div>
+<div style="font-family:var(--fm);font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--a3);margin-bottom:6px">SHOCKABLE &mdash; VF / pVT</div>
+<ul class="sl">
+<li><span class="sn">1</span><span>CPR 2 min + Shock 200J biphasic</span></li>
+<li><span class="sn">2</span><span>CPR 2 min + Epinephrine 1mg IV q3&ndash;5min</span></li>
+<li><span class="sn">3</span><span>CPR 2 min + Amiodarone 300mg IV bolus</span></li>
+<li><span class="sn">4</span><span>CPR 2 min + Amiodarone 150mg IV</span></li>
+<li><span class="sn">5</span><span>Continue cycles; treat H&amp;T reversibles</span></li>
+</ul>
+</div>
+<div>
+<div style="font-family:var(--fm);font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--ac);margin-bottom:6px">NON-SHOCKABLE &mdash; PEA / Asystole</div>
+<ul class="sl">
+<li><span class="sn">1</span><span>CPR 2 min + Epi 1mg IV (as soon as access)</span></li>
+<li><span class="sn">2</span><span>CPR 2 min; check rhythm every 2 min</span></li>
+<li><span class="sn">3</span><span>Treat H&amp;T reversibles aggressively</span></li>
+<li><span class="sn">4</span><span>Epi q3&ndash;5 min every other cycle</span></li>
+</ul>
+</div>
+</div>
+<div class="dv"></div>
+<div class="crit"><div class="ct">H&amp;T Reversible Causes</div><ul><li><strong>H:</strong> Hypovolemia &middot; Hypoxia &middot; Hydrogen ion (acidosis) &middot; Hypo/Hyperkalemia &middot; Hypothermia</li><li><strong>T:</strong> Tension PTX &middot; Tamponade &middot; Toxins &middot; Thrombosis (PE, MI)</li></ul></div>
+<div class="dv"></div>
+<div class="thr g3"><div>Rhythm</div><div>Cardioversion Energy</div><div>Notes</div></div>
+<div class="tr g3"><div class="dn">VF / pVT</div><div class="dd">200J biphasic (max device energy)</div><div class="d2">Escalate with each shock; defibrillate immediately</div></div>
+<div class="tr g3"><div class="dn">Stable SVT (narrow)</div><div class="dd">50&ndash;100J synchronized</div><div class="d2">Adenosine first if narrow; synchronized</div></div>
+<div class="tr g3"><div class="dn">AFib (unstable)</div><div class="dd">120&ndash;200J biphasic synchronized</div><div class="d2">Stable: rate control first</div></div>
+<div class="tr g3"><div class="dn">Atrial flutter</div><div class="dd">50&ndash;100J synchronized</div><div class="d2">Usually 50J effective</div></div>
+</div></div></div>
+<div class="cg">
+<div class="card"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Post-ROSC Care</span><span class="bd bd3">ACLS 2020</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="thr g2"><div>Target</div><div>Goal</div></div>
+<div class="tr g2"><div class="dn">SpO&#8322;</div><div class="dd">94&ndash;99% (avoid hyperoxia)</div></div>
+<div class="tr g2"><div class="dn">PaCO&#8322;</div><div class="dd">35&ndash;45 mmHg (normocapnia)</div></div>
+<div class="tr g2"><div class="dn">MAP</div><div class="dd">&ge;65 mmHg</div></div>
+<div class="tr g2"><div class="dn">Temperature</div><div class="dd">TTM 32&ndash;36&deg;C &times;24h if comatose (TTM2: normothermia 37&deg;C also acceptable)</div></div>
+<div class="tr g2"><div class="dn">Glucose</div><div class="dd">140&ndash;180 mg/dL</div></div>
+<div class="tr g2"><div class="dn">12-lead ECG</div><div class="dd">Immediate &mdash; STEMI &rarr; cath lab regardless of coma (AHA 2023)</div></div>
+</div></div>
+<div class="card"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Bradycardia &amp; Tachycardia Management</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="thr g3"><div>Condition</div><div>First-line</div><div>Second-line</div></div>
+<div class="tr g3"><div class="dn">Symptomatic Bradycardia</div><div class="dd">Atropine 0.5mg IV q3&ndash;5min (max 3mg)</div><div class="d2">Transcutaneous pacing; dopamine 2&ndash;10 mcg/kg/min; epinephrine 2&ndash;10 mcg/min</div></div>
+<div class="tr g3"><div class="dn">Stable Narrow SVT</div><div class="dd">Vagal maneuver &rarr; adenosine 6mg rapid IV</div><div class="d2">Repeat adenosine 12mg; rate-control (diltiazem, metoprolol)</div></div>
+<div class="tr g3"><div class="dn">Stable Wide Complex</div><div class="dd">Amiodarone 150mg IV over 10 min</div><div class="d2">Assume VT; avoid AV nodal agents if suspect VT</div></div>
+<div class="tr g3"><div class="dn">AFib (stable, HR control)</div><div class="dd">Diltiazem 0.25 mg/kg IV over 2 min</div><div class="d2">Metoprolol 5mg IV &times;3; digoxin if HFrEF</div></div>
+</div></div>
+</div>`},
+  anaphylaxis:{label:"Anaphylaxis",updated:"ACAAI 2024",content:()=>`
+<div class="cf"><div class="card a1"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Anaphylaxis &mdash; Recognition &amp; Treatment</span><span class="bd bd1">EMERGENCY</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="al e"><span class="ali">&#9888;</span>Epinephrine is ALWAYS first-line. No contraindications in anaphylaxis. Every minute of delay increases mortality. Do NOT give antihistamines first &mdash; they do not treat anaphylaxis.</div>
+<div class="crit"><div class="ct">Diagnosis (any one criterion)</div><ul><li>Acute onset skin/mucosal involvement + respiratory compromise OR hypotension OR end-organ dysfunction</li><li>Two or more body systems involved after allergen exposure (skin, respiratory, CV, GI, CNS)</li><li>Hypotension alone after known allergen exposure</li></ul></div>
+<div class="dv"></div>
+<ul class="sl">
+<li><span class="sn">1</span><span><strong>Epinephrine 0.3&ndash;0.5mg IM (1:1000) lateral thigh</strong> &mdash; repeat q5&ndash;15 min PRN; no contraindication</span></li>
+<li><span class="sn">2</span><span>Supine + O&#8322; high-flow; 2 large-bore IVs; 1&ndash;2L NS for hypotension</span></li>
+<li><span class="sn">3</span><span>Diphenhydramine 25&ndash;50mg IV (adjunct only &mdash; never replaces epi)</span></li>
+<li><span class="sn">4</span><span>Methylprednisolone 125mg IV (biphasic prevention; not for acute treatment)</span></li>
+<li><span class="sn">5</span><span>Refractory: Epinephrine infusion 0.05&ndash;0.5 mcg/kg/min + glucagon 1mg IV (if on beta-blockers)</span></li>
+<li><span class="sn">6</span><span>Observe 4&ndash;8hr minimum; 24hr if severe/biphasic risk; discharge with auto-injector</span></li>
+</ul>
+</div></div></div>`},
+}},
+airway:{label:"Airway",icon:"&#x1F4A8;",subs:{
+  rsi:{label:"RSI &mdash; 7 P's",updated:"ACEP 2023",content:()=>`
+<div class="cf"><div class="card a2"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Rapid Sequence Intubation &mdash; 7 P's</span><span class="bd bd2">ACEP 2023</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<ul class="sl">
+<li><span class="sn">1</span><span><strong>Preparation:</strong> Monitoring, suction, BVM, blade, ETT (7.5F / 8.0M), stylet, EtCO&#8322; detector, surgical airway kit at bedside</span></li>
+<li><span class="sn">2</span><span><strong>Preoxygenation:</strong> NRB 15L/min &times;3 min; HFNC 60L/min; CPAP 5 cmH&#8322;O; target SpO&#8322; &ge;99% before intubation</span></li>
+<li><span class="sn">3</span><span><strong>Pretreatment (optional):</strong> Lidocaine 1.5mg/kg (bronchospasm/elevated ICP); fentanyl 3mcg/kg (sympathetic blunting)</span></li>
+<li><span class="sn">4</span><span><strong>Paralysis &amp; Induction:</strong> Induction agent + NMB simultaneously (no fasciculation wait)</span></li>
+<li><span class="sn">5</span><span><strong>Positioning:</strong> Ear-to-sternal notch; ramp if obese; sniffing position</span></li>
+<li><span class="sn">6</span><span><strong>Placement:</strong> Direct or video laryngoscopy; tube through cords; cuff inflate; confirm EtCO&#8322;</span></li>
+<li><span class="sn">7</span><span><strong>Post-intubation:</strong> Waveform capnography; CXR; vent settings (6&ndash;8 mL/kg IBW); sedation + analgesia</span></li>
+</ul>
+</div></div></div>
+<div class="cg">
+<div class="card"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Induction Agent Selection</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="thr g4"><div>Agent</div><div>Dose</div><div>Hemodynamics</div><div>Best For</div></div>
+<div class="tr g4"><div class="dn">Ketamine</div><div class="dd">1.5&ndash;2 mg/kg IV</div><div><span class="bd bd3">Neutral/&#8599;BP</span></div><div class="d2">Shock, asthma, hypotension; avoid severe HTN/aortic dissection</div></div>
+<div class="tr g4"><div class="dn">Etomidate</div><div class="dd">0.3 mg/kg IV</div><div><span class="bd bd3">Neutral</span></div><div class="d2">Most hemodynamically stable; avoid in septic shock (adrenal); single dose only</div></div>
+<div class="tr g4"><div class="dn">Propofol</div><div class="dd">1.5&ndash;2 mg/kg IV</div><div><span class="bd bd1">&#8595;BP</span></div><div class="d2">Avoid in hypotension; best for status epilepticus; reduces ICP</div></div>
+<div class="tr g4"><div class="dn">Midazolam</div><div class="dd">0.1&ndash;0.3 mg/kg IV</div><div><span class="bd bd4">&#8595;/Neutral</span></div><div class="d2">Variable depth; amnesia; slower onset; rarely preferred for RSI</div></div>
+</div></div>
+<div class="card"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">NMB Selection &amp; Difficult Airway</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="thr g4"><div>Agent</div><div>Dose</div><div>Onset</div><div>Notes</div></div>
+<div class="tr g4"><div class="dn">Succinylcholine</div><div class="dd">1.5 mg/kg IV</div><div class="dd">45&ndash;60 sec</div><div class="d2">Fastest; CI: burns &gt;48h, crush/denervation injury, hyperkalemia, pseudocholinesterase deficiency, myopathy</div></div>
+<div class="tr g4"><div class="dn">Rocuronium</div><div class="dd">1.2 mg/kg IV</div><div class="dd">60&ndash;90 sec</div><div class="d2">Preferred when Succ CI; fully reversible with sugammadex 16mg/kg</div></div>
+<div class="dv"></div>
+<div class="crit"><div class="ct">LEMON &mdash; Difficult Airway Prediction</div><ul><li><strong>L</strong>ook externally: obesity, beard, small mouth, facial trauma, large tongue</li><li><strong>E</strong>valuate 3-3-2: mouth opening 3 fingers, hyoid-chin 3 fingers, hyoid-thyroid 2 fingers</li><li><strong>M</strong>allampati class &gt;III</li><li><strong>O</strong>bstruction / Obesity</li><li><strong>N</strong>eck mobility reduced (c-collar, arthritis, halo)</li></ul></div>
+<div class="al i" style="margin-top:8px"><span class="ali">&#8505;</span><strong>CICO &mdash; Cannot Intubate Cannot Oxygenate:</strong> Surgical airway immediately. Scalpel-finger-bougie-tube technique. Do NOT delay with multiple laryngoscopy attempts.</div>
+</div></div>
+</div>`},
+  postintubation:{label:"Post-Intubation Mgmt",updated:"2023",content:()=>`
+<div class="cg">
+<div class="card a3"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Initial Ventilator Settings</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="thr g2"><div>Parameter</div><div>Initial Setting</div></div>
+<div class="tr g2"><div class="dn">Mode</div><div class="dd">AC/VC (volume control assist-control)</div></div>
+<div class="tr g2"><div class="dn">Tidal Volume</div><div class="dd">6&ndash;8 mL/kg IBW (6 if ARDS or suspected)</div></div>
+<div class="tr g2"><div class="dn">Rate</div><div class="dd">12&ndash;16 bpm; adjust to pH &ge;7.35</div></div>
+<div class="tr g2"><div class="dn">FiO&#8322;</div><div class="dd">1.0 initially &rarr; wean to SpO&#8322; 94&ndash;99%</div></div>
+<div class="tr g2"><div class="dn">PEEP</div><div class="dd">5 cmH&#8322;O (increase per ARDSNet table if ARDS)</div></div>
+<div class="tr g2"><div class="dn">I:E ratio</div><div class="dd">1:2 (1:3&ndash;4 for asthma/COPD; avoid air trapping)</div></div>
+</div></div>
+<div class="card"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Confirm, Secure &amp; Stabilize</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<ul class="sl">
+<li><span class="sn">1</span><span>Waveform capnography &mdash; gold standard; flat line = esophageal or arrest</span></li>
+<li><span class="sn">2</span><span>Bilateral breath sounds + absence of epigastric sounds</span></li>
+<li><span class="sn">3</span><span>Portable CXR: tube tip 3&ndash;5 cm above carina</span></li>
+<li><span class="sn">4</span><span>Secure tube; document cm marking at lips</span></li>
+<li><span class="sn">5</span><span>Sedation: propofol 5&ndash;50 mcg/kg/min OR dexmedetomidine 0.2&ndash;1.5 mcg/kg/hr + fentanyl infusion</span></li>
+</ul>
+<div class="al w" style="margin-top:8px"><span class="ali">&#9888;</span><strong>Post-intubation hypotension:</strong> Check PEEP (reduce), exclude tension PTX, treat hypovolemia. Right main bronchus intubation also common &mdash; pull back tube.</div>
+</div></div>
+</div>`},
+}},
+shock:{label:"Shock",icon:"&#x26A1;",subs:{
+  shocktype:{label:"Shock Recognition",updated:"2024",content:()=>`
+<div class="cf"><div class="card a1"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Shock Classification &amp; Rapid Recognition</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<table class="stbl">
+<tr><th>Type</th><th>Mechanism</th><th>Skin</th><th>HR / BP</th><th>Key Rx</th></tr>
+<tr><td class="dn">Distributive (Septic)</td><td>Vasodilation, &darr;SVR</td><td class="dd">Warm, flushed</td><td>&uarr;HR, &darr;&darr;BP</td><td>Fluids + NE + abx within 1hr</td></tr>
+<tr><td class="dn">Distributive (Anaphylactic)</td><td>Vasodilation + bronchospasm</td><td class="dd">Urticaria, flush</td><td>&uarr;HR, &darr;BP</td><td>Epinephrine 0.3mg IM FIRST</td></tr>
+<tr><td class="dn">Hypovolemic (Hemorrhagic)</td><td>&darr;Preload</td><td class="dd">Cool, mottled</td><td>&uarr;&uarr;HR, &darr;BP</td><td>MTP 1:1:1; TXA; source control</td></tr>
+<tr><td class="dn">Cardiogenic</td><td>&darr;CO, &uarr;SVR</td><td class="dd">Cool, diaphoretic</td><td>&uarr;HR, &darr;BP</td><td>Dobutamine; IABP; avoid excess fluids</td></tr>
+<tr><td class="dn">Obstructive (Tamponade)</td><td>Pericardial compression</td><td class="dd">Cool, pallor</td><td>Beck triad: &darr;BP, &uarr;JVP, muffled</td><td>Pericardiocentesis; fluids temporizing</td></tr>
+<tr><td class="dn">Obstructive (Tension PTX)</td><td>Mediastinal shift</td><td class="dd">Pallor; tracheal deviation</td><td>&uarr;HR, &darr;&darr;BP</td><td>Needle decompression 2nd ICS MCL STAT</td></tr>
+<tr><td class="dn">Neurogenic</td><td>Sympathetic disruption</td><td class="dd">Warm, dry, bradycardia</td><td>&darr;HR, &darr;BP</td><td>Fluids; phenylephrine/NE; MAP &ge;85</td></tr>
+</table>
+</div></div></div>`},
+}},
+
+neuro:{label:"Neurology",icon:"&#x1F9E0;",subs:{
+  stroke:{label:"Stroke / TIA",updated:"AHA 2023",content:()=>`
+<div class="cf"><div class="card a2"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Acute Ischemic Stroke &mdash; Time-Based Algorithm</span><span class="bd bd2">AHA 2023</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="al e"><span class="ali">&#9200;</span>Time = brain. ~1.9 million neurons die per minute during large vessel occlusion. Activate stroke team immediately on arrival.</div>
+<ul class="sl">
+<li><span class="sn">1</span><span><strong>0&ndash;25 min:</strong> NIHSS exam, BG, INR/anti-Xa, ECG, weight &mdash; STAT non-contrast head CT</span></li>
+<li><span class="sn">2</span><span><strong>25&ndash;45 min (if eligible):</strong> tPA 0.9mg/kg IV (max 90mg); 10% bolus over 1 min, remainder over 60 min &mdash; within 4.5hr onset</span></li>
+<li><span class="sn">3</span><span><strong>0&ndash;24 hr LVO:</strong> CT-angiography &rarr; mechanical thrombectomy if LVO; up to 24hr with DAWN/DEFUSE-3 criteria</span></li>
+<li><span class="sn">4</span><span><strong>BP before tPA:</strong> Keep &lt;185/110 before dosing; &lt;180/105 &times;24hr after tPA</span></li>
+<li><span class="sn">5</span><span><strong>No tPA (permissive HTN):</strong> Allow up to 220/120 unless other indication to treat</span></li>
+</ul>
+</div></div></div>
+<div class="cg">
+<div class="card"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">IV tPA Exclusions</span><span class="bd bd1">AHA 2023</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="crit"><div class="ct">Absolute Contraindications</div><ul><li>Intracranial hemorrhage on CT</li><li>Prior ICH; serious head trauma or intracranial surgery &lt;3 months</li><li>Ischemic stroke &lt;3 months</li><li>SBP &gt;185 or DBP &gt;110 after treatment attempts</li><li>Active internal bleeding; platelets &lt;100k; INR &gt;1.7</li><li>Dabigatran or factor Xa inhibitor use (unless &gt;48hr ago and tests normal)</li></ul></div>
+<div class="crit"><div class="ct">Extended Window (3&ndash;4.5hr): Additional Relative CI</div><ul><li>Prior stroke + diabetes combination</li><li>NIHSS &gt;25</li><li>Any anticoagulant use (any dose)</li></ul></div>
+</div></div>
+<div class="card"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">ICH Management</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="thr g2"><div>Parameter</div><div>Target</div></div>
+<div class="tr g2"><div class="dn">BP (first 2hr)</div><div class="dd">SBP &lt;140 mmHg (ATACH-2; safe to 130)</div></div>
+<div class="tr g2"><div class="dn">Glucose</div><div class="dd">140&ndash;180 mg/dL</div></div>
+<div class="tr g2"><div class="dn">Temperature</div><div class="dd">Normothermia 36&ndash;37.5&deg;C</div></div>
+<div class="tr g2"><div class="dn">Warfarin reversal</div><div class="dd">4F-PCC 25&ndash;50u/kg + Vitamin K 10mg IV slow</div></div>
+<div class="tr g2"><div class="dn">Dabigatran reversal</div><div class="dd">Idarucizumab 5g IV (2&times;2.5g)</div></div>
+<div class="tr g2"><div class="dn">ICP elevation</div><div class="dd">HOB 30&deg;; mannitol 0.5&ndash;1g/kg; brief hyperventilation if herniating</div></div>
+</div></div>
+</div>`},
+  seizure:{label:"Status Epilepticus",updated:"2024",content:()=>`
+<div class="cf"><div class="card a2"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Status Epilepticus &mdash; Treatment Ladder</span><span class="bd bd1">EMERGENCY</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="al e"><span class="ali">&#9888;</span>SE = seizure &gt;5 min or &ge;2 seizures without recovery. Begin treatment immediately &mdash; neuronal injury after 30 min.</div>
+<div class="thr g4"><div>Phase</div><div>Drug</div><div>Dose</div><div>Alternative</div></div>
+<div class="tr g4"><div class="dn">Phase 1 (0&ndash;5 min)</div><div class="dd">Lorazepam</div><div class="dd">0.1 mg/kg IV (max 4mg) q5min &times;2</div><div class="d2">Midazolam 10mg IM/IN; diazepam 20mg PR (if no IV access)</div></div>
+<div class="tr g4"><div class="dn">Phase 2 (5&ndash;20 min)</div><div class="dd">Levetiracetam</div><div class="dd">60 mg/kg IV (max 4500mg)</div><div class="d2">Fosphenytoin 20 PE/kg IV OR valproate 40mg/kg IV &mdash; all three equivalent (ESETT 2019)</div></div>
+<div class="tr g4"><div class="dn">RSE (&gt;30 min)</div><div class="dd">Propofol</div><div class="dd">Intubate + propofol 1&ndash;2mg/kg &rarr; 1&ndash;15 mg/kg/hr</div><div class="d2">Midazolam 0.2mg/kg &rarr; 0.05&ndash;2mg/kg/hr infusion</div></div>
+<div class="tr g4"><div class="dn">SRSE (&gt;24hr)</div><div class="dd">Pentobarbital</div><div class="dd">5mg/kg load &rarr; 1&ndash;5mg/kg/hr (burst suppression on EEG)</div><div class="d2">Ketamine 1&ndash;1.5mg/kg &rarr; 1&ndash;5mg/kg/hr as adjunct/alternative</div></div>
+</div></div></div>`},
+}},
+tox:{label:"Toxicology",icon:"&#x2697;&#xFE0F;",subs:{
+  toxidromes:{label:"Toxidromes",updated:"2024",content:()=>`
+<div class="cf"><div class="card a5"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Toxidrome Recognition Table</span><span class="bd bd5">ACEP 2024</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<table class="stbl">
+<tr><th>Toxidrome</th><th>Examples</th><th>Vitals</th><th>Pupils</th><th>Skin</th><th>Antidote / Rx</th></tr>
+<tr><td class="dn">Anticholinergic</td><td>Diphenhydramine, TCAs, atropine, scopolamine, jimsonweed</td><td style="color:var(--a5)">&uarr;HR, &uarr;BP, &uarr;T</td><td class="dd">Mydriasis</td><td style="color:var(--a5)">Hot, dry, flushed</td><td>Physostigmine 1&ndash;2mg IV slow; benzos for agitation</td></tr>
+<tr><td class="dn">Cholinergic (muscarinic)</td><td>Organophosphates, nerve agents, pilocarpine, mushrooms</td><td style="color:var(--a3)">&darr;HR, &darr;BP</td><td class="dd">Miosis</td><td style="color:var(--a3)">Wet (SLUDGE/DUMBELS)</td><td>Atropine 2&ndash;4mg IV titrate to dry secretions; pralidoxime 1&ndash;2g IV</td></tr>
+<tr><td class="dn">Opioid</td><td>Heroin, fentanyl, oxycodone, methadone, tramadol</td><td>&darr;&darr;RR, &darr;HR</td><td class="dd">Miosis (pinpoint)</td><td>Cool, pale, clammy</td><td>Naloxone 0.4&ndash;2mg IV/IM/IN; infusion 2/3 effective dose/hr</td></tr>
+<tr><td class="dn">Sympathomimetic</td><td>Cocaine, amphetamines, MDMA, bath salts, pseudoephedrine</td><td style="color:var(--a5)">&uarr;&uarr;HR, &uarr;&uarr;BP, &uarr;T</td><td class="dd">Mydriasis</td><td>Diaphoretic</td><td>Benzos first-line; cooling if hyperthermia; avoid pure &beta;-blockers</td></tr>
+<tr><td class="dn">Sedative-Hypnotic</td><td>Benzos, barbiturates, GHB, alcohols, Z-drugs</td><td>&darr;RR, &darr;BP</td><td class="dd">Normal / miosis</td><td>Cool, dry</td><td>Supportive; intubate if airway compromise; flumazenil rarely used</td></tr>
+<tr><td class="dn">Serotonin Syndrome</td><td>SSRIs, SNRIs, MAOIs, tramadol, linezolid, triptans, fentanyl</td><td style="color:var(--a5)">&uarr;HR, &uarr;BP, &uarr;T</td><td class="dd">Mydriasis</td><td>Diaphoretic; clonus; hyperreflexia</td><td>Stop offending agent; cyproheptadine 12mg PO; benzos; cooling</td></tr>
+<tr><td class="dn">NMS</td><td>Antipsychotics (haloperidol, risperidone, olanzapine)</td><td style="color:var(--a5)">&uarr;T (&gt;41&deg;C), &uarr;HR</td><td class="dd">Normal</td><td>Diaphoretic; lead-pipe rigidity</td><td>Stop antipsychotic; bromocriptine 2.5mg TID; dantrolene 1mg/kg IV; cooling</td></tr>
+</table>
+</div></div></div>`,},
+  specific_od:{label:"Specific Overdoses",updated:"2024",content:()=>`
+<div class="cg">
+<div class="card a5"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Acetaminophen (APAP) OD</span><span class="bd bd5">NAC Protocol</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<ul class="sl">
+<li><span class="sn">1</span><span>Level at 4hr post-ingestion &rarr; plot on Rumack-Matthew nomogram</span></li>
+<li><span class="sn">2</span><span><strong>NAC IV (Acetadote):</strong> 150mg/kg over 60min &rarr; 50mg/kg/4hr &rarr; 100mg/kg/16hr</span></li>
+<li><span class="sn">3</span><span>Unknown time or &gt;8hr: start NAC immediately; adjust after level returns</span></li>
+<li><span class="sn">4</span><span>Massive OD (&gt;150mg/kg): consider double loading dose; early hepatology/toxicology</span></li>
+</ul>
+</div></div>
+<div class="card"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">TCA Overdose</span><span class="bd bd1">NaHCO&#8323;</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="al e"><span class="ali">&#9888;</span>QRS &gt;100ms = high risk ventricular arrhythmia. QRS &gt;160ms = very high risk. R wave in aVR &gt;3mm also high-risk.</div>
+<div class="ir"><div class="il">Sodium bicarbonate</div><div class="iv m">1&ndash;2 mEq/kg IV bolus; target pH 7.50&ndash;7.55</div></div>
+<div class="ir"><div class="il">Indication</div><div class="iv">Hypotension, QRS &gt;100ms, arrhythmia, or seizure</div></div>
+<div class="ir"><div class="il">Avoid</div><div class="iv">Flumazenil (lowers seizure threshold); physostigmine; Class Ia/Ic antiarrhythmics</div></div>
+</div></div>
+<div class="card"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Beta-Blocker / CCB Overdose</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<ul class="sl">
+<li><span class="sn">1</span><span><strong>Calcium:</strong> CaCl&#8322; 1g IV q10min &times;3 (CCB); peripheral: CaGluconate 3g</span></li>
+<li><span class="sn">2</span><span><strong>High-dose insulin (HIE):</strong> 1 unit/kg bolus &rarr; 1&ndash;10 units/kg/hr; supplement glucose + potassium</span></li>
+<li><span class="sn">3</span><span><strong>Glucagon:</strong> 2&ndash;5mg IV bolus &rarr; 1&ndash;10mg/hr infusion (beta-blocker specific)</span></li>
+<li><span class="sn">4</span><span><strong>Intralipid 20%:</strong> 1.5mL/kg bolus for lipophilic agents (verapamil, diltiazem, amlodipine)</span></li>
+<li><span class="sn">5</span><span><strong>VA-ECMO/ECPR:</strong> Early consideration if refractory; do not delay while awaiting pharmacotherapy response</span></li>
+</ul>
+</div></div>
+<div class="card"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Salicylate &amp; Toxic Alcohols</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="thr g3"><div>Toxin</div><div>Mechanism</div><div>Treatment</div></div>
+<div class="tr g3"><div class="dn">Salicylate</div><div class="d2">Uncouples oxidative phosphorylation; mixed acid-base</div><div class="d2">NaHCO&#8323; alkalinization; hemodialysis if level &gt;100mg/dL or severe</div></div>
+<div class="tr g3"><div class="dn">Methanol</div><div class="d2">Formic acid &rarr; retinal/CNS toxicity; high osmolal gap + AG acidosis</div><div class="d2">Fomepizole 15mg/kg IV; hemodialysis; folate 50mg IV q4h</div></div>
+<div class="tr g3"><div class="dn">Ethylene glycol</div><div class="d2">Oxalic acid &rarr; renal failure; calcium oxalate crystals in urine</div><div class="d2">Fomepizole 15mg/kg IV; hemodialysis; thiamine + pyridoxine</div></div>
+<div class="tr g3"><div class="dn">Isopropyl alcohol</div><div class="d2">CNS depression; high osmolal gap; NO metabolic acidosis</div><div class="d2">Supportive only; no fomepizole needed (ketones, not acid)</div></div>
+</div></div>
+</div>`},
+}},
+trauma:{label:"Trauma",icon:"&#x1FA7A;",subs:{
+  primary:{label:"ATLS Primary Survey",updated:"ATLS 11th 2024",content:()=>`
+<div class="cf"><div class="card a1"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">ATLS Primary Survey &mdash; ABCDE</span><span class="bd bd1">ATLS 11th</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<ul class="sl">
+<li><span class="sn">A</span><span><strong>Airway &amp; C-Spine:</strong> Jaw-thrust (trauma); suction; intubate if GCS &le;8 or airway at risk; in-line stabilization; LEMON assessment</span></li>
+<li><span class="sn">B</span><span><strong>Breathing:</strong> Rate, SpO&#8322;, bilateral auscultation, tracheal deviation; Tension PTX &rarr; needle decompression 2nd ICS MCL or 4&ndash;5th ICS AAL STAT; open PTX &rarr; 3-sided occlusive seal</span></li>
+<li><span class="sn">C</span><span><strong>Circulation:</strong> 2 large-bore IVs; tourniquet + wound packing for extremity/junctional hemorrhage; MTP activation if Class III&ndash;IV; FAST exam; permissive hypotension (SBP 80&ndash;90) until surgical control (except TBI)</span></li>
+<li><span class="sn">D</span><span><strong>Disability:</strong> GCS, pupil exam; blood glucose; C-spine imaging per NEXUS/Canadian criteria</span></li>
+<li><span class="sn">E</span><span><strong>Exposure:</strong> Complete undress + log-roll for full exam; prevent hypothermia (&lt;36&deg;C &rarr; coagulopathy); warm fluids and blankets</span></li>
+</ul>
+</div></div></div>
+<div class="cg">
+<div class="card"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">TBI Initial Management</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="thr g2"><div>Parameter</div><div>Target</div></div>
+<div class="tr g2"><div class="dn">MAP / CPP</div><div class="dd">MAP &ge;80 mmHg; CPP &ge;60 mmHg</div></div>
+<div class="tr g2"><div class="dn">SpO&#8322;</div><div class="dd">&ge;95% &mdash; avoid hypoxia (SaO&#8322; &lt;90 doubles mortality)</div></div>
+<div class="tr g2"><div class="dn">PaCO&#8322;</div><div class="dd">35&ndash;45 mmHg (hyperventilate to 30&ndash;35 as bridge only)</div></div>
+<div class="tr g2"><div class="dn">Temperature</div><div class="dd">Normothermia; avoid hyperthermia</div></div>
+<div class="tr g2"><div class="dn">Glucose</div><div class="dd">140&ndash;180 mg/dL</div></div>
+<div class="tr g2"><div class="dn">ICP elevation</div><div class="dd">HOB 30&deg;; head midline; mannitol 0.5&ndash;1g/kg OR HTS 3% 250mL</div></div>
+<div class="tr g2"><div class="dn">GCS &le;8</div><div class="dd">Intubate; ICP monitor consideration; neurosurgery consult</div></div>
+</div></div>
+<div class="card"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">E-FAST Exam</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="crit"><div class="ct">E-FAST Windows</div><ul><li><strong>RUQ:</strong> Morrison's pouch (hepatorenal) &mdash; most sensitive abdominal window</li><li><strong>LUQ:</strong> Splenorenal recess &mdash; harder to see fluid</li><li><strong>Pelvic:</strong> Pouch of Douglas / rectovesical pouch</li><li><strong>Subxiphoid:</strong> Pericardial &mdash; tamponade; compare to IVC</li><li><strong>Bilateral pleura:</strong> Lung sliding present = no PTX (97% sens)</li></ul></div>
+<div class="al i" style="margin-top:6px"><span class="ali">&#8505;</span>Absent lung sliding &rarr; suspect PTX. M-mode: seashore sign (sliding) vs barcode sign (PTX).</div>
+</div></div>
+</div>`},
+hemorrhagic:{label:"Hemorrhagic Shock / MTP",updated:"ATLS 11th 2024",content:()=>`
+<div class="cg">
+<div class="card a1"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">ATLS Hemorrhagic Shock Classification</span><span class="bd bd1">ATLS 11th</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<table class="stbl"><tr><th>Class</th><th>Blood Loss</th><th>HR</th><th>BP</th><th>UO mL/hr</th><th>Mental</th></tr>
+<tr><td class="dn">I</td><td>&lt;750mL (&lt;15%)</td><td>&lt;100</td><td class="dd">Normal</td><td>&ge;30</td><td>Normal</td></tr>
+<tr><td class="dn">II</td><td>750&ndash;1500mL</td><td>100&ndash;120</td><td class="dd">Normal</td><td>20&ndash;30</td><td>Anxious</td></tr>
+<tr><td class="dn">III</td><td>1500&ndash;2000mL</td><td>120&ndash;140</td><td style="color:var(--a5)">Decreased</td><td>5&ndash;15</td><td>Confused</td></tr>
+<tr><td class="dn">IV</td><td>&gt;2000mL (&gt;40%)</td><td>&gt;140</td><td style="color:var(--ac)">Very low</td><td>Negligible</td><td>Lethargic</td></tr>
+</table>
+</div></div>
+<div class="card"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Massive Transfusion Protocol</span><span class="bd bd5">MTP</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="al e"><span class="ali">&#9888;</span>Activate MTP: uncontrolled hemorrhage requiring &ge;3 units pRBC in 1hr, or anticipated &ge;10 units/24hr.</div>
+<div class="ir"><div class="il">Ratio</div><div class="iv m">pRBC : FFP : Plt = 1:1:1</div></div>
+<div class="ir"><div class="il">TXA</div><div class="iv">1g IV within 3hr of injury (CRASH-2); 2nd dose 1g over 8hr</div></div>
+<div class="ir"><div class="il">Calcium</div><div class="iv">CaCl&#8322; 1g IV after every 4 units pRBC (citrate chelation)</div></div>
+<div class="ir"><div class="il">Fibrinogen target</div><div class="iv m">&gt;200 mg/dL &mdash; cryoprecipitate 10 units if low</div></div>
+<div class="ir"><div class="il">Platelet target</div><div class="iv m">&ge;50k; &ge;100k if TBI</div></div>
+<div class="ir"><div class="il">Permissive hypotension</div><div class="iv">SBP 80&ndash;90 until hemorrhage controlled (except TBI: MAP &ge;80)</div></div>
+</div></div>
+</div>`},
+trauma_activation:{label:"Trauma Activation",updated:"ACS-COT 2021 · CDC FTG 2021",content:()=>`
+<div class="cf">
+<div class="card a1"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Trauma Team Activation — 3-Tier Framework</span><span class="bd bd1">ACS-COT · TQIP 2023</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="sl">LEVEL 1 — LIFE-THREATENING (Immediate full team)</div>
+<div class="tr g2"><div class="dn">Physiologic</div><div class="dd">SBP &lt;90 mmHg at any point &bull; Shock Index (HR&gt;SBP) &bull; Absent radial/femoral/carotid pulse &bull; GCS &lt;9 without sedation &bull; Airway compromise or failed prehospital intubation &bull; Field intubation &bull; Peds (&lt;10 yr): SBP &lt;70+2&times;age</div></div>
+<div class="tr g2"><div class="dn">Anatomic</div><div class="dd">Penetrating injury to neck/chest/abdomen/proximal extremity &bull; Open or unstable pelvic fracture &bull; Amputation/crush proximal to elbow or knee &bull; Suspected spinal cord injury &bull; Major torso impalement &bull; Tourniquet applied prehospital &bull; Major vascular injury</div></div>
+<div class="tr g2"><div class="dn">Transfer L1</div><div class="dd">Receiving blood products or &gt;1L crystalloid for shock &bull; HR&gt;SBP &bull; Penetrating thoracoabdominal trauma &bull; Intubated transfer patient &bull; Acute decompensation en route</div></div>
+
+<div class="sl" style="margin-top:10px">LEVEL 2 — POTENTIALLY LIFE-THREATENING (Modified team)</div>
+<div class="tr g2"><div class="dn">Anatomic</div><div class="dd">Flail chest or multiple rib fractures &bull; Open/depressed skull fracture &bull; &ge;2 long bone fractures &bull; Extremity trauma with absent distal pulse or sensation &bull; Burns &gt;20% BSA grade 2–3 or inhalation injury &bull; GCS 9–13 &bull; Severe maxillofacial injury with stable airway</div></div>
+<div class="tr g2"><div class="dn">Mechanism</div><div class="dd">Ejection from vehicle &bull; Extrication &gt;20 min &bull; Death of same-vehicle occupant &bull; Impact &gt;50 mph &bull; Pedestrian struck &gt;10 mph &bull; Fall &gt;20 ft &bull; Motorcycle/ATV crash &gt;20 mph or separation from bike &bull; Seatbelt sign</div></div>
+<div class="tr g2"><div class="dn">Special</div><div class="dd">Age &ge;65 with HR&gt;90 or SBP&lt;110 &bull; Anticoagulated with supraclavicular injury &bull; Pregnancy &gt;20 weeks (without higher criteria) &bull; Penetrating distal extremity injury &bull; Near drowning</div></div>
+
+<div class="sl" style="margin-top:10px">LEVEL 3 — SCREENED / OBSERVATION (Attending + nurse)</div>
+<div class="tr g2"><div class="dn">Criteria</div><div class="dd">MVC with rollover or &gt;12 in compartment intrusion &bull; Age &gt;65 (any mechanism) &bull; Stable pelvic fracture &bull; Single-system injury with high-suspicion mechanism &bull; Multi-system trauma not meeting L1/L2 &bull; Hypothermia &lt;35&deg;C or hyperthermia &gt;39&deg;C &bull; Physician discretion</div></div>
+<div class="tr g2"><div class="dn">Undertriage goal</div><div class="dd">ACS-COT acceptable undertriage rate &lt;5%; overtriage &lt;50%; undertriage is the more dangerous error — when in doubt, activate up</div></div>
+</div></div>
+
+<div class="card a3"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">2021 CDC / ACS-COT Field Triage Guidelines</span><span class="bd bd3">CDC·MMWR 2022 &bull; J Trauma 2022</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="sl">HIGH-RISK (RED BOX) — Transport to highest-level trauma center</div>
+<div class="tr g2"><div class="dn">Mental Status &amp; Vital Signs</div><div class="dd">GCS &le;13 &bull; SBP &lt;90 mmHg &bull; RR &lt;10 or &gt;29 breaths/min &bull; Shock Index &gt;1.0 (adults) &bull; Need for ventilatory support</div></div>
+<div class="tr g2"><div class="dn">Injury Patterns</div><div class="dd">All penetrating injuries to head/neck/torso/proximal extremities &bull; Chest wall instability or deformity (flail) &bull; Two or more proximal long bone fractures &bull; Crushed/degloved/mangled extremity &bull; Amputation proximal to wrist/ankle &bull; Pelvic fractures &bull; Open/depressed skull fracture &bull; Paralysis</div></div>
+
+<div class="sl" style="margin-top:10px">MODERATE-RISK (YELLOW BOX) — Consider trauma center</div>
+<div class="tr g2"><div class="dn">Mechanism of Injury</div><div class="dd">Falls: adults &gt;20 ft (1 story = ~10 ft); children &gt;10 ft or 2–3&times; child height &bull; High-risk MVC: intrusion &gt;12 in occupant site or &gt;18 in other site; ejection; death of occupant; dashboard deformity &bull; Pedestrian/cyclist thrown, run over, or with significant impact &bull; Motorcycle crash &gt;20 mph</div></div>
+<div class="tr g2"><div class="dn">Special Considerations</div><div class="dd">Age &ge;65: SBP &lt;110 may indicate shock; lower injury threshold for activation &bull; Anticoagulants/bleeding disorders &bull; Burns (with trauma) &bull; End-stage renal disease on dialysis &bull; Pregnancy &gt;20 weeks &bull; EMS provider judgment</div></div>
+
+<div class="sl" style="margin-top:10px">TRIAGE PERFORMANCE TARGETS</div>
+<table class="stbl"><tr><th>Metric</th><th>ACS-COT Target</th><th>Notes</th></tr>
+<tr><td>Sensitivity (undertriage)</td><td>&ge;95%</td><td>&lt;5% of major trauma patients missed</td></tr>
+<tr><td>Specificity (overtriage)</td><td>&ge;65%</td><td>&lt;50% overtriage acceptable operationally</td></tr>
+<tr><td>Undertriage</td><td>&lt;5%</td><td>More dangerous error — injury mortality ↑</td></tr>
+<tr><td>Overtriage</td><td>&lt;35–50%</td><td>Resource burden; acceptable to avoid undertriage</td></tr>
+</table>
+</div></div>
+
+<div class="card a4"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Trauma Page — What to Communicate</span><span class="bd bd4">SBAR for Trauma Activation</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="sl">MINIMUM REQUIRED ON TRAUMA ACTIVATION PAGE</div>
+<div class="tr g2"><div class="dn">Content</div><div class="dd">Level of activation (1/2/3) &bull; Mechanism of injury (GSW chest, MVC, fall &bull; SBP / HR / GCS &bull; Mode of arrival (air/ground/POV) &bull; ETA &bull; Trauma band number if available</div></div>
+<div class="sl" style="margin-top:10px">TIMING THRESHOLDS</div>
+<div class="tr g3"><div class="dn">ETA &lt;15 min</div><div class="dd">Activate immediately</div><div class="d2">Team must be bedside ready on arrival</div></div>
+<div class="tr g3"><div class="dn">ETA &gt;15 min</div><div class="dd">Heads-up page now + repeat at 15 min</div><div class="d2">Allows staged team assembly; reduces crew fatigue</div></div>
+<div class="tr g3"><div class="dn">ETA unknown</div><div class="dd">Same as &gt;15 min; repeat when ETA established</div><div class="d2">Do not delay activation waiting for ETA</div></div>
+<div class="sl" style="margin-top:10px">GERIATRIC TRAUMA CONSIDERATIONS (ACS TQIP 2023)</div>
+<div class="tr g2"><div class="dn">Lower thresholds</div><div class="dd">Age &ge;65: SBP &lt;110 = physiologic instability (not 90); HR &gt;90 with SBP &lt;110 = L2 regardless of mechanism; anticoagulation dramatically increases intracranial hemorrhage risk from minor mechanisms</div></div>
+<div class="tr g2"><div class="dn">Common undertriage pitfalls</div><div class="dd">Normal vital signs masking significant injury (beta-blockers blunt HR) &bull; Baseline cognitive impairment masking GCS change &bull; Low-energy falls causing major intracranial injury in anticoagulated elderly &bull; Rib fractures causing respiratory failure over 24–48 hrs</div></div>
+<div class="tr g2"><div class="dn">Pediatric differences</div><div class="dd">Age-adjusted SBP: 70+2&times;age mmHg &bull; Normal HR higher — tachycardia threshold varies by age &bull; Compensate late — vital signs normal until decompensation; treat mechanism + anatomy as primary drivers</div></div>
+</div></div>
+
+<div class="card a2"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Massive Transfusion Protocol (MTP) Triggers</span><span class="bd bd2">ATLS 11th &bull; EAST 2023</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="sl">CLINICAL TRIGGERS</div>
+<div class="tr g3"><div class="dn">ABC Score &ge;2</div><div class="dd">Activate MTP</div><div class="d2">SBP&le;90 + HR&ge;120 + penetrating mechanism + FAST positive = 1pt each; &ge;2 = activate</div></div>
+<div class="tr g3"><div class="dn">Shock Index &gt;1.0</div><div class="dd">High risk for MTP need</div><div class="d2">SI &gt;1.5 = very high risk; initiate early balanced resuscitation</div></div>
+<div class="tr g3"><div class="dn">Uncontrolled hemorrhage</div><div class="dd">Activate regardless of labs</div><div class="d2">Do not wait for CBC/coags; clinical assessment drives activation</div></div>
+<div class="sl" style="margin-top:10px">MTP RATIO TARGET</div>
+<div class="tr g3"><div class="dn">PROPPR Trial</div><div class="dd">1:1:1 (pRBC:FFP:platelets)</div><div class="d2">Survival benefit vs 1:1:2; target ratio from the start; minimize crystalloid</div></div>
+<div class="tr g3"><div class="dn">Permissive hypotension</div><div class="dd">SBP 80–90 mmHg until hemorrhage controlled</div><div class="d2">Avoid in TBI (maintain CPP); exceptions: elderly, known cardiac disease</div></div>
+<div class="tr g3"><div class="dn">TXA</div><div class="dd">1g IV over 10 min within 3 hr of injury</div><div class="d2">CRASH-2 / MATTERs; &lt;3 hr mortality benefit; &gt;3 hr possible harm; second 1g over 8 hr if ongoing hemorrhage</div></div>
+<div class="tr g3"><div class="dn">Calcium</div><div class="dd">1g CaCl IV per 4U pRBC</div><div class="d2">Citrate chelates calcium during massive transfusion; ionized Ca &lt;1.1 mmol/L = replace; do not wait</div></div>
+</div></div>
+</div>`},
+
+}},
+pocus:{label:"POCUS",icon:"&#x1F50D;",subs:{
+  efast:{label:"eFAST",updated:"ACEP 2023",content:()=>`
+<div class="cf"><div class="card a1"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">eFAST — 6 Views</span><span class="bd bd1">ACEP 2023</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div style="margin:12px 0 16px;overflow:hidden;">
+<svg viewBox="0 0 620 322" style="width:100%;max-width:620px;display:block;margin:0 auto;" xmlns="http://www.w3.org/2000/svg">
+  <rect width="620" height="322" fill="#0d1623" rx="8"/>
+  <text x="310" y="18" text-anchor="middle" font-size="9" fill="#00d4aa" font-family="monospace" font-weight="700" letter-spacing="1">eFAST EXAM — 6 VIEWS · CURVILINEAR OR PHASED ARRAY</text>
+
+  <!-- torso schematic -->
+  <rect x="248" y="35" width="124" height="110" rx="12" fill="#0f1e35" stroke="#1e3050" stroke-width="1.5"/>
+  <rect x="248" y="140" width="124" height="80" rx="8" fill="#0f1e35" stroke="#1e3050" stroke-width="1.5"/>
+  <line x1="310" y1="35" x2="310" y2="220" stroke="#1e2a40" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="295" y1="142" x2="325" y2="142" stroke="#2e4060" stroke-width="1"/>
+  <text x="310" y="136" text-anchor="middle" font-size="6" fill="#374151" font-family="monospace">XIPHOID</text>
+  <text x="310" y="55" text-anchor="middle" font-size="6.5" fill="#1e3050" font-family="monospace">CHEST</text>
+  <text x="266" y="80" text-anchor="middle" font-size="6" fill="#2e4060" font-family="monospace">L</text>
+  <text x="354" y="80" text-anchor="middle" font-size="6" fill="#2e4060" font-family="monospace">R</text>
+
+  <!-- 1: R LUNG -->
+  <circle cx="345" cy="65" r="9" fill="#dc2626" stroke="#fca5a5" stroke-width="1.5"/>
+  <text x="345" y="69" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">1</text>
+  <line x1="378" y1="45" x2="350" y2="63" stroke="#dc2626" stroke-width="0.8" opacity="0.6"/>
+  <rect x="378" y="25" width="200" height="36" rx="4" fill="#250a0a" stroke="#dc2626" stroke-width="1.2"/>
+  <text x="478" y="38" text-anchor="middle" font-size="8" fill="#fca5a5" font-weight="700" font-family="monospace">R LUNG — PTX / Hemothorax</text>
+  <text x="478" y="51" text-anchor="middle" font-size="6.5" fill="#9ca3af" font-family="monospace">2nd–4th ICS MCL · sliding / barcode / seashore</text>
+
+  <!-- 2: L LUNG -->
+  <circle cx="275" cy="65" r="9" fill="#0891b2" stroke="#67e8f9" stroke-width="1.5"/>
+  <text x="275" y="69" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">2</text>
+  <line x1="242" y1="45" x2="270" y2="63" stroke="#0891b2" stroke-width="0.8" opacity="0.6"/>
+  <rect x="42" y="25" width="198" height="36" rx="4" fill="#050f20" stroke="#0891b2" stroke-width="1.2"/>
+  <text x="141" y="38" text-anchor="middle" font-size="8" fill="#67e8f9" font-weight="700" font-family="monospace">L LUNG — PTX / Hemothorax</text>
+  <text x="141" y="51" text-anchor="middle" font-size="6.5" fill="#9ca3af" font-family="monospace">2nd–4th ICS MCL · mirror of right side</text>
+
+  <!-- 3: Subxiphoid cardiac -->
+  <circle cx="310" cy="148" r="9" fill="#7c3aed" stroke="#c4b5fd" stroke-width="1.5"/>
+  <text x="310" y="152" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">3</text>
+  <line x1="378" y1="130" x2="317" y2="148" stroke="#7c3aed" stroke-width="0.8" opacity="0.6"/>
+  <rect x="378" y="112" width="200" height="36" rx="4" fill="#1a0f35" stroke="#7c3aed" stroke-width="1.2"/>
+  <text x="478" y="125" text-anchor="middle" font-size="8" fill="#c4b5fd" font-weight="700" font-family="monospace">SUBXIPHOID CARDIAC</text>
+  <text x="478" y="138" text-anchor="middle" font-size="6.5" fill="#9ca3af" font-family="monospace">Probe flat · pericardial effusion / tamponade</text>
+
+  <!-- 4: RUQ -->
+  <circle cx="348" cy="175" r="9" fill="#059669" stroke="#6ee7b7" stroke-width="1.5"/>
+  <text x="348" y="179" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">4</text>
+  <line x1="378" y1="185" x2="355" y2="176" stroke="#059669" stroke-width="0.8" opacity="0.6"/>
+  <rect x="378" y="165" width="200" height="42" rx="4" fill="#0a2018" stroke="#059669" stroke-width="1.2"/>
+  <text x="478" y="178" text-anchor="middle" font-size="8" fill="#6ee7b7" font-weight="700" font-family="monospace">RUQ — Morrison’s Pouch</text>
+  <text x="478" y="188" text-anchor="middle" font-size="6.5" fill="#9ca3af" font-family="monospace">MAL · 10th ICS · hepatorenal space</text>
+  <text x="478" y="198" text-anchor="middle" font-size="6.5" fill="#9ca3af" font-family="monospace">scan above diaphragm for hemothorax</text>
+
+  <!-- 5: LUQ -->
+  <circle cx="272" cy="175" r="9" fill="#2563eb" stroke="#93c5fd" stroke-width="1.5"/>
+  <text x="272" y="179" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">5</text>
+  <line x1="242" y1="185" x2="265" y2="176" stroke="#2563eb" stroke-width="0.8" opacity="0.6"/>
+  <rect x="42" y="165" width="198" height="42" rx="4" fill="#0f1f35" stroke="#2563eb" stroke-width="1.2"/>
+  <text x="141" y="178" text-anchor="middle" font-size="8" fill="#93c5fd" font-weight="700" font-family="monospace">LUQ — Splenorenal</text>
+  <text x="141" y="188" text-anchor="middle" font-size="6.5" fill="#9ca3af" font-family="monospace">Post MAL · 8–9th ICS</text>
+  <text x="141" y="198" text-anchor="middle" font-size="6.5" fill="#9ca3af" font-family="monospace">Koller’s pouch · scan above diaphragm</text>
+
+  <!-- 6: Pelvic -->
+  <circle cx="310" cy="215" r="9" fill="#d97706" stroke="#fcd34d" stroke-width="1.5"/>
+  <text x="310" y="219" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">6</text>
+  <line x1="310" y1="224" x2="310" y2="244" stroke="#d97706" stroke-width="0.8" opacity="0.6"/>
+  <rect x="196" y="244" width="228" height="42" rx="4" fill="#251500" stroke="#d97706" stroke-width="1.2"/>
+  <text x="310" y="258" text-anchor="middle" font-size="8" fill="#fcd34d" font-weight="700" font-family="monospace">PELVIC / SUPRAPUBIC</text>
+  <text x="310" y="270" text-anchor="middle" font-size="6.5" fill="#9ca3af" font-family="monospace">Rectovesical ♂ · Pouch of Douglas ♀</text>
+  <text x="310" y="281" text-anchor="middle" font-size="6.5" fill="#9ca3af" font-family="monospace">sagittal + transverse · bladder as window</text>
+
+  <!-- sequence path -->
+  <path d="M345,65 Q370,115 348,175 Q330,210 310,215 Q290,210 272,175 Q248,120 275,65"
+        fill="none" stroke="#00d4aa" stroke-width="1" stroke-dasharray="4,4" opacity="0.25"/>
+
+  <text x="310" y="316" text-anchor="middle" font-size="7.5" fill="#374151" font-family="monospace">ACEP 2023 · Sensitivity: free fluid ~80%, PTX ~49–99%</text>
+</svg>
+</div>
+<div class="sl">SEQUENCE</div>
+<div class="tr g3"><div class="dn">1 · RUQ</div><div class="dd">Morrison's pouch (hepatorenal)</div><div class="d2">MAL 10th ICS · also scan above diaphragm for hemothorax · probe indicator cephalad</div></div>
+<div class="tr g3"><div class="dn">2 · Subxiphoid</div><div class="dd">Pericardial effusion / tamponade</div><div class="d2">Probe flat, aim toward L shoulder · 4-chamber view · look for free pericardial fluid</div></div>
+<div class="tr g3"><div class="dn">3 · LUQ</div><div class="dd">Splenorenal (Koller's pouch)</div><div class="d2">Posterior MAL 8th–9th ICS · scan above diaphragm · harder to obtain than RUQ</div></div>
+<div class="tr g3"><div class="dn">4 · Pelvis</div><div class="dd">Rectovesical ♂ · Pouch of Douglas ♀</div><div class="d2">Suprapubic · sagittal + transverse · bladder as window · aim into pelvis</div></div>
+<div class="tr g3"><div class="dn">5 · R Lung</div><div class="dd">Lung sliding vs barcode sign</div><div class="d2">2nd–4th ICS MCL · anterior chest · M-mode: seashore=sliding, barcode=PTX</div></div>
+<div class="tr g3"><div class="dn">6 · L Lung</div><div class="dd">Mirror of right</div><div class="d2">Same landmarks left side · always bilateral for PTX assessment</div></div>
+<div class="sl" style="margin-top:10px">POSITIVE eFAST — ACTIONS</div>
+<div class="tr g3"><div class="dn">Free fluid + unstable</div><div class="dd">Emergent surgery</div><div class="d2">Do not delay for CT; activate trauma surgery</div></div>
+<div class="tr g3"><div class="dn">Free fluid + stable</div><div class="dd">CT abdomen/pelvis with contrast</div><div class="d2">Characterize injury; ongoing monitoring</div></div>
+<div class="tr g3"><div class="dn">Pericardial effusion</div><div class="dd">Pericardiocentesis if tamponade</div><div class="d2">Subxiphoid or parasternal approach; US-guided preferred</div></div>
+<div class="tr g3"><div class="dn">PTX (no sliding)</div><div class="dd">Needle decompression ± chest tube</div><div class="d2">Must have lung point to confirm; absent sliding alone not specific</div></div>
+<div class="tr g2"><div class="dn">Sensitivity</div><div class="dd">Free fluid ~73–88%; PTX ~49–99% (varies by study and operator)</div></div>
+<div class="tr g2"><div class="dn">Negative eFAST</div><div class="dd">Does NOT exclude solid organ injury — CT remains standard for stable patients with mechanism</div></div>
+</div></div>
+
+<div class="card a3"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">RUSH Protocol — Shock</span><span class="bd bd3">Undifferentiated Shock</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="sl">PUMP — TANK — PIPES</div>
+<div class="tr g3"><div class="dn">PUMP · Cardiac</div><div class="dd">Subxiphoid / parasternal</div><div class="d2">LVEF (eyeball): good/moderate/poor · RV:LV ratio (&gt;1 = strain) · pericardial effusion · wall motion</div></div>
+<div class="tr g3"><div class="dn">TANK · Full or empty</div><div class="dd">IVC + lungs</div><div class="d2">IVC collapsed = empty tank (hypovolemia); IVC plethoric = full (obstructive/cardiogenic); B-lines = wet</div></div>
+<div class="tr g3"><div class="dn">PIPES · Aorta / DVT</div><div class="dd">Aorta + femoral/popliteal</div><div class="d2">AAA: measure max diameter; DVT: compressibility at common femoral, popliteal (non-compressible = DVT)</div></div>
+<div class="sl" style="margin-top:10px">SHOCK PATTERN RECOGNITION</div>
+<table class="stbl"><tr><th>Shock Type</th><th>Cardiac</th><th>IVC</th><th>Lungs</th><th>Other</th></tr>
+<tr><td>Hypovolemic</td><td>Hyperdynamic</td><td>Flat, collapsing</td><td>A-lines</td><td>No effusion</td></tr>
+<tr><td>Cardiogenic</td><td>Poor EF / dilated</td><td>Plethoric</td><td>B-lines bilateral</td><td>Effusion possible</td></tr>
+<tr><td>Obstructive (PE)</td><td>RV strain, D-sign</td><td>Plethoric</td><td>A-lines / peripheral wedge</td><td>McConnell sign</td></tr>
+<tr><td>Obstructive (Tamponade)</td><td>Effusion + RV collapse</td><td>Plethoric</td><td>A-lines</td><td>Swinging heart</td></tr>
+<tr><td>Distributive</td><td>Hyperdynamic</td><td>Small but variable</td><td>A-lines</td><td>End-diastolic kissing</td></tr>
+</table>
+</div></div>
+
+<div class="card a2"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Cardiac POCUS — Bedside Echo Golden Spiral</span><span class="bd bd2">5 Views</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div style="margin:12px 0 16px;overflow:hidden;">
+<svg viewBox="0 0 560 320" style="width:100%;max-width:560px;display:block;margin:0 auto;" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="ah" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#c9a227" opacity="0.7"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="560" height="320" fill="#0d1623" rx="8"/>
+
+  <!-- Title -->
+  <text x="280" y="18" text-anchor="middle" font-size="9" fill="#c9a227" font-family="monospace" font-weight="700" letter-spacing="1">BEDSIDE ECHO — GOLDEN SPIRAL · 5 VIEWS</text>
+
+  <!-- Center chest schematic -->
+  <!-- Chest outline simple -->
+  <ellipse cx="280" cy="155" rx="68" ry="80" fill="none" stroke="#1e3050" stroke-width="1.5"/>
+  <!-- Sternum -->
+  <line x1="280" y1="90" x2="280" y2="210" stroke="#1e3050" stroke-width="1" stroke-dasharray="3,3"/>
+  <!-- Ribs suggestion -->
+  <ellipse cx="280" cy="140" rx="45" ry="28" fill="none" stroke="#162030" stroke-width="1"/>
+  <ellipse cx="280" cy="160" rx="52" ry="32" fill="none" stroke="#162030" stroke-width="1"/>
+  <ellipse cx="280" cy="180" rx="58" ry="35" fill="none" stroke="#162030" stroke-width="1"/>
+
+  <!-- Golden circle -->
+  <circle cx="272" cy="148" r="42" fill="none" stroke="#c9a227" stroke-width="2" opacity="0.8"/>
+  <!-- Spiral arrow -->
+  <path d="M272,106 Q316,106 316,148 Q316,190 272,190 Q242,190 234,166" fill="none" stroke="#c9a227" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.55" marker-end="url(#ah)"/>
+
+  <!-- ── POSITION 1: PLAX ── upper left -->
+  <circle cx="262" cy="130" r="9" fill="#7c3aed" stroke="#c4b5fd" stroke-width="1.5"/>
+  <text x="262" y="134" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">1</text>
+  <!-- connector -->
+  <line x1="215" y1="68" x2="258" y2="126" stroke="#7c3aed" stroke-width="0.8" opacity="0.6"/>
+  <!-- label box -->
+  <rect x="50" y="30" width="164" height="44" rx="4" fill="#1a0f35" stroke="#7c3aed" stroke-width="1.2"/>
+  <text x="132" y="45" text-anchor="middle" font-size="8.5" fill="#c4b5fd" font-weight="700" font-family="monospace">PARASTERNAL LONG (PLAX)</text>
+  <text x="132" y="57" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">3-4 ICS LSB · probe → R shoulder</text>
+  <text x="132" y="68" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">LVOT, MV, Ao root, pericardium</text>
+
+  <!-- ── POSITION 2: PSAX ── upper right -->
+  <circle cx="282" cy="130" r="9" fill="#2563eb" stroke="#93c5fd" stroke-width="1.5"/>
+  <text x="282" y="134" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">2</text>
+  <line x1="346" y1="68" x2="286" y2="126" stroke="#2563eb" stroke-width="0.8" opacity="0.6"/>
+  <rect x="346" y="30" width="164" height="44" rx="4" fill="#0f1f35" stroke="#2563eb" stroke-width="1.2"/>
+  <text x="428" y="45" text-anchor="middle" font-size="8.5" fill="#93c5fd" font-weight="700" font-family="monospace">PARASTERNAL SHORT (PSAX)</text>
+  <text x="428" y="57" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">Same spot · rotate 90° CW</text>
+  <text x="428" y="68" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">Papillary level: D-sign, RV size</text>
+
+  <!-- ── POSITION 3: A4C ── mid right -->
+  <circle cx="258" cy="162" r="9" fill="#059669" stroke="#6ee7b7" stroke-width="1.5"/>
+  <text x="258" y="166" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">3</text>
+  <line x1="346" y1="178" x2="266" y2="162" stroke="#059669" stroke-width="0.8" opacity="0.6"/>
+  <rect x="346" y="155" width="164" height="44" rx="4" fill="#0a2018" stroke="#059669" stroke-width="1.2"/>
+  <text x="428" y="170" text-anchor="middle" font-size="8.5" fill="#6ee7b7" font-weight="700" font-family="monospace">APICAL 4-CHAMBER (A4C)</text>
+  <text x="428" y="182" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">5th ICS MCL · probe → L shoulder</text>
+  <text x="428" y="193" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">EF, RV:LV ratio, valves, LVOT VTI</text>
+
+  <!-- ── POSITION 4: Subxiphoid ── lower right -->
+  <circle cx="280" cy="192" r="9" fill="#d97706" stroke="#fcd34d" stroke-width="1.5"/>
+  <text x="280" y="196" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">4</text>
+  <line x1="346" y1="248" x2="282" y2="198" stroke="#d97706" stroke-width="0.8" opacity="0.6"/>
+  <rect x="346" y="225" width="164" height="44" rx="4" fill="#251500" stroke="#d97706" stroke-width="1.2"/>
+  <text x="428" y="240" text-anchor="middle" font-size="8.5" fill="#fcd34d" font-weight="700" font-family="monospace">SUBXIPHOID (SC4C)</text>
+  <text x="428" y="252" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">Probe flat · aim at L shoulder</text>
+  <text x="428" y="263" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">Pericardial effusion, tamponade</text>
+
+  <!-- ── POSITION 5: IVC ── lower left -->
+  <circle cx="280" cy="210" r="9" fill="#dc2626" stroke="#fca5a5" stroke-width="1.5"/>
+  <text x="280" y="214" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">5</text>
+  <line x1="215" y1="248" x2="276" y2="212" stroke="#dc2626" stroke-width="0.8" opacity="0.6"/>
+  <rect x="50" y="225" width="164" height="44" rx="4" fill="#250a0a" stroke="#dc2626" stroke-width="1.2"/>
+  <text x="132" y="240" text-anchor="middle" font-size="8.5" fill="#fca5a5" font-weight="700" font-family="monospace">IVC / FLUID STATUS</text>
+  <text x="132" y="252" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">Rotate 90° from pos 4 · sagittal</text>
+  <text x="132" y="263" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">&lt;1.5cm collapsing = hypovolemia</text>
+
+  <!-- Golden Circle legend -->
+  <rect x="50" y="140" width="164" height="60" rx="4" fill="#1a1500" stroke="#c9a227" stroke-width="1"/>
+  <text x="132" y="154" text-anchor="middle" font-size="8" fill="#fcd34d" font-weight="700" font-family="monospace">GOLDEN CIRCLE</text>
+  <text x="132" y="165" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">Rotate probe CW position-to-position</text>
+  <text x="132" y="175" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">1→2: rotate 90° CW (same location)</text>
+  <text x="132" y="185" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">2→3: slide to apex · 4→5: rotate 90°</text>
+  <text x="132" y="195" text-anchor="middle" font-size="7" fill="#c9a227" font-family="monospace">Start: PLAX · End: IVC view</text>
+
+  <!-- Footer -->
+  <text x="280" y="310" text-anchor="middle" font-size="7.5" fill="#374151" font-family="monospace">After DocScribbles · ASE 2022 · SCA 2023</text>
+</svg>
+</div>
+<div class="sl">WHAT TO ASSESS</div>
+<div class="tr g2"><div class="dn">LVEF (global)</div><div class="dd">Eyeball: good (&gt;55%) / moderate (30–55%) / poor (&lt;30%); E-point septal separation (EPSS): &gt;8mm = reduced EF</div></div>
+<div class="tr g2"><div class="dn">Pericardial effusion</div><div class="dd">Anechoic fluid around heart; tamponade: RV diastolic collapse + IVC plethora + clinical shock</div></div>
+<div class="tr g2"><div class="dn">RV strain</div><td class="dd">RV:LV &gt;1 (A4C) · McConnell sign (free wall akinesis, apex spared) · D-sign on PSAX · consider PE</div></div>
+<div class="tr g2"><div class="dn">IVC collapsibility</div><div class="dd">See IVC table below — volume status assessment</div></div>
+<table class="stbl"><tr><th>IVC Diameter</th><th>Collapsibility (sniff)</th><th>Interpretation</th></tr>
+<tr><td>&lt;1.5 cm</td><td>&gt;50%</td><td>Hypovolemia — volume responsive</td></tr>
+<tr><td>1.5–2.5 cm</td><td>&gt;50%</td><td>Normal / borderline — likely responsive</td></tr>
+<tr><td>1.5–2.5 cm</td><td>&lt;50%</td><td>Euvolemic — less predictable</td></tr>
+<tr><td>&gt;2.5 cm</td><td>&lt;50%</td><td>Elevated RAP / hypervolemia — unlikely responsive</td></tr>
+</table>
+<div class="tr g2" style="margin-top:6px"><div class="dn">Limitations</div><div class="d2">Mechanical ventilation, high PEEP, and elevated IAP reduce IVC collapsibility reliability. Use alongside clinical context and other hemodynamic data.</div></div>
+</div></div>
+
+<div class="card a4"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Lung Ultrasound</span><span class="bd bd4">BLUE Protocol</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<table class="stbl"><tr><th>Finding</th><th>Appearance</th><th>Suggests</th></tr>
+<tr><td>A-lines</td><td>Horizontal reverberation artifacts</td><td>Normal aerated lung / PTX</td></tr>
+<tr><td>Lung sliding</td><td>Shimmering at pleural line</td><td>Pleural apposition — rules out PTX at that point</td></tr>
+<tr><td>B-lines (≥3/view)</td><td>Vertical laser-like artifacts to screen edge</td><td>Interstitial edema / pulmonary edema</td></tr>
+<tr><td>Consolidation</td><td>Tissue-like echogenicity ± air bronchograms</td><td>Pneumonia / atelectasis</td></tr>
+<tr><td>Lung point</td><td>Transition between sliding and no sliding</td><td>Confirms PTX (100% specific)</td></tr>
+<tr><td>Barcode sign (M-mode)</td><td>Horizontal lines throughout (no seashore)</td><td>PTX — absent lung sliding</td></tr>
+<tr><td>Seashore sign (M-mode)</td><td>Grainy below pleural line</td><td>Normal lung sliding present</td></tr>
+<tr><td>Pleural effusion</td><td>Anechoic/hypoechoic space above diaphragm</td><td>Hemothorax, transudates, empyema</td></tr>
+</table>
+<div class="sl" style="margin-top:10px">BLUE PROTOCOL — Acute Dyspnea</div>
+<div class="tr g2"><div class="dn">A-lines + sliding bilat</div><div class="dd">PE or obstructive pattern → check RUSH; if no sliding → PTX</div></div>
+<div class="tr g2"><div class="dn">B-lines bilateral (&gt;3)</div><div class="dd">Pulmonary edema (cardiogenic or non-cardiogenic ARDS)</div></div>
+<div class="tr g2"><div class="dn">B-lines unilateral</div><div class="dd">Pneumonia or contusion</div></div>
+<div class="tr g2"><div class="dn">Consolidation</div><div class="dd">Pneumonia (air bronchograms) or atelectasis (fluid bronchograms)</div></div>
+<div class="tr g2"><div class="dn">Anterior A-lines + no sliding</div><div class="dd">PTX until proven otherwise — seek lung point to confirm</div></div>
+</div></div>
+
+<div class="card a5"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Procedural POCUS — EM Applications</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="tr g3"><div class="dn">Central venous access</div><div class="dd">IJ / subclavian / femoral</div><div class="d2">Real-time short-axis or long-axis; confirm wire in vein before dilating; post-procedure PTX check</div></div>
+<div class="tr g3"><div class="dn">Pericardiocentesis</div><div class="dd">Subxiphoid or parasternal approach</div><div class="d2">18g spinal needle; aim toward L shoulder; agitated saline to confirm pericardial placement</div></div>
+<div class="tr g3"><div class="dn">Thoracentesis</div><div class="dd">Posterior lateral chest</div><div class="d2">Mark site with probe; real-time preferred; target largest safe pocket; avoid diaphragm</div></div>
+<div class="tr g3"><div class="dn">Lumbar puncture</div><div class="dd">Interspinous space identification</div><div class="d2">Transverse for midline; sagittal for level counting; improves success in obese/prior spine surgery</div></div>
+<div class="tr g3"><div class="dn">Abscess / soft tissue</div><div class="dd">High-frequency linear probe</div><div class="d2">Differentiate cellulitis (cobblestoning) from abscess (anechoic with posterior enhancement); guide I&amp;D</div></div>
+<div class="tr g3"><div class="dn">Ocular POCUS</div><div class="dd">High-frequency linear probe over closed lid</div><div class="d2">ONSD &gt;5mm = ↑ICP; retinal detachment (tethered); vitreous hemorrhage; lens dislocation</div></div>
+<div class="tr g3"><div class="dn">DVT assessment</div><div class="dd">Femoral + popliteal compressibility</div><div class="d2">2-point compression (CFV, popliteal); non-compressible = DVT; sensitivity ~95% proximal DVT</div></div>
+</div></div>
+</div>`},
+}},
+scores:{label:"Scores &amp; Tools",icon:"&#x1F4CA;",subs:{
+  emscores:{label:"EM Scores &amp; Formulas",updated:"2024",content:()=>`
+<div class="cg">
+<div class="card a1"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">HEART Score (ACS Risk)</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<table class="stbl"><tr><th>Component</th><th>0</th><th>1</th><th>2</th></tr>
+<tr><td class="dn">History</td><td>Slightly suspicious</td><td>Moderately suspicious</td><td>Highly suspicious</td></tr>
+<tr><td class="dn">ECG</td><td>Normal</td><td>Non-specific repolarization</td><td>Significant ST depression</td></tr>
+<tr><td class="dn">Age</td><td>&lt;45</td><td>45&ndash;64</td><td>&ge;65</td></tr>
+<tr><td class="dn">Risk Factors</td><td>None / unknown</td><td>1&ndash;2 risk factors</td><td>&ge;3 risk factors OR known CAD</td></tr>
+<tr><td class="dn">Troponin</td><td>&le;normal limit</td><td>1&ndash;3&times; ULN</td><td>&gt;3&times; ULN</td></tr>
+</table>
+<div class="ir" style="margin-top:6px"><div class="il">0&ndash;3 (Low risk)</div><div class="iv" style="color:var(--a3)">Safe discharge &mdash; &lt;2% MACE at 30 days</div></div>
+<div class="ir"><div class="il">4&ndash;6 (Moderate)</div><div class="iv" style="color:var(--a4)">Further workup; observation</div></div>
+<div class="ir"><div class="il">7&ndash;10 (High risk)</div><div class="iv" style="color:var(--ac)">Admit; early invasive strategy</div></div>
+</div></div>
+<div class="card"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Wells Criteria (PE)</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="thr g2"><div>Criterion</div><div>Points</div></div>
+<div class="tr g2"><div class="dn">Signs/Sx of DVT</div><div class="dd">3.0</div></div>
+<div class="tr g2"><div class="dn">PE more likely than alternative Dx</div><div class="dd">3.0</div></div>
+<div class="tr g2"><div class="dn">HR &gt;100 bpm</div><div class="dd">1.5</div></div>
+<div class="tr g2"><div class="dn">Immobilization &ge;3d / Surgery &lt;4wk</div><div class="dd">1.5</div></div>
+<div class="tr g2"><div class="dn">Prior PE or DVT</div><div class="dd">1.5</div></div>
+<div class="tr g2"><div class="dn">Hemoptysis</div><div class="dd">1.0</div></div>
+<div class="tr g2"><div class="dn">Malignancy (active)</div><div class="dd">1.0</div></div>
+<div class="dv"></div>
+<div class="ir"><div class="il">Score &le;4</div><div class="iv" style="color:var(--a3)">Low &mdash; D-dimer strategy</div></div>
+<div class="ir"><div class="il">Score &gt;4</div><div class="iv" style="color:var(--ac)">High &mdash; CT pulmonary angiography</div></div>
+</div></div>
+<div class="card"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Key EM Formulas</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="fml"><div class="fl">CURB-65 (Pneumonia Severity)</div>Confusion + BUN &gt;19 + RR &ge;30 + BP &lt;90/60 + Age &ge;65 &mdash; score &ge;2: admit; &ge;3: ICU</div>
+<div class="fml"><div class="fl">Corrected QTc (Bazett)</div>QT / &radic;RR (RR in seconds) &mdash; normal &lt;450ms male, &lt;470ms female</div>
+<div class="fml"><div class="fl">GCS</div>Eye (1&ndash;4) + Verbal (1&ndash;5) + Motor (1&ndash;6) &mdash; intubate if &le;8</div>
+<div class="fml"><div class="fl">Anion Gap</div>Na &minus; (Cl + HCO&#8323;) &mdash; normal 8&ndash;12; correct for albumin</div>
+<div class="fml"><div class="fl">PERC Rule (PE exclusion)</div>Age &lt;50, HR &lt;100, SpO&#8322; &ge;95%, no prior DVT/PE, no leg swelling, no hemoptysis, no exogenous estrogen, no surgery/trauma &lt;4wk &rarr; D-dimer not needed</div>
+</div></div>
+</div>`},
+  ecg:{label:"ECG Patterns",updated:"2024",content:()=>`
+<div class="cg">
+<div class="card a2"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">High-Risk &amp; STEMI-Equivalent ECG Patterns</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="thr g3"><div>Pattern</div><div>Finding</div><div>Action</div></div>
+<div class="tr g3"><div class="dn">Wellens Type A</div><div class="d2">Biphasic T-waves V2&ndash;V3 (reperfusion)</div><div class="d2">Critical LAD stenosis &mdash; do NOT stress test; admit</div></div>
+<div class="tr g3"><div class="dn">Wellens Type B</div><div class="d2">Deep symmetric T-wave inversion V2&ndash;V3</div><div class="d2">Critical LAD proximal stenosis; high short-term MI risk</div></div>
+<div class="tr g3"><div class="dn">de Winter T-waves</div><div class="d2">Upsloping ST depression + tall peaked T V1&ndash;V6; no ST elevation</div><div class="d2">STEMI equivalent &mdash; activate cath lab immediately</div></div>
+<div class="tr g3"><div class="dn">Posterior STEMI</div><div class="d2">ST depression V1&ndash;V3 + tall R wave; confirm with V7&ndash;V9 leads</div><div class="d2">STEMI equivalent &mdash; activate cath lab immediately</div></div>
+<div class="tr g3"><div class="dn">Brugada Type 1</div><div class="d2">Coved ST elevation &ge;2mm V1&ndash;V2 + RBBB morphology</div><div class="d2">Sudden cardiac death risk; ICD referral; avoid Na-channel blockers</div></div>
+<div class="tr g3"><div class="dn">Hyperkalemia progression</div><div class="d2">Peaked T &rarr; PR &uarr; &rarr; QRS &uarr; &rarr; P-wave loss &rarr; sine wave</div><div class="d2">CaCl&#8322; 1g IV immediately; sodium bicarb, insulin, kayexalate</div></div>
+<div class="tr g3"><div class="dn">Sgarbossa (LBBB)</div><div class="d2">Concordant ST elevation &ge;1mm; concordant ST depression V1&ndash;V3 &ge;1mm; discordant ST elevation &ge;5mm</div><div class="d2">STEMI in LBBB &mdash; activate cath lab if 2+ criteria met</div></div>
+<div class="tr g3"><div class="dn">aVR STEMI / left main</div><div class="d2">ST elevation aVR + diffuse ST depression; reciprocal to LMCA/proximal LAD</div><div class="d2">STEMI equivalent &mdash; cath lab; high mortality</div></div>
+</div></div>
+</div>`},
+}},
+};
+let S=null,U=null;
+function init(){
+  const ks=Object.keys(D);
+  document.getElementById('nav').innerHTML=ks.map(k=>`<button class="nt" id="nt-${k}" onclick="sel('${k}')"><span>${D[k].icon}</span>${D[k].label}</button>`).join('');
+  buildQ();sel(ks[0]);kbds();
+  document.getElementById('sbbd').addEventListener('click',closeSb);
+}
+function sel(k){
+  S=k;
+  document.querySelectorAll('.nt').forEach(t=>t.classList.remove('on'));
+  const t=document.getElementById('nt-'+k);
+  if(t){t.classList.add('on');t.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});}
+  const ss=Object.keys(D[k].subs);
+  document.getElementById('sb').innerHTML=
+    `<button class="sbcls" onclick="closeSb()">&#10005; close</button>`+
+    `<div class="sbl">${D[k].icon} ${D[k].label}</div>`+
+    ss.map(s=>`<div class="sbi" id="si-${k}-${s}" onclick="sub('${k}','${s}')">${D[k].subs[s].label}</div>`).join('');
+  sub(k,ss[0]);
+  if(window.innerWidth<=640)closeSb();
+}
+function sub(sk,uk){
+  U=uk;
+  document.querySelectorAll('.sbi').forEach(i=>i.classList.remove('on'));
+  const el=document.getElementById(`si-${sk}-${uk}`);
+  if(el)el.classList.add('on');
+  const s=D[sk].subs[uk],p=D[sk];
+  document.getElementById('co').innerHTML=`<div class="shdr"><div><div class="stitle">${p.icon} ${s.label}</div><div class="smeta">${p.label}</div></div><div><div class="supd">Updated: ${s.updated}</div><div class="ssrc">${SRC}</div></div></div>${s.content()}`;
+  document.getElementById('co').scrollTop=0;
+  if(window.innerWidth<=640)closeSb();
+}
+function tc(h){const b=h.nextElementSibling,c=h.querySelector('.ca');b.classList.toggle('cl');c.classList.toggle('o');}
+function buildQ(){
+  const q=document.getElementById('qr');
+  q.innerHTML=`<div class="qhdr"><span>&#128138; Quick Ref</span><button class="qcls" onclick="closeQ()">&#10005;</button></div>`+
+    DRUGS.map(c=>`<div class="qrl">${c.cat}</div>${c.items.map(d=>`<div class="qri"><div class="qri-n">${d.n}</div><div class="qri-d">${d.d}</div><div class="qri-t">${d.t}</div></div>`).join('')}`).join('');
+}
+function toggleQ(){
+  const q=document.getElementById('qr'),b=document.getElementById('btnQ');
+  const mob=window.innerWidth<=640;
+  if(mob){const op=q.classList.contains('mopen');if(op){q.classList.remove('mopen');setTimeout(()=>{if(!q.classList.contains('mopen'))q.style.display='none';},250);}else{q.style.display='block';requestAnimationFrame(()=>q.classList.add('mopen'));}b&&b.classList.toggle('on',!op);}
+  else{const h=q.style.display==='none'||!q.style.display;q.style.display=h?'block':'none';b&&b.classList.toggle('on',h);}
+}
+function closeQ(){const q=document.getElementById('qr'),b=document.getElementById('btnQ');q.classList.remove('mopen');setTimeout(()=>{if(!q.classList.contains('mopen'))q.style.display='none';},250);b&&b.classList.remove('on');}
+function openSb(){document.getElementById('sb').classList.add('open');document.getElementById('sbbd').classList.add('vis');document.body.style.overflow='hidden';}
+function closeSb(){document.getElementById('sb').classList.remove('open');document.getElementById('sbbd').classList.remove('vis');document.body.style.overflow='';}
+function kbo(){document.getElementById('kbo').classList.toggle('vis');}
+function srch(q){
+  const sc=document.getElementById('sc'),shc=document.getElementById('shc');
+  sc.classList.toggle('vis',q.length>0);
+  if(!q.trim()){shc.textContent='';if(S&&U)sub(S,U);return;}
+  const ql=q.trim().toLowerCase();let res=[];
+  Object.keys(D).forEach(sk=>Object.keys(D[sk].subs).forEach(uk=>{if(D[sk].subs[uk].content().replace(/<[^>]+>/g,' ').toLowerCase().includes(ql))res.push({sk,uk,sec:D[sk],s:D[sk].subs[uk]});}));
+  shc.textContent=res.length?`${res.length} match${res.length>1?'es':''}`:'' ;
+  if(!res.length){document.getElementById('co').innerHTML=`<div class="empty"><div style="font-size:28px;margin-bottom:10px">&#128269;</div><div>No results for <strong>"${q}"</strong></div></div>`;return;}
+  document.getElementById('co').innerHTML=`<div class="shdr"><div><div class="stitle">Results</div><div class="smeta">${res.length} match${res.length>1?'es':''} for "${q}"</div></div></div>`+res.map(r=>`<button class="srb" onclick="sel('${r.sk}');setTimeout(()=>sub('${r.sk}','${r.uk}'),80)"><span>${r.sec.icon}</span><div><div style="font-weight:600">${r.s.label}</div><div style="font-size:11px;color:var(--tm)">${r.sec.label}</div></div><span style="margin-left:auto;color:var(--ac);font-size:11px">View &#8594;</span></button>`).join('');
+}
+function clr(){const si=document.getElementById('si');si.value='';document.getElementById('sc').classList.remove('vis');document.getElementById('shc').textContent='';if(S&&U)sub(S,U);si.focus();}
+function kbds(){
+  document.addEventListener('keydown',e=>{
+    const inp=document.getElementById('si'),foc=document.activeElement===inp;
+    if(e.key==='/'&&!foc){e.preventDefault();inp.focus();return;}
+    if(e.key==='Escape'){if(document.getElementById('kbo').classList.contains('vis')){kbo();return;}clr();return;}
+    if(foc)return;
+    const k=e.key.toLowerCase();
+    if(k==='p'){window.print();return;}if(k==='r'){toggleQ();return;}if(k==='?'){kbo();return;}
+    if(k==='tab'){e.preventDefault();const ks=Object.keys(D),i=ks.indexOf(S);sel(ks[(i+1)%ks.length]);}
+    if(k==='arrowdown'||k==='arrowup'){e.preventDefault();if(!S)return;const ss=Object.keys(D[S].subs),i=ss.indexOf(U),n=k==='arrowdown'?(i+1)%ss.length:(i-1+ss.length)%ss.length;sub(S,ss[n]);}
+  });
+}
+init();
+
+// ── CONNECTIVITY STATUS ──
+function updateConn() {
+  var b = document.getElementById('connChip');
+  if (!b) return;
+  var online = navigator.onLine && location.protocol !== 'file:';
+  b.textContent = online ? '⟳ ONLINE' : '✓ OFFLINE';
+  b.className = online ? 'chip2 conn-online' : 'chip2';
+}
+window.addEventListener('online', updateConn);
+window.addEventListener('offline', updateConn);
+document.addEventListener('DOMContentLoaded', updateConn);
+
+function bkmTab(el, id) {
+  document.querySelectorAll('.bkm-tab').forEach(t => t.classList.remove('on'));
+  document.querySelectorAll('.bkm-pane').forEach(p => p.classList.remove('on'));
+  el.classList.add('on');
+  document.getElementById('bkm-' + id).classList.add('on');
+}
+</script>
+<div class="bkm-overlay" id="bkmOverlay">
+<div class="bkm-modal">
+  <div class="bkm-title"><span>📌 Save for Offline Use</span><button class="bkm-close" onclick="document.getElementById('bkmOverlay').classList.remove('open')">&#x2715;</button></div>
+  <div class="bkm-sub">This file works entirely offline — no internet needed after saving.</div>
+  <div class="bkm-tabs">
+    <button class="bkm-tab on" onclick="bkmTab(this,'ios')">iPhone / iPad</button>
+    <button class="bkm-tab" onclick="bkmTab(this,'android')">Android</button>
+    <button class="bkm-tab" onclick="bkmTab(this,'mac')">Mac</button>
+    <button class="bkm-tab" onclick="bkmTab(this,'win')">Windows / PC</button>
+  </div>
+  <div class="bkm-pane on" id="bkm-ios">
+    <div class="bkm-step"><div class="bkm-num">1</div><div class="bkm-txt"><strong>AirDrop or email</strong> the .html file to your iPhone/iPad</div></div>
+    <div class="bkm-step"><div class="bkm-num">2</div><div class="bkm-txt">Tap the file — it opens in <strong>Safari</strong> (use Safari, not Chrome)</div></div>
+    <div class="bkm-step"><div class="bkm-num">3</div><div class="bkm-txt">Tap the <strong>Share button</strong> (box with arrow) at the bottom</div></div>
+    <div class="bkm-step"><div class="bkm-num">4</div><div class="bkm-txt">Scroll down → tap <strong>"Add to Home Screen"</strong></div></div>
+    <div class="bkm-step"><div class="bkm-num">5</div><div class="bkm-txt">Name it and tap <strong>Add</strong> — launches like an app, works offline</div></div>
+    <div class="bkm-note">⚠ Must open in <strong>Safari</strong> — Chrome on iOS cannot add to Home Screen from local files. The file stays in your Files app at <strong>On My iPhone › Downloads</strong> as a backup.</div>
+  </div>
+  <div class="bkm-pane" id="bkm-android">
+    <div class="bkm-step"><div class="bkm-num">1</div><div class="bkm-txt"><strong>Download or transfer</strong> the .html file to your device</div></div>
+    <div class="bkm-step"><div class="bkm-num">2</div><div class="bkm-txt">Open <strong>Chrome</strong> → tap the address bar → type <strong>file:///sdcard/Download/</strong> and navigate to the file</div></div>
+    <div class="bkm-step"><div class="bkm-num">3</div><div class="bkm-txt">Tap the <strong>three-dot menu</strong> (⋮) → <strong>"Add to Home screen"</strong></div></div>
+    <div class="bkm-step"><div class="bkm-num">4</div><div class="bkm-txt">Tap <strong>Add</strong> — shortcut appears on your home screen</div></div>
+    <div class="bkm-note">💡 Alternatively: open the file with <strong>Firefox for Android</strong> via your file manager app — it handles local HTML files more reliably than Chrome on some devices.</div>
+  </div>
+  <div class="bkm-pane" id="bkm-mac">
+    <div class="bkm-step"><div class="bkm-num">1</div><div class="bkm-txt"><strong>Save the file</strong> somewhere permanent (Documents, not Downloads — Downloads may get cleared)</div></div>
+    <div class="bkm-step"><div class="bkm-num">2</div><div class="bkm-txt">Open the file in <strong>Safari or Chrome</strong> — double-click or drag to browser</div></div>
+    <div class="bkm-step"><div class="bkm-num">3</div><div class="bkm-txt">Press <strong>⌘ D</strong> to bookmark it, or drag the URL bar tab to your Dock / desktop</div></div>
+    <div class="bkm-step"><div class="bkm-num">4</div><div class="bkm-txt"><strong>Safari tip:</strong> File → Add to Dock — creates a standalone app-like launcher in your Dock</div></div>
+    <div class="bkm-note">💡 To sync to iPhone: save in <strong>iCloud Drive</strong> and open in Safari on iOS → Add to Home Screen.</div>
+  </div>
+  <div class="bkm-pane" id="bkm-win">
+    <div class="bkm-step"><div class="bkm-num">1</div><div class="bkm-txt"><strong>Save the file</strong> somewhere permanent (Documents folder recommended)</div></div>
+    <div class="bkm-step"><div class="bkm-num">2</div><div class="bkm-txt">Open in <strong>Chrome or Edge</strong> — double-click the file</div></div>
+    <div class="bkm-step"><div class="bkm-num">3</div><div class="bkm-txt">Press <strong>Ctrl + D</strong> to bookmark, or drag the icon from the address bar to your desktop/taskbar</div></div>
+    <div class="bkm-step"><div class="bkm-num">4</div><div class="bkm-txt"><strong>Edge tip:</strong> Apps → Install this site as an app — creates a standalone window launcher</div></div>
+    <div class="bkm-note">💡 <strong>Edge</strong> handles local HTML files best on Windows — Chrome may prompt about file access on some versions.</div>
+  </div>
+</div>
+</div>
+</body>
+</html>

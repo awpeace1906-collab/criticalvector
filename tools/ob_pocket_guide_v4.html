@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+/* Offline font fallbacks — replaces Google Fonts for file:// compatibility */
+@font-face { font-family: 'Syne'; src: local('Arial Black'), local('Impact'), local('.AppleSystemUIFont'); font-weight: 400 800; }
+@font-face { font-family: 'DM Mono'; src: local('Menlo'), local('Consolas'), local('Courier New'); font-weight: 400 500; }
+@font-face { font-family: 'Source Serif 4'; src: local('Georgia'), local('Times New Roman'); font-weight: 300 400; }
+
+/* v4 overflow fix */
+.tr > div { min-width: 0; overflow-wrap: break-word; word-break: break-word; }
+.g3 { grid-template-columns: minmax(0,1fr) minmax(0,1.4fr) minmax(0,1.2fr); }
+.g2 { grid-template-columns: minmax(0,1.1fr) minmax(0,2fr); }
+.dn, .dd, .d2, .il, .iv, .cn, .fl, .ct { overflow-wrap: break-word; word-break: break-word; }
+.il { width: auto; min-width: 0; max-width: 160px; }
+.stbl td, .stbl th { overflow-wrap: break-word; word-break: break-word; max-width: 240px; }
+@media (max-width: 500px) {
+  .g3 { grid-template-columns: 1fr; }
+  .g2 { grid-template-columns: 1fr; }
+}
+
+/* v4 table alignment fix */
+.stbl { table-layout: fixed; width: 100%; }
+.stbl th, .stbl td { vertical-align: top; overflow-wrap: break-word; word-break: break-word; white-space: normal; hyphens: auto; }
+.stbl th { padding: 6px 8px; }
+.stbl td { padding: 6px 8px; }
+.stbl col, .stbl th:first-child, .stbl td:first-child { width: 28%; }
+.thr > div { min-width: 0; overflow-wrap: break-word; word-break: break-word; }
+</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OB/GYN Pocket Guide</title>
+<style>
+:root{--fn:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;--fm:'Menlo','Consolas','Courier New',monospace;--bg:#060e0e;--sf1:#091516;--sf2:#0e1e1f;--sf3:#132728;--b1:#183032;--b2:#1e3c3f;--b3:#25494d;--tx:#ccf0f2;--td:#3d8f94;--tm:#1d4a4d;--ac:#0d9488;--ac-bg:rgba(13,148,136,.09);--ac-b:rgba(13,148,136,.28);--ac-tx:#5eead4;--a2:#f43f5e;--a2-bg:rgba(244,63,94,.09);--a2-b:rgba(244,63,94,.28);--a2-tx:#fda4af;--a3:#4ade80;--a3-bg:rgba(74,222,128,.08);--a3-b:rgba(74,222,128,.25);--a3-tx:#bbf7d0;--a4:#fbbf24;--a4-bg:rgba(251,191,36,.08);--a4-b:rgba(251,191,36,.25);--a4-tx:#fde68a;--a5:#f97316;--a5-bg:rgba(249,115,22,.08);--a5-b:rgba(249,115,22,.25);--a5-tx:#fed7aa;--a6:#38bdf8;--a6-bg:rgba(56,189,248,.09);--a6-b:rgba(56,189,248,.28);--a6-tx:#bae6fd;--a7:#c084fc;--a7-bg:rgba(192,132,252,.09);--a7-b:rgba(192,132,252,.28);--a7-tx:#e9d5ff;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html,body{height:100%;}
+body{background:var(--bg);color:var(--tx);font-family:var(--fn);display:flex;flex-direction:column;height:100vh;overflow:hidden;}
+.hdr{flex-shrink:0;height:50px;background:var(--sf1);border-bottom:1px solid var(--b1);display:flex;align-items:center;padding:0 16px;gap:10px;z-index:200;}
+.mbt{display:none;background:none;border:none;cursor:pointer;color:var(--td);font-size:19px;padding:2px 4px;flex-shrink:0;line-height:1;}
+.hbrand{display:flex;align-items:center;gap:10px;flex:1;}
+.hlogo{width:28px;height:28px;border-radius:6px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:14px;background:linear-gradient(135deg,#0d9488 0%,#065f46 100%);box-shadow:0 0 12px rgba(13,148,136,.35);}
+.htitle{font-size:14px;font-weight:700;letter-spacing:.05em;}
+.hsub{font-family:var(--fm);font-size:9px;color:var(--tm);letter-spacing:.1em;margin-top:2px;}
+.hrt{display:flex;align-items:center;gap:5px;flex-shrink:0;}
+.hbtn{font-family:var(--fm);font-size:10px;cursor:pointer;background:var(--sf2);border:1px solid var(--b2);color:var(--td);padding:4px 9px;border-radius:4px;transition:all .12s;white-space:nowrap;}
+.hbtn:hover{border-color:var(--b3);color:var(--tx);}
+.hbtn.on{background:var(--ac-bg);border-color:var(--ac-b);color:var(--ac);}
+.chip{font-family:var(--fm);font-size:9px;color:var(--ac);background:var(--ac-bg);border:1px solid var(--ac-b);padding:3px 8px;border-radius:4px;letter-spacing:.06em;}
+.chip2{font-family:var(--fm);font-size:9px;color:var(--a3);background:var(--a3-bg);border:1px solid var(--a3-b);padding:3px 8px;border-radius:4px;letter-spacing:.06em;}
+.srch{flex-shrink:0;height:42px;background:var(--sf1);border-bottom:1px solid var(--b1);display:flex;align-items:center;padding:0 14px;gap:8px;}
+.si{flex:1;background:transparent;border:none;outline:none;color:var(--tx);font-family:var(--fn);font-size:13px;}
+.si::placeholder{color:var(--tm);}
+.sc{cursor:pointer;color:var(--tm);font-size:10px;background:var(--sf3);border:1px solid var(--b2);border-radius:3px;padding:2px 6px;display:none;font-family:var(--fm);}
+.sc.vis{display:block;}
+.shc{font-family:var(--fm);font-size:10px;color:var(--ac);flex-shrink:0;}
+.nav{flex-shrink:0;height:38px;background:var(--sf1);border-bottom:1px solid var(--b1);display:flex;align-items:center;overflow-x:auto;padding:0 10px;gap:2px;scrollbar-width:none;}
+.nav::-webkit-scrollbar{display:none;}
+.nt{flex-shrink:0;border:none;cursor:pointer;background:transparent;color:var(--td);padding:4px 11px;border-radius:5px;font-size:11.5px;font-weight:500;transition:all .12s;display:flex;align-items:center;gap:5px;font-family:var(--fn);}
+.nt:hover{background:var(--sf2);color:var(--tx);}
+.nt.on{background:var(--sf3);color:var(--tx);border:1px solid var(--b2);}
+.bwrap{display:flex;flex:1;overflow:hidden;}
+.sb{width:190px;flex-shrink:0;overflow-y:auto;border-right:1px solid var(--b1);background:var(--sf1);scrollbar-width:thin;}
+.sb::-webkit-scrollbar{width:3px;}
+.sb::-webkit-scrollbar-thumb{background:var(--b2);border-radius:2px;}
+.sbl{font-family:var(--fm);font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--tm);padding:10px 13px 4px;}
+.sbi{padding:7px 13px;font-size:12px;cursor:pointer;color:var(--td);border-left:2px solid transparent;transition:all .1s;line-height:1.35;}
+.sbi:hover{background:var(--sf2);color:var(--tx);}
+.sbi.on{color:var(--tx);background:var(--sf2);border-left-color:var(--ac);}
+.sbcls{display:none;background:none;border:none;cursor:pointer;color:var(--tm);font-family:var(--fm);font-size:11px;padding:8px 13px 4px;width:100%;text-align:right;}
+.co{flex:1;overflow-y:auto;padding:16px 18px;scrollbar-width:thin;}
+.co::-webkit-scrollbar{width:4px;}
+.co::-webkit-scrollbar-thumb{background:var(--b2);border-radius:2px;}
+.shdr{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:14px;padding-bottom:11px;border-bottom:1px solid var(--b1);}
+.stitle{font-size:17px;font-weight:700;}
+.smeta{font-family:var(--fm);font-size:10px;color:var(--tm);margin-top:3px;}
+.supd{font-family:var(--fm);font-size:9px;color:var(--tm);text-align:right;}
+.ssrc{font-family:var(--fm);font-size:8px;color:var(--ac);letter-spacing:.06em;}
+.cg{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:9px;margin-bottom:9px;}
+.cf{margin-bottom:9px;}
+.c2{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:9px;}
+.card{background:var(--sf1);border:1px solid var(--b1);border-radius:7px;overflow:hidden;}
+.card:hover{border-color:var(--b2);}
+.card.a1{border-left:3px solid var(--ac);}
+.card.a2{border-left:3px solid var(--a2);}
+.card.a3{border-left:3px solid var(--a3);}
+.card.a4{border-left:3px solid var(--a4);}
+.card.a5{border-left:3px solid var(--a5);}
+.card.a6{border-left:3px solid var(--a6);}
+.card.a7{border-left:3px solid var(--a7);}
+.ch{padding:8px 12px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--b1);cursor:pointer;gap:7px;user-select:none;}
+.ch:hover{background:var(--sf2);}
+.chl{display:flex;align-items:center;gap:6px;flex:1;}
+.cn{font-size:12.5px;font-weight:600;}
+.ca{color:var(--tm);font-size:10px;transition:transform .15s;}
+.ca.o{transform:rotate(180deg);}
+.cb{padding:10px 12px;}
+.cb.cl{display:none;}
+.bd{font-family:var(--fm);font-size:8.5px;font-weight:600;padding:2px 6px;border-radius:3px;letter-spacing:.06em;text-transform:uppercase;flex-shrink:0;white-space:nowrap;}
+.bd1{background:var(--ac-bg);color:var(--ac);border:1px solid var(--ac-b);}
+.bd2{background:var(--a2-bg);color:var(--a2);border:1px solid var(--a2-b);}
+.bd3{background:var(--a3-bg);color:var(--a3);border:1px solid var(--a3-b);}
+.bd4{background:var(--a4-bg);color:var(--a4);border:1px solid var(--a4-b);}
+.bd5{background:var(--a5-bg);color:var(--a5);border:1px solid var(--a5-b);}
+.bd6{background:var(--a6-bg);color:var(--a6);border:1px solid var(--a6-b);}
+.bd7{background:var(--a7-bg);color:var(--a7);border:1px solid var(--a7-b);}
+.thr,.tr{display:grid;gap:5px;padding:5px 0;align-items:start;}
+.thr{font-family:var(--fm);font-size:9px;font-weight:600;color:var(--td);border-bottom:1px solid var(--b1);text-transform:uppercase;letter-spacing:.06em;padding-bottom:6px;min-width:0;overflow-wrap:break-word;}
+.tr{border-bottom:1px solid var(--b1);font-size:11.5px;}
+.tr:last-child{border-bottom:none;}
+.tr:hover{background:rgba(255,255,255,.015);margin:0 -12px;padding-left:12px;padding-right:12px;}
+.g2{grid-template-columns:minmax(0,1.1fr) minmax(0,2fr);}
+.g3{grid-template-columns:minmax(0,1fr) minmax(0,1.4fr) minmax(0,1.2fr);}
+.g4{grid-template-columns:1.1fr 1.3fr 0.9fr 1fr;}
+.dn{font-weight:600;color:var(--tx);min-width:0;overflow-wrap:break-word;word-break:break-word;}
+.dd{font-family:var(--fm);font-size:11px;color:var(--ac);min-width:0;overflow-wrap:break-word;word-break:break-word;}
+.d2{font-size:11px;color:var(--td);line-height:1.4;min-width:0;overflow-wrap:break-word;word-break:break-word;}
+.ir{display:flex;justify-content:space-between;align-items:flex-start;padding:5px 0;border-bottom:1px solid var(--b1);gap:8px;}
+.ir:last-child{border-bottom:none;}
+.il{font-family:var(--fm);font-size:10px;color:var(--tm);flex-shrink:0;width:150px;}
+.iv{font-size:12px;color:var(--tx);text-align:right;line-height:1.4;}
+.iv.m{font-family:var(--fm);font-size:11px;color:var(--ac);}
+.al{border-radius:5px;padding:8px 11px;font-size:11.5px;margin-bottom:8px;display:flex;gap:8px;align-items:flex-start;line-height:1.5;}
+.ali{font-size:13px;flex-shrink:0;margin-top:1px;}
+.al.e{background:var(--a2-bg);border:1px solid var(--a2-b);color:var(--a2-tx);}
+.al.w{background:var(--a4-bg);border:1px solid var(--a4-b);color:var(--a4-tx);}
+.al.i{background:var(--ac-bg);border:1px solid var(--ac-b);color:var(--ac-tx);}
+.al.s{background:var(--a3-bg);border:1px solid var(--a3-b);color:var(--a3-tx);}
+.al.g{background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.28);color:#fbbf24;}
+.fml{background:var(--sf2);border:1px solid var(--b2);border-left:3px solid var(--ac);border-radius:5px;padding:8px 12px;margin-bottom:7px;font-family:var(--fm);font-size:11.5px;color:var(--ac);line-height:1.5;}
+.fl{color:var(--tm);font-size:9px;margin-bottom:3px;letter-spacing:.06em;text-transform:uppercase;}
+.crit{background:var(--sf2);border:1px solid var(--b2);border-radius:5px;padding:8px 11px;margin-bottom:6px;}
+.ct{font-weight:600;font-size:11.5px;margin-bottom:4px;color:var(--tx);}
+.crit ul{padding-left:14px;}
+.crit li{font-size:11px;color:var(--td);margin-top:2px;line-height:1.45;}
+.sl{list-style:none;}
+.sl li{display:flex;gap:9px;align-items:flex-start;padding:5px 0;font-size:12px;line-height:1.45;}
+.sn{font-family:var(--fm);font-size:9.5px;font-weight:600;color:var(--a4);background:var(--a4-bg);border:1px solid var(--a4-b);width:20px;height:20px;border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.efm{background:var(--sf2);border:1px solid var(--b2);border-radius:6px;padding:9px 12px;margin-bottom:7px;}
+.efmt{font-size:11px;font-weight:700;color:var(--tx);margin-bottom:4px;}
+.cat1{font-family:var(--fm);font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--a3);margin-bottom:3px;}
+.cat2{font-family:var(--fm);font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--a4);margin-bottom:3px;}
+.cat3{font-family:var(--fm);font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--a2);margin-bottom:3px;}
+.stbl{width:100%;border-collapse:collapse;font-size:11.5px;table-layout:fixed;}
+.stbl th{background:var(--sf2);padding:6px 8px;text-align:left;font-family:var(--fm);font-size:9px;color:var(--tx);font-weight:600;border-bottom:1px solid var(--b2);vertical-align:top;overflow-wrap:break-word;word-break:break-word;white-space:normal;}
+.stbl td{padding:6px 8px;border-bottom:1px solid var(--b1);vertical-align:top;overflow-wrap:break-word;word-break:break-word;white-space:normal;}
+.stbl tr:last-child td{border-bottom:none;}
+.stbl tr:hover td{background:var(--sf2);}
+.dv{height:1px;background:var(--b1);margin:9px 0;}
+.qrp{width:210px;flex-shrink:0;border-left:1px solid var(--b1);overflow-y:auto;display:none;background:var(--sf1);}
+.qrl{font-family:var(--fm);font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--tm);padding:8px 12px 4px;}
+.qri{padding:6px 12px;border-bottom:1px solid var(--b1);}
+.qri-n{font-size:12px;font-weight:600;color:var(--tx);}
+.qri-d{font-family:var(--fm);font-size:10px;color:var(--ac);margin-top:1px;}
+.qri-t{font-size:10px;color:var(--td);margin-top:1px;line-height:1.35;}
+.qhdr{display:flex;justify-content:space-between;align-items:center;padding:10px 14px 6px;border-bottom:1px solid var(--b1);font-family:var(--fm);font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--tm);background:var(--sf1);position:sticky;top:0;}
+.qcls{background:none;border:none;cursor:pointer;color:var(--td);font-size:13px;padding:0;}
+.kbo{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:500;display:none;align-items:center;justify-content:center;}
+.kbo.vis{display:flex;}
+.kbx{background:var(--sf1);border:1px solid var(--b2);border-radius:10px;padding:20px 24px;min-width:300px;max-width:90vw;}
+.kbr{display:flex;justify-content:space-between;align-items:center;padding:5px 0;font-size:12px;}
+.kbk{font-family:var(--fm);font-size:10px;background:var(--sf2);border:1px solid var(--b2);color:var(--a4);padding:2px 7px;border-radius:4px;}
+.kd{color:var(--td);}
+.empty{text-align:center;padding:60px 20px;color:var(--tm);}
+.srb{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--sf1);border:1px solid var(--b1);border-radius:7px;cursor:pointer;color:var(--tx);font-family:var(--fn);font-size:12px;width:100%;margin-bottom:6px;transition:border-color .1s;text-align:left;}
+.srb:hover{border-color:var(--ac-b);}
+.sbbd{display:none;position:fixed;inset:0;z-index:149;background:rgba(0,0,0,.6);}
+.sbbd.vis{display:block;}
+@media(max-width:640px){.mbt{display:flex;align-items:center;}.hsub,.chip,.chip2{display:none;}.hdr{padding:0 10px;}.hrt{gap:4px;}.hbtn{padding:4px 7px;font-size:9.5px;}.sb{position:fixed;top:0;left:0;bottom:0;width:240px;z-index:150;transform:translateX(-100%);transition:transform .22s ease;box-shadow:4px 0 24px rgba(0,0,0,.5);}.sb.open{transform:translateX(0);}.sbcls{display:block;}.bwrap{flex-direction:column;}.co{flex:1;padding:12px;}.qrp{position:fixed;inset:0;width:100%!important;z-index:300;display:none;border-left:none;transform:translateY(100%);transition:transform .25s ease;}.qrp.mopen{transform:translateY(0);display:block!important;}.cg,.c2{grid-template-columns:1fr!important;}.g4{grid-template-columns:1fr 1fr!important;}.nav{height:44px;}.nt{padding:6px 12px;font-size:12px;}.srch{height:46px;}.si{font-size:16px;}.stbl th,.stbl td{padding:6px 8px;border-bottom:1px solid var(--b1);vertical-align:top;overflow-wrap:break-word;word-break:break-word;white-space:normal;}.il{width:120px;font-size:9.5px;}.cb{padding:9px 10px;}.ch{padding:7px 10px;}}
+@media print{body{background:#fff;color:#000;height:auto;overflow:visible;}.hdr,.srch,.nav,.sb,.qrp,.kbo,.mbt,.sbbd{display:none!important;}.bwrap{display:block;}.co{overflow:visible;padding:0;}.card{border:1px solid #ccc;margin-bottom:8px;break-inside:avoid;}.ch{background:#f0fafa;}.cb.cl{display:block!important;}.dn{color:#000;min-width:0;overflow-wrap:break-word;word-break:break-word;}.dd{color:#065f46;min-width:0;overflow-wrap:break-word;word-break:break-word;}.d2{color:#444;min-width:0;overflow-wrap:break-word;word-break:break-word;}.fml{background:#f0fafa;border:1px solid #a7d7d4;color:#065f46;}.al{background:#f5f5f5;border:1px solid #ccc;color:#333;}.stbl th{background:var(--sf2);padding:6px 8px;text-align:left;font-family:var(--fm);font-size:9px;color:var(--tx);font-weight:600;border-bottom:1px solid var(--b2);vertical-align:top;overflow-wrap:break-word;word-break:break-word;white-space:normal;}}
+.bkm-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.78);z-index:600;align-items:center;justify-content:center;}
+.bkm-overlay.open{display:flex;}
+.bkm-modal{background:var(--sf2);border:1px solid var(--b2);border-radius:10px;width:min(480px,92vw);max-height:82vh;overflow-y:auto;padding:20px 22px 18px;}
+.bkm-title{font-size:14px;font-weight:600;color:var(--tx);margin-bottom:4px;display:flex;align-items:center;gap:8px;}
+.bkm-sub{font-size:11px;color:var(--td);margin-bottom:14px;}
+.bkm-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;}
+.bkm-tab{font-size:10.5px;font-family:var(--fm);padding:4px 10px;border-radius:4px;border:1px solid var(--b2);background:var(--sf3);color:var(--td);cursor:pointer;transition:all .12s;}
+.bkm-tab.on{background:var(--b2);color:var(--tx);border-color:var(--b3);}
+.bkm-pane{display:none;}
+.bkm-pane.on{display:block;}
+.bkm-step{display:flex;gap:10px;align-items:flex-start;margin-bottom:10px;}
+.bkm-num{flex-shrink:0;width:20px;height:20px;border-radius:50%;background:var(--b2);border:1px solid var(--b3);font-size:10px;font-weight:700;color:var(--tx);display:flex;align-items:center;justify-content:center;font-family:var(--fm);}
+.bkm-txt{font-size:11.5px;color:var(--tx);line-height:1.55;}
+.bkm-txt strong{color:var(--a4);}
+.bkm-note{font-size:10.5px;color:var(--td);margin-top:10px;padding:8px 10px;background:var(--sf3);border:1px solid var(--b1);border-radius:6px;line-height:1.5;}
+.bkm-close{float:right;background:none;border:none;color:var(--td);font-size:16px;cursor:pointer;padding:0 0 0 10px;line-height:1;}
+.conn-online{color:var(--a6)!important;background:var(--a6-bg)!important;border-color:var(--a6-b)!important;}
+/* v4 contrast boost */
+.thr>div{color:var(--td);}
+.stbl th{background:var(--sf2);padding:6px 8px;text-align:left;font-family:var(--fm);font-size:9px;color:var(--tx);font-weight:600;border-bottom:1px solid var(--b2);vertical-align:top;overflow-wrap:break-word;word-break:break-word;white-space:normal;}
+</style>
+</head>
+<body>
+<div class="sbbd" id="sbbd"></div>
+<div class="kbo" id="kbo" onclick="if(event.target===this)kbo()">
+  <div class="kbx">
+    <h3 style="font-size:13px;font-weight:700;margin-bottom:14px">&#9000; Keyboard Shortcuts</h3>
+    <div class="kbr"><span class="kbk">/</span><span class="kd">Focus search</span></div>
+    <div class="kbr"><span class="kbk">Esc</span><span class="kd">Clear / close</span></div>
+    <div class="kbr"><span class="kbk">Tab</span><span class="kd">Next section</span></div>
+    <div class="kbr"><span class="kbk">R</span><span class="kd">Toggle drug ref</span></div>
+    <div class="kbr"><span class="kbk">P</span><span class="kd">Print</span></div>
+    <div class="kbr"><span class="kbk">?</span><span class="kd">This overlay</span></div>
+    <div style="margin-top:14px;text-align:right"><button class="hbtn" onclick="kbo()">Close</button></div>
+  </div>
+</div>
+<div class="hdr">
+  <button class="mbt" onclick="openSb()">&#9776;</button>
+  <div class="hbrand">
+    <div class="hlogo">&#x1F930;</div>
+    <div>
+      <div class="htitle">OB/GYN Pocket Guide</div>
+      <div class="hsub">OBSTETRICS &amp; GYNECOLOGY &middot; EVIDENCE-BASED</div>
+    </div>
+  </div>
+  <div class="hrt">
+    <span class="chip">v4 · 2026</span>
+    <span class="chip2" id="connChip">✓ OFFLINE</span><button class="hbtn" onclick="document.getElementById(\'bkmOverlay\').classList.add(\'open\')" title="Save for offline use" style="margin-left:4px">📌 Save</button>
+    <button class="hbtn" id="btnQ" onclick="toggleQ()">&#128138; Drug Ref</button>
+    <button class="hbtn" onclick="window.print()">&#128424;</button>
+    <button class="hbtn" onclick="kbo()">?</button>
+  </div>
+</div>
+<div class="srch">
+  <span style="color:var(--tm);font-size:14px">&#9906;</span>
+  <input class="si" id="si" type="text" placeholder="Search PPH, EFM, eclampsia, torsion, ectopic, scores&hellip;" oninput="srch(this.value)" autocomplete="off">
+  <span class="sc" id="sc" onclick="clr()">&times; clear</span>
+  <span class="shc" id="shc"></span>
+</div>
+<div class="nav" id="nav"></div>
+<div class="bwrap">
+  <div class="sb" id="sb"></div>
+  <div class="co" id="co"></div>
+  <div class="qrp" id="qr"></div>
+</div>
+<script>
+const SRC="ACOG 2024 &middot; OBLS 2024 &middot; NICHD 2023 &middot; FIGO 2023 &middot; AAFP 2024 &middot; AHA 2025";
+const DRUGS=[
+  {cat:"OB EMERGENCIES",items:[
+    {n:"Magnesium sulfate",d:"4&ndash;6g IV/20&ndash;30min &rarr; 1&ndash;2g/hr",t:"Eclampsia PPx/Tx; antidote: CaGluconate 1g IV"},
+    {n:"Labetalol (severe HTN)",d:"20mg IV &rarr; 40mg &rarr; 80mg q10min; max 300mg",t:"SBP &ge;160 or DBP &ge;110; onset 5 min"},
+    {n:"Hydralazine (severe HTN)",d:"5&ndash;10mg IV q20min; max 20mg",t:"Onset 10&ndash;20 min; reflex tachycardia"},
+    {n:"Nifedipine (severe HTN)",d:"10&ndash;20mg PO q20min; max 50mg/hr",t:"Compatible with MgSO&#8324;; onset 20 min"},
+    {n:"Oxytocin (PPH 1st-line)",d:"20&ndash;40 U/L at 250&ndash;500 mL/hr IV",t:"Never rapid IV bolus; avoid cardiac arrest"},
+    {n:"TXA (PPH)",d:"1g IV over 10 min within 3hr",t:"WOMAN trial: reduces maternal mortality"},
+    {n:"Carboprost (PPH)",d:"0.25mg IM q15min; max 8 doses",t:"Avoid in asthma; bronchoconstrictor"},
+    {n:"Methylergonovine (PPH)",d:"0.2mg IM q2&ndash;4h",t:"Avoid in hypertension; not IV"},
+  ]},
+  {cat:"TOCOLYTICS",items:[
+    {n:"Nifedipine (tocolysis)",d:"10&ndash;20mg PO q4&ndash;6h",t:"1st-line tocolytic; avoid with mag (hypotension)"},
+    {n:"Indomethacin",d:"50&ndash;100mg PO/PR load &rarr; 25&ndash;50mg q4&ndash;6h",t:"Best &lt;32 wks; limit 48&ndash;72h (PDA risk)"},
+    {n:"Terbutaline",d:"0.25mg SQ q20&ndash;30min (max 3 doses)",t:"Short-term only; not for maintenance (FDA black box)"},
+  ]},
+  {cat:"ANTENATAL",items:[
+    {n:"Betamethasone",d:"12mg IM q24h &times;2",t:"23&ndash;34 wks; consider 34&ndash;36 wks (late preterm)"},
+    {n:"Penicillin G (GBS)",d:"5 MU IV load &rarr; 2.5 MU q4h",t:"1st-line GBS intrapartum prophylaxis"},
+    {n:"RhoGAM (anti-D)",d:"300mcg IM at 28 wks + postpartum",t:"Rh-negative; also after any sensitizing event"},
+    {n:"Aspirin 81mg",d:"81mg PO daily from &lt;16 wks",t:"Preeclampsia prevention in high-risk patients"},
+  ]},
+  {cat:"GYN EMERGENCIES",items:[
+    {n:"Methotrexate (ectopic)",d:"50 mg/m&#178; IM single dose",t:"Check &beta;-hCG days 4 &amp; 7; &ge;15% fall required"},
+    {n:"Doxycycline + Cefoxitin",d:"Doxy 100mg BID + cefoxitin 2g IV q6h",t:"PID/TOA; CDC 2021 preferred inpatient regimen"},
+    {n:"Clindamycin + Gentamicin",d:"Clinda 900mg IV q8h + gent 1.5mg/kg IV q8h",t:"Alternative PID/TOA regimen; adjust for renal Fx"},
+    {n:"Morphine + Ketorolac",d:"Morphine 4&ndash;8mg IV; ketorolac 30mg IV",t:"Ovarian torsion analgesia; do not withhold opioids"},
+  ]},
+];
+const D={
+obemerg:{label:"OB Emergencies",icon:"&#x1F6A8;",subs:{
+  mca:{label:"Maternal Cardiac Arrest",updated:"OBLS 2024 &middot; AHA 2025",content:()=>`
+<div class="cf"><div class="card a2"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Maternal Cardiac Arrest &mdash; BAACC TO LIFE</span><span class="bd bd2">OBLS 2024</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="al e"><span class="ali">&#9888;</span>MCA = two patients. Manage the mother first. Do NOT focus on fetal heart rate during arrest. Fetal monitors should be removed.</div>
+<div class="crit"><div class="ct">BAACC TO LIFE &mdash; MCA Differential Diagnosis</div><ul>
+<li><strong>B</strong>leeding/hemorrhage (PPH, abruption, uterine rupture)</li>
+<li><strong>A</strong>nesthesia complications (high spinal, LA systemic toxicity)</li>
+<li><strong>A</strong>cute cardiopulmonary (PE, MI, cardiomyopathy, ARDS, AFE)</li>
+<li><strong>C</strong>ardiac arrhythmia / electrolyte (hyperK, DKA, hypoK)</li>
+<li><strong>C</strong>erebrovascular/CNS (stroke, eclampsia, seizure)</li>
+<li><strong>T</strong>rauma / toxins / overdose (MgSO&#8324; toxicity, opioid OD)</li>
+<li><strong>O</strong>ther OB (AFE, uterine inversion, sepsis)</li>
+<li><strong>L</strong>abeling (check all reproductive-age females for pregnancy)</li>
+<li><strong>I</strong>ons/glucose (DKA, hypo/hyperglycemia)</li>
+<li><strong>F</strong>ever/sepsis (Group A Strep &mdash; rapid death in 2&ndash;8hr)</li>
+<li><strong>E</strong>mergency HTN/eclampsia</li></ul></div>
+</div></div></div>
+<div class="cf"><div class="card a2"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">CPR Modifications in Pregnancy (&ge;20 wks or fundus at/above umbilicus)</span><span class="bd bd2">OBLS/AHA 2025</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="al e"><span class="ali">&#9888;</span>Minimum 3 responders: (1) chest compressions, (2) airway, (3) LUD. Do NOT use lateral tilt/wedging &mdash; historical teaching; now replaced by manual LUD.</div>
+<div class="thr g3"><div>Modification</div><div>Details</div><div>Rationale</div></div>
+<div class="tr g3"><div class="dn">Left Uterine Displacement (LUD)</div><div class="d2"><strong>Continuous &mdash; do not stop.</strong> From patient RIGHT: PUSH uterus left &amp; up. From patient LEFT: PULL uterus left &amp; up. Start immediately when fundus at or above umbilicus.</div><div class="d2">Gravid uterus &darr; venous return 25&ndash;30%; LUD restores cardiac filling</div></div>
+<div class="tr g3"><div class="dn">Chest compressions</div><div class="d2">Same placement (lower half sternum). If large/dense breasts elevate fingers: rotate hand slightly toward patient's shoulder; keep heel perpendicular to sternum. Rate 100&ndash;120/min; depth &ge;2 in.</div><div class="d2">Breast tissue can impede force delivery; rotation maintains correct vector</div></div>
+<div class="tr g3"><div class="dn">IV/IO access</div><div class="d2">Always ABOVE the diaphragm. IO preferred: proximal humerus (humeral head) &mdash; similar flow to central line</div><div class="d2">Aortocaval compression makes below-diaphragm access unreliable</div></div>
+<div class="tr g3"><div class="dn">Defibrillation</div><div class="d2">Anterolateral or anteroposterior pads; do NOT place on breast tissue. Remove fetal monitors before shock. Energy doses unchanged.</div><div class="d2">Theoretical arcing risk from fetal monitor leads</div></div>
+<div class="tr g3"><div class="dn">Medications</div><div class="d2">Standard ACLS doses; do NOT alter or withhold epinephrine, amiodarone. Administer 100% O&#8322; (15 L/min via BVM).</div><div class="d2">No evidence for dose modification in pregnancy</div></div>
+<div class="tr g3"><div class="dn">POC-US</div><div class="d2">Confirm pregnancy, not fetal heartbeat. FL &ge;30 mm or BPD &ge;45 mm = &ge;20 wks &rarr; LUD + RCD prep. Must not impede CPR or prolong pulse check &gt;10 sec.</div><div class="d2">Avoid focusing on fetal status; stay on maternal resuscitation</div></div>
+</div></div></div>
+<div class="cf"><div class="card a2"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Resuscitative Cesarean Delivery (RCD)</span><span class="bd bd2">OBLS 2024 &middot; WITHIN 4&ndash;5 MIN</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="al e"><span class="ali">&#9888;</span>RCD relieves aortocaval compression &rarr; autotransfusion ~500 mL &rarr; &gt;50% chance of ROSC. Do NOT transport to OR. Perform at arrest site.</div>
+<div class="crit"><div class="ct">Indications for RCD (fundus at/above umbilicus &mdash; any of)</div><ul>
+<li>No ROSC after two cycles of CPR</li>
+<li>Nonshockable rhythm &mdash; perform RCD immediately, do not wait</li>
+<li>Out-of-hospital arrest: immediately upon ED arrival</li>
+<li>Intermittent ROSC after two CPR cycles</li></ul></div>
+<div class="dv"></div>
+<ul class="sl">
+<li><span class="sn">1</span><span><strong>Announce:</strong> "I am performing a resuscitative cesarean delivery." Compressor continues CPR throughout.</span></li>
+<li><span class="sn">2</span><span><strong>Stop LUD</strong> when ready to cut; LUD rescuer steps away; compressions continue.</span></li>
+<li><span class="sn">3</span><span><strong>Vertical midline skin incision</strong> umbilicus to pubic bone. NEVER Pfannenstiel. Follow linea nigra.</span></li>
+<li><span class="sn">4</span><span>Incise rectus fascia; bluntly separate rectus muscles laterally; bluntly open peritoneum.</span></li>
+<li><span class="sn">5</span><span><strong>Vertical uterine incision</strong> ~5 cm; extend with fingers or bandage scissors cephalad &amp; caudad.</span></li>
+<li><span class="sn">6</span><span>Rupture amniotic sac; deliver fetus; hand to neonatal team; remove placenta.</span></li>
+<li><span class="sn">7</span><span>Pack uterine incision; pack abdomen; cover with sterile drape; continue CPR.</span></li>
+<li><span class="sn">8</span><span>If ROSC: <strong>oxytocin as IV infusion (NOT bolus &mdash; may cause rearrest)</strong>; cefazolin 2g IV; TXA 1g IV (unless PE suspected); move to OR when stable.</span></li>
+</ul>
+<div class="al i" style="margin-top:8px"><span class="ali">&#8505;</span><strong>Who can perform:</strong> OB/GYN, general/trauma surgeon, or emergency physician. <strong>No upper time limit</strong> &mdash; case reports of survival after 40 min of arrest. Late RCD (&ge;30 min) still recommended.</div>
+</div></div></div>
+<div class="cg">
+<div class="card"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Postpartum Cardiac Arrest</span><span class="bd bd4">OBLS 2024</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="al w"><span class="ali">&#9888;</span>53% of maternal deaths occur 7 days to 1 year postpartum. Physiologic changes of pregnancy persist 8&ndash;12 weeks after delivery &mdash; OBLS modifications still apply in this period.</div>
+<div class="thr g2"><div>Timing</div><div>Top Causes</div></div>
+<div class="tr g2"><div class="dn">Immediate (in-hospital)</div><div class="d2">Hemorrhage &middot; Cardiovascular disease/cardiomyopathy &middot; VTE/PE</div></div>
+<div class="tr g2"><div class="dn">Delayed (post-discharge)</div><div class="d2">CV disease/cardiomyopathy &middot; Group A Strep sepsis &middot; Opioid OD &middot; Preeclampsia/eclampsia &middot; Trauma/suicide &middot; Stroke &middot; VTE/PE</div></div>
+<div class="dv"></div>
+<div class="crit"><div class="ct">Amniotic Fluid Embolism (AFE) &mdash; Diagnosis &amp; Rx</div><ul>
+<li>Classic triad: sudden cardiovascular collapse + hypoxia + DIC</li>
+<li>Occurs at amniotomy, delivery, or immediately postpartum</li>
+<li>Treatment: immediate cardiovascular support &rarr; RCD &rarr; MTP (1:1:1) &rarr; ECPR if refractory arrest</li>
+<li>TXA 1g IV for DIC/hemorrhage component; cryoprecipitate for fibrinogen &lt;200</li>
+<li>ECPR: 87.7% survival to discharge in MCA cases (57 cases, 2020 review)</li></ul></div>
+</div></div>
+<div class="card"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Sepsis in Pregnancy &mdash; Antibiotic Selection</span><span class="bd bd3">OBLS Table 4.12</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="al e"><span class="ali">&#9888;</span>Group A Streptococcus: death within 2&ndash;8 hours. 25% of pregnant patients who died of sepsis never developed fever &mdash; low threshold to treat.</div>
+<div class="thr g2"><div>Scenario</div><div>Regimen</div></div>
+<div class="tr g2"><div class="dn">First-line</div><div class="d2">Penicillin G 3 MU IV q4h + Gentamicin 1.5 mg/kg IV load &rarr; 1 mg/kg q8h + Clindamycin 900 mg IV q8h</div></div>
+<div class="tr g2"><div class="dn">Alternative</div><div class="d2">Vancomycin (pharmacy-dosed) + Pip-tazo 4.5g IV q6h</div></div>
+<div class="tr g2"><div class="dn">PCN allergy</div><div class="d2">Vancomycin (pharmacy-dosed) + Meropenem 500 mg IV q6h</div></div>
+<div class="tr g2"><div class="dn">Group A Strep specifically</div><div class="d2">High-dose Penicillin G (3 MU IV q4h) + Clindamycin 900 mg IV q8h (IDSA recommendation)</div></div>
+<div class="dv"></div>
+<div class="ir"><div class="il">S.O.S. score</div><div class="iv">Only validated sepsis scoring tool in pregnancy; identifies ICU admission risk</div></div>
+</div></div>
+</div>`},
+  pph:{label:"Postpartum Hemorrhage",updated:"ACOG 2023",content:()=>`
+<div class="cf"><div class="card a2" style="border:2px solid var(--a2-b);background:var(--a2-bg)"><div class="ch" onclick="sel('obemerg');setTimeout(()=>sub('obemerg','mca'),60)" style="cursor:pointer"><div class="chl"><span style="font-size:16px">&#x1F6A8;</span><span class="cn" style="color:var(--a2);font-size:13px;letter-spacing:.03em">MATERNAL CARDIAC ARREST &mdash; BAACC TO LIFE / CPR / RCD</span></div><span style="font-family:var(--fm);font-size:10px;color:var(--a2);padding:3px 9px;border:1px solid var(--a2-b);border-radius:4px;white-space:nowrap">&#x2191; First subsection</span></div><div class="cb" style="padding:7px 12px;display:flex;gap:16px;flex-wrap:wrap"><span style="font-size:11.5px;color:var(--a2-tx)">&#x25B8; BAACC TO LIFE differential</span><span style="font-size:11.5px;color:var(--a2-tx)">&#x25B8; CPR modifications + LUD</span><span style="font-size:11.5px;color:var(--a2-tx)">&#x25B8; Resuscitative cesarean (RCD)</span><span style="font-size:11.5px;color:var(--a2-tx)">&#x25B8; Postpartum arrest + AFE</span><span style="font-size:11.5px;color:var(--a2-tx)">&#x25B8; Sepsis antibiotic regimens</span></div></div></div>
+<div class="cf"><div class="card a2"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">PPH &mdash; Staging &amp; Response</span><span class="bd bd2">EMERGENCY</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="al e"><span class="ali">&#9888;</span>PPH = cumulative blood loss &ge;1000 mL OR blood loss with signs of hypovolemia within 24h of delivery. Leading cause of maternal mortality worldwide.</div>
+<div class="thr g3"><div>Stage</div><div>Threshold</div><div>Actions</div></div>
+<div class="tr g3"><div class="dn">Stage 1</div><div class="dd">&ge;500&ndash;999 mL</div><div class="d2">Alert team; fundal massage; oxytocin infusion; bimanual compression prn</div></div>
+<div class="tr g3"><div class="dn">Stage 2</div><div class="dd">&ge;1000 mL or unstable</div><div class="d2">2nd uterotonic + TXA; large-bore IV &times;2; STAT CBC/coags/T&amp;S; consider transfusion</div></div>
+<div class="tr g3"><div class="dn">Stage 3</div><div class="dd">&ge;1500 mL or MTP trigger</div><div class="d2">Activate MTP (1:1:1); OR/interventional radiology; balloon tamponade; ICU</div></div>
+<div class="dv"></div>
+<div class="crit"><div class="ct">4 T's &mdash; Etiologies of PPH</div><ul><li><strong>Tone (80%):</strong> Uterine atony &mdash; massage, bimanual compression, uterotonics</li><li><strong>Trauma (10%):</strong> Lacerations, hematoma, uterine rupture/inversion &mdash; inspect and repair</li><li><strong>Tissue (9%):</strong> Retained placenta or products &mdash; manual removal, curettage</li><li><strong>Thrombin (1%):</strong> Coagulopathy &mdash; FFP, cryoprecipitate, platelets, TXA</li></ul></div>
+<div class="dv"></div>
+<div class="thr g3"><div>Uterotonic</div><div>Dose</div><div>Key Notes</div></div>
+<div class="tr g3"><div class="dn">Oxytocin (1st-line)</div><div class="dd">20&ndash;40 U/L at 250&ndash;500 mL/hr</div><div class="d2">Never rapid IV bolus &mdash; cardiac arrest risk; infusion is standard</div></div>
+<div class="tr g3"><div class="dn">TXA</div><div class="dd">1g IV/10 min (within 3hr)</div><div class="d2">WOMAN trial: &darr; maternal mortality; repeat 1g if still bleeding at 30 min</div></div>
+<div class="tr g3"><div class="dn">Misoprostol (2nd-line)</div><div class="dd">600&ndash;1000 mcg PR/SL/buccal</div><div class="d2">If oxytocin unavailable; shivering and pyrexia common</div></div>
+<div class="tr g3"><div class="dn">Methylergonovine</div><div class="dd">0.2 mg IM q2&ndash;4h</div><div class="d2">Avoid if hypertensive; causes sustained uterine contraction</div></div>
+<div class="tr g3"><div class="dn">Carboprost (Hemabate)</div><div class="dd">0.25 mg IM q15min (max 8)</div><div class="d2">Avoid in asthma (bronchoconstriction); effective in atony</div></div><div class="tr g3"><div class="dn">Uterine balloon tamponade</div><div class="dd">Bakri balloon or Foley catheter</div><div class="d2">FIGO/AAFP: controls &gt;80% of PPH unresponsive to uterotonics; confirms uterus as source; use before surgical intervention</div></div>
+</div></div></div>`},
+  preeclampsia:{label:"Preeclampsia / Eclampsia / HELLP",updated:"ACOG 2024",content:()=>`
+<div class="cf"><div class="card a2"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Preeclampsia &mdash; Diagnostic Criteria</span><span class="bd bd4">ACOG 2024</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="crit"><div class="ct">Preeclampsia (&ge;20 weeks GA)</div><ul><li>SBP &ge;140 OR DBP &ge;90 on two occasions &ge;4 hours apart (previously normotensive)</li><li>PLUS: proteinuria &ge;300mg/24h OR P:Cr &ge;0.3 OR dipstick &ge;2+</li><li>OR (without proteinuria): thrombocytopenia, renal insufficiency, impaired liver function, pulmonary edema, new headache, or visual disturbances</li></ul></div>
+<div class="crit"><div class="ct">Severe Features (any one qualifies)</div><ul><li>SBP &ge;160 OR DBP &ge;110 on two occasions &ge;4 hours apart</li><li>Platelets &lt;100,000/&mu;L</li><li>Creatinine &gt;1.1 mg/dL or doubling of baseline creatinine</li><li>ALT/AST &gt;2&times; ULN &plusmn; RUQ/epigastric pain (suggests HELLP)</li><li>Pulmonary edema</li><li>New-onset headache unresponsive to medication or visual disturbances</li></ul></div>
+</div></div></div>
+<div class="cg">
+<div class="card"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Severe HTN Rx</span><span class="bd bd2">Within 60 min</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="al e"><span class="ali">&#9888;</span>SBP &ge;160 or DBP &ge;110 must be treated within <strong>15&ndash;30 minutes</strong> (OBLS 2024; ACOG: 60 min) to prevent hemorrhagic stroke. Target SBP 140&ndash;155 / DBP 90&ndash;105 mmHg. Avoid over-correction (uteroplacental insufficiency).</div>
+<div class="thr g3"><div>Drug</div><div>Dose</div><div>Notes</div></div>
+<div class="tr g3"><div class="dn">Labetalol IV</div><div class="dd">20&rarr;40&rarr;80mg q10min (max 300mg)</div><div class="d2">Avoid in asthma/severe bradycardia; onset 5 min</div></div>
+<div class="tr g3"><div class="dn">Hydralazine IV</div><div class="dd">5&ndash;10mg IV q20min; max 20mg</div><div class="d2">Onset 10&ndash;20 min; reflex tachycardia common</div></div>
+<div class="tr g3"><div class="dn">Nifedipine PO</div><div class="dd">10&ndash;20mg q20min; max 50mg/hr</div><div class="d2">Compatible with MgSO&#8324;; caution: hypotension</div></div>
+</div></div>
+<div class="card"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Magnesium Sulfate Protocol</span><span class="bd bd1">Eclampsia PPx/Tx</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="ir"><div class="il">Loading dose (eclampsia)</div><div class="iv m">6g IV over 15&ndash;20 min (OBLS); or 4&ndash;6g if PPx only</div></div>
+<div class="ir"><div class="il">Maintenance</div><div class="iv m">1&ndash;2g/hr IV infusion</div></div>
+<div class="ir"><div class="il">Therapeutic level</div><div class="iv m">4&ndash;7 mEq/L</div></div>
+<div class="ir"><div class="il">Monitor q1h</div><div class="iv">DTRs (if absent &rarr; stop); RR (&ge;12/min); UO (&ge;25 mL/hr)</div></div>
+<div class="ir"><div class="il">Loss of DTRs</div><div class="iv m">~7&ndash;10 mEq/L &mdash; stop infusion</div></div>
+<div class="ir"><div class="il">Respiratory arrest</div><div class="iv m">~12&ndash;15 mEq/L</div></div>
+<div class="ir"><div class="il">Antidote</div><div class="iv">Calcium gluconate 1g IV over 3 min</div></div>
+<div class="ir"><div class="il">IM route (no IV)</div><div class="iv">10g total &mdash; 5g each gluteal muscle</div></div><div class="ir"><div class="il">IO route</div><div class="iv">Same dosing as IV; preferred site: proximal humerus</div></div><div class="ir"><div class="il">Duration postpartum</div><div class="iv">Continue 24h after delivery or last seizure</div></div>
+</div></div>
+<div class="card"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">HELLP Syndrome</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="crit"><div class="ct">Tennessee Criteria</div><ul><li><strong>H:</strong> Hemolysis &mdash; LDH &gt;600 U/L, schistocytes on smear, total bilirubin &gt;1.2 mg/dL</li><li><strong>EL:</strong> Elevated Liver enzymes &mdash; AST/ALT &gt;2&times; ULN</li><li><strong>LP:</strong> Low Platelets &mdash; &lt;100,000/&mu;L</li></ul></div>
+<div class="ir"><div class="il">Deliver &ge;34 weeks</div><div class="iv">Promptly after stabilization</div></div>
+<div class="ir"><div class="il">Deliver &lt;34 weeks</div><div class="iv">Steroids + stabilize; deliver if deteriorating or &ge;34 wks reached</div></div>
+<div class="ir"><div class="il">Platelet transfusion</div><div class="iv">&lt;50k with bleeding; &lt;20k prophylactic pre-cesarean</div></div>
+</div></div>
+</div>`},
+  shoulder:{label:"Shoulder Dystocia / Cord Prolapse",updated:"ACOG 2023",content:()=>`
+<div class="cf"><div class="card a2"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Shoulder Dystocia &mdash; HELPERR Mnemonic</span><span class="bd bd2">TIME CRITICAL</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="al e"><span class="ali">&#9888;</span>Target delivery &lt;5 min (neuronal injury risk). Do NOT apply fundal pressure. Call for help immediately on recognition.</div>
+<ul class="sl">
+<li><span class="sn">H</span><span><strong>Help</strong> &mdash; call additional OB, NICU, anesthesia NOW</span></li>
+<li><span class="sn">E</span><span><strong>Evaluate for Episiotomy</strong> &mdash; only if needed for internal maneuvers access</span></li>
+<li><span class="sn">L</span><span><strong>Legs</strong> &mdash; McRoberts (hyperflexion of maternal thighs onto abdomen; flattens lumbar lordosis)</span></li>
+<li><span class="sn">P</span><span><strong>Suprapubic Pressure</strong> &mdash; continuous or rocking downward; NOT fundal pressure</span></li>
+<li><span class="sn">E</span><span><strong>Enter</strong> &mdash; Rubin II (pressure on posterior aspect of anterior shoulder &rarr; adduction); Woodscrew rotation</span></li>
+<li><span class="sn">R</span><span><strong>Remove the Posterior Arm</strong> &mdash; sweep posterior arm across chest and deliver</span></li>
+<li><span class="sn">R</span><span><strong>Roll</strong> &mdash; Gaskin all-fours maneuver (patient to hands and knees)</span></li>
+</ul>
+<div class="al w" style="margin-top:6px"><span class="ali">&#9888;</span>Last resort: deliberate clavicle fracture; Zavanelli maneuver (cephalic replacement &rarr; cesarean); symphysiotomy.</div>
+</div></div></div>
+<div class="cg">
+<div class="card"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Umbilical Cord Prolapse</span><span class="bd bd2">EMERGENCY</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="al e"><span class="ali">&#9888;</span>DDI goal &lt;30 min. Maintain manual elevation of presenting part off cord until delivery.</div>
+<ul class="sl">
+<li><span class="sn">1</span><span>Call for help; activate OB emergency/OR</span></li>
+<li><span class="sn">2</span><span>Manually elevate presenting part (gloved hand, constant pressure)</span></li>
+<li><span class="sn">3</span><span>Position: knee-chest or Trendelenburg</span></li>
+<li><span class="sn">4</span><span>Fill bladder 500&ndash;750mL saline (if time allows; elevates presenting part)</span></li>
+<li><span class="sn">5</span><span>Emergent cesarean delivery</span></li>
+</ul>
+<div class="al i" style="margin-top:6px"><span class="ali">&#8505;</span>Do NOT replace cord into uterus. Keep exposed cord warm and moist with wet sterile gauze.</div>
+</div></div>
+<div class="card"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Placental Abruption</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="crit"><div class="ct">Clinical Features</div><ul><li>Painful vaginal bleeding (80%); 10&ndash;20% concealed hemorrhage</li><li>&ldquo;Woody&rdquo; uterine rigidity; uterine tenderness; high-frequency contractions</li><li>Fetal distress (CTG abnormalities); DIC in severe cases</li><li>Risk factors: HTN, trauma, cocaine, smoking, prior abruption</li></ul></div>
+<div class="ir"><div class="il">Minor, stable</div><div class="iv">Monitor; steroids if &lt;37 wks; deliver if term or deteriorating</div></div>
+<div class="ir"><div class="il">Major abruption</div><div class="iv">Immediate delivery; MTP; fibrinogen target &gt;200 mg/dL</div></div>
+<div class="ir"><div class="il">Rh-negative</div><div class="iv">Kleihauer-Betke test; dose RhoGAM accordingly</div></div>
+</div></div>
+</div>`},
+}},
+labor:{label:"Labor &amp; Delivery",icon:"&#x1F476;",subs:{
+  efm:{label:"EFM / Fetal Heart Rate",updated:"NICHD 2023",content:()=>`
+<div class="cf"><div class="card a1"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">EFM &mdash; NICHD Category System</span><span class="bd bd4">NICHD 2023</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="efm">
+<div class="cat1">CATEGORY I &mdash; NORMAL</div>
+<div class="efmt">All of the following:</div>
+<div class="d2" style="font-size:11px">Baseline 110&ndash;160 bpm &middot; Moderate variability (6&ndash;25 bpm) &middot; Late/variable decelerations absent &middot; Early decelerations present or absent &middot; Accelerations present or absent. <strong>No action required.</strong></div>
+</div>
+<div class="efm">
+<div class="cat2">CATEGORY II &mdash; INDETERMINATE</div>
+<div class="efmt">Any strip not Cat I or III. Common examples:</div>
+<div class="d2" style="font-size:11px">Tachycardia &middot; Bradycardia not with absent variability &middot; Minimal variability &middot; Absent variability without recurrent decels &middot; Recurrent variable decels with minimal/moderate variability &middot; Prolonged decel 2&ndash;10 min. <strong>Evaluate and take corrective measures.</strong></div>
+</div>
+<div class="efm">
+<div class="cat3">CATEGORY III &mdash; ABNORMAL</div>
+<div class="efmt">Sinusoidal pattern OR any of:</div>
+<div class="d2" style="font-size:11px">Absent variability + recurrent late decels, recurrent variable decels, OR bradycardia. <strong>Expedite delivery &mdash; intrauterine resuscitation while preparing.</strong></div>
+</div>
+</div></div></div>
+<div class="cg">
+<div class="card"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Deceleration Types</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="thr g2"><div>Type</div><div>Mechanism / Significance</div></div>
+<div class="tr g2"><div class="dn">Early</div><div class="d2">Gradual; nadir at ctx peak; mirrors contraction; head compression &mdash; benign</div></div>
+<div class="tr g2"><div class="dn">Late</div><div class="d2">Gradual; nadir after ctx peak; uteroplacental insufficiency &mdash; significant</div></div>
+<div class="tr g2"><div class="dn">Variable</div><div class="d2">Abrupt onset (&lt;30 sec); V/U shape; cord compression &mdash; concerning if recurrent with minimal variability</div></div>
+<div class="tr g2"><div class="dn">Prolonged</div><div class="d2">&ge;15 bpm below baseline &ge;2 min but &lt;10 min. &ge;10 min = new baseline. Must identify cause.</div></div>
+</div></div>
+<div class="card"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Intrauterine Resuscitation</span><span class="bd bd2">Cat II&ndash;III</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<ul class="sl">
+<li><span class="sn">1</span><span>Reposition (L/R lateral decubitus; knee-chest for cord prolapse)</span></li>
+<li><span class="sn">2</span><span>O&#8322; 10 L/min via NRB face mask</span></li>
+<li><span class="sn">3</span><span>IV fluid bolus 500 mL LR (if hypotension or tachysystole)</span></li>
+<li><span class="sn">4</span><span>Discontinue oxytocin and/or prostaglandins immediately</span></li>
+<li><span class="sn">5</span><span>Treat maternal hypotension: ephedrine 5&ndash;10 mg IV OR phenylephrine 50&ndash;100 mcg IV</span></li>
+<li><span class="sn">6</span><span>Fetal scalp stimulation: acceleration &ge;15 bpm &times;15 sec = pH &ge;7.20</span></li>
+<li><span class="sn">7</span><span>Amnioinfusion (for recurrent variable decels from cord compression)</span></li>
+</ul>
+</div></div>
+</div>`},
+  labor_progress:{label:"Labor Progression",updated:"ACOG 2023",content:()=>`
+<div class="cg">
+<div class="card a1"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Normal Labor Progression</span><span class="bd bd1">Zhang / ACOG 2023</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="al i"><span class="ali">&#8505;</span>Zhang 2010 contemporary data: acceptable labor is slower than Friedman curves. Active phase now defined starting at 6 cm dilation, not 4 cm.</div>
+<div class="thr g2"><div>Phase</div><div>Normal Duration / Rate</div></div>
+<div class="tr g2"><div class="dn">Latent phase</div><div class="d2">&lt;20h nulliparous; &lt;14h multiparous. Variable cervical change; slow.</div></div>
+<div class="tr g2"><div class="dn">Active phase (&ge;6 cm)</div><div class="d2">&ge;0.5 cm/hr. Active phase arrest = &lt;0.5 cm/hr for &ge;4h with adequate ctx OR &ge;6h without adequate ctx</div></div>
+<div class="tr g2"><div class="dn">2nd stage (nulliparous)</div><div class="d2">Up to 3h without epidural; 4h with epidural</div></div>
+<div class="tr g2"><div class="dn">2nd stage (multiparous)</div><div class="d2">Up to 2h without epidural; 3h with epidural</div></div>
+<div class="crit" style="margin-top:8px"><div class="ct">Prevention of Primary Cesarean (ACOG/SMFM)</div><ul><li>Latent phase arrest alone is NOT an indication for cesarean</li><li>Active phase arrest thresholds above must be met before cesarean is appropriate</li><li>2nd stage arrest: use thresholds above; consider operative vaginal delivery first</li></ul></div>
+</div></div>
+<div class="card"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Bishop Score</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<table class="stbl"><tr><th>Feature</th><th>0</th><th>1</th><th>2</th><th>3</th></tr>
+<tr><td class="dn">Dilation (cm)</td><td>0</td><td>1&ndash;2</td><td>3&ndash;4</td><td>&ge;5</td></tr>
+<tr><td class="dn">Effacement (%)</td><td>0&ndash;30</td><td>40&ndash;50</td><td>60&ndash;70</td><td>&ge;80</td></tr>
+<tr><td class="dn">Station</td><td>&minus;3</td><td>&minus;2</td><td>&minus;1/0</td><td>+1/+2</td></tr>
+<tr><td class="dn">Consistency</td><td>Firm</td><td>Medium</td><td>Soft</td><td>&mdash;</td></tr>
+<tr><td class="dn">Position</td><td>Posterior</td><td>Mid</td><td>Anterior</td><td>&mdash;</td></tr>
+</table>
+<div class="ir" style="margin-top:6px"><div class="il">Score &ge;8</div><div class="iv" style="color:var(--a3)">Favorable &mdash; induction likely successful without ripening</div></div>
+<div class="ir"><div class="il">Score &lt;6</div><div class="iv" style="color:var(--a4)">Unfavorable &mdash; cervical ripening agent recommended first</div></div>
+</div></div>
+</div>`},
+  induction:{label:"Induction / Augmentation",updated:"ACOG 2023",content:()=>`
+<div class="cf"><div class="card a1"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Induction of Labor &mdash; Methods &amp; Dosing</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="al g"><span class="ali">&#9733;</span><strong>ARRIVE trial:</strong> Elective induction at 39 weeks in low-risk nulliparas did NOT increase cesarean rate and may reduce perinatal morbidity/mortality. Shifted standard of practice.</div>
+<div class="thr g3"><div>Method</div><div>Dosing</div><div>Key Notes</div></div>
+<div class="tr g3"><div class="dn">Misoprostol (PV)</div><div class="dd">25 mcg PV q3&ndash;6h</div><div class="d2">Contraindicated in prior uterine surgery; do NOT use concurrently with oxytocin</div></div>
+<div class="tr g3"><div class="dn">Misoprostol (PO)</div><div class="dd">50 mcg PO q4h</div><div class="d2">Less uterine hyperstimulation than PV route; convenient</div></div>
+<div class="tr g3"><div class="dn">Dinoprostone (Cervidil)</div><div class="dd">10 mg PV insert &times;12h</div><div class="d2">Removable if hyperstimulation; wait &ge;30 min after removal before oxytocin</div></div>
+<div class="tr g3"><div class="dn">Foley catheter</div><div class="dd">30&ndash;60 mL transcervical balloon</div><div class="d2">Mechanical; safe with prior uterine scar; no tachysystole risk</div></div>
+<div class="tr g3"><div class="dn">Oxytocin (augmentation)</div><div class="dd">0.5&ndash;2 mU/min &rarr; &uarr; q15&ndash;40 min</div><div class="d2">Max 20&ndash;40 mU/min; tachysystole = &gt;5 ctx/10 min; reduce or stop if occurs</div></div>
+</div></div></div>`},
+}},
+antepartum:{label:"Antepartum",icon:"&#x1F930;",subs:{
+  screening:{label:"Prenatal Screening",updated:"ACOG 2024",content:()=>`
+<div class="cf"><div class="card a1"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Prenatal Screening Schedule</span><span class="bd bd1">ACOG 2024</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="thr g3"><div>Timing</div><div>Tests</div><div>Notes</div></div>
+<div class="tr g3"><div class="dn">First visit</div><div class="d2">Blood type/Rh, CBC, rubella IgG, Hep B sAg, HIV, RPR, GC/chlamydia, Pap (if due), Hep C, varicella IgG, urinalysis/culture, TB (if risk)</div><div class="d2">TSH if symptomatic; lead if high-risk environment</div></div>
+<div class="tr g3"><div class="dn">10&ndash;13 wks</div><div class="d2">CFTS: nuchal translucency + PAPP-A + free &beta;-hCG; cell-free DNA (optional; preferred by many for aneuploidy)</div><div class="d2">cfDNA: T21, T18, T13, sex chromosome aneuploidies</div></div>
+<div class="tr g3"><div class="dn">11&ndash;16 wks</div><div class="d2">Preeclampsia screening (MAP + uterine artery Doppler + PAPP-A + PlGF &mdash; FMF algorithm)</div><div class="d2">If high risk: start aspirin 81mg/day before 16 wks</div></div>
+<div class="tr g3"><div class="dn">15&ndash;20 wks</div><div class="d2">Quad screen (AFP, hCG, uE3, inhibin A) if no cfDNA; anatomy ultrasound 18&ndash;22 wks</div><div class="d2">Elevated AFP: NTD, abdominal wall defect, twins, incorrect dates</div></div>
+<div class="tr g3"><div class="dn">24&ndash;28 wks</div><div class="d2">1-hr GCT (50g); if &ge;140 mg/dL &rarr; 3-hr GTT; CBC; Rh-negative: anti-D titer + RhoGAM 300 mcg</div><div class="d2">GDM cutoff: some institutions use 130 mg/dL (higher sensitivity)</div></div>
+<div class="tr g3"><div class="dn">35&ndash;37 wks</div><div class="d2">GBS vaginal-rectal swab; fetal presentation; delivery planning; Group B strep prophylaxis planning</div><div class="d2">GBS+ &rarr; prophylaxis in labor (penicillin G preferred)</div></div>
+</div></div></div>`},
+  hypertension:{label:"HTN &amp; GDM in Pregnancy",updated:"CHAP/ACOG 2024",content:()=>`
+<div class="cg">
+<div class="card a4"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Chronic HTN in Pregnancy</span><span class="bd bd4">CHAP Trial 2022</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="al g"><span class="ali">&#9733;</span><strong>CHAP trial 2022:</strong> Treating mild chronic HTN (SBP 140&ndash;159/DBP 90&ndash;109) to a target &lt;140/90 reduced adverse perinatal outcomes without fetal harm. Active treatment is now standard of care.</div>
+<div class="ir"><div class="il">Treatment threshold</div><div class="iv m">SBP &ge;140 or DBP &ge;90 mmHg</div></div>
+<div class="ir"><div class="il">BP target</div><div class="iv m">SBP 110&ndash;139 / DBP 70&ndash;89 mmHg</div></div>
+<div class="ir"><div class="il">1st-line agents</div><div class="iv">Labetalol; nifedipine XL; methyldopa. Avoid ACEI/ARB/spironolactone.</div></div>
+<div class="ir"><div class="il">Aspirin</div><div class="iv">81&ndash;150 mg/day from &lt;16 wks (AAFP 2024: 100&ndash;150 mg has stronger evidence; start before 16 wks)</div></div>
+<div class="ir"><div class="il">Delivery</div><div class="iv">37&ndash;38 wks if well controlled; earlier if superimposed preeclampsia</div></div>
+</div></div>
+<div class="card"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Gestational Diabetes</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="crit"><div class="ct">GDM Diagnosis</div><ul><li><strong>1-hr 50g GCT:</strong> &ge;140 mg/dL (or &ge;130 mg/dL) &rarr; 3-hr GTT</li><li><strong>3-hr GTT (Carpenter-Coustan):</strong> &ge;2 values exceed: Fasting 95, 1hr 180, 2hr 155, 3hr 140 mg/dL</li><li><strong>1-step (IADPSG/ACOG):</strong> 75g 2-hr OGTT; fasting &ge;92, 1hr &ge;180, 2hr &ge;153 mg/dL &mdash; any single value</li></ul></div>
+<div class="ir"><div class="il">Glucose targets</div><div class="iv m">Fasting &lt;95; 1-hr post &lt;140; 2-hr post &lt;120 mg/dL</div></div>
+<div class="ir"><div class="il">Diet fails &rarr; insulin</div><div class="iv">Start if targets not met after 1&ndash;2 wks; NPH + regular or basal-bolus</div></div>
+<div class="ir"><div class="il">Delivery timing</div><div class="iv">Diet-controlled: 40&ndash;41 wks; insulin-requiring: 39&ndash;40 wks; poor control: earlier</div></div>
+</div></div>
+</div>`},
+  preterm:{label:"Preterm Labor",updated:"ACOG 2023",content:()=>`
+<div class="cf"><div class="card a4"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Preterm Labor &mdash; Evaluation &amp; Management</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="crit"><div class="ct">PTL Diagnosis (20&ndash;36&#8310;/&#8327; wks)</div><ul><li>Regular uterine contractions (&ge;4/20 min or &ge;8/hr) PLUS</li><li>Cervical change: &ge;80% effacement OR dilation &gt;1 cm; OR cervical length &lt;20 mm by TVUS</li></ul></div>
+<div class="dv"></div>
+<div class="thr g3"><div>Intervention</div><div>Gestational Age</div><div>Details</div></div>
+<div class="tr g3"><div class="dn">Betamethasone</div><div class="dd">23&#8304;&ndash;34&#8310; wks</div><div class="d2">12 mg IM q24h &times;2; consider single rescue course if &gt;14d since first; also 34&ndash;36 wks (late preterm)</div></div>
+<div class="tr g3"><div class="dn">Magnesium (neuroprotection)</div><div class="dd">&lt;32 wks</div><div class="d2">4&ndash;6g load &rarr; 1&ndash;2g/hr; reduces cerebral palsy risk (BEAM trial); give until delivery or &ge;12h</div></div>
+<div class="tr g3"><div class="dn">Tocolysis (48h only)</div><div class="dd">&lt;34 wks</div><div class="d2">Goal: time for steroids; nifedipine preferred; indomethacin &lt;32 wks; no maintenance tocolysis</div></div>
+<div class="tr g3"><div class="dn">GBS prophylaxis</div><div class="dd">Any PTL</div><div class="d2">Unknown GBS status: treat as positive if &lt;37 wks</div></div>
+<div class="tr g3"><div class="dn">Progesterone</div><div class="dd">16&ndash;36 wks (singleton + prior PTB)</div><div class="d2">17&alpha;-hydroxyprogesterone caproate 250mg IM weekly; vaginal progesterone 200mg/night if short cervix</div></div>
+</div></div></div>`},
+}},
+gynemerg:{label:"GYN Emergencies",icon:"&#x1F6A8;",subs:{
+  torsion:{label:"Ovarian Torsion",updated:"ACOG 2023",content:()=>`
+<div class="cf"><div class="card a7"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Ovarian Torsion &mdash; Diagnosis &amp; Management</span><span class="bd bd7">SURGICAL EMERGENCY</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="al e"><span class="ali">&#9888;</span>Ovarian torsion is a time-critical surgical emergency. Delay &gt;6&ndash;8 hours significantly increases the risk of ovarian necrosis and loss. Do NOT withhold analgesia pending diagnosis.</div>
+<div class="crit"><div class="ct">Clinical Presentation</div><ul><li>Acute-onset severe unilateral pelvic/lower abdominal pain (often 8&ndash;10/10), frequently colicky</li><li>Nausea/vomiting in 70% &mdash; prominent feature; may mimic appendicitis</li><li>Pain may be intermittent initially (intermittent torsion) with spontaneous detorsion</li><li>Low-grade fever if necrosis developing</li><li>Predisposing: ovarian cyst/mass &ge;5 cm (corpus luteum, dermoid, endometrioma), OHSS, pregnancy</li></ul></div>
+<div class="dv"></div>
+<div class="crit"><div class="ct">Ultrasound Findings</div><ul><li>Enlarged ovary (&gt;4 cm volume) with peripheral follicles displaced to periphery &mdash; &ldquo;string of pearls&rdquo;</li><li>Ovarian edema / stromal heterogeneity on grayscale</li><li>Absent or diminished Doppler flow (sensitivity only 60&ndash;74% &mdash; normal Doppler does NOT rule out torsion)</li><li>Free fluid in cul-de-sac; associated cyst/mass</li><li><strong>Normal Doppler does NOT exclude torsion &mdash; clinical suspicion drives surgical decision</strong></li></ul></div>
+<div class="dv"></div>
+<div class="thr g3"><div>Step</div><div>Action</div><div>Notes</div></div>
+<div class="tr g3"><div class="dn">Analgesia</div><div class="dd">Morphine 4&ndash;8mg IV + ketorolac 30mg IV</div><div class="d2">Do NOT withhold; opioids do not mask exam findings in modern practice</div></div>
+<div class="tr g3"><div class="dn">Labs</div><div class="dd">CBC, BMP, &beta;-hCG, LDH, tumor markers (CA-125, AFP, &beta;-hCG) if mass</div><div class="d2">Rule out ruptured ectopic; identify mass type preoperatively</div></div>
+<div class="tr g3"><div class="dn">Surgical Rx</div><div class="dd">Diagnostic laparoscopy &rarr; detorsion</div><div class="d2">Detorsion first even if discolored &mdash; black/blue ovary may recover. Oophorectomy only if necrosis confirmed.</div></div>
+<div class="tr g3"><div class="dn">Cystectomy</div><div class="dd">At time of detorsion</div><div class="d2">Reduces recurrence risk; send pathology</div></div>
+<div class="tr g3"><div class="dn">Oophoropexy</div><div class="dd">Consider for contralateral ovary</div><div class="d2">High recurrence risk or single remaining ovary</div></div>
+</div></div></div>`},
+  toa_pid:{label:"PID &amp; Tubo-ovarian Abscess",updated:"CDC 2021",content:()=>`
+<div class="cf"><div class="card a7"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Pelvic Inflammatory Disease &amp; TOA</span><span class="bd bd7">CDC 2021</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="crit"><div class="ct">PID Diagnostic Criteria (Minimum)</div><ul><li>Uterine tenderness OR adnexal tenderness OR cervical motion tenderness in a sexually active patient</li><li>Additional supportive: oral temp &gt;38.3&deg;C; mucopurulent cervical discharge; elevated CRP/ESR; WBC &gt;10k; positive GC/chlamydia</li></ul></div>
+<div class="dv"></div>
+<div class="crit"><div class="ct">TOA Diagnosis</div><ul><li>PID clinical picture + pelvic mass on exam or imaging (TVUS/CT)</li><li>CT preferred if diagnosis uncertain (can see abscess walls, septations, complexity)</li><li>Indications for hospitalization: TOA, unable to rule out surgical emergency, pregnancy, severe illness, failure of outpatient therapy, non-compliance concern</li></ul></div>
+<div class="dv"></div>
+<div class="thr g3"><div>Setting</div><div>Regimen</div><div>Duration</div></div>
+<div class="tr g3"><div class="dn">Inpatient (TOA / severe PID)</div><div class="dd">Cefoxitin 2g IV q6h + doxycycline 100mg IV/PO q12h</div><div class="d2">Until clinical improvement &ge;24&ndash;48h &rarr; transition to doxy 100mg PO BID &times;14 days total</div></div>
+<div class="tr g3"><div class="dn">Inpatient (alt regimen)</div><div class="dd">Clindamycin 900mg IV q8h + gentamicin 1.5mg/kg IV q8h (or 5mg/kg q24h)</div><div class="d2">Transition to clinda 450mg PO QID or doxy 100mg PO BID &times;14 days</div></div>
+<div class="tr g3"><div class="dn">Outpatient (uncomplicated PID)</div><div class="dd">Ceftriaxone 500mg IM &times;1 + doxy 100mg PO BID + metro 500mg PO BID &times;14 days</div><div class="d2">Return in 72h if no improvement</div></div>
+<div class="tr g3"><div class="dn">TOA &mdash; drainage indications</div><div class="dd">CT/US-guided drainage</div><div class="d2">Abscess &ge;8 cm; failure of IV abx after 72h; ruptured abscess (surgical emergency &rarr; OR)</div></div>
+</div></div></div>`},
+  ectopic:{label:"Ectopic Pregnancy",updated:"ACOG 2023",content:()=>`
+<div class="cf"><div class="card a2"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Ectopic Pregnancy &mdash; Diagnosis &amp; Management</span><span class="bd bd2">ACOG 2023</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="al e"><span class="ali">&#9888;</span>Any &beta;-hCG-positive patient with no intrauterine pregnancy on TVUS is ectopic until proven otherwise. Ruptured ectopic = immediate surgical emergency.</div>
+<div class="crit"><div class="ct">Methotrexate Single-Dose Eligibility (ALL must be met)</div><ul><li>Hemodynamically stable</li><li>No hepatic, renal, or hematologic dysfunction (CBC, CMP normal)</li><li>No IUP confirmed on transvaginal ultrasound</li><li>No fetal cardiac activity in ectopic sac</li><li>Ectopic mass &le;3.5 cm (relative; some use &le;4 cm)</li><li>&beta;-hCG &le;5000 mIU/mL (relative contraindication if higher)</li><li>Patient reliable for follow-up and understands warning symptoms</li></ul></div>
+<div class="dv"></div>
+<div class="ir"><div class="il">MTX dose</div><div class="iv m">50 mg/m&#178; IM single dose</div></div>
+<div class="ir"><div class="il">Monitor &beta;-hCG</div><div class="iv">Days 4 and 7 post-MTX; expect &ge;15% fall between days 4&ndash;7</div></div>
+<div class="ir"><div class="il">Day 7 fall &lt;15%</div><div class="iv">Repeat MTX dose (2nd dose); consider surgical if 3rd dose needed</div></div>
+<div class="ir"><div class="il">Avoid during treatment</div><div class="iv">Folic acid vitamins, NSAIDs, alcohol, sun exposure, intercourse, gas-forming foods</div></div>
+<div class="ir"><div class="il">Surgical indications</div><div class="iv">Hemodynamic instability; MTX contraindication; MTX failure; cardiac activity; patient preference</div></div>
+<div class="ir"><div class="il">Salpingostomy vs salpingectomy</div><div class="iv">Salpingectomy preferred if contralateral tube normal; salpingostomy if only tube remaining</div></div>
+</div></div></div>
+<div class="cg">
+<div class="card"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Discriminatory Zone &amp; &beta;-hCG Interpretation</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="ir"><div class="il">Discriminatory zone</div><div class="iv m">1500&ndash;3000 mIU/mL (TVUS should see IUP)</div></div>
+<div class="ir"><div class="il">Below discriminatory zone</div><div class="iv">Serial &beta;-hCG q48h; IUP: should &uarr; &ge;53&ndash;66% in 48h; ectopic: plateau or &uarr; &lt;53%</div></div>
+<div class="ir"><div class="il">Falling &beta;-hCG (&gt;50% in 48h)</div><div class="iv">Likely complete miscarriage; can observe if patient stable</div></div>
+<div class="ir"><div class="il">Rh-negative patients</div><div class="iv">RhoGAM 300 mcg IM regardless of &beta;-hCG level</div></div>
+</div></div>
+<div class="card"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Ruptured Ectopic &mdash; Emergency Protocol</span><span class="bd bd2">IMMEDIATE OR</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="al e"><span class="ali">&#9888;</span>Ruptured ectopic is immediately life-threatening. No time for MTX workup. Activate OR immediately.</div>
+<ul class="sl">
+<li><span class="sn">1</span><span>2 large-bore IVs; blood type and crossmatch; activate MTP if needed</span></li>
+<li><span class="sn">2</span><span>Fluid resuscitation; permissive hypotension until surgical control</span></li>
+<li><span class="sn">3</span><span>Emergent surgical consultation; do NOT delay for additional imaging</span></li>
+<li><span class="sn">4</span><span>Laparoscopy (preferred if stable) or laparotomy (if unstable or large hemoperitoneum)</span></li>
+<li><span class="sn">5</span><span>RhoGAM if Rh-negative</span></li>
+</ul>
+</div></div>
+</div>`},
+
+  bartholin_vvh:{label:"Bartholin Abscess &amp; Vulvar Emergencies",updated:"ACOG 2022",content:()=>`
+<div class="cg">
+<div class="card a7"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Bartholin Gland Abscess</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="crit"><div class="ct">Presentation</div><ul><li>Unilateral tender labial swelling at 4 or 8 o'clock position at introitus</li><li>Fluctuant; may have pointing/purulent discharge</li><li>Fever suggests cellulitis or labial abscess extending beyond gland</li><li>Rule out: Bartholin cyst (non-tender, no infection) vs abscess</li></ul></div>
+<div class="dv"></div>
+<div class="thr g2"><div>Treatment</div><div>Details</div></div>
+<div class="tr g2"><div class="dn">Word catheter (1st-line)</div><div class="d2">I&amp;D + Word catheter balloon inflation 2&ndash;3 mL; leave in place 4&ndash;6 weeks for epithelialization</div></div>
+<div class="tr g2"><div class="dn">Marsupialization</div><div class="d2">Surgical; preferred for recurrence; creates permanent opening</div></div>
+<div class="tr g2"><div class="dn">Simple I&amp;D</div><div class="d2">High recurrence without catheter; use if Word catheter unavailable</div></div>
+<div class="tr g2"><div class="dn">Antibiotics</div><div class="d2">Not routinely needed for uncomplicated abscess; add if cellulitis, immunocompromised, or SSTI risk factors; cover GC/chlamydia + anaerobes if STI risk</div></div>
+<div class="tr g2"><div class="dn">Biopsy</div><div class="d2">Age &ge;40 &mdash; send wall for pathology (Bartholin gland carcinoma risk)</div></div>
+</div></div>
+<div class="card"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Vulvovaginal Lacerations &amp; Hematomas</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="crit"><div class="ct">Vulvar Hematoma (Postpartum)</div><ul><li>Presents as rapidly expanding painful perineal/vulvar mass after delivery</li><li>Classify: vulvar (below levator ani &mdash; most common) vs supraelevator (extends into broad ligament)</li><li>Small (&lt;5 cm, stable): ice, analgesia, observation in RR/PACU</li><li>Expanding or &gt;5 cm: OR for evacuation, hemostasis, and drain placement</li><li>Consider interventional radiology if supraelevator or ongoing arterial bleeding</li></ul></div>
+<div class="dv"></div>
+<div class="crit"><div class="ct">Vaginal Laceration Repair</div><ul><li>Identify apex of laceration before beginning repair (may require exam under anesthesia)</li><li>4th-degree laceration: repair rectal mucosa (absorbable 3-0) &rarr; IAS &rarr; EAS &rarr; vaginal mucosa &rarr; perineal skin</li><li>Repair in layers; ensure hemostasis; rectal exam post-repair to confirm no sutures through rectal mucosa</li></ul></div>
+</div></div>
+</div>`},
+}},
+pocus:{label:"POCUS",icon:"&#x1F50D;",subs:{
+  obpocus:{label:"OB POCUS",updated:"ACOG 2024",content:()=>`
+<div class="cf"><div class="card a1"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">OB Emergencies — POCUS</span><span class="bd bd1">ACOG 2024</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="sl">ECTOPIC PREGNANCY</div>
+<div class="tr g3"><div class="dn">Empty uterus + free fluid</div><div class="dd">Ectopic until proven otherwise</div><div class="d2">Unstable + empty uterus + free fluid = presumed ruptured ectopic → OR immediately; no further imaging</div></div>
+<div class="tr g3"><div class="dn">IUP confirmed</div><div class="dd">Gestational sac + yolk sac or fetal pole</div><div class="d2">IUP does not exclude heterotopic (rare, 1:30,000; higher with ART); confirm landmarks carefully</div></div>
+<div class="tr g3"><div class="dn">Free pelvic fluid</div><div class="dd">Anechoic fluid in Pouch of Douglas</div><div class="d2">Small physiologic amount OK; large or echogenic fluid (blood) = ruptured ectopic until proven otherwise</div></div>
+<div class="tr g3"><div class="dn">Adnexal mass</div><div class="dd">Ring of fire sign (color Doppler)</div><div class="d2">Hyperemic ring = ectopic; may see tubal ring adjacent to ovary; direct visualization uncommon</div></div>
+<div class="sl" style="margin-top:10px">FETAL ASSESSMENT</div>
+<div class="tr g3"><div class="dn">Fetal heart rate</div><div class="dd">M-mode over fetal heart</div><div class="d2">Normal 110–160 bpm; avoid prolonged Doppler in 1st trimester; M-mode preferred for documentation</div></div>
+<div class="tr g3"><div class="dn">Fetal presentation</div><div class="dd">Subpubic transverse sweep</div><div class="d2">Identify presenting part; cephalic (round skull) vs breech (spine/abdomen); relevant for emergent delivery decisions</div></div>
+<div class="tr g3"><div class="dn">Placental localization</div><div class="dd">Anterior / posterior / fundal / previa</div><div class="d2">Previa: placenta covers or approaches os; low-lying if &lt;2cm from os; AVOID digital exam if previa suspected</div></div>
+<div class="tr g3"><div class="dn">Amniotic fluid (AFI)</div><div class="dd">4-quadrant AFI or single deepest pocket</div><div class="d2">Oligohydramnios: AFI &lt;5cm or SDP &lt;2cm; polyhydramnios: AFI &gt;24cm; emergent if non-reassuring FHR</div></div>
+</div></div>
+
+<div class="card a2"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Maternal Cardiac POCUS</span><span class="bd bd2">Peripartum Cardiomyopathy / Preeclampsia</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div style="margin:12px 0 16px;overflow:hidden;">
+<svg viewBox="0 0 560 320" style="width:100%;max-width:560px;display:block;margin:0 auto;" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="ah" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#c9a227" opacity="0.7"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="560" height="320" fill="#0d1623" rx="8"/>
+
+  <!-- Title -->
+  <text x="280" y="18" text-anchor="middle" font-size="9" fill="#c9a227" font-family="monospace" font-weight="700" letter-spacing="1">BEDSIDE ECHO — GOLDEN SPIRAL · 5 VIEWS</text>
+
+  <!-- Center chest schematic -->
+  <!-- Chest outline simple -->
+  <ellipse cx="280" cy="155" rx="68" ry="80" fill="none" stroke="#1e3050" stroke-width="1.5"/>
+  <!-- Sternum -->
+  <line x1="280" y1="90" x2="280" y2="210" stroke="#1e3050" stroke-width="1" stroke-dasharray="3,3"/>
+  <!-- Ribs suggestion -->
+  <ellipse cx="280" cy="140" rx="45" ry="28" fill="none" stroke="#162030" stroke-width="1"/>
+  <ellipse cx="280" cy="160" rx="52" ry="32" fill="none" stroke="#162030" stroke-width="1"/>
+  <ellipse cx="280" cy="180" rx="58" ry="35" fill="none" stroke="#162030" stroke-width="1"/>
+
+  <!-- Golden circle -->
+  <circle cx="272" cy="148" r="42" fill="none" stroke="#c9a227" stroke-width="2" opacity="0.8"/>
+  <!-- Spiral arrow -->
+  <path d="M272,106 Q316,106 316,148 Q316,190 272,190 Q242,190 234,166" fill="none" stroke="#c9a227" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.55" marker-end="url(#ah)"/>
+
+  <!-- ── POSITION 1: PLAX ── upper left -->
+  <circle cx="262" cy="130" r="9" fill="#7c3aed" stroke="#c4b5fd" stroke-width="1.5"/>
+  <text x="262" y="134" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">1</text>
+  <!-- connector -->
+  <line x1="215" y1="68" x2="258" y2="126" stroke="#7c3aed" stroke-width="0.8" opacity="0.6"/>
+  <!-- label box -->
+  <rect x="50" y="30" width="164" height="44" rx="4" fill="#1a0f35" stroke="#7c3aed" stroke-width="1.2"/>
+  <text x="132" y="45" text-anchor="middle" font-size="8.5" fill="#c4b5fd" font-weight="700" font-family="monospace">PARASTERNAL LONG (PLAX)</text>
+  <text x="132" y="57" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">3-4 ICS LSB · probe → R shoulder</text>
+  <text x="132" y="68" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">LVOT, MV, Ao root, pericardium</text>
+
+  <!-- ── POSITION 2: PSAX ── upper right -->
+  <circle cx="282" cy="130" r="9" fill="#2563eb" stroke="#93c5fd" stroke-width="1.5"/>
+  <text x="282" y="134" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">2</text>
+  <line x1="346" y1="68" x2="286" y2="126" stroke="#2563eb" stroke-width="0.8" opacity="0.6"/>
+  <rect x="346" y="30" width="164" height="44" rx="4" fill="#0f1f35" stroke="#2563eb" stroke-width="1.2"/>
+  <text x="428" y="45" text-anchor="middle" font-size="8.5" fill="#93c5fd" font-weight="700" font-family="monospace">PARASTERNAL SHORT (PSAX)</text>
+  <text x="428" y="57" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">Same spot · rotate 90° CW</text>
+  <text x="428" y="68" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">Papillary level: D-sign, RV size</text>
+
+  <!-- ── POSITION 3: A4C ── mid right -->
+  <circle cx="258" cy="162" r="9" fill="#059669" stroke="#6ee7b7" stroke-width="1.5"/>
+  <text x="258" y="166" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">3</text>
+  <line x1="346" y1="178" x2="266" y2="162" stroke="#059669" stroke-width="0.8" opacity="0.6"/>
+  <rect x="346" y="155" width="164" height="44" rx="4" fill="#0a2018" stroke="#059669" stroke-width="1.2"/>
+  <text x="428" y="170" text-anchor="middle" font-size="8.5" fill="#6ee7b7" font-weight="700" font-family="monospace">APICAL 4-CHAMBER (A4C)</text>
+  <text x="428" y="182" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">5th ICS MCL · probe → L shoulder</text>
+  <text x="428" y="193" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">EF, RV:LV ratio, valves, LVOT VTI</text>
+
+  <!-- ── POSITION 4: Subxiphoid ── lower right -->
+  <circle cx="280" cy="192" r="9" fill="#d97706" stroke="#fcd34d" stroke-width="1.5"/>
+  <text x="280" y="196" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">4</text>
+  <line x1="346" y1="248" x2="282" y2="198" stroke="#d97706" stroke-width="0.8" opacity="0.6"/>
+  <rect x="346" y="225" width="164" height="44" rx="4" fill="#251500" stroke="#d97706" stroke-width="1.2"/>
+  <text x="428" y="240" text-anchor="middle" font-size="8.5" fill="#fcd34d" font-weight="700" font-family="monospace">SUBXIPHOID (SC4C)</text>
+  <text x="428" y="252" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">Probe flat · aim at L shoulder</text>
+  <text x="428" y="263" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">Pericardial effusion, tamponade</text>
+
+  <!-- ── POSITION 5: IVC ── lower left -->
+  <circle cx="280" cy="210" r="9" fill="#dc2626" stroke="#fca5a5" stroke-width="1.5"/>
+  <text x="280" y="214" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">5</text>
+  <line x1="215" y1="248" x2="276" y2="212" stroke="#dc2626" stroke-width="0.8" opacity="0.6"/>
+  <rect x="50" y="225" width="164" height="44" rx="4" fill="#250a0a" stroke="#dc2626" stroke-width="1.2"/>
+  <text x="132" y="240" text-anchor="middle" font-size="8.5" fill="#fca5a5" font-weight="700" font-family="monospace">IVC / FLUID STATUS</text>
+  <text x="132" y="252" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">Rotate 90° from pos 4 · sagittal</text>
+  <text x="132" y="263" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">&lt;1.5cm collapsing = hypovolemia</text>
+
+  <!-- Golden Circle legend -->
+  <rect x="50" y="140" width="164" height="60" rx="4" fill="#1a1500" stroke="#c9a227" stroke-width="1"/>
+  <text x="132" y="154" text-anchor="middle" font-size="8" fill="#fcd34d" font-weight="700" font-family="monospace">GOLDEN CIRCLE</text>
+  <text x="132" y="165" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">Rotate probe CW position-to-position</text>
+  <text x="132" y="175" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">1→2: rotate 90° CW (same location)</text>
+  <text x="132" y="185" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">2→3: slide to apex · 4→5: rotate 90°</text>
+  <text x="132" y="195" text-anchor="middle" font-size="7" fill="#c9a227" font-family="monospace">Start: PLAX · End: IVC view</text>
+
+  <!-- Footer -->
+  <text x="280" y="310" text-anchor="middle" font-size="7.5" fill="#374151" font-family="monospace">After DocScribbles · ASE 2022 · SCA 2023</text>
+</svg>
+</div>
+<div class="sl">PERIPARTUM CARDIOMYOPATHY (PPCM)</div>
+<div class="tr g2"><div class="dn">Diagnostic criteria</div><div class="dd">New HF in last month of pregnancy or within 5 months postpartum; LVEF &lt;45%; no prior cardiac disease</div></div>
+<div class="tr g2"><div class="dn">POCUS findings</div><div class="dd">Dilated LV + poor systolic function; B-lines bilateral; IVC plethoric; pleural effusions</div></div>
+<div class="tr g2"><div class="dn">POCUS in preeclampsia</div><div class="dd">Volume status: IVC collapsibility; pulmonary edema: B-lines (common with aggressive IVF); cardiac: preserved EF typical; diastolic dysfunction may be present</div></div>
+<table class="stbl"><tr><th>IVC Diameter</th><th>Collapsibility (sniff)</th><th>Interpretation</th></tr>
+<tr><td>&lt;1.5 cm</td><td>&gt;50%</td><td>Hypovolemia — volume responsive</td></tr>
+<tr><td>1.5–2.5 cm</td><td>&gt;50%</td><td>Normal / borderline — likely responsive</td></tr>
+<tr><td>1.5–2.5 cm</td><td>&lt;50%</td><td>Euvolemic — less predictable</td></tr>
+<tr><td>&gt;2.5 cm</td><td>&lt;50%</td><td>Elevated RAP / hypervolemia — unlikely responsive</td></tr>
+</table>
+<div class="tr g2" style="margin-top:6px"><div class="dn">Limitations</div><div class="d2">Mechanical ventilation, high PEEP, and elevated IAP reduce IVC collapsibility reliability. Use alongside clinical context and other hemodynamic data.</div></div>
+</div></div>
+
+<div class="card a3"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">FAST in Pregnant Trauma</span><span class="bd bd3">eFAST Modifications</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div style="margin:12px 0 16px;overflow:hidden;">
+<svg viewBox="0 0 620 322" style="width:100%;max-width:620px;display:block;margin:0 auto;" xmlns="http://www.w3.org/2000/svg">
+  <rect width="620" height="322" fill="#0d1623" rx="8"/>
+  <text x="310" y="18" text-anchor="middle" font-size="9" fill="#00d4aa" font-family="monospace" font-weight="700" letter-spacing="1">eFAST EXAM — 6 VIEWS · CURVILINEAR OR PHASED ARRAY</text>
+
+  <!-- torso schematic -->
+  <rect x="248" y="35" width="124" height="110" rx="12" fill="#0f1e35" stroke="#1e3050" stroke-width="1.5"/>
+  <rect x="248" y="140" width="124" height="80" rx="8" fill="#0f1e35" stroke="#1e3050" stroke-width="1.5"/>
+  <line x1="310" y1="35" x2="310" y2="220" stroke="#1e2a40" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="295" y1="142" x2="325" y2="142" stroke="#2e4060" stroke-width="1"/>
+  <text x="310" y="136" text-anchor="middle" font-size="6" fill="#374151" font-family="monospace">XIPHOID</text>
+  <text x="310" y="55" text-anchor="middle" font-size="6.5" fill="#1e3050" font-family="monospace">CHEST</text>
+  <text x="266" y="80" text-anchor="middle" font-size="6" fill="#2e4060" font-family="monospace">L</text>
+  <text x="354" y="80" text-anchor="middle" font-size="6" fill="#2e4060" font-family="monospace">R</text>
+
+  <!-- 1: R LUNG -->
+  <circle cx="345" cy="65" r="9" fill="#dc2626" stroke="#fca5a5" stroke-width="1.5"/>
+  <text x="345" y="69" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">1</text>
+  <line x1="378" y1="45" x2="350" y2="63" stroke="#dc2626" stroke-width="0.8" opacity="0.6"/>
+  <rect x="378" y="25" width="200" height="36" rx="4" fill="#250a0a" stroke="#dc2626" stroke-width="1.2"/>
+  <text x="478" y="38" text-anchor="middle" font-size="8" fill="#fca5a5" font-weight="700" font-family="monospace">R LUNG — PTX / Hemothorax</text>
+  <text x="478" y="51" text-anchor="middle" font-size="6.5" fill="#9ca3af" font-family="monospace">2nd–4th ICS MCL · sliding / barcode / seashore</text>
+
+  <!-- 2: L LUNG -->
+  <circle cx="275" cy="65" r="9" fill="#0891b2" stroke="#67e8f9" stroke-width="1.5"/>
+  <text x="275" y="69" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">2</text>
+  <line x1="242" y1="45" x2="270" y2="63" stroke="#0891b2" stroke-width="0.8" opacity="0.6"/>
+  <rect x="42" y="25" width="198" height="36" rx="4" fill="#050f20" stroke="#0891b2" stroke-width="1.2"/>
+  <text x="141" y="38" text-anchor="middle" font-size="8" fill="#67e8f9" font-weight="700" font-family="monospace">L LUNG — PTX / Hemothorax</text>
+  <text x="141" y="51" text-anchor="middle" font-size="6.5" fill="#9ca3af" font-family="monospace">2nd–4th ICS MCL · mirror of right side</text>
+
+  <!-- 3: Subxiphoid cardiac -->
+  <circle cx="310" cy="148" r="9" fill="#7c3aed" stroke="#c4b5fd" stroke-width="1.5"/>
+  <text x="310" y="152" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">3</text>
+  <line x1="378" y1="130" x2="317" y2="148" stroke="#7c3aed" stroke-width="0.8" opacity="0.6"/>
+  <rect x="378" y="112" width="200" height="36" rx="4" fill="#1a0f35" stroke="#7c3aed" stroke-width="1.2"/>
+  <text x="478" y="125" text-anchor="middle" font-size="8" fill="#c4b5fd" font-weight="700" font-family="monospace">SUBXIPHOID CARDIAC</text>
+  <text x="478" y="138" text-anchor="middle" font-size="6.5" fill="#9ca3af" font-family="monospace">Probe flat · pericardial effusion / tamponade</text>
+
+  <!-- 4: RUQ -->
+  <circle cx="348" cy="175" r="9" fill="#059669" stroke="#6ee7b7" stroke-width="1.5"/>
+  <text x="348" y="179" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">4</text>
+  <line x1="378" y1="185" x2="355" y2="176" stroke="#059669" stroke-width="0.8" opacity="0.6"/>
+  <rect x="378" y="165" width="200" height="42" rx="4" fill="#0a2018" stroke="#059669" stroke-width="1.2"/>
+  <text x="478" y="178" text-anchor="middle" font-size="8" fill="#6ee7b7" font-weight="700" font-family="monospace">RUQ — Morrison’s Pouch</text>
+  <text x="478" y="188" text-anchor="middle" font-size="6.5" fill="#9ca3af" font-family="monospace">MAL · 10th ICS · hepatorenal space</text>
+  <text x="478" y="198" text-anchor="middle" font-size="6.5" fill="#9ca3af" font-family="monospace">scan above diaphragm for hemothorax</text>
+
+  <!-- 5: LUQ -->
+  <circle cx="272" cy="175" r="9" fill="#2563eb" stroke="#93c5fd" stroke-width="1.5"/>
+  <text x="272" y="179" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">5</text>
+  <line x1="242" y1="185" x2="265" y2="176" stroke="#2563eb" stroke-width="0.8" opacity="0.6"/>
+  <rect x="42" y="165" width="198" height="42" rx="4" fill="#0f1f35" stroke="#2563eb" stroke-width="1.2"/>
+  <text x="141" y="178" text-anchor="middle" font-size="8" fill="#93c5fd" font-weight="700" font-family="monospace">LUQ — Splenorenal</text>
+  <text x="141" y="188" text-anchor="middle" font-size="6.5" fill="#9ca3af" font-family="monospace">Post MAL · 8–9th ICS</text>
+  <text x="141" y="198" text-anchor="middle" font-size="6.5" fill="#9ca3af" font-family="monospace">Koller’s pouch · scan above diaphragm</text>
+
+  <!-- 6: Pelvic -->
+  <circle cx="310" cy="215" r="9" fill="#d97706" stroke="#fcd34d" stroke-width="1.5"/>
+  <text x="310" y="219" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">6</text>
+  <line x1="310" y1="224" x2="310" y2="244" stroke="#d97706" stroke-width="0.8" opacity="0.6"/>
+  <rect x="196" y="244" width="228" height="42" rx="4" fill="#251500" stroke="#d97706" stroke-width="1.2"/>
+  <text x="310" y="258" text-anchor="middle" font-size="8" fill="#fcd34d" font-weight="700" font-family="monospace">PELVIC / SUPRAPUBIC</text>
+  <text x="310" y="270" text-anchor="middle" font-size="6.5" fill="#9ca3af" font-family="monospace">Rectovesical ♂ · Pouch of Douglas ♀</text>
+  <text x="310" y="281" text-anchor="middle" font-size="6.5" fill="#9ca3af" font-family="monospace">sagittal + transverse · bladder as window</text>
+
+  <!-- sequence path -->
+  <path d="M345,65 Q370,115 348,175 Q330,210 310,215 Q290,210 272,175 Q248,120 275,65"
+        fill="none" stroke="#00d4aa" stroke-width="1" stroke-dasharray="4,4" opacity="0.25"/>
+
+  <text x="310" y="316" text-anchor="middle" font-size="7.5" fill="#374151" font-family="monospace">ACEP 2023 · Sensitivity: free fluid ~80%, PTX ~49–99%</text>
+</svg>
+</div>
+<div class="sl">OB TRAUMA CONSIDERATIONS</div>
+<div class="tr g2"><div class="dn">Standard views</div><div class="dd">RUQ, LUQ, subxiphoid, pelvic, bilateral lungs — same as standard eFAST; sensitivity maintained in pregnancy</div></div>
+<div class="tr g2"><div class="dn">Pelvic view</div><div class="dd">Uterus fills pelvic/abdominal window in 3rd trimester; free fluid may be harder to identify posterior to gravid uterus; scan flanks carefully</div></div>
+<div class="tr g2"><div class="dn">Fetal assessment</div><div class="dd">FHR and presentation after maternal stabilization; fetal bradycardia / absent cardiac activity = urgent delivery decision</div></div>
+<div class="tr g2"><div class="dn">Abruption</div><div class="dd">POCUS poor sensitivity for placental abruption (&lt;25%); clinical diagnosis + CTG monitoring primary; do not use negative POCUS to exclude abruption</div></div>
+<div class="tr g2"><div class="dn">Perimortem C/S</div><div class="dd">If &ge;20 weeks (or uterine fundus at umbilicus) + maternal arrest: begin within 4 min, deliver by 5 min; POCUS confirms fetal viability if time permits — do not delay</div></div>
+</div></div>
+
+<div class="card a4"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Lung + Volume POCUS in OB</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<table class="stbl"><tr><th>Finding</th><th>Appearance</th><th>Suggests</th></tr>
+<tr><td>A-lines</td><td>Horizontal reverberation artifacts</td><td>Normal aerated lung / PTX</td></tr>
+<tr><td>Lung sliding</td><td>Shimmering at pleural line</td><td>Pleural apposition — rules out PTX at that point</td></tr>
+<tr><td>B-lines (≥3/view)</td><td>Vertical laser-like artifacts to screen edge</td><td>Interstitial edema / pulmonary edema</td></tr>
+<tr><td>Consolidation</td><td>Tissue-like echogenicity ± air bronchograms</td><td>Pneumonia / atelectasis</td></tr>
+<tr><td>Lung point</td><td>Transition between sliding and no sliding</td><td>Confirms PTX (100% specific)</td></tr>
+<tr><td>Barcode sign (M-mode)</td><td>Horizontal lines throughout (no seashore)</td><td>PTX — absent lung sliding</td></tr>
+<tr><td>Seashore sign (M-mode)</td><td>Grainy below pleural line</td><td>Normal lung sliding present</td></tr>
+<tr><td>Pleural effusion</td><td>Anechoic/hypoechoic space above diaphragm</td><td>Hemothorax, transudates, empyema</td></tr>
+</table>
+<div class="sl" style="margin-top:10px">OB-SPECIFIC APPLICATIONS</div>
+<div class="tr g2"><div class="dn">Pulmonary edema in preeclampsia</div><div class="dd">B-lines (≥3 per view, bilateral) = interstitial edema; common with aggressive fluid resuscitation in severe preeclampsia; guide diuresis</div></div>
+<div class="tr g2"><div class="dn">Amniotic fluid embolism</div><div class="dd">Acute RV strain (D-sign, McConnell), severe RV dilation, bilateral B-lines, cardiovascular collapse — no POCUS finding is specific but supports diagnosis</div></div>
+<div class="tr g2"><div class="dn">PE in pregnancy</div><div class="dd">RV:LV &gt;1, D-sign, McConnell sign, IVC plethora — POCUS supports diagnosis; CT-PA remains diagnostic standard; consider if contrast/radiation concerns</div></div>
+</div></div>
+</div>`},
+}},
+gyn:{label:"Gynecology",icon:"&#x1F52C;",subs:{
+  aub:{label:"Abnormal Uterine Bleeding",updated:"FIGO 2023",content:()=>`
+<div class="cf"><div class="card a7"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">AUB &mdash; PALM-COEIN Classification</span><span class="bd bd7">FIGO 2023</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="c2">
+<div>
+<div style="font-family:var(--fm);font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--ac);margin-bottom:5px">PALM &mdash; Structural Causes</div>
+<div class="crit"><ul><li><strong>P</strong>olyp &mdash; endometrial or cervical</li><li><strong>A</strong>denomyosis &mdash; diffusely enlarged boggy uterus</li><li><strong>L</strong>eiomyoma &mdash; fibroid (submucosal most symptomatic)</li><li><strong>M</strong>alignancy &amp; hyperplasia</li></ul></div>
+</div>
+<div>
+<div style="font-family:var(--fm);font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--a7);margin-bottom:5px">COEIN &mdash; Non-Structural</div>
+<div class="crit"><ul><li><strong>C</strong>oagulopathy (Von Willebrand, others)</li><li><strong>O</strong>vulatory dysfunction (PCOS, thyroid, hyperprolactinemia)</li><li><strong>E</strong>ndometrial (primary disorder)</li><li><strong>I</strong>atrogenic (anticoagulants, HRT, IUD)</li><li><strong>N</strong>ot yet classified</li></ul></div>
+</div>
+</div>
+<div class="dv"></div>
+<div class="thr g3"><div>Treatment</div><div>Options</div><div>Notes</div></div>
+<div class="tr g3"><div class="dn">Acute HMB (medical)</div><div class="d2">Combined OCP 3&times;/day &times;7 days; OR high-dose progestin; OR conjugated estrogen 25mg IV q4&ndash;6h (if atrophic)</div><div class="d2">Then transition to maintenance therapy</div></div>
+<div class="tr g3"><div class="dn">Maintenance</div><div class="d2">LNG-IUD (Mirena) &mdash; best evidence; combined OCP; progestin-only; cyclic progestin 10mg d16&ndash;25</div><div class="d2">GnRH agonist for fibroids (short-term bridge pre-op)</div></div>
+<div class="tr g3"><div class="dn">Endometrial biopsy</div><div class="d2">Age &ge;45 with AUB; any age with risk factors for hyperplasia; persistent AUB despite treatment</div><div class="d2">Pipelle in-office preferred; adequate sampling rate &gt;95%</div></div>
+</div></div></div>`},
+  contraception:{label:"Contraception",updated:"CDC MEC 2024",content:()=>`
+<div class="cf"><div class="card a1"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Contraception Methods &mdash; Efficacy &amp; Key Points</span><span class="bd bd1">CDC MEC 2024</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<table class="stbl">
+<tr><th>Method</th><th>Typical Use</th><th>Perfect Use</th><th>Key Points</th></tr>
+<tr><td class="dn">Implant (Nexplanon)</td><td class="dd">&lt;1%</td><td>&lt;1%</td><td>3 years; subdermal progestin rod; amenorrhea common; MEC 1 for most conditions</td></tr>
+<tr><td class="dn">LNG-IUD (Mirena/Liletta)</td><td class="dd">&lt;1%</td><td>&lt;1%</td><td>5&ndash;8 yrs; reduced bleeding; effective for AUB; can insert anytime in cycle</td></tr>
+<tr><td class="dn">Copper IUD (Paragard)</td><td class="dd">&lt;1%</td><td>&lt;1%</td><td>10&ndash;12 yrs; non-hormonal; most effective EC if placed &le;5 days after unprotected sex</td></tr>
+<tr><td class="dn">Depo-Provera</td><td class="dd">4%</td><td>&lt;1%</td><td>150mg IM q12 wks; &darr;BMD with prolonged use; delayed return of fertility (9&ndash;18 months)</td></tr>
+<tr><td class="dn">Combined OCP</td><td class="dd">7%</td><td>&lt;1%</td><td>Daily; DVT risk with estrogen; MEC 3&ndash;4 in smokers &ge;35yr; 24/4 or 21/7 formulations</td></tr>
+<tr><td class="dn">Progestin-only pill</td><td class="dd">7%</td><td>&lt;1%</td><td>Safe with breastfeeding, HTN, smoking, migraines with aura; strict timing (norethindrone &plusmn;3h)</td></tr>
+<tr><td class="dn">Male condom</td><td class="dd">13%</td><td>2%</td><td>Only method with STI protection; combine with hormonal for dual efficacy</td></tr>
+<tr><td class="dn">Levonorgestrel EC (Plan B)</td><td class="dd">&mdash;</td><td>&mdash;</td><td>1.5 mg PO ASAP; best if &le;72h; works up to 120h; reduced efficacy if BMI &gt;75 kg</td></tr>
+<tr><td class="dn">Ulipristal (ella) EC</td><td class="dd">&mdash;</td><td>&mdash;</td><td>30mg PO; effective 72&ndash;120h; better than LNG at 72&ndash;120h window; Rx required</td></tr>
+</table>
+</div></div></div>`},
+}},
+mfm:{label:"Fetal Medicine",icon:"&#x1F52C;",subs:{
+  surveillance:{label:"Fetal Surveillance",updated:"ACOG 2024",content:()=>`
+<div class="cg">
+<div class="card a1"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Biophysical Profile (BPP)</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="thr g2"><div>Component (score 2 if present)</div><div>Definition of Normal</div></div>
+<div class="tr g2"><div class="dn">NST</div><div class="d2">&ge;2 accelerations (&ge;15 bpm &times;15 sec) within 20 min</div></div>
+<div class="tr g2"><div class="dn">Fetal breathing</div><div class="d2">&ge;1 episode &ge;30 sec within 30 min</div></div>
+<div class="tr g2"><div class="dn">Gross body movement</div><div class="d2">&ge;3 discrete body/limb movements in 30 min</div></div>
+<div class="tr g2"><div class="dn">Fetal tone</div><div class="d2">&ge;1 episode of extension/flexion of limb or trunk in 30 min</div></div>
+<div class="tr g2"><div class="dn">Amniotic fluid (AFV)</div><div class="d2">AFI &ge;5 cm OR single deepest pocket &ge;2 cm</div></div>
+<div class="dv"></div>
+<div class="ir"><div class="il">BPP 8&ndash;10</div><div class="iv" style="color:var(--a3)">Normal &mdash; repeat per indication</div></div>
+<div class="ir"><div class="il">BPP 6</div><div class="iv" style="color:var(--a4)">Equivocal &mdash; deliver if &ge;37 wks; repeat in 24h if preterm</div></div>
+<div class="ir"><div class="il">BPP &le;4</div><div class="iv" style="color:var(--a2)">Abnormal &mdash; delivery strongly considered</div></div>
+<div class="ir"><div class="il">AFI &le;5 (oligohydramnios)</div><div class="iv">Deliver at &ge;36 wks; evaluate for FGR/PPROM</div></div>
+</div></div>
+<div class="card"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Umbilical Artery Doppler</span><span class="bd bd1">FGR Monitoring</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="ir"><div class="il">Normal S/D ratio</div><div class="iv m">&lt;3 after 30 wks; decreases as GA increases</div></div>
+<div class="ir"><div class="il">Elevated S/D ratio</div><div class="iv">Increased placental resistance &mdash; monitor closely; weekly Doppler</div></div>
+<div class="ir"><div class="il">Absent end-diastolic flow</div><div class="iv" style="color:var(--a4)">Deliver &ge;34 wks; daily surveillance if &lt;34 wks</div></div>
+<div class="ir"><div class="il">Reversed end-diastolic flow</div><div class="iv" style="color:var(--a2)">Deliver ASAP regardless of GA &mdash; severe fetal compromise</div></div>
+<div class="dv"></div>
+<div class="crit"><div class="ct">FGR Definitions</div><ul><li>Severe FGR: EFW &lt;3rd percentile OR absent/reversed end-diastolic flow</li><li>FGR: EFW &lt;10th percentile with abnormal Doppler or concurrent maternal condition</li><li>SGA: EFW &lt;10th percentile alone &mdash; may be constitutionally small</li></ul></div>
+</div></div>
+</div>`},
+}},
+scores:{label:"Scores &amp; Tools",icon:"&#x1F4CA;",subs:{
+  ob_tools:{label:"OB Formulas &amp; Scores",updated:"2024",content:()=>`
+<div class="cg">
+<div class="card a1"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">OB Formulas</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="fml"><div class="fl">Naegele's Rule &mdash; EDD</div>LMP + 9 months + 7 days (assumes 28-day cycle); or LMP + 280 days</div>
+<div class="fml"><div class="fl">Gestational Age from LMP</div>(Days since first day of LMP) &divide; 7 = weeks + days gestation</div>
+<div class="fml"><div class="fl">VBAC Success (Flamm)</div>Age &lt;40 (+2) + prior vaginal delivery (+4) + indication other than arrest (+1) + effacement &ge;75% (+2) + dilation &ge;4cm (+1). Score &ge;10 = ~85% success</div>
+<div class="fml"><div class="fl">Bishop Score</div>Dilation + Effacement + Station + Consistency + Position (0&ndash;13; &ge;8 = favorable)</div>
+<div class="fml"><div class="fl">EFW (Hadlock Ultrasound)</div>log&#8321;&#8320;(EFW) = 1.326 &minus; 0.00326&times;(AC&times;FL) + 0.0107&times;HC + 0.0438&times;AC + 0.158&times;FL</div>
+</div></div>
+<div class="card"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Apgar Score</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<table class="stbl"><tr><th>Sign</th><th>0</th><th>1</th><th>2</th></tr>
+<tr><td class="dn">Color (Appearance)</td><td>Blue/pale all over</td><td>Blue extremities; pink body</td><td>Pink all over</td></tr>
+<tr><td class="dn">Heart Rate (Pulse)</td><td>Absent</td><td>&lt;100 bpm</td><td>&ge;100 bpm</td></tr>
+<tr><td class="dn">Reflex (Grimace)</td><td>No response</td><td>Grimace only</td><td>Cry, cough, sneeze</td></tr>
+<tr><td class="dn">Muscle Tone (Activity)</td><td>Limp</td><td>Some flexion</td><td>Active motion</td></tr>
+<tr><td class="dn">Breathing (Respiration)</td><td>Absent</td><td>Weak/irregular</td><td>Strong cry</td></tr>
+</table>
+<div class="ir" style="margin-top:6px"><div class="il">7&ndash;10</div><div class="iv" style="color:var(--a3)">Normal &mdash; routine newborn care</div></div>
+<div class="ir"><div class="il">4&ndash;6</div><div class="iv" style="color:var(--a4)">Moderate depression &mdash; stimulation, supplemental O&#8322;</div></div>
+<div class="ir"><div class="il">0&ndash;3</div><div class="iv" style="color:var(--a2)">Severe &mdash; initiate NRP immediately</div></div>
+</div></div>
+<div class="card"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">NRP &mdash; Neonatal Resuscitation</span><span class="bd bd2">AAP 2021</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<ul class="sl">
+<li><span class="sn">1</span><span>Warm, dry, stimulate; clear secretions if needed; position airway</span></li>
+<li><span class="sn">2</span><span>Assess: tone, breathing, HR within first 60 seconds</span></li>
+<li><span class="sn">3</span><span>HR &lt;100 or absent/gasping breathing &rarr; PPV with 21% O&#8322; (&ge;36 wks); 21&ndash;30% (&lt;35 wks)</span></li>
+<li><span class="sn">4</span><span>SpO&#8322; targets: 1min=60&ndash;65%; 2min=65&ndash;70%; 3min=70&ndash;75%; 5min=80&ndash;85%; 10min=85&ndash;95%</span></li>
+<li><span class="sn">5</span><span>HR &lt;60 after 30 sec PPV &rarr; intubate + chest compressions (3:1 ratio, 90 compressions + 30 breaths/min)</span></li>
+<li><span class="sn">6</span><span>Epinephrine 0.01&ndash;0.03 mg/kg IV (preferred) or 0.05&ndash;0.10 mg/kg ETT q3&ndash;5min if HR &lt;60 despite compressions</span></li>
+</ul>
+</div></div>
+</div>`},
+}},
+};
+let S=null,U=null;
+function init(){
+  const ks=Object.keys(D);
+  document.getElementById('nav').innerHTML=ks.map(k=>`<button class="nt" id="nt-${k}" onclick="sel('${k}')"><span>${D[k].icon}</span>${D[k].label}</button>`).join('');
+  buildQ();sel(ks[0]);kbds();
+  // MCA quick-access button injected into nav
+  const mcaBtn = document.createElement('button');
+  mcaBtn.className = 'nt';
+  mcaBtn.id = 'nt-mca-quick';
+  mcaBtn.style.cssText = 'color:var(--a2);border:1px solid var(--a2-b);background:var(--a2-bg);flex-shrink:0;';
+  mcaBtn.innerHTML = '&#x1F6A8; MCA';
+  mcaBtn.onclick = function(){ sel('obemerg'); setTimeout(()=>sub('obemerg','mca'),60); };
+  document.getElementById('nav').appendChild(mcaBtn);
+  document.getElementById('sbbd').addEventListener('click',closeSb);
+}
+function sel(k){
+  S=k;
+  document.querySelectorAll('.nt').forEach(t=>t.classList.remove('on'));
+  const t=document.getElementById('nt-'+k);
+  if(t){t.classList.add('on');t.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});}
+  const ss=Object.keys(D[k].subs);
+  document.getElementById('sb').innerHTML=
+    `<button class="sbcls" onclick="closeSb()">&#10005; close</button>`+
+    `<div class="sbl">${D[k].icon} ${D[k].label}</div>`+
+    ss.map(s=>`<div class="sbi" id="si-${k}-${s}" onclick="sub('${k}','${s}')">${D[k].subs[s].label}</div>`).join('');
+  sub(k,ss[0]);
+  if(window.innerWidth<=640)closeSb();
+}
+function sub(sk,uk){
+  U=uk;
+  document.querySelectorAll('.sbi').forEach(i=>i.classList.remove('on'));
+  const el=document.getElementById(`si-${sk}-${uk}`);
+  if(el)el.classList.add('on');
+  const s=D[sk].subs[uk],p=D[sk];
+  document.getElementById('co').innerHTML=`<div class="shdr"><div><div class="stitle">${p.icon} ${s.label}</div><div class="smeta">${p.label}</div></div><div><div class="supd">Updated: ${s.updated}</div><div class="ssrc">${SRC}</div></div></div>${s.content()}`;
+  document.getElementById('co').scrollTop=0;
+  if(window.innerWidth<=640)closeSb();
+}
+function tc(h){const b=h.nextElementSibling,c=h.querySelector('.ca');b.classList.toggle('cl');c.classList.toggle('o');}
+function buildQ(){
+  const q=document.getElementById('qr');
+  q.innerHTML=`<div class="qhdr"><span>&#128138; Quick Ref</span><button class="qcls" onclick="closeQ()">&#10005;</button></div>`+
+    DRUGS.map(c=>`<div class="qrl">${c.cat}</div>${c.items.map(d=>`<div class="qri"><div class="qri-n">${d.n}</div><div class="qri-d">${d.d}</div><div class="qri-t">${d.t}</div></div>`).join('')}`).join('');
+}
+function toggleQ(){
+  const q=document.getElementById('qr'),b=document.getElementById('btnQ');
+  const mob=window.innerWidth<=640;
+  if(mob){const op=q.classList.contains('mopen');if(op){q.classList.remove('mopen');setTimeout(()=>{if(!q.classList.contains('mopen'))q.style.display='none';},250);}else{q.style.display='block';requestAnimationFrame(()=>q.classList.add('mopen'));}b&&b.classList.toggle('on',!op);}
+  else{const h=q.style.display==='none'||!q.style.display;q.style.display=h?'block':'none';b&&b.classList.toggle('on',h);}
+}
+function closeQ(){const q=document.getElementById('qr'),b=document.getElementById('btnQ');q.classList.remove('mopen');setTimeout(()=>{if(!q.classList.contains('mopen'))q.style.display='none';},250);b&&b.classList.remove('on');}
+function openSb(){document.getElementById('sb').classList.add('open');document.getElementById('sbbd').classList.add('vis');document.body.style.overflow='hidden';}
+function closeSb(){document.getElementById('sb').classList.remove('open');document.getElementById('sbbd').classList.remove('vis');document.body.style.overflow='';}
+function kbo(){document.getElementById('kbo').classList.toggle('vis');}
+function srch(q){
+  const sc=document.getElementById('sc'),shc=document.getElementById('shc');
+  sc.classList.toggle('vis',q.length>0);
+  if(!q.trim()){shc.textContent='';if(S&&U)sub(S,U);return;}
+  const ql=q.trim().toLowerCase();let res=[];
+  Object.keys(D).forEach(sk=>Object.keys(D[sk].subs).forEach(uk=>{if(D[sk].subs[uk].content().replace(/<[^>]+>/g,' ').toLowerCase().includes(ql))res.push({sk,uk,sec:D[sk],s:D[sk].subs[uk]});}));
+  shc.textContent=res.length?`${res.length} match${res.length>1?'es':''}`:'' ;
+  if(!res.length){document.getElementById('co').innerHTML=`<div class="empty"><div style="font-size:28px;margin-bottom:10px">&#128269;</div><div>No results for <strong>"${q}"</strong></div></div>`;return;}
+  document.getElementById('co').innerHTML=`<div class="shdr"><div><div class="stitle">Results</div><div class="smeta">${res.length} match${res.length>1?'es':''} for "${q}"</div></div></div>`+res.map(r=>`<button class="srb" onclick="sel('${r.sk}');setTimeout(()=>sub('${r.sk}','${r.uk}'),80)"><span>${r.sec.icon}</span><div><div style="font-weight:600">${r.s.label}</div><div style="font-size:11px;color:var(--tm)">${r.sec.label}</div></div><span style="margin-left:auto;color:var(--ac);font-size:11px">View &#8594;</span></button>`).join('');
+}
+function clr(){const si=document.getElementById('si');si.value='';document.getElementById('sc').classList.remove('vis');document.getElementById('shc').textContent='';if(S&&U)sub(S,U);si.focus();}
+function kbds(){
+  document.addEventListener('keydown',e=>{
+    const inp=document.getElementById('si'),foc=document.activeElement===inp;
+    if(e.key==='/'&&!foc){e.preventDefault();inp.focus();return;}
+    if(e.key==='Escape'){if(document.getElementById('kbo').classList.contains('vis')){kbo();return;}clr();return;}
+    if(foc)return;
+    const k=e.key.toLowerCase();
+    if(k==='p'){window.print();return;}if(k==='r'){toggleQ();return;}if(k==='?'){kbo();return;}
+    if(k==='tab'){e.preventDefault();const ks=Object.keys(D),i=ks.indexOf(S);sel(ks[(i+1)%ks.length]);}
+    if(k==='arrowdown'||k==='arrowup'){e.preventDefault();if(!S)return;const ss=Object.keys(D[S].subs),i=ss.indexOf(U),n=k==='arrowdown'?(i+1)%ss.length:(i-1+ss.length)%ss.length;sub(S,ss[n]);}
+  });
+}
+init();
+
+// ── CONNECTIVITY STATUS ──
+function updateConn() {
+  var b = document.getElementById('connChip');
+  if (!b) return;
+  var online = navigator.onLine && location.protocol !== 'file:';
+  b.textContent = online ? '⟳ ONLINE' : '✓ OFFLINE';
+  b.className = online ? 'chip2 conn-online' : 'chip2';
+}
+window.addEventListener('online', updateConn);
+window.addEventListener('offline', updateConn);
+document.addEventListener('DOMContentLoaded', updateConn);
+
+function bkmTab(el, id) {
+  document.querySelectorAll('.bkm-tab').forEach(t => t.classList.remove('on'));
+  document.querySelectorAll('.bkm-pane').forEach(p => p.classList.remove('on'));
+  el.classList.add('on');
+  document.getElementById('bkm-' + id).classList.add('on');
+}
+</script>
+<div class="bkm-overlay" id="bkmOverlay">
+<div class="bkm-modal">
+  <div class="bkm-title"><span>📌 Save for Offline Use</span><button class="bkm-close" onclick="document.getElementById('bkmOverlay').classList.remove('open')">&#x2715;</button></div>
+  <div class="bkm-sub">This file works entirely offline — no internet needed after saving.</div>
+  <div class="bkm-tabs">
+    <button class="bkm-tab on" onclick="bkmTab(this,'ios')">iPhone / iPad</button>
+    <button class="bkm-tab" onclick="bkmTab(this,'android')">Android</button>
+    <button class="bkm-tab" onclick="bkmTab(this,'mac')">Mac</button>
+    <button class="bkm-tab" onclick="bkmTab(this,'win')">Windows / PC</button>
+  </div>
+  <div class="bkm-pane on" id="bkm-ios">
+    <div class="bkm-step"><div class="bkm-num">1</div><div class="bkm-txt"><strong>AirDrop or email</strong> the .html file to your iPhone/iPad</div></div>
+    <div class="bkm-step"><div class="bkm-num">2</div><div class="bkm-txt">Tap the file — it opens in <strong>Safari</strong> (use Safari, not Chrome)</div></div>
+    <div class="bkm-step"><div class="bkm-num">3</div><div class="bkm-txt">Tap the <strong>Share button</strong> (box with arrow) at the bottom</div></div>
+    <div class="bkm-step"><div class="bkm-num">4</div><div class="bkm-txt">Scroll down → tap <strong>"Add to Home Screen"</strong></div></div>
+    <div class="bkm-step"><div class="bkm-num">5</div><div class="bkm-txt">Name it and tap <strong>Add</strong> — launches like an app, works offline</div></div>
+    <div class="bkm-note">⚠ Must open in <strong>Safari</strong> — Chrome on iOS cannot add to Home Screen from local files. The file stays in your Files app at <strong>On My iPhone › Downloads</strong> as a backup.</div>
+  </div>
+  <div class="bkm-pane" id="bkm-android">
+    <div class="bkm-step"><div class="bkm-num">1</div><div class="bkm-txt"><strong>Download or transfer</strong> the .html file to your device</div></div>
+    <div class="bkm-step"><div class="bkm-num">2</div><div class="bkm-txt">Open <strong>Chrome</strong> → tap the address bar → type <strong>file:///sdcard/Download/</strong> and navigate to the file</div></div>
+    <div class="bkm-step"><div class="bkm-num">3</div><div class="bkm-txt">Tap the <strong>three-dot menu</strong> (⋮) → <strong>"Add to Home screen"</strong></div></div>
+    <div class="bkm-step"><div class="bkm-num">4</div><div class="bkm-txt">Tap <strong>Add</strong> — shortcut appears on your home screen</div></div>
+    <div class="bkm-note">💡 Alternatively: open the file with <strong>Firefox for Android</strong> via your file manager app — it handles local HTML files more reliably than Chrome on some devices.</div>
+  </div>
+  <div class="bkm-pane" id="bkm-mac">
+    <div class="bkm-step"><div class="bkm-num">1</div><div class="bkm-txt"><strong>Save the file</strong> somewhere permanent (Documents, not Downloads — Downloads may get cleared)</div></div>
+    <div class="bkm-step"><div class="bkm-num">2</div><div class="bkm-txt">Open the file in <strong>Safari or Chrome</strong> — double-click or drag to browser</div></div>
+    <div class="bkm-step"><div class="bkm-num">3</div><div class="bkm-txt">Press <strong>⌘ D</strong> to bookmark it, or drag the URL bar tab to your Dock / desktop</div></div>
+    <div class="bkm-step"><div class="bkm-num">4</div><div class="bkm-txt"><strong>Safari tip:</strong> File → Add to Dock — creates a standalone app-like launcher in your Dock</div></div>
+    <div class="bkm-note">💡 To sync to iPhone: save in <strong>iCloud Drive</strong> and open in Safari on iOS → Add to Home Screen.</div>
+  </div>
+  <div class="bkm-pane" id="bkm-win">
+    <div class="bkm-step"><div class="bkm-num">1</div><div class="bkm-txt"><strong>Save the file</strong> somewhere permanent (Documents folder recommended)</div></div>
+    <div class="bkm-step"><div class="bkm-num">2</div><div class="bkm-txt">Open in <strong>Chrome or Edge</strong> — double-click the file</div></div>
+    <div class="bkm-step"><div class="bkm-num">3</div><div class="bkm-txt">Press <strong>Ctrl + D</strong> to bookmark, or drag the icon from the address bar to your desktop/taskbar</div></div>
+    <div class="bkm-step"><div class="bkm-num">4</div><div class="bkm-txt"><strong>Edge tip:</strong> Apps → Install this site as an app — creates a standalone window launcher</div></div>
+    <div class="bkm-note">💡 <strong>Edge</strong> handles local HTML files best on Windows — Chrome may prompt about file access on some versions.</div>
+  </div>
+</div>
+</div>
+</body>
+</html>
