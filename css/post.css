@@ -368,14 +368,14 @@
    Used by: whole-blood-front-door.html and future cv-posts
    ============================================================ */
 
-/* ── Post Header v2 ── */
+/* ── Post Section Tag ── */
 .post-section-tag {
   font-family: var(--font-sans);
   font-size: 0.62rem;
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--teal);
+  color: var(--accent);
   display: block;
   margin-bottom: 0.8rem;
 }
@@ -407,29 +407,17 @@
 .post-meta .author { color: var(--text2); }
 
 /* ── Badges v2 ── */
-.badge {
-  display: inline-block;
-  font-family: var(--font-sans);
-  font-size: 0.58rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 0.18em 0.55em;
-  border-radius: 3px;
-  border: 1px solid transparent;
-  vertical-align: middle;
-}
-.badge-continuum   { color: var(--teal);   background: rgba(45,212,191,0.08);  border-color: rgba(45,212,191,0.18); }
-.badge-prehospital { color: var(--green);  background: rgba(74,222,128,0.08);  border-color: rgba(74,222,128,0.2); }
-.badge-transfusion { color: var(--red);    background: rgba(248,113,113,0.09); border-color: rgba(248,113,113,0.22); }
-.badge-evidence    { color: var(--purple); background: rgba(167,139,250,0.1);  border-color: rgba(167,139,250,0.25); }
-.badge-critical    { color: var(--amber);  background: rgba(245,158,11,0.08);  border-color: rgba(245,158,11,0.2); }
+.badge-continuum   { color: var(--accent); background: rgba(0,212,170,0.08);   border: 1px solid rgba(0,212,170,0.2); border-radius: 3px; }
+.badge-prehospital { color: var(--red);    background: rgba(232,76,76,0.08);   border: 1px solid rgba(232,76,76,0.2); border-radius: 3px; }
+.badge-transfusion { color: var(--amber);  background: rgba(245,158,11,0.08);  border: 1px solid rgba(245,158,11,0.2); border-radius: 3px; }
+.badge-evidence    { color: var(--accent); background: rgba(0,212,170,0.06);   border: 1px solid rgba(0,212,170,0.15); border-radius: 3px; }
+.badge-critical    { color: var(--amber);  background: rgba(245,158,11,0.08);  border: 1px solid rgba(245,158,11,0.2); border-radius: 3px; }
 
 /* ── cv-callout v2 ── */
 .cv-callout {
-  border: 1px solid rgba(45,212,191,0.18);
-  border-left: 3px solid var(--teal);
-  background: rgba(45,212,191,0.06);
+  border: 1px solid rgba(0,212,170,0.2);
+  border-left: 3px solid var(--accent);
+  background: rgba(0,212,170,0.06);
   border-radius: var(--radius-sm);
   padding: 1.1rem 1.3rem;
   margin: 1.8rem 0;
@@ -443,9 +431,9 @@
   background: rgba(245,158,11,0.06);
 }
 .cv-callout.danger {
-  border-color: rgba(248,113,113,0.22);
+  border-color: rgba(232,76,76,0.22);
   border-left-color: var(--red);
-  background: rgba(248,113,113,0.07);
+  background: rgba(232,76,76,0.07);
 }
 .cv-callout .callout-label {
   display: block;
@@ -454,7 +442,7 @@
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--teal);
+  color: var(--accent);
   margin-bottom: 0.5rem;
 }
 .cv-callout.warning .callout-label { color: var(--amber); }
@@ -481,7 +469,7 @@
   font-family: var(--font-sans);
   font-size: 1.75rem;
   font-weight: 800;
-  color: var(--teal);
+  color: var(--accent);
   line-height: 1;
   margin-bottom: 0.35rem;
 }
@@ -525,7 +513,7 @@
 .cv-table tr:last-child td { border-bottom: none; }
 .cv-table tr:hover td { background: var(--surface); }
 .cv-table td:first-child { color: var(--text); font-style: italic; }
-.cv-table .positive { color: var(--green); font-weight: 600; }
+.cv-table .positive { color: var(--accent); font-weight: 600; }
 .cv-table .neutral  { color: var(--amber); }
 .cv-table .negative { color: var(--red); }
 
@@ -553,15 +541,15 @@
   flex-shrink: 0;
   margin-top: 0.1rem;
 }
-.ind-tag.hemo   { color: var(--teal);  background: rgba(45,212,191,0.08);  border: 1px solid rgba(45,212,191,0.18); }
-.ind-tag.injury { color: var(--red);   background: rgba(248,113,113,0.09); border: 1px solid rgba(248,113,113,0.22); }
-.ind-tag.image  { color: var(--green); background: rgba(74,222,128,0.08);  border: 1px solid rgba(74,222,128,0.2); }
+.ind-tag.hemo   { color: var(--accent); background: rgba(0,212,170,0.08);  border: 1px solid rgba(0,212,170,0.2); }
+.ind-tag.injury { color: var(--red);    background: rgba(232,76,76,0.08);  border: 1px solid rgba(232,76,76,0.2); }
+.ind-tag.image  { color: var(--amber);  background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.2); }
 .ind-text { color: var(--text2); line-height: 1.5; }
 .ind-text strong { color: var(--text); font-weight: 600; }
 
 /* ── Pull Quote ── */
 .pull-quote {
-  border-left: 3px solid var(--teal);
+  border-left: 3px solid var(--accent);
   margin: 2.2rem 0;
   padding: 0.6rem 0 0.6rem 1.3rem;
 }
