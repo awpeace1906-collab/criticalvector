@@ -10,6 +10,14 @@
 /* Ultra-specificity panel show/hide */
 div.panel:not(.on) { display: none !important; visibility: hidden !important; height: 0 !important; overflow: hidden !important; padding: 0 !important; margin: 0 !important; }
 div.panel.on { display: block !important; visibility: visible !important; height: auto !important; overflow: visible !important; }
+
+/* v4 overflow fix */
+.tr > div { min-width: 0; overflow-wrap: break-word; word-break: break-word; }
+.rt td, .rt th { overflow-wrap: break-word; word-break: break-word; max-width: 200px; }
+
+/* v4 table alignment fix */
+.rt { table-layout: fixed; width: 100%; }
+.rt th, .rt td { vertical-align: top; overflow-wrap: break-word; word-break: break-word; white-space: normal; hyphens: auto; }
 </style>
 <meta charset="UTF-8">
 <meta name="description" content="Pocket Anesthesia Reference - Offline Version">
@@ -44,9 +52,9 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sa
 
 .pocus-svg{width:100%;max-width:480px;display:block;margin:8px auto 14px;}
 
-.rt th{color:var(--t1)!important;background:var(--bg3)!important;}
+.rt th{color:var(--t1)!important;background:var(--bg3)!important;vertical-align:top;overflow-wrap:break-word;word-break:break-word;white-space:normal;}
 .sl{color:var(--t2)!important;}
-.dn{color:var(--t1)!important;}
+.dn{color:var(--t1)!important;min-width:0;overflow-wrap:break-word;word-break:break-word;}
 .st{color:var(--t1)!important;}
 .kk{color:var(--t2)!important;}
 
@@ -136,9 +144,9 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg0);color:var(--t1);min-
 .al-r .al-t{color:#E74C3C;} .al-o .al-t{color:var(--ao);} .al-b .al-t{color:#5BA4F5;} .al-g .al-t{color:#2ECC71;} .al-y .al-t{color:var(--hg);}
 
 /* TABLES */
-.rt{width:100%;border-collapse:collapse;font-size:12px;font-family:'DM Mono',monospace;}
-.rt th{background:var(--bg3);color:var(--t1);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.5px;padding:6px 9px;text-align:left;border-bottom:1px solid var(--bd);}
-.rt td{padding:6px 9px;border-bottom:1px solid rgba(0,93,184,.09);color:var(--t1);vertical-align:top;}
+.rt{width:100%;border-collapse:collapse;font-size:12px;font-family:'DM Mono',monospace;table-layout:fixed;}
+.rt th{background:var(--bg3);color:var(--t1);font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.5px;padding:6px 9px;text-align:left;border-bottom:1px solid var(--bd);vertical-align:top;overflow-wrap:break-word;word-break:break-word;white-space:normal;}
+.rt td{padding:6px 9px;border-bottom:1px solid rgba(0,93,184,.09);color:var(--t1);vertical-align:top;vertical-align:top;overflow-wrap:break-word;word-break:break-word;white-space:normal;}
 .rt tr:last-child td{border-bottom:none;}
 .rt tr:hover td{background:rgba(0,94,184,.05);}
 .rt .sm{font-size:10px;color:var(--t3);font-family:'DM Sans',sans-serif;display:block;margin-top:2px;}
@@ -159,8 +167,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg0);color:var(--t1);min-
 .bl li.ok::before{color:#2ECC71;}
 
 /* GRID */
-.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
-@media(max-width:520px){.g2{grid-template-columns:1fr;}}
+.g2{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,2fr);gap:10px;}
+@media(max-width:520px){}
 
 /* SECTION LABEL */
 .sl{font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--t2);margin:13px 0 5px;padding-bottom:3px;border-bottom:1px solid var(--bd);}
@@ -196,7 +204,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg0);color:var(--t1);min-
 .de{background:var(--bg2);border:1px solid var(--bd);border-radius:6px;margin-bottom:7px;overflow:hidden;}
 .dh{display:flex;align-items:center;justify-content:space-between;padding:9px 13px;cursor:pointer;transition:background .15s;}
 .dh:hover{background:var(--bg3);}
-.dn{font-family:'Syne',sans-serif;font-weight:700;font-size:13px;color:var(--t1);}
+.dn{font-family:'Syne',sans-serif;font-weight:700;font-size:13px;color:var(--t1);min-width:0;overflow-wrap:break-word;word-break:break-word;}
 .dc{font-family:'DM Mono',monospace;font-size:10px;color:var(--t3);margin-top:1px;}
 .dchv{color:var(--t3);font-size:12px;transition:transform .2s;}
 .de.open .dchv{transform:rotate(180deg);}

@@ -6,6 +6,26 @@
 @font-face { font-family: 'Syne'; src: local('Arial Black'), local('Impact'), local('.AppleSystemUIFont'); font-weight: 400 800; }
 @font-face { font-family: 'DM Mono'; src: local('Menlo'), local('Consolas'), local('Courier New'); font-weight: 400 500; }
 @font-face { font-family: 'Source Serif 4'; src: local('Georgia'), local('Times New Roman'); font-weight: 300 400; }
+
+/* v4 overflow fix */
+.tr > div { min-width: 0; overflow-wrap: break-word; word-break: break-word; }
+.g3 { grid-template-columns: minmax(0,1fr) minmax(0,1.4fr) minmax(0,1.2fr); }
+.g2 { grid-template-columns: minmax(0,1.1fr) minmax(0,2fr); }
+.dn, .dd, .d2, .il, .iv, .cn, .fl, .ct { overflow-wrap: break-word; word-break: break-word; }
+.il { width: auto; min-width: 0; max-width: 160px; }
+.stbl td, .stbl th { overflow-wrap: break-word; word-break: break-word; max-width: 240px; }
+@media (max-width: 500px) {
+  .g3 { grid-template-columns: 1fr; }
+  .g2 { grid-template-columns: 1fr; }
+}
+
+/* v4 table alignment fix */
+.stbl { table-layout: fixed; width: 100%; }
+.stbl th, .stbl td { vertical-align: top; overflow-wrap: break-word; word-break: break-word; white-space: normal; hyphens: auto; }
+.stbl th { padding: 6px 8px; }
+.stbl td { padding: 6px 8px; }
+.stbl col, .stbl th:first-child, .stbl td:first-child { width: 28%; }
+.thr > div { min-width: 0; overflow-wrap: break-word; word-break: break-word; }
 </style>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -84,16 +104,16 @@ body{background:var(--bg);color:var(--tx);font-family:var(--fn);display:flex;fle
 .bd6{background:var(--a6-bg);color:var(--a6);border:1px solid var(--a6-b);}
 .bd7{background:var(--a7-bg);color:var(--a7);border:1px solid var(--a7-b);}
 .thr,.tr{display:grid;gap:5px;padding:5px 0;align-items:start;}
-.thr{font-family:var(--fm);font-size:9px;font-weight:600;color:var(--td);border-bottom:1px solid var(--b1);text-transform:uppercase;letter-spacing:.06em;padding-bottom:6px;}
+.thr{font-family:var(--fm);font-size:9px;font-weight:600;color:var(--td);border-bottom:1px solid var(--b1);text-transform:uppercase;letter-spacing:.06em;padding-bottom:6px;min-width:0;overflow-wrap:break-word;}
 .tr{border-bottom:1px solid var(--b1);font-size:11.5px;}
 .tr:last-child{border-bottom:none;}
 .tr:hover{background:rgba(255,255,255,.015);margin:0 -12px;padding-left:12px;padding-right:12px;}
-.g2{grid-template-columns:1.1fr 2fr;}
-.g3{grid-template-columns:1fr 1.4fr 1fr;}
+.g2{grid-template-columns:minmax(0,1.1fr) minmax(0,2fr);}
+.g3{grid-template-columns:minmax(0,1fr) minmax(0,1.4fr) minmax(0,1.2fr);}
 .g4{grid-template-columns:1.1fr 1.3fr 0.9fr 1fr;}
-.dn{font-weight:600;color:var(--tx);}
-.dd{font-family:var(--fm);font-size:11px;color:var(--ac);}
-.d2{font-size:11px;color:var(--td);line-height:1.4;}
+.dn{font-weight:600;color:var(--tx);min-width:0;overflow-wrap:break-word;word-break:break-word;}
+.dd{font-family:var(--fm);font-size:11px;color:var(--ac);min-width:0;overflow-wrap:break-word;word-break:break-word;}
+.d2{font-size:11px;color:var(--td);line-height:1.4;min-width:0;overflow-wrap:break-word;word-break:break-word;}
 .ir{display:flex;justify-content:space-between;align-items:flex-start;padding:5px 0;border-bottom:1px solid var(--b1);gap:8px;}
 .ir:last-child{border-bottom:none;}
 .il{font-family:var(--fm);font-size:10px;color:var(--tm);flex-shrink:0;width:150px;}
@@ -115,9 +135,9 @@ body{background:var(--bg);color:var(--tx);font-family:var(--fn);display:flex;fle
 .sl{list-style:none;}
 .sl li{display:flex;gap:9px;align-items:flex-start;padding:5px 0;font-size:12px;line-height:1.45;}
 .sn{font-family:var(--fm);font-size:9.5px;font-weight:600;color:var(--a4);background:var(--a4-bg);border:1px solid var(--a4-b);width:20px;height:20px;border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
-.stbl{width:100%;border-collapse:collapse;font-size:11.5px;}
-.stbl th{background:var(--sf2);padding:6px 9px;text-align:left;font-family:var(--fm);font-size:9px;color:var(--tm);font-weight:500;border-bottom:1px solid var(--b1);letter-spacing:.06em;}
-.stbl td{padding:6px 9px;border-bottom:1px solid var(--b1);}
+.stbl{width:100%;border-collapse:collapse;font-size:11.5px;table-layout:fixed;}
+.stbl th{background:var(--sf2);padding:6px 8px;text-align:left;font-family:var(--fm);font-size:9px;color:var(--tx);font-weight:600;border-bottom:1px solid var(--b2);vertical-align:top;overflow-wrap:break-word;word-break:break-word;white-space:normal;}
+.stbl td{padding:6px 8px;border-bottom:1px solid var(--b1);vertical-align:top;overflow-wrap:break-word;word-break:break-word;white-space:normal;}
 .stbl tr:last-child td{border-bottom:none;}
 .stbl tr:hover td{background:var(--sf2);}
 .dv{height:1px;background:var(--b1);margin:9px 0;}
@@ -140,8 +160,8 @@ body{background:var(--bg);color:var(--tx);font-family:var(--fn);display:flex;fle
 .srb:hover{border-color:var(--ac-b);}
 .sbbd{display:none;position:fixed;inset:0;z-index:149;background:rgba(0,0,0,.6);}
 .sbbd.vis{display:block;}
-@media(max-width:640px){.mbt{display:flex;align-items:center;}.hsub,.chip,.chip2{display:none;}.hdr{padding:0 10px;}.hrt{gap:4px;}.hbtn{padding:4px 7px;font-size:9.5px;}.sb{position:fixed;top:0;left:0;bottom:0;width:240px;z-index:150;transform:translateX(-100%);transition:transform .22s ease;box-shadow:4px 0 24px rgba(0,0,0,.5);}.sb.open{transform:translateX(0);}.sbcls{display:block;}.bwrap{flex-direction:column;}.co{flex:1;padding:12px;}.qrp{position:fixed;inset:0;width:100%!important;z-index:300;display:none;border-left:none;transform:translateY(100%);transition:transform .25s ease;}.qrp.mopen{transform:translateY(0);display:block!important;}.cg,.c2{grid-template-columns:1fr!important;}.g4{grid-template-columns:1fr 1fr!important;}.nav{height:44px;}.nt{padding:6px 12px;font-size:12px;}.srch{height:46px;}.si{font-size:16px;}.stbl{font-size:10.5px;}.stbl th,.stbl td{padding:5px 6px;}.il{width:120px;font-size:9.5px;}.cb{padding:9px 10px;}.ch{padding:7px 10px;}}
-@media print{body{background:#fff;color:#000;height:auto;overflow:visible;}.hdr,.srch,.nav,.sb,.qrp,.kbo,.mbt,.sbbd{display:none!important;}.bwrap{display:block;}.co{overflow:visible;padding:0;}.card{border:1px solid #ccc;margin-bottom:8px;break-inside:avoid;}.ch{background:#f5f0ff;}.cb.cl{display:block!important;}.dn{color:#000;}.dd{color:#4c1d95;}.d2{color:#444;}.fml{background:#f5f0ff;border:1px solid #c4b5fd;color:#4c1d95;}.al{background:#f5f5f5;border:1px solid #ccc;color:#333;}.stbl th{background:#f5f0ff;color:#444;}}
+@media(max-width:640px){.mbt{display:flex;align-items:center;}.hsub,.chip,.chip2{display:none;}.hdr{padding:0 10px;}.hrt{gap:4px;}.hbtn{padding:4px 7px;font-size:9.5px;}.sb{position:fixed;top:0;left:0;bottom:0;width:240px;z-index:150;transform:translateX(-100%);transition:transform .22s ease;box-shadow:4px 0 24px rgba(0,0,0,.5);}.sb.open{transform:translateX(0);}.sbcls{display:block;}.bwrap{flex-direction:column;}.co{flex:1;padding:12px;}.qrp{position:fixed;inset:0;width:100%!important;z-index:300;display:none;border-left:none;transform:translateY(100%);transition:transform .25s ease;}.qrp.mopen{transform:translateY(0);display:block!important;}.cg,.c2{grid-template-columns:1fr!important;}.g4{grid-template-columns:1fr 1fr!important;}.nav{height:44px;}.nt{padding:6px 12px;font-size:12px;}.srch{height:46px;}.si{font-size:16px;}.stbl th,.stbl td{padding:6px 8px;border-bottom:1px solid var(--b1);vertical-align:top;overflow-wrap:break-word;word-break:break-word;white-space:normal;}.il{width:120px;font-size:9.5px;}.cb{padding:9px 10px;}.ch{padding:7px 10px;}}
+@media print{body{background:#fff;color:#000;height:auto;overflow:visible;}.hdr,.srch,.nav,.sb,.qrp,.kbo,.mbt,.sbbd{display:none!important;}.bwrap{display:block;}.co{overflow:visible;padding:0;}.card{border:1px solid #ccc;margin-bottom:8px;break-inside:avoid;}.ch{background:#f5f0ff;}.cb.cl{display:block!important;}.dn{color:#000;min-width:0;overflow-wrap:break-word;word-break:break-word;}.dd{color:#4c1d95;min-width:0;overflow-wrap:break-word;word-break:break-word;}.d2{color:#444;min-width:0;overflow-wrap:break-word;word-break:break-word;}.fml{background:#f5f0ff;border:1px solid #c4b5fd;color:#4c1d95;}.al{background:#f5f5f5;border:1px solid #ccc;color:#333;}.stbl th{background:var(--sf2);padding:6px 8px;text-align:left;font-family:var(--fm);font-size:9px;color:var(--tx);font-weight:600;border-bottom:1px solid var(--b2);vertical-align:top;overflow-wrap:break-word;word-break:break-word;white-space:normal;}}
 .bkm-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.78);z-index:600;align-items:center;justify-content:center;}
 .bkm-overlay.open{display:flex;}
 .bkm-modal{background:var(--sf2);border:1px solid var(--b2);border-radius:10px;width:min(480px,92vw);max-height:82vh;overflow-y:auto;padding:20px 22px 18px;}
@@ -161,7 +181,7 @@ body{background:var(--bg);color:var(--tx);font-family:var(--fn);display:flex;fle
 .conn-online{color:var(--a6)!important;background:var(--a6-bg)!important;border-color:var(--a6-b)!important;}
 /* v4 contrast boost */
 .thr>div{color:var(--td);}
-.stbl th{color:var(--tx)!important;background:var(--sf3)!important;}
+.stbl th{background:var(--sf2);padding:6px 8px;text-align:left;font-family:var(--fm);font-size:9px;color:var(--tx);font-weight:600;border-bottom:1px solid var(--b2);vertical-align:top;overflow-wrap:break-word;word-break:break-word;white-space:normal;}
 </style>
 </head>
 <body>
@@ -614,83 +634,73 @@ pocus:{label:"POCUS",icon:"&#x1F50D;",subs:{
 <div class="cf"><div class="card a1"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">eFAST — 6 Views</span><span class="bd bd1">ACEP 2023</span></div><span class="ca o">&#9662;</span></div>
 <div class="cb">
 <div style="margin:12px 0 16px;overflow:hidden;">
-<svg viewBox="0 0 560 300" style="width:100%;max-width:560px;display:block;margin:0 auto;" xmlns="http://www.w3.org/2000/svg">
-  <!-- Background -->
-  <rect width="560" height="300" fill="#0d1623" rx="8"/>
+<svg viewBox="0 0 620 310" style="width:100%;max-width:620px;display:block;margin:0 auto;" xmlns="http://www.w3.org/2000/svg">
+  <rect width="620" height="310" fill="#0d1623" rx="8"/>
+  <text x="310" y="18" text-anchor="middle" font-size="9" fill="#00d4aa" font-family="monospace" font-weight="700" letter-spacing="1">eFAST EXAM — 6 VIEWS · CURVILINEAR OR PHASED ARRAY</text>
 
-  <!-- Title -->
-  <text x="280" y="18" text-anchor="middle" font-size="9" fill="#00d4aa" font-family="monospace" font-weight="700" letter-spacing="1">eFAST EXAM — 6 VIEWS · CURVILINEAR OR PHASED ARRAY</text>
+  <!-- torso schematic -->
+  <rect x="248" y="35" width="124" height="110" rx="12" fill="#0f1e35" stroke="#1e3050" stroke-width="1.5"/>
+  <rect x="248" y="140" width="124" height="80" rx="8" fill="#0f1e35" stroke="#1e3050" stroke-width="1.5"/>
+  <line x1="310" y1="35" x2="310" y2="220" stroke="#1e2a40" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="295" y1="142" x2="325" y2="142" stroke="#2e4060" stroke-width="1"/>
+  <text x="310" y="136" text-anchor="middle" font-size="6" fill="#374151" font-family="monospace">XIPHOID</text>
+  <text x="310" y="55" text-anchor="middle" font-size="6.5" fill="#1e3050" font-family="monospace">CHEST</text>
+  <text x="266" y="80" text-anchor="middle" font-size="6" fill="#2e4060" font-family="monospace">L</text>
+  <text x="354" y="80" text-anchor="middle" font-size="6" fill="#2e4060" font-family="monospace">R</text>
 
-  <!-- Simple torso outline - just geometric shapes, no bad silhouette -->
-  <!-- Chest rectangle -->
-  <rect x="228" y="35" width="104" height="110" rx="12" fill="#0f1e35" stroke="#1e3050" stroke-width="1.5"/>
-  <!-- Abdomen -->
-  <rect x="228" y="140" width="104" height="80" rx="8" fill="#0f1e35" stroke="#1e3050" stroke-width="1.5"/>
-  <!-- Midline -->
-  <line x1="280" y1="35" x2="280" y2="220" stroke="#1e2a40" stroke-width="1" stroke-dasharray="3,3"/>
-  <!-- Xiphoid marker -->
-  <line x1="265" y1="142" x2="295" y2="142" stroke="#2e4060" stroke-width="1"/>
-  <text x="280" y="135" text-anchor="middle" font-size="6" fill="#374151" font-family="monospace">XIPHOID</text>
-  <!-- Chest label -->
-  <text x="280" y="58" text-anchor="middle" font-size="6.5" fill="#1e3050" font-family="monospace">CHEST</text>
-  <!-- L/R labels -->
-  <text x="240" y="75" text-anchor="middle" font-size="6" fill="#2e4060" font-family="monospace">L</text>
-  <text x="320" y="75" text-anchor="middle" font-size="6" fill="#2e4060" font-family="monospace">R</text>
+  <!-- 1: R LUNG -->
+  <circle cx="345" cy="65" r="9" fill="#dc2626" stroke="#fca5a5" stroke-width="1.5"/>
+  <text x="345" y="69" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">1</text>
+  <line x1="378" y1="45" x2="350" y2="63" stroke="#dc2626" stroke-width="0.8" opacity="0.6"/>
+  <rect x="378" y="25" width="200" height="36" rx="4" fill="#250a0a" stroke="#dc2626" stroke-width="1.2"/>
+  <text x="478" y="38" text-anchor="middle" font-size="8" fill="#fca5a5" font-weight="700" font-family="monospace">R LUNG — PTX / Hemothorax</text>
+  <text x="478" y="51" text-anchor="middle" font-size="6.5" fill="#9ca3af" font-family="monospace">2nd–4th ICS MCL · sliding / barcode / seashore</text>
 
-  <!-- ── 1: R LUNG ── -->
-  <circle cx="315" cy="65" r="9" fill="#dc2626" stroke="#fca5a5" stroke-width="1.5"/>
-  <text x="315" y="69" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">1</text>
-  <line x1="345" y1="42" x2="320" y2="62" stroke="#dc2626" stroke-width="0.8" opacity="0.6"/>
-  <rect x="345" y="25" width="168" height="36" rx="4" fill="#250a0a" stroke="#dc2626" stroke-width="1.2"/>
-  <text x="429" y="38" text-anchor="middle" font-size="8" fill="#fca5a5" font-weight="700" font-family="monospace">R LUNG — PTX / Hemothorax</text>
-  <text x="429" y="50" text-anchor="middle" font-size="6.5" fill="#9ca3af" font-family="monospace">2nd–4th ICS MCL · sliding / barcode / seashore</text>
+  <!-- 2: L LUNG -->
+  <circle cx="275" cy="65" r="9" fill="#0891b2" stroke="#67e8f9" stroke-width="1.5"/>
+  <text x="275" y="69" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">2</text>
+  <line x1="242" y1="45" x2="270" y2="63" stroke="#0891b2" stroke-width="0.8" opacity="0.6"/>
+  <rect x="42" y="25" width="198" height="36" rx="4" fill="#050f20" stroke="#0891b2" stroke-width="1.2"/>
+  <text x="141" y="38" text-anchor="middle" font-size="8" fill="#67e8f9" font-weight="700" font-family="monospace">L LUNG — PTX / Hemothorax</text>
+  <text x="141" y="51" text-anchor="middle" font-size="6.5" fill="#9ca3af" font-family="monospace">2nd–4th ICS MCL · mirror of right side</text>
 
-  <!-- ── 2: L LUNG ── -->
-  <circle cx="245" cy="65" r="9" fill="#0891b2" stroke="#67e8f9" stroke-width="1.5"/>
-  <text x="245" y="69" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">2</text>
-  <line x1="213" y1="42" x2="240" y2="62" stroke="#0891b2" stroke-width="0.8" opacity="0.6"/>
-  <rect x="47" y="25" width="164" height="36" rx="4" fill="#050f20" stroke="#0891b2" stroke-width="1.2"/>
-  <text x="129" y="38" text-anchor="middle" font-size="8" fill="#67e8f9" font-weight="700" font-family="monospace">L LUNG — PTX / Hemothorax</text>
-  <text x="129" y="50" text-anchor="middle" font-size="6.5" fill="#9ca3af" font-family="monospace">2nd–4th ICS MCL · mirror of right side</text>
+  <!-- 3: Subxiphoid cardiac -->
+  <circle cx="310" cy="148" r="9" fill="#7c3aed" stroke="#c4b5fd" stroke-width="1.5"/>
+  <text x="310" y="152" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">3</text>
+  <line x1="378" y1="130" x2="317" y2="148" stroke="#7c3aed" stroke-width="0.8" opacity="0.6"/>
+  <rect x="378" y="112" width="200" height="36" rx="4" fill="#1a0f35" stroke="#7c3aed" stroke-width="1.2"/>
+  <text x="478" y="125" text-anchor="middle" font-size="8" fill="#c4b5fd" font-weight="700" font-family="monospace">SUBXIPHOID CARDIAC</text>
+  <text x="478" y="138" text-anchor="middle" font-size="6.5" fill="#9ca3af" font-family="monospace">Probe flat · pericardial effusion / tamponade</text>
 
-  <!-- ── 3: Subxiphoid cardiac ── -->
-  <circle cx="280" cy="148" r="9" fill="#7c3aed" stroke="#c4b5fd" stroke-width="1.5"/>
-  <text x="280" y="152" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">3</text>
-  <line x1="345" y1="130" x2="287" y2="148" stroke="#7c3aed" stroke-width="0.8" opacity="0.6"/>
-  <rect x="345" y="112" width="168" height="36" rx="4" fill="#1a0f35" stroke="#7c3aed" stroke-width="1.2"/>
-  <text x="429" y="125" text-anchor="middle" font-size="8" fill="#c4b5fd" font-weight="700" font-family="monospace">SUBXIPHOID CARDIAC</text>
-  <text x="429" y="137" text-anchor="middle" font-size="6.5" fill="#9ca3af" font-family="monospace">Probe flat · pericardial effusion / tamponade</text>
+  <!-- 4: RUQ -->
+  <circle cx="348" cy="175" r="9" fill="#059669" stroke="#6ee7b7" stroke-width="1.5"/>
+  <text x="348" y="179" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">4</text>
+  <line x1="378" y1="185" x2="355" y2="176" stroke="#059669" stroke-width="0.8" opacity="0.6"/>
+  <rect x="378" y="165" width="200" height="36" rx="4" fill="#0a2018" stroke="#059669" stroke-width="1.2"/>
+  <text x="478" y="178" text-anchor="middle" font-size="8" fill="#6ee7b7" font-weight="700" font-family="monospace">RUQ — Morrison’s Pouch</text>
+  <text x="478" y="191" text-anchor="middle" font-size="6.5" fill="#9ca3af" font-family="monospace">MAL · 10th ICS · hepatorenal space + diaphragm</text>
 
-  <!-- ── 4: RUQ ── -->
-  <circle cx="318" cy="175" r="9" fill="#059669" stroke="#6ee7b7" stroke-width="1.5"/>
-  <text x="318" y="179" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">4</text>
-  <line x1="345" y1="185" x2="325" y2="176" stroke="#059669" stroke-width="0.8" opacity="0.6"/>
-  <rect x="345" y="165" width="168" height="36" rx="4" fill="#0a2018" stroke="#059669" stroke-width="1.2"/>
-  <text x="429" y="178" text-anchor="middle" font-size="8" fill="#6ee7b7" font-weight="700" font-family="monospace">RUQ — Morrison's Pouch</text>
-  <text x="429" y="190" text-anchor="middle" font-size="6.5" fill="#9ca3af" font-family="monospace">MAL · 10th ICS · hepatorenal space + above Hemi</text>
+  <!-- 5: LUQ -->
+  <circle cx="272" cy="175" r="9" fill="#2563eb" stroke="#93c5fd" stroke-width="1.5"/>
+  <text x="272" y="179" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">5</text>
+  <line x1="242" y1="185" x2="265" y2="176" stroke="#2563eb" stroke-width="0.8" opacity="0.6"/>
+  <rect x="42" y="165" width="198" height="36" rx="4" fill="#0f1f35" stroke="#2563eb" stroke-width="1.2"/>
+  <text x="141" y="178" text-anchor="middle" font-size="8" fill="#93c5fd" font-weight="700" font-family="monospace">LUQ — Splenorenal</text>
+  <text x="141" y="191" text-anchor="middle" font-size="6.5" fill="#9ca3af" font-family="monospace">Post MAL · 8–9th ICS · Koller’s pouch</text>
 
-  <!-- ── 5: LUQ ── -->
-  <circle cx="242" cy="175" r="9" fill="#2563eb" stroke="#93c5fd" stroke-width="1.5"/>
-  <text x="242" y="179" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">5</text>
-  <line x1="211" y1="185" x2="235" y2="176" stroke="#2563eb" stroke-width="0.8" opacity="0.6"/>
-  <rect x="47" y="165" width="164" height="36" rx="4" fill="#0f1f35" stroke="#2563eb" stroke-width="1.2"/>
-  <text x="129" y="178" text-anchor="middle" font-size="8" fill="#93c5fd" font-weight="700" font-family="monospace">LUQ — Splenorenal</text>
-  <text x="129" y="190" text-anchor="middle" font-size="6.5" fill="#9ca3af" font-family="monospace">Post MAL · 8-9th ICS · Koller's pouch + above Hemi</text>
+  <!-- 6: Pelvic -->
+  <circle cx="310" cy="215" r="9" fill="#d97706" stroke="#fcd34d" stroke-width="1.5"/>
+  <text x="310" y="219" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">6</text>
+  <line x1="310" y1="224" x2="310" y2="244" stroke="#d97706" stroke-width="0.8" opacity="0.6"/>
+  <rect x="211" y="244" width="198" height="36" rx="4" fill="#251500" stroke="#d97706" stroke-width="1.2"/>
+  <text x="310" y="257" text-anchor="middle" font-size="8" fill="#fcd34d" font-weight="700" font-family="monospace">PELVIC / SUPRAPUBIC</text>
+  <text x="310" y="270" text-anchor="middle" font-size="6.5" fill="#9ca3af" font-family="monospace">Rectovesical ♂ · Pouch of Douglas ♀ · sagittal + transverse</text>
 
-  <!-- ── 6: Pelvic ── -->
-  <circle cx="280" cy="215" r="9" fill="#d97706" stroke="#fcd34d" stroke-width="1.5"/>
-  <text x="280" y="219" text-anchor="middle" font-size="9" fill="white" font-weight="700" font-family="monospace">6</text>
-  <line x1="280" y1="224" x2="280" y2="245" stroke="#d97706" stroke-width="0.8" opacity="0.6"/>
-  <rect x="196" y="245" width="168" height="36" rx="4" fill="#251500" stroke="#d97706" stroke-width="1.2"/>
-  <text x="280" y="258" text-anchor="middle" font-size="8" fill="#fcd34d" font-weight="700" font-family="monospace">PELVIC / SUPRAPUBIC</text>
-  <text x="280" y="270" text-anchor="middle" font-size="6.5" fill="#9ca3af" font-family="monospace">Rectovesical ♂ · Pouch of Douglas ♀ · sagittal + transverse</text>
+  <!-- sequence path -->
+  <path d="M345,65 Q370,115 348,175 Q330,210 310,215 Q290,210 272,175 Q248,120 275,65"
+        fill="none" stroke="#00d4aa" stroke-width="1" stroke-dasharray="4,4" opacity="0.25"/>
 
-  <!-- Sequence arrow hint around torso -->
-  <path d="M315,65 Q340,110 318,175 Q300,210 280,215 Q260,210 242,175 Q215,120 245,65" 
-        fill="none" stroke="#00d4aa" stroke-width="1" stroke-dasharray="4,4" opacity="0.3"/>
-
-  <!-- Footer -->
-  <text x="280" y="292" text-anchor="middle" font-size="7.5" fill="#374151" font-family="monospace">ACEP 2023 · 6 Views · Sensitivity: free fluid ~80%, PTX ~49-99%</text>
+  <text x="310" y="296" text-anchor="middle" font-size="7.5" fill="#374151" font-family="monospace">ACEP 2023 · Sensitivity: free fluid ~80%, PTX ~49–99%</text>
 </svg>
 </div>
 <div class="sl">SEQUENCE</div>
