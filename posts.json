@@ -1,0 +1,29 @@
+[
+  {
+    "file": "posts/whole-blood-front-door.html",
+    "section": "continuum",
+    "type": "Prehospital",
+    "typeClass": "prehospital-type",
+    "title": "Whole Blood at the Front Door",
+    "meta": "Prehospital · Transfusion · NAEMSP · May 2026",
+    "date": "2026-05-29"
+  },
+  {
+    "file": "posts/uterine-rupture-retrieval.html",
+    "section": "continuum",
+    "type": "The Continuum",
+    "typeClass": "continuum-type",
+    "title": "Uterine Rupture at Altitude: When the Retrieval Is the Resuscitation",
+    "meta": "Prehospital · Critical Care · Air Med J · May 2026",
+    "date": "2026-05-01"
+  },
+  {
+    "file": "posts/flight-paramedicine-anesthesia.html",
+    "section": "continuum",
+    "type": "Prehospital",
+    "typeClass": "prehospital-type",
+    "title": "What Flight Paramedicine Actually Taught Me About Anesthesia",
+    "meta": "Personal essay · The Continuum · Feb 2026",
+    "date": "2026-02-01"
+  }
+]
