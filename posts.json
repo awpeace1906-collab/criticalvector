@@ -1,12 +1,12 @@
 [
   {
-"file": "who-makes-it-in-medicine.html",
-"section": "flightdeck", ← continuum | locker | flightdeck | workshop
-"type": "Opinion", ← the label shown in the post list
-"typeClass": "flightdeck-type", ← see class reference below
+"file": "posts/who-makes-it-in-medicine.html",
+"section": "flightdeck"
+"type": "Opinion"
+"typeClass": "flightdeck-type"
 "title": "Who Actually Makes It in Medicine",
 "meta": "Opinion · Medical Education · June 2026",
-"date": "2026-06-08" ← YYYY-MM-DD, controls sort order
+"date": "2026-06-08"
 }
   {
     "file": "posts/whole-blood-front-door.html",
