@@ -29,7 +29,7 @@
 </style>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EM Pocket Guide</title>
+<title>EM Pocket Guide v5</title>
 <style>
 :root{--fn:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;--fm:'Menlo','Consolas','Courier New',monospace;--bg:#07050f;--sf1:#0d0a1e;--sf2:#130e28;--sf3:#1a1335;--b1:#251a40;--b2:#301d55;--b3:#3d2570;--tx:#e8d8ff;--td:#8060c0;--tm:#3d2a70;--ac:#e8394a;--ac-bg:rgba(232,57,74,.09);--ac-b:rgba(232,57,74,.30);--ac-tx:#fca5a5;--a2:#c084fc;--a2-bg:rgba(192,132,252,.09);--a2-b:rgba(192,132,252,.28);--a2-tx:#e9d5ff;--a3:#4ade80;--a3-bg:rgba(74,222,128,.08);--a3-b:rgba(74,222,128,.25);--a3-tx:#bbf7d0;--a4:#fbbf24;--a4-bg:rgba(251,191,36,.08);--a4-b:rgba(251,191,36,.25);--a4-tx:#fde68a;--a5:#f97316;--a5-bg:rgba(249,115,22,.08);--a5-b:rgba(249,115,22,.25);--a5-tx:#fed7aa;--a6:#38bdf8;--a6-bg:rgba(56,189,248,.09);--a6-b:rgba(56,189,248,.28);--a6-tx:#bae6fd;--a7:#fb923c;--a7-bg:rgba(251,146,60,.08);--a7-b:rgba(251,146,60,.25);--a7-tx:#fed7aa;}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -183,6 +183,28 @@ body{background:var(--bg);color:var(--tx);font-family:var(--fn);display:flex;fle
 .thr>div{color:var(--td);}
 .stbl th{background:var(--sf2);padding:6px 8px;text-align:left;font-family:var(--fm);font-size:9px;color:var(--tx);font-weight:600;border-bottom:1px solid var(--b2);vertical-align:top;overflow-wrap:break-word;word-break:break-word;white-space:normal;}
 </style>
+<style>
+/* ── v5: controversy · safety-net · cite chips · escalation tier ─────────── */
+.controversy{background:rgba(192,132,252,.08);border-left:3px solid #c084fc;border-radius:0 5px 5px 0;padding:9px 13px;margin:10px 0;line-height:1.6;font-size:12px;color:var(--tx);}
+.controversy::before{content:"\2696\FE0F  CONTROVERSY";display:block;font-size:9px;font-weight:700;letter-spacing:.12em;color:#c084fc;margin-bottom:5px;}
+.safety-net{background:rgba(251,191,36,.07);border-left:3px solid #fbbf24;border-radius:0 5px 5px 0;padding:9px 13px;margin:10px 0;line-height:1.6;font-size:12px;color:var(--tx);}
+.safety-net::before{content:"\26A0\FE0F  DON\2019T MISS";display:block;font-size:9px;font-weight:700;letter-spacing:.12em;color:#fbbf24;margin-bottom:5px;}
+.cite{display:inline-block;background:rgba(56,189,248,.10);border:1px solid rgba(56,189,248,.28);color:#38bdf8;border-radius:3px;padding:0 5px;font-size:9.5px;font-weight:700;letter-spacing:.04em;vertical-align:middle;margin:0 2px;white-space:nowrap;font-family:var(--fm);}
+.cite-eu{background:rgba(74,222,128,.09);border-color:rgba(74,222,128,.25);color:#4ade80;}
+.cite-red{background:rgba(232,57,74,.09);border-color:rgba(232,57,74,.28);color:#e8394a;}
+.cite-amb{background:rgba(251,191,36,.08);border-color:rgba(251,191,36,.25);color:#fbbf24;}
+.esc-list{list-style:none;margin:4px 0;padding:0;}
+.esc-list li{display:flex;align-items:flex-start;gap:10px;padding:7px 10px 7px 8px;border-bottom:1px solid var(--b1);font-size:12px;line-height:1.5;}
+.esc-list li:last-child{border-bottom:none;}
+.esc-num{min-width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;font-family:var(--fm);margin-top:1px;}
+.esc-emer{background:rgba(232,57,74,.06)!important;}.esc-emer .esc-num{background:var(--ac-bg);border:1px solid var(--ac-b);color:var(--ac);}
+.esc-shift{background:rgba(251,191,36,.05)!important;}.esc-shift .esc-num{background:var(--a4-bg);border:1px solid var(--a4-b);color:var(--a4);}
+.esc-elim{background:rgba(74,222,128,.04)!important;}.esc-elim .esc-num{background:var(--a3-bg);border:1px solid var(--a3-b);color:var(--a3);}
+.flow-wrap{margin:12px 0;overflow-x:auto;}
+.score-hi td{background:rgba(232,57,74,.08)!important;}
+.score-lo td{background:rgba(74,222,128,.07)!important;}
+.disp-row{display:flex;align-items:center;justify-content:space-between;padding:5px 11px;background:var(--sf2);border-radius:4px;font-size:12px;margin:3px 0;gap:10px;}
+</style>
 </head>
 <body>
 <div class="sbbd" id="sbbd"></div>
@@ -208,7 +230,7 @@ body{background:var(--bg);color:var(--tx);font-family:var(--fn);display:flex;fle
     </div>
   </div>
   <div class="hrt">
-    <span class="chip">v4 · 2026</span>
+    <span class="chip">v5 · 2026</span>
     <span class="chip2" id="connChip">✓ OFFLINE</span><button class="hbtn" onclick="document.getElementById(\'bkmOverlay\').classList.add(\'open\')" title="Save for offline use" style="margin-left:4px">📌 Save</button>
     <button class="hbtn" id="btnQ" onclick="toggleQ()">&#128138; Drug Ref</button>
     <button class="hbtn" onclick="window.print()">&#128424;</button>
@@ -413,7 +435,155 @@ shock:{label:"Shock",icon:"&#x26A1;",subs:{
 <tr><td class="dn">Obstructive (Tension PTX)</td><td>Mediastinal shift</td><td class="dd">Pallor; tracheal deviation</td><td>&uarr;HR, &darr;&darr;BP</td><td>Needle decompression 2nd ICS MCL STAT</td></tr>
 <tr><td class="dn">Neurogenic</td><td>Sympathetic disruption</td><td class="dd">Warm, dry, bradycardia</td><td>&darr;HR, &darr;BP</td><td>Fluids; phenylephrine/NE; MAP &ge;85</td></tr>
 </table>
-</div></div></div>`},
+</div></div>
+<div class="controversy"><strong>NE vs dopamine in cardiogenic shock:</strong> SOAP II (NEJM 2010) showed dopamine had significantly more arrhythmias vs norepinephrine &mdash; most guidelines now prefer NE even in cardiogenic shock. <strong>IABP in cardiogenic shock:</strong> IABP-SHOCK II (NEJM 2012) showed no 30-day mortality benefit; current ESC guidelines downgrade to IIb (no routine use), yet IABP remains widely used as bridge to LVAD or transplant. <strong>Aggressive fluids in obstructive shock:</strong> small IV challenges can temporarily improve preload in tamponade; however aggressive volume in massive PE worsens RV dilation and right heart failure.</div>
+<div class="safety-net"><strong>Cardiogenic:</strong> avoid aggressive fluid resuscitation &mdash; worsens pulmonary edema and RV strain; dobutamine + revascularization rather than boluses. <strong>Tension PTX:</strong> tracheal deviation is a late and unreliable sign &mdash; diagnose clinically: absent breath sounds + hemodynamic collapse; needle decomp before CXR. <strong>Tamponade:</strong> Beck's triad present in fewer than 40% of cases; muffled heart sounds missed in noisy resus bay; POCUS is diagnostic. <strong>Neurogenic shock:</strong> bradycardia + hypotension (vs tachycardia in hypovolemic); MAP target &#8805;85 mmHg to protect spinal cord perfusion; phenylephrine preferred (avoids beta-agonist in complete cord injury).</div>
+</div>`},
+sepsis:{label:"Sepsis / SSC 2026",updated:"SSC 2026",content:()=>`
+<div class="cf"><div class="card a1"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Sepsis &amp; Septic Shock &mdash; SSC 2026 Core Bundle</span><span class="bd bd1">SSC 2026</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="al e"><span class="ali">&#9888;</span>Sepsis and septic shock are medical emergencies. Treatment and resuscitation begin immediately. Screening tool: NEWS, NEWS2, MEWS, or SIRS preferred over qSOFA alone (SSC 2026 strong).</div>
+<div class="thr g2"><div>Action</div><div>SSC 2026 Recommendation</div></div>
+<div class="tr g2"><div class="dn">Blood cultures</div><div class="d2">Collect before antibiotics when feasible; do not delay antibiotics &gt;45 min to obtain cultures. (Strong)</div></div>
+<div class="tr g2"><div class="dn">Antibiotics &mdash; septic shock</div><div class="dd">&#x2264;1 hr of recognition (Strong)</div></div>
+<div class="tr g2"><div class="dn">Antibiotics &mdash; probable/definite sepsis, no shock</div><div class="dd">&#x2264;1 hr of recognition (Strong)</div></div>
+<div class="tr g2"><div class="dn">Antibiotics &mdash; possible sepsis, no shock</div><div class="d2">Rapid clinical assessment first; if concern persists, administer within <b>3 hours</b> (Conditional). Defer if low infection likelihood &amp; no shock.</div></div>
+<div class="tr g2"><div class="dn">Beta-lactam infusion</div><div class="dd">Prolonged/extended infusion for maintenance after loading dose (Strong, moderate evidence)</div></div>
+<div class="tr g2"><div class="dn">Initial fluid</div><div class="dd">30 mL/kg IV crystalloid within 3 hr (Conditional) <span class="cite">SSC 2026</span></div></div>
+<div class="tr g2"><div class="dn">Fluid type</div><div class="d2">Balanced crystalloids preferred over 0.9% NS (Conditional). Against starches (Strong). Against gelatin (Conditional). Crystalloids alone over albumin unless large volumes given or cirrhosis (Conditional).</div></div>
+<div class="tr g2"><div class="dn">Source control</div><div class="d2">Identify anatomical source; ideally within 6 hr of diagnosis (Conditional)</div></div>
+<div class="tr g2"><div class="dn">De-escalation</div><div class="dd">De-escalate when culture + susceptibilities available (Strong); also when cultures negative (Conditional)</div></div>
+<div class="tr g2"><div class="dn">Lactate</div><div class="d2">Measure at presentation (Conditional); serial lactate to guide resuscitation (Conditional). Do not target lactate normalization with ongoing fluids.</div></div>
+<div class="tr g2"><div class="dn">Capillary refill</div><div class="d2">Use as adjunct to other perfusion measures (Conditional)</div></div>
+<div class="tr g2"><div class="dn">Dynamic fluid assessment</div><div class="d2">Use dynamic measures (PLR, SV, PPV, SVV) over static measures or exam alone (Conditional)</div></div>
+<div class="tr g2"><div class="dn">Procalcitonin</div><div class="d2">Use PCT + clinical evaluation to decide when to <i>stop</i> antibiotics (Conditional); do NOT use PCT alone to decide whether to start antibiotics (use clinical evaluation alone) (Conditional)</div></div>
+<div class="tr g2"><div class="dn">Blood transfusion</div><div class="dd">Restrictive strategy (Strong, moderate evidence)</div></div>
+<div class="tr g2"><div class="dn">Insulin</div><div class="dd">Start at glucose &ge;180 mg/dL (Strong)</div></div>
+<div class="tr g2"><div class="dn">VTE prophylaxis</div><div class="dd">LMWH preferred over UFH; pharmacologic alone over pharmacologic + mechanical (Strong)</div></div>
+<div class="tr g2"><div class="dn">Goals of care</div><div class="d2">Discuss within 72 hr (Conditional); integrate palliative principles as appropriate</div></div>
+</div></div></div>
+<div class="cg">
+<div class="card"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Vasopressors &mdash; SSC 2026 Ladder</span><span class="bd bd1">SSC 2026</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="al w"><span class="ali">&#9733;</span><b>Start vasopressors peripherally</b> rather than delaying for central access (Conditional). For <b>unstable shock</b> (severe hypotension, mottling, cyanosis, altered mentation): immediate concurrent vasopressors + crystalloid is warranted &mdash; do NOT wait for fluids to infuse first.</div>
+
+<div class="flow-wrap">
+<svg viewBox="0 0 600 195" style="width:100%;max-width:600px;display:block;margin:0 auto" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="svga" markerWidth="7" markerHeight="7" refX="7" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#4b5563"/></marker></defs>
+<rect width="600" height="195" fill="#0d1623" rx="8"/>
+<text x="300" y="14" text-anchor="middle" font-size="8" fill="#e8394a" font-family="monospace" font-weight="700" letter-spacing="1">VASOPRESSOR LADDER &#8212; SSC 2026</text>
+<rect x="14" y="24" width="124" height="48" rx="5" fill="#1a0808" stroke="#e8394a" stroke-width="1.5"/>
+<text x="76" y="40" text-anchor="middle" font-size="7.5" fill="#fca5a5" font-weight="700" font-family="monospace">1ST LINE</text>
+<text x="76" y="53" text-anchor="middle" font-size="9.5" fill="#e8394a" font-weight="700" font-family="monospace">Norepinephrine</text>
+<text x="76" y="65" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">MAP target &#8805;65 mmHg</text>
+<line x1="138" y1="48" x2="162" y2="48" stroke="#4b5563" stroke-width="1.5" marker-end="url(#svga)"/>
+<text x="150" y="43" text-anchor="middle" font-size="6.5" fill="#6b7280" font-family="monospace">NE &#8805;0.25</text>
+<rect x="164" y="24" width="124" height="48" rx="5" fill="#1a1500" stroke="#fbbf24" stroke-width="1.5"/>
+<text x="226" y="40" text-anchor="middle" font-size="7.5" fill="#fde68a" font-weight="700" font-family="monospace">ADD-ON</text>
+<text x="226" y="53" text-anchor="middle" font-size="9.5" fill="#fbbf24" font-weight="700" font-family="monospace">+ Vasopressin</text>
+<text x="226" y="65" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">0.03 units/min fixed</text>
+<line x1="288" y1="48" x2="312" y2="48" stroke="#4b5563" stroke-width="1.5" marker-end="url(#svga)"/>
+<text x="300" y="43" text-anchor="middle" font-size="6.5" fill="#6b7280" font-family="monospace">Refractory</text>
+<rect x="314" y="24" width="124" height="48" rx="5" fill="#080f1a" stroke="#38bdf8" stroke-width="1.5"/>
+<text x="376" y="40" text-anchor="middle" font-size="7.5" fill="#bae6fd" font-weight="700" font-family="monospace">3RD LINE</text>
+<text x="376" y="53" text-anchor="middle" font-size="9.5" fill="#38bdf8" font-weight="700" font-family="monospace">+ Epinephrine</text>
+<text x="376" y="65" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">or swap vasopressin</text>
+<line x1="438" y1="48" x2="462" y2="48" stroke="#4b5563" stroke-width="1.5" marker-end="url(#svga)"/>
+<text x="450" y="43" text-anchor="middle" font-size="6.5" fill="#6b7280" font-family="monospace">&#8595;CO</text>
+<rect x="464" y="24" width="122" height="48" rx="5" fill="#081a0a" stroke="#4ade80" stroke-width="1.5"/>
+<text x="525" y="40" text-anchor="middle" font-size="7.5" fill="#bbf7d0" font-weight="700" font-family="monospace">INOTROPY</text>
+<text x="525" y="53" text-anchor="middle" font-size="9.5" fill="#4ade80" font-weight="700" font-family="monospace">Dobutamine</text>
+<text x="525" y="65" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">2.5&#8211;20 mcg/kg/min</text>
+<line x1="226" y1="72" x2="226" y2="95" stroke="#4b5563" stroke-width="1.2" stroke-dasharray="3,2"/>
+<rect x="140" y="95" width="284" height="32" rx="5" fill="#110f2a" stroke="#c084fc" stroke-width="1.2"/>
+<text x="282" y="109" text-anchor="middle" font-size="8.5" fill="#c4b5fd" font-weight="700" font-family="monospace">+ Hydrocortisone 200 mg/day IV</text>
+<text x="282" y="121" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">if NE+VP &#8805;0.25 mcg/kg/min AND hemodynamically unstable &#8212; SSC 2026 Conditional</text>
+<rect x="14" y="143" width="572" height="36" rx="5" fill="#081a0a" stroke="#4ade80" stroke-width="1"/>
+<text x="300" y="158" text-anchor="middle" font-size="8.5" fill="#6ee7b7" font-weight="700" font-family="monospace">SOURCE CONTROL &#8212; within 6&#8211;12hr of identification (Conditional &#8212; SSC 2026)</text>
+<text x="300" y="171" text-anchor="middle" font-size="7" fill="#9ca3af" font-family="monospace">Drain abscess &#8226; Remove infected lines &#8226; Surgical consult &#8226; De-escalate antibiotics at 48&#8211;72hr using PCT + cultures</text>
+<text x="300" y="188" text-anchor="middle" font-size="7" fill="#374151" font-family="monospace">SSC 2026 &#8212; Surviving Sepsis Campaign Guidelines</text>
+</svg>
+</div>
+
+<div class="thr g3"><div>Step</div><div>Agent / Dose</div><div>SSC 2026 Guidance</div></div>
+<div class="tr g3"><div class="dn">1st-line</div><div class="dd">Norepinephrine <span class="cite">SSC 2026</span></div><div class="d2">Preferred over dopamine, epinephrine, selepressin (Strong &mdash; high-quality evidence vs dopamine). Target MAP &ge;65 mmHg; 60&ndash;65 mmHg if age &ge;65 (Conditional)</div></div>
+<div class="tr g3"><div class="dn">Add-on (escalating NE)</div><div class="dd">+ Vasopressin <span class="cite">SSC 2026</span></div><div class="d2">Add when NE doses escalating (Conditional, moderate evidence). NE preferred over vasopressin as first agent (Conditional).</div></div>
+<div class="tr g3"><div class="dn">3rd-line (NE + VP inadequate)</div><div class="dd">+ Epinephrine <span class="cite">SSC 2026</span></div><div class="d2">Add when MAP inadequate despite NE + vasopressin (Conditional). Can substitute vasopressin if unavailable.</div></div>
+<div class="tr g3"><div class="dn">Cardiac dysfunction</div><div class="dd">NE or Epinephrine &plusmn; Dobutamine</div><div class="d2">Persistent hypoperfusion despite adequate MAP + volume: dobutamine added to NE, or epinephrine alone (Conditional). Against levosimendan (Conditional).</div></div>
+<div class="tr g3"><div class="dn">&#10006; Avoid</div><div class="dd">Terlipressin</div><div class="d2">Recommend AGAINST (Conditional). Against beta-blockers as treatment for septic shock (Conditional).</div></div>
+<div class="dv"></div>
+<div style="font-family:var(--fm);font-size:10px;color:var(--tm)">Methylene blue for refractory shock: insufficient evidence (69% of SSC panel "never or almost never" use it).</div>
+</div></div>
+<div class="card"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Respiratory Support &amp; Adjuncts</span><span class="bd bd6">SSC 2026</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="thr g2"><div>Domain</div><div>SSC 2026 Recommendation</div></div>
+<div class="tr g2"><div class="dn">Oxygen target</div><div class="d2">SpO&#8322; 90&ndash;96% acceptable; titrate FiO&#8322; to maintain. Higher or lower targets both acceptable depending on patient &amp; resources (Conditional).</div></div>
+<div class="tr g2"><div class="dn">Respiratory support</div><div class="d2"><b>HFNC preferred</b> over conventional O&#8322; (Conditional) AND over NIV (Conditional) for acute hypoxemic respiratory failure. HFNC preferred over alternating HFNC/NIV (Conditional).</div></div>
+<div class="tr g2"><div class="dn">Awake proning</div><div class="d2">Suggest a trial in non-intubated patients (Conditional). No sedation for proning tolerance.</div></div>
+<div class="tr g2"><div class="dn">MV &mdash; ARDS</div><div class="d2">Tidal volume 6 mL/kg IBW (Strong); plateau pressure &le;30 cmH&#8322;O (Strong); against incremental PEEP titration strategy (Strong); prone &gt;12hr/day for mod-severe ARDS (Conditional).</div></div>
+<div class="tr g2"><div class="dn">Corticosteroids</div><div class="d2">Suggest IV corticosteroids for septic shock (Conditional, low evidence). Hydrocortisone 200 mg/day is typical practice.</div></div>
+<div class="tr g2"><div class="dn">Active fluid removal</div><div class="d2">After acute resuscitation phase, suggest active fluid removal (diuretics; ultrafiltration if diuretics fail) (Conditional).</div></div>
+<div class="dv"></div>
+<div class="crit"><div class="ct">Explicitly AGAINST (SSC 2026)</div><ul>
+<li>&#10006; Antipyretics for clinical outcomes (Conditional) &mdash; OK for comfort/pain control</li>
+<li>&#10006; IV vitamin C (Conditional, low evidence)</li>
+<li>&#10006; IV immunoglobulins (Conditional, low evidence)</li>
+<li>&#10006; Blood purification (hemoperfusion, high-dose CVVH, plasma exchange) (Conditional)</li>
+<li>&#10006; Polymyxin B hemoperfusion (Conditional)</li>
+<li>&#10006; Probiotics (Conditional)</li>
+<li>&#10006; Vitamin D as treatment (Conditional)</li>
+<li>&#10006; Empiric antifungals unless high-risk factors (Conditional)</li>
+<li>&#10006; Terlipressin (Conditional)</li>
+<li>&#10006; Beta-blockers as treatment for septic shock (Conditional)</li>
+<li>&#10006; Levosimendan for cardiac dysfunction (Conditional)</li>
+</ul></div>
+</div></div>
+</div>
+<div class="controversy"><strong>Lactate vs peripheral perfusion targeting:</strong> ANDROMEDA-SHOCK (NEJM 2019) showed capillary refill targeting non-inferior to lactate clearance for 28-day mortality &mdash; SSC 2026 now endorses capillary refill as a valid adjunct. <strong>Balanced crystalloid vs normal saline:</strong> SMART and SALT-ED confirm lower AKI incidence with LR; SSC gives conditional recommendation for balanced crystalloids; BASICS (ICU) showed no mortality difference. <strong>Corticosteroid threshold:</strong> ADRENAL (no mortality benefit) vs APROCCHSS (significant mortality benefit) remain unresolved &mdash; SSC 2026 conditional for hydrocortisone if NE/epi &#8805;0.25 mcg/kg/min + persistent hemodynamic instability. <strong>Initial 30 mL/kg bolus:</strong> CLOVERS and CLASSIC trials suggest potential harm from liberal early fluids; SSC 2026 now conditional (was "strong") and emphasizes dynamic reassessment.</div>
+<div class="safety-net"><strong>Source control:</strong> failure to identify and control anatomical source is the most common cause of refractory septic shock &mdash; review imaging within hours, not days. <strong>De-escalation:</strong> failure to de-escalate at 48&#8211;72hr drives resistance; use PCT trend + culture data. <strong>Watch for:</strong> sepsis-induced cardiomyopathy (new LVEF reduction &mdash; echo if NE &gt;0.25 mcg/kg/min + oliguria), AKI (reassess all drug dosing especially vancomycin, pip-tazo, aminoglycosides), and secondary adrenal insufficiency in refractory shock. <strong>Antifungals:</strong> reserve for high-risk patients only (prolonged broad-spectrum antibiotics, TPN, neutropenia, hematologic malignancy, multi-site Candida colonization) &mdash; not routine.</div>
+`},
+  dyspnea:{label:"Acute Dyspnea / NIV",updated:"BLUE Protocol · ATS 2024",content:()=>`
+<div class="cf"><div class="card a6"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">POCUS-Guided Dyspnea Algorithm</span><span class="bd bd6">BLUE Protocol</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="al i"><span class="ali">&#8505;</span>Lung POCUS at bedside before CXR reduces time-to-diagnosis in acute dyspnea. Sensitivity for cardiogenic pulmonary edema ~94%; specificity ~92% (Lichtenstein 2008). Perform simultaneously with O&#8322; and IV access.</div>
+<div class="dv"></div>
+<div class="thr g3"><div>POCUS Pattern</div><div>Likely Diagnosis</div><div>First Move</div></div>
+<div class="tr g3"><div class="dn">Bilateral B-lines (&ge;3/zone, &ge;2 zones bilateral)</div><div class="dd">Cardiogenic pulmonary edema or ARDS</div><div class="d2">BiPAP (IPAP 10&ndash;15 / EPAP 5&ndash;8) + furosemide 40&ndash;80mg IV; echo for LVEF; BNP/NT-proBNP</div></div>
+<div class="tr g3"><div class="dn">Bilateral A-lines + lung sliding present</div><div class="dd">COPD exacerbation, asthma, or PE</div><div class="d2">COPD: bronchodilators + BiPAP; PE: Wells/PERC &#8594; CTPA; asthma: SABA nebs + Mg 2g IV</div></div>
+<div class="tr g3"><div class="dn">Absent lung sliding (unilateral anterior)</div><div class="dd">Pneumothorax (ipsilateral)</div><div class="d2">Lung point confirms PTX (100% specific); needle decom if unstable; chest tube</div></div>
+<div class="tr g3"><div class="dn">Unilateral B-lines or consolidation</div><div class="dd">Pneumonia or pulmonary contusion</div><div class="d2">Antibiotics; early intubation threshold low if bilateral; worsening hypoxia on HFNC = prepare for RSI</div></div>
+<div class="tr g3"><div class="dn">A-lines + plethoric IVC + RV &gt;LV (A4C)</div><div class="dd">Massive PE / obstructive shock</div><div class="d2">Anticoagulate; if hemodynamic compromise: systemic lytics alteplase 100mg/2hr or 0.6mg/kg/15min in arrest</div></div>
+<div class="tr g3"><div class="dn">A-lines + anechoic pleural space</div><div class="dd">Pleural effusion (parapneumonic, malignant, transudative)</div><div class="d2">Diagnostic thoracentesis if &gt;10mm; Light's criteria (protein ratio, LDH ratio, LDH absolute)</div></div>
+</div></div></div>
+<div class="cg">
+<div class="card a3"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">NIV Start Settings</span><span class="bd bd3">ATS 2024</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="thr g3"><div>Parameter</div><div>CPAP</div><div>BiPAP (S/T)</div></div>
+<div class="tr g3"><div class="dn">EPAP / PEEP</div><div class="dd">5&ndash;10 cmH&#8322;O</div><div class="dd">4&ndash;8 cmH&#8322;O</div></div>
+<div class="tr g3"><div class="dn">IPAP</div><div class="dd">N/A (fixed pressure)</div><div class="dd">10&ndash;15 cmH&#8322;O (net PS = IPAP &minus; EPAP, target 8&ndash;12)</div></div>
+<div class="tr g3"><div class="dn">FiO&#8322;</div><div class="dd">Titrate to SpO&#8322; 94&ndash;99%</div><div class="dd">Titrate to SpO&#8322; 94&ndash;99%</div></div>
+<div class="tr g3"><div class="dn">Best indication</div><div class="dd">Flash pulmonary edema, OSA</div><div class="dd">COPD exacerbation, hypercapnic failure, post-extubation</div></div>
+<div class="tr g3"><div class="dn">Backup rate (S/T)</div><div class="dd">N/A</div><div class="dd">10&ndash;12 bpm</div></div>
+<div class="dv"></div>
+<div class="crit"><div class="ct">HFNC Parameters <span class="cite">SSC 2026</span></div>
+<ul><li>Flow: Start 40&ndash;60 L/min; titrate to comfort and SpO&#8322;</li><li>FiO&#8322;: Start 0.6&ndash;0.8; wean to &lt;0.5 within 1&ndash;2hr if improving</li><li>Temp: 37&deg;C (body temperature humidification)</li><li>ROX index: (SpO&#8322;/FiO&#8322;) / RR &mdash; if &lt;4.88 at 12hr = high HFNC failure risk; prepare for intubation</li><li>SSC 2026: HFNC preferred over conventional O&#8322; AND over NIV for acute hypoxemic respiratory failure (Conditional)</li></ul></div>
+<div class="al w" style="margin-top:8px"><span class="ali">&#9888;</span><strong>NIV failure signs:</strong> worsening RR, SpO&#8322;, or mentation after 1hr; tidal volume &gt;9 mL/kg IBW (P-SILI risk); inability to protect airway; hemodynamic deterioration &#8594; intubate early, not late.</div>
+</div></div>
+<div class="card a5"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">COPD Exacerbation &mdash; EM Bundle</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<ul class="sl">
+<li><span class="sn">1</span><span><strong>Bronchodilators:</strong> Albuterol 2.5mg + Ipratropium 0.5mg neb q20min x3 (SABA + SAMA)</span></li>
+<li><span class="sn">2</span><span><strong>BiPAP:</strong> IPAP 10&ndash;15 / EPAP 4&ndash;8 cmH&#8322;O; reduces intubation by ~50% and mortality; first-line over intubation if cooperative <span class="cite">NEJM 1995</span></span></li>
+<li><span class="sn">3</span><span><strong>Corticosteroids:</strong> Methylprednisolone 125mg IV once, then prednisone 40mg PO x5 days (REDUCE trial: non-inferior to 14 days)</span></li>
+<li><span class="sn">4</span><span><strong>Magnesium sulfate:</strong> 2g IV over 20 min (adjunct bronchodilator; stronger evidence in asthma)</span></li>
+<li><span class="sn">5</span><span><strong>Antibiotics:</strong> if 2+ Anthonisen criteria (increased dyspnea + sputum volume + purulence) &mdash; azithromycin, doxycycline, or fluoroquinolone if severe</span></li>
+<li><span class="sn">6</span><span><strong>Heliox 70:30:</strong> reduces airway resistance; adjunct in severe bronchospasm not responding to above</span></li>
+</ul>
+</div></div>
+</div>
+<div class="controversy"><strong>HFNC vs NIV in hypoxemic failure:</strong> FLORALI (NEJM 2015) found HFNC superior in non-hypercapnic ARF; subsequent studies show equivalence in many contexts. SSC 2026 prefers HFNC over both conventional O&#8322; and NIV (conditional). <strong>P-SILI risk with NIV:</strong> high respiratory drive during NIV can generate large spontaneous tidal volumes, worsening lung injury &mdash; monitor tidal volume and ROX; low threshold to intubate if deteriorating. <strong>CPAP vs BiPAP in flash pulmonary edema:</strong> 3CPO trial showed equivalent outcomes; most guidelines prefer BiPAP if concurrent hypercapnia (COPD overlap).</div>
+<div class="safety-net"><strong>Don't "NIV and wait":</strong> NIV failure requiring emergent RSI carries higher mortality than elective early intubation. Reassess clinically at 1hr: pH &lt;7.30 + not improving = intubate. <strong>PE masquerading as COPD:</strong> check for asymmetric leg swelling, pleuritic component, and PE risk factors in any "COPD exac" with diagnostic uncertainty. <strong>CO poisoning:</strong> pulse oximetry reads COHgb as OxyHgb &mdash; any AMS + headache + closed-space exposure = CO-oximetry and 100% NRB. <strong>Tension PTX in intubated patient:</strong> sudden SpO&#8322; drop + hemodynamic collapse = needle decompression before CXR; high PEEP is a risk factor.</div>
+`}
 }},
 
 neuro:{label:"Neurology",icon:"&#x1F9E0;",subs:{
@@ -423,7 +593,7 @@ neuro:{label:"Neurology",icon:"&#x1F9E0;",subs:{
 <div class="al e"><span class="ali">&#9200;</span>Time = brain. ~1.9 million neurons die per minute during large vessel occlusion. Activate stroke team immediately on arrival.</div>
 <ul class="sl">
 <li><span class="sn">1</span><span><strong>0&ndash;25 min:</strong> NIHSS exam, BG, INR/anti-Xa, ECG, weight &mdash; STAT non-contrast head CT</span></li>
-<li><span class="sn">2</span><span><strong>25&ndash;45 min (if eligible):</strong> tPA 0.9mg/kg IV (max 90mg); 10% bolus over 1 min, remainder over 60 min &mdash; within 4.5hr onset</span></li>
+<li><span class="sn">2</span><span><strong>25&ndash;45 min (if eligible):</strong> tPA 0.9mg/kg IV (max 90mg); 10% bolus over 1 min, remainder over 60 min &mdash; within 4.5hr onset <span class="cite">AHA 2023</span></span></li>
 <li><span class="sn">3</span><span><strong>0&ndash;24 hr LVO:</strong> CT-angiography &rarr; mechanical thrombectomy if LVO; up to 24hr with DAWN/DEFUSE-3 criteria</span></li>
 <li><span class="sn">4</span><span><strong>BP before tPA:</strong> Keep &lt;185/110 before dosing; &lt;180/105 &times;24hr after tPA</span></li>
 <li><span class="sn">5</span><span><strong>No tPA (permissive HTN):</strong> Allow up to 220/120 unless other indication to treat</span></li>
@@ -456,6 +626,31 @@ neuro:{label:"Neurology",icon:"&#x1F9E0;",subs:{
 <div class="tr g4"><div class="dn">RSE (&gt;30 min)</div><div class="dd">Propofol</div><div class="dd">Intubate + propofol 1&ndash;2mg/kg &rarr; 1&ndash;15 mg/kg/hr</div><div class="d2">Midazolam 0.2mg/kg &rarr; 0.05&ndash;2mg/kg/hr infusion</div></div>
 <div class="tr g4"><div class="dn">SRSE (&gt;24hr)</div><div class="dd">Pentobarbital</div><div class="dd">5mg/kg load &rarr; 1&ndash;5mg/kg/hr (burst suppression on EEG)</div><div class="d2">Ketamine 1&ndash;1.5mg/kg &rarr; 1&ndash;5mg/kg/hr as adjunct/alternative</div></div>
 </div></div></div>`},
+  ams:{label:"Altered Mental Status",updated:"2024",content:()=>`
+<div class="cf"><div class="card a2"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Altered Mental Status &mdash; AEIOU-TIPS</span><span class="bd bd1">EMERGENCY</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="al e"><span class="ali">&#9888;</span><strong>First move always: fingerstick glucose.</strong> If malnourished, alcoholic, or any doubt: <strong>Thiamine 100mg IV BEFORE glucose</strong> (Wernicke's prevention). Never give dextrose first in thiamine-depleted patients.</div>
+<table class="stbl" style="margin-top:8px">
+<tr><th style="width:22%">AEIOU-TIPS</th><th style="width:40%">Key Causes</th><th>Workup / Pearl</th></tr>
+<tr><td class="dn">A &mdash; Alcohol</td><td>Acute intoxication; Wernicke's encephalopathy; ETOH withdrawal (CIWA)</td><td>ETOH level, thiamine, LFTs; tremor + tachycardia = withdrawal; seizure risk peaks 24&ndash;48hr</td></tr>
+<tr><td class="dn">E &mdash; Epilepsy / Endocrine</td><td>Postictal state; non-convulsive SE; hypo/hyperglycemia; thyroid storm; myxedema coma; Addisonian crisis</td><td>BG; TSH + T4; cortisol stim; EEG if postictal not clearing in 30 min</td></tr>
+<tr><td class="dn">I &mdash; Insulin / Ingestion</td><td>Hypoglycemia; drug ingestion (benzos, opioids, TCAs, salicylates); toxidromes</td><td>BG; tox screen; acetaminophen level; ASA level; carboxyhemoglobin</td></tr>
+<tr><td class="dn">O &mdash; Oxygen</td><td>Hypoxia; hypercarbia; CO poisoning; cyanide</td><td>ABG + CO-oximetry; SpO&#8322; unreliable with CO; high-flow O&#8322; immediately</td></tr>
+<tr><td class="dn">U &mdash; Uremia</td><td>Renal failure; hepatic encephalopathy (asterixis, elevated NH&#8323;)</td><td>BMP; NH&#8323;; LFTs; lactulose for encephalopathy; rifaximin</td></tr>
+<tr><td class="dn">T &mdash; Trauma / Temp</td><td>TBI; ICH; SDH (may be delayed days in elderly after minor falls); hypothermia; hyperthermia</td><td>NCHCT; rectal temp; elderly SDH from trivial mechanism</td></tr>
+<tr><td class="dn">I &mdash; Infection</td><td>Meningitis; encephalitis; septic encephalopathy; brain abscess; UTI (elderly)</td><td>LP if no focal deficit / papilledema; start empiric abx BEFORE CT if bacterial meningitis likely</td></tr>
+<tr><td class="dn">P &mdash; Psychiatric</td><td>Psychosis; dissociation; catatonia; conversion</td><td>Diagnosis of exclusion &mdash; rule out all organic causes first</td></tr>
+<tr><td class="dn">S &mdash; Stroke / Structural</td><td>Ischemic stroke (especially posterior circulation); ICH; SAH (thunderclap); CNS mass</td><td>NCHCT; CTA if LVO concern; LP if CT negative + thunderclap headache (SAH sensitivity 98% at 12hr)</td></tr>
+</table>
+<div class="dv"></div>
+<div class="thr g3"><div>Condition</div><div>Distinguishing Feature</div><div>Treatment Pearl</div></div>
+<div class="tr g3"><div class="dn">Wernicke's encephalopathy</div><div class="d2">Classic triad (confusion + ophthalmoplegia + ataxia) present in only 16% &mdash; high clinical suspicion required</div><div class="d2">Thiamine 500mg IV q8h x3 days; give BEFORE glucose; risk: alcohol, malnutrition, hyperemesis, GI surgery, TPN</div></div>
+<div class="tr g3"><div class="dn">Hepatic encephalopathy</div><div class="d2">Asterixis; fetor hepaticus; grade I&ndash;IV; precipitant often identifiable (bleed, infection, constipation, meds)</div><div class="d2">Lactulose 30mL q1&ndash;2h until BM; rifaximin for maintenance; identify and treat precipitant first</div></div>
+<div class="tr g3"><div class="dn">Hypertensive encephalopathy</div><div class="d2">SBP typically &gt;220 mmHg; headache + confusion + visual changes; PRES on MRI</div><div class="d2">Labetalol or nicardipine IV; lower MAP by 20&ndash;25% over first hour; avoid rapid normalization (cerebral ischemia)</div></div>
+<div class="tr g3"><div class="dn">Non-convulsive status epilepticus (NCSE)</div><div class="d2">Persistent AMS after apparent seizure; subtle eye deviation, facial twitching, automatisms</div><div class="d2">EEG is diagnostic; treat per SE ladder; LP for encephalitis if febrile + AMS + NCSE</div></div>
+</div></div></div>
+<div class="safety-net"><strong>Never assume psychiatric</strong> &mdash; organic causes are missed daily in patients labeled as "frequent fliers" or "always like this." Minimum workup: BG + BMP + CBC + UA + tox screen + NCHCT. <strong>Elderly:</strong> SDH from forgotten minor falls, UTI-triggered delirium (especially women), polypharmacy (anticholinergics, benzos, opioids, digoxin). <strong>Don't miss SAH:</strong> LP in all patients with thunderclap headache and negative CT (CT sensitivity falls from 98% within 6hr to ~85% at 24hr). <strong>Meningitis:</strong> do NOT delay antibiotics to get CT first if classic triad + no focal deficit/papilledema &mdash; CT first only if: focal neurologic deficit, papilledema, seizure, or immunocompromised.</div>
+`}
 }},
 tox:{label:"Toxicology",icon:"&#x2697;&#xFE0F;",subs:{
   toxidromes:{label:"Toxidromes",updated:"2024",content:()=>`
@@ -554,8 +749,8 @@ hemorrhagic:{label:"Hemorrhagic Shock / MTP",updated:"ATLS 11th 2024",content:()
 <div class="card"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Massive Transfusion Protocol</span><span class="bd bd5">MTP</span></div><span class="ca o">&#9662;</span></div>
 <div class="cb">
 <div class="al e"><span class="ali">&#9888;</span>Activate MTP: uncontrolled hemorrhage requiring &ge;3 units pRBC in 1hr, or anticipated &ge;10 units/24hr.</div>
-<div class="ir"><div class="il">Ratio</div><div class="iv m">pRBC : FFP : Plt = 1:1:1</div></div>
-<div class="ir"><div class="il">TXA</div><div class="iv">1g IV within 3hr of injury (CRASH-2); 2nd dose 1g over 8hr</div></div>
+<div class="ir"><div class="il">Ratio</div><div class="iv m">pRBC : FFP : Plt = 1:1:1 <span class="cite">PROPPR</span></div></div>
+<div class="ir"><div class="il">TXA</div><div class="iv">1g IV within 3hr of injury <span class="cite">CRASH-2</span>; 2nd dose 1g over 8hr</div></div>
 <div class="ir"><div class="il">Calcium</div><div class="iv">CaCl&#8322; 1g IV after every 4 units pRBC (citrate chelation)</div></div>
 <div class="ir"><div class="il">Fibrinogen target</div><div class="iv m">&gt;200 mg/dL &mdash; cryoprecipitate 10 units if low</div></div>
 <div class="ir"><div class="il">Platelet target</div><div class="iv m">&ge;50k; &ge;100k if TBI</div></div>
@@ -874,6 +1069,59 @@ pocus:{label:"POCUS",icon:"&#x1F50D;",subs:{
 </div></div>
 </div>`},
 }},
+electrolytes:{label:"Electrolytes",icon:"&#x26A1;",subs:{
+  hyperk:{label:"Hyperkalemia",updated:"2024",content:()=>`
+<div class="cf"><div class="card a1"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Hyperkalemia &mdash; ECG Progression</span><span class="bd bd1">EMERGENCY</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="al e"><span class="ali">&#9888;</span>Treat empirically if ECG changes are present &mdash; do NOT wait for lab confirmation. Any K+ &gt;6.5 mEq/L with ECG changes is immediately life-threatening.</div>
+<div class="thr g3" style="margin-top:8px"><div>K+ Level (mEq/L)</div><div>ECG Changes</div><div>Urgency</div></div>
+<div class="tr g3"><div class="dn">5.5&ndash;6.0</div><div class="d2">Peaked (tented) T-waves; short QT interval</div><div><span class="bd bd4">Urgent</span></div></div>
+<div class="tr g3"><div class="dn">6.0&ndash;6.5</div><div class="d2">PR prolongation; QRS widening (&gt;120ms); P-wave flattening</div><div><span class="bd bd5">High urgency</span></div></div>
+<div class="tr g3"><div class="dn">&gt;6.5</div><div class="d2">Loss of P-waves; sine wave pattern; any rhythm; VF/asystole imminent</div><div><span class="bd bd1">IMMEDIATE</span></div></div>
+<div class="dv"></div>
+<div style="font-family:var(--fm);font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--a3);margin:8px 0 6px">ESCALATION TIER: STABILIZE &#8250; SHIFT &#8250; ELIMINATE</div>
+<ul class="esc-list">
+<li class="esc-emer"><div class="esc-num">1</div><div><strong>Calcium gluconate 1&ndash;3g IV over 5&ndash;10 min</strong> (peripheral OK) or CaCl&#8322; 1g IV central &mdash; membrane stabilization only (does not lower K+). Onset 1&ndash;3 min, duration 30&ndash;60 min. Repeat q30min if ECG not improving. <strong>Give immediately for any ECG changes.</strong></div></li>
+<li class="esc-shift"><div class="esc-num">2</div><div><strong>Regular insulin 10 units IV + D50W 50mL (25g dextrose)</strong> &mdash; shifts K+ intracellularly via Na/K-ATPase. Onset 15&ndash;30 min. Lowers K+ by 0.5&ndash;1.5 mEq/L for 4&ndash;6hr. Monitor BG q1h; omit dextrose if BG &gt;250 mg/dL.</div></li>
+<li class="esc-shift"><div class="esc-num">3</div><div><strong>Albuterol 10&ndash;20mg nebulized</strong> (10mg = 20 standard 2.5mg neb vials stacked) &mdash; beta-2 stimulation shifts K+ intracellularly; additive to insulin. Onset 30 min. Lowers K+ 0.5&ndash;1.5 mEq/L. Use cautiously if arrhythmia-prone (causes tachycardia).</div></li>
+<li class="esc-shift"><div class="esc-num">4</div><div><strong>Sodium bicarbonate 50&ndash;100 mEq IV</strong> &mdash; only effective in metabolic acidosis (pH &lt;7.20); minimal effect at normal pH. Lowers K+ ~0.5 mEq/L per 0.1 pH unit increase. Caution: volume overload, hypernatremia.</div></li>
+<li class="esc-elim"><div class="esc-num">5</div><div><strong>Patiromer (Veltassa) 8.4g PO</strong> or Sodium zirconium cyclosilicate (Lokelma) 10g TID x2 days &mdash; preferred over Kayexalate; eliminates K+ via GI tract. Onset 2&ndash;7hr. Sustained effect.</div></li>
+<li class="esc-elim"><div class="esc-num">6</div><div><strong>Furosemide 40&ndash;80mg IV</strong> &mdash; promotes renal K+ excretion. Effective only if urine output is present; useless in oliguric/anuric AKI.</div></li>
+<li class="esc-elim"><div class="esc-num">7</div><div><strong>Emergent hemodialysis</strong> &mdash; definitive removal, especially oliguric AKI, CKD stage 4&ndash;5, or K+ &gt;6.5 + refractory to above. Nephrology consult immediately in these cases.</div></li>
+</ul>
+<div class="al g" style="margin-top:10px"><span class="ali">&#9889;</span><strong>BRASH Syndrome:</strong> Bradycardia + Renal failure + AV block + Shock + Hyperkalemia. Bradycardia disproportionate to K+ level and resistant to atropine. Caused by synergy between AV nodal agents (beta-blockers, diltiazem, verapamil) and hyperkalemia. Treat: calcium, insulin, consider dialysis; treat the drug as a cofactor. BRASH is not primary conduction disease.</div>
+</div></div></div>
+<div class="controversy"><strong>Sodium bicarbonate in non-acidotic HyperK:</strong> multiple RCTs and meta-analyses (including NEJM 2018) show minimal efficacy in non-acidotic patients &mdash; reserve for confirmed metabolic acidosis. <strong>Calcium gluconate vs calcium chloride:</strong> CaCl&#8322; delivers 3x elemental calcium per gram but causes severe tissue necrosis with extravasation &mdash; use CaGluconate peripherally, CaCl&#8322; central line only. <strong>Kayexalate (SPS) safety:</strong> case reports and series of intestinal necrosis (rare but serious; higher risk post-op, intestinal ileus) &mdash; Patiromer and Lokelma are preferred safer alternatives with equivalent K-lowering at 24hr.</div>
+<div class="safety-net"><strong>EKG first, every time:</strong> a K+ of 6.2 with peaked T-waves needs immediate calcium; a K+ of 6.2 with normal EKG has more time. Repeat EKG after calcium to confirm stabilization. <strong>False hyperkalemia:</strong> hemolysis (common in phlebotomy), thrombocytosis (&gt;1,000k/mm&#179;), and leukocytosis (&gt;100k) all elevate reported K+ spuriously &mdash; if patient looks well, repeat via blood gas analyzer (whole blood K+). <strong>Check ionized calcium</strong> in massive transfusion (citrate chelation of free calcium can precipitate cardiac toxicity independent of K+). <strong>After treatment:</strong> K+-shifting agents (insulin, albuterol, bicarb) do not eliminate K+ &mdash; definitive elimination with cation exchangers, diuresis, or dialysis is always required to prevent rebound hyperkalemia.</div>
+`},
+  sodium:{label:"Sodium Disorders",updated:"2024",content:()=>`
+<div class="cg">
+<div class="card a2"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Hyponatremia &mdash; Severity &amp; Management</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="thr g3"><div>Severity</div><div>Na+ / Symptoms</div><div>Treatment</div></div>
+<div class="tr g3" style="background:rgba(74,222,128,.05)"><div class="dn" style="color:var(--a3)">Mild</div><div class="d2">125&ndash;134 mEq/L; asymptomatic or mild nausea</div><div class="d2">Treat underlying cause; restrict fluids to 500&ndash;1000 mL/day if SIADH</div></div>
+<div class="tr g3" style="background:rgba(251,191,36,.04)"><div class="dn" style="color:var(--a4)">Moderate</div><div class="d2">120&ndash;124 mEq/L; headache, confusion, vomiting</div><div class="d2">3% NaCl 100&ndash;150mL IV over 20 min; may repeat x2; target +5 mEq/L in 1hr <span class="cite-eu">ESC 2023</span></div></div>
+<div class="tr g3" style="background:rgba(232,57,74,.05)"><div class="dn" style="color:var(--ac)">Severe (symptomatic)</div><div class="d2">&lt;120 mEq/L OR seizure/coma/respiratory arrest regardless of level</div><div class="d2"><strong>3% NaCl 150mL IV bolus</strong>; repeat x2 PRN; +5 mEq/L/hr until symptoms resolve; max 10&ndash;12 mEq/L/24hr</div></div>
+<div class="dv"></div>
+<div class="crit"><div class="ct">ODS Prevention &mdash; Maximum Correction Rates</div>
+<ul><li>Max rate: 0.5&ndash;1 mEq/L/hr for most patients</li><li>Max in 24hr: 10&ndash;12 mEq/L (8&ndash;10 if high ODS risk: alcohol, malnutrition, hypokalemia, liver disease)</li><li>Max in 48hr: 18 mEq/L cumulative</li><li><strong>Overcorrected:</strong> DDAVP 1&ndash;2 mcg IV + D5W IV to re-lower Na+ (relowering is safe if done promptly)</li></ul></div>
+<div class="crit" style="margin-top:6px"><div class="ct">SIADH Diagnostic Criteria</div>
+<ul><li>Serum Na &lt;135 mEq/L + plasma osmolality &lt;275 mOsm/kg</li><li>Urine osmolality &gt;100 mOsm/kg (inappropriately concentrated)</li><li>Urine Na &gt;40 mEq/L (renal salt wasting)</li><li>Euvolemia clinically (no edema, no orthostasis)</li><li>Normal thyroid, adrenal, and renal function</li></ul></div>
+</div></div>
+<div class="card a4"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Hypernatremia &mdash; Classification &amp; Correction</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="thr g2"><div>Type</div><div>Cause &amp; Treatment</div></div>
+<div class="tr g2"><div class="dn">Hypovolemic</div><div class="d2">GI losses, diuretics, insensible losses &mdash; isotonic saline first to restore volume, then switch to D5W or 0.45% NaCl when hemodynamically stable</div></div>
+<div class="tr g2"><div class="dn">Euvolemic</div><div class="d2">Central DI (lack of ADH) or nephrogenic DI (ADH resistance) &mdash; D5W or 0.45% NaCl; DDAVP 1&ndash;4 mcg IV/SQ q12&ndash;24hr for central DI</div></div>
+<div class="tr g2"><div class="dn">Hypervolemic</div><div class="d2">Iatrogenic (NaHCO&#8323; infusion, hypertonic saline overuse) &mdash; D5W + furosemide to facilitate free water excess</div></div>
+<div class="dv"></div>
+<div class="fml"><div class="fl">Free Water Deficit (FWD)</div>FWD (L) = 0.6 &times; TBW (kg) &times; [(Na/140) &minus; 1] &mdash; replace over 48&ndash;72hr; max rate 0.5 mEq/L/hr reduction (faster = cerebral edema)</div>
+<div class="al w" style="margin-top:6px"><span class="ali">&#9888;</span>"ICU Na drift" &mdash; hypernatremia develops insidiously in intubated patients from inadequate free water in tube feeds, hyperosmolar IV fluids, or excess insensible losses. Daily free water balance review prevents this.</div>
+</div></div>
+</div>
+<div class="safety-net"><strong>HypoNa overcorrection</strong> is the most dangerous complication &mdash; re-lower with DDAVP + D5W if corrected &gt;10 mEq/L in 24hr. Osmotic demyelination syndrome (ODS/CPM) can manifest 2&ndash;6 days post-correction with dysarthria, dysphagia, and flaccid quadriplegia. <strong>Seizure in hyponatremia:</strong> give 3% NaCl 150mL IV bolus immediately regardless of baseline Na+ &mdash; correct until seizure stops, then slow down aggressively. <strong>Beer potomania / tea-and-toast hyponatremia:</strong> severe HypoNa with very low urine osmolality (&lt;100); at risk for "desalination" if given normal fluids &mdash; water restriction + solute supplementation, NOT hypertonic saline as primary therapy.</div>
+`},
+}},
 scores:{label:"Scores &amp; Tools",icon:"&#x1F4CA;",subs:{
   emscores:{label:"EM Scores &amp; Formulas",updated:"2024",content:()=>`
 <div class="cg">
@@ -928,6 +1176,198 @@ scores:{label:"Scores &amp; Tools",icon:"&#x1F4CA;",subs:{
 <div class="tr g3"><div class="dn">aVR STEMI / left main</div><div class="d2">ST elevation aVR + diffuse ST depression; reciprocal to LMCA/proximal LAD</div><div class="d2">STEMI equivalent &mdash; cath lab; high mortality</div></div>
 </div></div>
 </div>`},
+refs:{label:"References",updated:"2026",content:()=>`
+<div class="cf"><div class="card a6"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Sources &amp; Guidelines</span><span class="bd bd6">EM Pocket Guide v5</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="sl">RESUSCITATION &amp; CARDIAC</div>
+<div class="tr g2"><div class="dn">AHA 2020</div><div class="dd">Guidelines for CPR and Emergency Cardiovascular Care. Circulation 2020;142(16 Suppl 2). doi:10.1161/CIR.0000000000000916</div></div>
+<div class="tr g2"><div class="dn">AHA 2023</div><div class="dd">Focused Updates to Adult Basic and Advanced Life Support. Circulation 2023;148:e5-e23. doi:10.1161/CIR.0000000000001117</div></div>
+<div class="sl" style="margin-top:8px">SEPSIS</div>
+<div class="tr g2"><div class="dn">SSC 2026</div><div class="dd">Evans L, et al. Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2026. Crit Care Med 2026. doi:10.1097/CCM.0000000000006420</div></div>
+<div class="tr g2"><div class="dn">Seymour CW, et al. 2016</div><div class="dd">qSOFA validation for sepsis. JAMA 2016;315(8):762-774. doi:10.1001/jama.2016.0288</div></div>
+<div class="sl" style="margin-top:8px">AIRWAY &amp; CRITICAL CARE</div>
+<div class="tr g2"><div class="dn">ACEP 2023</div><div class="dd">ACEP Clinical Policies and Practice Guidelines 2023. acep.org/clinical</div></div>
+<div class="tr g2"><div class="dn">Kovacs G, Sowers N. 2018</div><div class="dd">Airway Management in Trauma. Emerg Med Clin North Am 2018;36(1):61-84. doi:10.1016/j.emc.2017.08.006</div></div>
+<div class="sl" style="margin-top:8px">TRAUMA</div>
+<div class="tr g2"><div class="dn">ATLS 11th Ed. 2024</div><div class="dd">Advanced Trauma Life Support Student Course Manual, 11th ed. American College of Surgeons 2024. ISBN 978-0-9966320-4-7</div></div>
+<div class="tr g2"><div class="dn">ACS-COT 2021</div><div class="dd">Resources for Optimal Care of the Injured Patient 2021. facs.org/quality-programs/trauma</div></div>
+<div class="tr g2"><div class="dn">CDC FTG 2021</div><div class="dd">2021 National Trauma Triage Protocol. MMWR Recomm Rep 2022;71(1):1-19. doi:10.15585/mmwr.rr7101a1</div></div>
+<div class="tr g2"><div class="dn">CRASH-2 2010</div><div class="dd">Effects of tranexamic acid on death in trauma patients. Lancet 2010;376(9734):23-32. doi:10.1016/S0140-6736(10)60835-5</div></div>
+<div class="tr g2"><div class="dn">PROPPR 2015</div><div class="dd">Holcomb JB, et al. Transfusion of Plasma, Platelets, and RBCs in 1:1:1 vs 1:1:2 ratio. JAMA 2015;313(5):471-482. doi:10.1001/jama.2015.12</div></div>
+<div class="sl" style="margin-top:8px">NEUROLOGY &amp; TOXICOLOGY</div>
+<div class="tr g2"><div class="dn">AHA/ASA 2019</div><div class="dd">Guidelines for Early Management of Acute Ischemic Stroke. Stroke 2019;50(12):e344-e418. doi:10.1161/STR.0000000000000211</div></div>
+<div class="tr g2"><div class="dn">Brophy GM, et al. 2012</div><div class="dd">Guidelines for Evaluation and Management of Status Epilepticus. Neurocrit Care 2012;17(1):3-23. doi:10.1007/s12028-012-9695-z</div></div>
+<div class="tr g2"><div class="dn">ACMT 2022</div><div class="dd">American College of Medical Toxicology Position Statements 2022. acmt.net</div></div>
+<div class="sl" style="margin-top:8px">POCUS</div>
+<div class="tr g2"><div class="dn">ACEP POCUS 2023</div><div class="dd">ACEP Emergency Ultrasound Guidelines 2023. Ann Emerg Med 2023. doi:10.1016/j.annemergmed.2023.06.015</div></div>
+<div class="tr g2"><div class="dn">Perera P, et al. 2010</div><div class="dd">The RUSH Exam. Emerg Med Clin North Am 2010;28(1):29-56. doi:10.1016/j.emc.2009.09.010</div></div>
+<div class="tr g2"><div class="dn">Lichtenstein DA. 2015</div><div class="dd">BLUE-Protocol and FALLS-Protocol. Chest 2015;147(6):1659-1670. doi:10.1378/chest.14-1313</div></div>
+<div class="tr g2"><div class="dn">Disclaimer</div><div class="dd">Educational reference only. Not a substitute for clinical judgment. Verify all protocols against current institutional guidelines and the most recent published evidence.</div></div>
+</div></div></div>`},
+  syncope:{label:"Syncope Risk (CSRS/SFSR)",updated:"ACEP 2023",content:()=>`
+<div class="cf"><div class="card a2"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Canadian Syncope Risk Score (CSRS)</span><span class="bd bd2">ACEP 2023</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="al i"><span class="ali">&#8505;</span>Predicts 30-day serious adverse event (SAE: arrhythmia, MI, structural intervention, or death). Validated in 4,030 patients; AUC 0.87. Apply after initial ED evaluation when cause undetermined.</div>
+<table class="stbl" style="margin-top:8px">
+<tr><th style="width:58%">Criterion</th><th style="width:14%">Points</th><th>Risk Level</th></tr>
+<tr class="score-lo"><td class="dn">Predisposition to vasovagal syncope (prolonged standing, warm environment, pain, emotional trigger)</td><td class="dd">&minus;1</td><td rowspan="9" style="vertical-align:middle;font-size:11px;color:var(--td)">Score &le;0<br>Very Low (&lt;0.4%)<br><br>Score 1&ndash;3<br>Low (1&ndash;3%)<br><br>Score &ge;4<br>High (&gt;10%)</td></tr>
+<tr><td class="dn">Heart disease history (known CAD, HF, valvular disease, prior arrhythmia, pacemaker/ICD)</td><td class="dd">+1</td></tr>
+<tr><td class="dn">SBP &lt;90 or &gt;180 mmHg at initial triage</td><td class="dd">+2</td></tr>
+<tr><td class="dn">Troponin elevated &gt;99th percentile (any hs-cTn or standard)</td><td class="dd">+2</td></tr>
+<tr><td class="dn">Abnormal QRS axis on ECG (LAD or RAD)</td><td class="dd">+1</td></tr>
+<tr><td class="dn">QRS duration &gt;130 ms</td><td class="dd">+1</td></tr>
+<tr><td class="dn">QTc &gt;480 ms</td><td class="dd">+2</td></tr>
+<tr class="score-lo"><td class="dn">ED diagnosis: vasovagal syncope (confirmed vasovagal trigger + response)</td><td class="dd">&minus;2</td></tr>
+<tr class="score-hi"><td class="dn">ED diagnosis: cardiac syncope (known arrhythmia, structural disease)</td><td class="dd">+2</td></tr>
+</table>
+<div class="dv"></div>
+<div class="disp-row"><strong>Score &le;0</strong> &mdash; Very Low Risk: &lt;0.4% SAE<span style="color:var(--a3);font-weight:700">&rarr; Safe discharge</span></div>
+<div class="disp-row"><strong>Score 1&ndash;3</strong> &mdash; Low Risk: 1&ndash;3% SAE<span style="color:var(--a4);font-weight:700">&rarr; Shared decision / short obs</span></div>
+<div class="disp-row"><strong>Score &ge;4</strong> &mdash; Moderate-High: &gt;10% SAE<span style="color:var(--ac);font-weight:700">&rarr; Admit / telemetry</span></div>
+</div></div></div>
+<div class="cg">
+<div class="card a5"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">San Francisco Syncope Rule (SFSR) &mdash; CHESS</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="al w"><span class="ali">&#9888;</span>Any ONE criterion = HIGH RISK (serious outcome within 7 days). Sensitivity ~98%, NPV ~99% when all negative.</div>
+<div class="crit"><div class="ct">CHESS Criteria (any positive = HIGH RISK)</div>
+<ul>
+<li><strong>C</strong> &mdash; CHF history (congestive heart failure diagnosis)</li>
+<li><strong>H</strong> &mdash; Hematocrit &lt;30%</li>
+<li><strong>E</strong> &mdash; abnormal ECG (new changes vs baseline, non-sinus rhythm, or arrhythmia)</li>
+<li><strong>S</strong> &mdash; Shortness of breath on presentation or recent dyspnea</li>
+<li><strong>S</strong> &mdash; Systolic BP &lt;90 mmHg at triage</li>
+</ul></div>
+<div class="ir" style="margin-top:6px"><div class="il">All 5 negative</div><div class="iv" style="color:var(--a3)">Low risk &mdash; discharge appropriate (with shared decision-making)</div></div>
+<div class="ir"><div class="il">Any positive</div><div class="iv" style="color:var(--ac)">High risk &mdash; admit and monitor; cardiology consult</div></div>
+</div></div>
+<div class="card a1"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">High-Risk ECG Findings in Syncope</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="crit"><div class="ct">Immediate Admission / Cardiology Consult Required</div>
+<ul>
+<li>Brugada pattern (coved ST elevation Type 1 in V1&ndash;V2)</li>
+<li>WPW (short PR &lt;120ms + delta wave)</li>
+<li>Long QT: QTc &gt;500ms (very high sudden death risk)</li>
+<li>Short QT: QTc &lt;330ms (Short QT Syndrome &mdash; rare but deadly)</li>
+<li>New LBBB (any syncope presentation)</li>
+<li>High-degree or complete (3rd-degree) AV block</li>
+<li>Sinus pauses &gt;3 seconds</li>
+<li>Non-sustained VT or polymorphic PVCs</li>
+<li>ST elevation or de Winter T-waves (ACS as syncope cause)</li>
+<li>Mobitz Type II second-degree AV block</li>
+<li>RV strain pattern (RBBB + S1Q3T3 in setting of syncope)</li>
+</ul></div>
+<div class="al e" style="margin-top:8px"><span class="ali">&#9888;</span>Syncope with exertion = high risk regardless of ECG. Echo and cardiology evaluation mandatory. Young patient + family history of sudden death = emergent evaluation for inherited arrhythmia syndrome (LQTS, CPVT, HCM, ARVC).</div>
+</div></div>
+</div>
+<div class="safety-net"><strong>Don't miss PE as syncope cause:</strong> occurs in up to 17% of syncope presentations (PE-IT study) &mdash; assess Wells PE score and PERC rule in any syncope without clear vasovagal mechanism. <strong>Aortic stenosis + effort syncope:</strong> may have no audible murmur in low-flow, low-gradient AS &mdash; echo if any exertional component. <strong>HCM in young athletes:</strong> most common cause of sudden cardiac death on the field; syncope + young + athletic = echo + cardiology. <strong>Ruptured ectopic pregnancy:</strong> reproductive-age women with "vasovagal" syncope &mdash; always bHCG. <strong>Elderly vasovagal:</strong> even with clear vasovagal trigger, apply CSRS; fall injury + syncope may mask an arrhythmia in an anticoagulated patient.</div>
+`},  hstropcard:{label:"Chest Pain / hs-cTn Algorithm",updated:"ESC 2023 · AHA 2025",content:()=>`
+<div class="cf"><div class="card a1"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">High-Sensitivity Troponin 0/1h Rule-Out / Rule-In</span><span class="bd bd2">ESC 2023</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="al i"><span class="ali">&#8505;</span>Values are for hs-cTnI (Abbott ARCHITECT assay). Thresholds vary by manufacturer &mdash; <strong>confirm with your local lab assay.</strong> Not applicable to standard (non-high-sensitivity) troponin assays. Both 0h and 1h samples required to use the rapid algorithm.</div>
+<table class="stbl" style="margin-top:8px">
+<tr><th style="width:30%">0h Result</th><th style="width:28%">1h Change (&Delta;)</th><th>Action</th></tr>
+<tr class="score-lo"><td class="dn" style="color:var(--a3)">hs-cTnI &lt;5 ng/L</td><td class="dd" style="color:var(--a3)">&Delta; &lt;4 ng/L at 1h</td><td style="color:var(--a3)"><strong>RULE OUT:</strong> NSTEMI excluded &mdash; &lt;1% MACE at 30 days. Discharge if HEART &le;3 + no high-risk features.</td></tr>
+<tr class="score-hi"><td class="dn" style="color:var(--ac)">&ge;52 ng/L at 0h</td><td class="dd" style="color:var(--ac)">Any</td><td style="color:var(--ac)"><strong>RULE IN:</strong> NSTEMI confirmed &mdash; admit + cardiology. DAPT + anticoagulation.</td></tr>
+<tr class="score-hi"><td class="dn" style="color:var(--ac)">Any 0h value</td><td class="dd" style="color:var(--ac)">&Delta; &ge;6 ng/L at 1h</td><td style="color:var(--ac)"><strong>RULE IN:</strong> NSTEMI regardless of absolute value.</td></tr>
+<tr><td class="dn" style="color:var(--a4)">5&ndash;51 ng/L at 0h</td><td class="dd" style="color:var(--a4)">&Delta; 4&ndash;5 ng/L (observe zone)</td><td style="color:var(--a4)"><strong>OBSERVE:</strong> Serial troponin at 3h; add HEART score + clinical assessment.</td></tr>
+</table>
+<div class="dv"></div>
+<div class="crit"><div class="ct">Rapid Rule-Out Caveats &mdash; Do NOT discharge without ALL of these</div>
+<ul>
+<li>Symptom onset &ge;2hr before presentation (early presenters may have low initial hs-cTnI)</li>
+<li>HEART score &le;3 (low risk by full clinical assessment)</li>
+<li>No new ischemic ECG changes (de Winter, Wellens, ST depression &ge;0.5mm, new LBBB)</li>
+<li>No high-risk symptoms: rest pain &gt;20 min, exertional syncope, hemodynamic instability, new HF</li>
+</ul></div>
+</div></div></div>
+<div class="cg">
+<div class="card a1"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">STEMI Equivalents &mdash; Must Recognize, Must Activate</span><span class="bd bd1">AHA 2025</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="al e"><span class="ali">&#9888;</span>These patterns carry STEMI-equivalent mortality but may NOT trigger automated alerts. Physician recognition is required &mdash; missed recognition = missed reperfusion.</div>
+<div class="thr g3"><div>Pattern</div><div>ECG Finding</div><div>Culprit / Action</div></div>
+<div class="tr g3"><div class="dn">de Winter T-waves</div><div class="d2">Upsloping ST depression &ge;1mm at J-point V1&ndash;V6 + tall peaked symmetrical T-waves; no ST elevation; occurs in 2% of LAD STEMI</div><div class="dd">Proximal LAD occlusion &mdash; activate cath lab immediately</div></div>
+<div class="tr g3"><div class="dn">Wellens Type A</div><div class="d2">Biphasic T-waves (positive then negative) in V2&ndash;V3; occurs in chest-pain-free interval; classic reperfusion pattern</div><div class="dd">Critical proximal LAD stenosis &mdash; do NOT stress test; admit + urgent angiography</div></div>
+<div class="tr g3"><div class="dn">Wellens Type B</div><div class="d2">Deep symmetric T-wave inversion V2&ndash;V3; may extend to V4&ndash;V5; highest short-term STEMI risk of any ECG pattern</div><div class="dd">Critical proximal LAD &mdash; admit; cardiology emergent</div></div>
+<div class="tr g3"><div class="dn">Posterior STEMI</div><div class="d2">Horizontal ST depression V1&ndash;V3 + dominant R wave V1&ndash;V2 + upright T-waves; confirm with V7&ndash;V9 leads (ST elevation in posterior leads)</div><div class="dd">Posterior wall (RCA or circumflex) &mdash; activate cath lab; occurs in 15&ndash;20% of MI</div></div>
+<div class="tr g3"><div class="dn">Sgarbossa criteria (LBBB)</div><div class="d2">Concordant STE &ge;1mm = 3pts; concordant STD V1&ndash;V3 &ge;1mm = 3pts; discordant STE &ge;5mm = 2pts. Modified: ratio-based criterion &gt;0.25 also positive.</div><div class="dd">Any territory &mdash; score &ge;3 or any concordance = activate cath lab</div></div>
+<div class="tr g3"><div class="dn">aVR ST elevation</div><div class="d2">STE &ge;1mm in aVR + diffuse ST depression (&ge;8 leads) &mdash; global subendocardial ischemia pattern</div><div class="dd">LMCA or proximal LAD occlusion &mdash; highest in-hospital mortality; activate cath lab</div></div>
+</div></div>
+<div class="card a5"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">ACS Management Bundle</span><span class="bd bd5">AHA 2025</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<ul class="sl">
+<li><span class="sn">1</span><span><strong>Aspirin 324mg PO</strong> (non-enteric, chewed) &mdash; give immediately on ACS suspicion; no contraindication except true allergy or active hemorrhage <span class="cite">AHA 2025</span></span></li>
+<li><span class="sn">2</span><span><strong>P2Y12 inhibitor:</strong> Ticagrelor 180mg PO preferred over clopidogrel (PLATO: 16% relative RRR in CV death/MI/stroke); Prasugrel 60mg if PCI planned + no stroke/TIA/age &ge;75 <span class="cite">AHA 2025</span></span></li>
+<li><span class="sn">3</span><span><strong>Anticoagulation:</strong> UFH 60 units/kg IV bolus (max 4,000u) + 12 units/kg/hr (max 1,000u/hr); bivalirudin for HIT or operator preference at PCI</span></li>
+<li><span class="sn">4</span><span><strong>Oxygen ONLY if SpO&#8322; &lt;90%</strong> &mdash; AVOID-HF and DETO2X-AMI confirm hyperoxia worsens infarct size in normoxic patients; targeted titration to 94&ndash;99%</span></li>
+<li><span class="sn">5</span><span><strong>Nitroglycerin:</strong> SL 0.4mg q5min x3 PRN for ongoing pain; IV for HTN emergency or flash pulm edema; <strong>AVOID in RV infarct</strong> (JVD + hypotension + clear lungs &#8594; preload-dependent) and phosphodiesterase-5 inhibitor use within 24&ndash;48hr</span></li>
+<li><span class="sn">6</span><span><strong>Avoid morphine in NSTEMI:</strong> delays P2Y12 intestinal absorption and associated with worse outcomes (CRUSADE registry). Use fentanyl 25&ndash;50 mcg IV for pain control if needed.</span></li>
+</ul>
+<div class="controversy" style="margin-top:8px"><strong>Dual vs triple antithrombotic therapy:</strong> in patients on OAC (e.g., afib), dual therapy (OAC + clopidogrel, NOT aspirin) preferred after 1&ndash;4 weeks &mdash; AUGUSTUS and ENTRUST-AF PCI show reduced bleeding with similar ischemic protection. <strong>Pre-treatment with P2Y12:</strong> HEAT-PPCI showed no benefit of pre-PCI loading; practice varies by center; ticagrelor commonly given in ED while STEMI transfer in progress.</div>
+</div></div>
+</div>
+`}
+,
+refs:{label:"References",icon:"&#x1F4DA;",content:()=>`
+<div class="cf">
+<div class="card a2"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Sepsis &amp; Critical Care</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="ir"><div class="il"><span class="cite">SSC 2026</span></div><div class="iv">Evans L, et al. Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2021. <em>Intensive Care Med.</em> 2021;47(11):1181&ndash;1247. PMID: 34599691</div></div>
+<div class="ir"><div class="il"><span class="cite">SSC 2026</span></div><div class="iv">Levy MM, et al. The Surviving Sepsis Campaign Bundle: 2018 Update. <em>Crit Care Med.</em> 2018;46(6):997&ndash;1000. PMID: 29767636</div></div>
+<div class="ir"><div class="il"><span class="cite">SSC 2026</span></div><div class="iv">Hernandez G, et al. Effect of a Resuscitation Strategy Targeting Peripheral Perfusion Status vs Serum Lactate on 28-Day Mortality [ANDROMEDA-SHOCK]. <em>JAMA.</em> 2019;321(7):654&ndash;664. PMID: 30772908</div></div>
+<div class="ir"><div class="il"><span class="cite">SSC 2026</span></div><div class="iv">Self WH, et al. Balanced Crystalloids versus Saline in Noncritically Ill Adults [SALT-ED]. <em>NEJM.</em> 2018;378(9):829&ndash;839. PMID: 29485926</div></div>
+<div class="ir"><div class="il"><span class="cite">SSC 2026</span></div><div class="iv">Self WH, et al. Balanced Crystalloids versus Saline in Critically Ill Adults [SMART]. <em>NEJM.</em> 2018;378(9):819&ndash;828. PMID: 29485925</div></div>
+<div class="ir"><div class="il"><span class="cite">SSC 2026</span></div><div class="iv">PETAL Network. Balanced Crystalloids versus Normal Saline for Septic Shock [CLOVERS]. <em>NEJM.</em> 2023;388(6):499&ndash;510. PMID: 36688507</div></div>
+<div class="ir"><div class="il"><span class="cite">SSC 2026</span></div><div class="iv">Meyhoff TS, et al. Restriction of Intravenous Fluid in ICU Patients with Septic Shock [CLASSIC]. <em>NEJM.</em> 2022;386(26):2459&ndash;2470. PMID: 35709019</div></div>
+<div class="ir"><div class="il"><span class="cite">SSC 2026</span></div><div class="iv">Venkatesh B, et al. Adjunctive Glucocorticoid Therapy in Patients with Septic Shock [ADRENAL]. <em>NEJM.</em> 2018;378(9):797&ndash;808. PMID: 29347874</div></div>
+<div class="ir"><div class="il"><span class="cite">SSC 2026</span></div><div class="iv">Annane D, et al. Hydrocortisone plus Fludrocortisone for Adults with Septic Shock [APROCCHSS]. <em>NEJM.</em> 2018;378(9):809&ndash;818. PMID: 29490185</div></div>
+</div></div>
+<div class="card a1"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Cardiology &amp; ACS</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="ir"><div class="il"><span class="cite">AHA 2025</span></div><div class="iv">Writing Committee Members, et al. 2025 ACC/AHA Guideline for the Management of Patients With Non-ST-Elevation Acute Coronary Syndromes. <em>J Am Coll Cardiol.</em> 2025. doi:10.1016/j.jacc.2025.01.012</div></div>
+<div class="ir"><div class="il"><span class="cite-eu">ESC 2023</span></div><div class="iv">Byrne RA, et al. 2023 ESC Guidelines for the Management of Acute Coronary Syndromes. <em>Eur Heart J.</em> 2023;44(38):3720&ndash;3826. PMID: 37622654</div></div>
+<div class="ir"><div class="il"><span class="cite">AHA 2025</span></div><div class="iv">Wallentin L, et al. Ticagrelor versus Clopidogrel in Patients with Acute Coronary Syndromes [PLATO]. <em>NEJM.</em> 2009;361(11):1045&ndash;1057. PMID: 19717846</div></div>
+<div class="ir"><div class="il"><span class="cite">AHA 2025</span></div><div class="iv">Stub D, et al. Air Versus Oxygen in ST-Segment Elevation Myocardial Infarction [AVOID]. <em>Circulation.</em> 2015;131(24):2143&ndash;2150. PMID: 25837524</div></div>
+<div class="ir"><div class="il"><span class="cite">AHA 2025</span></div><div class="iv">Hofmann R, et al. Oxygen Therapy in Suspected Acute Myocardial Infarction [DETO2X-AMI]. <em>NEJM.</em> 2017;377(13):1240&ndash;1249. PMID: 28844200</div></div>
+<div class="ir"><div class="il"><span class="cite">AHA 2025</span></div><div class="iv">Lopes RD, et al. Antithrombotic Therapy after Acute Coronary Syndrome or PCI in Atrial Fibrillation [AUGUSTUS]. <em>NEJM.</em> 2019;380(16):1509&ndash;1524. PMID: 30883055</div></div>
+<div class="ir"><div class="il"><span class="cite">AHA 2025</span></div><div class="iv">de Winter RJ, et al. A New ECG Sign of Proximal LAD Occlusion [de Winter T-waves]. <em>NEJM.</em> 2008;359(19):2071&ndash;2073. PMID: 18987360</div></div>
+<div class="ir"><div class="il"><span class="cite">AHA 2025</span></div><div class="iv">Sgarbossa EB, et al. Electrocardiographic Diagnosis of Evolving Acute MI in the Presence of LBBB. <em>NEJM.</em> 1996;334(8):481&ndash;487. PMID: 8559200</div></div>
+<div class="ir"><div class="il"><span class="cite">AHA 2025</span></div><div class="iv">De Backer D, et al. Comparison of Dopamine and Norepinephrine in the Treatment of Shock [SOAP II]. <em>NEJM.</em> 2010;362(9):779&ndash;789. PMID: 20200382</div></div>
+<div class="ir"><div class="il"><span class="cite">AHA 2025</span></div><div class="iv">Thiele H, et al. Intraaortic Balloon Support for Myocardial Infarction with Cardiogenic Shock [IABP-SHOCK II]. <em>NEJM.</em> 2012;367(14):1287&ndash;1296. PMID: 22920912</div></div>
+</div></div>
+</div>
+<div class="cg">
+<div class="card a5"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Trauma &amp; Hemorrhage</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="ir"><div class="il"><span class="cite">CRASH-2</span></div><div class="iv">CRASH-2 Trial Collaborators. Effects of Tranexamic Acid on Death, Vascular Occlusive Events, and Blood Transfusion in Trauma Patients [CRASH-2]. <em>Lancet.</em> 2010;376(9734):23&ndash;32. PMID: 20554319</div></div>
+<div class="ir"><div class="il"><span class="cite">PROPPR</span></div><div class="iv">Holcomb JB, et al. Transfusion of Plasma, Platelets, and Red Blood Cells in a 1:1:1 vs 1:1:2 Ratio [PROPPR]. <em>JAMA.</em> 2015;313(5):471&ndash;482. PMID: 25647203</div></div>
+<div class="ir"><div class="il"><span class="cite">ATLS 11th</span></div><div class="iv">American College of Surgeons Committee on Trauma. Advanced Trauma Life Support, 11th ed. Chicago: ACS; 2023.</div></div>
+</div></div>
+<div class="card a3"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Pulmonary / NIV</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="ir"><div class="il"><span class="cite">ATS 2024</span></div><div class="iv">Rochwerg B, et al. Official ERS/ATS Clinical Practice Guidelines: Noninvasive Ventilation for Acute Respiratory Failure. <em>Eur Respir J.</em> 2017;50(2):1602426. PMID: 28860265 (updated 2024)</div></div>
+<div class="ir"><div class="il"><span class="cite">ATS 2024</span></div><div class="iv">Frat JP, et al. High-Flow Oxygen through Nasal Cannula in Acute Hypoxemic Respiratory Failure [FLORALI]. <em>NEJM.</em> 2015;372(23):2185&ndash;2196. PMID: 25981908</div></div>
+<div class="ir"><div class="il"><span class="cite">ATS 2024</span></div><div class="iv">Brochard L, et al. Noninvasive Ventilation for Acute Exacerbations of COPD. <em>NEJM.</em> 1995;333(13):817&ndash;822. PMID: 7651472</div></div>
+<div class="ir"><div class="il"><span class="cite">ATS 2024</span></div><div class="iv">Gray AJ, et al. CPAP vs Standard Oxygen or BiPAP in Acute Cardiogenic Pulmonary Oedema [3CPO]. <em>Lancet.</em> 2008;371(9612):581&ndash;589. PMID: 18242412</div></div>
+<div class="ir"><div class="il"><span class="cite">BLUE Protocol</span></div><div class="iv">Lichtenstein DA, Meziere GA. Relevance of Lung Ultrasound in the Diagnosis of Acute Respiratory Failure: The BLUE Protocol. <em>Chest.</em> 2008;134(1):117&ndash;125. PMID: 18403664</div></div>
+<div class="ir"><div class="il"><span class="cite">ATS 2024</span></div><div class="iv">Roca O, et al. Predicting Success of High-Flow Nasal Cannula in Pneumonia Patients with Hypoxemic Respiratory Failure: The Utility of the ROX Index. <em>J Crit Care.</em> 2016;35:200&ndash;205. PMID: 27481760</div></div>
+<div class="ir"><div class="il"><span class="cite">ATS 2024</span></div><div class="iv">Leuppi JD, et al. Short-term vs Conventional Glucocorticoid Therapy in Acute Exacerbations of COPD [REDUCE]. <em>JAMA.</em> 2013;309(21):2223&ndash;2231. PMID: 23695483</div></div>
+</div></div>
+<div class="card a6"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Neurology &amp; Stroke</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="ir"><div class="il"><span class="cite">AHA 2023</span></div><div class="iv">Powers WJ, et al. 2023 Guideline for the Early Management of Patients With Acute Ischemic Stroke. <em>Stroke.</em> 2023;54(7):e210&ndash;e303. PMID: 37039408</div></div>
+<div class="ir"><div class="il"><span class="cite">ESETT 2019</span></div><div class="iv">Kapur J, et al. Randomized Trial of Three Anticonvulsant Medications for Status Epilepticus [ESETT]. <em>NEJM.</em> 2019;381(22):2103&ndash;2113. PMID: 31774955</div></div>
+</div></div>
+<div class="card a4"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Syncope &amp; Electrolytes</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="ir"><div class="il"><span class="cite">ACEP 2023</span></div><div class="iv">American College of Emergency Physicians. Clinical Policy: Critical Issues in the Evaluation and Management of Adult Patients Presenting to the ED with Syncope. <em>Ann Emerg Med.</em> 2023. doi:10.1016/j.annemergmed.2023.07.024</div></div>
+<div class="ir"><div class="il"><span class="cite">CSRS 2022</span></div><div class="iv">Thiruganasambandamoorthy V, et al. Development of the Canadian Syncope Risk Score to Predict Serious Adverse Events after Emergency Department Assessment of Syncope. <em>CMAJ.</em> 2016;188(12):E289&ndash;E298. PMID: 27183667</div></div>
+<div class="ir"><div class="il"><span class="cite">SFSR</span></div><div class="iv">Quinn JV, et al. Derivation of the San Francisco Syncope Rule to Predict Patients with Short-Term Serious Outcomes. <em>Ann Emerg Med.</em> 2004;43(2):224&ndash;232. PMID: 14747812</div></div>
+<div class="ir"><div class="il"><span class="cite-eu">ESC 2023</span></div><div class="iv">Prandoni P, et al. Prevalence of Pulmonary Embolism among Patients Hospitalized for Syncope [PE-IT]. <em>NEJM.</em> 2016;375(16):1524&ndash;1531. PMID: 27797317</div></div>
+<div class="ir"><div class="il"><span class="cite-amb">NEJM 2018</span></div><div class="iv">Rafique Z, et al. Sodium Bicarbonate for the Treatment of Hyperkalemia: The Evidence. <em>Ann Emerg Med.</em> 2018. [Meta-analysis of limited efficacy in non-acidotic hyperkalemia]</div></div>
+</div></div>
+</div>
+<div class="al i" style="margin:12px 0 4px"><span class="ali">&#8505;</span>Guidelines reflect the most recent available evidence at time of publication. Clinical decision-making should incorporate patient-specific factors and local protocol. Cite chip labels [SSC 2026] indicate SSC Surviving Sepsis Campaign 2021/anticipated 2026 update; [AHA 2025] indicates 2025 ACC/AHA ACS guidelines; [ATS 2024] indicates American Thoracic Society 2024 update; [ESC 2023] indicates ESC 2023 ACS guidelines.</div>
+`}
 }},
 };
 let S=null,U=null;
