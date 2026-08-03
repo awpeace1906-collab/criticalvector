@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+/* Offline font fallbacks — replaces Google Fonts for file:// compatibility */
+@font-face { font-family: 'Syne'; src: local('Arial Black'), local('Impact'), local('.AppleSystemUIFont'); font-weight: 400 800; }
+@font-face { font-family: 'DM Mono'; src: local('Menlo'), local('Consolas'), local('Courier New'); font-weight: 400 500; }
+@font-face { font-family: 'Source Serif 4'; src: local('Georgia'), local('Times New Roman'); font-weight: 300 400; }
+
+.tr > div { min-width: 0; overflow-wrap: break-word; word-break: break-word; }
+.g3 { grid-template-columns: minmax(0,1fr) minmax(0,1.4fr) minmax(0,1.2fr); }
+.g2 { grid-template-columns: minmax(0,1.1fr) minmax(0,2fr); }
+.dn, .dd, .d2, .il, .iv, .cn, .fl, .ct { overflow-wrap: break-word; word-break: break-word; }
+.il { width: auto; min-width: 0; max-width: 160px; }
+.stbl td, .stbl th { overflow-wrap: break-word; word-break: break-word; max-width: 240px; }
+@media (max-width: 500px) {
+  .g3 { grid-template-columns: 1fr; }
+  .g2 { grid-template-columns: 1fr; }
+}
+.stbl { table-layout: fixed; width: 100%; }
+.stbl th, .stbl td { vertical-align: top; overflow-wrap: break-word; word-break: break-word; white-space: normal; hyphens: auto; }
+.stbl th { padding: 6px 8px; }
+.stbl td { padding: 6px 8px; }
+.stbl col, .stbl th:first-child, .stbl td:first-child { width: 28%; }
+.thr > div { min-width: 0; overflow-wrap: break-word; word-break: break-word; }
+</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neonatology &amp; Pediatrics Pocket Guide v1</title>
+<style>
+:root{--fn:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;--fm:'Menlo','Consolas','Courier New',monospace;--bg:#07050f;--sf1:#0d0a1e;--sf2:#130e28;--sf3:#1a1335;--b1:#251a40;--b2:#301d55;--b3:#3d2570;--tx:#e8d8ff;--td:#8060c0;--tm:#3d2a70;--ac:#e8394a;--ac-bg:rgba(232,57,74,.09);--ac-b:rgba(232,57,74,.30);--ac-tx:#fca5a5;--a2:#c084fc;--a2-bg:rgba(192,132,252,.09);--a2-b:rgba(192,132,252,.28);--a2-tx:#e9d5ff;--a3:#4ade80;--a3-bg:rgba(74,222,128,.08);--a3-b:rgba(74,222,128,.25);--a3-tx:#bbf7d0;--a4:#fbbf24;--a4-bg:rgba(251,191,36,.08);--a4-b:rgba(251,191,36,.25);--a4-tx:#fde68a;--a5:#f97316;--a5-bg:rgba(249,115,22,.08);--a5-b:rgba(249,115,22,.25);--a5-tx:#fed7aa;--a6:#38bdf8;--a6-bg:rgba(56,189,248,.09);--a6-b:rgba(56,189,248,.28);--a6-tx:#bae6fd;--a7:#fb923c;--a7-bg:rgba(251,146,60,.08);--a7-b:rgba(251,146,60,.25);--a7-tx:#fed7aa;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html,body{height:100%;}
+body{background:var(--bg);color:var(--tx);font-family:var(--fn);display:flex;flex-direction:column;height:100vh;overflow:hidden;}
+.hdr{flex-shrink:0;height:50px;background:var(--sf1);border-bottom:1px solid var(--b1);display:flex;align-items:center;padding:0 16px;gap:10px;z-index:200;}
+.mbt{display:none;background:none;border:none;cursor:pointer;color:var(--td);font-size:19px;padding:2px 4px;flex-shrink:0;line-height:1;}
+.hbrand{display:flex;align-items:center;gap:10px;flex:1;}
+.hlogo{width:28px;height:28px;border-radius:6px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:14px;background:linear-gradient(135deg,#7c3aed 0%,#4ade80 100%);box-shadow:0 0 12px rgba(74,222,128,.35);}
+.htitle{font-size:14px;font-weight:700;letter-spacing:.05em;}
+.hsub{font-family:var(--fm);font-size:9px;color:var(--tm);letter-spacing:.1em;margin-top:2px;}
+.hrt{display:flex;align-items:center;gap:5px;flex-shrink:0;}
+.hbtn{font-family:var(--fm);font-size:10px;cursor:pointer;background:var(--sf2);border:1px solid var(--b2);color:var(--td);padding:4px 9px;border-radius:4px;transition:all .12s;white-space:nowrap;}
+.hbtn:hover{border-color:var(--b3);color:var(--tx);}
+.hbtn.on{background:var(--ac-bg);border-color:var(--ac-b);color:var(--ac);}
+.chip{font-family:var(--fm);font-size:9px;color:var(--a3);background:var(--a3-bg);border:1px solid var(--a3-b);padding:3px 8px;border-radius:4px;letter-spacing:.06em;}
+.chip2{font-family:var(--fm);font-size:9px;color:var(--a3);background:var(--a3-bg);border:1px solid var(--a3-b);padding:3px 8px;border-radius:4px;letter-spacing:.06em;}
+.srch{flex-shrink:0;height:42px;background:var(--sf1);border-bottom:1px solid var(--b1);display:flex;align-items:center;padding:0 14px;gap:8px;}
+.si{flex:1;background:transparent;border:none;outline:none;color:var(--tx);font-family:var(--fn);font-size:13px;}
+.si::placeholder{color:var(--tm);}
+.sc{cursor:pointer;color:var(--tm);font-size:10px;background:var(--sf3);border:1px solid var(--b2);border-radius:3px;padding:2px 6px;display:none;font-family:var(--fm);}
+.sc.vis{display:block;}
+.shc{font-family:var(--fm);font-size:10px;color:var(--ac);flex-shrink:0;}
+.nav{flex-shrink:0;height:38px;background:var(--sf1);border-bottom:1px solid var(--b1);display:flex;align-items:center;overflow-x:auto;padding:0 10px;gap:2px;scrollbar-width:none;}
+.nav::-webkit-scrollbar{display:none;}
+.nt{flex-shrink:0;border:none;cursor:pointer;background:transparent;color:var(--td);padding:4px 11px;border-radius:5px;font-size:11.5px;font-weight:500;transition:all .12s;display:flex;align-items:center;gap:5px;font-family:var(--fn);}
+.nt:hover{background:var(--sf2);color:var(--tx);}
+.nt.on{background:var(--sf3);color:var(--tx);border:1px solid var(--b2);}
+.bwrap{display:flex;flex:1;overflow:hidden;}
+.sb{width:190px;flex-shrink:0;overflow-y:auto;border-right:1px solid var(--b1);background:var(--sf1);scrollbar-width:thin;}
+.sb::-webkit-scrollbar{width:3px;}
+.sb::-webkit-scrollbar-thumb{background:var(--b2);border-radius:2px;}
+.sbl{font-family:var(--fm);font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--tm);padding:10px 13px 4px;}
+.sbi{padding:7px 13px;font-size:12px;cursor:pointer;color:var(--td);border-left:2px solid transparent;transition:all .1s;line-height:1.35;}
+.sbi:hover{background:var(--sf2);color:var(--tx);}
+.sbi.on{color:var(--tx);background:var(--sf2);border-left-color:var(--a3);}
+.sbcls{display:none;background:none;border:none;cursor:pointer;color:var(--tm);font-family:var(--fm);font-size:11px;padding:8px 13px 4px;width:100%;text-align:right;}
+.co{flex:1;overflow-y:auto;padding:16px 18px;scrollbar-width:thin;}
+.co::-webkit-scrollbar{width:4px;}
+.co::-webkit-scrollbar-thumb{background:var(--b2);border-radius:2px;}
+.shdr{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:14px;padding-bottom:11px;border-bottom:1px solid var(--b1);}
+.stitle{font-size:17px;font-weight:700;}
+.smeta{font-family:var(--fm);font-size:10px;color:var(--tm);margin-top:3px;}
+.supd{font-family:var(--fm);font-size:9px;color:var(--tm);text-align:right;}
+.ssrc{font-family:var(--fm);font-size:8px;color:var(--a3);letter-spacing:.06em;}
+.cg{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:9px;margin-bottom:9px;}
+.cf{margin-bottom:9px;}
+.c2{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:9px;}
+.card{background:var(--sf1);border:1px solid var(--b1);border-radius:7px;overflow:hidden;}
+.card:hover{border-color:var(--b2);}
+.card.a1{border-left:3px solid var(--ac);}
+.card.a2{border-left:3px solid var(--a2);}
+.card.a3{border-left:3px solid var(--a3);}
+.card.a4{border-left:3px solid var(--a4);}
+.card.a5{border-left:3px solid var(--a5);}
+.card.a6{border-left:3px solid var(--a6);}
+.card.a7{border-left:3px solid var(--a7);}
+.ch{padding:8px 12px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--b1);cursor:pointer;gap:7px;user-select:none;}
+.ch:hover{background:var(--sf2);}
+.chl{display:flex;align-items:center;gap:6px;flex:1;}
+.cn{font-size:12.5px;font-weight:600;}
+.ca{color:var(--tm);font-size:10px;transition:transform .15s;}
+.ca.o{transform:rotate(180deg);}
+.cb{padding:10px 12px;}
+.cb.cl{display:none;}
+.bd{font-family:var(--fm);font-size:8.5px;font-weight:600;padding:2px 6px;border-radius:3px;letter-spacing:.06em;text-transform:uppercase;flex-shrink:0;white-space:nowrap;}
+.bd1{background:var(--ac-bg);color:var(--ac);border:1px solid var(--ac-b);}
+.bd2{background:var(--a2-bg);color:var(--a2);border:1px solid var(--a2-b);}
+.bd3{background:var(--a3-bg);color:var(--a3);border:1px solid var(--a3-b);}
+.bd4{background:var(--a4-bg);color:var(--a4);border:1px solid var(--a4-b);}
+.bd5{background:var(--a5-bg);color:var(--a5);border:1px solid var(--a5-b);}
+.bd6{background:var(--a6-bg);color:var(--a6);border:1px solid var(--a6-b);}
+.bd7{background:var(--a7-bg);color:var(--a7);border:1px solid var(--a7-b);}
+.thr,.tr{display:grid;gap:5px;padding:5px 0;align-items:start;}
+.thr{font-family:var(--fm);font-size:9px;font-weight:600;color:var(--td);border-bottom:1px solid var(--b1);text-transform:uppercase;letter-spacing:.06em;padding-bottom:6px;min-width:0;overflow-wrap:break-word;}
+.tr{border-bottom:1px solid var(--b1);font-size:11.5px;}
+.tr:last-child{border-bottom:none;}
+.tr:hover{background:rgba(255,255,255,.015);margin:0 -12px;padding-left:12px;padding-right:12px;}
+.g2{grid-template-columns:minmax(0,1.1fr) minmax(0,2fr);}
+.g3{grid-template-columns:minmax(0,1fr) minmax(0,1.4fr) minmax(0,1.2fr);}
+.g4{grid-template-columns:1.1fr 1.3fr 0.9fr 1fr;}
+.dn{font-weight:600;color:var(--tx);min-width:0;overflow-wrap:break-word;word-break:break-word;}
+.dd{font-family:var(--fm);font-size:11px;color:var(--a3);min-width:0;overflow-wrap:break-word;word-break:break-word;}
+.d2{font-size:11px;color:var(--td);line-height:1.4;min-width:0;overflow-wrap:break-word;word-break:break-word;}
+.ir{display:flex;justify-content:space-between;align-items:flex-start;padding:5px 0;border-bottom:1px solid var(--b1);gap:8px;}
+.ir:last-child{border-bottom:none;}
+.il{font-family:var(--fm);font-size:10px;color:var(--tm);flex-shrink:0;width:150px;}
+.iv{font-size:12px;color:var(--tx);text-align:right;line-height:1.4;}
+.iv.m{font-family:var(--fm);font-size:11px;color:var(--a3);}
+.al{border-radius:5px;padding:8px 11px;font-size:11.5px;margin-bottom:8px;display:flex;gap:8px;align-items:flex-start;line-height:1.5;}
+.ali{font-size:13px;flex-shrink:0;margin-top:1px;}
+.al.e{background:var(--ac-bg);border:1px solid var(--ac-b);color:var(--ac-tx);}
+.al.w{background:var(--a4-bg);border:1px solid var(--a4-b);color:var(--a4-tx);}
+.al.i{background:var(--a6-bg);border:1px solid var(--a6-b);color:var(--a6-tx);}
+.al.s{background:var(--a3-bg);border:1px solid var(--a3-b);color:var(--a3-tx);}
+.al.g{background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.28);color:#fbbf24;}
+.fml{background:var(--sf2);border:1px solid var(--b2);border-left:3px solid var(--a3);border-radius:5px;padding:8px 12px;margin-bottom:7px;font-family:var(--fm);font-size:11.5px;color:var(--a3);line-height:1.5;}
+.fl{color:var(--tm);font-size:9px;margin-bottom:3px;letter-spacing:.06em;text-transform:uppercase;}
+.crit{background:var(--sf2);border:1px solid var(--b2);border-radius:5px;padding:8px 11px;margin-bottom:6px;}
+.ct{font-weight:600;font-size:11.5px;margin-bottom:4px;color:var(--tx);}
+.crit ul{padding-left:14px;}
+.crit li{font-size:11px;color:var(--td);margin-top:2px;line-height:1.45;}
+.sl{list-style:none;}
+.sl li{display:flex;gap:9px;align-items:flex-start;padding:5px 0;font-size:12px;line-height:1.45;}
+.sn{font-family:var(--fm);font-size:9.5px;font-weight:600;color:var(--a4);background:var(--a4-bg);border:1px solid var(--a4-b);width:20px;height:20px;border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.stbl{width:100%;border-collapse:collapse;font-size:11.5px;table-layout:fixed;}
+.stbl th{background:var(--sf2);padding:6px 8px;text-align:left;font-family:var(--fm);font-size:9px;color:var(--tx);font-weight:600;border-bottom:1px solid var(--b2);vertical-align:top;overflow-wrap:break-word;word-break:break-word;white-space:normal;}
+.stbl td{padding:6px 8px;border-bottom:1px solid var(--b1);vertical-align:top;overflow-wrap:break-word;word-break:break-word;white-space:normal;}
+.stbl tr:last-child td{border-bottom:none;}
+.stbl tr:hover td{background:var(--sf2);}
+.dv{height:1px;background:var(--b1);margin:9px 0;}
+.qrp{width:220px;flex-shrink:0;border-left:1px solid var(--b1);overflow-y:auto;display:none;background:var(--sf1);}
+.qrl{font-family:var(--fm);font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--tm);padding:8px 12px 4px;}
+.qri{padding:6px 12px;border-bottom:1px solid var(--b1);}
+.qri-n{font-size:12px;font-weight:600;color:var(--tx);}
+.qri-d{font-family:var(--fm);font-size:10px;color:var(--a3);margin-top:1px;}
+.qri-t{font-size:10px;color:var(--td);margin-top:1px;line-height:1.35;}
+.qhdr{display:flex;justify-content:space-between;align-items:center;padding:10px 14px 6px;border-bottom:1px solid var(--b1);font-family:var(--fm);font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--tm);background:var(--sf1);position:sticky;top:0;}
+.qcls{background:none;border:none;cursor:pointer;color:var(--td);font-size:13px;padding:0;}
+.kbo{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:500;display:none;align-items:center;justify-content:center;}
+.kbo.vis{display:flex;}
+.kbx{background:var(--sf1);border:1px solid var(--b2);border-radius:10px;padding:20px 24px;min-width:300px;max-width:90vw;}
+.kbr{display:flex;justify-content:space-between;align-items:center;padding:5px 0;font-size:12px;}
+.kbk{font-family:var(--fm);font-size:10px;background:var(--sf2);border:1px solid var(--b2);color:var(--a4);padding:2px 7px;border-radius:4px;}
+.kd{color:var(--td);}
+.empty{text-align:center;padding:60px 20px;color:var(--tm);}
+.srb{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--sf1);border:1px solid var(--b1);border-radius:7px;cursor:pointer;color:var(--tx);font-family:var(--fn);font-size:12px;width:100%;margin-bottom:6px;transition:border-color .1s;text-align:left;}
+.srb:hover{border-color:var(--a3-b);}
+.sbbd{display:none;position:fixed;inset:0;z-index:149;background:rgba(0,0,0,.6);}
+.sbbd.vis{display:block;}
+@media(max-width:640px){.mbt{display:flex;align-items:center;}.hsub,.chip,.chip2{display:none;}.hdr{padding:0 10px;}.hrt{gap:4px;}.hbtn{padding:4px 7px;font-size:9.5px;}.sb{position:fixed;top:0;left:0;bottom:0;width:240px;z-index:150;transform:translateX(-100%);transition:transform .22s ease;box-shadow:4px 0 24px rgba(0,0,0,.5);}.sb.open{transform:translateX(0);}.sbcls{display:block;}.bwrap{flex-direction:column;}.co{flex:1;padding:12px;}.qrp{position:fixed;inset:0;width:100%!important;z-index:300;display:none;border-left:none;transform:translateY(100%);transition:transform .25s ease;}.qrp.mopen{transform:translateY(0);display:block!important;}.cg,.c2{grid-template-columns:1fr!important;}.g4{grid-template-columns:1fr 1fr!important;}.nav{height:44px;}.nt{padding:6px 12px;font-size:12px;}.srch{height:46px;}.si{font-size:16px;}.stbl th,.stbl td{padding:6px 8px;border-bottom:1px solid var(--b1);vertical-align:top;overflow-wrap:break-word;word-break:break-word;white-space:normal;}.il{width:120px;font-size:9.5px;}.cb{padding:9px 10px;}.ch{padding:7px 10px;}}
+@media print{body{background:#fff;color:#000;height:auto;overflow:visible;}.hdr,.srch,.nav,.sb,.qrp,.kbo,.mbt,.sbbd{display:none!important;}.bwrap{display:block;}.co{overflow:visible;padding:0;}.card{border:1px solid #ccc;margin-bottom:8px;break-inside:avoid;}.ch{background:#f0faf3;}.cb.cl{display:block!important;}.dn{color:#000;min-width:0;overflow-wrap:break-word;word-break:break-word;}.dd{color:#166534;min-width:0;overflow-wrap:break-word;word-break:break-word;}.d2{color:#444;min-width:0;overflow-wrap:break-word;word-break:break-word;}.fml{background:#f0faf3;border:1px solid #86efac;color:#166534;}.al{background:#f5f5f5;border:1px solid #ccc;color:#333;}.stbl th{background:var(--sf2);padding:6px 8px;text-align:left;font-family:var(--fm);font-size:9px;color:var(--tx);font-weight:600;border-bottom:1px solid var(--b2);vertical-align:top;overflow-wrap:break-word;word-break:break-word;white-space:normal;}}
+.bkm-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.78);z-index:600;align-items:center;justify-content:center;}
+.bkm-overlay.open{display:flex;}
+.bkm-modal{background:var(--sf2);border:1px solid var(--b2);border-radius:10px;width:min(480px,92vw);max-height:82vh;overflow-y:auto;padding:20px 22px 18px;}
+.bkm-title{font-size:14px;font-weight:600;color:var(--tx);margin-bottom:4px;display:flex;align-items:center;gap:8px;}
+.bkm-sub{font-size:11px;color:var(--td);margin-bottom:14px;}
+.bkm-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;}
+.bkm-tab{font-size:10.5px;font-family:var(--fm);padding:4px 10px;border-radius:4px;border:1px solid var(--b2);background:var(--sf3);color:var(--td);cursor:pointer;transition:all .12s;}
+.bkm-tab.on{background:var(--b2);color:var(--tx);border-color:var(--b3);}
+.bkm-pane{display:none;}
+.bkm-pane.on{display:block;}
+.bkm-step{display:flex;gap:10px;align-items:flex-start;margin-bottom:10px;}
+.bkm-num{flex-shrink:0;width:20px;height:20px;border-radius:50%;background:var(--b2);border:1px solid var(--b3);font-size:10px;font-weight:700;color:var(--tx);display:flex;align-items:center;justify-content:center;font-family:var(--fm);}
+.bkm-txt{font-size:11.5px;color:var(--tx);line-height:1.55;}
+.bkm-txt strong{color:var(--a4);}
+.bkm-note{font-size:10.5px;color:var(--td);margin-top:10px;padding:8px 10px;background:var(--sf3);border:1px solid var(--b1);border-radius:6px;line-height:1.5;}
+.bkm-close{float:right;background:none;border:none;color:var(--td);font-size:16px;cursor:pointer;padding:0 0 0 10px;line-height:1;}
+.conn-online{color:var(--a6)!important;background:var(--a6-bg)!important;border-color:var(--a6-b)!important;}
+.thr>div{color:var(--td);}
+/* ── v1 extras: guideline-change flag · framework-split · cite chips ── */
+.controversy{background:rgba(192,132,252,.08);border-left:3px solid #c084fc;border-radius:0 5px 5px 0;padding:9px 13px;margin:10px 0;line-height:1.6;font-size:12px;color:var(--tx);}
+.controversy::before{content:"\2696\FE0F  DIFFERING GUIDANCE";display:block;font-size:9px;font-weight:700;letter-spacing:.12em;color:#c084fc;margin-bottom:5px;}
+.safety-net{background:rgba(251,191,36,.07);border-left:3px solid #fbbf24;border-radius:0 5px 5px 0;padding:9px 13px;margin:10px 0;line-height:1.6;font-size:12px;color:var(--tx);}
+.safety-net::before{content:"\26A0\FE0F  DON\2019T MISS";display:block;font-size:9px;font-weight:700;letter-spacing:.12em;color:#fbbf24;margin-bottom:5px;}
+.updateflag{background:rgba(56,189,248,.08);border-left:3px solid #38bdf8;border-radius:0 5px 5px 0;padding:9px 13px;margin:10px 0;line-height:1.6;font-size:12px;color:var(--tx);}
+.updateflag::before{content:"\1F504  GUIDELINE UPDATED";display:block;font-size:9px;font-weight:700;letter-spacing:.12em;color:#38bdf8;margin-bottom:5px;}
+.cite{display:inline-block;background:rgba(56,189,248,.10);border:1px solid rgba(56,189,248,.28);color:#38bdf8;border-radius:3px;padding:0 5px;font-size:9.5px;font-weight:700;letter-spacing:.04em;vertical-align:middle;margin:0 2px;white-space:nowrap;font-family:var(--fm);}
+.cite-eu{background:rgba(74,222,128,.09);border-color:rgba(74,222,128,.25);color:#4ade80;}
+.cite-red{background:rgba(232,57,74,.09);border-color:rgba(232,57,74,.28);color:#e8394a;}
+.cite-amb{background:rgba(251,191,36,.08);border-color:rgba(251,191,36,.25);color:#fbbf24;}
+.esc-list{list-style:none;margin:4px 0;padding:0;}
+.esc-list li{display:flex;align-items:flex-start;gap:10px;padding:7px 10px 7px 8px;border-bottom:1px solid var(--b1);font-size:12px;line-height:1.5;}
+.esc-list li:last-child{border-bottom:none;}
+.esc-num{min-width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;font-family:var(--fm);margin-top:1px;}
+.esc-emer{background:rgba(232,57,74,.06)!important;}.esc-emer .esc-num{background:var(--ac-bg);border:1px solid var(--ac-b);color:var(--ac);}
+.esc-shift{background:rgba(251,191,36,.05)!important;}.esc-shift .esc-num{background:var(--a4-bg);border:1px solid var(--a4-b);color:var(--a4);}
+.esc-elim{background:rgba(74,222,128,.04)!important;}.esc-elim .esc-num{background:var(--a3-bg);border:1px solid var(--a3-b);color:var(--a3);}
+.score-hi td{background:rgba(232,57,74,.08)!important;}
+.score-lo td{background:rgba(74,222,128,.07)!important;}
+</style>
+</head>
+<body>
+<div class="sbbd" id="sbbd"></div>
+<div class="kbo" id="kbo" onclick="if(event.target===this)kbo()">
+  <div class="kbx">
+    <h3 style="font-size:13px;font-weight:700;margin-bottom:14px">&#9000; Keyboard Shortcuts</h3>
+    <div class="kbr"><span class="kbk">/</span><span class="kd">Focus search</span></div>
+    <div class="kbr"><span class="kbk">Esc</span><span class="kd">Clear / close</span></div>
+    <div class="kbr"><span class="kbk">Tab</span><span class="kd">Next section</span></div>
+    <div class="kbr"><span class="kbk">R</span><span class="kd">Toggle quick ref</span></div>
+    <div class="kbr"><span class="kbk">P</span><span class="kd">Print</span></div>
+    <div class="kbr"><span class="kbk">?</span><span class="kd">This overlay</span></div>
+    <div style="margin-top:14px;text-align:right"><button class="hbtn" onclick="kbo()">Close</button></div>
+  </div>
+</div>
+<div class="hdr">
+  <button class="mbt" onclick="openSb()">&#9776;</button>
+  <div class="hbrand">
+    <div class="hlogo">&#x1F476;</div>
+    <div>
+      <div class="htitle">Neonatology Pocket Guide</div>
+      <div class="hsub">NEONATOLOGY &middot; PEDIATRICS &middot; EVIDENCE-BASED</div>
+    </div>
+  </div>
+  <div class="hrt">
+    <span class="chip">v1 &middot; 2026</span>
+    <span class="chip2" id="connChip">&#10003; OFFLINE</span><button class="hbtn" onclick="document.getElementById('bkmOverlay').classList.add('open')" title="Save for offline use" style="margin-left:4px">&#128204; Save</button>
+    <button class="hbtn" id="btnQ" onclick="toggleQ()">&#128138; Quick Ref</button>
+    <button class="hbtn" onclick="window.print()">&#128424;</button>
+    <button class="hbtn" onclick="kbo()">?</button>
+  </div>
+</div>
+<div class="srch">
+  <span style="color:var(--tm);font-size:14px">&#9906;</span>
+  <input class="si" id="si" type="text" placeholder="Search NRP, jaundice, HIE, milestones, seizures, IEM, vaccines&hellip;" oninput="srch(this.value)" autocomplete="off">
+  <span class="sc" id="sc" onclick="clr()">&times; clear</span>
+  <span class="shc" id="shc"></span>
+</div>
+<div class="nav" id="nav"></div>
+<div class="bwrap">
+  <div class="sb" id="sb"></div>
+  <div class="co" id="co"></div>
+  <div class="qrp" id="qr"></div>
+</div>
+<script>
+const SRC="AAP 2022 &middot; NRP/AHA 2020 &middot; Sarnat 1976/NICHD &middot; PES 2015 &middot; CDC 2022";
+const DRUGS=[
+  {cat:"NRP / RESUSCITATION",items:[
+    {n:"Epinephrine (neonatal arrest)",d:"0.01&ndash;0.03 mg/kg IV/UVC (1:10,000) or 0.05&ndash;0.1 mg/kg via ETT",t:"If HR &lt;60 despite PPV + compressions x60sec; repeat q3&ndash;5min"},
+    {n:"Volume expansion",d:"10 mL/kg NS or O-neg PRBC over 5&ndash;10 min",t:"Suspected hypovolemia/blood loss, poor response to resuscitation"},
+    {n:"Naloxone",d:"0.1 mg/kg IV/IM/SC",t:"Not first-line for resuscitation; consider only after ventilation established if maternal opioids given"},
+  ]},
+  {cat:"NEONATAL HYPOGLYCEMIA",items:[
+    {n:"D10W bolus (symptomatic)",d:"2 mL/kg IV push, then infuse GIR 6&ndash;8 mg/kg/min",t:"AAP 2011: treat if &lt;25 mg/dL (0&ndash;4h) or &lt;35 mg/dL (4&ndash;24h) in symptomatic infant"},
+    {n:"D10W maintenance GIR",d:"4&ndash;6 mg/kg/min typical start",t:"Titrate to glucose target; escalate if refractory"},
+    {n:"Glucagon",d:"0.02&ndash;0.03 mg/kg IM/SC/IV (max 1 mg)",t:"Refractory hypoglycemia with adequate glycogen stores (e.g. IDM)"},
+  ]},
+  {cat:"NEONATAL SEIZURES",items:[
+    {n:"Phenobarbital (1st line)",d:"Load 20 mg/kg IV; maintenance 3&ndash;5 mg/kg/day",t:"May repeat 10 mg/kg IV increments to max 40 mg/kg total load"},
+    {n:"Fosphenytoin/Phenytoin (2nd line)",d:"Load 20 mg PE/kg IV; maintenance 3&ndash;5 mg/kg/day",t:"Cardiac monitoring required; slow infusion"},
+    {n:"Levetiracetam (adjunct/refractory)",d:"Load 20&ndash;40 mg/kg IV; maintenance 10&ndash;80 mg/kg/day",t:"Increasingly used earlier given phenobarbital's neuro-apoptosis signal in animal models"},
+    {n:"Pyridoxine (vitamin B6 trial)",d:"100 mg IV single dose, with EEG if possible",t:"Pyridoxine-dependent epilepsy; refractory neonatal seizures of unclear cause"},
+  ]},
+  {cat:"NEONATAL JAUNDICE",items:[
+    {n:"Phototherapy",d:"Per AAP 2022 hour-specific / GA-specific threshold graphs",t:"Higher thresholds than 2004 guideline; use risk-factor-specific curve"},
+    {n:"Exchange transfusion",d:"Double volume (160 mL/kg term)",t:"Per AAP 2022 escalation-of-care thresholds; via umbilical vessels"},
+    {n:"IVIG (isoimmune hemolytic disease)",d:"0.5&ndash;1 g/kg over 2 hr",t:"Consider if TSB rising despite phototherapy in Rh/ABO disease"},
+  ]},
+  {cat:"VITAMIN K / PROPHYLAXIS",items:[
+    {n:"Vitamin K1 (phytonadione)",d:"0.5&ndash;1 mg IM once, within 6 hr of birth",t:"AAP-recommended; prevents vitamin K deficiency bleeding"},
+    {n:"Erythromycin ophthalmic 0.5%",d:"Applied once to both eyes at birth",t:"Gonococcal ophthalmia prophylaxis"},
+  ]},
+];
+const D={
+newborn:{label:"Normal Newborn",icon:"&#x1F476;",subs:{
+  apgar:{label:"Assessment &amp; APGAR",updated:"Apgar 1953 / AAP-ACOG 2015",content:()=>`
+<div class="cf"><div class="card a3"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Normal Term Newborn &mdash; Definition &amp; Vitals</span><span class="bd bd3">37&ndash;42 WK</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<p style="font-size:12px;color:var(--td);margin-bottom:8px">A term newborn (37&ndash;42 weeks) with good tone, pink color, regular breathing/HR, and normal feeding/voiding/stooling pattern, adapting appropriately to extrauterine life.</p>
+<div class="thr g2"><div>Parameter</div><div>Normal range</div></div>
+<div class="tr g2"><div class="dn">Heart rate</div><div class="dd">110&ndash;160 bpm</div></div>
+<div class="tr g2"><div class="dn">Respiratory rate</div><div class="dd">30&ndash;60/min</div></div>
+<div class="tr g2"><div class="dn">Temperature (axillary)</div><div class="dd">36.5&ndash;37.5&deg;C</div></div>
+<div class="tr g2"><div class="dn">Blood pressure</div><div class="dd">60&ndash;70 / 31&ndash;45 mmHg (term, varies by GA/weight)</div></div>
+<div class="tr g2"><div class="dn">Birth weight</div><div class="dd">2500&ndash;4000 g (avg ~3300g male / 3200g female, US data)</div></div>
+<div class="tr g2"><div class="dn">Length</div><div class="dd">48&ndash;53 cm</div></div>
+<div class="tr g2"><div class="dn">Head circumference</div><div class="dd">33&ndash;37 cm</div></div>
+<div class="al i" style="margin-top:8px"><span class="ali">&#8505;</span>Ranges above reflect commonly taught clinical parameters (Nelson Textbook of Pediatrics, 21st ed; AAP Textbook of Neonatal Resuscitation). Institution-specific growth charts (WHO/Fenton/Olsen) remain the reference for individual growth assessment.</div>
+</div></div></div>
+<div class="cf"><div class="card a1"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">APGAR Score</span><span class="bd bd1">Apgar 1953</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<p style="font-size:12px;color:var(--td);margin-bottom:8px">Scored at 1 and 5 minutes; continue at 5-min intervals if 5-min score &lt;7 (AAP/ACOG 2015 Committee Opinion). The Apgar score alone does NOT diagnose asphyxia or predict long-term neurologic outcome &mdash; it is a standardized description of transitional status.</p>
+<div class="thr g4"><div>Sign</div><div>0</div><div>1</div><div>2</div></div>
+<div class="tr g4"><div class="dn">Appearance (color)</div><div class="d2">Blue/pale</div><div class="d2">Acrocyanosis</div><div class="dd">Pink</div></div>
+<div class="tr g4"><div class="dn">Pulse</div><div class="d2">Absent</div><div class="d2">&lt;100/min</div><div class="dd">&gt;100/min</div></div>
+<div class="tr g4"><div class="dn">Grimace (reflex irritability)</div><div class="d2">No response</div><div class="d2">Grimace</div><div class="dd">Cry/cough/sneeze</div></div>
+<div class="tr g4"><div class="dn">Activity (tone)</div><div class="d2">Limp</div><div class="d2">Some flexion</div><div class="dd">Active motion</div></div>
+<div class="tr g4"><div class="dn">Respiration</div><div class="d2">Absent</div><div class="d2">Slow/irregular</div><div class="dd">Good, crying</div></div>
+<div class="dv"></div>
+<div class="crit"><div class="ct">Interpretation</div><ul><li><strong>&ge;7:</strong> Reassuring &mdash; routine care</li><li><strong>4&ndash;6:</strong> Moderately abnormal &mdash; may need stimulation, O&#8322;, PPV</li><li><strong>0&ndash;3:</strong> Low &mdash; initiate/continue resuscitation per NRP algorithm</li></ul></div>
+<div class="safety-net">A 5-min Apgar &le;5 is associated with higher risk of adverse outcome at a population level, but is neither sensitive nor specific for an individual infant. Do not use isolated Apgar alone to counsel on prognosis.</div>
+</div></div></div>`},
+  routine:{label:"Exam Timeline &amp; Routine Care",updated:"AAP/Bright Futures",content:()=>`
+<div class="cg">
+<div class="card a3"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Three Newborn Examinations</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="thr g3"><div>Exam</div><div>Timing</div><div>Focus</div></div>
+<div class="tr g3"><div class="dn">1st</div><div class="dd">Delivery room, &lt;24h</div><div class="d2">Quick systematic: Apgar, gestational age, anomalies/birth injury</div></div>
+<div class="tr g3"><div class="dn">2nd</div><div class="dd">Day 3&ndash;4</div><div class="d2">Complete systematic: jaundice, convulsions, vomiting, cyanosis</div></div>
+<div class="tr g3"><div class="dn">3rd</div><div class="dd">Prior to discharge</div><div class="d2">Newborn metabolic screen, vaccinations, hearing screen, red reflex</div></div>
+</div></div>
+<div class="card a4"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Routine Neonatal Care (order)</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<ul class="sl">
+<li><span class="sn">1</span><span>Dry, remove wet linens, skin-to-skin or warmer</span></li>
+<li><span class="sn">2</span><span>Early breastfeeding initiation; 8&ndash;12 feeds/24h on demand</span></li>
+<li><span class="sn">3</span><span><strong>Vitamin K1</strong> 0.5&ndash;1 mg IM within 6h of birth &mdash; prevents vitamin K deficiency bleeding <span class="cite">AAP</span></span></li>
+<li><span class="sn">4</span><span><strong>Eye prophylaxis:</strong> erythromycin 0.5% ophthalmic ointment (gonococcal ophthalmia)</span></li>
+<li><span class="sn">5</span><span>Umbilical cord care: keep clean and dry</span></li>
+<li><span class="sn">6</span><span>Glucose monitoring in at-risk infants (IDM, SGA/LGA, preterm, symptomatic)</span></li>
+<li><span class="sn">7</span><span>Monitor output: first void by 24h, first meconium by 48h</span></li>
+</ul>
+</div></div>
+</div>
+<div class="cf"><div class="card"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Normal Findings &mdash; Do NOT Mistake for Pathology</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="al s"><span class="ali">&#10003;</span>Molding of the skull &middot; breast hypertrophy (maternal hormone withdrawal) &middot; vaginal bleeding/mucoid discharge in girls (pseudomenses, first week) &middot; liver edge palpable 1&ndash;2 cm below costal margin &middot; palpable spleen tip &middot; meconium in first stool &middot; erythema toxicum, milia, Epstein pearls</div>
+</div></div></div>
+<div class="cf"><div class="card a1"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Before Discharge Checklist</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<ul class="sl">
+<li><span class="sn">1</span><span>Newborn metabolic (bloodspot) screening</span></li>
+<li><span class="sn">2</span><span>Vaccinations per schedule (Hep B birth dose at minimum)</span></li>
+<li><span class="sn">3</span><span>Newborn hearing screening</span></li>
+<li><span class="sn">4</span><span>Document red reflex (rules out cataract, retinoblastoma)</span></li>
+<li><span class="sn">5</span><span>Pre-discharge bilirubin risk assessment (AAP 2022) &mdash; TSB/TcB plotted on hour-specific nomogram <span class="cite">AAP 2022</span></span></li>
+</ul>
+</div></div></div>`},
+}},
+growth:{label:"Growth &amp; Development",icon:"&#x1F4C8;",subs:{
+  growthparams:{label:"Growth Parameters",updated:"WHO / CDC growth standards",content:()=>`
+<div class="cf"><div class="card a3"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Weight Gain &mdash; Expected Trajectory</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="thr g3"><div>Age</div><div>Expected gain</div><div>Milestone</div></div>
+<div class="tr g3"><div class="dn">First 3&ndash;10 days</div><div class="dd">Lose up to 7&ndash;10% of birth weight</div><div class="d2">Physiologic; regain by ~2 weeks</div></div>
+<div class="tr g3"><div class="dn">1&ndash;4 months</div><div class="dd">~20&ndash;30 g/day (~0.6&ndash;0.9 kg/mo)</div><div class="d2">Double birth weight by ~4&ndash;5 months</div></div>
+<div class="tr g3"><div class="dn">5&ndash;8 months</div><div class="dd">~15&ndash;20 g/day</div><div class="d2">&mdash;</div></div>
+<div class="tr g3"><div class="dn">9&ndash;12 months</div><div class="dd">~10 g/day</div><div class="d2">Triple birth weight by 1 year</div></div>
+<div class="al i" style="margin-top:8px"><span class="ali">&#8505;</span>Rules-of-thumb (double wt ~4&ndash;5mo, triple ~12mo, quadruple ~24mo) are teaching approximations from classical pediatric texts, not a percentile-based standard. Use WHO growth charts (0&ndash;2yr) or CDC charts (&gt;2yr) for actual plotting.</div>
+</div></div></div>
+<div class="cg">
+<div class="card"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Length / Height Milestones</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="thr g2"><div>Age</div><div>Approx length</div></div>
+<div class="tr g2"><div class="dn">Birth</div><div class="dd">~50 cm</div></div>
+<div class="tr g2"><div class="dn">1 year</div><div class="dd">~75 cm (1.5x birth length)</div></div>
+<div class="tr g2"><div class="dn">4 years</div><div class="dd">~100 cm (2x birth length)</div></div>
+<div class="dv"></div>
+<div class="d2">After age 4: growth ~5&ndash;6 cm/year until puberty, then growth spurt ~8&ndash;12 cm/year during peak puberty.</div>
+</div></div>
+<div class="card"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Head Circumference</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="thr g2"><div>Age</div><div>Value / rate</div></div>
+<div class="tr g2"><div class="dn">Birth</div><div class="dd">33&ndash;37 cm (avg ~35cm)</div></div>
+<div class="tr g2"><div class="dn">0&ndash;3 months</div><div class="dd">+~2 cm/month</div></div>
+<div class="tr g2"><div class="dn">4&ndash;6 months</div><div class="dd">+~1 cm/month</div></div>
+<div class="tr g2"><div class="dn">7&ndash;12 months</div><div class="dd">+~0.5 cm/month</div></div>
+<div class="tr g2"><div class="dn">1 year</div><div class="dd">~47 cm</div></div>
+<div class="tr g2"><div class="dn">2 years</div><div class="dd">~49 cm</div></div>
+<div class="al w" style="margin-top:6px"><span class="ali">&#9888;</span>HC growth is not linear/doubling like weight &mdash; brain growth is most rapid in first 2 years, then slows markedly. Plot on a standardized HC-for-age chart, not a "doubling" heuristic.</div>
+</div></div>
+</div>
+<div class="cf"><div class="card a1"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Growth Disorders &mdash; Differential by Parameter</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="thr g2"><div>Pattern</div><div>Consider</div></div>
+<div class="tr g2"><div class="dn">Poor weight gain / FTT</div><div class="d2">Malnutrition, IUGR, chronic disease, GI/renal/cardiac/pulmonary disease, syndromic (Down, Turner), endocrine (hypothyroid), malignancy, psychosocial deprivation</div></div>
+<div class="tr g2"><div class="dn">Excess weight gain</div><div class="d2">Overnutrition, endocrine (Cushing, hypothyroid), syndromic (Prader-Willi)</div></div>
+<div class="tr g2"><div class="dn">Short stature</div><div class="d2">Familial, constitutional delay, syndromic (Turner, achondroplasia), endocrine (GH deficiency, hypothyroid), chronic disease</div></div>
+<div class="tr g2"><div class="dn">Microcephaly</div><div class="d2">Genetic, congenital infection (TORCH), perinatal hypoxic injury, malnutrition, craniosynostosis</div></div>
+<div class="tr g2"><div class="dn">Macrocephaly</div><div class="d2">Hydrocephalus, benign familial macrocephaly, tumor, metabolic storage disease, subdural collection</div></div>
+</div></div></div>
+<div class="cf"><div class="card a5"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">When to Be Concerned</span><span class="bd bd5">RED FLAGS</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<ul class="sl">
+<li><span class="sn">!</span><span>Crossing down &ge;2 major percentile lines on growth chart</span></li>
+<li><span class="sn">!</span><span>Height &lt;3rd percentile or &gt;97th percentile for age</span></li>
+<li><span class="sn">!</span><span>No weight gain, or weight loss, over an interval where gain is expected</span></li>
+<li><span class="sn">!</span><span>Decreasing growth velocity</span></li>
+<li><span class="sn">!</span><span>Growth failure with developmental delay or signs of chronic/systemic disease</span></li>
+</ul>
+<div class="al i" style="margin-top:6px"><span class="ali">&#8505;</span>Use the same chart consistently for a given child; evaluate the trend over time rather than a single measurement.</div>
+</div></div></div>`},
+  milestones:{label:"Developmental Milestones",updated:"Classical vs CDC/AAP 2022",content:()=>`
+<div class="updateflag">In February 2022 the CDC, in partnership with the AAP, revised the "Learn the Signs. Act Early." milestone checklists &mdash; moving from a <strong>50th-percentile</strong> ("average age") framework to a <strong>75th-percentile</strong> framework, and shifting several milestone ages later (e.g. concern for not walking moved from 12&ndash;18mo to 18mo; crawling was removed as a required milestone). <span class="cite">Zubler et al., Pediatrics 2022;150(1):e2021052138. PMID: 35132436</span><br><br><strong>Classical/board-exam milestones</strong> (Nelson Textbook of Pediatrics, USMLE/COMLEX content, most milestone mnemonics) still use the older 50th-percentile ages. Both tables are given below &mdash; label which framework you are using when you chart or counsel families, since they are not interchangeable.</div>
+<div class="cf"><div class="card a3"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Classical Milestones (50th percentile &mdash; board/teaching standard)</span><span class="bd bd3">NELSON / CLASSICAL</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="thr g4"><div>Age</div><div>Gross motor</div><div>Language</div><div>Social</div></div>
+<div class="tr g4"><div class="dn">2 mo</div><div class="d2">Lifts head</div><div class="dd">Coos</div><div class="d2">Social smile</div></div>
+<div class="tr g4"><div class="dn">4 mo</div><div class="d2">Rolls, head steady</div><div class="d2">&mdash;</div><div class="dd">Laughs, enjoys play</div></div>
+<div class="tr g4"><div class="dn">6&ndash;7 mo</div><div class="dd">Sits without support</div><div class="d2">Babbles</div><div class="d2">Stranger anxiety emerges</div></div>
+<div class="tr g4"><div class="dn">9 mo</div><div class="d2">Pulls to stand, crawls</div><div class="d2">&mdash;</div><div class="dd">Waves bye-bye</div></div>
+<div class="tr g4"><div class="dn">12 mo</div><div class="dd">Walks alone (range 9&ndash;15mo)</div><div class="dd">1&ndash;2 words besides mama/dada</div><div class="d2">Uses spoon, imitates</div></div>
+<div class="tr g4"><div class="dn">18 mo&ndash;2 yr</div><div class="dd">Runs, walks up steps</div><div class="d2">&mdash;</div><div class="d2">Urinates independently (~2yr)</div></div>
+<div class="tr g4"><div class="dn">2 yr</div><div class="d2">Jumps, kicks ball</div><div class="dd">2-word phrases</div><div class="d2">Parallel play</div></div>
+<div class="tr g4"><div class="dn">3 yr</div><div class="dd">Pedals tricycle</div><div class="dd">3-word sentences, ~75% intelligible to stranger</div><div class="d2">Defecates independently</div></div>
+<div class="tr g4"><div class="dn">4 yr</div><div class="d2">Hops on one foot</div><div class="dd">Speaks clearly, tells stories</div><div class="d2">Cooperative play, imaginative</div></div>
+<div class="tr g4"><div class="dn">5 yr</div><div class="d2">Skips, balances well</div><div class="dd">Counts, knows colors</div><div class="d2">Follows rules in games</div></div>
+</div></div></div>
+<div class="cf"><div class="card a6"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">CDC/AAP 2022 Milestones (75th percentile &mdash; current public screening standard)</span><span class="bd bd6">CDC 2022</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="thr g3"><div>Age</div><div>Selected motor/language milestones (75th %ile)</div><div>Notes</div></div>
+<div class="tr g3"><div class="dn">2 mo</div><div class="d2">Holds head up briefly; calms when picked up/spoken to</div><div class="d2">New at 2022 revision</div></div>
+<div class="tr g3"><div class="dn">6 mo</div><div class="d2">Rolls in both directions; brings things to mouth</div><div class="d2">&mdash;</div></div>
+<div class="tr g3"><div class="dn">9 mo</div><div class="d2">Sits without support; looks for objects when dropped</div><div class="d2">&mdash;</div></div>
+<div class="tr g3"><div class="dn">12 mo</div><div class="d2">Pulls to stand; walks holding on ("cruises")</div><div class="d2">Independent walking pushed later than classical chart</div></div>
+<div class="tr g3"><div class="dn">15 mo</div><div class="d2">Walks alone; tries to use 2&ndash;3 words</div><div class="d2">New checklist age added in 2022</div></div>
+<div class="tr g3"><div class="dn">18 mo</div><div class="d2">Walks up steps holding on; says ~10 words</div><div class="d2">Concern for non-walking now flagged at 18mo, not 12mo</div></div>
+<div class="tr g3"><div class="dn">2 yr</div><div class="d2">Runs; kicks a ball; says 2-word phrases</div><div class="d2">&mdash;</div></div>
+<div class="tr g3"><div class="dn">30 mo</div><div class="d2">Vocabulary ~50 words; says 2+ words together</div><div class="d2">New checklist age added in 2022; pushed from the older "50 words by 24mo" standard</div></div>
+</div>
+<div class="al i" style="margin-top:8px"><span class="ali">&#8505;</span>CDC states explicitly these are surveillance/conversation tools, not diagnostic screening instruments or developmental standards. Formal standardized screening (e.g. ASQ-3, M-CHAT) remains the tool for actual delay evaluation.</div>
+</div></div></div>
+<div class="cf"><div class="card"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Vision &amp; Hearing</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="thr g2"><div>Age</div><div>Milestone</div></div>
+<div class="tr g2"><div class="dn">Newborn</div><div class="dd">Fixates on face; visual acuity ~20/200&ndash;20/400</div></div>
+<div class="tr g2"><div class="dn">1&ndash;2 mo</div><div class="dd">Follows object horizontally</div></div>
+<div class="tr g2"><div class="dn">5&ndash;6 yr</div><div class="dd">Visual acuity ~20/20</div></div>
+<div class="tr g2"><div class="dn">Newborn (hearing)</div><div class="dd">Startles/blinks to loud noise</div></div>
+<div class="tr g2"><div class="dn">4 mo</div><div class="dd">Quiets or smiles to sound</div></div>
+<div class="tr g2"><div class="dn">7 mo</div><div class="dd">Turns immediately to voice</div></div>
+<div class="tr g2"><div class="dn">12 mo</div><div class="dd">Responds to own name</div></div>
+</div></div></div>`},
+  devdelay:{label:"Developmental Delay Evaluation",updated:"AAP surveillance/screening 2020",content:()=>`
+<div class="cf"><div class="card a1"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Red Flags &mdash; Prompt Evaluation Regardless of Milestone Framework</span><span class="bd bd1">RED FLAGS</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<ul class="sl">
+<li><span class="sn">!</span><span>Head lag persisting at 4 months</span></li>
+<li><span class="sn">!</span><span>Unable to sit without support by 9 months</span></li>
+<li><span class="sn">!</span><span>No hand-to-hand transfer of objects by 1 year</span></li>
+<li><span class="sn">!</span><span>Abnormal (raking, not pincer) grasp by 15 months</span></li>
+<li><span class="sn">!</span><span>Unable to walk independently by 18 months (revised from classical 12&ndash;15mo threshold to align with CDC 2022)</span></li>
+<li><span class="sn">!</span><span>Loss of previously acquired skills at any age (regression is always abnormal)</span></li>
+<li><span class="sn">!</span><span>Nystagmus at any age is abnormal</span></li>
+</ul>
+</div></div></div>
+<div class="cf"><div class="card a3"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Findings Generally Considered Normal Variants</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="al s"><span class="ali">&#10003;</span>Intermittent strabismus until ~4 months (persistent past 4 months warrants ophtho referral) &middot; toe walking up to ~3 years, especially if passively correctable with no other neuro signs &middot; handedness preference after 24 months &middot; developmental stuttering/disfluency up to ~4 years</div>
+</div></div></div>
+<div class="cf"><div class="card"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Stepwise Evaluation of Suspected Delay</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<ul class="sl">
+<li><span class="sn">1</span><span><strong>Confirm the delay:</strong> structured history, physical exam, formal standardized screening tool (not milestone checklist alone)</span></li>
+<li><span class="sn">2</span><span><strong>Identify the affected domain(s):</strong> isolated (one domain, e.g. motor-only) vs global (&ge;2 domains, e.g. suspect cerebral palsy, hypothyroidism, genetic syndrome)</span></li>
+<li><span class="sn">3</span><span><strong>Search for a cause:</strong> newborn metabolic screen, growth charts, vision/hearing screen; if indicated &mdash; neuroimaging, genetic/fragile X testing, metabolic labs</span></li>
+<li><span class="sn">4</span><span><strong>Management:</strong> early intervention referral, targeted therapies (PT/OT/speech), childhood education support, home program</span></li>
+</ul>
+</div></div></div>`},
+}},
+nrp:{label:"Neonatal Resuscitation",icon:"&#x1FA7A;",subs:{
+  algorithm:{label:"NRP Algorithm (ABCD)",updated:"AHA/AAP NRP 2021 (8th ed) / ILCOR 2020",content:()=>`
+<div class="cf"><div class="card a1"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Immediate Steps at Birth</span><span class="bd bd1">NRP 2021</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<p style="font-size:12px;color:var(--td);margin-bottom:6px">Three initial questions: <strong>Term gestation? Good tone? Breathing or crying?</strong> If yes to all &rarr; routine care (warm, dry, ongoing evaluation on mother). If no to any &rarr; begin warming/drying/stimulation and proceed down the algorithm.</p>
+<ul class="sl">
+<li><span class="sn">1</span><span>Place under radiant warmer after cord clamped/cut per delayed cord clamping protocol</span></li>
+<li><span class="sn">2</span><span>Position supine, neck neutral/slightly extended (shoulder roll if needed)</span></li>
+<li><span class="sn">3</span><span>Clear airway by suctioning only if obstructed or PPV is needed (routine suctioning is no longer recommended even with meconium)</span></li>
+<li><span class="sn">4</span><span>Dry and stimulate (rub back/flick soles); if apneic/gasping or HR&lt;100 &rarr; proceed to PPV within the "Golden Minute"</span></li>
+</ul>
+</div></div></div>
+<div class="cf"><div class="card a2"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">ABCD Sequence</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="thr g2"><div>Step</div><div>Action &amp; trigger</div></div>
+<div class="tr g2"><div class="dn">A &mdash; Airway</div><div class="d2">Warm, dry, position, clear airway if needed, stimulate, ongoing evaluation of HR/breathing/tone</div></div>
+<div class="tr g2"><div class="dn">B &mdash; Breathing</div><div class="d2">If apneic/gasping or HR&lt;100 &rarr; positive pressure ventilation (PPV). 21% O&#8322; (room air) for term, 21&ndash;30% for preterm as starting FiO&#8322;, titrate by pulse oximetry targets; rate 40&ndash;60 breaths/min</div></div>
+<div class="tr g2"><div class="dn">C &mdash; Circulation</div><div class="d2">If HR&lt;60 after 30 sec of effective PPV (with corrective steps/ETT if needed) &rarr; start chest compressions</div></div>
+<div class="tr g2"><div class="dn">D &mdash; Drugs</div><div class="d2">If HR&lt;60 despite 60 sec of coordinated compressions + ventilation with 100% O&#8322; &rarr; epinephrine</div></div>
+</div></div></div>
+<div class="cf"><div class="card a3"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Chest Compressions</span><span class="bd bd3">CONFIRMED</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="thr g2"><div>Parameter</div><div>Value</div></div>
+<div class="tr g2"><div class="dn">Technique</div><div class="dd">Two-thumb encircling hands technique preferred (over 2-finger)</div></div>
+<div class="tr g2"><div class="dn">Ratio</div><div class="dd">3:1 compressions:ventilation (90 compressions + 30 breaths/min = 120 events/min)</div></div>
+<div class="tr g2"><div class="dn">Depth</div><div class="dd">~1/3 of anterior-posterior chest diameter</div></div>
+<div class="tr g2"><div class="dn">FiO&#8322; during compressions</div><div class="dd">Increase to 100%</div></div>
+<div class="tr g2"><div class="dn">Reassess</div><div class="dd">Every 60 sec</div></div>
+<div class="al i" style="margin-top:6px"><span class="ali">&#8505;</span>3:1 ratio is current AHA/ILCOR 2020 guidance, though it is explicitly acknowledged as based on expert consensus rather than strong outcome-trial evidence; alternative techniques (continuous compressions with asynchronous ventilation) remain investigational. <span class="cite">ILCOR 2020; Wyckoff MH, et al. Circulation. 2020;142(16_suppl_2):S185&ndash;S221. PMID: 33081527</span></div>
+</div></div></div>
+<div class="cf"><div class="card a1"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Medications</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="thr g3"><div>Drug</div><div>Dose</div><div>Notes</div></div>
+<div class="tr g3"><div class="dn">Epinephrine (1:10,000)</div><div class="dd">0.01&ndash;0.03 mg/kg IV/UVC (preferred); 0.05&ndash;0.1 mg/kg via ETT if no IV access yet</div><div class="d2">Repeat q3&ndash;5min if HR remains &lt;60</div></div>
+<div class="tr g3"><div class="dn">Volume expander</div><div class="dd">10 mL/kg NS or O-neg PRBC IV over 5&ndash;10 min</div><div class="d2">If suspected blood loss/hypovolemia and poor response to resuscitation</div></div>
+<div class="tr g3"><div class="dn">Dextrose 10%</div><div class="dd">2 mL/kg IV if hypoglycemic post-resuscitation</div><div class="d2">Check glucose after stabilization, especially IDM/preterm</div></div>
+</div></div></div>
+<div class="cf"><div class="card"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Equipment Checklist</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="thr g2"><div>Category</div><div>Items</div></div>
+<div class="tr g2"><div class="dn">Suction</div><div class="d2">Bulb syringe, suction catheters (8F&ndash;10F), wall/mechanical suction (80&ndash;100 mmHg)</div></div>
+<div class="tr g2"><div class="dn">Ventilation</div><div class="d2">Self-inflating bag or T-piece resuscitator, correctly sized masks, blended O&#8322;/air with flowmeter and pulse oximeter</div></div>
+<div class="tr g2"><div class="dn">Airway adjuncts</div><div class="d2">Oro/nasopharyngeal airways, laryngeal mask airway (backup for failed intubation)</div></div>
+<div class="tr g2"><div class="dn">Intubation</div><div class="d2">Laryngoscope with straight blades (size 0 preterm, size 1 term), ETT 2.5&ndash;4.0mm, stylet, CO&#8322; detector</div></div>
+<div class="tr g2"><div class="dn">Vascular access</div><div class="d2">Umbilical vein catheterization tray and catheters</div></div>
+<div class="tr g2"><div class="dn">Thermal/monitoring</div><div class="d2">Radiant warmer, plastic wrap for &lt;32 wk, ECG leads, pulse oximeter</div></div>
+</div></div></div>
+<div class="cf"><div class="card a4"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Additional Considerations</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="al w"><span class="ali">&#9888;</span>Acrocyanosis (blue hands/feet with pink trunk) is a normal transitional finding, not a resuscitation trigger by itself. Always reassess heart rate (best single indicator of response), respiratory effort, and color/SpO&#8322; together.</div>
+<div class="safety-net">If no improvement despite adequate ventilation and compressions, actively consider: hypovolemia, pneumothorax, congenital anomaly (e.g. diaphragmatic hernia), and correctable technical issues (mask seal, tube position/patency, equipment malfunction) before escalating drug doses.</div>
+</div></div></div>`},
+}},
+prematurity:{label:"Prematurity &amp; Birth Injury",icon:"&#x1F37C;",subs:{
+  lbw:{label:"Low Birth Weight &amp; Prematurity",updated:"WHO 2012 preterm classification",content:()=>`
+<div class="cf"><div class="card a2"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Weight-Based Classification</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="thr g2"><div>Category</div><div>Definition</div></div>
+<div class="tr g2"><div class="dn">Normal birth weight</div><div class="dd">2500&ndash;3999 g</div></div>
+<div class="tr g2"><div class="dn">Low birth weight (LBW)</div><div class="dd">&lt;2500 g, regardless of gestational age</div></div>
+<div class="tr g2"><div class="dn">Very low birth weight (VLBW)</div><div class="dd">&lt;1500 g</div></div>
+<div class="tr g2"><div class="dn">Extremely low birth weight (ELBW)</div><div class="dd">&lt;1000 g</div></div>
+<div class="tr g2"><div class="dn">Macrosomia / LGA</div><div class="dd">&ge;4000 g or &gt;90th percentile for GA</div></div>
+<div class="al i" style="margin-top:6px"><span class="ali">&#8505;</span>LBW may reflect prematurity, growth restriction (SGA/IUGR), or both &mdash; classification by weight alone does not establish the cause.</div>
+</div></div></div>
+<div class="cf"><div class="card a1"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">WHO Preterm Classification by Gestational Age</span><span class="bd bd1">WHO 2012</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="thr g2"><div>Category</div><div>Gestational age</div></div>
+<div class="tr g2"><div class="dn">Extremely preterm</div><div class="dd">&lt;28 weeks</div></div>
+<div class="tr g2"><div class="dn">Very preterm</div><div class="dd">28 to &lt;32 weeks</div></div>
+<div class="tr g2"><div class="dn">Moderate to late preterm</div><div class="dd">32 to &lt;37 weeks</div></div>
+<div class="tr g2"><div class="dn">Term</div><div class="dd">37 to &lt;42 weeks (ACOG/AAP further subdivide: early term 37&ndash;38&#8310;&#8317;&#8318;&#8319;, full term 39&ndash;40&#8310;&#8317;&#8318;&#8319;, late term 41&#8310;&#8317;&#8318;&#8319;)</div></div>
+<div class="tr g2"><div class="dn">Post-term</div><div class="dd">&ge;42 weeks</div></div>
+<div class="dv"></div>
+<div class="cite">Blencowe H, et al. Lancet. 2012;379(9832):2162&ndash;2172 (Born Too Soon). PMID: 22682464</div>
+</div></div></div>
+<div class="c2">
+<div class="card"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Prematurity Epidemiology</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<ul class="tight" style="font-size:11.5px;color:var(--td);padding-left:14px">
+<li>~10% of live births globally are preterm</li>
+<li>Preterm birth is a leading contributor to under-5 mortality worldwide</li>
+<li>Risk factors: maternal age extremes, multiple gestation, polyhydramnios, placental abnormalities, cervical incompetence, smoking/substance use, incorrect GA dating, fetal distress</li>
+</ul>
+</div></div>
+<div class="card"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Gestational Age Assessment</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<ul class="tight" style="font-size:11.5px;color:var(--td);padding-left:14px">
+<li><strong>Prenatal:</strong> last menstrual period, first fetal movement (16&ndash;18wk), first heart sounds by Doppler (~12wk), early (1st trimester) ultrasound most accurate</li>
+<li><strong>Postnatal:</strong> New Ballard Score &mdash; 6 physical maturity signs (skin, lanugo, plantar creases, breast, eye/ear, genitals) + 6 neuromuscular signs (posture, square window, arm recoil, popliteal angle, scarf sign, heel-to-ear)</li>
+</ul>
+</div></div>
+</div>
+<div class="cf"><div class="card a1"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Problems of Prematurity by System</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="thr g2"><div>System</div><div>Problems</div></div>
+<div class="tr g2"><div class="dn">Respiratory</div><div class="d2">RDS (surfactant deficiency), apnea of prematurity, aspiration, bronchopulmonary dysplasia</div></div>
+<div class="tr g2"><div class="dn">Neurologic</div><div class="d2">Intraventricular hemorrhage, HIE, sepsis/meningitis; long-term: cerebral palsy, hydrocephalus</div></div>
+<div class="tr g2"><div class="dn">Cardiovascular</div><div class="d2">Hypotension, patent ductus arteriosus, early heart failure</div></div>
+<div class="tr g2"><div class="dn">Hematologic</div><div class="d2">Anemia of prematurity, bleeding tendency, DIC</div></div>
+<div class="tr g2"><div class="dn">GI</div><div class="d2">Necrotizing enterocolitis, feeding intolerance, jaundice</div></div>
+<div class="tr g2"><div class="dn">Metabolic</div><div class="d2">Hypoglycemia, hypocalcemia</div></div>
+<div class="tr g2"><div class="dn">Renal/thermal</div><div class="d2">Limited ability to handle water/solute load; hypothermia risk (large SA:volume ratio, minimal subcutaneous fat)</div></div>
+<div class="tr g2"><div class="dn">Immune/ophtho</div><div class="d2">Immunodeficiency/increased infection risk; retinopathy of prematurity (can cause blindness)</div></div>
+</div></div></div>
+<div class="cf"><div class="card a3"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Management &amp; Discharge Criteria</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<ul class="sl">
+<li><span class="sn">1</span><span>Incubator/thermoregulation care, especially if weight &lt;1800g or active prematurity problems</span></li>
+<li><span class="sn">2</span><span>Individualized fluid/electrolyte management, closely monitored glucose</span></li>
+<li><span class="sn">3</span><span>Oral feeding when suck-swallow-breathe coordination is adequate (generally &ge;34 wk PMA); NG/OG feeding if not yet coordinated</span></li>
+<li><span class="sn">4</span><span>Infection prevention: hand hygiene, minimal-touch protocols, judicious antibiotic use</span></li>
+</ul>
+<div class="dv"></div>
+<div class="crit"><div class="ct">Typical Discharge Readiness Criteria</div><ul><li>Consistent weight gain over several days</li><li>Full oral feeding, tolerating volumes</li><li>Stable temperature in an open crib</li><li>No apnea/bradycardia events for a defined observation period</li><li>Hearing screen and eye exam (if indicated) completed</li></ul></div>
+</div></div></div>`},
+  sga:{label:"SGA / IUGR &amp; LGA",updated:"ACOG/SMFM 2019 (FGR)",content:()=>`
+<div class="c2">
+<div class="card a5"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">SGA / IUGR</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<p style="font-size:11.5px;color:var(--td);margin-bottom:6px">Birth weight &lt;10th percentile for gestational age (or &gt;2 SD below mean). IUGR/FGR specifically implies pathologic restriction of growth in utero, not simply constitutional smallness.</p>
+<div class="thr g2"><div>Type</div><div>Features</div></div>
+<div class="tr g2"><div class="dn">Symmetric (early onset)</div><div class="d2">All parameters (weight, length, HC) proportionally reduced; suggests early insult &mdash; genetic disorder, chromosomal anomaly, congenital infection</div></div>
+<div class="tr g2"><div class="dn">Asymmetric (late onset)</div><div class="d2">Weight affected more than length/HC (relatively spared head); suggests late placental insufficiency</div></div>
+<div class="dv"></div>
+<div class="d2"><strong>Risk factors:</strong> fetal (chromosomal, structural anomalies), maternal (hypertension, malnutrition, smoking/substance use, multiple gestation), placental (insufficiency, infarction)<br><strong>Complications:</strong> perinatal asphyxia, meconium aspiration, hypothermia, hypoglycemia, hypocalcemia, polycythemia</div>
+</div></div>
+<div class="card a7"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">LGA / Macrosomia</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<p style="font-size:11.5px;color:var(--td);margin-bottom:6px">Birth weight &gt;90th percentile for gestational age (or &ge;4000g at term).</p>
+<div class="d2"><strong>Most common cause:</strong> infant of diabetic mother (maternal hyperglycemia &rarr; fetal hyperinsulinemia &rarr; growth acceleration)<br><strong>Other causes:</strong> genetic/constitutional, post-term pregnancy, Beckwith-Wiedemann syndrome</div>
+<div class="dv"></div>
+<div class="crit"><div class="ct">Complications</div><ul><li>Birth trauma: shoulder dystocia, brachial plexus injury, clavicle fracture</li><li>Hypoglycemia (especially if IDM)</li><li>Polycythemia, hyperbilirubinemia</li><li>Respiratory distress</li></ul></div>
+</div></div>
+</div>`},
+  birthinjury:{label:"Birth Injury",updated:"ACOG/Nelson standard teaching",content:()=>`
+<div class="cf"><div class="card"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Overview</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<p style="font-size:12px;color:var(--td)">Impairment of neonatal body structure/function from an adverse event during labor, delivery, or resuscitation. Risk factors: fetal macrosomia, breech/abnormal presentation, maternal pelvic anomalies, and use of assisted delivery instruments (forceps/vacuum). Cesarean delivery generally carries a lower risk of birth trauma than vaginal delivery when instrumentation is avoided.</p>
+</div></div></div>
+<div class="cf"><div class="card a4"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Cranial Injuries &mdash; Distinguishing Features</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="thr g3"><div>Type</div><div>Location / crosses sutures?</div><div>Course</div></div>
+<div class="tr g3"><div class="dn">Caput succedaneum</div><div class="d2">Diffuse scalp edema; CROSSES suture lines; may be ecchymotic</div><div class="d2">Present at birth; resolves within days</div></div>
+<div class="tr g3"><div class="dn">Cephalhematoma</div><div class="d2">Subperiosteal hemorrhage; limited to ONE cranial bone, does NOT cross sutures</div><div class="d2">May enlarge over first days; resolves over 2 weeks&ndash;3 months; associated linear skull fracture in a meaningful minority</div></div>
+<div class="tr g3"><div class="dn">Subgaleal hemorrhage</div><div class="d2">Beneath galea aponeurotica; CAN cross sutures and extend broadly, potential for large concealed blood loss</div><div class="d2">Can be life-threatening &mdash; watch for hypovolemia/anemia, most associated with vacuum extraction</div></div>
+<div class="tr g3"><div class="dn">Subconjunctival/retinal hemorrhage</div><div class="d2">Common, even after normal delivery</div><div class="d2">Resolves within ~2 weeks; not itself pathologic</div></div>
+<div class="al w" style="margin-top:6px"><span class="ali">&#9888;</span>Subgaleal hemorrhage is the birth-related cranial injury most likely to cause hemodynamic instability and requires close monitoring of hematocrit/vitals &mdash; do not lump it with the benign caput/cephalhematoma category.</div>
+</div></div></div>
+<div class="cf"><div class="card a2"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Brachial Plexus Palsy</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<p style="font-size:11.5px;color:var(--td);margin-bottom:6px">Associated with shoulder dystocia, macrosomia, and difficult delivery; a substantial proportion of cases have documented shoulder dystocia.</p>
+<div class="thr g2"><div>Type</div><div>Features</div></div>
+<div class="tr g2"><div class="dn">Erb-Duchenne (upper trunk, C5&ndash;C6)</div><div class="d2">Most common. "Waiter's tip" posture: arm adducted, internally rotated, forearm pronated. Biceps reflex absent; Moro asymmetric on affected side. Hand grasp typically PRESERVED &mdash; a favorable prognostic sign.</div></div>
+<div class="tr g2"><div class="dn">Klumpke (lower trunk, C8&ndash;T1)</div><div class="d2">Less common. Paralyzed/clawed hand; grasp reflex absent. May have ipsilateral Horner syndrome (ptosis, miosis) if T1 sympathetic fibers involved.</div></div>
+<div class="dv"></div>
+<div class="d2"><strong>Prognosis:</strong> most infants recover substantially; upper-trunk (Erb) injuries generally have a better prognosis than lower-trunk (Klumpke) injuries. <strong>Management:</strong> gentle range-of-motion exercises, monthly follow-up; surgical referral typically considered around 3 months if no meaningful recovery.</div>
+</div></div></div>`},
+}},
+nutrition:{label:"Feeding &amp; Immunization",icon:"&#x1F37D;&#xFE0F;",subs:{
+  feeding:{label:"Infant Feeding &amp; Weaning",updated:"WHO/UNICEF 2023 &middot; AAP 2022",content:()=>`
+<div class="cf"><div class="card a3"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">WHO/UNICEF Infant Feeding Recommendations</span><span class="bd bd3">WHO 2023</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="thr g2"><div>Age</div><div>Recommendation</div></div>
+<div class="tr g2"><div class="dn">0&ndash;6 months</div><div class="dd">Exclusive breastfeeding: only breast milk, on demand, ~8&ndash;12x/24h; no water, juice, or solids needed</div></div>
+<div class="tr g2"><div class="dn">6&ndash;12 months</div><div class="dd">Continue breastfeeding + introduce complementary (solid/semi-solid) foods</div></div>
+<div class="tr g2"><div class="dn">12&ndash;24 months</div><div class="dd">Continue breastfeeding + expanding variety of family foods</div></div>
+<div class="tr g2"><div class="dn">&gt;24 months</div><div class="dd">Balanced family diet; WHO/UNICEF recommend continued breastfeeding up to 2 years or beyond as desired by mother/child</div></div>
+</div></div></div>
+<div class="cf"><div class="card a1"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Foods to Avoid Before 12 Months</span><span class="bd bd1">AVOID</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="al e"><span class="ali">&#9888;</span><strong>Honey:</strong> risk of infant botulism (Clostridium botulinum spores) &mdash; avoid before 12 months.<br><strong>Cow's milk as a primary drink:</strong> AAP recommends delaying until 12 months (inadequate iron, renal solute load); formula or breast milk should remain primary milk source in year one.<br>Added salt and sugar are not recommended in the first year for general nutritional reasons, though the botulism risk specifically applies to honey.</div>
+</div></div></div>
+<div class="cf"><div class="card"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Complementary Feeding by Age</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="thr g3"><div>6&ndash;8 months</div><div>9&ndash;12 months</div><div>12&ndash;24 months</div></div>
+<div class="tr g3"><div class="d2">Iron-fortified cereal, pureed vegetables/fruits, mashed legumes, mashed egg yolk; smooth/thick textures</div><div class="d2">Soft mashed family foods, minced meat/poultry/fish, cooked vegetables, soft fruit, yogurt, soft finger foods</div><div class="d2">Family foods cut into small pieces, wide variety, encourage self-feeding, limit juice/sweets/processed foods</div></div>
+</div></div></div>
+<div class="cf"><div class="card a3"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Signs of Readiness &amp; Tips</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<ul class="tight" style="font-size:12px;padding-left:16px">
+<li>Sits with support, good head/neck control</li>
+<li>Shows interest in food, opens mouth when offered</li>
+<li>Loss of tongue-thrust reflex</li>
+</ul>
+<div class="dv"></div>
+<div class="d2">Introduce one new food at a time and watch for allergic reaction. Current AAP/AAAAI guidance (post-LEAP trial) actually recommends early introduction of allergenic foods (peanut, egg) around 4&ndash;6 months rather than delaying them, in infants without severe eczema/egg allergy &mdash; opposite of older advice to delay allergens. <span class="cite">Togias A, et al. NIAID-sponsored 2017 Addendum Guidelines for Peanut Allergy Prevention. J Allergy Clin Immunol. 2017;139(1):29&ndash;44. PMID: 28065278</span></div>
+</div></div></div>`},
+  immunization:{label:"Immunization",updated:"WHO EPI / ACIP-CDC schedule concepts",content:()=>`
+<div class="cf"><div class="card a2"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Active vs Passive Immunization</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="thr g2"><div>Type</div><div>Mechanism / examples</div></div>
+<div class="tr g2"><div class="dn">Active</div><div class="d2">Stimulates the immune system to make its own response &mdash; long-lasting. Live attenuated (MMR, BCG, OPV, varicella), inactivated (IPV, hepatitis A), toxoid (tetanus, diphtheria), subunit/conjugate/recombinant (hepatitis B, Hib, pneumococcal)</div></div>
+<div class="tr g2"><div class="dn">Passive</div><div class="d2">Ready-made antibodies for immediate, short-term protection. Immunoglobulins (RIG, TIG, VZIG), monoclonal antibodies (palivizumab/nirsevimab for RSV)</div></div>
+</div></div></div>
+<div class="cf"><div class="card a1"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Contraindications</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="c2">
+<div>
+<div style="font-family:var(--fm);font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--ac);margin-bottom:6px">TRUE CONTRAINDICATIONS</div>
+<ul class="tight" style="font-size:11.5px;padding-left:14px">
+<li>Anaphylaxis to prior dose or vaccine component</li>
+<li>Live vaccines: significant immunocompromise (congenital immunodeficiency, HIV with low CD4%, leukemia/lymphoma, active chemo, high-dose systemic corticosteroids &ge;2 mg/kg/day for &ge;14 days)</li>
+<li>Live vaccines: pregnancy</li>
+<li>Moderate-to-severe acute illness (defer until resolved)</li>
+</ul>
+</div>
+<div>
+<div style="font-family:var(--fm);font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--a3);margin-bottom:6px">NOT CONTRAINDICATIONS</div>
+<ul class="tight" style="font-size:11.5px;padding-left:14px">
+<li>Mild acute illness, with or without low-grade fever</li>
+<li>Current antibiotic therapy; convalescent phase of illness</li>
+<li>Mild-moderate local reaction or fever after a previous dose</li>
+<li>Breastfeeding; malnutrition</li>
+<li>Pregnancy or immunodeficiency of a household contact (not the child)</li>
+</ul>
+</div>
+</div>
+</div></div></div>
+<div class="cf"><div class="card"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Vaccine Quick Reference &mdash; Type &amp; Key Notes</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="thr g3"><div>Vaccine</div><div>Type / route</div><div>Key notes</div></div>
+<div class="tr g3"><div class="dn">DTaP</div><div class="dd">Toxoid + acellular; IM</div><div class="d2">Contraindicated: encephalopathy within 7 days of prior dose, severe allergic reaction</div></div>
+<div class="tr g3"><div class="dn">BCG</div><div class="dd">Live attenuated; intradermal</div><div class="d2">Given at birth in high-TB-burden countries; contraindicated if immunodeficient</div></div>
+<div class="tr g3"><div class="dn">MMR</div><div class="dd">Live attenuated; SC</div><div class="d2">Contraindicated in pregnancy and significant immunosuppression</div></div>
+<div class="tr g3"><div class="dn">Polio (OPV/IPV)</div><div class="dd">OPV live-oral; IPV inactivated-IM</div><div class="d2">OPV contraindicated if immunocompromised (vaccine-derived poliovirus risk); many countries now use IPV-only schedules</div></div>
+<div class="tr g3"><div class="dn">Rotavirus</div><div class="dd">Live attenuated; oral</div><div class="d2">Contraindicated: history of intussusception, severe combined immunodeficiency; first dose has an upper age limit (per product labeling, generally not started after 14&ndash;15 wks)</div></div>
+<div class="tr g3"><div class="dn">Pneumococcal conjugate (PCV)</div><div class="dd">Conjugate; IM</div><div class="d2">PCV for children &lt;2yr; PPSV23 supplements in high-risk children &gt;2yr</div></div>
+<div class="tr g3"><div class="dn">Hepatitis B</div><div class="dd">Recombinant; IM</div><div class="d2">Birth dose recommended within 24h regardless of maternal status; universal newborn screening for maternal HBsAg guides additional prophylaxis</div></div>
+<div class="tr g3"><div class="dn">Hib</div><div class="dd">Conjugate; IM</div><div class="d2">Series + booster in second year of life</div></div>
+<div class="tr g3"><div class="dn">Influenza</div><div class="dd">Inactivated-IM or LAIV-intranasal</div><div class="d2">LAIV contraindicated &lt;2yr, pregnancy, immunodeficiency, egg-severe-allergy history is no longer an absolute contraindication per current ACIP guidance</div></div>
+<div class="tr g3"><div class="dn">Varicella</div><div class="dd">Live attenuated; SC</div><div class="d2">Contraindicated: pregnancy, significant immunodeficiency</div></div>
+<div class="tr g3"><div class="dn">Yellow fever</div><div class="dd">Live attenuated; SC</div><div class="d2">Contraindicated &lt;9 months, pregnancy, immunodeficiency, egg allergy (grown in eggs)</div></div>
+</div>
+<div class="al i" style="margin-top:8px"><span class="ali">&#8505;</span>Exact schedules (dose timing/spacing) vary by country and are set by national EPI/ACIP-equivalent bodies &mdash; always confirm against your own country's current immunization schedule (e.g. CDC/ACIP for the US, or national EPI schedule) rather than a fixed age table, since these are revised periodically.</div>
+</div></div></div>`},
+}},
+genetics:{label:"Genetic Disorders",icon:"&#x1F9EC;",subs:{
+  chromosomal:{label:"Chromosomal Disorders",updated:"Standard genetics teaching / ACOG",content:()=>`
+<div class="cf"><div class="card a1"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Down Syndrome (Trisomy 21)</span><span class="bd bd1">1:700</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="thr g2"><div>Feature</div><div>Detail</div></div>
+<div class="tr g2"><div class="dn">Incidence</div><div class="dd">~1 in 700 live births overall; risk rises with maternal age (population-study estimates: ~1/1476 at age 20, ~1/352 at 35, ~1/85 at 40) <span class="cite">Merck Manual; cites Morris JK et al. population data</span></div></div>
+<div class="tr g2"><div class="dn">Genetic basis</div><div class="d2">Nondisjunction/free trisomy 21 (~95%), Robertsonian translocation (~3&ndash;4%), mosaicism (~1&ndash;2%)</div></div>
+<div class="tr g2"><div class="dn">Facial/hand features</div><div class="d2">Flat facial profile, upslanting palpebral fissures, epicanthal folds, Brushfield spots, small ears, single transverse (simian) palmar crease, clinodactyly of 5th finger, wide gap between 1st/2nd toes</div></div>
+<div class="tr g2"><div class="dn">Tone</div><div class="d2">Hypotonia, hyperextensible joints, weak Moro reflex</div></div>
+<div class="tr g2"><div class="dn">Associated anomalies</div><div class="d2">Congenital heart disease (~40&ndash;50%, especially AV septal defect), duodenal atresia, Hirschsprung disease, hypothyroidism, increased leukemia risk, Alzheimer disease risk in adulthood</div></div>
+<div class="tr g2"><div class="dn">Recurrence risk</div><div class="d2">If free trisomy 21: ~1% above maternal-age-related baseline for next pregnancy. If translocation carrier parent: risk much higher and depends on which parent/translocation type &mdash; requires parental karyotype</div></div>
+<div class="dv"></div>
+<div class="d2"><strong>Prenatal screening:</strong> maternal serum quad screen (low PAPP-A/AFP/uE3, high hCG in various combinations), nuchal translucency, cell-free DNA screening; diagnostic confirmation via amniocentesis/CVS karyotype</div>
+</div></div></div>
+<div class="cg">
+<div class="card a5"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Patau Syndrome (Trisomy 13)</span><span class="bd bd5">~1:10,000&ndash;16,000</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="d2"><strong>Features:</strong> cleft lip/palate, microphthalmia, holoprosencephaly spectrum, postaxial polydactyly, cutis aplasia (scalp defects), congenital heart disease, rocker-bottom feet in some cases<br><strong>Prognosis:</strong> majority die within the first year of life; diagnosis via clinical features + karyotype</div>
+</div></div>
+<div class="card a5"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Edwards Syndrome (Trisomy 18)</span><span class="bd bd5">~1:5,000&ndash;8,000</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="d2"><strong>Features:</strong> growth restriction, prominent occiput, micrognathia, clenched hands with overlapping fingers, rocker-bottom feet, congenital heart disease (VSD common)<br><strong>Prognosis:</strong> majority die within the first year of life; diagnosis via clinical features + karyotype</div>
+</div></div>
+</div>
+<div class="cf"><div class="card a2"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Sex Chromosome Abnormalities</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="thr g3"><div>Syndrome / karyotype</div><div>Approx incidence</div><div>Key features</div></div>
+<div class="tr g3"><div class="dn">Turner (45,X)</div><div class="dd">~1:2000&ndash;2500 live female births</div><div class="d2">Short stature, webbed neck, low posterior hairline, broad chest/widely spaced nipples, coarctation of aorta, horseshoe kidney, ovarian dysgenesis/infertility</div></div>
+<div class="tr g3"><div class="dn">Klinefelter (47,XXY)</div><div class="dd">~1:500&ndash;1000 live male births</div><div class="d2">Tall stature, small firm testes, infertility, gynecomastia, learning difficulties</div></div>
+<div class="tr g3"><div class="dn">Fragile X</div><div class="dd">~1:4000 males, ~1:8000 females (CGG repeat expansion, FMR1 gene)</div><div class="d2">Intellectual disability, long narrow face, large ears, macroorchidism post-puberty; most common inherited cause of intellectual disability</div></div>
+<div class="tr g3"><div class="dn">XYY (Jacobs)</div><div class="dd">~1:1000 male births</div><div class="d2">Tall stature, usually normal IQ, mild increase in learning/behavioral difficulties in some</div></div>
+</div>
+<div class="al i" style="margin-top:6px"><span class="ali">&#8505;</span>Incidence figures for less common syndromes vary meaningfully between sources/populations; treat exact denominators as approximate teaching values rather than fixed epidemiologic constants.</div>
+</div></div></div>`},
+  inheritance:{label:"Modes of Inheritance",updated:"Standard genetics teaching",content:()=>`
+<div class="cf"><div class="card"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Single-Gene (Mendelian) Inheritance Patterns</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="thr g3"><div>Pattern</div><div>Recurrence risk</div><div>Classic examples</div></div>
+<div class="tr g3"><div class="dn">Autosomal dominant</div><div class="dd">50% if one parent affected</div><div class="d2">Achondroplasia, Marfan syndrome, neurofibromatosis</div></div>
+<div class="tr g3"><div class="dn">Autosomal recessive</div><div class="dd">25% if both parents carriers</div><div class="d2">Cystic fibrosis, galactosemia, most inborn errors of metabolism</div></div>
+<div class="tr g3"><div class="dn">X-linked recessive</div><div class="dd">~50% of sons of a carrier mother affected; daughters usually unaffected carriers</div><div class="d2">Hemophilia A/B, Duchenne muscular dystrophy</div></div>
+<div class="tr g3"><div class="dn">X-linked dominant</div><div class="dd">Both sexes affected; typically more severe/lethal in males for X-linked dominant conditions with male lethality (e.g. some forms of Rett)</div><div class="d2">X-linked hypophosphatemic rickets</div></div>
+</div></div></div>
+<div class="cf"><div class="card"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Selected Multifactorial / Microdeletion Syndromes</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="thr g2"><div>Syndrome</div><div>Key association</div></div>
+<div class="tr g2"><div class="dn">Williams syndrome</div><div class="d2">7q11.23 microdeletion; supravalvular aortic stenosis, "elfin" facies, hypercalcemia, friendly/social personality</div></div>
+<div class="tr g2"><div class="dn">Noonan syndrome</div><div class="d2">Autosomal dominant (RASopathy); short stature, webbed neck, pulmonic stenosis, similar facies to Turner but occurs in both sexes with normal karyotype</div></div>
+<div class="tr g2"><div class="dn">Prader-Willi syndrome</div><div class="d2">Deletion of paternal 15q11&ndash;q13 (or maternal uniparental disomy); neonatal hypotonia/poor feeding, later hyperphagia and obesity</div></div>
+<div class="tr g2"><div class="dn">Angelman syndrome</div><div class="d2">Deletion/mutation of maternal 15q11&ndash;q13 (same region as Prader-Willi, opposite parental origin); severe intellectual disability, seizures, ataxic gait, inappropriate laughter</div></div>
+<div class="tr g2"><div class="dn">Beckwith-Wiedemann syndrome</div><div class="d2">11p15 imprinting defect; macrosomia, macroglossia, omphalocele, neonatal hypoglycemia, increased Wilms tumor/hepatoblastoma risk</div></div>
+</div></div></div>`},
+}},
+pathology:{label:"Neonatal Pathology",icon:"&#x1FA7A;",subs:{
+  idm:{label:"Infant of Diabetic Mother",updated:"AAP CFN 2011 / PES 2015",content:()=>`
+<div class="cf"><div class="card a4"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Pathophysiology</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<p style="font-size:12px;color:var(--td)">Maternal hyperglycemia crosses the placenta (facilitated diffusion) &rarr; fetal hyperglycemia &rarr; fetal pancreatic beta-cell hyperplasia and hyperinsulinemia &rarr; increased fat/glycogen deposition (macrosomia), organomegaly, and delayed surfactant/lung maturation. After birth, the sudden loss of maternal glucose supply while fetal insulin remains transiently elevated produces the hallmark risk: neonatal hypoglycemia.</p>
+</div></div></div>
+<div class="cf"><div class="card a1"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Clinical Features by System</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="thr g2"><div>System</div><div>Findings</div></div>
+<div class="tr g2"><div class="dn">Growth</div><div class="d2">Macrosomia (most common, from good glycemic exposure) OR SGA (if maternal vasculopathy limits placental flow)</div></div>
+<div class="tr g2"><div class="dn">Metabolic</div><div class="d2">Hypoglycemia (most common complication), hypocalcemia, hypomagnesemia</div></div>
+<div class="tr g2"><div class="dn">Cardiopulmonary/CNS</div><div class="d2">RDS (surfactant maturation delayed by fetal hyperinsulinemia), perinatal asphyxia, hypertrophic cardiomyopathy (usually transient, septal predominant)</div></div>
+<div class="tr g2"><div class="dn">Hematologic</div><div class="d2">Polycythemia (from relative fetal hypoxia driving erythropoietin), hyperbilirubinemia</div></div>
+<div class="tr g2"><div class="dn">Congenital anomalies</div><div class="d2">Increased overall risk, most strongly linked to poor glycemic control (elevated HbA1c) in the first trimester &mdash; cardiac (VSD, transposition), neural tube defects, caudal regression syndrome, renal anomalies</div></div>
+</div></div></div>
+<div class="cf"><div class="card a5"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Neonatal Hypoglycemia &mdash; Two Competing Operational Thresholds</span><span class="bd bd5">DIFFERING GUIDANCE</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="controversy">The AAP Committee on Fetus and Newborn (2011, reaffirmed) and the Pediatric Endocrine Society (2015) publish <em>different</em> operational glucose thresholds, because they were built for different purposes: AAP addresses transitional glucose regulation in the first 24&ndash;48h in at-risk infants; PES addresses persistent/recurrent hypoglycemia beyond 48h. Know which one your unit's protocol follows. <span class="cite">Thornton PS, et al. J Pediatr. 2015;167(2):238&ndash;245. PMID: 25957977</span> <span class="cite-eu">Adamkin DH, AAP Clin Report. Pediatrics. 2011;127(3):575&ndash;579. PMID: 21357346</span></div>
+<div class="thr g3"><div>Guideline</div><div>Threshold (treat if below)</div><div>Window addressed</div></div>
+<div class="tr g3"><div class="dn">AAP 2011</div><div class="dd">&lt;25 mg/dL (0&ndash;4h); &lt;35 mg/dL (4&ndash;24h); maintain &gt;45 mg/dL (24&ndash;48h)</div><div class="d2">First 24&ndash;48h, at-risk infants (IDM, SGA/LGA, late preterm)</div></div>
+<div class="tr g3"><div class="dn">PES 2015</div><div class="dd">&gt;50 mg/dL through 48h; &gt;60 mg/dL thereafter</div><div class="d2">Persistent/recurrent hypoglycemia beyond 48h, evaluation for underlying disorder</div></div>
+</div>
+<div class="dv"></div>
+<div class="crit"><div class="ct">Clinical Manifestations of Neonatal Hypoglycemia</div><ul><li>Jitteriness, irritability, high-pitched cry</li><li>Lethargy, hypotonia, poor feeding</li><li>Apnea, cyanosis</li><li>Seizures (severe/prolonged)</li></ul></div>
+</div></div></div>
+<div class="cf"><div class="card"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Management of Specific Complications</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="thr g2"><div>Complication</div><div>Approach</div></div>
+<div class="tr g2"><div class="dn">Symptomatic hypoglycemia</div><div class="d2">D10W 2 mL/kg IV bolus, then continuous infusion at glucose infusion rate (GIR) 6&ndash;8 mg/kg/min; recheck and titrate</div></div>
+<div class="tr g2"><div class="dn">Asymptomatic, below threshold</div><div class="d2">Trial of oral feeding first if feasible, recheck within ~1h; if still low or symptomatic, treat as above</div></div>
+<div class="tr g2"><div class="dn">Hypocalcemia</div><div class="d2">10% calcium gluconate 1&ndash;2 mL/kg (100&ndash;200 mg/kg) IV slowly over 10 min with cardiac monitoring, may repeat</div></div>
+<div class="tr g2"><div class="dn">Polycythemia</div><div class="d2">Monitor hematocrit; partial exchange transfusion if symptomatic and Hct markedly elevated</div></div>
+</div>
+<div class="al i" style="margin-top:6px"><span class="ali">&#8505;</span>Antenatal glycemic control (target HbA1c &lt;6.5% preconception per most guidelines) is the single most effective prevention strategy for IDM complications.</div>
+</div></div></div>`},
+  seizures:{label:"Neonatal Seizures",updated:"Volpe classification / ILAE Neonatal Task Force 2021",content:()=>`
+<div class="cf"><div class="card a2"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Overview</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<p style="font-size:12px;color:var(--td)">Incidence ~1&ndash;3.5 per 1000 live births (higher in preterm/VLBW infants). Generalized tonic-clonic seizures are rare in neonates due to immature cortical organization/myelination &mdash; most neonatal seizures are subtle or focal.</p>
+</div></div></div>
+<div class="cf"><div class="card"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Jitteriness vs Seizure</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="thr g3"><div>Feature</div><div>Jitteriness</div><div>Seizure</div></div>
+<div class="tr g3"><div class="dn">Eye movements</div><div class="d2">Normal</div><div class="d2">May be abnormal (staring, blinking, tonic deviation)</div></div>
+<div class="tr g3"><div class="dn">Response to gentle restraint</div><div class="d2">Stops when limb is held/flexed</div><div class="d2">Continues despite restraint</div></div>
+<div class="tr g3"><div class="dn">Movement quality</div><div class="d2">Fine, rhythmic tremor</div><div class="d2">Often coarser, may have autonomic changes (apnea, tachycardia, BP changes)</div></div>
+</div></div></div>
+<div class="cf"><div class="card a1"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Seizure Types (Volpe Classification)</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="thr g2"><div>Type</div><div>Features</div></div>
+<div class="tr g2"><div class="dn">Subtle</div><div class="d2">Most common overall; ocular movements, oral-buccal-lingual movements (chewing/sucking), cycling limb movements, apnea with tachycardia; often NOT time-locked to EEG discharge</div></div>
+<div class="tr g2"><div class="dn">Clonic (focal or multifocal)</div><div class="d2">Rhythmic jerking, 1 limb or one side of body; more often EEG-correlated than subtle seizures</div></div>
+<div class="tr g2"><div class="dn">Tonic (focal or generalized)</div><div class="d2">Sustained posturing; focal tonic more often EEG-correlated than generalized tonic</div></div>
+<div class="tr g2"><div class="dn">Myoclonic</div><div class="d2">Focal, multifocal, or generalized brief jerks; generalized myoclonus can be a poor prognostic sign and overlaps with severe encephalopathy</div></div>
+<div class="al i" style="margin-top:6px"><span class="ali">&#8505;</span>There is a well-documented phenomenon of "electro-clinical dissociation" in neonates &mdash; some clinically apparent events have no EEG correlate (may be brainstem release phenomena rather than true seizures), and conversely many electrographic seizures produce no visible clinical signs ("electrographic-only"/subclinical seizures), especially after antiseizure medication is given. Continuous EEG or amplitude-integrated EEG (aEEG) is the reference standard for confirming true seizure activity when available. <span class="cite">Pressler RM, et al. ILAE Neonatal Seizure Task Force. Epilepsia. 2021;62(3):615&ndash;628. PMID: 33522601</span></div>
+</div></div></div>
+<div class="cf"><div class="card a5"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Etiology (approximate frequency, most common first)</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="thr g2"><div>Cause</div><div>Key clues</div></div>
+<div class="tr g2"><div class="dn">Hypoxic-ischemic encephalopathy</div><div class="d2">Most common overall cause; onset typically first 24h after a perinatal hypoxic event, often frequent but brief seizures</div></div>
+<div class="tr g2"><div class="dn">Intracranial hemorrhage</div><div class="d2">Term: subarachnoid, often after traumatic/macrosomic delivery, generally good prognosis. Preterm: intraventricular hemorrhage, typically after day 3, often generalized tonic seizures, worse prognosis</div></div>
+<div class="tr g2"><div class="dn">CNS infection</div><div class="d2">Meningitis/encephalitis; consider if well at birth then deteriorates, or seizures beyond the first few days</div></div>
+<div class="tr g2"><div class="dn">Acute metabolic derangement</div><div class="d2">Hypoglycemia, hypocalcemia, hypomagnesemia &mdash; check and correct these first in any neonatal seizure workup</div></div>
+<div class="tr g2"><div class="dn">Inborn error of metabolism</div><div class="d2">Initially well, then deteriorates day 2&ndash;3+; consider if resembling late-onset sepsis without a clear infectious source</div></div>
+<div class="tr g2"><div class="dn">Cerebral malformation</div><div class="d2">Often refractory seizures from the first days of life; diagnosed by neuroimaging (MRI preferred)</div></div>
+<div class="tr g2"><div class="dn">Pyridoxine-dependent epilepsy</div><div class="d2">Rare, enzyme (antiquitin/ALDH7A1) deficiency; refractory seizures responding to a pyridoxine trial</div></div>
+<div class="tr g2"><div class="dn">Benign familial neonatal seizures/myoclonus</div><div class="d2">Positive family history, self-limited course, otherwise well-appearing infant</div></div>
+</div></div></div>
+<div class="cf"><div class="card"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Treatment Ladder</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="thr g3"><div>Line</div><div>Drug &amp; dose</div><div>Notes</div></div>
+<div class="tr g3"><div class="dn">Always first</div><div class="dd">Correct reversible metabolic causes (glucose, calcium, magnesium)</div><div class="d2">Do this in parallel with, not instead of, antiseizure medication if seizures are ongoing</div></div>
+<div class="tr g3"><div class="dn">1st-line AED</div><div class="dd">Phenobarbital: load 20 mg/kg IV (may repeat in increments up to a max total load ~40 mg/kg); maintenance 3&ndash;5 mg/kg/day</div><div class="d2">Traditional first-line despite concerns in preclinical models about neuroapoptosis; remains standard of care per most current protocols</div></div>
+<div class="tr g3"><div class="dn">2nd-line AED</div><div class="dd">(Fos)phenytoin: load 20 mg PE/kg IV; maintenance 3&ndash;5 mg/kg/day</div><div class="d2">Requires cardiac monitoring during load; narrow therapeutic window</div></div>
+<div class="tr g3"><div class="dn">Increasingly used earlier</div><div class="dd">Levetiracetam: load 20&ndash;40 mg/kg IV; maintenance 10&ndash;80 mg/kg/day</div><div class="d2">Favorable safety profile is prompting earlier use in some protocols/trials versus reserving strictly for refractory cases; practice is evolving and varies by institution</div></div>
+<div class="tr g3"><div class="dn">Refractory / diagnostic trial</div><div class="dd">Pyridoxine 100 mg IV single dose (with EEG monitoring if possible)</div><div class="d2">For suspected pyridoxine-dependent epilepsy or truly refractory seizures of unclear cause</div></div>
+</div>
+<div class="al w" style="margin-top:6px"><span class="ali">&#9888;</span>Guidance increasingly emphasizes confirming seizures with EEG/aEEG where available (clinical suspicion alone is unreliable in both directions), and treating confirmed electrographic seizures even if no clinical correlate is visible.</div>
+</div></div></div>`},
+  jaundice:{label:"Neonatal Jaundice",updated:"AAP 2022 (supersedes 2004)",content:()=>`
+<div class="updateflag">The AAP substantially revised its hyperbilirubinemia guideline in August 2022 (valid through August 2027), replacing the 2004 guideline. Phototherapy thresholds were RAISED (modestly) based on evidence that neurotoxicity occurs at higher bilirubin levels than previously assumed, universal risk-factor-based screening was formalized, and a new "escalation of care" concept was introduced. If your teaching materials still show the flatter 2004-era thresholds or the old "rarely &gt;12mg/dL" physiologic-jaundice heuristic, they predate this update. <span class="cite">Kemper AR, et al. Pediatrics. 2022;150(3):e2022058859. PMID: 35910791</span></div>
+<div class="cf"><div class="card a2"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Definitions &amp; Screening</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="d2"><strong>Hyperbilirubinemia:</strong> total serum bilirubin (TSB) &gt;95th percentile for age in hours on the hour-specific (Bhutani) nomogram.<br><strong>Screening (AAP 2022, reaffirmed):</strong> universal TSB or transcutaneous bilirubin (TcB) measurement in infants &ge;35 weeks GA at 24&ndash;48h of life or before discharge if sooner.<br><strong>Jaundice before 24h of age is always pathologic and requires urgent evaluation.</strong></div>
+</div></div></div>
+<div class="cf"><div class="card a1"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Unconjugated vs Conjugated Hyperbilirubinemia</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="c2">
+<div>
+<div style="font-family:var(--fm);font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--a4);margin-bottom:6px">UNCONJUGATED (INDIRECT)</div>
+<ul class="tight" style="font-size:11.5px;padding-left:14px">
+<li>Increased production: hemolysis (ABO/Rh incompatibility, G6PD deficiency, spherocytosis), cephalhematoma resorption, polycythemia</li>
+<li>Decreased conjugation: Crigler-Najjar (types 1/2), Gilbert syndrome, physiologic immaturity, breast milk jaundice, hypothyroidism</li>
+</ul>
+</div>
+<div>
+<div style="font-family:var(--fm);font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--ac);margin-bottom:6px">CONJUGATED (DIRECT)</div>
+<ul class="tight" style="font-size:11.5px;padding-left:14px">
+<li>Defined as direct bilirubin &gt;1 mg/dL (or &gt;15&ndash;20% of total, definitions vary by lab) &mdash; ALWAYS considered pathologic, warrants evaluation</li>
+<li>Liver injury: TORCH infections, sepsis, galactosemia, alpha-1-antitrypsin deficiency</li>
+<li>Biliary obstruction: biliary atresia (time-critical &mdash; workup and Kasai portoenterostomy outcomes are time-sensitive), choledochal cyst</li>
+</ul>
+</div>
+</div>
+</div></div></div>
+<div class="cf"><div class="card"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Physiologic vs Pathologic Pattern</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="thr g3"><div></div><div>Physiologic</div><div>Pathologic</div></div>
+<div class="tr g3"><div class="dn">Onset</div><div class="dd">Day 2&ndash;3</div><div class="dd">Any time, including day 1 (day 1 onset is a medical emergency)</div></div>
+<div class="tr g3"><div class="dn">Rate of rise</div><div class="dd">Gradual</div><div class="dd">&gt;5 mg/dL/day or &gt;0.5 mg/dL/hr</div></div>
+<div class="tr g3"><div class="dn">Direct bilirubin</div><div class="dd">Not elevated</div><div class="dd">Any elevation is pathologic</div></div>
+<div class="tr g3"><div class="dn">Course</div><div class="dd">Declines by 1&ndash;2 weeks</div><div class="dd">Persists; associated anemia, hepatosplenomegaly, or signs of sepsis</div></div>
+</div></div></div>
+<div class="cf"><div class="card a4"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Breastfeeding Jaundice vs Breast Milk Jaundice</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="thr g3"><div></div><div>Breastfeeding jaundice</div><div>Breast milk jaundice</div></div>
+<div class="tr g3"><div class="dn">Onset</div><div class="dd">Early, first week</div><div class="dd">After day 5&ndash;7</div></div>
+<div class="tr g3"><div class="dn">Mechanism</div><div class="dd">Suboptimal intake &rarr; increased enterohepatic circulation</div><div class="dd">Substances in breast milk (e.g. beta-glucuronidase) reduce bilirubin conjugation/excretion</div></div>
+<div class="tr g3"><div class="dn">Management</div><div class="dd">Lactation support, increase feeding frequency, supplement only if medically indicated</div><div class="dd">Usually observation; if diagnostic uncertainty, brief interruption (24&ndash;48h) with pumping can show rapid bilirubin drop; rarely needs phototherapy</div></div>
+</div></div></div>
+<div class="cf"><div class="card a1"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Escalation of Care &mdash; When to Worry (AAP 2022 concept)</span><span class="bd bd1">AAP 2022</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="al e"><span class="ali">&#9888;</span>Evaluate urgently for severe hyperbilirubinemia if: onset before 24h of age &middot; TSB approaching or exceeding the phototherapy threshold for gestational age/risk category &middot; rate of rise &gt;0.5 mg/dL/hr &middot; any signs of acute bilirubin encephalopathy (lethargy, poor feeding, high-pitched cry, arching) &middot; jaundice persisting beyond 2&ndash;3 weeks with dark urine or pale stool (raises concern for conjugated/obstructive causes, e.g. biliary atresia).</div>
+<div class="d2">The 2022 guideline provides specific, GA- and risk-factor-stratified TSB threshold graphs for both phototherapy initiation and this "escalation of care" decision point &mdash; use the current published nomograms rather than a single flat number (the old teaching heuristic of "rarely &gt;12 mg/dL is fine" is an oversimplification and does not reflect the 2022 risk-stratified approach).</div>
+</div></div></div>
+<div class="cf"><div class="card a3"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Treatment</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<ul class="sl">
+<li><span class="sn">1</span><span><strong>Phototherapy:</strong> infant undressed (eyes/gonads shielded), light source 15&ndash;30 cm away per device instructions, turn periodically, monitor temperature and hydration; use the current AAP 2022 GA/risk-specific threshold graphs to decide when to start</span></li>
+<li><span class="sn">2</span><span><strong>Exchange transfusion:</strong> reserved for TSB reaching the (higher) exchange-transfusion threshold or signs of acute bilirubin encephalopathy; double-volume exchange via umbilical vessels</span></li>
+<li><span class="sn">3</span><span><strong>IVIG:</strong> consider in isoimmune hemolytic disease (Rh/ABO) if TSB rising despite intensive phototherapy, to reduce need for exchange transfusion</span></li>
+</ul>
+<div class="dv"></div>
+<div class="d2"><strong>Kernicterus:</strong> caused by deposition of unbound unconjugated bilirubin in basal ganglia and brainstem nuclei. Acute bilirubin encephalopathy progresses from lethargy/poor feeding/hypotonia &rarr; irritability/hypertonia/opisthotonos/fever &rarr; (if untreated) pronounced opisthotonos, apnea, coma. Chronic kernicterus causes choreoathetoid cerebral palsy, upward gaze palsy, sensorineural hearing loss, and dental enamel dysplasia. Prevention through timely screening/treatment is far more effective than treating established encephalopathy.</div>
+</div></div></div>`},
+  iem:{label:"Inborn Errors of Metabolism",updated:"Standard biochemical genetics teaching",content:()=>`
+<div class="cf"><div class="card"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Overview</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<p style="font-size:12px;color:var(--td)">Heterogeneous, mostly autosomal recessive disorders from a specific enzyme deficiency, causing accumulation of a toxic substrate or deficiency of an essential product. Infants are typically normal at birth, then deteriorate hours to weeks later &mdash; often closely mimicking late-onset sepsis, which is the key diagnostic trap.</p>
+</div></div></div>
+<div class="cf"><div class="card a5"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">When to Suspect IEM</span><span class="bd bd5">RED FLAGS</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<ul class="sl">
+<li><span class="sn">!</span><span>Unexplained neurologic deterioration, especially with a symptom-free interval after birth</span></li>
+<li><span class="sn">!</span><span>Refractory hypoglycemia, metabolic acidosis, or hyperammonemia</span></li>
+<li><span class="sn">!</span><span>Hepatocellular dysfunction or unexplained hepatomegaly</span></li>
+<li><span class="sn">!</span><span>Cardiomyopathy without another explanation</span></li>
+<li><span class="sn">!</span><span>Recurrent unexplained neonatal or infant deaths in the family</span></li>
+<li><span class="sn">!</span><span>Unusual odor, hair/skin findings (e.g. sparse/brittle hair, eczema)</span></li>
+</ul>
+</div></div></div>
+<div class="cf"><div class="card a2"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Selected Disorders by Category</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="thr g3"><div>Disorder</div><div>Defect</div><div>Key clinical clue / management</div></div>
+<div class="tr g3"><div class="dn">Galactosemia</div><div class="d2">GALT deficiency</div><div class="d2">Vomiting/liver failure/cataracts/E. coli sepsis after milk feeding; treatment: lactose-free (galactose-free) diet</div></div>
+<div class="tr g3"><div class="dn">Hereditary fructose intolerance</div><div class="d2">Aldolase B deficiency</div><div class="d2">Vomiting, hypoglycemia, liver dysfunction after fructose/sucrose exposure; avoid fructose, sucrose, sorbitol</div></div>
+<div class="tr g3"><div class="dn">Phenylketonuria (PKU)</div><div class="d2">Phenylalanine hydroxylase deficiency</div><div class="d2">Normal at birth &rarr; intellectual disability if untreated, musty/mousy odor, fair hair/skin, eczema; lifelong low-phenylalanine diet, critical maternal dietary control in pregnancy</div></div>
+<div class="tr g3"><div class="dn">Maple syrup urine disease</div><div class="d2">Branched-chain ketoacid dehydrogenase deficiency</div><div class="d2">Poor feeding, lethargy, sweet/maple-syrup odor, encephalopathy; restricted branched-chain amino acid diet, acute crisis management</div></div>
+<div class="tr g3"><div class="dn">Urea cycle disorders (e.g. OTC deficiency)</div><div class="d2">Any urea cycle enzyme</div><div class="d2">Hyperammonemia, vomiting, lethargy progressing to coma, respiratory alkalosis; treatment: reduce ammonia (protein restriction, nitrogen scavengers, dialysis if severe)</div></div>
+<div class="tr g3"><div class="dn">Organic acidemias (propionic, methylmalonic)</div><div class="d2">Propionyl-CoA carboxylase / methylmalonyl-CoA mutase</div><div class="d2">Vomiting, lethargy, metabolic acidosis with anion gap, ketosis, hyperammonemia; treatment: dietary protein restriction, carnitine, B12 (in B12-responsive MMA)</div></div>
+<div class="tr g3"><div class="dn">Mitochondrial disorders</div><div class="d2">Nuclear or mitochondrial DNA (maternal inheritance if mtDNA)</div><div class="d2">Multisystem: hypotonia, seizures, lactic acidosis, myopathy; supportive care, vitamin/cofactor cocktails</div></div>
+<div class="tr g3"><div class="dn">Lysosomal storage diseases (MPS, Gaucher, Niemann-Pick)</div><div class="d2">Specific lysosomal enzyme deficiency</div><div class="d2">Organomegaly, coarse facies, developmental regression; enzyme replacement therapy, HSCT in selected cases</div></div>
+</div></div></div>
+<div class="cf"><div class="card"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Initial Workup &amp; Management Goals</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="c2">
+<div>
+<div style="font-family:var(--fm);font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--a3);margin-bottom:6px">BLOOD/PLASMA</div>
+<div class="d2">CBC, liver enzymes, glucose, electrolytes/anion gap, blood gas, ammonia, lactate/pyruvate, amino acids, acylcarnitine profile, carnitine</div>
+</div>
+<div>
+<div style="font-family:var(--fm);font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--a4);margin-bottom:6px">URINE</div>
+<div class="d2">Glucose, pH, ketones, reducing substances, organic acids, acylglycines, orotic acid</div>
+</div>
+</div>
+<div class="dv"></div>
+<div class="d2"><strong>Management goals:</strong> reduce accumulating toxic substrate, provide adequate caloric/fluid support (often high-calorie, protein-restricted or -modified), supplement deficient cofactors/enzymes where a specific therapy exists. Newborn (bloodspot) screening detects many treatable IEM before symptom onset &mdash; know your region's screening panel, since it varies by country/state.</div>
+</div></div></div>`},
+}},
+respneuro:{label:"RDS &amp; HIE",icon:"&#x1FAC1;",subs:{
+  rds:{label:"RDS (Hyaline Membrane Disease)",updated:"AAP surfactant/steroid guidance 2020",content:()=>`
+<div class="cf"><div class="card a6"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Definition &amp; Pathophysiology</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<p style="font-size:12px;color:var(--td)">Respiratory distress from pulmonary surfactant deficiency, occurring almost exclusively in preterm infants. It is a leading cause of neonatal respiratory morbidity and mortality. Surfactant synthesis begins ~24&ndash;28 weeks gestation; mature surfactant levels are generally reached after ~35 weeks. Without adequate surfactant, alveolar surface tension is high, causing progressive atelectasis, reduced compliance, and increased work of breathing.</p>
+</div></div></div>
+<div class="cf"><div class="card"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Risk Factors</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="d2">Prematurity (dominant risk factor, incidence rises sharply with decreasing GA), infant of diabetic mother (hyperinsulinemia delays surfactant maturation), cesarean delivery without labor (reduced endogenous cortisol surge), intrapartum asphyxia</div>
+</div></div></div>
+<div class="cf"><div class="card a1"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Clinical &amp; Radiographic Features</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="d2"><strong>Clinical:</strong> tachypnea, nasal flaring, grunting, intercostal/subcostal retractions, cyanosis in room air, diminished breath sounds with fine crackles<br><strong>CXR:</strong> diffuse fine reticulogranular ("ground-glass") pattern with air bronchograms; severe cases show near-complete opacification ("white-out" lungs)</div>
+</div></div></div>
+<div class="cf"><div class="card a3"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Prevention &amp; Treatment</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<ul class="sl">
+<li><span class="sn">1</span><span><strong>Antenatal corticosteroids</strong> (betamethasone or dexamethasone) for anticipated preterm delivery, generally recommended 24&ndash;34 weeks GA (and considered for late preterm 34&ndash;36+6 wk per ACOG/SMFM); accelerates fetal lung maturity</span></li>
+<li><span class="sn">2</span><span>Respiratory support: CPAP or mechanical ventilation as needed, targeting lung-protective settings</span></li>
+<li><span class="sn">3</span><span><strong>Exogenous surfactant</strong> administered via ETT (natural/animal-derived preparations widely used); early administration in infants with confirmed/likely RDS improves outcomes</span></li>
+<li><span class="sn">4</span><span>Supportive care: thermoregulation, careful fluid/nutrition management, monitor for complications (pneumothorax, pulmonary hemorrhage, bronchopulmonary dysplasia)</span></li>
+</ul>
+</div></div></div>`},
+  hie:{label:"HIE &amp; Therapeutic Hypothermia",updated:"Sarnat 1976 / NICHD-CoolCap-TOBY trials",content:()=>`
+<div class="cf"><div class="card a2"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Definition</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<p style="font-size:12px;color:var(--td)">Hypoxic-ischemic encephalopathy (HIE) is acute/subacute brain injury from impaired cerebral gas exchange (hypoxia, hypercapnia, acidosis) around the time of birth. The older term "perinatal asphyxia" is largely being replaced by "hypoxic-ischemic injury/encephalopathy" in current literature since asphyxia implies a specific mechanism that isn't always confirmable. Incidence in high-resource settings: roughly 1&ndash;4 per 1000 live births. <span class="cite">Multiple sources incl. Chalak L, et al. Semin Perinatol reviews</span></p>
+</div></div></div>
+<div class="cf"><div class="card a1"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Sarnat Staging of Encephalopathy</span><span class="bd bd1">Sarnat 1976</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="thr g4"><div>Category</div><div>Mild (Stage I)</div><div>Moderate (Stage II)</div><div>Severe (Stage III)</div></div>
+<div class="tr g4"><div class="dn">Consciousness</div><div class="d2">Hyperalert, irritable</div><div class="d2">Lethargic</div><div class="dd">Stupor/coma</div></div>
+<div class="tr g4"><div class="dn">Muscle tone</div><div class="d2">Normal</div><div class="d2">Hypotonia</div><div class="dd">Flaccid</div></div>
+<div class="tr g4"><div class="dn">Primitive reflexes</div><div class="d2">Normal/exaggerated</div><div class="d2">Weak</div><div class="dd">Absent</div></div>
+<div class="tr g4"><div class="dn">Autonomic function</div><div class="d2">Sympathetic overactivity</div><div class="d2">Mixed, miosis, variable HR</div><div class="dd">Fixed dilated pupils, apnea, bradycardia</div></div>
+<div class="dv"></div>
+<div class="d2">Originally described by Sarnat &amp; Sarnat in 1976 based on 21 term infants; it has since been adapted into several "modified Sarnat" scoring systems (including NICHD and SIBEN numerical versions) for use in modern trial eligibility and severity tracking. The original three-stage clinical framework remains widely used at the bedside. <span class="cite">Sarnat HB, Sarnat MS. Arch Neurol. 1976;33(10):696&ndash;705. PMID: 987769</span></div>
+</div></div></div>
+<div class="cf"><div class="card a5"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Therapeutic Hypothermia &mdash; Eligibility (as used in the major trials)</span><span class="bd bd5">CONFIRMED</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="crit"><div class="ct">Typical Eligibility Criteria (combination required, varies slightly by protocol)</div><ul>
+<li>&ge;35&ndash;36 weeks gestation (most protocols require &ge;36 wk; some regional protocols use &ge;35 wk)</li>
+<li>Evidence of perinatal hypoxia-ischemia: Apgar &le;5 at 10 minutes, OR continued need for resuscitation/PPV at 10 minutes, OR cord/early neonatal pH &lt;7.0 or base deficit/excess &ge;16 mmol/L within the first hour</li>
+<li>Moderate or severe encephalopathy on Sarnat exam performed at 30&ndash;60 minutes to a few hours of life (Stage II or III)</li>
+<li>Cooling initiated within 6 hours of birth</li>
+</ul></div>
+<div class="d2"><strong>Method:</strong> selective head cooling or whole-body cooling to 33.5&ndash;34.5&deg;C core temperature for 72 hours, followed by controlled slow rewarming (typically over 6&ndash;12 hours).<br><strong>Outcome data (pooled from major RCTs &mdash; CoolCap, NICHD, TOBY):</strong> therapeutic hypothermia reduces the combined outcome of death or major neurodevelopmental disability in moderate-severe HIE, though a substantial proportion of treated infants still have an adverse outcome &mdash; it reduces, but does not eliminate, risk.</div>
+<div class="dv"></div>
+<div class="cite">Shankaran S, et al. Whole-Body Hypothermia for Neonates with Hypoxic-Ischemic Encephalopathy [NICHD]. NEJM. 2005;353(15):1574&ndash;1584. PMID: 16221780</div>
+<div class="cite">Azzopardi DV, et al. Moderate Hypothermia to Treat Perinatal Asphyxial Encephalopathy [TOBY]. NEJM. 2009;361(14):1349&ndash;1358. PMID: 19797281</div>
+<div class="cite">Gluckman PD, et al. Selective Head Cooling with Mild Systemic Hypothermia After Neonatal Encephalopathy [CoolCap]. Lancet. 2005;365(9460):663&ndash;670. PMID: 15721471</div>
+<div class="al w" style="margin-top:8px"><span class="ali">&#9888;</span>Eligibility criteria vary meaningfully between regional/national protocols (differences in required pH/base-excess cutoffs and the exact encephalopathy scoring system used) &mdash; use your own institution's protocol for actual patient selection rather than a single fixed number. <span class="cite-amb">Practice varies by region</span></div>
+</div></div></div>
+<div class="cf"><div class="card"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Multiorgan Involvement in Perinatal Hypoxic-Ischemic Injury</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="thr g2"><div>System</div><div>Manifestation</div></div>
+<div class="tr g2"><div class="dn">Cardiac</div><div class="d2">Transient myocardial dysfunction, cardiogenic shock, tricuspid regurgitation</div></div>
+<div class="tr g2"><div class="dn">Respiratory</div><div class="d2">Meconium aspiration, persistent pulmonary hypertension of the newborn</div></div>
+<div class="tr g2"><div class="dn">Renal</div><div class="d2">Acute tubular necrosis, oliguria, hematuria</div></div>
+<div class="tr g2"><div class="dn">GI</div><div class="d2">Necrotizing enterocolitis risk</div></div>
+<div class="tr g2"><div class="dn">Hematologic</div><div class="d2">DIC, thrombocytopenia</div></div>
+<div class="tr g2"><div class="dn">Metabolic</div><div class="d2">Hypoglycemia, hypocalcemia, hypomagnesemia, hyponatremia (SIADH)</div></div>
+</div></div></div>`},
+}},
+refs:{label:"References",icon:"&#x1F4DA;",content:()=>`
+<div class="cf">
+<div class="card a3"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Newborn Assessment &amp; Resuscitation</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="ir"><div class="il"><span class="cite">Apgar 1953</span></div><div class="iv">Apgar V. A Proposal for a New Method of Evaluation of the Newborn Infant. <em>Curr Res Anesth Analg.</em> 1953;32(4):260&ndash;267.</div></div>
+<div class="ir"><div class="il"><span class="cite">ACOG 2015</span></div><div class="iv">American College of Obstetricians and Gynecologists Committee on Obstetric Practice. The Apgar Score. Committee Opinion No. 644. <em>Obstet Gynecol.</em> 2015;126(4):e52&ndash;e55. PMID: 26375579</div></div>
+<div class="ir"><div class="il"><span class="cite">NRP 2021</span></div><div class="iv">Wyckoff MH, et al. Neonatal Life Support: 2020 International Consensus on CPR and ECC Science with Treatment Recommendations. <em>Circulation.</em> 2020;142(16_suppl_1):S185&ndash;S221. PMID: 33081527</div></div>
+<div class="ir"><div class="il"><span class="cite">AAP NRP 8th ed</span></div><div class="iv">Weiner GM, Zaichkin J, eds. <em>Textbook of Neonatal Resuscitation</em>, 8th ed. American Academy of Pediatrics; 2021.</div></div>
+</div></div>
+<div class="card a2"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Growth, Development &amp; Milestones</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="ir"><div class="il"><span class="cite">CDC/AAP 2022</span></div><div class="iv">Zubler JM, Wiggins LD, Macias MM, et al. Evidence-Informed Milestones for Developmental Surveillance Tools. <em>Pediatrics.</em> 2022;150(1):e2021052138. PMID: 35132436</div></div>
+<div class="ir"><div class="il"><span class="cite-eu">WHO 2006</span></div><div class="iv">World Health Organization. WHO Child Growth Standards: Length/Height-for-Age, Weight-for-Age, Weight-for-Length, Weight-for-Height and Body Mass Index-for-Age. Geneva: WHO; 2006.</div></div>
+</div></div>
+</div>
+<div class="cg">
+<div class="card a1"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Jaundice &amp; Bilirubin</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="ir"><div class="il"><span class="cite">AAP 2022</span></div><div class="iv">Kemper AR, Newman TB, Slaughter JL, et al. Clinical Practice Guideline Revision: Management of Hyperbilirubinemia in the Newborn Infant 35 or More Weeks of Gestation. <em>Pediatrics.</em> 2022;150(3):e2022058859. PMID: 35910791</div></div>
+<div class="ir"><div class="il"><span class="cite">Bhutani 1999</span></div><div class="iv">Bhutani VK, Johnson L, Sivieri EM. Predictive Ability of a Predischarge Hour-Specific Serum Bilirubin for Subsequent Significant Hyperbilirubinemia in Healthy Term and Near-Term Newborns. <em>Pediatrics.</em> 1999;103(1):6&ndash;14. PMID: 9917432</div></div>
+</div></div>
+<div class="card a5"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">HIE &amp; Therapeutic Hypothermia</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="ir"><div class="il"><span class="cite">Sarnat 1976</span></div><div class="iv">Sarnat HB, Sarnat MS. Neonatal Encephalopathy Following Fetal Distress: A Clinical and Electroencephalographic Study. <em>Arch Neurol.</em> 1976;33(10):696&ndash;705. PMID: 987769</div></div>
+<div class="ir"><div class="il"><span class="cite">CoolCap 2005</span></div><div class="iv">Gluckman PD, Wyatt JS, Azzopardi D, et al. Selective Head Cooling with Mild Systemic Hypothermia After Neonatal Encephalopathy: Multicentre Randomised Trial. <em>Lancet.</em> 2005;365(9460):663&ndash;670. PMID: 15721471</div></div>
+<div class="ir"><div class="il"><span class="cite">NICHD 2005</span></div><div class="iv">Shankaran S, Laptook AR, Ehrenkranz RA, et al. Whole-Body Hypothermia for Neonates with Hypoxic-Ischemic Encephalopathy. <em>N Engl J Med.</em> 2005;353(15):1574&ndash;1584. PMID: 16221780</div></div>
+<div class="ir"><div class="il"><span class="cite">TOBY 2009</span></div><div class="iv">Azzopardi DV, Strohm B, Edwards AD, et al. Moderate Hypothermia to Treat Perinatal Asphyxial Encephalopathy. <em>N Engl J Med.</em> 2009;361(14):1349&ndash;1358. PMID: 19797281</div></div>
+</div></div>
+</div>
+<div class="cg">
+<div class="card a4"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Neonatal Hypoglycemia</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="ir"><div class="il"><span class="cite">AAP 2011</span></div><div class="iv">Adamkin DH; Committee on Fetus and Newborn. Postnatal Glucose Homeostasis in Late-Preterm and Term Infants. <em>Pediatrics.</em> 2011;127(3):575&ndash;579. PMID: 21357346</div></div>
+<div class="ir"><div class="il"><span class="cite">PES 2015</span></div><div class="iv">Thornton PS, Stanley CA, De Leon DD, et al. Recommendations from the Pediatric Endocrine Society for Evaluation and Management of Persistent Hypoglycemia in Neonates, Infants, and Children. <em>J Pediatr.</em> 2015;167(2):238&ndash;245. PMID: 25957977</div></div>
+</div></div>
+<div class="card a6"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Neonatal Seizures</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="ir"><div class="il"><span class="cite">ILCAE 2021</span></div><div class="iv">Pressler RM, Cilio MR, Mizrahi EM, et al. The ILAE Classification of Seizures and the Epilepsies: Modification for Seizures in the Neonate. <em>Epilepsia.</em> 2021;62(3):615&ndash;628. PMID: 33522601</div></div>
+<div class="ir"><div class="il"><span class="cite">Volpe</span></div><div class="iv">Volpe JJ. <em>Volpe's Neurology of the Newborn</em>, 6th ed. Elsevier; 2018. (Standard reference for neonatal seizure classification)</div></div>
+</div></div>
+</div>
+<div class="cg">
+<div class="card a7"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Prematurity &amp; Feeding</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="ir"><div class="il"><span class="cite">WHO 2012</span></div><div class="iv">Blencowe H, Cousens S, Oestergaard MZ, et al. National, Regional, and Worldwide Estimates of Preterm Birth Rates in the Year 2010 with Time Trends Since 1990 for Selected Countries: A Systematic Analysis. <em>Lancet.</em> 2012;379(9832):2162&ndash;2172. PMID: 22682464</div></div>
+<div class="ir"><div class="il"><span class="cite">NIAID 2017</span></div><div class="iv">Togias A, Cooper SF, Acebal ML, et al. Addendum Guidelines for the Prevention of Peanut Allergy in the United States. <em>J Allergy Clin Immunol.</em> 2017;139(1):29&ndash;44. PMID: 28065278</div></div>
+</div></div>
+<div class="card"><div class="ch" onclick="tc(this)"><div class="chl"><span class="cn">Genetics</span></div><span class="ca o">&#9662;</span></div>
+<div class="cb">
+<div class="ir"><div class="il"><span class="cite">Merck Manual</span></div><div class="iv">Down Syndrome (Trisomy 21). <em>Merck Manual Professional Edition</em>, Pediatrics section. Accessed 2026. (Cites maternal-age-specific incidence data)</div></div>
+</div></div>
+</div>
+<div class="al i" style="margin:12px 0 4px"><span class="ali">&#8505;</span><strong>Citation methodology:</strong> facts tagged with a specific guideline/trial chip (e.g. [AAP 2022], [Sarnat 1976], [NICHD]) were checked against the cited primary source or current guideline during construction of this guide. Facts without an inline chip reflect stable, widely-taught clinical parameters found consistently across standard references (Nelson Textbook of Pediatrics, Merck Manual, AAP Textbook of Neonatal Resuscitation) rather than an item-by-item literature search &mdash; treat exact denominators for rare-syndrome incidence as approximate teaching values. Two areas received a full guideline-update check specifically because source material predating 2022 is still in wide circulation: neonatal hyperbilirubinemia thresholds (AAP 2022 superseded AAP 2004) and developmental milestone ages (CDC/AAP 2022 introduced a parallel 75th-percentile framework alongside the classical 50th-percentile teaching standard). Always cross-check against your institution's current protocol before clinical use.</div>
+`}
+};
+let S=null,U=null;
+function init(){
+  const ks=Object.keys(D);
+  document.getElementById('nav').innerHTML=ks.map(k=>`<button class="nt" id="nt-${k}" onclick="sel('${k}')"><span>${D[k].icon}</span>${D[k].label}</button>`).join('');
+  buildQ();sel(ks[0]);kbds();
+  document.getElementById('sbbd').addEventListener('click',closeSb);
+}
+function sel(k){
+  S=k;
+  document.querySelectorAll('.nt').forEach(t=>t.classList.remove('on'));
+  const t=document.getElementById('nt-'+k);
+  if(t){t.classList.add('on');t.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});}
+  if(!D[k].subs){
+    document.getElementById('sb').innerHTML=`<button class="sbcls" onclick="closeSb()">&#10005; close</button><div class="sbl">${D[k].icon} ${D[k].label}</div>`;
+    document.getElementById('co').innerHTML=`<div class="shdr"><div><div class="stitle">${D[k].icon} ${D[k].label}</div></div></div>${D[k].content()}`;
+    document.getElementById('co').scrollTop=0;
+    if(window.innerWidth<=640)closeSb();
+    return;
+  }
+  const ss=Object.keys(D[k].subs);
+  document.getElementById('sb').innerHTML=
+    `<button class="sbcls" onclick="closeSb()">&#10005; close</button>`+
+    `<div class="sbl">${D[k].icon} ${D[k].label}</div>`+
+    ss.map(s=>`<div class="sbi" id="si-${k}-${s}" onclick="sub('${k}','${s}')">${D[k].subs[s].label}</div>`).join('');
+  sub(k,ss[0]);
+  if(window.innerWidth<=640)closeSb();
+}
+function sub(sk,uk){
+  U=uk;
+  document.querySelectorAll('.sbi').forEach(i=>i.classList.remove('on'));
+  const el=document.getElementById(`si-${sk}-${uk}`);
+  if(el)el.classList.add('on');
+  const s=D[sk].subs[uk],p=D[sk];
+  document.getElementById('co').innerHTML=`<div class="shdr"><div><div class="stitle">${p.icon} ${s.label}</div><div class="smeta">${p.label}</div></div><div><div class="supd">Updated: ${s.updated}</div><div class="ssrc">${SRC}</div></div></div>${s.content()}`;
+  document.getElementById('co').scrollTop=0;
+  if(window.innerWidth<=640)closeSb();
+}
+function tc(h){const b=h.nextElementSibling,c=h.querySelector('.ca');b.classList.toggle('cl');c.classList.toggle('o');}
+function buildQ(){
+  const q=document.getElementById('qr');
+  q.innerHTML=`<div class="qhdr"><span>&#128138; Quick Ref</span><button class="qcls" onclick="closeQ()">&#10005;</button></div>`+
+    DRUGS.map(c=>`<div class="qrl">${c.cat}</div>${c.items.map(d=>`<div class="qri"><div class="qri-n">${d.n}</div><div class="qri-d">${d.d}</div><div class="qri-t">${d.t}</div></div>`).join('')}`).join('');
+}
+function toggleQ(){
+  const q=document.getElementById('qr'),b=document.getElementById('btnQ');
+  const mob=window.innerWidth<=640;
+  if(mob){const op=q.classList.contains('mopen');if(op){q.classList.remove('mopen');setTimeout(()=>{if(!q.classList.contains('mopen'))q.style.display='none';},250);}else{q.style.display='block';requestAnimationFrame(()=>q.classList.add('mopen'));}b&&b.classList.toggle('on',!op);}
+  else{const h=q.style.display==='none'||!q.style.display;q.style.display=h?'block':'none';b&&b.classList.toggle('on',h);}
+}
+function closeQ(){const q=document.getElementById('qr'),b=document.getElementById('btnQ');q.classList.remove('mopen');setTimeout(()=>{if(!q.classList.contains('mopen'))q.style.display='none';},250);b&&b.classList.remove('on');}
+function openSb(){document.getElementById('sb').classList.add('open');document.getElementById('sbbd').classList.add('vis');document.body.style.overflow='hidden';}
+function closeSb(){document.getElementById('sb').classList.remove('open');document.getElementById('sbbd').classList.remove('vis');document.body.style.overflow='';}
+function kbo(){document.getElementById('kbo').classList.toggle('vis');}
+function srch(q){
+  const sc=document.getElementById('sc'),shc=document.getElementById('shc');
+  sc.classList.toggle('vis',q.length>0);
+  if(!q.trim()){shc.textContent='';if(S&&U)sub(S,U);return;}
+  const ql=q.trim().toLowerCase();let res=[];
+  Object.keys(D).forEach(sk=>{
+    if(D[sk].subs){
+      Object.keys(D[sk].subs).forEach(uk=>{if(D[sk].subs[uk].content().replace(/<[^>]+>/g,' ').toLowerCase().includes(ql))res.push({sk,uk,sec:D[sk],s:D[sk].subs[uk]});});
+    } else if(D[sk].content && D[sk].content().replace(/<[^>]+>/g,' ').toLowerCase().includes(ql)){
+      res.push({sk,uk:null,sec:D[sk],s:D[sk]});
+    }
+  });
+  shc.textContent=res.length?`${res.length} match${res.length>1?'es':''}`:'' ;
+  if(!res.length){document.getElementById('co').innerHTML=`<div class="empty"><div style="font-size:28px;margin-bottom:10px">&#128269;</div><div>No results for <strong>"${q}"</strong></div></div>`;return;}
+  document.getElementById('co').innerHTML=`<div class="shdr"><div><div class="stitle">Results</div><div class="smeta">${res.length} match${res.length>1?'es':''} for "${q}"</div></div></div>`+res.map(r=>`<button class="srb" onclick="sel('${r.sk}');${r.uk?`setTimeout(()=>sub('${r.sk}','${r.uk}'),80)`:''}"><span>${r.sec.icon}</span><div><div style="font-weight:600">${r.s.label}</div><div style="font-size:11px;color:var(--tm)">${r.sec.label}</div></div><span style="margin-left:auto;color:var(--a3);font-size:11px">View &#8594;</span></button>`).join('');
+}
+function clr(){const si=document.getElementById('si');si.value='';document.getElementById('sc').classList.remove('vis');document.getElementById('shc').textContent='';if(S&&U)sub(S,U);si.focus();}
+function kbds(){
+  document.addEventListener('keydown',e=>{
+    const inp=document.getElementById('si'),foc=document.activeElement===inp;
+    if(e.key==='/'&&!foc){e.preventDefault();inp.focus();return;}
+    if(e.key==='Escape'){if(document.getElementById('kbo').classList.contains('vis')){kbo();return;}clr();return;}
+    if(foc)return;
+    const k=e.key.toLowerCase();
+    if(k==='p'){window.print();return;}if(k==='r'){toggleQ();return;}if(k==='?'){kbo();return;}
+    if(k==='tab'){e.preventDefault();const ks=Object.keys(D),i=ks.indexOf(S);sel(ks[(i+1)%ks.length]);}
+    if(k==='arrowdown'||k==='arrowup'){e.preventDefault();if(!S||!D[S].subs)return;const ss=Object.keys(D[S].subs),i=ss.indexOf(U),n=k==='arrowdown'?(i+1)%ss.length:(i-1+ss.length)%ss.length;sub(S,ss[n]);}
+  });
+}
+init();
+
+function updateConn() {
+  var b = document.getElementById('connChip');
+  if (!b) return;
+  var online = navigator.onLine && location.protocol !== 'file:';
+  b.textContent = online ? '\u27F3 ONLINE' : '\u2713 OFFLINE';
+  b.className = online ? 'chip2 conn-online' : 'chip2';
+}
+window.addEventListener('online', updateConn);
+window.addEventListener('offline', updateConn);
+document.addEventListener('DOMContentLoaded', updateConn);
+
+function bkmTab(el, id) {
+  document.querySelectorAll('.bkm-tab').forEach(t => t.classList.remove('on'));
+  document.querySelectorAll('.bkm-pane').forEach(p => p.classList.remove('on'));
+  el.classList.add('on');
+  document.getElementById('bkm-' + id).classList.add('on');
+}
+</script>
+<div class="bkm-overlay" id="bkmOverlay">
+<div class="bkm-modal">
+  <div class="bkm-title"><span>&#128204; Save for Offline Use</span><button class="bkm-close" onclick="document.getElementById('bkmOverlay').classList.remove('open')">&#x2715;</button></div>
+  <div class="bkm-sub">This file works entirely offline &mdash; no internet needed after saving.</div>
+  <div class="bkm-tabs">
+    <button class="bkm-tab on" onclick="bkmTab(this,'ios')">iPhone / iPad</button>
+    <button class="bkm-tab" onclick="bkmTab(this,'android')">Android</button>
+    <button class="bkm-tab" onclick="bkmTab(this,'mac')">Mac</button>
+    <button class="bkm-tab" onclick="bkmTab(this,'win')">Windows / PC</button>
+  </div>
+  <div class="bkm-pane on" id="bkm-ios">
+    <div class="bkm-step"><div class="bkm-num">1</div><div class="bkm-txt"><strong>AirDrop or email</strong> the .html file to your iPhone/iPad</div></div>
+    <div class="bkm-step"><div class="bkm-num">2</div><div class="bkm-txt">Tap the file &mdash; it opens in <strong>Safari</strong> (use Safari, not Chrome)</div></div>
+    <div class="bkm-step"><div class="bkm-num">3</div><div class="bkm-txt">Tap the <strong>Share button</strong> (box with arrow) at the bottom</div></div>
+    <div class="bkm-step"><div class="bkm-num">4</div><div class="bkm-txt">Scroll down &rarr; tap <strong>"Add to Home Screen"</strong></div></div>
+    <div class="bkm-step"><div class="bkm-num">5</div><div class="bkm-txt">Name it and tap <strong>Add</strong> &mdash; launches like an app, works offline</div></div>
+    <div class="bkm-note">&#9888; Must open in <strong>Safari</strong> &mdash; Chrome on iOS cannot add to Home Screen from local files. The file stays in your Files app at <strong>On My iPhone &rsaquo; Downloads</strong> as a backup.</div>
+  </div>
+  <div class="bkm-pane" id="bkm-android">
+    <div class="bkm-step"><div class="bkm-num">1</div><div class="bkm-txt"><strong>Download or transfer</strong> the .html file to your device</div></div>
+    <div class="bkm-step"><div class="bkm-num">2</div><div class="bkm-txt">Open <strong>Chrome</strong> &rarr; tap the address bar &rarr; type <strong>file:///sdcard/Download/</strong> and navigate to the file</div></div>
+    <div class="bkm-step"><div class="bkm-num">3</div><div class="bkm-txt">Tap the <strong>three-dot menu</strong> (&#8942;) &rarr; <strong>"Add to Home screen"</strong></div></div>
+    <div class="bkm-step"><div class="bkm-num">4</div><div class="bkm-txt">Tap <strong>Add</strong> &mdash; shortcut appears on your home screen</div></div>
+    <div class="bkm-note">&#128161; Alternatively: open the file with <strong>Firefox for Android</strong> via your file manager app &mdash; it handles local HTML files more reliably than Chrome on some devices.</div>
+  </div>
+  <div class="bkm-pane" id="bkm-mac">
+    <div class="bkm-step"><div class="bkm-num">1</div><div class="bkm-txt"><strong>Save the file</strong> somewhere permanent (Documents, not Downloads &mdash; Downloads may get cleared)</div></div>
+    <div class="bkm-step"><div class="bkm-num">2</div><div class="bkm-txt">Open the file in <strong>Safari or Chrome</strong> &mdash; double-click or drag to browser</div></div>
+    <div class="bkm-step"><div class="bkm-num">3</div><div class="bkm-txt">Press <strong>&#8984; D</strong> to bookmark it, or drag the URL bar tab to your Dock / desktop</div></div>
+    <div class="bkm-step"><div class="bkm-num">4</div><div class="bkm-txt"><strong>Safari tip:</strong> File &rarr; Add to Dock &mdash; creates a standalone app-like launcher in your Dock</div></div>
+    <div class="bkm-note">&#128161; To sync to iPhone: save in <strong>iCloud Drive</strong> and open in Safari on iOS &rarr; Add to Home Screen.</div>
+  </div>
+  <div class="bkm-pane" id="bkm-win">
+    <div class="bkm-step"><div class="bkm-num">1</div><div class="bkm-txt"><strong>Save the file</strong> somewhere permanent (Documents folder recommended)</div></div>
+    <div class="bkm-step"><div class="bkm-num">2</div><div class="bkm-txt">Open in <strong>Chrome or Edge</strong> &mdash; double-click the file</div></div>
+    <div class="bkm-step"><div class="bkm-num">3</div><div class="bkm-txt">Press <strong>Ctrl + D</strong> to bookmark, or drag the icon from the address bar to your desktop/taskbar</div></div>
+    <div class="bkm-step"><div class="bkm-num">4</div><div class="bkm-txt"><strong>Edge tip:</strong> Apps &rarr; Install this site as an app &mdash; creates a standalone window launcher</div></div>
+    <div class="bkm-note">&#128161; <strong>Edge</strong> handles local HTML files best on Windows &mdash; Chrome may prompt about file access on some versions.</div>
+  </div>
+</div>
+</div>
+</body>
+</html>
+
