@@ -44,10 +44,11 @@ h2 { bookmark-level: 2; bookmark-label: content(); }
 h3 { bookmark-level: 3; bookmark-label: content(); }
 
 .cover {
-    page: cover;
     background: #0a0e14;
     color: #e8edf5;
-    height: 100vh; width: 100%;
+    width: 8.5in;
+    height: 11in;
+    box-sizing: border-box;
     display: flex; flex-direction: column; justify-content: center; align-items: flex-start;
     padding: 1in;
     page-break-after: always;
@@ -105,8 +106,12 @@ h2.subhead {
     font-size: 11pt; font-weight: 700; margin: 18px 0 8px 0; padding-bottom: 3px;
     border-bottom: 2px solid var(--accent);
     color: #0f1923;
+    page-break-after: avoid; page-break-inside: avoid;
 }
-h3.subsubhead { font-size: 9.6pt; font-weight: 700; margin: 12px 0 4px 0; color: var(--accent-dark); }
+h3.subsubhead {
+    font-size: 9.6pt; font-weight: 700; margin: 12px 0 4px 0; color: var(--accent-dark);
+    page-break-after: avoid; page-break-inside: avoid;
+}
 
 .card {
     background: #fff;
@@ -145,9 +150,11 @@ h3.subsubhead { font-size: 9.6pt; font-weight: 700; margin: 12px 0 4px 0; color:
 }
 .callout.critical { background: #fdeaea; border-color: #e8a3a3; color: #8a1f1f; font-weight: 700; }
 
-table.ref { width: 100%; border-collapse: collapse; margin: 6px 0 10px 0; font-size: 8.6pt; }
+table.ref { width: 100%; border-collapse: collapse; margin: 6px 0 10px 0; font-size: 8.6pt; page-break-inside: avoid; }
 table.ref th { text-align: left; background: #eef0f4; padding: 4px 6px; font-family: 'Syne', sans-serif; font-size: 7.3pt; text-transform: uppercase; letter-spacing: 0.04em; color: #4a5670; }
 table.ref td { padding: 4px 6px; border-top: 1px solid #e3e6ec; vertical-align: top; }
+table.ref tr { page-break-inside: avoid; }
+p { orphans: 3; widows: 3; }
 
 .toc { columns: 1; }
 .toc a { color: #0f1923; text-decoration: none; }
@@ -3109,7 +3116,7 @@ table.ref td { padding: 4px 6px; border-top: 1px solid #e3e6ec; vertical-align: 
 <div class="card ">
 <span class="tag">.history_present_illness</span>
 <h4>History of Present Illness</h4>
-<p>[Age]-year-old [sex] with PMH of [relevant history] presents to the ED via [EMS / private vehicle / walk-in] with [chief complaint], onset [time - be specific, this matters for tPA windows, ACS timing, sepsis criteria].</p>
+<p>@AGE@ year old @SEX@ with PMH: @PMH@ presents to the ED via [EMS / private vehicle / walk-in] with @CC@, onset *** [time - be specific, this matters for tPA windows, ACS timing, sepsis criteria].</p>
 <p>Last known well / symptom onset: [exact time if neuro or time-sensitive complaint]</p>
 <p><strong>OPQRST</strong></p>
 <p class="line">- Onset: sudden vs. gradual</p>
@@ -3128,16 +3135,16 @@ table.ref td { padding: 4px 6px; border-top: 1px solid #e3e6ec; vertical-align: 
 <div class="card ">
 <span class="tag">.pe_normal_general_ed</span>
 <h4>PE - Normal, General ED</h4>
-<p>General: Alert, no acute distress, appears stated age.</p>
-<p>Vitals: Reviewed, within normal limits.</p>
+<p>General: {alert/nad list}, appears stated age.</p>
+<p>Vitals: @LASTVITALS@</p>
 <p>HEENT: Normocephalic, atraumatic. PERRLA, EOMI. Oropharynx clear, no trismus, no stridor.</p>
 <p>Neck: Supple, no meningismus, no JVD, trachea midline.</p>
-<p>Cardiovascular: Regular rate and rhythm, no murmur, no rub. Pulses 2+ and symmetric x4 extremities. No peripheral edema.</p>
-<p>Respiratory: Clear to auscultation bilaterally, no wheezes/rales/rhonchi, no accessory muscle use, no stridor.</p>
-<p>Abdomen: Soft, non-tender, non-distended, no rebound/guarding, no pulsatile mass, no CVA tenderness.</p>
+<p>Cardiovascular: {heart exam list}. Pulses 2+ and symmetric x4 extremities. No peripheral edema.</p>
+<p>Respiratory: {lung exam list}, no accessory muscle use, no stridor.</p>
+<p>Abdomen: {abdomen exam list}, no pulsatile mass, no CVA tenderness.</p>
 <p>MSK/Extremities: No deformity, swelling, or tenderness; full ROM; no calf tenderness.</p>
 <p>Skin: Warm, dry, intact, no rash, no signs of trauma.</p>
-<p>Neuro: Alert and oriented x4. CN II-XII grossly intact. Strength 5/5, sensation intact throughout. No pronator drift. Gait steady. No focal deficits.</p>
+<p>Neuro: {neuro exam list}. Strength 5/5, sensation intact throughout. No pronator drift. Gait steady.</p>
 <p>Psych: Cooperative, normal mood and affect, no SI/HI.</p>
 </div>
 <div class="card ">
@@ -3145,19 +3152,19 @@ table.ref td { padding: 4px 6px; border-top: 1px solid #e3e6ec; vertical-align: 
 <h4>PE - Stroke / Neuro Focused</h4>
 <p>Vitals: Reviewed, including glucose (hypoglycemia is a stroke mimic - always document).</p>
 <p>HEENT: Normocephalic, atraumatic, no tongue laceration. Pupils equal, round, reactive. No nystagmus.</p>
-<p>Cardiovascular: RRR, no murmur. Note if irregularly irregular (afib is a common stroke etiology).</p>
+<p>Cardiovascular: {heart exam list}. Note if irregularly irregular (afib is a common stroke etiology).</p>
 </div>
 <div class="card ">
 <span class="tag">.nihss_total_42</span>
-<h4>NIHSS Total: [ ] / 42</h4>
+<h4>NIHSS Total: *** / 42</h4>
 <p>Additional focused exam: CN II-XII [intact], strength [5/5 throughout], sensation [intact], cerebellar (finger-to-nose, heel-to-shin) [intact], gait [steady], reflexes [2+ symmetric], pronator drift [absent].</p>
-<p>Time last known well: [ ] - Time of arrival/exam: [ ] - drives tPA/thrombectomy eligibility.</p>
+<p>Time last known well: *** - Time of arrival/exam: *** - drives tPA/thrombectomy eligibility.</p>
 </div>
 <div class="card ">
 <span class="tag">.pe_trauma</span>
 <h4>PE - Trauma (ATLS Primary + Secondary Survey)</h4>
 <p>Airway: Patent, speaking full sentences, no stridor. C-spine immobilized.</p>
-<p>Breathing: Symmetric chest rise, equal breath sounds, no tracheal deviation, SpO2 [ ]% on [RA/O2].</p>
+<p>Breathing: Symmetric chest rise, equal breath sounds, no tracheal deviation, SpO2 ***% on [RA/O2].</p>
 <p>Circulation: Radial pulses palpable and equal, no external hemorrhage, cap refill &lt; 2 sec.</p>
 <p>Disability: GCS [E_ V_ M_ = total]. Pupils equal and reactive. Gross motor movement x4.</p>
 <p>Exposure: Fully exposed, log-rolled, no posterior injuries. Normothermic.</p>
@@ -3169,7 +3176,7 @@ table.ref td { padding: 4px 6px; border-top: 1px solid #e3e6ec; vertical-align: 
 <p class="line">- Pelvis: Stable to AP/lateral compression, no tenderness, no blood at urethral meatus.</p>
 <p class="line">- Back: No step-offs, no midline tenderness on log roll.</p>
 <p class="line">- Extremities: No deformity, pulses 2+ symmetric, full sensation/motor distally.</p>
-<p class="line">- Neuro/Skin: GCS [ ], no focal deficits. All wounds documented by size/location/depth; tetanus status confirmed.</p>
+<p class="line">- Neuro/Skin: GCS ***, no focal deficits. All wounds documented by size/location/depth; tetanus status confirmed.</p>
 </div>
 <div class="card ">
 <span class="tag">.pe_pediatrics</span>
@@ -3199,7 +3206,7 @@ table.ref td { padding: 4px 6px; border-top: 1px solid #e3e6ec; vertical-align: 
 <p><strong>Medium-risk criteria (for brain injury detection on CT - CT indicated if any present):</strong></p>
 <p class="line">- Retrograde amnesia to the event of 30 minutes or more</p>
 <p class="line">- Dangerous mechanism (pedestrian struck, occupant ejected from vehicle, fall from height &ge; 3 feet / 5 stairs)</p>
-<p>Patient did not meet Canadian CT Head Rule criteria based on the above, so CT was not performed to further rule out acute intracranial pathology. / Patient met the following criteria, and CT was performed: [ ]</p>
+<p>Patient did not meet Canadian CT Head Rule criteria based on the above, so CT was not performed to further rule out acute intracranial pathology. / Patient met the following criteria, and CT was performed: ***</p>
 <p class="note">Local modification: patients on anticoagulation/antiplatelet therapy or with a seizure after injury are treated as automatic CT indications at this institution regardless of rule score - the original derivation and validation cohorts did not include these patients. Confirm this modification reflects your actual departmental practice before relying on it, since it is a local convention, not part of the validated rule itself.</p>
 </div>
 <div class="card ">
@@ -3392,7 +3399,7 @@ table.ref td { padding: 4px 6px; border-top: 1px solid #e3e6ec; vertical-align: 
 <div class="card ">
 <span class="tag">.assessment_plan</span>
 <h4>Assessment / Plan</h4>
-<p>Assessment: [Age]-year-old [sex] presenting with [chief complaint], most consistent with [primary diagnosis]. Differential includes [2-4 alternatives, ranked by concern/likelihood].</p>
+<p>Assessment: @AGE@ year old @SEX@ presenting with [chief complaint], most consistent with [primary diagnosis]. Differential includes [2-4 alternatives, ranked by concern/likelihood].</p>
 <p><strong>Plan by problem:</strong></p>
 <p class="line">- 1. [Problem 1] - diagnostic (labs/imaging/EKG); therapeutic (meds/interventions); disposition-relevant (serial studies, consult).</p>
 <p class="line">- 2. [Problem 2] - diagnostic/therapeutic steps.</p>
@@ -3401,7 +3408,7 @@ table.ref td { padding: 4px 6px; border-top: 1px solid #e3e6ec; vertical-align: 
 <div class="card ">
 <span class="tag">.medical_decision_making</span>
 <h4>Medical Decision Making (MDM)</h4>
-<p>Patient presents with [chief complaint]. Differential includes [life-threatening diagnoses considered first], followed by [more likely/benign diagnoses].</p>
+<p>Patient presents with @CC@. Differential includes [life-threatening diagnoses considered first], followed by [more likely/benign diagnoses].</p>
 <p>Risk stratification: [Decision rule used - HEART, Wells, PERC, NEXUS, Ottawa, Canadian CT Head Rule - and result]</p>
 <p>Workup rationale: [Why these tests were ordered, what they rule in/out]</p>
 <p>Data reviewed: Labs, imaging, and EKG reviewed and reveal [findings]. [Prior records reviewed if applicable.]</p>
@@ -3413,11 +3420,11 @@ table.ref td { padding: 4px 6px; border-top: 1px solid #e3e6ec; vertical-align: 
 <div class="card ">
 <span class="tag">.ed_mdm</span>
 <h4>ED MDM Note (Full Template, Mapped to 2023 E/M Elements)</h4>
-<p>Presentation: Patient is a [ ].</p>
-<p>Here in the ED, vitals [reviewed / see flowsheet]. Physical exam [ ].</p>
+<p>Presentation: Patient is a ***.</p>
+<p>Here in the ED, vitals [reviewed / see flowsheet]. Physical exam ***.</p>
 <p><strong>Number/complexity of problems:</strong></p>
 <p>Chronic conditions affecting medical decision making: [None / list]</p>
-<p>Differential diagnoses (include, but not limited to): [ ]</p>
+<p>Differential diagnoses (include, but not limited to): ***</p>
 <p><strong>Amount/complexity of data reviewed:</strong></p>
 <p>Medical records reviewed by me: [None / prior visit, outside records, etc.]</p>
 <p>Clinical decision support tools: [None / HEART, Wells, PERC, NEXUS, Ottawa, Canadian CT Head Rule, PECARN - and result]</p>
@@ -3431,8 +3438,8 @@ table.ref td { padding: 4px 6px; border-top: 1px solid #e3e6ec; vertical-align: 
 <p>Disease-oriented therapy: [None / prescription drug management, other therapy and its risk]</p>
 <p>Intensive monitoring required for: [None / toxicity, hemodynamics, etc.]</p>
 <p>Diagnostic tests/escalation of care/prescriptions considered: [None / what was considered and why pursued or not]</p>
-<p>ED course: [ ]</p>
-<p>Overall, presentation is consistent with [ ]. Findings and diagnosis were discussed with the patient. The patient was determined to be appropriate for [outpatient management / admission / observation]. The patient is in agreement with the plan. All questions answered. [No prescriptions were needed. / Prescriptions given: ( ).] Discussed need to follow up on any pending diagnostic results. Discharged with instructions for supportive care, outpatient follow-up, and ED return precautions.</p>
+<p>ED course: ***</p>
+<p>Overall, presentation is consistent with ***. Findings and diagnosis were discussed with the patient. The patient was determined to be appropriate for [outpatient management / admission / observation]. The patient is in agreement with the plan. All questions answered. [No prescriptions were needed. / Prescriptions given: ( ).] Discussed need to follow up on any pending diagnostic results. Discharged with instructions for supportive care, outpatient follow-up, and ED return precautions.</p>
 <p class="note">This note is deliberately organized around the three 2023 MDM elements (problems, data, risk) so each section maps directly to a billing element rather than reading as generic narrative - see the MDM & Billing Level Reference table in Section 2 for how these elements translate to a code level.</p>
 </div>
 <h3 class="subsubhead">Procedure Note (Generic Template)</h3>
@@ -3473,7 +3480,7 @@ table.ref td { padding: 4px 6px; border-top: 1px solid #e3e6ec; vertical-align: 
 <p>What this means: [Expected course.]</p>
 <p>What to do at home: activity, diet, wound/splint care, self-care measures.</p>
 <p>Medications: new prescriptions with dose/duration; meds to stop or avoid; pain control.</p>
-<p>Follow up with: [ ] PCP within [timeframe]   [ ] [Specialist] within [timeframe]   [ ] ED return for [reason] on [date]</p>
+<p>Follow up with: *** PCP within [timeframe]   *** [Specialist] within [timeframe]   *** ED return for [reason] on [date]</p>
 <p>Return to the ED right away if: [red flag 1] - [red flag 2] - [red flag 3] - anything that feels worse or worries you</p>
 </div>
 <h3 class="subsubhead">Legal, Refusal &amp; Involuntary Hold Documentation</h3>
@@ -3498,7 +3505,7 @@ table.ref td { padding: 4px 6px; border-top: 1px solid #e3e6ec; vertical-align: 
 <h4>Involuntary Psychiatric Hold Placement</h4>
 <p>Based on my evaluation, the patient meets criteria for involuntary hold under [state statute / local equivalent] due to: [danger to self / danger to others / grave disability / inability to care for basic needs due to mental illness], specifically: [behavior, statements, or findings supporting this].</p>
 <p>Less restrictive alternatives considered: [voluntary admission offered and declined / outpatient safety plan not sufficient given ( )].</p>
-<p>Hold initiated at [time] by [clinician name/role], authorized for up to [ ] hours per [state law/local policy]. Patient [was/was not] informed of the hold, the reason for it, and their right to a hearing/legal review, in language they could understand. [Patient's belongings/means of self-harm secured per protocol.]</p>
+<p>Hold initiated at [time] by [clinician name/role], authorized for up to *** hours per [state law/local policy]. Patient [was/was not] informed of the hold, the reason for it, and their right to a hearing/legal review, in language they could understand. [Patient's belongings/means of self-harm secured per protocol.]</p>
 <p>Notification made to: [supervising physician, hospital administrator on call, county mental health authority, patient's emergency contact] as required by local policy.</p>
 <p class="note">Involuntary hold criteria, authorized duration, and notification requirements are set by state law and vary significantly - confirm the specific statute and required language for your jurisdiction rather than relying on this as a universal template.</p>
 </div>
@@ -3523,14 +3530,14 @@ table.ref td { padding: 4px 6px; border-top: 1px solid #e3e6ec; vertical-align: 
 <p><strong>Moderate-risk criteria (mechanism of injury and EMS judgment):</strong></p>
 <p class="line">- Mechanism: [falls, high-risk auto crash (intrusion, ejection, death in same vehicle), auto vs. pedestrian/cyclist, motorcycle crash &gt; 20 mph].</p>
 <p class="line">- EMS judgment: [clinical concern not otherwise captured above; document the specific reasoning].</p>
-<p>Time of activation: [ ] - Trauma team present at bedside by [ ]. Primary and secondary survey per ATLS documented separately (see Physical Exam Variants).</p>
+<p>Time of activation: *** - Trauma team present at bedside by ***. Primary and secondary survey per ATLS documented separately (see Physical Exam Variants).</p>
 <p class="note">This uses the 2021 restructured two-tier framework (high-risk/moderate-risk) rather than the older four-step physiologic/anatomic/mechanism/special-considerations format - state and institutional trauma activation criteria may customize thresholds, so confirm against your center's actual protocol.</p>
 </div>
 <div class="card ">
 <span class="tag">.woman_in_labor_emtala</span>
 <h4>Woman in Labor: EMTALA Medical Screening, Stabilization &amp; Transfer Note</h4>
 <p>Medical screening examination performed at [time] to determine whether an emergency medical condition exists, including active labor, regardless of ability to pay or insurance status.</p>
-<p>Assessment: Contractions [frequency, duration], cervical exam [dilation/effacement/station], fetal heart tones [ ], estimated gestational age [ ]. [False labor was considered and could only be excluded after a reasonable period of observation by a qualified provider - document that observation period if concluding false labor.]</p>
+<p>Assessment: Contractions [frequency, duration], cervical exam [dilation/effacement/station], fetal heart tones ***, estimated gestational age ***. [False labor was considered and could only be excluded after a reasonable period of observation by a qualified provider - document that observation period if concluding false labor.]</p>
 <p>EMTALA definition applied: A pregnant patient having contractions has an emergency medical condition if there is inadequate time to safely transfer her to another hospital before delivery, or if transfer would pose a threat to the health or safety of the woman or the fetus. Under EMTALA, such a patient is not considered "stabilized" until delivery of the child and the placenta (or she is confirmed to be in false labor).</p>
 <p>Disposition: [Delivery occurring/imminent - remaining at this facility for delivery, see precipitous delivery procedure note] / [Transfer to labor and delivery within this facility] / [Interfacility transfer arranged: physician certifies the medical benefits of transfer to ( facility, with the specific capability needed ) outweigh the risks of transfer; patient/family informed of risks and benefits and ( accepted / requested ) transfer; receiving facility and physician confirmed acceptance and bed availability at ( time ); copies of all relevant records, including fetal monitoring strips, sent with the patient; transport by qualified personnel and equipment appropriate to the patient's condition].</p>
 <p class="note">This documents the EMTALA-specific screening/stabilization/transfer framework for a pregnant patient in labor, distinct from the general trauma/EMS transfer note. Confirm current guidance with your institution's EMTALA compliance officer, as federal interpretation of pregnancy-related EMTALA obligations has been subject to ongoing litigation and regional variation.</p>
@@ -3539,14 +3546,14 @@ table.ref td { padding: 4px 6px; border-top: 1px solid #e3e6ec; vertical-align: 
 <div class="card ">
 <span class="tag">.shift_handoff_verbal_written</span>
 <h4>Shift Handoff, Verbal/Written Sign-Out Tool</h4>
-<p>Patient: [Name/room/MRN] - Age/sex: [ ] - Chief complaint: [ ]</p>
+<p>Patient: [Name/room/MRN] - Age/sex: *** - Chief complaint: ***</p>
 <p>I - Illness severity: [Stable / Watcher / Unstable]</p>
 <p>P - Patient summary: [One-line: complaint, key history, working diagnosis, what's been done]</p>
 <p><strong>A - Action list:</strong></p>
 <p class="line">- [Pending task 1 - e.g. repeat troponin due at 0400]</p>
 <p class="line">- [Pending task 2 - e.g. awaiting CT read]</p>
 <p class="line">- [Pending task 3 - e.g. reassess after 2L IVF]</p>
-<p>S - Situation awareness / contingency planning: If [scenario], then [action]. Anticipated disposition: [ ]</p>
+<p>S - Situation awareness / contingency planning: If [scenario], then [action]. Anticipated disposition: ***</p>
 <p>S - Synthesis by receiver: Receiving clinician restates the plan back to confirm understanding (verbal readback).</p>
 <p class="note">For sign-out of patients still in the department at shift change. This is a communication tool, not a chart entry.</p>
 </div>
@@ -3597,16 +3604,16 @@ table.ref td { padding: 4px 6px; border-top: 1px solid #e3e6ec; vertical-align: 
 <p>Back: No midline thoracic or lumbar spine tenderness. No crepitus, step-offs, or deformities.</p>
 <p>Cardiovascular: RRR, no murmur/rub/gallop. No chest wall tenderness, crepitus, or instability.</p>
 <p>Respiratory: No increased work of breathing, no accessory muscle use. Symmetric chest wall expansion. No rhonchi/rales/wheezes.</p>
-<p>Abdomen: Soft, non-tender, non-distended. GU: [ ]</p>
+<p>Abdomen: Soft, non-tender, non-distended. GU: ***</p>
 <p>MSK: Grossly normal ROM without swelling or deformity.</p>
-<p>Extremities: No cyanosis, no edema. 2+ [ ] pulses, cap refill &lt; 2 seconds.</p>
+<p>Extremities: No cyanosis, no edema. 2+ *** pulses, cap refill &lt; 2 seconds.</p>
 <p>Neuro: CN II-XII grossly intact. Good gluteal tone. 5/5 strength all myotomes bilaterally. Sensation intact to light touch, all dermatomes. No paresthesias. 2/4 patellar and triceps DTRs. No focal deficits.</p>
 <p>Psych: Calm, appropriate. Skin: Warm, dry, no cuts or lesions.</p>
 </div>
 <div class="card ">
 <span class="tag">.pelvic_exam</span>
 <h4>Pelvic Exam (Normal)</h4>
-<p>Normal external female genitalia. Vagina is pink and moist without lesions. No abnormal discharge. No blood. Cervix is [ ]. No cervical motion or adnexal tenderness. [Chaperone name] present at bedside as chaperone.</p>
+<p>Normal external female genitalia. Vagina is pink and moist without lesions. No abnormal discharge. No blood. Cervix is ***. No cervical motion or adnexal tenderness. [Chaperone name] present at bedside as chaperone.</p>
 </div>
 <div class="card ">
 <span class="tag">.cardiac_exam_with_murmur</span>
@@ -3622,7 +3629,7 @@ table.ref td { padding: 4px 6px; border-top: 1px solid #e3e6ec; vertical-align: 
 <div class="card ">
 <span class="tag">.standard_ekg_read</span>
 <h4>Standard EKG Read</h4>
-<p>EKG (my read): Indication - [ ]. My interpretation: Time [ ]: NSR @ [ ] bpm, normal axis, normal intervals, no acute ST elevation or depression.</p>
+<p>EKG (my read): Indication - ***. My interpretation: Time ***: NSR @ *** bpm, normal axis, normal intervals, no acute ST elevation or depression.</p>
 </div>
 <div class="card ">
 <span class="tag">.syncope_ekg_read</span>
@@ -3670,7 +3677,7 @@ table.ref td { padding: 4px 6px; border-top: 1px solid #e3e6ec; vertical-align: 
 <span class="tag">.critical_care_time</span>
 <h4>Critical Care Time Note</h4>
 <p>Critical Care Procedure Note</p>
-<p>Authorized and performed by: [Name], DO - Total critical care time: approximately [ ] minutes.</p>
+<p>Authorized and performed by: [Name], DO - Total critical care time: approximately *** minutes.</p>
 <p>Due to a high probability of clinically significant, life-threatening deterioration, the patient required my highest level of preparedness to intervene emergently, and I personally spent this critical care time directly and personally managing the patient. This time included obtaining a history; examining the patient; pulse oximetry; ordering and reviewing studies; arranging urgent treatment with development of a management plan; evaluating the patient's response to treatment; frequent reassessment; and discussions with other providers.</p>
 <p>This critical care time was performed to assess and manage the high probability of imminent, life-threatening deterioration that could result in multi-organ failure. It was exclusive of separately billable procedures (documented and timed separately), treating other patients, and teaching time.</p>
 <p>Time reported using CPT 99291 (first 30-74 minutes on a given calendar date) [and 99292 for each additional 30-minute block once the full additional block is met]. Non-continuous critical care time on the same date was aggregated into this total.</p>
@@ -3690,126 +3697,126 @@ table.ref td { padding: 4px 6px; border-top: 1px solid #e3e6ec; vertical-align: 
 <span class="tag">.peripheral_iv_access</span>
 <h4>Peripheral IV Access</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Verbal</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Need for IV access</p>
-<p>Location: [ ]</p>
+<p>Location: ***</p>
 <p>Preparation: Skin prepped with chlorhexidine.</p>
-<p>Technique: A [ ]-gauge peripheral IV catheter was inserted. Easy blood draw, good flush.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Technique: A ***-gauge peripheral IV catheter was inserted. Easy blood draw, good flush.</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.ultrasound_guided_peripheral_iv</span>
 <h4>Ultrasound-Guided Peripheral IV</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Verbal</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Difficult peripheral access with unsuccessful attempts without ultrasound guidance</p>
-<p>Location: [ ]</p>
+<p>Location: ***</p>
 <p>Preparation: Skin prepped with [chlorhexidine], allowed to dry.</p>
 <p>Technique: A linear high-frequency ultrasound probe was used to identify a suitable vein. Real-time ultrasound guidance was used to visualize needle entry into the vessel and confirm intraluminal placement.</p>
 <p>Post-Procedure Exam: Flash of blood obtained and catheter advanced without resistance. Patency confirmed with saline flush.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Performed by: {performed by list}</p>
 <p>Images captured and stored in [PACS/QPath] as documentation of guidance.</p>
-<p>Notes: [ ]</p>
+<p>Notes: ***</p>
 <p class="note">Communicate with nursing that the line is available for use once secured.</p>
 </div>
 <div class="card ">
 <span class="tag">.external_jugular_vein_access</span>
 <h4>External Jugular (EJ) Vein Access</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Verbal</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Vascular access</p>
 <p>Position/Site: Trendelenburg; right external jugular</p>
 <p>Preparation: Skin prepped with 2% chlorhexidine, allowed to dry fully.</p>
 <p>Technique: Landmarks identified, IV catheter placed, blood return and free fluid flow confirmed.</p>
 <p>Post-Procedure: Dressing applied.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.intraosseous_line_placement</span>
 <h4>Intraosseous (IO) Line Placement</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Emergent</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Rapid vascular access, emergent situation</p>
 <p>Location: Right proximal tibia</p>
 <p>Preparation: Skin prepped with chlorhexidine.</p>
 <p>Technique: Drill device used; needle inserted through the bony cortex. One attempt. Confirmed by stability of the needle and easy infusion of fluids/aspiration of blood or marrow. Secured with protective shield.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.cardioversion</span>
 <h4>Cardioversion</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Written</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: [Atrial fibrillation / atrial flutter / SVT] with [instability / rate control failure]</p>
-<p>Pre-procedure rhythm: [ ]</p>
+<p>Pre-procedure rhythm: ***</p>
 <p>Sedation: Moderate (conscious) sedation with [propofol]; analgesia with [fentanyl]. See separate sedation note.</p>
 <p>Monitoring: Vitals monitored throughout. Cardiac, blood pressure, pulse oximetry.</p>
-<p>Technique: Patient supine, chest exposed, pads placed anterior-posterior. [ ] attempt(s), synchronous mode, [ ] J.</p>
-<p>Post-procedure rhythm: [ ]</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Technique: Patient supine, chest exposed, pads placed anterior-posterior. *** attempt(s), synchronous mode, *** J.</p>
+<p>Post-procedure rhythm: ***</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.transvenous_pacemaker_placement</span>
 <h4>Transvenous Pacemaker Placement</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Written</p>
-<p>Indication: [ ]</p>
-<p>Access: Using the previously placed [ ] internal jugular catheter (see CVC note).</p>
-<p>Technique: A bipolar pacing catheter was advanced into the Cordis to approximately 15 cm, balloon inflated, further advanced into the right atrium then right ventricle to a depth of [ ] cm, capture achieved. Balloon deflated, catheter retracted [ ] cm, then re-advanced [ ] cm with capture confirmed at [ ] mAmp.</p>
+<p>Consent: {consent type list}</p>
+<p>Indication: ***</p>
+<p>Access: Using the previously placed *** internal jugular catheter (see CVC note).</p>
+<p>Technique: A bipolar pacing catheter was advanced into the Cordis to approximately 15 cm, balloon inflated, further advanced into the right atrium then right ventricle to a depth of *** cm, capture achieved. Balloon deflated, catheter retracted *** cm, then re-advanced *** cm with capture confirmed at *** mAmp.</p>
 <p>Post-Procedure: Estimated blood loss: 20 cc. Follow-up chest X-ray ordered.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.central_venous_catheter_placement</span>
 <h4>Central Venous Catheter Placement (Seldinger, US-Guided)</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Written</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: [Central access / vasopressors / poor peripheral access / hemodialysis bridge]</p>
 <p>Location: [Right IJ / left subclavian / femoral]</p>
-<p>Anesthesia: Local, [ ] mL 1% lidocaine.</p>
+<p>Anesthesia: Local, *** mL 1% lidocaine.</p>
 <p>Monitoring: Cardiac, blood pressure, pulse oximetry. ECG monitored for ectopy during wire passage.</p>
 <p>Preparation: Maximal sterile barrier precautions (cap, mask, gown, gloves, full body drape). Chlorhexidine skin prep.</p>
-<p>Technique: Ultrasound used to identify the vein and confirm patency/compressibility. Vein accessed under real-time ultrasound guidance, free flow of venous blood confirmed. Guidewire advanced without resistance. Skin nicked with #11 blade, dilator passed over wire, then [triple lumen / dialysis] catheter advanced to [ ] cm depth. Wire removed, all ports aspirate and flush without resistance.</p>
+<p>Technique: Ultrasound used to identify the vein and confirm patency/compressibility. Vein accessed under real-time ultrasound guidance, free flow of venous blood confirmed. Guidewire advanced without resistance. Skin nicked with #11 blade, dilator passed over wire, then [triple lumen / dialysis] catheter advanced to *** cm depth. Wire removed, all ports aspirate and flush without resistance.</p>
 <p>Post-Procedure Exam: Adequate blood return and flow noted from all ports.</p>
 <p>Confirmation: Chest X-ray ordered to confirm tip position and rule out pneumothorax.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
 <p>Images captured and stored in [PACS/QPath] as documentation of guidance.</p>
-<p>Notes: [ ]</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.arterial_line_placement</span>
 <h4>Arterial Line Placement</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Emergent</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: [Hemodynamic instability / frequent ABG sampling / vasopressor titration]</p>
 <p>Location: [Right/Left] radial artery</p>
 <p>Pre-Procedure Exam: Circulation, motor, and sensation intact. [Modified Allen test performed and normal, if radial.]</p>
@@ -3817,160 +3824,160 @@ table.ref td { padding: 4px 6px; border-top: 1px solid #e3e6ec; vertical-align: 
 <p>Preparation: Skin prepped with chlorhexidine, sterile field obtained.</p>
 <p>Technique: Using [modified Seldinger technique / palpation / ultrasound guidance], a [20/22]-gauge angiocatheter was placed. Catheter secured to skin with 3-0 silk. Sterile dressing placed.</p>
 <p>Post-Procedure Exam: Circulation, motor, and sensation intact. Waveform confirmed on transducer.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 <p class="note">Add "Images captured and stored" language if ultrasound guidance was used for the stick itself, not just the Allen test.</p>
 </div>
 <div class="card ">
 <span class="tag">.pericardiocentesis</span>
 <h4>Pericardiocentesis (Ultrasound-Guided)</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Emergent</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Pericardial effusion with tamponade physiology / hemodynamic instability</p>
 <p>Position: Supine, head of bed elevated 30-45 degrees.</p>
 <p>Preparation: Chlorhexidine skin prep. Local anesthesia with lidocaine 1%.</p>
 <p>Technique: Effusion and optimal needle trajectory identified by bedside echocardiography ([subxiphoid / parasternal] approach). An 18-gauge spinal needle advanced under continuous ultrasound guidance toward the largest, most accessible fluid pocket, with constant negative pressure, until pericardial fluid was aspirated. [Guidewire passed, pigtail catheter advanced over the wire and secured.]</p>
-<p>Findings: [ ] cc of [serous/serosanguinous/bloody] fluid aspirated, sent for cell count, cytology, culture.</p>
+<p>Findings: *** cc of [serous/serosanguinous/bloody] fluid aspirated, sent for cell count, cytology, culture.</p>
 <p>Post-Procedure: Hemodynamic improvement noted ([heart rate, blood pressure]).</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
 <p>Images captured and stored in [PACS/QPath] as documentation of guidance.</p>
-<p>Notes: [ ]</p>
+<p>Notes: ***</p>
 </div>
 <h3 class="subsubhead">Airway &amp; Thoracic</h3>
 <div class="card ">
 <span class="tag">.chest_tube_placement</span>
 <h4>Chest Tube Placement (Open Technique)</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Emergent</p>
-<p>Indication: [ ]</p>
-<p>Pre-/Post-dx: [ ] pneumothorax / [ ] pneumothorax</p>
-<p>Sedation/Analgesia: [ ] given for anxiety and analgesia prior to the procedure. Antibiotics [were/were not] given.</p>
+<p>Consent: {consent type list}</p>
+<p>Indication: ***</p>
+<p>Pre-/Post-dx: *** pneumothorax / *** pneumothorax</p>
+<p>Sedation/Analgesia: *** given for anxiety and analgesia prior to the procedure. Antibiotics [were/were not] given.</p>
 <p>Preparation: Area prepped and draped in sterile fashion. Lidocaine used for local anesthetic and intercostal nerve block.</p>
-<p>Technique: Incision made transversely around the 4th intercostal space, midaxillary line, approximately 4 cm. Tissue dissected to the pleura with a Kelly clamp, pleura punctured in controlled fashion until return of air [with/without] blood noted. A [ ] French chest tube inserted and directed toward the apex without resistance to a depth of [ ] cm.</p>
+<p>Technique: Incision made transversely around the 4th intercostal space, midaxillary line, approximately 4 cm. Tissue dissected to the pleura with a Kelly clamp, pleura punctured in controlled fashion until return of air [with/without] blood noted. A *** French chest tube inserted and directed toward the apex without resistance to a depth of *** cm.</p>
 <p>Findings: Return: air [with/without] blood.</p>
 <p>Secured: 0 silk suture; petroleum gauze, 4x4 dressing, foam tape.</p>
 <p>Post-Procedure: Post-placement chest X-ray ordered STAT, pending.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.pigtail_chest_tube_placement</span>
 <h4>Pigtail Chest Tube Placement (Seldinger Technique)</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Emergent</p>
-<p>Indication: [ ]</p>
-<p>Pre-/Post-dx: [ ] pneumothorax / [ ] pneumothorax</p>
-<p>Sedation/Analgesia: [ ] given for anxiety and analgesia. Antibiotics [were/were not] given.</p>
+<p>Consent: {consent type list}</p>
+<p>Indication: ***</p>
+<p>Pre-/Post-dx: *** pneumothorax / *** pneumothorax</p>
+<p>Sedation/Analgesia: *** given for anxiety and analgesia. Antibiotics [were/were not] given.</p>
 <p>Preparation: Area prepped and draped in sterile fashion. Lidocaine used for local anesthetic in the intercostal space just superior to the target rib.</p>
 <p>Technique: An 18-gauge needle inserted with continuous aspiration until fluid/air noted. Guidewire advanced through the needle, needle removed, small incision made with an 11 blade. Seldinger technique used to pass a dilator, then a 14 French pigtail chest tube advanced over the wire toward the base without resistance until all pilot holes confirmed within the chest cavity.</p>
 <p>Secured: 2-0 silk suture; petroleum gauze, 4x4 dressing, foam tape.</p>
 <p>Post-Procedure: Post-placement chest X-ray ordered STAT, pending.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.endotracheal_intubation</span>
 <h4>Endotracheal Intubation (Narrative)</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Verbal</p>
-<p>Indication: [ ]</p>
-<p>Pre-intubation assessment: Intubation anticipated to be [difficult / routine] due to [ ]. Preoxygenated with [ ].</p>
-<p>Technique: [RSI/DSI/awake] intubation performed. A #[ ] [cuffed/uncuffed] tube placed under [direct/video] laryngoscopy [using CMAC/GlideScope]. Tube anchored at [ ] cm at the teeth.</p>
-<p>Sedation/Paralytic: [ ] / [ ]</p>
+<p>Consent: {consent type list}</p>
+<p>Indication: ***</p>
+<p>Pre-intubation assessment: Intubation anticipated to be [difficult / routine] due to ***. Preoxygenated with ***.</p>
+<p>Technique: [RSI/DSI/awake] intubation performed. A #*** [cuffed/uncuffed] tube placed under [direct/video] laryngoscopy [using CMAC/GlideScope]. Tube anchored at *** cm at the teeth.</p>
+<p>Sedation/Paralytic: *** / ***</p>
 <p>Post-Procedure Exam: Placement confirmed by capnography waveform and bilateral breath sounds.</p>
 <p>Confirmation Imaging: Chest X-ray ordered to assess for pneumothorax and verify ETT placement.</p>
-<p>Number of Attempts: [ ]</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Number of Attempts: ***</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.cricothyrotomy</span>
 <h4>Cricothyrotomy (Percutaneous)</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Emergent</p>
-<p>Indication: Respiratory failure due to [ ], failed airway</p>
-<p>Pre-Procedure: Preoxygenated with 100% FiO2. Sedation with [ ], paralytic with [ ].</p>
+<p>Consent: {consent type list}</p>
+<p>Indication: Respiratory failure due to ***, failed airway</p>
+<p>Pre-Procedure: Preoxygenated with 100% FiO2. Sedation with ***, paralytic with ***.</p>
 <p>Preparation: Neck prepped with chlorhexidine. Local anesthesia with lidocaine and epinephrine overlying the cricothyroid membrane.</p>
 <p>Technique: Vertical skin incision from submandibular region to sternal notch. Subcutaneous tissue bluntly dissected, strap muscles separated, trachea palpated. Blade inserted vertically then horizontally through the cricothyroid membrane, bougie introduced into the trachea. A 6-0 ETT introduced over the bougie.</p>
 <p>Post-Procedure Exam: Placement confirmed with visible humidification, qualitative/quantitative ETCO2, bilateral breath sounds. Hemostasis confirmed.</p>
-<p>Secured: [ ]</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Secured: ***</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.needle_thoracostomy</span>
 <h4>Needle Thoracostomy (Tension Pneumothorax Decompression)</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Emergent</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Suspected tension pneumothorax with hemodynamic instability/respiratory distress - clinical diagnosis, treatment not delayed for imaging</p>
 <p>Location: [2nd intercostal space, midclavicular line / 4th-5th intercostal space, anterior-to-midaxillary line], [right/left] chest</p>
 <p>Preparation: Site prepped with chlorhexidine when time allowed.</p>
 <p>Technique: A 14-gauge, [3.25 inch] angiocatheter inserted perpendicular to the chest wall over the [3rd/5th] rib, walking off the superior rib margin, until a rush of air was felt/heard. Catheter advanced over the needle, needle withdrawn.</p>
 <p>Findings: Immediate rush of air noted, with improvement in oxygenation/work of breathing/hemodynamics.</p>
-<p>Follow-up: Formal tube thoracostomy performed at [ ] (see chest tube note). Post-procedure chest X-ray obtained.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Follow-up: Formal tube thoracostomy performed at *** (see chest tube note). Post-procedure chest X-ray obtained.</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.thoracentesis</span>
 <h4>Thoracentesis (Ultrasound-Guided)</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Written</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: [Symptomatic pleural effusion / diagnostic sampling]</p>
 <p>Location: [Right/left] posterior chest</p>
 <p>Preparation: Effusion and optimal interspace marked by bedside ultrasound, above the rib to avoid the neurovascular bundle. Chlorhexidine prep, local anesthesia with lidocaine 1% down to the pleura.</p>
 <p>Technique: Introducer needle advanced with continuous aspiration until pleural fluid obtained. Catheter-over-needle/thoracentesis kit used to advance a soft catheter into the pleural space, needle withdrawn. Fluid drained via [vacuum bottle/syringe], no more than 1.5 L removed.</p>
-<p>Findings: [ ] cc of [clear/serous/serosanguinous/purulent] fluid removed, sent for cell count, protein, LDH, pH, culture, cytology as indicated.</p>
+<p>Findings: *** cc of [clear/serous/serosanguinous/purulent] fluid removed, sent for cell count, protein, LDH, pH, culture, cytology as indicated.</p>
 <p>Post-Procedure: Chest X-ray obtained to assess for pneumothorax and residual effusion.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
 <p>Images captured and stored in [PACS/QPath] as documentation of guidance.</p>
-<p>Notes: [ ]</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.supraglottic_airway_placement</span>
 <h4>Supraglottic Airway (LMA) Placement</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Emergent</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: [Failed intubation / bridge airway during cardiac arrest / cannot-intubate cannot-oxygenate scenario]</p>
-<p>Device: Size [ ] selected based on patient size. Cuff [checked/deflated] prior to insertion.</p>
-<p>Technique: Device inserted along the hard palate and advanced into the hypopharynx until resistance met, cuff inflated with [ ] mL air (or gel-seal, no cuff).</p>
+<p>Device: Size *** selected based on patient size. Cuff [checked/deflated] prior to insertion.</p>
+<p>Technique: Device inserted along the hard palate and advanced into the hypopharynx until resistance met, cuff inflated with *** mL air (or gel-seal, no cuff).</p>
 <p>Post-Procedure Exam: Correct placement confirmed by bilateral breath sounds, chest rise, end-tidal CO2 waveform.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 <p class="note">Bridge device only - definitive airway (ETT or surgical airway) still indicated per clinical course.</p>
 </div>
 <h3 class="subsubhead">Resuscitative &amp; Critical Procedures</h3>
@@ -3978,35 +3985,35 @@ table.ref td { padding: 4px 6px; border-top: 1px solid #e3e6ec; vertical-align: 
 <span class="tag">.resuscitative_thoracotomy</span>
 <h4>Resuscitative (ED) Thoracotomy</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Emergent</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Penetrating [thoracic/precordial] trauma with loss of vital signs [in the field / immediately prior to or on ED arrival] and signs of life present</p>
 <p>Team: Trauma surgery present or emergently activated. This is a shared-decision, team-based procedure.</p>
 <p>Preparation: Chest prepped rapidly, minimal sterile technique given time-critical nature.</p>
 <p>Technique: Left anterolateral thoracotomy performed through the 4th/5th intercostal space. Pericardium opened longitudinally anterior to the phrenic nerve, cardiac tamponade [relieved / not present]. [Cardiac wound repaired digitally/with staple/suture.] Descending aorta identified and cross-clamped for hemorrhage control and cerebral/coronary perfusion redistribution. Internal cardiac massage performed.</p>
-<p>Rhythm/Response: [ ]</p>
+<p>Rhythm/Response: ***</p>
 <p>Outcome: [ROSC achieved, transferred to OR emergently] / [Resuscitation terminated at ( time ) after ( duration ) without response, per futility criteria and team consensus]</p>
 <p>Patient Tolerated Procedure: N/A - critical resuscitation; response to intervention documented above</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 <p class="note">Survival is overwhelmingly limited to penetrating thoracic trauma with witnessed signs of life; document indication criteria explicitly given the invasiveness and resource utilization of this procedure.</p>
 </div>
 <div class="card ">
 <span class="tag">.defibrillation</span>
 <h4>Defibrillation (Unsynchronized, Cardiac Arrest)</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Emergent</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Pulseless ventricular fibrillation / pulseless ventricular tachycardia</p>
-<p>Technique: Pads placed [anterior-lateral / anterior-posterior]. Rhythm confirmed as shockable. [ ] J delivered, unsynchronized mode, CPR resumed immediately after shock per ACLS.</p>
-<p>Rhythm after shock: [ ]</p>
-<p>Total shocks delivered this arrest: [ ]</p>
+<p>Technique: Pads placed [anterior-lateral / anterior-posterior]. Rhythm confirmed as shockable. *** J delivered, unsynchronized mode, CPR resumed immediately after shock per ACLS.</p>
+<p>Rhythm after shock: ***</p>
+<p>Total shocks delivered this arrest: ***</p>
 <p>Patient Tolerated Procedure: N/A - cardiac arrest; rhythm response documented above</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <h3 class="subsubhead">Point-of-Care Ultrasound (POCUS)</h3>
 <div class="card ">
@@ -4015,286 +4022,286 @@ table.ref td { padding: 4px 6px; border-top: 1px solid #e3e6ec; vertical-align: 
 <p>Consent: N/A - diagnostic study</p>
 <p>Indication: [Undifferentiated hypotension/shock - FAST / suspected pericardial effusion - cardiac / suspected AAA / suspected DVT / suspected biliary disease / procedural guidance]</p>
 <p>Study performed: [FAST / cardiac / aorta / lower extremity DVT / biliary-renal / ocular / procedural guidance]</p>
-<p>Views obtained: [ ]</p>
-<p>Findings: [ ]</p>
+<p>Views obtained: ***</p>
+<p>Findings: ***</p>
 <p>Impression: [Positive/negative for ( )], correlating with clinical presentation.</p>
 <p>Limitations: [None / body habitus, overlying gas, patient positioning limited views of ( )]</p>
 <p>Patient Tolerated Procedure: N/A - diagnostic study</p>
 <p>Complications: N/A</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Performed by: {performed by list}</p>
 <p>Images captured and stored in [PACS/QPath] as documentation of guidance.</p>
-<p>Notes: [ ]</p>
+<p>Notes: ***</p>
 <p class="note">Billing requirement, not just a clinical nicety: separately billable POCUS requires a permanently stored image set plus this written interpretation, signed by the performing/interpreting provider. An unsaved image or a verbal-only impression does not meet medical necessity documentation for the professional or technical component.</p>
 </div>
 <h3 class="subsubhead">Trauma &amp; Spine</h3>
 <div class="card ">
 <span class="tag">.cervical_spine_clearance</span>
 <h4>Cervical Spine Clearance</h4>
-<p>[Age]-year-old [sex] presents with a [mechanism] and concern for cervical spine injury.</p>
+<p>@AGE@ year old @SEX@ presents with a [mechanism] and concern for cervical spine injury.</p>
 <p>At presentation: A spine board [was/was not] present. A cervical collar [was/was not] present.</p>
-<p>Clinical clearance: The patient's cervical spine [was/was not] cleared, and the collar [was/was not] removed. If not removed, specify reason: [ ]. Neurosurgery consulted: [yes/no].</p>
-<p>Imaging clearance: Imaging used to evaluate the cervical spine: [ ]. The cervical spine [was/was not] cleared and the collar [was/was not] removed after imaging due to [ ].</p>
+<p>Clinical clearance: The patient's cervical spine [was/was not] cleared, and the collar [was/was not] removed. If not removed, specify reason: ***. Neurosurgery consulted: [yes/no].</p>
+<p>Imaging clearance: Imaging used to evaluate the cervical spine: ***. The cervical spine [was/was not] cleared and the collar [was/was not] removed after imaging due to ***.</p>
 </div>
 <div class="card ">
 <span class="tag">.escharotomy</span>
 <h4>Escharotomy</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Emergent</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Circumferential full-thickness burn with vascular/ventilatory compromise (absent distal pulses by Doppler, compartment pressures elevated, or impaired chest wall excursion)</p>
 <p>Preparation: Area prepped.</p>
 <p>Technique: Site marked along [medial/lateral] mid-axial line of the [extremity] (or bilateral anterior axillary lines with transverse connections at the chest, for torso escharotomy). Incision made through the full thickness of the burn eschar with [electrocautery/scalpel] down to but not through the subcutaneous fat, extending the full length of the constricting eschar and across involved joints.</p>
 <p>Findings: Immediate improvement in [distal Doppler signal / peak airway pressure / chest excursion] noted.</p>
 <p>Post-Procedure: Wound dressed with [antimicrobial dressing]. Distal perfusion reassessed and documented.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <h3 class="subsubhead">MSK: Reductions, Blocks &amp; Splinting</h3>
 <div class="card ">
 <span class="tag">.arthrocentesis</span>
 <h4>Arthrocentesis (Knee)</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Written</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: [Diagnostic - rule out septic joint / therapeutic - symptomatic effusion]</p>
 <p>Anesthesia: Local infiltration, lidocaine 1% without epinephrine, 4 mL</p>
 <p>Preparation: Patient prepped and draped in usual sterile fashion.</p>
 <p>Technique: Medial approach to the knee.</p>
-<p>Findings: [ ] cc of [ ] fluid removed without complication.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Findings: *** cc of *** fluid removed without complication.</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.arthrocentesis_2</span>
 <h4>Arthrocentesis (Other Joint: Shoulder/Elbow/Ankle/Wrist)</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Written</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: [Diagnostic - rule out septic joint / therapeutic - symptomatic effusion]</p>
 <p>Location: [Shoulder/elbow/ankle/wrist], [approach]</p>
-<p>Anesthesia: Local infiltration, lidocaine 1% without epinephrine, [ ] mL</p>
+<p>Anesthesia: Local infiltration, lidocaine 1% without epinephrine, *** mL</p>
 <p>Preparation: Patient prepped and draped in usual sterile fashion.</p>
 <p>Technique: [Approach and landmarks used.]</p>
-<p>Findings: [ ] cc of [ ] fluid removed without complication.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Findings: *** cc of *** fluid removed without complication.</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.trigger_point_injection</span>
 <h4>Trigger Point Injection</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Verbal</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Significant tenderness to palpation in a localized area (see exam)</p>
 <p>Preparation: Area cleaned with two chlorhexidine preps, allowed to dry.</p>
 <p>Technique: Using aseptic technique, a 27-gauge needle on a 10 cc syringe inserted into the affected musculature; plunger withdrawn prior to injection to confirm extravascular placement.</p>
 <p>Medication: 10 mL 0.5% bupivacaine injected into the region of discomfort.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.digit_reduction</span>
 <h4>Digit Reduction (Dislocation)</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Verbal</p>
-<p>Indication: [ ] digit dislocation</p>
-<p>Location: [ ]</p>
+<p>Consent: {consent type list}</p>
+<p>Indication: *** digit dislocation</p>
+<p>Location: ***</p>
 <p>Technique: Gentle hyperextension with axial traction.</p>
 <p>Result: Digit fully mobile after reduction. Cap refill &lt; 2 sec, tendons intact.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.fracture_reduction</span>
 <h4>Fracture Reduction (Closed)</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Verbal</p>
-<p>Indication: [ ] fracture requiring closed reduction</p>
-<p>Location: [ ]</p>
+<p>Consent: {consent type list}</p>
+<p>Indication: *** fracture requiring closed reduction</p>
+<p>Location: ***</p>
 <p>Technique: Axial traction with closed manipulation.</p>
 <p>Result: Alignment improved on post-reduction assessment. Cap refill &lt; 2 sec, tendons intact.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.splint_application_neurovascular_check</span>
 <h4>Splint Application and Neurovascular Check</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Verbal</p>
-<p>Indication: [ ]</p>
-<p>Location: [ ]</p>
+<p>Consent: {consent type list}</p>
+<p>Indication: ***</p>
+<p>Location: ***</p>
 <p>Post-Procedure: The splinted body part was neurovascularly unchanged following the procedure.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.ingrown_toenail_digital_nerve</span>
 <h4>Ingrown Toenail: Digital Nerve Block</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Verbal</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Anesthesia for ingrown toenail procedure</p>
-<p>Location: [ ] toe</p>
+<p>Location: *** toe</p>
 <p>Technique: 10 mL lidocaine with epinephrine, ring block fashion (3 injections).</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.digital_regional_nerve_blocks</span>
 <h4>Digital / Regional Nerve Blocks (Finger, Hematoma, Penile)</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Verbal</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: [Digit laceration/reduction requiring anesthesia / fracture requiring hematoma block / penile procedure]</p>
-<p>Location: [ ]</p>
+<p>Location: ***</p>
 <p>Finger block: Standard sterile technique, 4 cc lidocaine without epinephrine injected.</p>
 <p>Hematoma block: Standard sterile technique, 10 cc lidocaine with epinephrine injected at the fracture site.</p>
 <p>Penile block: Standard sterile technique, 8 cc lidocaine without epinephrine injected circumferentially.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.shoulder_reduction</span>
 <h4>Shoulder Reduction (Anterior Dislocation)</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Verbal</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Anterior glenohumeral dislocation confirmed on pre-reduction imaging</p>
 <p>Pre-reduction neurovascular exam: Axillary nerve sensation [intact/deficit] over deltoid, radial pulse 2+, cap refill &lt; 2 sec.</p>
 <p>Sedation/Analgesia: [Intra-articular lidocaine 20 mL 1% / procedural sedation with ( )] - see separate sedation note if applicable.</p>
 <p>Technique: [Scapular manipulation / traction-countertraction / external rotation method] performed. Reduction confirmed by palpable clunk, restored contour, improved ROM.</p>
 <p>Post-Procedure Exam: Neurovascular exam unchanged/improved. Repeat imaging obtained confirming reduction.</p>
 <p>Post-Procedure: Placed in shoulder immobilizer.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.elbow_reduction</span>
 <h4>Elbow Reduction (Radial Head Subluxation / Nursemaid's Elbow)</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Verbal (guardian)</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: History and exam consistent with radial head subluxation (axial traction mechanism, arm held pronated and slightly flexed, refusing to use the arm)</p>
 <p>Technique: [Hyperpronation / supination-flexion] technique performed - elbow supported at the radial head with thumb pressure, forearm [hyperpronated / supinated then fully flexed]. A palpable click was felt at the radial head.</p>
-<p>Result: Child resumed normal use of the arm within [ ] minutes, reaching for objects and bearing weight through the limb without distress.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Result: Child resumed normal use of the arm within *** minutes, reaching for objects and bearing weight through the limb without distress.</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 <p class="note">If a click is not felt and/or the child does not return to normal use within 15-30 minutes, consider imaging to rule out fracture before repeating reduction attempts.</p>
 </div>
 <div class="card ">
 <span class="tag">.hip_reduction</span>
 <h4>Hip Reduction (Posterior Dislocation, Native Joint)</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Written</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Posterior hip dislocation confirmed on pre-reduction imaging</p>
 <p>Pre-reduction neurovascular exam: Sciatic nerve function (dorsiflexion, plantarflexion, sensation) [intact/deficit], distal pulses 2+.</p>
-<p>Sedation: Procedural sedation with [ ] - see separate sedation note.</p>
+<p>Sedation: Procedural sedation with *** - see separate sedation note.</p>
 <p>Technique: [Allis / Captain Morgan] maneuver performed with patient supine, hip and knee flexed to 90 degrees, in-line traction applied while an assistant stabilized the pelvis, gentle internal/external rotation until reduction achieved, confirmed by palpable clunk and restored leg length/rotation.</p>
 <p>Post-Procedure Exam: Neurovascular exam unchanged/improved. Hip [stable/unstable] through range of motion.</p>
 <p>Confirmation Imaging: Repeat imaging obtained confirming reduction and re-evaluating for associated acetabular fracture.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.temporomandibular_joint_reduction</span>
 <h4>Temporomandibular Joint (TMJ) Reduction</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Verbal</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Anterior TMJ dislocation, unable to close mouth</p>
 <p>Sedation/Analgesia: [None needed / procedural sedation with ( )] - see separate sedation note if applicable.</p>
 <p>Technique: Gloved thumbs placed on the mandibular molars bilaterally (wrapped for protection), firm downward and then posterior pressure applied to the mandible while guiding the condyles back into the glenoid fossa.</p>
 <p>Result: Mouth closed normally, jaw stable through range of motion, no further dislocation on repeat opening.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 <p class="note">Warn the patient about a soft diet, avoiding wide mouth opening, and a jaw wrap/bandage for several days to reduce recurrence risk before discharge.</p>
 </div>
 <div class="card ">
 <span class="tag">.compartment_pressure_measurement</span>
 <h4>Compartment Pressure Measurement</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Verbal</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Clinical concern for acute compartment syndrome (pain out of proportion, pain with passive stretch) in a patient with an unreliable exam or equivocal findings</p>
 <p>Preparation: Skin prepped with chlorhexidine over the compartment of concern.</p>
-<p>Technique: Handheld manometer/needle system zeroed per manufacturer instructions. Needle inserted into the [anterior/lateral/deep posterior/superficial posterior] compartment of the [leg/forearm], perpendicular to the skin, to a depth of [ ] cm.</p>
-<p>Findings: Compartment pressure [ ] mmHg. Diastolic BP at time of measurement: [ ] mmHg. Delta pressure: [ ] mmHg.</p>
+<p>Technique: Handheld manometer/needle system zeroed per manufacturer instructions. Needle inserted into the [anterior/lateral/deep posterior/superficial posterior] compartment of the [leg/forearm], perpendicular to the skin, to a depth of *** cm.</p>
+<p>Findings: Compartment pressure *** mmHg. Diastolic BP at time of measurement: *** mmHg. Delta pressure: *** mmHg.</p>
 <p>Interpretation: [Delta pressure &lt; 30 mmHg is concerning for compartment syndrome and warrants emergent orthopedic/surgical consultation for fasciotomy.]</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.ring_removal</span>
 <h4>Ring Removal (Digital Tourniquet Technique)</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Verbal</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Ring entrapment with digital swelling/vascular compromise, unable to remove by conventional means (soap/lubricant)</p>
 <p>Technique: [String-wrap technique: umbilical tape/string wrapped tightly and evenly from distal to proximal over the finger, then the proximal end passed under the ring and unwound distally, drawing the ring off over the compressed tissue.] (or) [Ring cutter used to cut through the band, bent open and removed.]</p>
 <p>Post-Procedure Exam: Cap refill &lt; 2 sec, sensation intact, full digit range of motion.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.bier_block</span>
 <h4>Bier Block (Intravenous Regional Anesthesia)</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Written</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Anesthesia for closed reduction or minor procedure of the distal upper extremity when regional/general anesthesia is not preferred</p>
 <p>Pre-Procedure: Two IVs placed: one in the operative limb distally, one in the contralateral limb for monitoring/rescue.</p>
-<p>Technique: Operative limb exsanguinated with an Esmarch bandage. Double (proximal and distal) pneumatic tourniquet applied and inflated to [ ] mmHg, above systolic pressure. [ ] mL of 0.5% preservative-free lidocaine injected IV into the operative limb via the distal IV. Anesthesia onset confirmed prior to starting the procedure.</p>
+<p>Technique: Operative limb exsanguinated with an Esmarch bandage. Double (proximal and distal) pneumatic tourniquet applied and inflated to *** mmHg, above systolic pressure. *** mL of 0.5% preservative-free lidocaine injected IV into the operative limb via the distal IV. Anesthesia onset confirmed prior to starting the procedure.</p>
 <p>Monitoring: Continuous cardiac, blood pressure, and pulse oximetry monitoring throughout given systemic local anesthetic exposure risk.</p>
-<p>Tourniquet Time: Inflated at [ ], deflated at [ ] ([cyclic deflation-reinflation performed per protocol if procedure exceeds tourniquet tolerance]).</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Tourniquet Time: Inflated at ***, deflated at *** ([cyclic deflation-reinflation performed per protocol if procedure exceeds tourniquet tolerance]).</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 <p class="note">Have resuscitation equipment and lipid emulsion immediately available - tourniquet failure or premature deflation risks LAST from the large IV lidocaine dose used.</p>
 </div>
 <h3 class="subsubhead">Wound Care &amp; Skin Procedures</h3>
@@ -4302,393 +4309,393 @@ table.ref td { padding: 4px 6px; border-top: 1px solid #e3e6ec; vertical-align: 
 <span class="tag">.abscess_incision_drainage</span>
 <h4>Abscess Incision and Drainage</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Verbal</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Fluctuant abscess</p>
-<p>Location: [ ]</p>
+<p>Location: ***</p>
 <p>Anesthesia: Local infiltration, lidocaine 1% with epinephrine, 15 mL total.</p>
 <p>Preparation: Prepped in sterile fashion.</p>
 <p>Technique: #11 scalpel, single straight incision, simple complexity.</p>
-<p>Findings: Purulent drainage, [ ] amount.</p>
+<p>Findings: Purulent drainage, *** amount.</p>
 <p>Wound Treatment: Packed with iodoform gauze.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.perianal_abscess_incision_drainage</span>
 <h4>Perianal Abscess Incision and Drainage</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Verbal</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Fluctuant perianal/perirectal abscess</p>
-<p>Location: [ ]</p>
+<p>Location: ***</p>
 <p>Position: [Lateral decubitus / prone jackknife], adequate lighting and exposure.</p>
-<p>Anesthesia: Local infiltration, lidocaine 1% with epinephrine, [ ] mL.</p>
+<p>Anesthesia: Local infiltration, lidocaine 1% with epinephrine, *** mL.</p>
 <p>Preparation: Prepped in sterile fashion.</p>
 <p>Technique: Incision made at the point of maximal fluctuance as close to the anal verge as possible to minimize sphincter injury risk. Purulent material expressed, loculations broken up with a hemostat.</p>
-<p>Findings: [ ] cc purulent material drained.</p>
+<p>Findings: *** cc purulent material drained.</p>
 <p>Wound Treatment: Packed loosely with gauze. [Rectal exam performed to assess for a palpable fistula tract/deeper extension - not appreciated / concerning for ( ), surgery consulted.]</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 <p class="note">A simple perianal abscess can be drained in the ED; concern for a horseshoe abscess, deep postanal space involvement, or a patient who is diabetic/immunocompromised warrants surgical consultation rather than bedside drainage alone.</p>
 </div>
 <div class="card ">
 <span class="tag">.felon_incision_drainage</span>
 <h4>Felon (Fingertip Abscess) Incision and Drainage</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Verbal</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Felon - abscess of the fingertip pulp space</p>
-<p>Location: [ ] finger</p>
+<p>Location: *** finger</p>
 <p>Anesthesia: Digital nerve block, lidocaine 1% without epinephrine, 4 mL.</p>
 <p>Preparation: Digit prepped in sterile fashion.</p>
 <p>Technique: Incision made [longitudinally over the point of maximal fluctuance, avoiding the midline pulp and neurovascular bundles / high lateral incision]. Loculations broken up with a hemostat.</p>
-<p>Findings: Purulent drainage, [ ] amount.</p>
+<p>Findings: Purulent drainage, *** amount.</p>
 <p>Wound Treatment: Loosely packed with gauze to keep the tract open.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.paronychia_incision_drainage</span>
 <h4>Paronychia Incision and Drainage</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Verbal</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Paronychia</p>
-<p>Location: [ ] finger, upper extremity</p>
+<p>Location: *** finger, upper extremity</p>
 <p>Anesthesia: Digital nerve block, lidocaine 1% without epinephrine, 4 mL</p>
 <p>Technique: Single straight incision, simple complexity. Dissected along the top of the nail with iris scissors.</p>
-<p>Findings: Purulent drainage, [ ] amount.</p>
+<p>Findings: Purulent drainage, *** amount.</p>
 <p>Wound Treatment: Drain placed, 1/4 inch gauze.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.subungual_hematoma_drainage</span>
 <h4>Subungual Hematoma Drainage</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Verbal</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Painful subungual hematoma</p>
-<p>Location: [ ]</p>
+<p>Location: ***</p>
 <p>Anesthesia: None required.</p>
 <p>Technique: Single trephination with electric cautery, simple complexity.</p>
-<p>Findings: Blood, [ ] amount, drained.</p>
+<p>Findings: Blood, *** amount, drained.</p>
 <p>Wound Treatment: Dressed.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.nail_bed_repair</span>
 <h4>Nail Bed Repair (After Nail Removal)</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Verbal</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Nail bed laceration under a subungual hematoma &gt; 50% or with associated displaced tuft fracture</p>
-<p>Location: [ ] finger</p>
+<p>Location: *** finger</p>
 <p>Anesthesia: Digital block, lidocaine 1% without epinephrine, 4 mL. Digital tourniquet applied for hemostasis.</p>
 <p>Technique: Nail plate atraumatically removed with a hemostat, preserved for use as a stent. Nail bed laceration irrigated with saline. Repaired with [6-0/7-0] absorbable suture, simple interrupted. Nail plate (or non-adherent stent) replaced under the eponychial fold.</p>
 <p>Post-Procedure: Digital tourniquet removed, cap refill &lt; 2 sec confirmed. Dressed with non-adherent gauze.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.suture_removal</span>
 <h4>Suture Removal</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Verbal</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Scheduled suture removal, wound healed</p>
-<p>Location: [ ]</p>
+<p>Location: ***</p>
 <p>Wound Appearance: Clean.</p>
 <p>Post-Removal: Steri-Strips and antibiotic ointment applied.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.toenail_removal</span>
 <h4>Toenail Removal</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Verbal</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Ingrown toenail</p>
-<p>Location: [ ]</p>
+<p>Location: ***</p>
 <p>Technique: Blunt dissection below the nail to the base with a Kelly clamp; peripheral nail clamped and torqued until linear break to the base of the nail including growth area, then removed.</p>
 <p>Wound Treatment: 4x4 dressing applied.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.wound_care_packing_change</span>
 <h4>Wound Care / Packing Change</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Verbal</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Scheduled packing change</p>
-<p>Location: [ ]</p>
+<p>Location: ***</p>
 <p>Treatment: Packing changed.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.fish_hook_removal</span>
 <h4>Fish Hook Removal</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Verbal</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Embedded fish hook</p>
-<p>Location: [ ]</p>
+<p>Location: ***</p>
 <p>Anesthesia: [Local anesthetic] to the area around the hook.</p>
 <p>Technique: Area cleaned with chlorhexidine prep. The fishhook was advanced through the skin until the barb was visible, the barb clipped with sterile wire cutters, and the fishhook retracted through the skin without difficulty.</p>
 <p>Wound Treatment: Irrigated with Hibiclens and sterile water, covered with sterile gauze and a Tegaderm.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.laceration_repair_dermabond</span>
 <h4>Laceration Repair - Dermabond</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Verbal</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Laceration amenable to tissue adhesive closure</p>
-<p>Wound: Body area [ ]; length [ ] cm. No foreign bodies, no tendon/nerve/vascular involvement.</p>
+<p>Wound: Body area ***; length *** cm. No foreign bodies, no tendon/nerve/vascular involvement.</p>
 <p>Anesthesia: None required.</p>
 <p>Preparation: Prepped and draped in sterile fashion.</p>
 <p>Technique: Irrigated extensively with saline via jet lavage and syringe. No debridement or undermining needed. Closed with Dermabond, simple approximation.</p>
 <p>Wound Treatment: Antibiotic ointment and 4x4 gauze.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.laceration_repair_standard_sutures</span>
 <h4>Laceration Repair - Standard Sutures</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Verbal</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Laceration requiring suture closure</p>
-<p>Wound: Body area [ ]; length [ ] cm. No foreign bodies, no tendon/nerve/vascular involvement.</p>
+<p>Wound: Body area ***; length *** cm. No foreign bodies, no tendon/nerve/vascular involvement.</p>
 <p>Anesthesia: Local infiltration, lidocaine with epinephrine, 4 mL.</p>
 <p>Preparation: Prepped and draped in sterile fashion.</p>
-<p>Technique: Irrigated extensively with saline via jet lavage and syringe. No debridement or undermining needed. Closed with 6-0 nylon, [ ] interrupted sutures, simple approximation.</p>
+<p>Technique: Irrigated extensively with saline via jet lavage and syringe. No debridement or undermining needed. Closed with 6-0 nylon, *** interrupted sutures, simple approximation.</p>
 <p>Wound Treatment: Antibiotic ointment and 4x4 gauze.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.laceration_repair_staples</span>
 <h4>Laceration Repair - Staples</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Verbal</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Scalp laceration requiring staple closure</p>
-<p>Wound: Scalp; length [ ] cm. No foreign bodies, no tendon/nerve/vascular involvement.</p>
+<p>Wound: Scalp; length *** cm. No foreign bodies, no tendon/nerve/vascular involvement.</p>
 <p>Anesthesia: Local infiltration, lidocaine with epinephrine, 4 mL.</p>
 <p>Preparation: Prepped and draped in sterile fashion.</p>
-<p>Technique: Irrigated extensively with saline via jet lavage and syringe. Closed with [ ] staples, simple approximation.</p>
+<p>Technique: Irrigated extensively with saline via jet lavage and syringe. Closed with *** staples, simple approximation.</p>
 <p>Wound Treatment: Antibiotic ointment and 4x4 gauze.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <h3 class="subsubhead">ENT</h3>
 <div class="card ">
 <span class="tag">.epistaxis_management</span>
 <h4>Epistaxis Management</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Verbal</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Anterior/posterior epistaxis not controlled with direct pressure</p>
 <p>Treatment Site: Right anterior and right posterior nasal cavity</p>
 <p>Technique: Nasal balloon device placed.</p>
 <p>Outcome: Bleeding stopped. Simple complexity.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.peritonsillar_abscess_incision_drainage</span>
 <h4>Peritonsillar Abscess Incision and Drainage</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Verbal (patient and guardian)</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Peritonsillar abscess</p>
 <p>Location: Right peritonsillar space</p>
 <p>Anesthesia: Local infiltration and topical spray: lidocaine 1% with epinephrine plus benzocaine spray, 2 mL total.</p>
-<p>Technique: Straight puncture to 1.5 cm depth with a spinal needle covered by a plastic guard, [ ] attempts.</p>
-<p>Findings: Purulent drainage, approximately [ ] cc.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Technique: Straight puncture to 1.5 cm depth with a spinal needle covered by a plastic guard, *** attempts.</p>
+<p>Findings: Purulent drainage, approximately *** cc.</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.ear_cerumen_removal_wick</span>
 <h4>Ear Cerumen Removal and Wick Placement</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Verbal</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Impacted cerumen / otitis externa with canal edema requiring wick</p>
-<p>Location: [ ] ear</p>
+<p>Location: *** ear</p>
 <p>Localization: Visualized.</p>
 <p>Technique: Ear scoop used for removal; ear wick placed.</p>
 <p>Findings: Copious discharge removed.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.flexible_fiberoptic_laryngoscopy</span>
 <h4>Flexible Fiberoptic Laryngoscopy</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Verbal</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Foreign body sensation in the throat; evaluation of the voice box, vocal cords, and adjacent structures</p>
 <p>Preparation: Nasopharynx and oropharynx anesthetized with 4% lidocaine nebulizer and Hurricaine spray.</p>
 <p>Technique: A Mac 4 laryngoscope used to depress the tongue. Fiberoptic scope advanced into the oropharynx to visualize posterior pharyngeal structures, hypopharynx, larynx, vocal cords, and piriform sinuses.</p>
-<p>Findings: Foreign body: [ ].</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Findings: Foreign body: ***.</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.nasal_foreign_body_removal</span>
 <h4>Nasal Foreign Body Removal</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Verbal (patient/guardian)</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Visualized nasal foreign body</p>
 <p>Technique: Anterior rhinoscopy performed with nasal speculum and headlamp. [Positive-pressure technique: guardian delivered a sharp exhalation into the child's mouth while occluding the unaffected nostril.] (or) [Direct instrumentation: alligator forceps / right-angle hook / balloon catheter passed beyond the object and withdrawn.]</p>
-<p>Findings: Foreign body identified as [ ] and removed [intact/in fragments].</p>
+<p>Findings: Foreign body identified as *** and removed [intact/in fragments].</p>
 <p>Post-Procedure Exam: Repeat rhinoscopy confirms no residual foreign material, [mild/no] mucosal abrasion, no significant bleeding.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.ear_foreign_body_removal</span>
 <h4>Ear Foreign Body Removal</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Verbal</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Visualized ear canal foreign body [insect/bead/other]</p>
-<p>Location: [ ] ear canal</p>
+<p>Location: *** ear canal</p>
 <p>Technique: Otoscopic visualization confirmed. [If insect: canal filled with lidocaine/mineral oil to immobilize/kill the insect prior to removal.] Removed using [alligator forceps / right-angle hook / irrigation with body-temperature water, if tympanic membrane intact and no vegetative matter present].</p>
 <p>Findings: Foreign body removed [intact/in fragments].</p>
 <p>Post-Procedure Exam: Canal and tympanic membrane visualized, [intact/mild abrasion], no significant bleeding.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.anterior_posterior_nasal_packing</span>
 <h4>Anterior/Posterior Nasal Packing</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Verbal</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Epistaxis not controlled with direct pressure, cautery, or nasal balloon device alone</p>
 <p>Anesthesia: Topical [lidocaine/oxymetazoline] spray to the nasal mucosa.</p>
 <p>Technique: [Anterior: layered petroleum gauze or commercial anterior nasal tampon inserted along the nasal floor.] [Posterior: balloon catheter placed and inflated per device instructions, anterior packing added as needed.]</p>
 <p>Findings: Bleeding controlled.</p>
 <p>Disposition: [Discharged with ENT follow-up in 24-48 hours for pack removal] / [Admitted given posterior packing - aspiration and vagal response risk].</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <h3 class="subsubhead">Eye</h3>
 <div class="card ">
 <span class="tag">.corneal_foreign_body_rust</span>
 <h4>Corneal Foreign Body / Rust Ring Removal</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Verbal</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Visualized corneal foreign body on slit lamp exam with fluorescein staining</p>
-<p>Pre-Procedure: Visual acuity documented prior to procedure: [ ].</p>
+<p>Pre-Procedure: Visual acuity documented prior to procedure: ***.</p>
 <p>Anesthesia: Topical anesthetic (proparacaine) applied.</p>
 <p>Technique: Foreign body removed under slit lamp magnification using a [cotton-tipped applicator / 25-gauge needle / ophthalmic burr]. Residual rust ring, if present, removed with an ophthalmic burr, avoiding the visual axis.</p>
-<p>Findings: Foreign body removed [completely/partially]. Residual corneal defect [ ] mm, [central/peripheral]. No evidence of globe perforation, hyphema, or anterior chamber abnormality.</p>
+<p>Findings: Foreign body removed [completely/partially]. Residual corneal defect *** mm, [central/peripheral]. No evidence of globe perforation, hyphema, or anterior chamber abnormality.</p>
 <p>Post-Procedure: Antibiotic ointment applied. [Ophthalmology follow-up arranged if rust ring incompletely removed or defect visually significant.]</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.ocular_irrigation</span>
 <h4>Ocular Irrigation (Morgan Lens, Chemical Exposure)</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Emergent</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Chemical splash/exposure to the eye(s)</p>
-<p>Pre-Procedure: Topical anesthetic (proparacaine) instilled. Ocular surface pH checked prior to irrigation: [ ].</p>
+<p>Pre-Procedure: Topical anesthetic (proparacaine) instilled. Ocular surface pH checked prior to irrigation: ***.</p>
 <p>Technique: Morgan lens placed under the upper and lower lids, connected to IV tubing with [normal saline/lactated Ringer's], irrigation run continuously at a wide-open rate.</p>
-<p>Endpoint: Irrigation continued until ocular surface pH normalized to 7.0-7.4 on two consecutive checks, 5-10 minutes apart. Minimum irrigation volume [ ] L.</p>
-<p>Post-Procedure Exam: Morgan lens removed, fluorescein exam performed to assess for corneal epithelial defect. Visual acuity documented: [ ].</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Endpoint: Irrigation continued until ocular surface pH normalized to 7.0-7.4 on two consecutive checks, 5-10 minutes apart. Minimum irrigation volume *** L.</p>
+<p>Post-Procedure Exam: Morgan lens removed, fluorescein exam performed to assess for corneal epithelial defect. Visual acuity documented: ***.</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.lateral_canthotomy_cantholysis</span>
 <h4>Lateral Canthotomy and Cantholysis</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Emergent</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Orbital compartment syndrome (retrobulbar hemorrhage) with elevated intraocular pressure, proptosis, and vision-threatening findings (relative afferent pupillary defect, decreased visual acuity)</p>
-<p>Pre-Procedure: Intraocular pressure measured: [ ] mmHg. Visual acuity documented: [ ].</p>
+<p>Pre-Procedure: Intraocular pressure measured: *** mmHg. Visual acuity documented: ***.</p>
 <p>Anesthesia: Local infiltration, lidocaine with epinephrine, at the lateral canthus.</p>
 <p>Technique: Lateral canthus crushed with a hemostat for hemostasis, then incised with scissors (lateral canthotomy). Inferior crus of the lateral canthal tendon identified and cut (inferior cantholysis), releasing the lower lid from the orbital rim. [Superior crus also released if IOP remained elevated.]</p>
-<p>Post-Procedure Exam: Intraocular pressure reassessed: [ ] mmHg. Improvement in proptosis and pressure noted.</p>
+<p>Post-Procedure Exam: Intraocular pressure reassessed: *** mmHg. Improvement in proptosis and pressure noted.</p>
 <p>Disposition: Emergent ophthalmology consultation for definitive management.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 <p class="note">This is a sight-saving, time-critical procedure - do not delay for ophthalmology arrival if the diagnosis is clear and vision is threatened; document the specific findings (IOP, RAPD, visual acuity) that drove the emergent decision.</p>
 </div>
 <h3 class="subsubhead">GI, GU &amp; Neuro</h3>
@@ -4696,274 +4703,274 @@ table.ref td { padding: 4px 6px; border-top: 1px solid #e3e6ec; vertical-align: 
 <span class="tag">.hernia_reduction</span>
 <h4>Hernia Reduction</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Verbal</p>
-<p>Indication: [ ] hernia, reducible, no evidence of strangulation</p>
-<p>Location: [ ]</p>
+<p>Consent: {consent type list}</p>
+<p>Indication: *** hernia, reducible, no evidence of strangulation</p>
+<p>Location: ***</p>
 <p>Technique: Constant direct pressure.</p>
 <p>Result: Fully reduced. No tenderness to palpation after reduction.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.paraphimosis_reduction</span>
 <h4>Paraphimosis Reduction</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Written</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Paraphimosis</p>
 <p>Nerve Block: Circumferential penile block, lidocaine without epinephrine, 8 mL</p>
 <p>Technique: Slow direct pressure applied first, followed by reduction using direct pressure.</p>
 <p>Result: Fully reduced after the procedure.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.gastrostomy_tube_replacement</span>
 <h4>Gastrostomy Tube Replacement</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Verbal</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Dislodged/malfunctioning gastrostomy tube</p>
 <p>Preparation: Aseptic technique, patient on stretcher, head of bed elevated. Skin around the stoma cleaned with chlorhexidine.</p>
 <p>Technique: Tube inspected prior to use and balloon tested. Feeding port on the new tube closed, tip lubricated, guided through the stoma into the stomach, balloon inflated with sterile water per manufacturer instructions. Tube withdrawn until tension felt from the balloon contacting the stomach wall.</p>
 <p>Confirmation: Gastrografin study performed to confirm proper tube placement, read by me.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.paracentesis</span>
 <h4>Paracentesis (Ultrasound-Guided)</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Written</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: [Symptomatic ascites / diagnostic sampling]</p>
 <p>Position: Supine, head of bed elevated 30 degrees.</p>
-<p>Technique: Lower abdomen visualized with ultrasound, ideal fluid pocket identified in the [ ] quadrant. Skin prepped, 1% lidocaine placed subcutaneously for local anesthesia. A 5 French 19-gauge pigtail catheter over a needle introduced with constant suction until ascites fluid withdrawn, advanced a few mm further, catheter advanced until the hub reached the skin, trocar removed.</p>
-<p>Findings: [ ] cc of [amber/cloudy/bloody] fluid drained, samples sent for laboratory analysis.</p>
+<p>Technique: Lower abdomen visualized with ultrasound, ideal fluid pocket identified in the *** quadrant. Skin prepped, 1% lidocaine placed subcutaneously for local anesthesia. A 5 French 19-gauge pigtail catheter over a needle introduced with constant suction until ascites fluid withdrawn, advanced a few mm further, catheter advanced until the hub reached the skin, trocar removed.</p>
+<p>Findings: *** cc of [amber/cloudy/bloody] fluid drained, samples sent for laboratory analysis.</p>
 <p>Post-Procedure: [Catheter attached to suction and left in place for further drainage.]</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
 <p>Images captured and stored in [PACS/QPath] as documentation of guidance.</p>
-<p>Notes: [ ]</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.lumbar_puncture</span>
 <h4>Lumbar Puncture</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Written</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: [Rule out meningitis/subarachnoid hemorrhage/other CSF indication]</p>
 <p>Position: Lateral decubitus.</p>
 <p>Anesthesia: Local infiltration, lidocaine 1% without epinephrine, 4 mL.</p>
 <p>Preparation: Prepped and draped in usual sterile fashion. Site marked.</p>
-<p>Technique: L4-L5 interspace, 22-gauge needle, [ ] attempt(s).</p>
-<p>Findings: Opening pressure [ ] cm H2O. Fluid [clear/xanthochromic/bloody]. Four tubes collected, total volume 4 mL.</p>
+<p>Technique: L4-L5 interspace, 22-gauge needle, *** attempt(s).</p>
+<p>Findings: Opening pressure *** cm H2O. Fluid [clear/xanthochromic/bloody]. Four tubes collected, total volume 4 mL.</p>
 <p>Post-Procedure: Site cleaned and pressure dressing applied.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.suprapubic_catheter_replacement</span>
 <h4>Suprapubic Catheter Replacement</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Written</p>
-<p>Indication: [ ]</p>
+<p>Consent: {consent type list}</p>
+<p>Indication: ***</p>
 <p>Preparation: Bladder distension confirmed by ultrasound. Skin prepared with antiseptic solution, draped in sterile fashion. Old catheter removed.</p>
-<p>Technique: A [ ] French Foley catheter inserted through the ostomy into the bladder; urine aspirated confirms proper placement. Balloon inflated with [ ] mL sterile water.</p>
+<p>Technique: A *** French Foley catheter inserted through the ostomy into the bladder; urine aspirated confirms proper placement. Balloon inflated with *** mL sterile water.</p>
 <p>Post-Procedure: Catheter secured to the abdominal wall, sterile dressing applied. Draining [clear/bloody/cloudy] urine.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
 <p>Images captured and stored in [PACS/QPath] as documentation of guidance.</p>
-<p>Notes: [ ]</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.urethral_catheter_placement</span>
 <h4>Urethral (Foley) Catheter Placement</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Verbal</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: [Urinary retention / accurate output monitoring / sterile urine sample]</p>
 <p>Preparation: Sterile gloves, drape, and lubricant with lidocaine jelly. Urethral meatus cleansed with antiseptic solution.</p>
 <p>Technique: A [14/16/18] French Foley catheter advanced through the urethra into the bladder until urine return noted, advanced an additional 2-3 cm before inflating the balloon with [10] mL sterile water. Catheter withdrawn gently to confirm balloon seating, connected to a closed drainage bag.</p>
-<p>Findings: [ ] mL of [clear/cloudy/bloody] urine returned immediately.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Findings: *** mL of [clear/cloudy/bloody] urine returned immediately.</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 <p class="note">If resistance is encountered (suspected stricture, BPH, trauma), stop and consider a coude catheter or urology consultation rather than forcing passage.</p>
 </div>
 <div class="card ">
 <span class="tag">.nasogastric_orogastric_tube_placement</span>
 <h4>Nasogastric / Orogastric Tube Placement</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Verbal</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: [Gastric decompression / bowel obstruction / overdose with need for gastric access / feeding access]</p>
 <p>Route: [Nasogastric / orogastric, if mid-face trauma or basilar skull fracture suspected]</p>
 <p>Technique: Tube length estimated (nose to earlobe to xiphoid). Tip lubricated [with topical anesthetic/vasoconstrictor to the nares if nasogastric]. Tube passed, patient asked to swallow/sip water as tube advanced to the pre-measured distance.</p>
 <p>Confirmation: Placement confirmed by [auscultation of insufflated air over the epigastrium AND aspiration of gastric contents AND pH testing of aspirate] and/or chest X-ray showing the tip below the diaphragm.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.bartholin_abscess_incision_drainage</span>
 <h4>Bartholin Abscess Incision and Drainage with Word Catheter Placement</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Written</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Bartholin gland abscess</p>
-<p>Anesthesia: Local infiltration, lidocaine 1% with epinephrine, [ ] mL, at the point of maximal fluctuance on the mucosal surface.</p>
+<p>Anesthesia: Local infiltration, lidocaine 1% with epinephrine, *** mL, at the point of maximal fluctuance on the mucosal surface.</p>
 <p>Technique: Small stab incision made with a #11 scalpel at the point of maximal fluctuance, purulent material expressed, cavity gently probed to break up loculations. A Word catheter inserted into the cavity, balloon inflated with [2-3] mL sterile water, tip tucked into the vagina.</p>
-<p>Findings: [ ] cc of purulent material drained.</p>
+<p>Findings: *** cc of purulent material drained.</p>
 <p>Post-Procedure: Instructed to leave the catheter in place for 4-6 weeks to allow fistula tract epithelialization. Follow up with gynecology.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 <p class="note">[Chaperone name] present.</p>
 </div>
 <div class="card ">
 <span class="tag">.priapism_reduction</span>
 <h4>Priapism Reduction (Corporal Aspiration and Irrigation)</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Written</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Ischemic (low-flow) priapism, erection duration &gt; 4 hours</p>
-<p>Anesthesia: Dorsal penile nerve block or circumferential penile block, lidocaine without epinephrine, [ ] mL.</p>
+<p>Anesthesia: Dorsal penile nerve block or circumferential penile block, lidocaine without epinephrine, *** mL.</p>
 <p>Preparation: Penis prepped with chlorhexidine.</p>
 <p>Technique: A 19- to 21-gauge butterfly needle inserted into the corpus cavernosum at the 3 or 9 o'clock position (avoiding the dorsal neurovascular bundle and ventral urethra). Dark, deoxygenated blood aspirated until bright red blood returned or detumescence occurred. Corpora irrigated with normal saline. [Phenylephrine 100-200 mcg increments, diluted, injected intracavernosally with continuous BP/HR monitoring if detumescence not achieved.]</p>
-<p>Findings: Detumescence [achieved/partially achieved] after [ ] mL aspirated and [ ] doses of phenylephrine.</p>
+<p>Findings: Detumescence [achieved/partially achieved] after *** mL aspirated and *** doses of phenylephrine.</p>
 <p>Disposition: Urology consulted for [persistent priapism / follow-up recommendation].</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.precipitous_delivery</span>
 <h4>Precipitous (Spontaneous Vaginal) Delivery</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Emergent</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Imminent delivery, insufficient time for transfer to labor and delivery</p>
 <p>Position: Dorsal lithotomy.</p>
 <p>Technique: Perineum controlled with gentle counter-pressure as the head crowned. Neck checked for nuchal cord once head delivered [none found / reduced over the head / clamped and cut given tightness]. Mouth and nose suctioned as indicated. Gentle downward traction applied to deliver the anterior shoulder, then upward traction for the posterior shoulder, followed by the remainder of the body.</p>
-<p>Time of Delivery: [ ]. Infant [cried immediately / required stimulation], handed off to the resuscitation team.</p>
-<p>Placenta: Delivered spontaneously at [ ], inspected and appeared intact. Estimated blood loss: [ ] mL.</p>
+<p>Time of Delivery: ***. Infant [cried immediately / required stimulation], handed off to the resuscitation team.</p>
+<p>Placenta: Delivered spontaneously at ***, inspected and appeared intact. Estimated blood loss: *** mL.</p>
 <p>Perineum: [No lacerations / repaired, see separate note].</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.vaginal_foreign_body_removal</span>
 <h4>Vaginal Foreign Body Removal</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Verbal</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Visualized/palpated vaginal foreign body</p>
 <p>Position: Dorsal lithotomy, adequate lighting. [Chaperone name] present.</p>
-<p>Technique: Speculum exam performed, foreign body visualized at [ ]. Removed using [ring forceps / irrigation / manual extraction].</p>
-<p>Findings: Foreign body ([ ]) removed intact. Vaginal mucosa [intact / mild abrasion, no active bleeding].</p>
+<p>Technique: Speculum exam performed, foreign body visualized at ***. Removed using [ring forceps / irrigation / manual extraction].</p>
+<p>Findings: Foreign body (***) removed intact. Vaginal mucosa [intact / mild abrasion, no active bleeding].</p>
 <p>Post-Procedure: Speculum exam repeated to confirm no residual material.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.rectal_foreign_body_removal</span>
 <h4>Rectal Foreign Body Removal</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Written</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Palpated/visualized low rectal foreign body, no signs of perforation</p>
 <p>Position: Lateral decubitus or lithotomy, adequate lighting and sedation/analgesia as needed.</p>
 <p>Pre-Procedure: Abdominal exam benign, no peritoneal signs. [Imaging obtained to assess for perforation/location, if indicated.]</p>
 <p>Technique: Foreign body grasped and removed transanally using [ring forceps / manual extraction with Valsalva assistance]. [Anal sphincter relaxation aided by local anesthetic jelly / procedural sedation.]</p>
-<p>Findings: Foreign body ([ ]) removed intact.</p>
+<p>Findings: Foreign body (***) removed intact.</p>
 <p>Post-Procedure Exam: Anoscopy/rectal exam performed after removal to assess for mucosal injury - [none noted / laceration noted, surgery consulted].</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 <p class="note">Proximal, sharp, or multiple foreign bodies, or any peritoneal signs, warrant surgical consultation rather than bedside extraction.</p>
 </div>
 <div class="card ">
 <span class="tag">.anoscopy</span>
 <h4>Anoscopy</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Verbal</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Evaluation of [rectal bleeding / anorectal pain / suspected internal hemorrhoids or fissure]</p>
 <p>Position: Lateral decubitus or knee-chest, adequate lighting.</p>
 <p>Technique: Lubricated anoscope inserted with obturator in place, obturator removed once past the anal canal, mucosa visualized on withdrawal.</p>
-<p>Findings: [ ]</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Findings: ***</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.umbilical_vein_catheterization</span>
 <h4>Umbilical Vein Catheterization (Neonatal)</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Emergent</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Emergent vascular access in a neonate during resuscitation when peripheral/IO access is not feasible</p>
 <p>Technique: Umbilical cord prepped, cut to [1-2] cm above the skin. Umbilical vein identified (single large, thin-walled lumen). A [3.5/5] French umbilical catheter, pre-flushed with saline, inserted into the vein and advanced [2-4] cm (low line) or further with imaging confirmation (high line) until free flow of blood obtained on aspiration.</p>
 <p>Securing: Catheter secured with umbilical tape/suture.</p>
 <p>Confirmation: [X-ray obtained to confirm tip position, if high line / low line used for emergent resuscitation medications and fluids only].</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.tick_removal</span>
 <h4>Tick Removal</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Verbal</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Embedded tick</p>
-<p>Location: [ ]</p>
+<p>Location: ***</p>
 <p>Technique: Fine-tipped forceps used to grasp the tick as close to the skin surface as possible, steady upward traction applied without twisting or crushing the body until the tick released.</p>
 <p>Findings: Tick removed intact, mouthparts [fully removed / small fragment retained - left in place, will extrude on its own, no increased infection risk from a residual mouthpart alone].</p>
 <p>Wound Treatment: Site cleaned with alcohol/soap and water.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 <p class="note">Discuss regional tick-borne illness precautions and return precautions (expanding rash, fever, joint pain) rather than prescribing prophylactic antibiotics for every tick bite - this is a shared decision based on tick species, attachment time, and local endemic risk.</p>
 </div>
 <h3 class="subsubhead">OMM &amp; Sedation</h3>
 <div class="card ">
 <span class="tag">.omt_procedure</span>
 <h4>OMT Procedure Note</h4>
-<p>Indication: [ ] - Tissue texture changes: [ ] - Asymmetry: [ ]</p>
-<p>Restriction of motion: [ ] - Tenderness: [ ]</p>
+<p>Indication: *** - Tissue texture changes: *** - Asymmetry: ***</p>
+<p>Restriction of motion: *** - Tenderness: ***</p>
 <p>Treatment consisted of [technique] to the [region]. Patient tolerated the procedure well. Subjective improvements in pain and range of motion were noted by the patient, and objective improvements in tissue texture and range of motion were noted after treatment by this provider.</p>
 <p>The patient was encouraged to use ice rather than heat or electrical stimulation for any post-treatment discomfort, and to use the affected area freely with full range of motion, since immobilization may negate the benefits of treatment.</p>
 </div>
@@ -4971,16 +4978,16 @@ table.ref td { padding: 4px 6px; border-top: 1px solid #e3e6ec; vertical-align: 
 <span class="tag">.procedural_sedation</span>
 <h4>Procedural (Conscious) Sedation</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Written</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: [Fracture/dislocation reduction / cardioversion / other painful procedure requiring sedation]</p>
-<p>Timing: Time-out called at [ ]; sedation start [ ], sedation end [ ]. Total intra-service time: [ ] minutes.</p>
-<p>Medication: [ ], given IV</p>
+<p>Timing: Time-out called at ***; sedation start ***, sedation end ***. Total intra-service time: *** minutes.</p>
+<p>Medication: ***, given IV</p>
 <p>Monitoring: Continuous cardiac, blood pressure, pulse oximetry, and capnography per departmental sedation protocol.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Performed by (trainee/APP name), attending present for (key/critical portion(s) / entire procedure)]</p>
-<p>Performed by: [Self / Resident / CRNA name]</p>
-<p>Notes: [ ]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <h2 class="subhead" id="s06-6">Full Text: Discharge Instruction Library (Section 04)</h2>
 <h3 class="subsubhead">Pediatric Discharge Instructions</h3>
@@ -5010,7 +5017,7 @@ table.ref td { padding: 4px 6px; border-top: 1px solid #e3e6ec; vertical-align: 
 <div class="card ">
 <span class="tag">.covid_19</span>
 <h4>COVID-19 (Pediatric)</h4>
-<p>Give 10-15 mg/kg/dose acetaminophen every 4-6 hours as needed for pain or fever, no more than 5 doses in 24 hours (160 mg/5 mL concentration - give [ ] mL). If over 6 months, may also give 10 mg/kg/dose ibuprofen every 6 hours (100 mg/5 mL concentration - give [ ] mL). Increase water intake. Testing typically takes 2-4 days to result. Practice good hand hygiene and mask consistently.</p>
+<p>Give 10-15 mg/kg/dose acetaminophen every 4-6 hours as needed for pain or fever, no more than 5 doses in 24 hours (160 mg/5 mL concentration - give *** mL). If over 6 months, may also give 10 mg/kg/dose ibuprofen every 6 hours (100 mg/5 mL concentration - give *** mL). Increase water intake. Testing typically takes 2-4 days to result. Practice good hand hygiene and mask consistently.</p>
 <p>Return to the ED for: signs of trouble breathing (retractions above the collarbones, between or around the ribs); persistent fever &gt; 101&deg;F not controlled with medication; not eating or drinking; fewer than 3 wet diapers or voids in 24 hours; lethargy or not acting normally; any other concerning symptom.</p>
 <p class="note">EDITORIAL NOTE: The fixed 5-10 day CDC isolation schedule referenced in the original phrase was retired in March 2024 in favor of symptom-based guidance (stay home until fever-free for 24 hours without medication and symptoms are improving). Verify current CDC guidance before quoting an isolation timeline to a patient.</p>
 </div>
@@ -5047,7 +5054,7 @@ table.ref td { padding: 4px 6px; border-top: 1px solid #e3e6ec; vertical-align: 
 <div class="card ">
 <span class="tag">.otitis_media</span>
 <h4>Otitis Media (Pediatric)</h4>
-<p>Give amoxicillin [ ] mL every 12 hours for 10 days. May give 10-15 mg/kg/dose acetaminophen every 4-6 hours as needed (max 5 doses/24 hr; 160 mg/5 mL - give [ ] mL) and/or 10 mg/kg/dose ibuprofen every 6 hours (100 mg/5 mL - give [ ] mL). Follow up with the pediatrician within 1 week to confirm improvement.</p>
+<p>Give amoxicillin *** mL every 12 hours for 10 days. May give 10-15 mg/kg/dose acetaminophen every 4-6 hours as needed (max 5 doses/24 hr; 160 mg/5 mL - give *** mL) and/or 10 mg/kg/dose ibuprofen every 6 hours (100 mg/5 mL - give *** mL). Follow up with the pediatrician within 1 week to confirm improvement.</p>
 <p>Return to the ED for: persistent high fever &gt; 101&deg;F not controlled with medication; not eating or drinking; fewer than 3 wet diapers in 24 hours; lethargy; redness/swelling behind the ear or over the skull; ear discharge; or any other concern.</p>
 </div>
 <div class="card ">
@@ -5065,14 +5072,14 @@ table.ref td { padding: 4px 6px; border-top: 1px solid #e3e6ec; vertical-align: 
 <div class="card ">
 <span class="tag">.otc_pain_fever_dosing</span>
 <h4>OTC Pain/Fever Dosing (Pediatric)</h4>
-<p>Give 10-15 mg/kg/dose acetaminophen every 4-6 hours as needed for pain or fever, no more than 5 doses in 24 hours (160 mg/5 mL concentration - give [ ] mL). If over 6 months, may also give 10 mg/kg/dose ibuprofen every 6 hours (Children's Motrin, 100 mg/5 mL - give [ ] mL).</p>
+<p>Give 10-15 mg/kg/dose acetaminophen every 4-6 hours as needed for pain or fever, no more than 5 doses in 24 hours (160 mg/5 mL concentration - give *** mL). If over 6 months, may also give 10 mg/kg/dose ibuprofen every 6 hours (Children's Motrin, 100 mg/5 mL - give *** mL).</p>
 </div>
 <div class="card ">
 <span class="tag">.diphenhydramine_dosing_itching</span>
 <h4>Diphenhydramine (Benadryl) Dosing for Itching</h4>
 <p>Benadryl can help with itching, though it may cause drowsiness - best given before bedtime. It comes in two concentrations, 12.5 mg/5 mL and 50 mg/30 mL; check the label. Dose is 5 mg/kg/day divided into 3-4 doses, maximum 300 mg/day.</p>
-<p class="line">- 12.5 mg/5 mL: give [ ] mL up to 4 times daily, not exceeding 120 mL in 24 hours.</p>
-<p class="line">- 50 mg/30 mL: give [ ] mL up to 4 times daily, not exceeding 180 mL in 24 hours.</p>
+<p class="line">- 12.5 mg/5 mL: give *** mL up to 4 times daily, not exceeding 120 mL in 24 hours.</p>
+<p class="line">- 50 mg/30 mL: give *** mL up to 4 times daily, not exceeding 180 mL in 24 hours.</p>
 <p>For a non-sedating option, Allegra or Claritin once daily per bottle instructions works well.</p>
 </div>
 <div class="card ">
@@ -5125,7 +5132,7 @@ table.ref td { padding: 4px 6px; border-top: 1px solid #e3e6ec; vertical-align: 
 <div class="card ">
 <span class="tag">.syncope</span>
 <h4>Syncope</h4>
-<p>You were seen for syncope (passing out). We suspect this was due to [ ]. The exact cause of syncope isn't always certain, but today's workup was reassuring and did not show findings requiring admission.</p>
+<p>You were seen for syncope (passing out). We suspect this was due to ***. The exact cause of syncope isn't always certain, but today's workup was reassuring and did not show findings requiring admission.</p>
 <p>Return for: syncope preceded by chest pain, syncope while lying down or exercising, or passing out with no preceding warning symptoms.</p>
 </div>
 <div class="card ">
@@ -5150,7 +5157,7 @@ table.ref td { padding: 4px 6px; border-top: 1px solid #e3e6ec; vertical-align: 
 <div class="card ">
 <span class="tag">.covid_19_vaccine_administered</span>
 <h4>COVID-19 Vaccine Administered</h4>
-<p>You received your [ ] COVID vaccine today. You will need another dose in [ ] weeks and a booster 6 months after that - this can be done at your pharmacy or health department. Keep your vaccine card. Expect roughly 24 hours of fever, chills, nausea, or fatigue; arm soreness may last several days.</p>
+<p>You received your *** COVID vaccine today. You will need another dose in *** weeks and a booster 6 months after that - this can be done at your pharmacy or health department. Keep your vaccine card. Expect roughly 24 hours of fever, chills, nausea, or fatigue; arm soreness may last several days.</p>
 </div>
 <div class="card ">
 <span class="tag">.influenza</span>
@@ -5179,7 +5186,7 @@ table.ref td { padding: 4px 6px; border-top: 1px solid #e3e6ec; vertical-align: 
 <div class="card ">
 <span class="tag">.incidental_finding_on_workup</span>
 <h4>Incidental Finding on Workup</h4>
-<p>You had the following incidental finding on today's workup: [ ]. Please follow up with [specialist/PCP] to discuss this further and ensure it is managed appropriately.</p>
+<p>You had the following incidental finding on today's workup: ***. Please follow up with [specialist/PCP] to discuss this further and ensure it is managed appropriately.</p>
 </div>
 <div class="card ">
 <span class="tag">.pending_labs</span>
@@ -5205,13 +5212,13 @@ table.ref td { padding: 4px 6px; border-top: 1px solid #e3e6ec; vertical-align: 
 <div class="card ">
 <span class="tag">.biliary_colic</span>
 <h4>Biliary Colic</h4>
-<p>You were seen for abdominal pain and found to have gallstones without evidence of cholecystitis (gallbladder infection). Symptomatic gallstones don't require emergency surgery, but they can obstruct the gallbladder's exit and progress to cholecystitis. See Dr. [ ] (general surgeon) to determine whether your gallbladder needs to come out. You may take [antiemetic] for nausea, and ibuprofen 400 mg with acetaminophen 650 mg every 4-6 hours as needed for pain (max 3000 mg acetaminophen/24 hr; take ibuprofen with food).</p>
+<p>You were seen for abdominal pain and found to have gallstones without evidence of cholecystitis (gallbladder infection). Symptomatic gallstones don't require emergency surgery, but they can obstruct the gallbladder's exit and progress to cholecystitis. See Dr. *** (general surgeon) to determine whether your gallbladder needs to come out. You may take [antiemetic] for nausea, and ibuprofen 400 mg with acetaminophen 650 mg every 4-6 hours as needed for pain (max 3000 mg acetaminophen/24 hr; take ibuprofen with food).</p>
 <p>Return for: increasing pain, nausea, vomiting, fever, or other concerning symptoms.</p>
 </div>
 <div class="card ">
 <span class="tag">.diverticulitis</span>
 <h4>Diverticulitis</h4>
-<p>You were seen for [ ]-sided abdominal pain and found to have diverticulitis without evidence of abscess, perforation, or other serious complication on CT. Take the prescribed antibiotics [ ]; yogurt or kefir/kombucha can help prevent antibiotic-associated diarrhea. Increasing dietary fiber (leafy greens, nuts) is the best way to prevent further episodes and progression.</p>
+<p>You were seen for ***-sided abdominal pain and found to have diverticulitis without evidence of abscess, perforation, or other serious complication on CT. Take the prescribed antibiotics ***; yogurt or kefir/kombucha can help prevent antibiotic-associated diarrhea. Increasing dietary fiber (leafy greens, nuts) is the best way to prevent further episodes and progression.</p>
 <p>Return for: worsening abdominal pain, fever, diarrhea, or any other concern.</p>
 </div>
 <div class="card ">
@@ -5230,13 +5237,13 @@ table.ref td { padding: 4px 6px; border-top: 1px solid #e3e6ec; vertical-align: 
 <div class="card ">
 <span class="tag">.kidney_stone</span>
 <h4>Kidney Stone</h4>
-<p>[CT showed a [ ] mm stone on the right/left side, which will most likely pass on its own.] Establish care with urology and follow up to confirm improvement. Drink plenty of fluids, cut out soda, and strain your urine into a jar so you can hear and see the stone if it passes. Take ibuprofen 400 mg and acetaminophen 650 mg every 6 hours as needed for pain (up to 1000 mg acetaminophen for severe pain; take ibuprofen with food).</p>
+<p>[CT showed a *** mm stone on the right/left side, which will most likely pass on its own.] Establish care with urology and follow up to confirm improvement. Drink plenty of fluids, cut out soda, and strain your urine into a jar so you can hear and see the stone if it passes. Take ibuprofen 400 mg and acetaminophen 650 mg every 6 hours as needed for pain (up to 1000 mg acetaminophen for severe pain; take ibuprofen with food).</p>
 <p>Return for: worsening or changing discomfort, inability to urinate, fever, inability to keep down oral medication, burning with urination or blood in urine, or any other concern.</p>
 </div>
 <div class="card ">
 <span class="tag">.pyelonephritis</span>
 <h4>Pyelonephritis</h4>
-<p>You were seen for [ ] and found to have pyelonephritis, an infection of the upper urinary tract, which can occur when a urinary tract infection goes untreated. In the future, seek treatment for UTI symptoms promptly so they don't progress. You were prescribed ciprofloxacin along with a probiotic to help prevent antibiotic-associated diarrhea. Ciprofloxacin has been associated with tendon rupture - report any new musculoskeletal pain over the next weeks to months to your primary care doctor or return to the ED.</p>
+<p>You were seen for *** and found to have pyelonephritis, an infection of the upper urinary tract, which can occur when a urinary tract infection goes untreated. In the future, seek treatment for UTI symptoms promptly so they don't progress. You were prescribed ciprofloxacin along with a probiotic to help prevent antibiotic-associated diarrhea. Ciprofloxacin has been associated with tendon rupture - report any new musculoskeletal pain over the next weeks to months to your primary care doctor or return to the ED.</p>
 <p>Return for: abdominal/back pain or urinary symptoms not improving, new fever, or any other concern.</p>
 </div>
 <div class="card ">
@@ -5291,7 +5298,7 @@ table.ref td { padding: 4px 6px; border-top: 1px solid #e3e6ec; vertical-align: 
 <div class="card ">
 <span class="tag">.dental_pain</span>
 <h4>Dental Pain (Referred, No Abscess)</h4>
-<p>No abscess or facial/jaw skin infection was seen. Pain on the [ ] side of the face is likely referred pain - the nerve supplying the affected tooth also sends pain signals to the face. Apply ice for pain control; rotate ibuprofen 400 mg and acetaminophen 650 mg every 6 hours (up to 1000 mg acetaminophen for fever; take ibuprofen with food). Eat soft foods or liquid calories if chewing is difficult. Keep your mouth clean with mouthwash and brush twice daily.</p>
+<p>No abscess or facial/jaw skin infection was seen. Pain on the *** side of the face is likely referred pain - the nerve supplying the affected tooth also sends pain signals to the face. Apply ice for pain control; rotate ibuprofen 400 mg and acetaminophen 650 mg every 6 hours (up to 1000 mg acetaminophen for fever; take ibuprofen with food). Eat soft foods or liquid calories if chewing is difficult. Keep your mouth clean with mouthwash and brush twice daily.</p>
 <p>Cavity prevention: brush twice daily with an electric toothbrush, floss daily, use mouthwash daily, avoid soda/sugary drinks, and stop smoking.</p>
 <p>Return for: a swollen hard area in the mouth near the tooth, facial or neck swelling/redness, vision changes, difficulty swallowing, facial numbness/tingling, fever, or any other concern.</p>
 <p class="note">Antibiotics are not prescribed here because the evidence supporting them for uncomplicated dental pain is poor; follow up with a dentist.</p>
@@ -5350,7 +5357,7 @@ table.ref td { padding: 4px 6px; border-top: 1px solid #e3e6ec; vertical-align: 
 <div class="card ">
 <span class="tag">.burns</span>
 <h4>Burns</h4>
-<p>You were seen for [ ]-degree burns to the [ ]. Wash gently with soap and water in the shower daily, pat dry, apply a thin layer of bacitracin or petroleum jelly, then cover with non-stick gauze secured with tape. Your tetanus vaccine was updated today.</p>
+<p>You were seen for ***-degree burns to the ***. Wash gently with soap and water in the shower daily, pat dry, apply a thin layer of bacitracin or petroleum jelly, then cover with non-stick gauze secured with tape. Your tetanus vaccine was updated today.</p>
 <p>Return for: worsening redness, swelling, or pain in the wound; pus or abnormal drainage; fever; or any other concern. Follow up for a wound check.</p>
 </div>
 <div class="card ">
@@ -5388,7 +5395,7 @@ table.ref td { padding: 4px 6px; border-top: 1px solid #e3e6ec; vertical-align: 
 <div class="card ">
 <span class="tag">.home_suture_removal_instructions</span>
 <h4>Home Suture Removal Instructions</h4>
-<p>Only remove sutures at home if the wound is fully closed, has no drainage, and isn't visibly swollen - otherwise follow up with your physician. Remove sutures on day [ ] as specified in your instructions.</p>
+<p>Only remove sutures at home if the wound is fully closed, has no drainage, and isn't visibly swollen - otherwise follow up with your physician. Remove sutures on day *** as specified in your instructions.</p>
 <p class="line">- 1. Clean the wound gently with water to remove dirt or dried blood; don't scrub.</p>
 <p class="line">- 2. Unwrap the suture removal kit (forceps and scissors).</p>
 <p class="line">- 3. Using forceps, lift the knot up away from the skin.</p>
@@ -5401,7 +5408,7 @@ table.ref td { padding: 4px 6px; border-top: 1px solid #e3e6ec; vertical-align: 
 <div class="card ">
 <span class="tag">.laceration_repair</span>
 <h4>Laceration Repair (Non-Dissolvable Sutures)</h4>
-<p>X-rays did not show foreign bodies or fractures. Your tetanus shot was updated, the wound cleaned and sutured closed. [Inner-layer sutures will dissolve;] the outer layer needs to be removed in [ ] days, here or with your primary care doctor.</p>
+<p>X-rays did not show foreign bodies or fractures. Your tetanus shot was updated, the wound cleaned and sutured closed. [Inner-layer sutures will dissolve;] the outer layer needs to be removed in *** days, here or with your primary care doctor.</p>
 <p>Keep the dressing on for 24 hours (remove sooner if it feels too tight or you notice numbness/tingling). After that, wash gently in the shower daily and re-cover with a clean, dry dressing until the sutures come out - don't scrub the wound directly. Petroleum jelly is fine; no other ointment is needed.</p>
 <p>Return for: pus drainage, red streaks from the wound, or increasing redness/pain/swelling at the site.</p>
 </div>
@@ -5435,8 +5442,8 @@ table.ref td { padding: 4px 6px; border-top: 1px solid #e3e6ec; vertical-align: 
 <div class="card ">
 <span class="tag">.rabies_post_exposure_prophylaxis</span>
 <h4>Rabies Post-Exposure Prophylaxis Schedule</h4>
-<p>You were vaccinated today against rabies and tetanus following a [ ] bite.</p>
-<p>Return on these dates for repeat vaccination: Day 3 - [ ]; Day 7 - [ ]; Day 14 - [ ].</p>
+<p>You were vaccinated today against rabies and tetanus following a *** bite.</p>
+<p>Return on these dates for repeat vaccination: Day 3 - ***; Day 7 - ***; Day 14 - ***.</p>
 </div>
 <div class="card ">
 <span class="tag">.scabies</span>
@@ -5472,7 +5479,7 @@ table.ref td { padding: 4px 6px; border-top: 1px solid #e3e6ec; vertical-align: 
 <div class="card ">
 <span class="tag">.post_omt_instructions</span>
 <h4>Post-OMT Instructions (General)</h4>
-<p>You were treated with osteopathic manipulation for [ ] pain. Bruising, swelling, and soreness are common afterward - use ice, not heat, for discomfort; ibuprofen, acetaminophen, or topical diclofenac gel can also help.</p>
+<p>You were treated with osteopathic manipulation for *** pain. Bruising, swelling, and soreness are common afterward - use ice, not heat, for discomfort; ibuprofen, acetaminophen, or topical diclofenac gel can also help.</p>
 <p>Learn more about osteopathic manipulation: aacom.org/become-a-doctor/about-osteopathic-medicine/omm-explained</p>
 </div>
 <div class="card ">
@@ -5517,7 +5524,7 @@ table.ref td { padding: 4px 6px; border-top: 1px solid #e3e6ec; vertical-align: 
 <div class="card ">
 <span class="tag">.vertigo</span>
 <h4>Vertigo (BPPV)</h4>
-<p>Vertigo of the [ ] ear is caused by a small displaced crystal in the inner ear's balance canals. Continue the Epley maneuver (widely available demonstrated online) for symptom relief.</p>
+<p>Vertigo of the *** ear is caused by a small displaced crystal in the inner ear's balance canals. Continue the Epley maneuver (widely available demonstrated online) for symptom relief.</p>
 <p>Return immediately for: worsening symptoms, inability to walk safely, vomiting with inability to tolerate liquids, or any new neurologic symptom (slurred speech, weakness, numbness/tingling, vision changes, hearing changes).</p>
 <p>Long-term: balance-training activities (basketball, tennis, ping-pong, volleyball, yoga) and daily Cawthorne-Cooksey vestibular exercises (progressive eye, head, and body movements done seated and standing, increasing speed as tolerated) help reduce dizziness over time. Follow up with your primary doctor; an ENT referral may be appropriate if severe or frequent.</p>
 </div>
@@ -5600,15 +5607,15 @@ table.ref td { padding: 4px 6px; border-top: 1px solid #e3e6ec; vertical-align: 
 <div class="card ">
 <span class="tag">.universal_discharge_statement</span>
 <h4>Universal Discharge Statement</h4>
-<p>Patient received written and verbal instructions to do the following at home: [ ]</p>
+<p>Patient received written and verbal instructions to do the following at home: ***</p>
 </div>
 <h2 class="subhead" id="s06-7">Full Text: Pronouncement of Death (Section 05)</h2>
 <h3 class="subsubhead">Pronouncement of Death</h3>
 <div class="card ">
 <span class="tag">.pronouncement_of_death</span>
 <h4>Pronouncement of Death</h4>
-<p>Date of death: [ ] - Time of death: [ ]</p>
-<p>Location: [ ], Bed No. [ ]</p>
+<p>Date of death: *** - Time of death: ***</p>
+<p>Location: ***, Bed No. ***</p>
 <p>Patient ID: Identification tag was reviewed and confirmed.</p>
 <p>Physical exam findings: The patient is pale in appearance, with no spontaneous movements. The patient is not arousable to verbal or tactile stimuli. There is no audible/palpable carotid pulse. There are no spontaneous respirations or audible breath sounds. Pupillary light reflex absent. Corneal reflex absent. Gag reflex absent. Heart sounds absent. Asystole on monitor. Skin is cold and pale.</p>
 <p>The medical examiner will be notified by RN.</p>
@@ -5719,6 +5726,14 @@ table.ref td { padding: 4px 6px; border-top: 1px solid #e3e6ec; vertical-align: 
 <p class="line">- Failed attempt, repeated successfully</p>
 <p class="line">- Failed attempt, alternate approach used</p>
 <p class="line">- Failed attempt, consult obtained</p>
+</div>
+<div class="card ">
+<span class="tag">SmartList</span>
+<h4>{performed by list}</h4>
+<p class="line">- Self</p>
+<p class="line">- Resident, supervised</p>
+<p class="line">- APP, supervised</p>
+<p class="line">- Attending</p>
 </div>
 
 

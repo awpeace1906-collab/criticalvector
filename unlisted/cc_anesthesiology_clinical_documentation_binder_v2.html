@@ -44,10 +44,11 @@ h2 { bookmark-level: 2; bookmark-label: content(); }
 h3 { bookmark-level: 3; bookmark-label: content(); }
 
 .cover {
-    page: cover;
     background: #0a0e14;
     color: #e8edf5;
-    height: 100vh; width: 100%;
+    width: 8.5in;
+    height: 11in;
+    box-sizing: border-box;
     display: flex; flex-direction: column; justify-content: center; align-items: flex-start;
     padding: 1in;
     page-break-after: always;
@@ -105,8 +106,12 @@ h2.subhead {
     font-size: 11pt; font-weight: 700; margin: 18px 0 8px 0; padding-bottom: 3px;
     border-bottom: 2px solid var(--accent);
     color: #0f1923;
+    page-break-after: avoid; page-break-inside: avoid;
 }
-h3.subsubhead { font-size: 9.6pt; font-weight: 700; margin: 12px 0 4px 0; color: var(--accent-dark); }
+h3.subsubhead {
+    font-size: 9.6pt; font-weight: 700; margin: 12px 0 4px 0; color: var(--accent-dark);
+    page-break-after: avoid; page-break-inside: avoid;
+}
 
 .card {
     background: #fff;
@@ -145,9 +150,11 @@ h3.subsubhead { font-size: 9.6pt; font-weight: 700; margin: 12px 0 4px 0; color:
 }
 .callout.critical { background: #fdeaea; border-color: #e8a3a3; color: #8a1f1f; font-weight: 700; }
 
-table.ref { width: 100%; border-collapse: collapse; margin: 6px 0 10px 0; font-size: 8.6pt; }
+table.ref { width: 100%; border-collapse: collapse; margin: 6px 0 10px 0; font-size: 8.6pt; page-break-inside: avoid; }
 table.ref th { text-align: left; background: #eef0f4; padding: 4px 6px; font-family: 'Syne', sans-serif; font-size: 7.3pt; text-transform: uppercase; letter-spacing: 0.04em; color: #4a5670; }
 table.ref td { padding: 4px 6px; border-top: 1px solid #e3e6ec; vertical-align: top; }
+table.ref tr { page-break-inside: avoid; }
+p { orphans: 3; widows: 3; }
 
 .toc { columns: 1; }
 .toc a { color: #0f1923; text-decoration: none; }
@@ -2005,12 +2012,12 @@ Anesthesia start/stop times, drug administration, and case vitals typically live
 <div class="card ">
 <span class="tag">.pre_anesthetic_evaluation</span>
 <h4>Pre-Anesthetic Evaluation</h4>
-<p>[Age]-year-old [sex] presenting for [procedure] by Dr. [surgeon], scheduled as [elective/urgent/emergent].</p>
-<p>PMH: [ ] - PSH/Anesthesia Hx: [ ] - prior anesthetics without complication / [complication: PONV, difficult airway, malignant hyperthermia personal or family history, prolonged emergence, awareness].</p>
-<p>Medications: [ ] - reconciled, held/continued per protocol (anticoagulants, diabetes meds, ACE-I/ARB held day of surgery per institutional policy).</p>
-<p>Allergies: [ ], reaction type documented (true allergy vs. intolerance).</p>
-<p>Social: Tobacco [ ] pack-years, alcohol [ ], substance use [ ] - relevant to anesthetic requirement and withdrawal risk.</p>
-<p>Functional capacity: [ ] METs, able to [climb 2 flights of stairs / walk 4 blocks] without symptoms.</p>
+<p>@AGE@ year old @SEX@ presenting for *** by Dr. ***, scheduled as [elective/urgent/emergent].</p>
+<p>PMH: @PMH@ - PSH/Anesthesia Hx: @PSH@ - prior anesthetics without complication / [complication: PONV, difficult airway, malignant hyperthermia personal or family history, prolonged emergence, awareness].</p>
+<p>Medications: @MEDS@ - reconciled, held/continued per protocol (anticoagulants, diabetes meds, ACE-I/ARB held day of surgery per institutional policy).</p>
+<p>Allergies: @ALLERGIES@, reaction type documented (true allergy vs. intolerance).</p>
+<p>Social: Tobacco *** pack-years, alcohol ***, substance use *** - relevant to anesthetic requirement and withdrawal risk.</p>
+<p>Functional capacity: *** METs, able to [climb 2 flights of stairs / walk 4 blocks] without symptoms.</p>
 <p>Review of systems pertinent to anesthesia: cardiac (chest pain, dyspnea, syncope, orthopnea), pulmonary (OSA, asthma, COPD, recent URI), GI (reflux, delayed gastric emptying), neuro (seizures, neuropathy baseline for regional candidates), heme (bleeding disorder, anticoagulation).</p>
 </div>
 <div class="card ">
@@ -2028,12 +2035,12 @@ Anesthesia start/stop times, drug administration, and case vitals typically live
 <div class="card ">
 <span class="tag">.airway_assessment</span>
 <h4>Airway Assessment</h4>
-<p>Mallampati class: [I / II / III / IV], with mouth maximally open, tongue protruded, patient seated upright, unphonated.</p>
-<p>Thyromental distance: [ ] cm (&lt; 6 cm predicts difficulty). Sternomental distance: [ ] cm.</p>
-<p>Mouth opening (interincisor gap): [ ] cm ( &lt; 3 cm predicts difficulty).</p>
-<p>Neck mobility: [full / limited] flexion-extension. Neck circumference: [ ] cm ( &gt; 43 cm associated with difficult laryngoscopy/OSA).</p>
+<p>Mallampati class: {Mallampati class list}, with mouth maximally open, tongue protruded, patient seated upright, unphonated.</p>
+<p>Thyromental distance: *** cm (&lt; 6 cm predicts difficulty). Sternomental distance: *** cm.</p>
+<p>Mouth opening (interincisor gap): *** cm ( &lt; 3 cm predicts difficulty).</p>
+<p>Neck mobility: [full / limited] flexion-extension. Neck circumference: *** cm ( &gt; 43 cm associated with difficult laryngoscopy/OSA).</p>
 <p>Dentition: [intact / loose teeth / dentures / crowns] - documented and disclosed to patient given risk of dental injury.</p>
-<p>Beard, micrognathia, retrognathia, limited jaw protrusion (upper lip bite test): [ ].</p>
+<p>Beard, micrognathia, retrognathia, limited jaw protrusion (upper lip bite test): ***.</p>
 <p>Prior difficult airway history: [none / documented, see prior anesthesia record] - [MedicAlert / difficult airway registry] flagged.</p>
 <p>Overall impression: [Normal airway, no anticipated difficulty] / [Anticipated difficult airway - see airway plan below].</p>
 </div>
@@ -2144,7 +2151,8 @@ Anesthesia start/stop times, drug administration, and case vitals typically live
 <div class="card ">
 <span class="tag">.npo_status_confirmation</span>
 <h4>NPO Status Confirmation</h4>
-<p>Last oral intake: solids [ ] hours ago, clear liquids [ ] hours ago. Meets ASA NPO guidelines: clear liquids 2 hr, breast milk 4 hr, infant formula/light meal 6 hr, full meal/fried or fatty food 8 hr.</p>
+<p>NPO status: {NPO status list}</p>
+<p>Last oral intake: solids *** hours ago, clear liquids *** hours ago. Meets ASA NPO guidelines: clear liquids 2 hr, breast milk 4 hr, infant formula/light meal 6 hr, full meal/fried or fatty food 8 hr.</p>
 <p>Aspiration risk factors: [none] / [full stomach, pregnancy, obesity, diabetic gastroparesis, bowel obstruction, GERD, recent trauma/opioids] - rapid sequence induction planned if present.</p>
 </div>
 <h3 class="subsubhead">Anesthesia Plan &amp; Consent</h3>
@@ -2181,10 +2189,10 @@ Anesthesia start/stop times, drug administration, and case vitals typically live
 <div class="card ">
 <span class="tag">.intraoperative_time_log</span>
 <h4>Intraoperative Time Log (Narrative Format)</h4>
-<p>Anesthesia start time: [ ] - Patient in room: [ ] - Monitors placed: [ ] - Induction start: [ ] - Airway secured: [ ] (device, confirmation method).</p>
-<p>Surgical time out performed at [ ], correct patient/procedure/site/positioning/implants confirmed by entire team.</p>
-<p>Incision time: [ ] - Maintenance: [agent(s), vaporizer settings or TIVA infusion rates, fluids, blood products, vasoactive infusions as charted on the anesthesia record].</p>
-<p>Emergence start: [ ] - Extubation/LMA removal: [ ] (criteria met, see emergence note) - Anesthesia stop time: [ ], patient handed off to PACU RN [name] with verbal report given.</p>
+<p>Anesthesia start time: *** - Patient in room: *** - Monitors placed: *** - Induction start: *** - Airway secured: *** (device, confirmation method).</p>
+<p>Surgical time out performed at ***, correct patient/procedure/site/positioning/implants confirmed by entire team.</p>
+<p>Incision time: *** - Maintenance: [agent(s), vaporizer settings or TIVA infusion rates, fluids, blood products, vasoactive infusions as charted on the anesthesia record].</p>
+<p>Emergence start: *** - Extubation/LMA removal: *** (criteria met, see emergence note) - Anesthesia stop time: ***, patient handed off to PACU RN [name] with verbal report given.</p>
 </div>
 <div class="card ">
 <span class="tag">.qualifying_circumstances</span>
@@ -2213,7 +2221,7 @@ Anesthesia start/stop times, drug administration, and case vitals typically live
 <div class="card ">
 <span class="tag">.concurrency_statement</span>
 <h4>Concurrency Statement</h4>
-<p>At the time of this case, I was medically directing [ ] concurrent procedures (maximum of 4 to qualify as medical direction). Case log/concurrency documentation attached or maintained per departmental policy.</p>
+<p>At the time of this case, I was medically directing *** concurrent procedures (maximum of 4 to qualify as medical direction). Case log/concurrency documentation attached or maintained per departmental policy.</p>
 </div>
 <div class="card ">
 <span class="tag">.medical_supervision</span>
@@ -2235,23 +2243,23 @@ Anesthesia start/stop times, drug administration, and case vitals typically live
 <div class="card ">
 <span class="tag">.general_anesthesia_induction</span>
 <h4>General Anesthesia Induction Note</h4>
-<p>Standard ASA monitors applied, baseline vitals recorded. Pre-oxygenation with 100% FiO2 for [ ] minutes.</p>
-<p>Induction agents: [ ], doses documented on the anesthesia record. [Rapid sequence induction performed given aspiration risk: cricoid pressure applied, no mask ventilation attempted between paralytic and intubation, or modified RSI per clinical judgment.]</p>
-<p>Airway secured with [direct/video laryngoscopy, grade ( ) view] / [LMA size ( )], confirmed by capnography, bilateral breath sounds, and chest rise. Tube secured at [ ] cm at the teeth/lip.</p>
+<p>Standard ASA monitors applied, baseline vitals recorded. Pre-oxygenation with 100% FiO2 for *** minutes.</p>
+<p>Induction agents: ***, doses documented on the anesthesia record. [Rapid sequence induction performed given aspiration risk: cricoid pressure applied, no mask ventilation attempted between paralytic and intubation, or modified RSI per clinical judgment.]</p>
+<p>Airway secured with [direct/video laryngoscopy, grade ( ) view] / [LMA size ( )], confirmed by capnography, bilateral breath sounds, and chest rise. Tube secured at *** cm at the teeth/lip.</p>
 <p>Positioning: [supine/lateral/prone/lithotomy], pressure points padded, eyes taped and protected, arms padded and secured &lt; 90 degrees abduction.</p>
 </div>
 <div class="card ">
 <span class="tag">.maintenance_intraoperative_vigilance</span>
 <h4>Maintenance and Intraoperative Vigilance Note</h4>
 <p>Anesthesia maintained with [volatile agent/TIVA], titrated to [BIS/MAC/clinical] endpoints. Neuromuscular blockade [maintained/reversed] and monitored by [train-of-four/quantitative twitch monitor].</p>
-<p>Hemodynamics maintained within [ ]% of baseline; interventions: [fluids, vasopressors, blood products] as charted. Temperature maintained &gt; 36C with [forced-air warming, fluid warmer].</p>
+<p>Hemodynamics maintained within ***% of baseline; interventions: [fluids, vasopressors, blood products] as charted. Temperature maintained &gt; 36C with [forced-air warming, fluid warmer].</p>
 <p>Vigilance: Vital signs and ventilator parameters monitored and charted at least every 5 minutes throughout the case; anesthesia provider present continuously except as documented under medical direction attestation above.</p>
 </div>
 <div class="card ">
 <span class="tag">.emergence_extubation</span>
 <h4>Emergence and Extubation Note</h4>
-<p>Anesthetic agents discontinued at [ ]. Neuromuscular blockade reversed with [ ], train-of-four ratio &gt; 0.9 confirmed [quantitatively/qualitatively] prior to extubation.</p>
-<p>Extubation criteria met: patient following commands, adequate spontaneous tidal volumes, protective airway reflexes returned, hemodynamically stable. Extubated [awake/deep, if applicable] at [ ], tolerated well, no stridor or desaturation.</p>
+<p>Anesthetic agents discontinued at ***. Neuromuscular blockade reversed with ***, train-of-four ratio &gt; 0.9 confirmed [quantitatively/qualitatively] prior to extubation.</p>
+<p>Extubation criteria met: patient following commands, adequate spontaneous tidal volumes, protective airway reflexes returned, hemodynamically stable. Extubated [awake/deep, if applicable] at ***, tolerated well, no stridor or desaturation.</p>
 <p>Transported to PACU with [supplemental oxygen, monitors as indicated], accompanied by anesthesia provider throughout transport.</p>
 </div>
 <h3 class="subsubhead">Spontaneous Breathing Trial &amp; Extubation Readiness (ICU / Prolonged Ventilation)</h3>
@@ -2278,7 +2286,7 @@ Anesthesia start/stop times, drug administration, and case vitals typically live
 <h4>Rapid Shallow Breathing Index (RSBI / Tobin Index)</h4>
 <p>Measured during the first 1 minute of unassisted spontaneous breathing (T-piece or minimal support), before fatigue sets in.</p>
 <p>RSBI = Respiratory rate (breaths/min) / Tidal volume (L)</p>
-<p>Respiratory rate: [ ] breaths/min - Tidal volume: [ ] L - RSBI = [ ]</p>
+<p>Respiratory rate: *** breaths/min - Tidal volume: *** L - RSBI = ***</p>
 <p>Interpretation: RSBI &lt; 105 predicts a good likelihood of successful extubation/weaning. RSBI &ge; 105 predicts a substantially higher likelihood of weaning failure.</p>
 <p class="note">RSBI is a single data point, not a standalone extubation order - integrate it with SBT tolerance, secretion burden, cough strength, and overall clinical trajectory. A good RSBI in a patient who cannot protect their airway or clear secretions is not a green light to extubate.</p>
 </div>
@@ -2296,85 +2304,85 @@ Anesthesia start/stop times, drug administration, and case vitals typically live
 <span class="tag">.video_laryngoscopy</span>
 <h4>Video Laryngoscopy (Primary Technique)</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Verbal</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: [Routine airway management / anticipated difficult direct laryngoscopy]</p>
-<p>Technique: Patient positioned in sniffing/ramped position. Video laryngoscope ([device]) inserted, glottic structures visualized, Cormack-Lehane grade [ ] view obtained. ETT size [ ] passed under direct visualization through the vocal cords without resistance.</p>
+<p>Technique: Patient positioned in sniffing/ramped position. Video laryngoscope ([device]) inserted, glottic structures visualized, Cormack-Lehane grade *** view obtained. ETT size *** passed under direct visualization through the vocal cords without resistance.</p>
 <p>Post-Procedure Exam: Placement confirmed by capnography waveform and bilateral breath sounds.</p>
-<p>Number of Attempts: [ ]</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Medically directing per Section 2 attestation, present for induction, emergence, and (key/critical portion(s))] / [Performed by resident, attending present for (key/critical portion(s))]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / CRNA name / Resident name]</p>
-<p>Notes: [ ]</p>
+<p>Number of Attempts: ***</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.awake_fiberoptic_intubation</span>
 <h4>Awake Fiberoptic Intubation</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Written</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Anticipated difficult airway [limited mouth opening, cervical spine immobility, unstable airway mass, prior documented difficult intubation]</p>
-<p>Preparation: Difficult airway cart at bedside. Airway topicalized with [nebulized/atomized lidocaine, glossopharyngeal and superior laryngeal nerve blocks as applicable]. Judicious sedation with [ ], titrated to maintain spontaneous ventilation and responsiveness.</p>
-<p>Technique: Fiberoptic scope, preloaded with a [ ] ETT, advanced through the [nasal/oral] route under continuous visualization, through the vocal cords into the trachea, tracheal rings and carina confirmed. ETT railroaded over the scope into the trachea without resistance.</p>
+<p>Preparation: Difficult airway cart at bedside. Airway topicalized with [nebulized/atomized lidocaine, glossopharyngeal and superior laryngeal nerve blocks as applicable]. Judicious sedation with ***, titrated to maintain spontaneous ventilation and responsiveness.</p>
+<p>Technique: Fiberoptic scope, preloaded with a *** ETT, advanced through the [nasal/oral] route under continuous visualization, through the vocal cords into the trachea, tracheal rings and carina confirmed. ETT railroaded over the scope into the trachea without resistance.</p>
 <p>Confirmation: Bilateral breath sounds and sustained capnography waveform confirmed prior to induction of general anesthesia.</p>
 <p>Patient Tolerated Procedure: Well; patient remained cooperative and hemodynamically stable throughout</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Medically directing per Section 2 attestation, present for induction, emergence, and (key/critical portion(s))] / [Performed by resident, attending present for (key/critical portion(s))]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / CRNA name / Resident name]</p>
-<p>Notes: [ ]</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.difficult_airway_algorithm</span>
 <h4>Difficult Airway Algorithm Documentation</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Emergent</p>
-<p>Indication: [Difficult mask ventilation / difficult laryngoscopy / failed intubation] on attempt [ ]</p>
-<p>Plan A: [ ] - result: [ ]</p>
-<p>Plan B: [ ] - result: [ ]</p>
-<p>Plan C (Rescue): [Supraglottic airway / surgical airway] - result: [ ]</p>
-<p>Oxygenation: Maintained throughout via [mask ventilation / SGA / apneic oxygenation] - SpO2 remained &gt; [ ]% throughout.</p>
+<p>Consent: {consent type list}</p>
+<p>Indication: [Difficult mask ventilation / difficult laryngoscopy / failed intubation] on attempt ***</p>
+<p>Plan A: *** - result: ***</p>
+<p>Plan B: *** - result: ***</p>
+<p>Plan C (Rescue): [Supraglottic airway / surgical airway] - result: ***</p>
+<p>Oxygenation: Maintained throughout via [mask ventilation / SGA / apneic oxygenation] - SpO2 remained &gt; ***% throughout.</p>
 <p>Outcome: Case [proceeded under general anesthesia once airway secured / was cancelled and rescheduled for awake technique / converted to regional anesthesia] per shared decision-making with the surgical team.</p>
 <p>Post-Event: Difficult airway letter provided to patient, difficult airway registry/MedicAlert documentation recommended, note flagged prominently in the chart for future anesthetics.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Medically directing per Section 2 attestation, present for induction, emergence, and (key/critical portion(s))] / [Performed by resident, attending present for (key/critical portion(s))]</p>
-<p>Performed by: [Self / CRNA name / Resident name]</p>
-<p>Notes: [ ]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.neuromuscular_blockade_reversal</span>
 <h4>Neuromuscular Blockade Reversal (Sugammadex)</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Verbal</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Reversal of rocuronium/vecuronium-induced neuromuscular blockade prior to extubation</p>
-<p>Pre-Reversal: Depth of block confirmed by quantitative train-of-four monitoring: [ ] twitches / post-tetanic count [ ].</p>
+<p>Pre-Reversal: Depth of block confirmed by quantitative train-of-four monitoring: *** twitches / post-tetanic count ***.</p>
 <p>Technique: Sugammadex [2 mg/kg for moderate block / 4 mg/kg for deep block] administered IV.</p>
-<p>Post-Procedure: Train-of-four ratio &gt; 0.9 confirmed [ ] minutes after administration. No adverse reaction (bradycardia, anaphylaxis) noted.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Medically directing per Section 2 attestation, present for induction, emergence, and (key/critical portion(s))] / [Performed by resident, attending present for (key/critical portion(s))]</p>
-<p>Performed by: [Self / CRNA name / Resident name]</p>
-<p>Notes: [ ]</p>
+<p>Post-Procedure: Train-of-four ratio &gt; 0.9 confirmed *** minutes after administration. No adverse reaction (bradycardia, anaphylaxis) noted.</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.double_lumen_tube_placement</span>
 <h4>Double-Lumen Tube Placement / One-Lung Ventilation</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Verbal</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Thoracic surgery requiring lung isolation</p>
-<p>Pre-Procedure: Chest imaging reviewed for airway anatomy and tube sizing. [ ] Fr left/right-sided double-lumen tube selected.</p>
+<p>Pre-Procedure: Chest imaging reviewed for airway anatomy and tube sizing. *** Fr left/right-sided double-lumen tube selected.</p>
 <p>Technique: Tube placed under direct/video laryngoscopy, advanced and rotated toward the [left/right] mainstem per standard technique.</p>
 <p>Confirmation: Position confirmed and adjusted using fiberoptic bronchoscopy - tracheal lumen views the carina and contralateral mainstem take-off; bronchial lumen views the ipsilateral upper lobe orifice. Repeat bronchoscopic check performed after final patient positioning (e.g., lateral decubitus), since tube position commonly shifts with repositioning.</p>
 <p>One-Lung Ventilation: Initiated at [time]; dependent lung ventilated with [tidal volume/PEEP settings], non-dependent lung [collapsed to surgical field / CPAP applied if hypoxemia]. SpO2 and plateau pressures monitored continuously.</p>
 <p>Post-Procedure: Two-lung ventilation resumed at [time] prior to emergence; bilateral breath sounds and lung re-expansion confirmed [by direct visualization/auscultation].</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Medically directing per Section 2 attestation, present for induction, emergence, and (key/critical portion(s))] / [Performed by resident, attending present for (key/critical portion(s))]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / CRNA name / Resident name]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
 <p>Images captured and stored in [PACS/anesthesia record system] as documentation of guidance.</p>
-<p>Notes: [ ]</p>
+<p>Notes: ***</p>
 <p class="note">Document the bronchoscopic confirmation explicitly and at each position change - malposition found only at the end of a case is a recurring root cause of intraoperative hypoxemia and a common audit finding.</p>
 </div>
 <h3 class="subsubhead">Neuraxial Anesthesia</h3>
@@ -2382,486 +2390,486 @@ Anesthesia start/stop times, drug administration, and case vitals typically live
 <span class="tag">.spinal_anesthesia</span>
 <h4>Spinal Anesthesia (Subarachnoid Block)</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Written</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: [Cesarean delivery / lower extremity or lower abdominal surgery]</p>
 <p>Position: [Sitting / lateral decubitus]. Landmarks: [L3-L4 / L4-L5] interspace.</p>
 <p>Preparation: Prepped with chlorhexidine, sterile technique throughout (mask, cap, sterile gloves).</p>
 <p>Anesthesia: Local infiltration with lidocaine 1%.</p>
 <p>Technique: Spinal needle ([gauge], [type]) advanced through the interspace, free flow of clear CSF confirmed. [Medication and dose] injected intrathecally. Needle withdrawn, patient positioned supine.</p>
-<p>Block Level: [Sensory level to pinprick/cold] at [dermatome] achieved by [ ] minutes. Motor block: [Bromage score].</p>
+<p>Block Level: [Sensory level to pinprick/cold] at [dermatome] achieved by *** minutes. Motor block: [Bromage score].</p>
 <p>Patient Tolerated Procedure: Well; hemodynamics [stable / managed with phenylephrine infusion per protocol]</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Medically directing per Section 2 attestation, present for induction, emergence, and (key/critical portion(s))] / [Performed by resident, attending present for (key/critical portion(s))]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / CRNA name / Resident name]</p>
-<p>Notes: [ ]</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.epidural_placement</span>
 <h4>Epidural Placement (Labor or Surgical)</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Written</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: [Labor analgesia / surgical anesthesia / postoperative pain control]</p>
-<p>Position: [Sitting/lateral]. Landmarks: [ ] interspace.</p>
+<p>Position: [Sitting/lateral]. Landmarks: *** interspace.</p>
 <p>Preparation: Prepped and draped in sterile fashion.</p>
 <p>Anesthesia: Local infiltration with lidocaine 1%.</p>
-<p>Technique: Epidural needle advanced using loss-of-resistance to [saline/air], space identified at [ ] cm depth. Catheter threaded [ ] cm into the space without paresthesia or blood/CSF return. Test dose ([lidocaine with epinephrine]) given, negative for intravascular/intrathecal placement.</p>
-<p>Infusion: [Medication, concentration, rate] initiated/bolused. Catheter secured at [ ] cm at the skin.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Medically directing per Section 2 attestation, present for induction, emergence, and (key/critical portion(s))] / [Performed by resident, attending present for (key/critical portion(s))]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / CRNA name / Resident name]</p>
-<p>Notes: [ ]</p>
+<p>Technique: Epidural needle advanced using loss-of-resistance to [saline/air], space identified at *** cm depth. Catheter threaded *** cm into the space without paresthesia or blood/CSF return. Test dose ([lidocaine with epinephrine]) given, negative for intravascular/intrathecal placement.</p>
+<p>Infusion: [Medication, concentration, rate] initiated/bolused. Catheter secured at *** cm at the skin.</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.combined_spinal_epidural</span>
 <h4>Combined Spinal-Epidural (CSE)</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Written</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Labor analgesia with rapid onset plus flexibility for prolonged surgical anesthesia</p>
-<p>Technique: Epidural space identified via loss of resistance at [ ] interspace. A spinal needle passed through the epidural needle ('needle-through-needle'), free flow of CSF confirmed, intrathecal [medication/dose] injected. Spinal needle withdrawn, epidural catheter threaded [ ] cm into the epidural space.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Medically directing per Section 2 attestation, present for induction, emergence, and (key/critical portion(s))] / [Performed by resident, attending present for (key/critical portion(s))]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / CRNA name / Resident name]</p>
-<p>Notes: [ ]</p>
+<p>Technique: Epidural space identified via loss of resistance at *** interspace. A spinal needle passed through the epidural needle ('needle-through-needle'), free flow of CSF confirmed, intrathecal [medication/dose] injected. Spinal needle withdrawn, epidural catheter threaded *** cm into the epidural space.</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.post_dural_puncture_headache</span>
 <h4>Post-Dural Puncture Headache: Epidural Blood Patch</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Written</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Post-dural puncture headache, positional, refractory to conservative management (caffeine, hydration, analgesics) for &gt; [24-48] hours</p>
-<p>Technique: Epidural space identified at or one level below the level of prior dural puncture, loss of resistance technique, sterile fashion. [ ] mL of the patient's own blood, drawn under sterile technique from a separate site, injected slowly into the epidural space until the patient reports pressure/fullness or the full volume is given.</p>
-<p>Post-Procedure: Patient instructed to remain supine for [ ] minutes to hours per institutional protocol.</p>
+<p>Technique: Epidural space identified at or one level below the level of prior dural puncture, loss of resistance technique, sterile fashion. *** mL of the patient's own blood, drawn under sterile technique from a separate site, injected slowly into the epidural space until the patient reports pressure/fullness or the full volume is given.</p>
+<p>Post-Procedure: Patient instructed to remain supine for *** minutes to hours per institutional protocol.</p>
 <p>Patient Tolerated Procedure: Well; [immediate/gradual] improvement in headache reported</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Medically directing per Section 2 attestation, present for induction, emergence, and (key/critical portion(s))] / [Performed by resident, attending present for (key/critical portion(s))]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / CRNA name / Resident name]</p>
-<p>Notes: [ ]</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <h3 class="subsubhead">Peripheral Nerve Blocks (Ultrasound-Guided)</h3>
 <div class="card ">
 <span class="tag">.interscalene_brachial_plexus_block</span>
 <h4>Interscalene Brachial Plexus Block</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Written</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Shoulder or proximal humerus surgery analgesia</p>
-<p>Technique: Patient positioned semi-sitting, head turned away from the block side. High-frequency linear probe used to identify the brachial plexus roots/trunks between the anterior and middle scalene muscles at the level of the cricoid cartilage. Needle advanced in-plane under continuous ultrasound visualization; after negative aspiration, [ ] mL of [local anesthetic] injected in incremental aliquots with real-time visualization of spread.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Medically directing per Section 2 attestation, present for induction, emergence, and (key/critical portion(s))] / [Performed by resident, attending present for (key/critical portion(s))]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / CRNA name / Resident name]</p>
+<p>Technique: Patient positioned semi-sitting, head turned away from the block side. High-frequency linear probe used to identify the brachial plexus roots/trunks between the anterior and middle scalene muscles at the level of the cricoid cartilage. Needle advanced in-plane under continuous ultrasound visualization; after negative aspiration, *** mL of [local anesthetic] injected in incremental aliquots with real-time visualization of spread.</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
 <p>Images captured and stored in [PACS/anesthesia record system] as documentation of guidance.</p>
-<p>Notes: [ ]</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.supraclavicular_brachial_plexus_block</span>
 <h4>Supraclavicular Brachial Plexus Block</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Written</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Forearm, wrist, and hand surgery analgesia</p>
-<p>Technique: Probe placed in the supraclavicular fossa, subclavian artery and brachial plexus ('cluster of grapes') identified superficial to the first rib and pleura. Needle advanced in-plane, corner pocket technique targeted. After negative aspiration, [ ] mL local anesthetic injected, spread confirmed circumferential around the plexus.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Medically directing per Section 2 attestation, present for induction, emergence, and (key/critical portion(s))] / [Performed by resident, attending present for (key/critical portion(s))]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / CRNA name / Resident name]</p>
+<p>Technique: Probe placed in the supraclavicular fossa, subclavian artery and brachial plexus ('cluster of grapes') identified superficial to the first rib and pleura. Needle advanced in-plane, corner pocket technique targeted. After negative aspiration, *** mL local anesthetic injected, spread confirmed circumferential around the plexus.</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
 <p>Images captured and stored in [PACS/anesthesia record system] as documentation of guidance.</p>
-<p>Notes: [ ]</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.axillary_brachial_plexus_block</span>
 <h4>Axillary Brachial Plexus Block</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Written</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Hand and forearm surgery analgesia</p>
-<p>Technique: Arm abducted to 90 degrees, probe placed in the axilla over the axillary artery. Median, ulnar, radial, and musculocutaneous nerves identified circumferentially. Needle advanced in-plane, local anesthetic deposited around each nerve individually ([ ] mL total), negative aspiration prior to each injection.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Medically directing per Section 2 attestation, present for induction, emergence, and (key/critical portion(s))] / [Performed by resident, attending present for (key/critical portion(s))]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / CRNA name / Resident name]</p>
+<p>Technique: Arm abducted to 90 degrees, probe placed in the axilla over the axillary artery. Median, ulnar, radial, and musculocutaneous nerves identified circumferentially. Needle advanced in-plane, local anesthetic deposited around each nerve individually (*** mL total), negative aspiration prior to each injection.</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
 <p>Images captured and stored in [PACS/anesthesia record system] as documentation of guidance.</p>
-<p>Notes: [ ]</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.femoral_nerve_block</span>
 <h4>Femoral Nerve Block</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Written</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Anterior thigh/knee surgery analgesia</p>
-<p>Technique: Patient supine, linear probe placed at the inguinal crease. Femoral nerve identified lateral to the femoral artery, deep to the fascia iliaca. Needle advanced in-plane, after negative aspiration [ ] mL local anesthetic injected around the nerve with visualized spread ('donut sign').</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Medically directing per Section 2 attestation, present for induction, emergence, and (key/critical portion(s))] / [Performed by resident, attending present for (key/critical portion(s))]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / CRNA name / Resident name]</p>
+<p>Technique: Patient supine, linear probe placed at the inguinal crease. Femoral nerve identified lateral to the femoral artery, deep to the fascia iliaca. Needle advanced in-plane, after negative aspiration *** mL local anesthetic injected around the nerve with visualized spread ('donut sign').</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
 <p>Images captured and stored in [PACS/anesthesia record system] as documentation of guidance.</p>
-<p>Notes: [ ]</p>
+<p>Notes: ***</p>
 <p class="note">Consider adductor canal block instead when quadriceps motor sparing is preferred for early ambulation.</p>
 </div>
 <div class="card ">
 <span class="tag">.adductor_canal_block</span>
 <h4>Adductor Canal Block</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Written</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Knee surgery analgesia with quadriceps strength preservation</p>
-<p>Technique: Mid-thigh, linear probe placed over the sartorius muscle. Saphenous nerve identified adjacent to the femoral artery within the adductor canal. Needle advanced in-plane, [ ] mL local anesthetic injected around the nerve/artery under direct visualization.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Medically directing per Section 2 attestation, present for induction, emergence, and (key/critical portion(s))] / [Performed by resident, attending present for (key/critical portion(s))]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / CRNA name / Resident name]</p>
+<p>Technique: Mid-thigh, linear probe placed over the sartorius muscle. Saphenous nerve identified adjacent to the femoral artery within the adductor canal. Needle advanced in-plane, *** mL local anesthetic injected around the nerve/artery under direct visualization.</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
 <p>Images captured and stored in [PACS/anesthesia record system] as documentation of guidance.</p>
-<p>Notes: [ ]</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.popliteal_sciatic_nerve_block</span>
 <h4>Popliteal Sciatic Nerve Block</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Written</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Foot and ankle surgery analgesia</p>
-<p>Technique: Patient prone/lateral, popliteal fossa probe placement, sciatic nerve identified proximal to its bifurcation into tibial and common peroneal components. Needle advanced in-plane, [ ] mL local anesthetic injected around the nerve with circumferential spread confirmed.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Medically directing per Section 2 attestation, present for induction, emergence, and (key/critical portion(s))] / [Performed by resident, attending present for (key/critical portion(s))]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / CRNA name / Resident name]</p>
+<p>Technique: Patient prone/lateral, popliteal fossa probe placement, sciatic nerve identified proximal to its bifurcation into tibial and common peroneal components. Needle advanced in-plane, *** mL local anesthetic injected around the nerve with circumferential spread confirmed.</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
 <p>Images captured and stored in [PACS/anesthesia record system] as documentation of guidance.</p>
-<p>Notes: [ ]</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.transversus_abdominis_plane_block</span>
 <h4>Transversus Abdominis Plane (TAP) Block</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Written</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Abdominal surgery analgesia (post-cesarean, laparotomy, laparoscopic surgery)</p>
-<p>Technique: Linear probe placed in the mid-axillary line between the costal margin and iliac crest. Transversus abdominis plane identified between the internal oblique and transversus abdominis muscles. Needle advanced in-plane, [ ] mL local anesthetic injected into the plane [unilaterally/bilaterally], spread confirmed by fascial plane separation.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Medically directing per Section 2 attestation, present for induction, emergence, and (key/critical portion(s))] / [Performed by resident, attending present for (key/critical portion(s))]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / CRNA name / Resident name]</p>
+<p>Technique: Linear probe placed in the mid-axillary line between the costal margin and iliac crest. Transversus abdominis plane identified between the internal oblique and transversus abdominis muscles. Needle advanced in-plane, *** mL local anesthetic injected into the plane [unilaterally/bilaterally], spread confirmed by fascial plane separation.</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
 <p>Images captured and stored in [PACS/anesthesia record system] as documentation of guidance.</p>
-<p>Notes: [ ]</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.erector_spinae_plane_block</span>
 <h4>Erector Spinae Plane (ESP) Block</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Written</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Thoracic or abdominal wall analgesia (rib fractures, thoracotomy, abdominal surgery)</p>
-<p>Technique: Patient positioned [sitting/lateral/prone]. Probe placed longitudinally over the transverse process at the target level ([ ]). Needle advanced in-plane until contact with the transverse process, deep to the erector spinae muscle. After negative aspiration, [ ] mL local anesthetic injected, linear spread deep to the muscle confirmed cephalad-caudad.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Medically directing per Section 2 attestation, present for induction, emergence, and (key/critical portion(s))] / [Performed by resident, attending present for (key/critical portion(s))]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / CRNA name / Resident name]</p>
+<p>Technique: Patient positioned [sitting/lateral/prone]. Probe placed longitudinally over the transverse process at the target level (***). Needle advanced in-plane until contact with the transverse process, deep to the erector spinae muscle. After negative aspiration, *** mL local anesthetic injected, linear spread deep to the muscle confirmed cephalad-caudad.</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
 <p>Images captured and stored in [PACS/anesthesia record system] as documentation of guidance.</p>
-<p>Notes: [ ]</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.quadratus_lumborum_block</span>
 <h4>Quadratus Lumborum (QL) Block</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Written</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Abdominal and hip surgery analgesia with more posterior/visceral coverage than TAP block</p>
-<p>Technique: Patient positioned lateral. Curvilinear probe placed at the posterior axillary line identifying the quadratus lumborum muscle at its junction with the transversalis fascia. Needle advanced in-plane, [ ] mL local anesthetic injected into the fascial plane [anterior to QL (QL2/transmuscular) / posterior to QL].</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Medically directing per Section 2 attestation, present for induction, emergence, and (key/critical portion(s))] / [Performed by resident, attending present for (key/critical portion(s))]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / CRNA name / Resident name]</p>
+<p>Technique: Patient positioned lateral. Curvilinear probe placed at the posterior axillary line identifying the quadratus lumborum muscle at its junction with the transversalis fascia. Needle advanced in-plane, *** mL local anesthetic injected into the fascial plane [anterior to QL (QL2/transmuscular) / posterior to QL].</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
 <p>Images captured and stored in [PACS/anesthesia record system] as documentation of guidance.</p>
-<p>Notes: [ ]</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.paravertebral_block</span>
 <h4>Paravertebral Block</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Written</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Thoracic surgery, rib fracture, or breast surgery analgesia</p>
-<p>Technique: Patient positioned [sitting/lateral]. Linear probe placed parasagittal, transverse process and pleura identified at the target level(s) ([ ]). Needle advanced in-plane, paravertebral space entered with visualized pleural depression on injection. [ ] mL local anesthetic injected per level, negative aspiration confirmed prior to each injection.</p>
+<p>Technique: Patient positioned [sitting/lateral]. Linear probe placed parasagittal, transverse process and pleura identified at the target level(s) (***). Needle advanced in-plane, paravertebral space entered with visualized pleural depression on injection. *** mL local anesthetic injected per level, negative aspiration confirmed prior to each injection.</p>
 <p>Post-Procedure: No pneumothorax on post-procedure lung ultrasound.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Medically directing per Section 2 attestation, present for induction, emergence, and (key/critical portion(s))] / [Performed by resident, attending present for (key/critical portion(s))]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / CRNA name / Resident name]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
 <p>Images captured and stored in [PACS/anesthesia record system] as documentation of guidance.</p>
-<p>Notes: [ ]</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.fascia_iliaca_compartment_block</span>
 <h4>Fascia Iliaca Compartment Block</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Written</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Hip fracture or anterior thigh/knee surgery analgesia, alternative to femoral block with a single injection covering femoral, lateral femoral cutaneous, and obturator nerve distributions</p>
-<p>Technique: Patient supine, linear probe placed at the inguinal crease lateral to the femoral vessels. Fascia iliaca identified as the plane deep to the iliacus muscle. Needle advanced in-plane, [ ] mL local anesthetic injected deep to the fascia iliaca with visualized spread along the plane, lifting the fascia off the muscle.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Medically directing per Section 2 attestation, present for induction, emergence, and (key/critical portion(s))] / [Performed by resident, attending present for (key/critical portion(s))]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / CRNA name / Resident name]</p>
+<p>Technique: Patient supine, linear probe placed at the inguinal crease lateral to the femoral vessels. Fascia iliaca identified as the plane deep to the iliacus muscle. Needle advanced in-plane, *** mL local anesthetic injected deep to the fascia iliaca with visualized spread along the plane, lifting the fascia off the muscle.</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
 <p>Images captured and stored in [PACS/anesthesia record system] as documentation of guidance.</p>
-<p>Notes: [ ]</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.ankle_block</span>
 <h4>Ankle Block</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Written</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Foot surgery analgesia (forefoot/midfoot)</p>
-<p>Technique: Five nerves blocked at the level of the ankle: posterior tibial and deep peroneal (ultrasound-guided), with superficial peroneal, sural, and saphenous nerves blocked via subcutaneous field infiltration ('ring block') given their superficial course. [ ] mL local anesthetic total, divided among the five nerves.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Medically directing per Section 2 attestation, present for induction, emergence, and (key/critical portion(s))] / [Performed by resident, attending present for (key/critical portion(s))]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / CRNA name / Resident name]</p>
+<p>Technique: Five nerves blocked at the level of the ankle: posterior tibial and deep peroneal (ultrasound-guided), with superficial peroneal, sural, and saphenous nerves blocked via subcutaneous field infiltration ('ring block') given their superficial course. *** mL local anesthetic total, divided among the five nerves.</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
 <p>Images captured and stored in [PACS/anesthesia record system] as documentation of guidance.</p>
-<p>Notes: [ ]</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.wrist_block</span>
 <h4>Wrist Block</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Written</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Hand surgery analgesia distal to the wrist</p>
-<p>Technique: Median, ulnar, and radial nerves blocked at the wrist. Median and ulnar nerves identified and blocked under ultrasound guidance adjacent to their respective arteries/tendons; radial nerve blocked via subcutaneous field infiltration given its superficial, branching course at this level. [ ] mL local anesthetic total.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Medically directing per Section 2 attestation, present for induction, emergence, and (key/critical portion(s))] / [Performed by resident, attending present for (key/critical portion(s))]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / CRNA name / Resident name]</p>
+<p>Technique: Median, ulnar, and radial nerves blocked at the wrist. Median and ulnar nerves identified and blocked under ultrasound guidance adjacent to their respective arteries/tendons; radial nerve blocked via subcutaneous field infiltration given its superficial, branching course at this level. *** mL local anesthetic total.</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
 <p>Images captured and stored in [PACS/anesthesia record system] as documentation of guidance.</p>
-<p>Notes: [ ]</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.caudal_block</span>
 <h4>Caudal Block</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Written</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Pediatric infraumbilical surgery analgesia (circumcision, inguinal hernia, lower extremity)</p>
 <p>Position: Lateral decubitus, hips flexed.</p>
 <p>Landmarks: Sacral hiatus identified between the sacral cornua, [confirmed with ultrasound].</p>
-<p>Technique: Needle advanced at 45 degrees through the sacrococcygeal ligament with a palpable/visualized 'pop', angle flattened and advanced a few mm into the caudal epidural space. Negative aspiration for blood/CSF confirmed. [ ] mL of [concentration] local anesthetic injected incrementally, ultrasound or 'whoosh test' used to confirm correct spread.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Medically directing per Section 2 attestation, present for induction, emergence, and (key/critical portion(s))] / [Performed by resident, attending present for (key/critical portion(s))]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / CRNA name / Resident name]</p>
+<p>Technique: Needle advanced at 45 degrees through the sacrococcygeal ligament with a palpable/visualized 'pop', angle flattened and advanced a few mm into the caudal epidural space. Negative aspiration for blood/CSF confirmed. *** mL of [concentration] local anesthetic injected incrementally, ultrasound or 'whoosh test' used to confirm correct spread.</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
 <p>Images captured and stored in [PACS/anesthesia record system] as documentation of guidance.</p>
-<p>Notes: [ ]</p>
+<p>Notes: ***</p>
 <p class="note">Typically performed after induction of general anesthesia in children, since the block itself is for postoperative analgesia rather than the primary anesthetic.</p>
 </div>
 <div class="card ">
 <span class="tag">.rectus_sheath_block</span>
 <h4>Rectus Sheath Block</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Written</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Midline abdominal incision analgesia (umbilical hernia, laparoscopic port sites, midline laparotomy)</p>
-<p>Technique: Linear probe placed transverse to the rectus muscle lateral to the umbilicus. Posterior rectus sheath identified deep to the rectus abdominis muscle. Needle advanced in-plane, [ ] mL local anesthetic injected between the muscle and posterior sheath, bilaterally as indicated, with visualized spread.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Medically directing per Section 2 attestation, present for induction, emergence, and (key/critical portion(s))] / [Performed by resident, attending present for (key/critical portion(s))]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / CRNA name / Resident name]</p>
+<p>Technique: Linear probe placed transverse to the rectus muscle lateral to the umbilicus. Posterior rectus sheath identified deep to the rectus abdominis muscle. Needle advanced in-plane, *** mL local anesthetic injected between the muscle and posterior sheath, bilaterally as indicated, with visualized spread.</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
 <p>Images captured and stored in [PACS/anesthesia record system] as documentation of guidance.</p>
-<p>Notes: [ ]</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.pecs_i_ii_block</span>
 <h4>PECS I/II Block</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Written</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Breast surgery analgesia (mastectomy, breast reconstruction, port placement)</p>
-<p>Technique: PECS I: local anesthetic deposited in the plane between pectoralis major and pectoralis minor. PECS II: additional injection in the plane between pectoralis minor and serratus anterior, targeting the lateral cutaneous branches of the intercostal nerves and long thoracic/thoracodorsal nerves. [ ] mL local anesthetic total, divided between planes.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Medically directing per Section 2 attestation, present for induction, emergence, and (key/critical portion(s))] / [Performed by resident, attending present for (key/critical portion(s))]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / CRNA name / Resident name]</p>
+<p>Technique: PECS I: local anesthetic deposited in the plane between pectoralis major and pectoralis minor. PECS II: additional injection in the plane between pectoralis minor and serratus anterior, targeting the lateral cutaneous branches of the intercostal nerves and long thoracic/thoracodorsal nerves. *** mL local anesthetic total, divided between planes.</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
 <p>Images captured and stored in [PACS/anesthesia record system] as documentation of guidance.</p>
-<p>Notes: [ ]</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.serratus_anterior_plane_block</span>
 <h4>Serratus Anterior Plane Block</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Written</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Lateral chest wall analgesia (thoracotomy, rib fractures, thoracoscopic surgery, breast surgery)</p>
-<p>Technique: Linear probe placed in the mid-axillary line at the [4th-5th] rib level. Serratus anterior muscle identified superficial to the ribs and intercostal muscles. Needle advanced in-plane, [ ] mL local anesthetic injected [superficial or deep to serratus anterior], spread confirmed along the muscle plane.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Medically directing per Section 2 attestation, present for induction, emergence, and (key/critical portion(s))] / [Performed by resident, attending present for (key/critical portion(s))]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / CRNA name / Resident name]</p>
+<p>Technique: Linear probe placed in the mid-axillary line at the [4th-5th] rib level. Serratus anterior muscle identified superficial to the ribs and intercostal muscles. Needle advanced in-plane, *** mL local anesthetic injected [superficial or deep to serratus anterior], spread confirmed along the muscle plane.</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
 <p>Images captured and stored in [PACS/anesthesia record system] as documentation of guidance.</p>
-<p>Notes: [ ]</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.bier_block</span>
 <h4>Bier Block (Intravenous Regional Anesthesia)</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Written</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Anesthesia for a brief distal upper extremity procedure (fracture/dislocation reduction, minor hand surgery) when a peripheral nerve block or general anesthesia is not preferred</p>
 <p>Pre-Procedure: Two IVs placed: one in the operative limb distally, one in the contralateral limb for monitoring/rescue.</p>
-<p>Technique: Operative limb exsanguinated with an Esmarch bandage. Double (proximal and distal) pneumatic tourniquet applied and inflated to [ ] mmHg, above systolic pressure. [ ] mL of 0.5% preservative-free lidocaine injected IV into the operative limb via the distal IV, anesthesia onset confirmed prior to starting the procedure.</p>
+<p>Technique: Operative limb exsanguinated with an Esmarch bandage. Double (proximal and distal) pneumatic tourniquet applied and inflated to *** mmHg, above systolic pressure. *** mL of 0.5% preservative-free lidocaine injected IV into the operative limb via the distal IV, anesthesia onset confirmed prior to starting the procedure.</p>
 <p>Monitoring: Continuous cardiac, blood pressure, and pulse oximetry monitoring throughout given systemic local anesthetic exposure risk.</p>
-<p>Tourniquet Time: Inflated at [ ], deflated at [ ] ([cyclic deflation-reinflation performed per protocol if procedure exceeds tourniquet tolerance]).</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Medically directing per Section 2 attestation, present for induction, emergence, and (key/critical portion(s))] / [Performed by resident, attending present for (key/critical portion(s))]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / CRNA name / Resident name]</p>
-<p>Notes: [ ]</p>
+<p>Tourniquet Time: Inflated at ***, deflated at *** ([cyclic deflation-reinflation performed per protocol if procedure exceeds tourniquet tolerance]).</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 <p class="note">Have resuscitation equipment and lipid emulsion immediately available - tourniquet failure or premature deflation risks LAST from the large IV lidocaine dose used.</p>
 </div>
 <div class="card ">
 <span class="tag">.peripheral_nerve_catheter_placement</span>
 <h4>Peripheral Nerve Catheter Placement (Continuous Infusion)</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Written</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Extended postoperative analgesia beyond the duration of a single-shot block (major joint replacement, amputation, extensive soft tissue surgery)</p>
 <p>Technique: Target nerve/plane identified as for the corresponding single-shot block (see specific block note). An insulated needle advanced in-plane, initial bolus of local anesthetic confirms correct spread. A catheter threaded [2-5] cm past the needle tip into the plane, needle withdrawn over the catheter.</p>
 <p>Confirmation: Catheter position confirmed by injection of local anesthetic or saline through the catheter with visualized spread in the correct plane.</p>
 <p>Infusion: Catheter secured to skin, connected to an infusion pump: [medication, concentration, rate], [with/without] patient-controlled bolus feature.</p>
-<p>Disposition: Patient/caregiver given written catheter care instructions and a 24-hour contact number. Catheter removal planned for [ ] or per acute pain service follow-up.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Medically directing per Section 2 attestation, present for induction, emergence, and (key/critical portion(s))] / [Performed by resident, attending present for (key/critical portion(s))]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / CRNA name / Resident name]</p>
+<p>Disposition: Patient/caregiver given written catheter care instructions and a 24-hour contact number. Catheter removal planned for *** or per acute pain service follow-up.</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
 <p>Images captured and stored in [PACS/anesthesia record system] as documentation of guidance.</p>
-<p>Notes: [ ]</p>
+<p>Notes: ***</p>
 </div>
 <h3 class="subsubhead">Interventional Pain Procedures</h3>
 <div class="card ">
 <span class="tag">.stellate_ganglion_block</span>
 <h4>Stellate Ganglion Block</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Written</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Complex regional pain syndrome or sympathetically maintained pain of the head/neck/upper extremity</p>
 <p>Position: Supine, neck slightly extended.</p>
-<p>Technique: Linear probe placed at the C6 (or C7) level, transverse process, carotid artery, and longus colli muscle identified. Needle advanced in-plane lateral to medial, avoiding the carotid artery and vertebral artery foramen, to the anterolateral surface of the longus colli. After negative aspiration, [ ] mL local anesthetic injected with visualized spread along the prevertebral fascial plane.</p>
+<p>Technique: Linear probe placed at the C6 (or C7) level, transverse process, carotid artery, and longus colli muscle identified. Needle advanced in-plane lateral to medial, avoiding the carotid artery and vertebral artery foramen, to the anterolateral surface of the longus colli. After negative aspiration, *** mL local anesthetic injected with visualized spread along the prevertebral fascial plane.</p>
 <p>Post-Procedure Exam: Horner's syndrome (ptosis, miosis, anhidrosis) on the treated side confirms sympathetic blockade. Hoarseness (recurrent laryngeal nerve) and upper extremity temperature increase also assessed.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Medically directing per Section 2 attestation, present for induction, emergence, and (key/critical portion(s))] / [Performed by resident, attending present for (key/critical portion(s))]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / CRNA name / Resident name]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
 <p>Images captured and stored in [PACS/anesthesia record system] as documentation of guidance.</p>
-<p>Notes: [ ]</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.celiac_plexus_block_neurolysis</span>
 <h4>Celiac Plexus Block/Neurolysis</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Written</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Visceral abdominal pain, typically pancreatic or other upper abdominal malignancy</p>
 <p>Position: Prone (or lateral, per approach).</p>
-<p>Technique: [Anterior ultrasound/CT-guided or posterior fluoroscopic/CT-guided approach]. Needle(s) advanced to the anterolateral aspect of the aorta at the level of the celiac trunk (approximately L1). Contrast [if fluoroscopic] confirms appropriate spread and absence of intravascular/intrathecal placement. [ ] mL of local anesthetic [with/without neurolytic agent (alcohol/phenol) if for malignancy-related neurolysis] injected.</p>
+<p>Technique: [Anterior ultrasound/CT-guided or posterior fluoroscopic/CT-guided approach]. Needle(s) advanced to the anterolateral aspect of the aorta at the level of the celiac trunk (approximately L1). Contrast [if fluoroscopic] confirms appropriate spread and absence of intravascular/intrathecal placement. *** mL of local anesthetic [with/without neurolytic agent (alcohol/phenol) if for malignancy-related neurolysis] injected.</p>
 <p>Post-Procedure: Monitored for orthostatic hypotension given splanchnic sympathectomy; diarrhea can occur from unopposed parasympathetic tone.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Medically directing per Section 2 attestation, present for induction, emergence, and (key/critical portion(s))] / [Performed by resident, attending present for (key/critical portion(s))]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / CRNA name / Resident name]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
 <p>Images captured and stored in [PACS/anesthesia record system] as documentation of guidance.</p>
-<p>Notes: [ ]</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.epidural_steroid_injection</span>
 <h4>Epidural Steroid Injection</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Written</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Radicular pain from lumbar/cervical disc herniation or spinal stenosis</p>
 <p>Position: Prone (lumbar) or sitting/lateral (cervical).</p>
 <p>Technique: [Interlaminar / transforaminal] approach under fluoroscopic guidance at the [level] interspace/foramen. Needle advanced to the epidural space, [loss of resistance confirmed / contrast injected confirming epidural spread without intravascular or intrathecal uptake]. [Steroid, dose] with [local anesthetic] injected.</p>
-<p>Post-Procedure: Monitored for [ ] minutes prior to discharge.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Medically directing per Section 2 attestation, present for induction, emergence, and (key/critical portion(s))] / [Performed by resident, attending present for (key/critical portion(s))]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / CRNA name / Resident name]</p>
+<p>Post-Procedure: Monitored for *** minutes prior to discharge.</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
 <p>Images captured and stored in [PACS/anesthesia record system] as documentation of guidance.</p>
-<p>Notes: [ ]</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.facet_joint_injection_medial</span>
 <h4>Facet Joint Injection / Medial Branch Block</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Written</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Facet-mediated axial spine pain (diagnostic medial branch block prior to consideration of radiofrequency ablation, or therapeutic facet injection)</p>
 <p>Position: Prone.</p>
 <p>Technique: Fluoroscopic or ultrasound guidance used to identify the target facet joint(s) or medial branch nerve(s) at the [level(s)]. Needle advanced to the target, contrast [if fluoroscopic] confirms appropriate position. [Local anesthetic with/without steroid] injected at each level.</p>
 <p>Post-Procedure: Patient asked to log pain relief over the next several hours (diagnostic medial branch block) to determine candidacy for radiofrequency ablation.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Medically directing per Section 2 attestation, present for induction, emergence, and (key/critical portion(s))] / [Performed by resident, attending present for (key/critical portion(s))]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / CRNA name / Resident name]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
 <p>Images captured and stored in [PACS/anesthesia record system] as documentation of guidance.</p>
-<p>Notes: [ ]</p>
+<p>Notes: ***</p>
 </div>
 <h3 class="subsubhead">Vascular Access (Intraoperative)</h3>
 <div class="card ">
 <span class="tag">.arterial_line_placement</span>
 <h4>Arterial Line Placement (Intraoperative)</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Verbal</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: [Anticipated large fluid shifts / hemodynamic instability / need for frequent ABG sampling]</p>
 <p>Location: [Radial/femoral], [right/left]</p>
 <p>Pre-Procedure: [Modified Allen test performed, if radial.]</p>
 <p>Preparation: Area prepped with chlorhexidine, local anesthesia with lidocaine 1%.</p>
 <p>Technique: Catheter-over-needle or Seldinger technique used under [palpation/ultrasound] guidance, pulsatile blood return confirmed, catheter threaded without resistance, connected to pressure tubing/transducer, waveform confirmed, secured.</p>
 <p>Post-Procedure Exam: Distal perfusion intact.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Medically directing per Section 2 attestation, present for induction, emergence, and (key/critical portion(s))] / [Performed by resident, attending present for (key/critical portion(s))]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / CRNA name / Resident name]</p>
-<p>Notes: [ ]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.central_venous_catheter_placement</span>
 <h4>Central Venous Catheter Placement (Intraoperative)</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Verbal</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: [Vasoactive infusions / CVP monitoring / poor peripheral access / anticipated massive transfusion]</p>
 <p>Location: [Right IJ/subclavian/femoral]</p>
 <p>Preparation: Maximal sterile barrier precautions used.</p>
-<p>Technique: Ultrasound-guided access obtained, Seldinger technique, catheter advanced to [ ] cm depth, all ports aspirate and flush without resistance, secured with suture.</p>
+<p>Technique: Ultrasound-guided access obtained, Seldinger technique, catheter advanced to *** cm depth, all ports aspirate and flush without resistance, secured with suture.</p>
 <p>Confirmation: [Pressure waveform transduction / chest X-ray, if applicable.]</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Medically directing per Section 2 attestation, present for induction, emergence, and (key/critical portion(s))] / [Performed by resident, attending present for (key/critical portion(s))]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / CRNA name / Resident name]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
 <p>Images captured and stored in [PACS/anesthesia record system] as documentation of guidance.</p>
-<p>Notes: [ ]</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.ultrasound_guided_peripheral_iv</span>
 <h4>Ultrasound-Guided Peripheral IV</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Verbal</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Difficult peripheral access with unsuccessful attempts without ultrasound guidance</p>
-<p>Location: [ ]</p>
+<p>Location: ***</p>
 <p>Preparation: Skin prepped with [chlorhexidine], allowed to dry.</p>
 <p>Technique: A linear high-frequency ultrasound probe used to identify a suitable vein. Real-time ultrasound guidance used to visualize needle entry into the vessel and confirm intraluminal placement.</p>
 <p>Post-Procedure Exam: Flash of blood obtained and catheter advanced without resistance. Patency confirmed with saline flush.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Medically directing per Section 2 attestation, present for induction, emergence, and (key/critical portion(s))] / [Performed by resident, attending present for (key/critical portion(s))]</p>
-<p>Performed by: [Self / CRNA name / Resident name]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Performed by: {performed by list}</p>
 <p>Images captured and stored in [PACS/anesthesia record system] as documentation of guidance.</p>
-<p>Notes: [ ]</p>
+<p>Notes: ***</p>
 <p class="note">Communicate with the circulating nurse/team that the line is available for use once secured.</p>
 </div>
 <h2 class="subhead" id="s09-6">Full Text: Sedation, MAC &amp; Critical Event Notes (Section 04)</h2>
@@ -2871,9 +2879,9 @@ Anesthesia start/stop times, drug administration, and case vitals typically live
 <h4>Monitored Anesthesia Care (MAC) Note</h4>
 <p>Indication: [Procedure] under MAC given [patient/procedure factors favoring MAC over general anesthesia].</p>
 <p>Standard ASA monitors applied. Supplemental oxygen via [nasal cannula/face mask] with continuous capnography.</p>
-<p>Sedative/analgesic agents: [ ], titrated incrementally to a level of sedation permitting patient cooperation and airway maintenance while providing amnesia/analgesia as needed.</p>
+<p>Sedative/analgesic agents: ***, titrated incrementally to a level of sedation permitting patient cooperation and airway maintenance while providing amnesia/analgesia as needed.</p>
 <p>Level of consciousness monitored continuously throughout; patient responsive to [verbal/tactile] stimulation, maintaining own airway and adequate spontaneous ventilation throughout, except as noted.</p>
-<p>Local anesthesia supplementation by the proceduralist: [ ]. - Anesthesiologist present and immediately available throughout, prepared to convert to general anesthesia if needed.</p>
+<p>Local anesthesia supplementation by the proceduralist: ***. - Anesthesiologist present and immediately available throughout, prepared to convert to general anesthesia if needed.</p>
 <p>Tolerance: Patient tolerated the procedure well, hemodynamically and respiratorily stable throughout.</p>
 <p class="note">MAC billing requires medical necessity documentation distinct from moderate sedation - state why an anesthesia provider's continuous presence was required for this specific patient/procedure, not just that sedation was given.</p>
 </div>
@@ -2893,8 +2901,8 @@ Anesthesia start/stop times, drug administration, and case vitals typically live
 <p>Trigger recognized at [time]: [unexplained tachycardia, rising ETCO2 despite increased minute ventilation, masseter rigidity, generalized rigidity, hyperthermia, tachypnea, mottled cyanotic skin].</p>
 <p>All volatile anesthetics and succinylcholine discontinued immediately at [time]. Case [aborted / converted to TIVA] as feasible. 100% oxygen at high fresh gas flow via a clean circuit/machine. Hyperventilation initiated.</p>
 <p>Malignant Hyperthermia hotline called ([1-800-644-9737 in the US]) at [time]. MH cart brought to room at [time].</p>
-<p>Dantrolene 2.5 mg/kg IV given at [time], repeated per protocol to a total dose of [ ] mg/kg until signs resolved (decreasing ETCO2, heart rate, temperature, resolving rigidity).</p>
-<p>Supportive measures: active cooling [ice packs, cooled IV fluids, cooling blanket], treatment of hyperkalemia [insulin/glucose, calcium], treatment of arrhythmias [avoiding calcium channel blockers], urine output monitored for myoglobinuria [ ] mL/hr, sodium bicarbonate for acidosis as indicated.</p>
+<p>Dantrolene 2.5 mg/kg IV given at [time], repeated per protocol to a total dose of *** mg/kg until signs resolved (decreasing ETCO2, heart rate, temperature, resolving rigidity).</p>
+<p>Supportive measures: active cooling [ice packs, cooled IV fluids, cooling blanket], treatment of hyperkalemia [insulin/glucose, calcium], treatment of arrhythmias [avoiding calcium channel blockers], urine output monitored for myoglobinuria *** mL/hr, sodium bicarbonate for acidosis as indicated.</p>
 <p>Labs sent: ABG, electrolytes, CK, coagulation studies, urine myoglobin. Disposition: transferred to ICU for continued monitoring given risk of recrudescence, dantrolene continued per protocol for at least 24 hours.</p>
 <p>Family notified. Genetic counseling and malignant hyperthermia susceptibility testing recommended for the patient and first-degree relatives.</p>
 </div>
@@ -2911,10 +2919,10 @@ Anesthesia start/stop times, drug administration, and case vitals typically live
 <span class="tag">.intraoperative_awareness_event</span>
 <h4>Intraoperative Awareness (Suspected) Event Note</h4>
 <p>Patient reports [explicit recall of intraoperative events / sensation of paralysis with awareness] on postoperative interview, first elicited at [time/setting].</p>
-<p>Anesthesia record reviewed: agent(s) and depth-of-anesthesia monitoring (if used) during the relevant period documented as [ ]. Neuromuscular blockade status at the time in question: [ ].</p>
+<p>Anesthesia record reviewed: agent(s) and depth-of-anesthesia monitoring (if used) during the relevant period documented as ***. Neuromuscular blockade status at the time in question: ***.</p>
 <p>Patient interviewed using a structured tool [e.g., Brice questionnaire] to characterize the experience (sounds, sensations, paralysis, pain, timing, emotional content).</p>
 <p>Disclosure and support: The event was discussed openly and honestly with the patient. Empathetic acknowledgment given. Psychological support/counseling referral offered. Risk management/patient safety notified per institutional policy.</p>
-<p>Follow-up: [ ] arranged to reassess for symptoms of distress or PTSD.</p>
+<p>Follow-up: *** arranged to reassess for symptoms of distress or PTSD.</p>
 </div>
 <div class="card ">
 <span class="tag">.anaphylaxis_under_anesthesia_event</span>
@@ -2928,10 +2936,10 @@ Anesthesia start/stop times, drug administration, and case vitals typically live
 <div class="card ">
 <span class="tag">.failed_intubation_cannot_intubate</span>
 <h4>Failed Intubation / Cannot Intubate, Cannot Oxygenate (CICO)</h4>
-<p>Difficult airway algorithm activated at [time] after [ ] failed intubation attempts. Difficult airway cart at bedside.</p>
+<p>Difficult airway algorithm activated at [time] after *** failed intubation attempts. Difficult airway cart at bedside.</p>
 <p>Oxygenation strategy: [Two-person mask ventilation with airway adjunct / supraglottic airway placed] - result: [adequate/inadequate oxygenation achieved].</p>
 <p>If CICO: Emergency front-of-neck access performed at [time] - see cricothyrotomy procedure note. Surgical/ENT backup called at [time], arrived at [time].</p>
-<p>Outcome: [Airway secured via ( ), case proceeded / patient awakened and case cancelled / airway secured surgically]. SpO2 nadir: [ ]%. Duration of hypoxia: [ ].</p>
+<p>Outcome: [Airway secured via ( ), case proceeded / patient awakened and case cancelled / airway secured surgically]. SpO2 nadir: ***%. Duration of hypoxia: ***.</p>
 <p>Post-event: Patient and family informed. Difficult airway letter provided. Chart flagged prominently for future anesthetics.</p>
 </div>
 <h2 class="subhead" id="s09-7">Full Text: PACU / Post-Anesthesia Recovery &amp; Discharge Scoring (Section 05)</h2>
@@ -2941,8 +2949,8 @@ Anesthesia start/stop times, drug administration, and case vitals typically live
 <h4>PACU Admission Note</h4>
 <p>Patient arrived in PACU at [time] via [stretcher/bed], accompanied by anesthesia provider, report given to receiving RN [name].</p>
 <p>Handoff included: procedure performed, anesthetic technique, airway management and any difficulty, estimated blood loss, fluids/blood products given, intraoperative events, current pain management plan, antiemetic prophylaxis given, and any specific monitoring instructions.</p>
-<p>Initial vitals: [ ] - Airway: patent, [supplemental oxygen at ( ) L/min via ( )]. Pain: [ ]/10. Nausea: [present/absent].</p>
-<p>Regional/neuraxial block (if applicable): sensory level/dermatomal distribution [ ], motor block [Bromage score/strength], expected duration and resolution discussed with PACU staff, limb precautions communicated.</p>
+<p>Initial vitals: *** - Airway: patent, [supplemental oxygen at ( ) L/min via ( )]. Pain: ***/10. Nausea: [present/absent].</p>
+<p>Regional/neuraxial block (if applicable): sensory level/dermatomal distribution ***, motor block [Bromage score/strength], expected duration and resolution discussed with PACU staff, limb precautions communicated.</p>
 </div>
 <div class="card ">
 <span class="tag">.modified_aldrete_score</span>
@@ -2952,7 +2960,7 @@ Anesthesia start/stop times, drug administration, and case vitals typically live
 <p>Circulation: BP within 20% of pre-anesthetic level (2) / within 20-49% (1) / deviates &gt; 50% (0).</p>
 <p>Consciousness: Fully awake (2) / arousable on calling (1) / not responding (0).</p>
 <p>Oxygen saturation: SpO2 &gt; 92% on room air (2) / needs supplemental O2 to maintain &gt; 90% (1) / &lt; 90% even with supplemental O2 (0).</p>
-<p>Total score: [ ] / 10. A score of 9-10 is generally considered ready for discharge from PACU (phase I) to the floor or phase II recovery, per institutional policy.</p>
+<p>Total score: *** / 10. A score of 9-10 is generally considered ready for discharge from PACU (phase I) to the floor or phase II recovery, per institutional policy.</p>
 </div>
 <div class="card ">
 <span class="tag">.post_anesthesia_discharge_scoring</span>
@@ -2962,19 +2970,19 @@ Anesthesia start/stop times, drug administration, and case vitals typically live
 <p>Pain, nausea, vomiting: Minimal, controlled with oral medication (2) / moderate (1) / severe, requiring parenteral treatment (0).</p>
 <p>Surgical bleeding: Minimal, consistent with expected (2) / moderate (1) / severe (0).</p>
 <p>Oral intake: Able to tolerate oral fluids (2) / minimal intake (1) / unable to tolerate (0).</p>
-<p>Total score: [ ] / 10. A score &ge; 9 is generally considered ready for discharge home, provided the patient has a responsible adult escort and has voided [per institutional protocol, if applicable].</p>
+<p>Total score: *** / 10. A score &ge; 9 is generally considered ready for discharge home, provided the patient has a responsible adult escort and has voided [per institutional protocol, if applicable].</p>
 </div>
 <h3 class="subsubhead">PACU Management Notes</h3>
 <div class="card ">
 <span class="tag">.postoperative_pain_management</span>
 <h4>Postoperative Pain Management Note</h4>
-<p>Pain reported as [ ]/10 at [location]. Multimodal analgesia: [acetaminophen, NSAID if not contraindicated, opioid as needed], regional/neuraxial block providing ongoing coverage [if applicable].</p>
-<p>Response to treatment: Pain improved to [ ]/10 after [intervention]. Sedation level and respiratory rate monitored closely given opioid administration.</p>
+<p>Pain reported as ***/10 at [location]. Multimodal analgesia: [acetaminophen, NSAID if not contraindicated, opioid as needed], regional/neuraxial block providing ongoing coverage [if applicable].</p>
+<p>Response to treatment: Pain improved to ***/10 after [intervention]. Sedation level and respiratory rate monitored closely given opioid administration.</p>
 </div>
 <div class="card ">
 <span class="tag">.ponv_management</span>
 <h4>PONV Management Note</h4>
-<p>Risk factors present (Apfel score): [female sex, non-smoker, history of PONV/motion sickness, postoperative opioid use] - estimated risk: [ ].</p>
+<p>Risk factors present (Apfel score): [female sex, non-smoker, history of PONV/motion sickness, postoperative opioid use] - estimated risk: ***.</p>
 <p>Prophylaxis given intraoperatively: [ondansetron, dexamethasone, scopolamine patch, propofol-based anesthetic].</p>
 <p>Rescue treatment given in PACU: [agent from a different class than prophylaxis given] for breakthrough nausea/vomiting, with [good/partial] response.</p>
 </div>
@@ -2988,13 +2996,13 @@ Anesthesia start/stop times, drug administration, and case vitals typically live
 <div class="card ">
 <span class="tag">.pacu_inpatient_floor_transfer</span>
 <h4>PACU to Inpatient Floor Transfer</h4>
-<p>Modified Aldrete score [ ]/10, meeting institutional criteria for phase I discharge. Pain controlled, hemodynamically and respiratorily stable, no active nausea/vomiting.</p>
+<p>Modified Aldrete score ***/10, meeting institutional criteria for phase I discharge. Pain controlled, hemodynamically and respiratorily stable, no active nausea/vomiting.</p>
 <p>Report given to receiving floor RN [name], including anesthetic summary, pain plan, and any regional block precautions.</p>
 </div>
 <div class="card ">
 <span class="tag">.ambulatory_surgery_discharge_home</span>
 <h4>Ambulatory Surgery Discharge Home</h4>
-<p>PADSS score [ ]/10, meeting criteria for discharge home. Patient ambulating at baseline, tolerating oral intake, pain controlled with oral medication, no active bleeding or PONV.</p>
+<p>PADSS score ***/10, meeting criteria for discharge home. Patient ambulating at baseline, tolerating oral intake, pain controlled with oral medication, no active bleeding or PONV.</p>
 <p>Responsible adult escort confirmed: [name/relationship], present and able to transport patient home and remain with patient for [24 hours, or per institutional policy].</p>
 <p>Written and verbal discharge instructions given, including regional block precautions if applicable (see Section 6). Follow-up plan confirmed.</p>
 </div>
@@ -3075,15 +3083,15 @@ Anesthesia start/stop times, drug administration, and case vitals typically live
 <div class="card ">
 <span class="tag">.icu_admission_daily_progress</span>
 <h4>ICU Admission / Daily Progress Note (Systems-Based)</h4>
-<p>[Age]-year-old [sex], ICU day [ ], admitted for [primary diagnosis/reason for ICU admission]. Overnight events: [ ].</p>
-<p><strong>Neuro:</strong> Mental status [ ], RASS [ ], CAM-ICU [negative/positive], pain (CPOT/self-report) [ ]. Sedation/analgesia: [agents, rate]. [SAT/SBT status: see ICU Liberation Bundle.]</p>
-<p><strong>Cardiovascular:</strong> Rhythm [ ], hemodynamics [ ], vasoactive infusions [ ], telemetry/EKG findings [ ]. Volume status: [ ].</p>
+<p>@AGE@ year old @SEX@, ICU day ***, admitted for [primary diagnosis/reason for ICU admission]. Overnight events: ***.</p>
+<p><strong>Neuro:</strong> Mental status ***, RASS {RASS list}, CAM-ICU [negative/positive], pain (CPOT/self-report) ***. Sedation/analgesia: [agents, rate]. [SAT/SBT status: see ICU Liberation Bundle.]</p>
+<p><strong>Cardiovascular:</strong> Rhythm ***, hemodynamics ***, vasoactive infusions ***, telemetry/EKG findings ***. Volume status: ***.</p>
 <p><strong>Pulmonary:</strong> Ventilator settings [mode, FiO2, PEEP, tidal volume, plateau pressure] / [supplemental O2 device and flow]. Gas exchange: [ABG/SpO2]. [Weaning plan / extubated, see SBT-RSBI documentation in Section 2.]</p>
-<p><strong>GI/Nutrition:</strong> Abdominal exam [ ], bowel function [ ], nutrition route [enteral/parenteral], goal rate [ ] mL/hr, tolerance [ ]. Stress ulcer prophylaxis: [ ].</p>
-<p><strong>Renal/Electrolytes:</strong> Urine output [ ] mL/hr, creatinine trend [ ], electrolyte abnormalities and repletion [ ]. [CRRT/dialysis status if applicable.]</p>
-<p><strong>Heme/ID:</strong> Hemoglobin/platelet trend [ ], anticoagulation/VTE prophylaxis [ ], active infections and day of antibiotic therapy [ ], culture data [ ].</p>
-<p><strong>Endocrine:</strong> Glycemic control [insulin regimen, goal range], adrenal/thyroid status if relevant [ ].</p>
-<p><strong>Prophylaxis/Lines/Tubes:</strong> VTE prophylaxis [mechanical/pharmacologic], stress ulcer prophylaxis [ ], skin/pressure injury prevention [Braden score, see below], lines and days in place [CVC day ( ), arterial line day ( ), Foley day ( ) - remove if no longer indicated].</p>
+<p><strong>GI/Nutrition:</strong> Abdominal exam ***, bowel function ***, nutrition route [enteral/parenteral], goal rate *** mL/hr, tolerance ***. Stress ulcer prophylaxis: ***.</p>
+<p><strong>Renal/Electrolytes:</strong> Urine output *** mL/hr, creatinine trend ***, electrolyte abnormalities and repletion ***. [CRRT/dialysis status if applicable.]</p>
+<p><strong>Heme/ID:</strong> Hemoglobin/platelet trend ***, anticoagulation/VTE prophylaxis ***, active infections and day of antibiotic therapy ***, culture data ***.</p>
+<p><strong>Endocrine:</strong> Glycemic control [insulin regimen, goal range], adrenal/thyroid status if relevant ***.</p>
+<p><strong>Prophylaxis/Lines/Tubes:</strong> VTE prophylaxis [mechanical/pharmacologic], stress ulcer prophylaxis ***, skin/pressure injury prevention [Braden score, see below], lines and days in place [CVC day ( ), arterial line day ( ), Foley day ( ) - remove if no longer indicated].</p>
 <p><strong>Assessment/Plan:</strong> [Problem list in priority order, plan by problem.]</p>
 <p class="note">Organizing by system (rather than free narrative) is what supports both handoff clarity and MDM billing capture for critical care/subsequent-day codes - each system line should reflect active management, not just a normal finding restated.</p>
 </div>
@@ -3091,12 +3099,12 @@ Anesthesia start/stop times, drug administration, and case vitals typically live
 <div class="card ">
 <span class="tag">.abcdef_icu_liberation_bundle</span>
 <h4>ABCDEF ICU Liberation Bundle - Daily Documentation</h4>
-<p><strong>A - Assess, prevent, manage pain:</strong> Pain assessed via [self-report / CPOT] at [ ], current level [ ], intervention [ ].</p>
+<p><strong>A - Assess, prevent, manage pain:</strong> Pain assessed via [self-report / CPOT] at ***, current level ***, intervention ***.</p>
 <p><strong>B - Both SAT and SBT:</strong> Spontaneous awakening trial [performed/contraindicated: reason]. Spontaneous breathing trial [performed/contraindicated: reason] - see Section 2 for the SBT/RSBI note.</p>
-<p><strong>C - Choice of sedation/analgesia:</strong> Current agents [ ], targeting light sedation (RASS [ ]) unless contraindicated by [reason: neuromuscular blockade, refractory ICP elevation, etc.].</p>
-<p><strong>D - Delirium: assess, prevent, manage:</strong> CAM-ICU [negative/positive]. Non-pharmacologic measures: [sleep-wake cycle promotion, reorientation, hearing aids/glasses, minimizing nighttime interruptions]. Pharmacologic management if positive: [ ].</p>
+<p><strong>C - Choice of sedation/analgesia:</strong> Current agents ***, targeting light sedation (RASS {RASS list}) unless contraindicated by [reason: neuromuscular blockade, refractory ICP elevation, etc.].</p>
+<p><strong>D - Delirium: assess, prevent, manage:</strong> CAM-ICU [negative/positive]. Non-pharmacologic measures: [sleep-wake cycle promotion, reorientation, hearing aids/glasses, minimizing nighttime interruptions]. Pharmacologic management if positive: ***.</p>
 <p><strong>E - Early mobility and exercise:</strong> Mobility status today [out of bed to chair / ambulated ( ) feet / passive range of motion only / not mobilized: reason]. Physical/occupational therapy involved: [yes/no].</p>
-<p><strong>F - Family engagement and empowerment:</strong> Family updated [in person/by phone] at [ ] by [ ]. Questions/concerns addressed: [ ]. [Structured family meeting scheduled/completed - see Goals of Care note.]</p>
+<p><strong>F - Family engagement and empowerment:</strong> Family updated [in person/by phone] at *** by ***. Questions/concerns addressed: ***. [Structured family meeting scheduled/completed - see Goals of Care note.]</p>
 </div>
 <div class="card ">
 <span class="tag">.richmond_agitation_sedation_scale</span>
@@ -3118,9 +3126,9 @@ Anesthesia start/stop times, drug administration, and case vitals typically live
 <h4>CAM-ICU (Confusion Assessment Method for the ICU)</h4>
 <p>Delirium present if Feature 1 AND Feature 2 are present, AND EITHER Feature 3 OR Feature 4 is present.</p>
 <p><strong>Feature 1 - Acute onset or fluctuating course:</strong> Mental status different from baseline, or has fluctuated in the past 24 hours (per RASS/GCS trend or family report). [Yes/No]</p>
-<p><strong>Feature 2 - Inattention:</strong> Attention screening exam (e.g., squeeze my hand every time I say the letter 'A' in a 10-letter sequence) - [ ] errors. [&gt; 2 errors = positive]</p>
+<p><strong>Feature 2 - Inattention:</strong> Attention screening exam (e.g., squeeze my hand every time I say the letter 'A' in a 10-letter sequence) - *** errors. [&gt; 2 errors = positive]</p>
 <p><strong>Feature 3 - Altered level of consciousness:</strong> Current RASS other than 0 (alert and calm). [Yes/No]</p>
-<p><strong>Feature 4 - Disorganized thinking:</strong> Errors on yes/no questions and/or inability to follow simple commands. [ ] errors. [&gt; 1 error = positive]</p>
+<p><strong>Feature 4 - Disorganized thinking:</strong> Errors on yes/no questions and/or inability to follow simple commands. *** errors. [&gt; 1 error = positive]</p>
 <p>CAM-ICU result: [Negative] / [Positive for delirium]</p>
 </div>
 <div class="card ">
@@ -3131,7 +3139,7 @@ Anesthesia start/stop times, drug administration, and case vitals typically live
 <p class="line">- Body movements: absence of movement or normal position (0), protection (slow/cautious movement, touching pain site) (1), restlessness/agitation (2)</p>
 <p class="line">- Muscle tension (evaluated by passive flexion/extension of upper extremities): relaxed (0), tense/rigid (1), very tense or rigid (2)</p>
 <p class="line">- Compliance with ventilator (intubated) OR vocalization (extubated): tolerating ventilator/talking normally or no sound (0), coughing but tolerating / sighing or moaning (1), fighting ventilator / crying out or sobbing (2)</p>
-<p>Total CPOT: [ ] / 8. A score &gt; 2-3 generally indicates clinically significant pain warranting intervention.</p>
+<p>Total CPOT: *** / 8. A score &gt; 2-3 generally indicates clinically significant pain warranting intervention.</p>
 </div>
 <h3 class="subsubhead">Severity of Illness &amp; Risk Scores</h3>
 <div class="card ">
@@ -3142,7 +3150,7 @@ Anesthesia start/stop times, drug administration, and case vitals typically live
 <div class="card ">
 <span class="tag">.sofa_score_total</span>
 <h4>SOFA Score Total</h4>
-<p>Total SOFA score: [ ] / 24. Vasopressor doses are in mcg/kg/min. Use the worst value in each system over the assessment period (commonly the preceding 24 hours).</p>
+<p>Total SOFA score: *** / 24. Vasopressor doses are in mcg/kg/min. Use the worst value in each system over the assessment period (commonly the preceding 24 hours).</p>
 </div>
 <div class="card ">
 <span class="tag">.four_score</span>
@@ -3152,7 +3160,7 @@ Anesthesia start/stop times, drug administration, and case vitals typically live
 <p><strong>Motor response:</strong> 4 = thumbs-up/fist/peace sign to command; 3 = localizes to pain; 2 = flexion response to pain; 1 = extension response to pain; 0 = no response, or generalized myoclonus status.</p>
 <p><strong>Brainstem reflexes:</strong> 4 = pupil and corneal reflexes present; 3 = one pupil wide and fixed; 2 = pupil or corneal reflexes absent; 1 = pupil and corneal reflexes absent; 0 = absent pupil, corneal, and cough reflex.</p>
 <p><strong>Respiration:</strong> 4 = not intubated, regular breathing pattern; 3 = not intubated, Cheyne-Stokes pattern; 2 = not intubated, irregular breathing; 1 = breathes above the ventilator rate; 0 = breathes at ventilator rate or apnea.</p>
-<p>Total FOUR score: [ ] / 16.</p>
+<p>Total FOUR score: *** / 16.</p>
 <p class="note">FOUR score adds brainstem reflex and respiratory pattern assessment that GCS lacks, which is useful in sedated/intubated or brainstem-injured patients, though some validation studies show it performs no better (and occasionally worse) than GCS or RASS for mortality prediction - use as a complementary exam, not a replacement for a full neuro exam.</p>
 </div>
 <div class="card ">
@@ -3176,7 +3184,7 @@ Anesthesia start/stop times, drug administration, and case vitals typically live
 <p class="line">- Mobility: [1-4]</p>
 <p class="line">- Nutrition: [1-4]</p>
 <p class="line">- Friction/shear: [1-3]</p>
-<p>Total Braden score: [ ]. Severe risk &le; 9, high risk 10-12, moderate risk 13-14, mild risk 15-18, generally not at risk &ge; 19 - thresholds vary somewhat by institutional protocol.</p>
+<p>Total Braden score: ***. Severe risk &le; 9, high risk 10-12, moderate risk 13-14, mild risk 15-18, generally not at risk &ge; 19 - thresholds vary somewhat by institutional protocol.</p>
 </div>
 <div class="card ">
 <span class="tag">.apache_ii</span>
@@ -3189,18 +3197,18 @@ Anesthesia start/stop times, drug administration, and case vitals typically live
 <span class="tag">.structured_family_meeting_goals</span>
 <h4>Structured Family Meeting / Goals of Care Discussion</h4>
 <p>Participants: [family members/surrogate decision-maker present, relationship to patient], [ICU team members present].</p>
-<p>Medical update provided in plain language: current condition, trajectory, and prognosis as understood at this time: [ ].</p>
-<p>Patient's previously expressed wishes, values, and any advance directive/living will reviewed: [ ].</p>
+<p>Medical update provided in plain language: current condition, trajectory, and prognosis as understood at this time: ***.</p>
+<p>Patient's previously expressed wishes, values, and any advance directive/living will reviewed: ***.</p>
 <p>Goals discussed: [full resuscitative measures / time-limited trial of ( ) with reassessment on ( date ) / comfort-focused care].</p>
 <p>Questions answered. Family/surrogate given time to process and ask questions. [Consensus reached on plan below.] / [Family requesting more time; follow-up meeting scheduled for ( ).]</p>
-<p>Plan: [ ]</p>
+<p>Plan: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.code_status</span>
 <h4>Code Status Documentation</h4>
 <p>Code status: [Full code] / [DNR/DNI] / [DNR only, attempt intubation/ventilatory support] / [Comfort care only].</p>
 <p>Discussed with: [patient (if able) / surrogate decision-maker, relationship: ( )]. Basis for surrogate decision-making: [patient's previously expressed wishes / substituted judgment / best interest standard, per state law and institutional policy].</p>
-<p>Order written and verified in the chart at [time] by [ ]. Code status band/order set updated. Reassessment planned [with any significant change in clinical status / at next family meeting / per institutional interval].</p>
+<p>Order written and verified in the chart at [time] by ***. Code status band/order set updated. Reassessment planned [with any significant change in clinical status / at next family meeting / per institutional interval].</p>
 </div>
 <h2 class="subhead" id="s09-10">Full Text: ICU Procedures &amp; Critical Care Management (Section 08)</h2>
 <h3 class="subsubhead">Advanced Airway Procedures</h3>
@@ -3208,104 +3216,104 @@ Anesthesia start/stop times, drug administration, and case vitals typically live
 <span class="tag">.percutaneous_dilational_tracheostomy</span>
 <h4>Percutaneous Dilational Tracheostomy</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Written</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: Anticipated prolonged mechanical ventilation, failed extubation, or need for a definitive airway with reduced sedation requirement</p>
 <p>Pre-Procedure: Neck anatomy assessed [by exam/ultrasound] for safe tracheostomy window - landmarks, thyroid isthmus location, and vascular structures identified. Coagulation status reviewed and optimized.</p>
 <p>Preparation: Patient positioned with neck extended (shoulder roll). Bronchoscope-assisted technique with the ETT withdrawn to just above the planned tracheostomy site under direct visualization. Skin prepped with chlorhexidine, sterile technique.</p>
 <p>Technique: Vertical/horizontal skin incision at the [2nd-3rd] tracheal ring level. Needle introduced into the trachea under bronchoscopic visualization confirming midline entry between rings. Guidewire passed, serial dilation performed [Ciaglia/single-step dilator], tracheostomy tube ([size]) advanced over the dilator/loading catheter into the trachea.</p>
 <p>Confirmation: Bronchoscopic confirmation of tube position above the carina. End-tidal CO2 and bilateral breath sounds confirmed. ETT fully withdrawn once tracheostomy tube position confirmed.</p>
 <p>Post-Procedure: Tracheostomy tube secured with [ties/sutures]. Cuff pressure checked. Chest X-ray obtained.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Medically directing per Section 2 attestation, present for induction, emergence, and (key/critical portion(s))] / [Performed by resident, attending present for (key/critical portion(s))]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / CRNA name / Resident name]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
 <p>Images captured and stored in [PACS/anesthesia record system] as documentation of guidance.</p>
-<p>Notes: [ ]</p>
+<p>Notes: ***</p>
 <p class="note">Bronchoscopic guidance throughout needle/dilator passage is the key safety step - most major complications (posterior tracheal wall injury, false passage, paratracheal placement) occur when this step is skipped or the view is lost.</p>
 </div>
 <div class="card ">
 <span class="tag">.diagnostic_therapeutic_bronchoscopy</span>
 <h4>Diagnostic/Therapeutic Bronchoscopy</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Written</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: [Persistent atelectasis / suspected mucus plugging / retained secretions / diagnostic sampling - BAL, brushings, biopsy / airway inspection for anatomic abnormality]</p>
-<p>Pre-Procedure: Sedation/analgesia: [ ]. Patient preoxygenated with FiO2 1.0.</p>
+<p>Pre-Procedure: Sedation/analgesia: ***. Patient preoxygenated with FiO2 1.0.</p>
 <p>Technique: Bronchoscope advanced through the [ETT/tracheostomy/nasal] route. Airway inspected systematically from trachea through segmental bronchi bilaterally. [Secretions suctioned / bronchoalveolar lavage performed with ( ) mL saline instilled and aspirated from the ( ) segment / transbronchial biopsy or brushings obtained from ( )].</p>
-<p>Findings: [ ]</p>
+<p>Findings: ***</p>
 <p>Specimens: [Sent for culture, cytology, pathology as indicated.]</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Medically directing per Section 2 attestation, present for induction, emergence, and (key/critical portion(s))] / [Performed by resident, attending present for (key/critical portion(s))]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / CRNA name / Resident name]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
 <p>Images captured and stored in [PACS/anesthesia record system] as documentation of guidance.</p>
-<p>Notes: [ ]</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.ards_lung_protective_ventilation</span>
 <h4>ARDS / Lung-Protective Ventilation Management Note</h4>
 <p>Berlin criteria reviewed: onset within 1 week of a known clinical insult, bilateral opacities not fully explained by effusion/collapse/nodules, respiratory failure not fully explained by cardiac failure or fluid overload, PaO2/FiO2 [mild 200-300 / moderate 100-200 / severe &lt; 100] with PEEP &ge; 5.</p>
-<p>Lung-protective ventilation: tidal volume [ ] mL/kg predicted body weight (target &le; 6 mL/kg), plateau pressure &le; 30 cm H2O, driving pressure (plateau minus PEEP) monitored and minimized where feasible.</p>
+<p>Lung-protective ventilation: tidal volume *** mL/kg predicted body weight (target &le; 6 mL/kg), plateau pressure &le; 30 cm H2O, driving pressure (plateau minus PEEP) monitored and minimized where feasible.</p>
 <p>PEEP/FiO2 titrated per [ARDSnet low-PEEP/high-PEEP table or institutional protocol] to maintain SpO2 88-95% or PaO2 55-80 mmHg. Permissive hypercapnia accepted as needed to maintain lung-protective settings, target pH &gt; 7.2.</p>
 <p>Adjuncts considered/used: [prone positioning, neuromuscular blockade, inhaled pulmonary vasodilator, conservative fluid strategy, early consideration of ECMO if refractory].</p>
-<p>Reassessment: [ ]</p>
+<p>Reassessment: ***</p>
 </div>
 <h3 class="subsubhead">Advanced Hemodynamic &amp; Renal Procedures</h3>
 <div class="card ">
 <span class="tag">.pulmonary_artery_catheter_placement</span>
 <h4>Pulmonary Artery Catheter (Swan-Ganz) Placement</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Written</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: [Undifferentiated shock / complex volume status assessment / right heart failure or pulmonary hypertension management / cardiac surgery]</p>
 <p>Access: Introducer sheath placed in the [right IJ/subclavian] (see CVC note if placed separately).</p>
 <p>Technique: PA catheter balloon-tipped, advanced under continuous pressure waveform monitoring through the right atrium, right ventricle, and into the pulmonary artery, guided by characteristic waveform changes at each chamber. Balloon inflated only during advancement and wedge measurement, deflated otherwise.</p>
-<p>Confirmation: Pulmonary artery waveform confirmed at [ ] cm; wedge waveform obtained on balloon inflation, confirming appropriate position. Chest X-ray obtained to confirm catheter tip position (not too distal, to reduce PA rupture risk).</p>
-<p>Initial Hemodynamics: CVP [ ], PA pressure [ ]/[ ], PCWP [ ], cardiac output/index [ ] (by [thermodilution/other]), SVR [ ].</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Medically directing per Section 2 attestation, present for induction, emergence, and (key/critical portion(s))] / [Performed by resident, attending present for (key/critical portion(s))]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / CRNA name / Resident name]</p>
+<p>Confirmation: Pulmonary artery waveform confirmed at *** cm; wedge waveform obtained on balloon inflation, confirming appropriate position. Chest X-ray obtained to confirm catheter tip position (not too distal, to reduce PA rupture risk).</p>
+<p>Initial Hemodynamics: CVP ***, PA pressure ***/***, PCWP ***, cardiac output/index *** (by [thermodilution/other]), SVR ***.</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
 <p>Images captured and stored in [PACS/anesthesia record system] as documentation of guidance.</p>
-<p>Notes: [ ]</p>
+<p>Notes: ***</p>
 <p class="note">Deflate the balloon immediately after each wedge measurement and avoid leaving it inflated - prolonged wedge position risks pulmonary infarction or PA rupture.</p>
 </div>
 <div class="card ">
 <span class="tag">.continuous_renal_replacement_therapy</span>
 <h4>Continuous Renal Replacement Therapy (CRRT) Initiation</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Written</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: [Refractory volume overload / severe hyperkalemia or metabolic acidosis / uremia / hemodynamic instability precluding intermittent hemodialysis]</p>
 <p>Access: [Dialysis catheter placed - see CVC note / pre-existing dialysis catheter used], confirmed to aspirate and flush both lumens without resistance.</p>
 <p>Modality: [CVVH / CVVHD / CVVHDF], [citrate / systemic heparin / no] anticoagulation.</p>
-<p>Prescription: Blood flow rate [ ] mL/min, dialysate/replacement fluid rate [ ] mL/hr, target net ultrafiltration [ ] mL/hr, dialysate/replacement fluid composition [ ].</p>
+<p>Prescription: Blood flow rate *** mL/min, dialysate/replacement fluid rate *** mL/hr, target net ultrafiltration *** mL/hr, dialysate/replacement fluid composition ***.</p>
 <p>Initial Labs: Baseline electrolytes, ionized calcium (if citrate), and coagulation panel obtained prior to initiation.</p>
-<p>Monitoring Plan: Electrolytes and ionized calcium (if citrate) rechecked every [ ] hours; circuit pressures and filter life monitored per nursing protocol.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Medically directing per Section 2 attestation, present for induction, emergence, and (key/critical portion(s))] / [Performed by resident, attending present for (key/critical portion(s))]</p>
-<p>Performed by: [Self / CRNA name / Resident name]</p>
-<p>Notes: [ ]</p>
+<p>Monitoring Plan: Electrolytes and ionized calcium (if citrate) rechecked every *** hours; circuit pressures and filter life monitored per nursing protocol.</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Performed by: {performed by list}</p>
+<p>Notes: ***</p>
 </div>
 <div class="card ">
 <span class="tag">.ecmo_cannulation</span>
 <h4>ECMO Cannulation (VA or VV)</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Emergent</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: [Refractory cardiogenic shock/cardiac arrest (VA-ECMO) / refractory hypoxemic or hypercapnic respiratory failure despite optimized lung-protective ventilation and adjuncts (VV-ECMO)]</p>
 <p>Team: ECMO team/surgery present or emergently activated - cannulation is a team-based procedure, not typically performed solo.</p>
 <p>Configuration: [VA: femoral artery + femoral vein, or central cannulation] / [VV: femoral vein + internal jugular vein, or dual-lumen single-cannula].</p>
-<p>Technique: Vessels accessed via [percutaneous Seldinger technique under ultrasound guidance / surgical cutdown]. Cannula sizes: [arterial/venous or dual-lumen] [ ] Fr. Position confirmed by [fluoroscopy/echocardiography/chest X-ray]. Distal limb perfusion catheter placed if VA-ECMO with femoral arterial cannulation, to mitigate limb ischemia.</p>
-<p>Circuit: Circuit primed, connected, flows initiated and titrated to [ ] L/min targeting [MAP/SpO2/lactate clearance] goals. Anticoagulation: [heparin drip, target ACT/aPTT range].</p>
+<p>Technique: Vessels accessed via [percutaneous Seldinger technique under ultrasound guidance / surgical cutdown]. Cannula sizes: [arterial/venous or dual-lumen] *** Fr. Position confirmed by [fluoroscopy/echocardiography/chest X-ray]. Distal limb perfusion catheter placed if VA-ECMO with femoral arterial cannulation, to mitigate limb ischemia.</p>
+<p>Circuit: Circuit primed, connected, flows initiated and titrated to *** L/min targeting [MAP/SpO2/lactate clearance] goals. Anticoagulation: [heparin drip, target ACT/aPTT range].</p>
 <p>Confirmation: Cannula position and adequate flows confirmed. Distal limb perfusion (if VA-ECMO) confirmed by [Doppler/near-infrared spectroscopy/exam].</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Medically directing per Section 2 attestation, present for induction, emergence, and (key/critical portion(s))] / [Performed by resident, attending present for (key/critical portion(s))]</p>
-<p>Total Procedure Time: [ ] minutes</p>
-<p>Performed by: [Self / CRNA name / Resident name]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Total Procedure Time: *** minutes</p>
+<p>Performed by: {performed by list}</p>
 <p>Images captured and stored in [PACS/anesthesia record system] as documentation of guidance.</p>
-<p>Notes: [ ]</p>
+<p>Notes: ***</p>
 <p class="note">Document the specific refractory criteria and failed alternatives that justified ECMO - this is both a clinical and a resource-utilization decision that benefits from explicit indication documentation, and distal limb ischemia surveillance needs its own ongoing nursing/physician documentation plan once cannulated.</p>
 </div>
 <h3 class="subsubhead">Nutrition Access</h3>
@@ -3313,45 +3321,45 @@ Anesthesia start/stop times, drug administration, and case vitals typically live
 <span class="tag">.post_pyloric_feeding_tube</span>
 <h4>Post-Pyloric (Small Bowel) Feeding Tube Placement</h4>
 <p>Confirmed correct patient, procedure, side, and site. Time out completed.</p>
-<p>Consent: Verbal</p>
+<p>Consent: {consent type list}</p>
 <p>Indication: [High aspiration risk / gastroparesis / failed gastric feeding tolerance] requiring post-pyloric enteral access</p>
 <p>Technique: [Blind bedside placement with real-time electromagnetic guidance system / fluoroscopic placement / endoscopic placement] used to advance the feeding tube through the stomach and pylorus into the duodenum/jejunum.</p>
 <p>Confirmation: Position confirmed by [electromagnetic tracing screenshot / fluoroscopic image / abdominal X-ray showing the tip past the pylorus] prior to initiating feeds.</p>
-<p>Patient Tolerated Procedure: Well</p>
-<p>Complications: None</p>
-<p>Attending Involvement: [Performed independently] / [Medically directing per Section 2 attestation, present for induction, emergence, and (key/critical portion(s))] / [Performed by resident, attending present for (key/critical portion(s))]</p>
-<p>Performed by: [Self / CRNA name / Resident name]</p>
+<p>Patient Tolerated Procedure: {procedure tolerance list}</p>
+<p>Complications: {complications list}</p>
+<p>Attending Involvement: {attending involvement list}</p>
+<p>Performed by: {performed by list}</p>
 <p>Images captured and stored in [PACS/anesthesia record system] as documentation of guidance.</p>
-<p>Notes: [ ]</p>
+<p>Notes: ***</p>
 </div>
 <h3 class="subsubhead">Critical Care Management Notes</h3>
 <div class="card ">
 <span class="tag">.cardiac_arrest_code_blue</span>
 <h4>Cardiac Arrest / Code Blue Note</h4>
-<p>Arrest recognized at [time]: [unresponsive, no pulse/no respirations found by ( )]. Code called, CPR initiated at [time] by [ ]. Roles assigned per ACLS (compressor, airway, IV/IO access, medication administration, timer/recorder, code leader).</p>
-<p>Initial rhythm: [ ]. [Defibrillation performed - see separate defibrillation procedure note.] Epinephrine 1 mg IV/IO given at [time], repeated every 3-5 minutes per ACLS. [Amiodarone/lidocaine given for refractory VF/VT at ( time, dose ).]</p>
+<p>Arrest recognized at [time]: [unresponsive, no pulse/no respirations found by ( )]. Code called, CPR initiated at [time] by ***. Roles assigned per ACLS (compressor, airway, IV/IO access, medication administration, timer/recorder, code leader).</p>
+<p>Initial rhythm: ***. [Defibrillation performed - see separate defibrillation procedure note.] Epinephrine 1 mg IV/IO given at [time], repeated every 3-5 minutes per ACLS. [Amiodarone/lidocaine given for refractory VF/VT at ( time, dose ).]</p>
 <p>Airway managed with [bag-mask ventilation / supraglottic airway / endotracheal intubation - see separate procedure note], continuous waveform capnography confirming placement and CPR quality (target ETCO2 &gt; 10-20 mmHg).</p>
-<p>Reversible causes considered (H's and T's): hypovolemia, hypoxia, hydrogen ion (acidosis), hypo-/hyperkalemia, hypothermia, tension pneumothorax, tamponade, toxins, thrombosis (pulmonary/coronary) - findings and interventions: [ ].</p>
+<p>Reversible causes considered (H's and T's): hypovolemia, hypoxia, hydrogen ion (acidosis), hypo-/hyperkalemia, hypothermia, tension pneumothorax, tamponade, toxins, thrombosis (pulmonary/coronary) - findings and interventions: ***.</p>
 <p>Outcome: [ROSC achieved at ( time ), post-arrest care initiated including targeted temperature management consideration - see below] / [Resuscitation terminated at ( time ) after ( duration ) of resuscitative efforts without sustained ROSC, per team consensus and absence of reversible cause].</p>
-<p>Family notified at [time] by [ ]. Debrief conducted with the code team.</p>
+<p>Family notified at [time] by ***. Debrief conducted with the code team.</p>
 </div>
 <div class="card ">
 <span class="tag">.sepsis_septic_shock_bundle</span>
 <h4>Sepsis / Septic Shock Bundle Note</h4>
-<p>Suspected source: [ ]. qSOFA/SOFA and lactate reviewed (see Section 7 scoring tools).</p>
-<p>Hour-1 bundle elements: blood cultures obtained prior to antibiotics at [time]. Broad-spectrum antibiotics [ ] given at [time] (document time from recognition to first dose). Lactate measured at [time]: [ ] mmol/L, [repeat lactate if initial &gt; 2 mmol/L].</p>
-<p>Fluid resuscitation: 30 mL/kg balanced crystalloid given for hypotension or lactate &ge; 4 mmol/L, completed by [time]. Reassessment of volume status and tissue perfusion performed by [repeat focused exam, passive leg raise, dynamic measures, or bedside ultrasound] - findings: [ ].</p>
+<p>Suspected source: ***. qSOFA/SOFA and lactate reviewed (see Section 7 scoring tools).</p>
+<p>Hour-1 bundle elements: blood cultures obtained prior to antibiotics at [time]. Broad-spectrum antibiotics *** given at [time] (document time from recognition to first dose). Lactate measured at [time]: *** mmol/L, [repeat lactate if initial &gt; 2 mmol/L].</p>
+<p>Fluid resuscitation: 30 mL/kg balanced crystalloid given for hypotension or lactate &ge; 4 mmol/L, completed by [time]. Reassessment of volume status and tissue perfusion performed by [repeat focused exam, passive leg raise, dynamic measures, or bedside ultrasound] - findings: ***.</p>
 <p>Vasopressors: [norepinephrine first-line] started at [time] if hypotension persists despite/during fluid resuscitation, titrated to MAP &ge; 65 mmHg. [Source control measures: ( ), timing: ( ).]</p>
 <p class="note">Document times explicitly (recognition, cultures, antibiotics, fluids, vasopressor start) - bundle-compliance timing is both a quality metric and frequently the single most audited element of a sepsis chart.</p>
 </div>
 <div class="card ">
 <span class="tag">.dka_hhs_management</span>
 <h4>DKA / HHS Management Note</h4>
-<p>Diagnostic criteria reviewed: glucose [ ], anion gap [ ], bicarbonate [ ], pH [ ], beta-hydroxybutyrate/ketones [ ] - consistent with [DKA / HHS / mixed picture].</p>
+<p>Diagnostic criteria reviewed: glucose ***, anion gap ***, bicarbonate ***, pH ***, beta-hydroxybutyrate/ketones *** - consistent with [DKA / HHS / mixed picture].</p>
 <p>Precipitant identified/investigated: [infection, medication non-adherence, new-onset diabetes, ischemia, other].</p>
-<p>IV fluids: [isotonic crystalloid] bolus followed by maintenance/replacement rate [ ] mL/hr, transitioning to dextrose-containing fluid once glucose &lt; 200-250 mg/dL.</p>
-<p>Insulin: [IV regular insulin infusion] started at [ ] units/kg/hr after initial fluid bolus and confirming potassium &gt; 3.3 mEq/L. Glucose checked hourly, target decline 50-75 mg/dL/hr.</p>
-<p>Potassium: [repleted before or concurrent with insulin if &lt; 3.3-5.3 mEq/L, insulin held if &lt; 3.3 mEq/L until repleted]. Rechecked every [ ] hours.</p>
+<p>IV fluids: [isotonic crystalloid] bolus followed by maintenance/replacement rate *** mL/hr, transitioning to dextrose-containing fluid once glucose &lt; 200-250 mg/dL.</p>
+<p>Insulin: [IV regular insulin infusion] started at *** units/kg/hr after initial fluid bolus and confirming potassium &gt; 3.3 mEq/L. Glucose checked hourly, target decline 50-75 mg/dL/hr.</p>
+<p>Potassium: [repleted before or concurrent with insulin if &lt; 3.3-5.3 mEq/L, insulin held if &lt; 3.3 mEq/L until repleted]. Rechecked every *** hours.</p>
 <p>Resolution criteria followed (anion gap closed, bicarbonate normalized, patient tolerating oral intake) before transitioning to subcutaneous insulin, with overlap of IV and subcutaneous insulin by [1-2] hours to avoid rebound hyperglycemia/ketosis.</p>
 </div>
 <div class="card ">
@@ -3361,16 +3369,16 @@ Anesthesia start/stop times, drug administration, and case vitals typically live
 <p>First-line: Benzodiazepine given ([lorazepam IV / midazolam IM/IV / diazepam]) at [time], [repeated once if seizure continues after ( ) minutes].</p>
 <p>Second-line (if seizure continues): [Levetiracetam / fosphenytoat / valproate] loading dose given at [time].</p>
 <p>Third-line (refractory status, if seizure continues despite first- and second-line therapy): [Continuous infusion of midazolam/propofol/pentobarbital] initiated, titrated to seizure suppression [or burst-suppression on continuous EEG] under airway protection.</p>
-<p>Continuous EEG monitoring: [initiated at ( time ), findings: ( )]. Airway secured: [ ]. Underlying cause investigated: [glucose, electrolytes, toxicology, structural imaging, infectious workup as indicated].</p>
+<p>Continuous EEG monitoring: [initiated at ( time ), findings: ( )]. Airway secured: ***. Underlying cause investigated: [glucose, electrolytes, toxicology, structural imaging, infectious workup as indicated].</p>
 </div>
 <div class="card ">
 <span class="tag">.elevated_intracranial_pressure_management</span>
 <h4>Elevated Intracranial Pressure (ICP) Management Note</h4>
-<p>ICP monitoring: [external ventricular drain / intraparenchymal monitor] in place, opening/current ICP [ ] mmHg, cerebral perfusion pressure (MAP minus ICP) [ ] mmHg (target generally &gt; 60 mmHg).</p>
+<p>ICP monitoring: [external ventricular drain / intraparenchymal monitor] in place, opening/current ICP *** mmHg, cerebral perfusion pressure (MAP minus ICP) *** mmHg (target generally &gt; 60 mmHg).</p>
 <p>Tier 1 measures: head of bed elevated 30 degrees, head midline, adequate sedation/analgesia, temperature normalized, PaCO2 targeted to [normocapnia, avoiding both hypo- and hyperventilation absent herniation], adequate oxygenation, seizure prophylaxis as indicated.</p>
 <p>Tier 2 measures (if ICP remains elevated): [Hyperosmolar therapy: mannitol ( dose ) or hypertonic saline ( concentration, dose ), targeting serum osmolality/sodium goals]. [CSF drainage via EVD if in place.]</p>
 <p>Tier 3 measures (refractory elevated ICP): [Neuromuscular blockade, barbiturate coma, therapeutic hypothermia, decompressive craniectomy] considered/performed per neurosurgical input.</p>
-<p>Serial neuro exams and ICP/CPP trend documented: [ ]. Neurosurgery involved at each escalation tier.</p>
+<p>Serial neuro exams and ICP/CPP trend documented: ***. Neurosurgery involved at each escalation tier.</p>
 </div>
 <div class="card ">
 <span class="tag">.targeted_temperature_management</span>
@@ -3389,7 +3397,7 @@ Anesthesia start/stop times, drug administration, and case vitals typically live
 <p><strong>Clinical examination:</strong> Coma - no response to noxious stimuli above the foramen magnum. Absent pupillary light reflex bilaterally. Absent corneal reflex bilaterally. Absent oculocephalic reflex (if C-spine cleared) and/or absent oculovestibular (cold caloric) reflex. Absent facial motor response to noxious stimulus. Absent gag reflex. Absent cough reflex to tracheal suctioning.</p>
 <p><strong>Apnea test:</strong> Preoxygenated, baseline ABG obtained, disconnected from ventilator with oxygen delivered via catheter/T-piece. No respiratory effort observed over [8-10] minutes despite PaCO2 rise to &ge; 20 mmHg above baseline and &gt; 60 mmHg (with adequate oxygenation maintained throughout, aborted early if hemodynamic instability or desaturation occurs).</p>
 <p><strong>Ancillary testing (if exam or apnea test cannot be completed/confounded):</strong> [Cerebral angiography / nuclear medicine cerebral blood flow study / EEG] performed, showing [absence of intracranial blood flow / electrocerebral silence, as applicable].</p>
-<p>Exam performed by [attending name, role], [second independent exam performed by ( ) per institutional/state policy, if required]. Time of death (brain death) declared: [ ]. Family notified at [time]. Organ procurement organization notified per institutional policy.</p>
+<p>Exam performed by [attending name, role], [second independent exam performed by ( ) per institutional/state policy, if required]. Time of death (brain death) declared: ***. Family notified at [time]. Organ procurement organization notified per institutional policy.</p>
 <p class="note">Requirements for a second exam, exact observation periods, and qualified examiner criteria vary by state law and institutional policy - confirm your jurisdiction's and hospital's specific brain death determination policy before finalizing this note, since this determination has independent legal significance beyond clinical documentation.</p>
 </div>
 <div class="card ">
@@ -3397,9 +3405,9 @@ Anesthesia start/stop times, drug administration, and case vitals typically live
 <h4>Withdrawal of Life-Sustaining Treatment / Terminal Extubation Note</h4>
 <p>Decision-making process: Goals of care discussion held with [patient (if able)/surrogate decision-maker] on [date] - see Family Meeting note. Consensus reached to transition to comfort-focused care and withdraw [mechanical ventilation / vasopressors / other life-sustaining interventions].</p>
 <p>Plan discussed with the care team, including anticipated symptoms (dyspnea, agitation) and the comfort-focused medication plan (opioids/benzodiazepines titrated to comfort, not to hasten death - the intent and titration endpoint should be explicit in the chart).</p>
-<p>Family present at bedside: [ ]. Chaplaincy/spiritual care and palliative care involved: [ ]. Non-essential monitoring, alarms, and interventions discontinued per comfort-care order set.</p>
-<p>Extubation/withdrawal performed at [time] by [ ]. Comfort medications given: [ ]. Patient reassessed for signs of distress at [interval] and medications titrated accordingly.</p>
-<p>Time of death: [ ], pronounced by [ ] (see Pronouncement of Death documentation). Family support and bereavement resources offered.</p>
+<p>Family present at bedside: ***. Chaplaincy/spiritual care and palliative care involved: ***. Non-essential monitoring, alarms, and interventions discontinued per comfort-care order set.</p>
+<p>Extubation/withdrawal performed at [time] by ***. Comfort medications given: ***. Patient reassessed for signs of distress at [interval] and medications titrated accordingly.</p>
+<p>Time of death: ***, pronounced by *** (see Pronouncement of Death documentation). Family support and bereavement resources offered.</p>
 </div>
 <h2 class="subhead" id="s09-11">SmartList Library (Dropdown Options)</h2>
 <p class="chapter-desc" style="margin-bottom:8px;">Real dropdown option sets for every {SmartList} referenced above, built once and reused across every phrase that calls it.</p>
@@ -3491,6 +3499,47 @@ Anesthesia start/stop times, drug administration, and case vitals typically live
 <p class="line">- Admit to telemetry</p>
 <p class="line">- Admit to ICU</p>
 <p class="line">- Transfer to [facility]</p>
+</div>
+<div class="card ">
+<span class="tag">SmartList</span>
+<h4>{performed by list}</h4>
+<p class="line">- Self</p>
+<p class="line">- Resident, supervised</p>
+<p class="line">- CRNA, supervised</p>
+<p class="line">- Attending</p>
+</div>
+<div class="card ">
+<span class="tag">SmartList</span>
+<h4>{complications list}</h4>
+<p class="line">- None</p>
+<p class="line">- Bleeding, controlled with direct pressure</p>
+<p class="line">- Hemodynamic instability, managed per protocol</p>
+<p class="line">- Failed attempt, repeated successfully</p>
+<p class="line">- Failed attempt, alternate approach used</p>
+<p class="line">- Failed attempt, consult obtained</p>
+</div>
+<div class="card ">
+<span class="tag">SmartList</span>
+<h4>{procedure tolerance list}</h4>
+<p class="line">- Well</p>
+<p class="line">- Well, hemodynamics managed with vasopressor support</p>
+<p class="line">- Fair, with transient hypotension</p>
+<p class="line">- Poorly, procedure aborted</p>
+</div>
+<div class="card ">
+<span class="tag">SmartList</span>
+<h4>{consent type list}</h4>
+<p class="line">- Verbal</p>
+<p class="line">- Written</p>
+<p class="line">- Implied (emergent, patient unable to consent)</p>
+<p class="line">- Obtained from surrogate/guardian: [name, relationship]</p>
+</div>
+<div class="card ">
+<span class="tag">SmartList</span>
+<h4>{attending involvement list}</h4>
+<p class="line">- Performed independently</p>
+<p class="line">- Medically directing per Section 2 attestation, present for induction, emergence, and key/critical portion(s)</p>
+<p class="line">- Performed by resident, attending present for key/critical portion(s)</p>
 </div>
 
 
