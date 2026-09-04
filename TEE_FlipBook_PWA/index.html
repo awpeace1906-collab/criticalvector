@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1B3A6B">
+<meta name="description" content="TEE Reference FlipBook — ASE 20-View Comprehensive Exam, Anesthesiology & Critical Care">
+<title>TEE Reference FlipBook</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app-shell">
+  <div id="topbar">
+    <button id="back-btn" aria-label="Back">&larr;</button>
+    <div id="topbar-title">TEE FlipBook</div>
+  </div>
+  <div id="app"></div>
+  <nav id="tabbar">
+    <button class="tabbar-btn" data-tab="home" data-href="#/"><span class="tab-ico">&#9673;</span>Map</button>
+    <button class="tabbar-btn" data-tab="probe" data-href="#/probe"><span class="tab-ico">&#9995;</span>Probe</button>
+    <button class="tabbar-btn" data-tab="sweep" data-href="#/sweep"><span class="tab-ico">&#8635;</span>Sweep</button>
+    <button class="tabbar-btn" data-tab="appendix" data-href="#/appendix"><span class="tab-ico">&#128220;</span>Appendix</button>
+  </nav>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

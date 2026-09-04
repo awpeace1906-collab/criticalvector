@@ -1,0 +1,94 @@
+{
+  "probe_ref": [
+    {
+      "sym": "A",
+      "label": "ANTEFLEX",
+      "desc": "Tip bends anteriorly toward imaging face \u2014 brings heart closer to probe"
+    },
+    {
+      "sym": "R",
+      "label": "RETROFLEX",
+      "desc": "Tip bends posteriorly \u2014 moves heart away from probe"
+    },
+    {
+      "sym": "\u2190",
+      "label": "ROTATE LEFT",
+      "desc": "Shaft CCW \u2014 image plane sweeps leftward"
+    },
+    {
+      "sym": "\u2192",
+      "label": "ROTATE RIGHT",
+      "desc": "Shaft CW \u2014 image plane sweeps rightward"
+    },
+    {
+      "sym": "\u2194",
+      "label": "LEFT LATERAL",
+      "desc": "Tip flexes leftward"
+    },
+    {
+      "sym": "\u2194",
+      "label": "RIGHT LATERAL",
+      "desc": "Tip flexes rightward"
+    },
+    {
+      "sym": "\u2193",
+      "label": "ADVANCE",
+      "desc": "Push distally toward stomach \u2014 increases depth (display depth \u2191)"
+    },
+    {
+      "sym": "\u2191",
+      "label": "WITHDRAW",
+      "desc": "Pull proximally toward mouth \u2014 decreases depth"
+    },
+    {
+      "sym": "\u2295",
+      "label": "INC OMNIPLANE",
+      "desc": "Rotate multiplane angle upward (0\u00b0 \u2192 180\u00b0)"
+    },
+    {
+      "sym": "\u2296",
+      "label": "DEC OMNIPLANE",
+      "desc": "Rotate multiplane angle downward"
+    },
+    {
+      "sym": "\u21bb",
+      "label": "CHANGE OMNI",
+      "desc": "Adjust omniplane angle without any probe movement"
+    }
+  ],
+  "doppler_pearls": "CW/PW accuracy requires beam \u2264 20\u00b0 from flow \u2014 use TG LAX or Deep TG for AV gradient. ME 4C / ME 5C for MR CW Doppler. ME RV I-O for TR CW (often ~45\u00b0). PA sys = CVP + 4(VTR)\u00b2 | LA mean = Sys LVP \u2212 4(VMR)\u00b2 | MV area = 220/PHT_t | Continuity: LVOT area \u00d7 LVOT VTI = AV area \u00d7 AV VTI \u2192 AVA = 0.785 \u00d7 D\u00b2 \u00d7 VTIlvot / VTIav",
+  "sweep_phases": [
+    {
+      "color": "orange",
+      "label": "PHASE 1",
+      "title": "ME FORWARD SWEEP",
+      "angles": "0\u00b0 \u2192 165\u00b0, in 20\u201330\u00b0 increments",
+      "desc": "Begin ME, omniplane 0\u00b0. Sweep forward tracking one focal structure (e.g. mitral valve, LAA, or interatrial septum) as the angle advances. LV/MV-focused.",
+      "mapping": "#1 ME 4C (0\u00b0) \u2192 #5 ME AV SAX (30\u00b0) \u2192 #19 ME Commissural (60\u00b0) \u2192 #2 ME 2C (90\u00b0) \u2192 #4 ME Bicaval (110\u00b0) \u2192 #3 ME LAX (135\u00b0)"
+    },
+    {
+      "color": "green",
+      "label": "PHASE 2",
+      "title": "ME REVERSE SWEEP",
+      "angles": "165\u00b0 \u2192 135\u00b0 \u2192 90\u00b0 \u2192 40\u201360\u00b0 \u2192 0\u00b0",
+      "desc": "Using the aortic valve as the new reference point, reduce the angle back down, reassessing AV/RV structures on the way.",
+      "mapping": "#7 ME AV LAX (135\u00b0) \u2192 #6 ME RV Inflow-Outflow (80\u00b0) \u2192 back through 0\u00b0"
+    },
+    {
+      "color": "red",
+      "label": "PHASE 3",
+      "title": "TRANSGASTRIC",
+      "angles": "0\u00b0, 90\u00b0, 120\u00b0",
+      "desc": "Advance the probe into the stomach. Image at each fixed angle before withdrawing back to the mid-esophagus.",
+      "mapping": "#14 TG Basal SAX \u2192 #15 TG Mid-Pap SAX \u2192 #20 TG RV 2C (100\u00b0) \u2192 #16 TG 2C (90\u00b0) \u2192 #17 TG Long Axis (120\u00b0) \u2192 #18 Deep TG LAX"
+    },
+    {
+      "color": "navy",
+      "label": "PHASE 4",
+      "title": "WITHDRAWAL SWEEP",
+      "angles": "Mid-esophagus \u2192 upper esophagus",
+      "desc": "Withdraw the probe from the body, assessing the thoracic aorta and pulmonary artery along the way.",
+      "mapping": "#8/#9 ME Asc Ao SAX/LAX \u2192 #10/#11 Desc Ao SAX/LAX \u2192 #12/#13 UE Aortic Arch LAX/SAX"
+    }
+  ]
+}

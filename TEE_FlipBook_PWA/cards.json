@@ -1,0 +1,593 @@
+[
+  {
+    "num": "1",
+    "title": "ME Four Chamber",
+    "subtitle": "Four Chamber  \u00b7  \"The Heart View\"",
+    "omniplane_bar": "Omniplane  0\u00b0    \u00b7    Depth  30\u201335 cm",
+    "category": "ME",
+    "image": "me-four-chamber.png",
+    "structures": [
+      "LV, RV, LA, RA \u2014 all four chambers",
+      "MV (A2/P1), TV, IVS, IAS",
+      "Coronary sinus (posterior AV groove)",
+      "TV annulus 1 cm apical to MV annulus"
+    ],
+    "pathology": [
+      "Global LV/RV systolic function",
+      "Regional wall motion (all territories)",
+      "MR/TR severity and mechanism",
+      "ASD/PFO \u2014 color Doppler",
+      "Pericardial effusion / tamponade"
+    ],
+    "probe": [
+      "Neutral, 30\u201335 cm from incisors",
+      "Omniplane 0\u00b0, gentle anteflex",
+      "First view of every exam \u2014 baseline"
+    ],
+    "normal": [
+      "LV EDD \u2264 57 mm (M), \u2264 52 mm (F)",
+      "RV:LV \u2264 0.6 at base",
+      "RV size \u2264 2/3 that of LV"
+    ],
+    "slug": "me-four-chamber"
+  },
+  {
+    "num": "2",
+    "title": "ME Two Chamber",
+    "subtitle": "Two Chamber  \u00b7  \"Crow's Beak View\"",
+    "omniplane_bar": "Omniplane  90\u00b0    \u00b7    Depth  30\u201335 cm",
+    "category": "ME",
+    "image": "me-two-chamber.png",
+    "structures": [
+      "LV (inferior, anterior walls)",
+      "LA, LAA (left atrial appendage)",
+      "MV: A1/P1 top, A3 bottom",
+      "LUPV, Papillary muscles (PPM)"
+    ],
+    "pathology": [
+      "Inferior wall motion (RCA territory)",
+      "Anterior wall motion (LAD territory)",
+      "LAA thrombus \u2014 exclude pre-cardioversion",
+      "MV segment disease A1/P1, A3"
+    ],
+    "probe": [
+      "From ME 4C: rotate to ~90\u00b0",
+      "Maintain depth 30\u201335 cm",
+      "Fine-tune anteflex for apex"
+    ],
+    "normal": [
+      "LAA velocity > 0.2 m/s (normal)",
+      "AR > 0.35 \u2014 always abnormal",
+      "Mean LAP = Sys LVP \u2212 \u0394pMR",
+      "MVann EDD max 32 mm"
+    ],
+    "slug": "me-two-chamber"
+  },
+  {
+    "num": "3",
+    "title": "ME Long Axis",
+    "subtitle": "Long Axis  \u00b7  LVOT / Aortic Root",
+    "omniplane_bar": "Omniplane  135\u00b0    \u00b7    Depth  30\u201335 cm",
+    "category": "ME",
+    "image": "me-long-axis.png",
+    "structures": [
+      "LV (infero-lateral, all levels)",
+      "LVOT, AV (A2, RCC/NCC cusps)",
+      "Aortic root, sinuses of Valsalva",
+      "LA, MV (P2 posterior), RPA behind Ao"
+    ],
+    "pathology": [
+      "Aortic root/ascending aneurysm",
+      "LVOT obstruction \u2014 SAM, HCM",
+      "AR jet direction, severity",
+      "MV A2/P2 prolapse / restriction"
+    ],
+    "probe": [
+      "Rotate to 120\u2013135\u00b0",
+      "Slight withdrawal from ME 4C",
+      "Anteflex to open LVOT"
+    ],
+    "normal": [
+      "LVOT D: 1.8\u20132.4 cm",
+      "Ao annulus: 2.0\u20132.5 cm",
+      "AA 20\u00b12 (max 26), STJ 24\u00b14 (max 36)",
+      "AAo 26\u00b13 (max 36) mm"
+    ],
+    "slug": "me-long-axis"
+  },
+  {
+    "num": "4",
+    "title": "ME Bicaval",
+    "subtitle": "Bicaval  \u00b7  IVC / SVC / IAS",
+    "omniplane_bar": "Omniplane  110\u00b0    \u00b7    Depth  28\u201332 cm",
+    "category": "ME",
+    "image": "me-bicaval.png",
+    "structures": [
+      "RA, LA, IAS, Fossa ovalis",
+      "SVC (right \u2014 CVP cath tip)",
+      "IVC, Eustachian valve, Chiari net",
+      "Crista terminalis, RAA, CS ostium"
+    ],
+    "pathology": [
+      "ASD: secundum, sinus venosus, PFO",
+      "Caval cannula position",
+      "IAS aneurysm (> 15 mm excursion)",
+      "RA mass, thrombus"
+    ],
+    "probe": [
+      "From ME 4C: rotate to 90\u2013110\u00b0",
+      "Right turn (CW) \u2014 caval structures",
+      "Rightward lateral flex for SVC"
+    ],
+    "normal": [
+      "IVC/RA jxn \u2264 12 mm \u2192 CVP \u2264 10",
+      "PFO in up to 30%",
+      "Chiari net 1\u20134% at autopsy"
+    ],
+    "slug": "me-bicaval"
+  },
+  {
+    "num": "5",
+    "title": "ME AV SAX",
+    "subtitle": "AV Short Axis  \u00b7  \"Mercedes-Benz View\"",
+    "omniplane_bar": "Omniplane  30\u00b0    \u00b7    Depth  28\u201332 cm",
+    "category": "ME",
+    "image": "me-av-sax.png",
+    "structures": [
+      "AV: NCC (intra-atrial), LCC, RCC",
+      "RVOT (anterior), Pulmonary valve",
+      "LA (posterior-left), RA (posterior-right)",
+      "Commissures: intercoronary, anterior, posterior"
+    ],
+    "pathology": [
+      "AV morphology: tricuspid vs bicuspid",
+      "AS planimetry of orifice area",
+      "AR: short-axis jet, commissure origin",
+      "Nodules of Arantius on cusp tips"
+    ],
+    "probe": [
+      "Withdraw slightly from ME 4C level",
+      "Rotate to 30\u201360\u00b0",
+      "All 3 cusps equal \u2192 'Mercedes' sign"
+    ],
+    "normal": [
+      "RCC: always anterior (non-mitral cusp)",
+      "AV cusp separation \u2265 20 mm normal",
+      "\u2264 10 mm \u2192 severe AS"
+    ],
+    "slug": "me-av-sax"
+  },
+  {
+    "num": "6",
+    "title": "ME RV Inflow-Outflow",
+    "subtitle": "RV Inflow-Outflow  \u00b7  \"Wrap-Around / River View\"",
+    "omniplane_bar": "Omniplane  80\u00b0    \u00b7    Depth  28\u201335 cm",
+    "category": "ME",
+    "image": "me-rv-inflow-outflow.png",
+    "structures": [
+      "RV free wall, inferior free wall",
+      "RVOT, Pulmonary valve, MPA",
+      "RA, TV (anterior/posterior leaflets)",
+      "LA (posterior), AV (en face, central)"
+    ],
+    "pathology": [
+      "TR: VC, PISA, CW Doppler (often 45\u00b0)",
+      "PA sys pressure: 4(VTR)\u00b2 + CVP",
+      "RV dilation, systolic dysfunction",
+      "Sinus of Valsalva aneurysm, conal VSD"
+    ],
+    "probe": [
+      "From ME 4C: rotate to ~60\u201380\u00b0",
+      "Left lateral turn \u2014 RV structures anterior",
+      "Find TR jet for CW Doppler"
+    ],
+    "normal": [
+      "TV inflow: Emax 0.40, Amax 0.30 m/s",
+      "Bdec 200 ms, E/A 1.35 \u00b1 0.5",
+      "PAs = PRA + 4(VTR)\u00b2  [PRA = CVP]"
+    ],
+    "slug": "me-rv-inflow-outflow"
+  },
+  {
+    "num": "7",
+    "title": "ME AV LAX",
+    "subtitle": "AV Long Axis  \u00b7  Aortic Root / LVOT",
+    "omniplane_bar": "Omniplane  135\u00b0    \u00b7    Depth  28\u201332 cm",
+    "category": "ME",
+    "image": "me-av-lax.png",
+    "structures": [
+      "LV, LVOT (A2, NCC/LCC cusps)",
+      "Ao annulus, STJ, Ascending Ao",
+      "RCC always anterior (non-mitral cusp)",
+      "LA (posterior), RPA behind aorta, RVOT"
+    ],
+    "pathology": [
+      "AR: vena contracta \u2265 0.6 cm = severe",
+      "Aortic root/Asc Ao for TAVR sizing",
+      "Type A dissection \u2014 intimal flap",
+      "Ao wall >0.5 cm \u2192 intramural hematoma"
+    ],
+    "probe": [
+      "Rotate to 120\u2013135\u00b0",
+      "Slight withdrawal from ME LAX",
+      "Align LVOT parallel to beam for Doppler"
+    ],
+    "normal": [
+      "AA 20\u00b12 (max 26), STJ 24\u00b14 (max 36)",
+      "AAo 26\u00b13 (max 36) mm, LA Dx \u2264 4.5 cm",
+      "~70% of AS cases will also have AR"
+    ],
+    "slug": "me-av-lax"
+  },
+  {
+    "num": "8",
+    "title": "ME Ascending Ao SAX",
+    "subtitle": "Ascending Aorta SAX  \u00b7  PA / SVC",
+    "omniplane_bar": "Omniplane  0\u00b0    \u00b7    Depth  25\u201328 cm",
+    "category": "UE",
+    "image": "me-ascending-ao-sax.png",
+    "structures": [
+      "Ascending Ao (cross-section, left)",
+      "Main PA and bifurcation, RPA, LPA",
+      "SVC (right of aorta)"
+    ],
+    "pathology": [
+      "Aortic dilation, Type A dissection",
+      "PA dilation (pulmonary HTN)",
+      "PA thrombus / embolism"
+    ],
+    "probe": [
+      "Withdraw from AV SAX level",
+      "Omniplane 0\u00b0, depth 25\u201328 cm"
+    ],
+    "normal": [
+      "PA diameter < 28 mm (normal)",
+      "SVC anterior-right to Asc Ao"
+    ],
+    "slug": "me-ascending-ao-sax"
+  },
+  {
+    "num": "9",
+    "title": "ME Ascending Ao LAX",
+    "subtitle": "Ascending Aorta LAX  \u00b7  Arch Transition",
+    "omniplane_bar": "Omniplane  90\u2013110\u00b0    \u00b7    Depth  25\u201328 cm",
+    "category": "UE",
+    "image": "me-ascending-ao-lax.png",
+    "structures": [
+      "Ascending Ao (longitudinal)",
+      "Main PA (longitudinal, adjacent)",
+      "RPA in cross-section posteriorly"
+    ],
+    "pathology": [
+      "Type A dissection \u2014 flap identification",
+      "Aortic diameter mid-ascending",
+      "Intramural hematoma"
+    ],
+    "probe": [
+      "Rotate to 90\u2013110\u00b0 from ME AAo SAX",
+      "Depth 25\u201328 cm"
+    ],
+    "normal": [
+      "Asc Ao diameter \u2264 3.5 cm (normal)",
+      "Measured end-diastole, leading-edge"
+    ],
+    "slug": "me-ascending-ao-lax"
+  },
+  {
+    "num": "10",
+    "title": "Desc Aorta SAX",
+    "subtitle": "Descending Aorta SAX  \u00b7  Cross-Section",
+    "omniplane_bar": "Omniplane  0\u00b0    \u00b7    Depth  30\u201340 cm",
+    "category": "Desc Ao",
+    "image": "desc-aorta-sax.png",
+    "structures": [
+      "Descending thoracic Ao (circular)",
+      "Pleural space (bilateral)",
+      "True vs false lumen (dissection)"
+    ],
+    "pathology": [
+      "Type B dissection: true/false lumen",
+      "Aortic aneurysm, max diameter",
+      "Atherosclerotic plaque (mobile = embolic risk)"
+    ],
+    "probe": [
+      "Left turn (CW) from ME 4C",
+      "Omniplane 0\u00b0, depth 30\u201340 cm"
+    ],
+    "normal": [
+      "True lumen: expands in systole",
+      "False lumen: compresses in systole",
+      "Desc Ao diameter \u2264 2.5 cm"
+    ],
+    "slug": "desc-aorta-sax"
+  },
+  {
+    "num": "11",
+    "title": "Desc Aorta LAX",
+    "subtitle": "Descending Aorta LAX  \u00b7  Longitudinal",
+    "omniplane_bar": "Omniplane  90\u00b0    \u00b7    Depth  30\u201340 cm",
+    "category": "Desc Ao",
+    "image": "desc-aorta-lax.png",
+    "structures": [
+      "Descending thoracic Ao (longitudinal)",
+      "Intimal flap (dissection)",
+      "Pleural effusion, atherosclerotic plaque"
+    ],
+    "pathology": [
+      "Intimal flap \u2014 best longitudinal view",
+      "Diastolic flow reversal (severe AR)",
+      "Plaque grading I\u2013V for embolic risk"
+    ],
+    "probe": [
+      "Rotate to 90\u00b0 from AoD SAX",
+      "Left turn maintained"
+    ],
+    "normal": [
+      "Grade IV: mobile plaque \u2265 4 mm \u2192 high embolic risk",
+      "Retrograde diastolic flow \u2192 severe AR"
+    ],
+    "slug": "desc-aorta-lax"
+  },
+  {
+    "num": "12",
+    "title": "UE Aortic Arch LAX",
+    "subtitle": "Aortic Arch LAX  \u00b7  Brachiocephalic Vessels",
+    "omniplane_bar": "Omniplane  0\u00b0    \u00b7    Depth  20\u201325 cm",
+    "category": "UE",
+    "image": "ue-aortic-arch-lax.png",
+    "structures": [
+      "Aortic arch (transverse, leftward)",
+      "Arch vessels: innominate, LCC, LSCA",
+      "Descending aorta junction"
+    ],
+    "pathology": [
+      "Arch aneurysm, Type A extension",
+      "Atherosclerotic plaque (embolic risk)",
+      "Coarctation (rare in adult TEE)"
+    ],
+    "probe": [
+      "Withdraw to 20\u201325 cm from incisors",
+      "Omniplane 0\u00b0, slight anteflex"
+    ],
+    "normal": [
+      "Arch diameter \u2264 2.8 cm",
+      "Stop cannulation if Grade IV plaque"
+    ],
+    "slug": "ue-aortic-arch-lax"
+  },
+  {
+    "num": "13",
+    "title": "UE Aortic Arch SAX",
+    "subtitle": "Aortic Arch SAX  \u00b7  PA / MPA",
+    "omniplane_bar": "Omniplane  90\u00b0    \u00b7    Depth  20\u201325 cm",
+    "category": "UE",
+    "image": "ue-aortic-arch-sax.png",
+    "structures": [
+      "Aortic arch (cross-section)",
+      "Main PA (alongside arch)",
+      "Left PA bifurcation, brachiocephalic veins"
+    ],
+    "pathology": [
+      "Arch aneurysm, plaque",
+      "PA dilation (pulmonary HTN)",
+      "PA catheter positioning"
+    ],
+    "probe": [
+      "Rotate to 90\u00b0 from UE Arch LAX",
+      "Depth 20\u201325 cm"
+    ],
+    "normal": [
+      "MPA \u2264 2.8 cm diameter",
+      "LPA and RPA visible at bifurcation"
+    ],
+    "slug": "ue-aortic-arch-sax"
+  },
+  {
+    "num": "14",
+    "title": "TG Basal SAX",
+    "subtitle": "Basal SAX  \u00b7  \"Fishmouth\" MV SAX",
+    "omniplane_bar": "Omniplane  0\u00b0    \u00b7    Depth  40\u201345 cm",
+    "category": "TG",
+    "image": "tg-basal-sax.png",
+    "structures": [
+      "MV en face from LV side (fishmouth)",
+      "Segments: A1/P1 (lateral) \u2192 A3/P3 (medial)",
+      "LV basal segments (all 6), RV, IVS",
+      "Papillary muscles: ALC, PMC origins"
+    ],
+    "pathology": [
+      "MV leaflet anatomy \u2014 prolapse, cleft, rheumatic",
+      "MV planimetry for MS",
+      "Commissural anatomy, basal wall motion"
+    ],
+    "probe": [
+      "Advance to 40\u201345 cm from incisors",
+      "Anteflex to engage gastric fundus wall",
+      "Omniplane 0\u00b0 \u2014 MV appears en face"
+    ],
+    "normal": [
+      "MVA \u2265 5.0 \u00b1 1.0 cm\u00b2 (normal)",
+      "Anterior leaflet = aortic (connected to AV)"
+    ],
+    "slug": "tg-basal-sax"
+  },
+  {
+    "num": "15",
+    "title": "TG Mid Papillary SAX",
+    "subtitle": "Mid Papillary SAX  \u00b7  \"Doughnut View\"",
+    "omniplane_bar": "Omniplane  0\u00b0    \u00b7    Depth  40\u201345 cm",
+    "category": "TG",
+    "image": "tg-mid-papillary-sax.png",
+    "structures": [
+      "LV mid-cavity (all 6 mid segments)",
+      "ALPM (anterolateral papillary muscle)",
+      "PMPM (posteromedial papillary muscle)",
+      "RV (right), Interventricular septum"
+    ],
+    "pathology": [
+      "Regional wall motion \u2014 all 3 coronary territories",
+      "ALPM: LAD/LCx; PMPM: RCA (single vessel)",
+      "LV hypertrophy (wall thickness)",
+      "Papillary muscle rupture (acute MR)"
+    ],
+    "probe": [
+      "Advance slightly past TG Basal SAX",
+      "Omniplane 0\u00b0, depth ~40\u201345 cm",
+      "Best intraoperative wall motion screen"
+    ],
+    "normal": [
+      "2D FAC = (EDA\u2212ESA)/EDA: 35\u201365%",
+      "M-mode FS 25\u201345%",
+      "EDD: S 30\u00b110 (max 50), D 45\u00b110 (max 70)",
+      "LVH: Wall >12 M, >11 F;  RVH >5 mm"
+    ],
+    "slug": "tg-mid-papillary-sax"
+  },
+  {
+    "num": "16",
+    "title": "TG Two Chamber",
+    "subtitle": "TG Two Chamber  \u00b7  Inferior / Anterior Walls",
+    "omniplane_bar": "Omniplane  90\u00b0    \u00b7    Depth  40\u201345 cm",
+    "category": "TG",
+    "image": "tg-two-chamber.png",
+    "structures": [
+      "LV (inferior wall superior, anterior inferior)",
+      "LA (upper right), MV, LAA",
+      "Papillary muscles in cross-section"
+    ],
+    "pathology": [
+      "Inferior wall motion (RCA)",
+      "Anterior wall motion (LAD)",
+      "Papillary muscle viability, LV thrombus"
+    ],
+    "probe": [
+      "From TG Mid SAX: rotate to 90\u00b0",
+      "Maintain anteflexion, depth 40\u201345 cm"
+    ],
+    "normal": [
+      "Inferior wall at top of screen (TG convention)",
+      "Complements TG Mid SAX for wall motion"
+    ],
+    "slug": "tg-two-chamber"
+  },
+  {
+    "num": "17",
+    "title": "TG Long Axis",
+    "subtitle": "TG Long Axis  \u00b7  LVOT CW Doppler",
+    "omniplane_bar": "Omniplane  120\u00b0    \u00b7    Depth  40\u201345 cm",
+    "category": "TG",
+    "image": "tg-long-axis.png",
+    "structures": [
+      "LV (long axis from below)",
+      "LVOT, Aortic valve",
+      "MV (A2/P2), LA, RVOT (anterior)"
+    ],
+    "pathology": [
+      "AV gradient \u2014 CW Doppler (best alignment)",
+      "LVOT obstruction / SAM in HCM",
+      "LVOT VTI for cardiac output"
+    ],
+    "probe": [
+      "From TG 2C: rotate to 120\u00b0",
+      "Maintain anteflexion",
+      "LVOT nearly parallel to ultrasound beam"
+    ],
+    "normal": [
+      "AV peak: 4(AVmax)\u00b2, AV mean: 2.4\u00d7(AVmax)\u00b2",
+      "V&P are flow-dependent",
+      "LVOT VTI \u00d7 LVOT area = SV"
+    ],
+    "slug": "tg-long-axis"
+  },
+  {
+    "num": "18",
+    "title": "Deep TG LAX",
+    "subtitle": "Deep Transgastric  \u00b7  AV CW Doppler",
+    "omniplane_bar": "Omniplane  0\u00b0    \u00b7    Depth  45\u201350 cm",
+    "category": "TG",
+    "image": "deep-tg-lax.png",
+    "structures": [
+      "LV apex to LVOT (foreshortened)",
+      "LVOT, AV (en face), TV, RV (right)",
+      "LA, Ao (deep to LVOT), RPA posterior",
+      "Coronary arteries: RCC, LCC visible"
+    ],
+    "pathology": [
+      "AV CW Doppler \u2014 alternative to TG LAX",
+      "LVOT obstruction from LV apex",
+      "MR jet \u2014 apical approach alignment"
+    ],
+    "probe": [
+      "Advance to 45\u201350 cm from incisors",
+      "Maximum anteflexion required",
+      "May need to rotate 30\u201350\u00b0 or to 120\u00b0",
+      "\u26a0 Caution: force risks esophageal trauma"
+    ],
+    "normal": [
+      "AS by Vmax: N < 1.5, M 2.5\u20133.5, S \u2265 4.5 m/s",
+      "Rarely see true apex in this view"
+    ],
+    "slug": "deep-tg-lax"
+  },
+  {
+    "num": "19",
+    "title": "ME Commissural",
+    "subtitle": "Commissural View  \u00b7  MV Segments P3/A2/P1",
+    "omniplane_bar": "Omniplane  60\u00b0    \u00b7    Depth  30\u201335 cm",
+    "category": "ME",
+    "image": "me-commissural.png",
+    "structures": [
+      "MV: P3 (medial) / A2 (central) / P1 (lateral)",
+      "ALPM, PMPM (papillary muscles)",
+      "LV (basal, mid), LA (posterior)"
+    ],
+    "pathology": [
+      "MV commissural prolapse / flail",
+      "Commissural MR jet origin and direction",
+      "Rheumatic MV \u2014 commissure fusion",
+      "Scallop ID for repair planning"
+    ],
+    "probe": [
+      "Rotate to ~60\u00b0 from ME 4C",
+      "Fine-tune depth 30\u201335 cm",
+      "Slight retroflexion may open commissures"
+    ],
+    "normal": [
+      "P3/A2/P1 simultaneously visible",
+      "Key view for MV repair planning"
+    ],
+    "slug": "me-commissural"
+  },
+  {
+    "num": "20",
+    "title": "TG RV Two Chamber",
+    "subtitle": "RV Inflow  \u00b7  \"Jellyfish View\"",
+    "omniplane_bar": "Omniplane  100\u00b0    \u00b7    Depth  40\u201345 cm",
+    "category": "TG",
+    "image": "tg-rv-two-chamber.png",
+    "structures": [
+      "Right ventricle (inflow tract, free wall)",
+      "Right atrium",
+      "Tricuspid valve (chordae, papillary muscles)"
+    ],
+    "pathology": [
+      "RV volume overload \u2014 TR, ASD, anomalous PV return",
+      "RV pressure overload \u2014 PE, pulmonary hypertension",
+      "Tricuspid regurgitation \u2014 mechanism, jet direction, CW Doppler",
+      "RV free wall / inferior wall regional function"
+    ],
+    "probe": [
+      "From TG Mid-Pap SAX: rotate omniplane to ~100\u2013120\u00b0",
+      "Turn probe tip rightward (toward patient's right)",
+      "Slight withdrawal/advance to center RV inflow",
+      "Depth 40\u201345 cm from incisors"
+    ],
+    "normal": [
+      "RV basal diameter \u2264 4.2 cm (mid \u2264 3.5 cm)",
+      "TV annulus \u2264 4.0 cm; TAPSE > 1.7 cm (TTE correlate)",
+      "TR jet \u2014 trivial/physiologic is normal",
+      "RA area \u2264 18 cm\u00b2 (mid-esophageal correlate)"
+    ],
+    "slug": "tg-rv-two-chamber"
+  }
+]
