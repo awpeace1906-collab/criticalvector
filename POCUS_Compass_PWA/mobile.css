@@ -1,0 +1,18 @@
+/* Phone overrides for the master guide's desktop-width content styles.
+   Loaded after guide.css by both the PWA (index.html) and the iOS WebView. */
+
+@media (max-width: 700px) {
+  .grid2, .grid3, .grid4, .fgrid, .igrid, .igrid3 {
+    grid-template-columns: 1fr;
+  }
+  .card { padding: 14px; }
+  .algo { padding: 16px 14px; }
+  .call { padding: 14px 15px; }
+  .section-desc { padding-left: 0; }
+  .stats { gap: 8px; }
+  .stat { min-width: 72px; padding: 7px 11px; }
+
+  /* Wide tables stay readable by scrolling rather than crushing columns */
+  .table-wrap { -webkit-overflow-scrolling: touch; }
+  .table-wrap table { min-width: 560px; }
+}

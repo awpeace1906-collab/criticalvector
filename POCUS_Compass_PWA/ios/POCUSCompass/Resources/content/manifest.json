@@ -1,0 +1,409 @@
+{
+  "title": "POCUS Master Guide",
+  "subtitle": "EM \u00b7 Critical Care \u00b7 Anesthesia",
+  "groups": [
+    {
+      "label": "Foundations",
+      "sections": [
+        {
+          "id": "s01",
+          "num": "01",
+          "title": "Physics & Knobology",
+          "subsections": [
+            {
+              "id": "sub-1-1",
+              "label": "Ultrasound Physics"
+            },
+            {
+              "id": "sub-1-2",
+              "label": "Probe Selection"
+            },
+            {
+              "id": "sub-1-3",
+              "label": "Imaging Modes"
+            },
+            {
+              "id": "sub-1-4",
+              "label": "Artifacts"
+            },
+            {
+              "id": "sub-1-5",
+              "label": "Machine Controls"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Cardiac POCUS",
+      "sections": [
+        {
+          "id": "s02",
+          "num": "02",
+          "title": "Focused Cardiac (FoCUS)",
+          "subsections": [
+            {
+              "id": "sub-2-1",
+              "label": "Acoustic Windows"
+            },
+            {
+              "id": "sub-2-2",
+              "label": "Standard Views"
+            },
+            {
+              "id": "sub-2-3",
+              "label": "EF Estimation"
+            },
+            {
+              "id": "sub-2-4",
+              "label": "RV Assessment"
+            },
+            {
+              "id": "sub-2-5",
+              "label": "Pericardial Effusion"
+            },
+            {
+              "id": "sub-2-6",
+              "label": "IVC & Volume Status"
+            }
+          ]
+        },
+        {
+          "id": "s03",
+          "num": "03",
+          "title": "Advanced Cardiac",
+          "subsections": [
+            {
+              "id": "sub-3-1",
+              "label": "VTI & Cardiac Output"
+            },
+            {
+              "id": "sub-3-2",
+              "label": "Valve Pathology"
+            },
+            {
+              "id": "sub-3-3",
+              "label": "PE / RV Strain"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Thoracic POCUS",
+      "sections": [
+        {
+          "id": "s04",
+          "num": "04",
+          "title": "Lung Ultrasound",
+          "subsections": [
+            {
+              "id": "sub-4-1",
+              "label": "Normal LUS"
+            },
+            {
+              "id": "sub-4-2",
+              "label": "Pneumothorax (2025 algo)"
+            },
+            {
+              "id": "sub-4-3",
+              "label": "B-lines & Pulm Edema"
+            },
+            {
+              "id": "sub-4-4",
+              "label": "Consolidation"
+            },
+            {
+              "id": "sub-4-5",
+              "label": "Pleural Effusion"
+            },
+            {
+              "id": "sub-4-6",
+              "label": "BLUE Protocol"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Abdominal POCUS",
+      "sections": [
+        {
+          "id": "s05",
+          "num": "05",
+          "title": "eFAST / Trauma",
+          "subsections": [
+            {
+              "id": "sub-5-1",
+              "label": "eFAST Views"
+            },
+            {
+              "id": "sub-5-2",
+              "label": "Interpretation"
+            }
+          ]
+        },
+        {
+          "id": "s06",
+          "num": "06",
+          "title": "Abdominal Applications",
+          "subsections": [
+            {
+              "id": "sub-6-1",
+              "label": "Aorta (AAA)"
+            },
+            {
+              "id": "sub-6-2",
+              "label": "Biliary / RUQ"
+            },
+            {
+              "id": "sub-6-3",
+              "label": "Renal & Bladder"
+            },
+            {
+              "id": "sub-6-4",
+              "label": "Bowel & Appendix"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Hemodynamics",
+      "sections": [
+        {
+          "id": "s07",
+          "num": "07",
+          "title": "Shock Protocols",
+          "subsections": [
+            {
+              "id": "sub-7-1",
+              "label": "RUSH Exam"
+            },
+            {
+              "id": "sub-7-2",
+              "label": "Shock Differentiation"
+            },
+            {
+              "id": "sub-7-3",
+              "label": "Fluid Responsiveness"
+            },
+            {
+              "id": "sub-7-4",
+              "label": "SCCM 2024 Recs"
+            },
+            {
+              "id": "sub-7-5",
+              "label": "VExUS"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "OB / Pelvic",
+      "sections": [
+        {
+          "id": "s08",
+          "num": "08",
+          "title": "Obstetric & Pelvic",
+          "subsections": [
+            {
+              "id": "sub-8-1",
+              "label": "First Trimester"
+            },
+            {
+              "id": "sub-8-2",
+              "label": "Fetal Heart Rate"
+            },
+            {
+              "id": "sub-8-3",
+              "label": "Ectopic Pregnancy"
+            },
+            {
+              "id": "sub-8-4",
+              "label": "Pelvic Pathology"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Procedures",
+      "sections": [
+        {
+          "id": "s09",
+          "num": "09",
+          "title": "Vascular Access",
+          "subsections": [
+            {
+              "id": "sub-9-1",
+              "label": "Central Venous"
+            },
+            {
+              "id": "sub-9-2",
+              "label": "Arterial Lines"
+            },
+            {
+              "id": "sub-9-3",
+              "label": "Difficult IV"
+            }
+          ]
+        },
+        {
+          "id": "s10",
+          "num": "10",
+          "title": "Thoracic Procedures",
+          "subsections": [
+            {
+              "id": "sub-10-1",
+              "label": "Thoracentesis"
+            },
+            {
+              "id": "sub-10-2",
+              "label": "Needle Decompression"
+            },
+            {
+              "id": "sub-10-3",
+              "label": "Pericardiocentesis"
+            }
+          ]
+        },
+        {
+          "id": "s11",
+          "num": "11",
+          "title": "Abdominal Procedures",
+          "subsections": [
+            {
+              "id": "sub-11-1",
+              "label": "Paracentesis"
+            },
+            {
+              "id": "sub-11-2",
+              "label": "Lumbar Puncture"
+            }
+          ]
+        },
+        {
+          "id": "s12",
+          "num": "12",
+          "title": "Airway POCUS",
+          "subsections": [
+            {
+              "id": "sub-12-1",
+              "label": "ETT Confirmation"
+            },
+            {
+              "id": "sub-12-2",
+              "label": "CTM Identification"
+            },
+            {
+              "id": "sub-12-3",
+              "label": "Gastric Assessment"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Critical Care",
+      "sections": [
+        {
+          "id": "s13",
+          "num": "13",
+          "title": "Ventilator & Diaphragm",
+          "subsections": [
+            {
+              "id": "sub-13-1",
+              "label": "Diaphragm US"
+            },
+            {
+              "id": "sub-13-2",
+              "label": "VIDD / Weaning"
+            }
+          ]
+        },
+        {
+          "id": "s14",
+          "num": "14",
+          "title": "DVT Assessment",
+          "subsections": []
+        },
+        {
+          "id": "s15",
+          "num": "15",
+          "title": "Ocular & Neuro POCUS",
+          "subsections": []
+        },
+        {
+          "id": "s16",
+          "num": "16",
+          "title": "Soft Tissue & MSK",
+          "subsections": []
+        }
+      ]
+    },
+    {
+      "label": "Curriculum",
+      "sections": [
+        {
+          "id": "s17",
+          "num": "17",
+          "title": "Competency Framework",
+          "subsections": [
+            {
+              "id": "sub-17-1",
+              "label": "Level 1 / Level 2"
+            },
+            {
+              "id": "sub-17-2",
+              "label": "Scan Volume Requirements"
+            },
+            {
+              "id": "sub-17-3",
+              "label": "Credentialing"
+            }
+          ]
+        },
+        {
+          "id": "s18",
+          "num": "18",
+          "title": "References",
+          "subsections": []
+        }
+      ]
+    },
+    {
+      "label": "Regional Anesthesia",
+      "sections": [
+        {
+          "id": "s19",
+          "num": "19",
+          "title": "Regional Anesthesia / Nerve Blocks",
+          "subsections": [
+            {
+              "id": "sub-19-1",
+              "label": "Upper Extremity Blocks"
+            },
+            {
+              "id": "sub-19-2",
+              "label": "Lower Extremity Blocks"
+            },
+            {
+              "id": "sub-19-3",
+              "label": "Truncal Blocks"
+            },
+            {
+              "id": "sub-19-4",
+              "label": "Needle Visualization & Technique"
+            },
+            {
+              "id": "sub-19-5",
+              "label": "LAST Protocol"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

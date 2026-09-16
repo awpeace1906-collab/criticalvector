@@ -1,0 +1,116 @@
+[
+  {
+    "id": "s01",
+    "num": "1",
+    "title": "Physics & Knobology",
+    "desc": "Foundational principles: image formation, transducer selection, mode optimization, artifact recognition"
+  },
+  {
+    "id": "s02",
+    "num": "2",
+    "title": "Focused Cardiac Ultrasound (FoCUS)",
+    "desc": "Goal-directed bedside cardiac assessment for hemodynamic instability, dyspnea, and resuscitation guidance"
+  },
+  {
+    "id": "s03",
+    "num": "3",
+    "title": "Advanced Cardiac POCUS",
+    "desc": "Cardiac output quantification, valve assessment, PE/RV strain protocols"
+  },
+  {
+    "id": "s04",
+    "num": "4",
+    "title": "Lung Ultrasound",
+    "desc": "Based on the 2012 international evidence-based recommendations for lung ultrasound1and subsequent descriptive work on atypical pneumothorax signs2"
+  },
+  {
+    "id": "s05",
+    "num": "5",
+    "title": "eFAST Examination",
+    "desc": "Extended Focused Assessment with Sonography in Trauma \u2014 systematic approach for hemorrhagic shock and thoracic injury"
+  },
+  {
+    "id": "s06",
+    "num": "6",
+    "title": "Abdominal POCUS Applications",
+    "desc": "Aortic aneurysm, biliary pathology, renal assessment, bowel evaluation"
+  },
+  {
+    "id": "s07",
+    "num": "7",
+    "title": "Shock Protocols & Hemodynamic Assessment",
+    "desc": "RUSH exam, shock pattern differentiation, fluid responsiveness, SCCM 2024 evidence base"
+  },
+  {
+    "id": "s08",
+    "num": "8",
+    "title": "Obstetric & Pelvic POCUS",
+    "desc": "First trimester emergency evaluation, ectopic pregnancy, fetal assessment, pelvic pathology"
+  },
+  {
+    "id": "s09",
+    "num": "9",
+    "title": "Vascular Access",
+    "desc": "Ultrasound-guided central venous, arterial, and peripheral IV access"
+  },
+  {
+    "id": "s10",
+    "num": "10",
+    "title": "Thoracic Procedures",
+    "desc": "Thoracentesis, needle decompression, and pericardiocentesis"
+  },
+  {
+    "id": "s11",
+    "num": "11",
+    "title": "Abdominal Procedures",
+    "desc": "Paracentesis and lumbar puncture"
+  },
+  {
+    "id": "s12",
+    "num": "12",
+    "title": "Airway POCUS",
+    "desc": "ETT confirmation, cricothyroid membrane identification, gastric assessment"
+  },
+  {
+    "id": "s13",
+    "num": "13",
+    "title": "Ventilator Management & Diaphragm POCUS",
+    "desc": "Diaphragm assessment, VIDD, and ventilator weaning"
+  },
+  {
+    "id": "s14",
+    "num": "14",
+    "title": "DVT Assessment \u2014 Compression Ultrasonography",
+    "desc": "Lower extremity DVT evaluation in EM and critical care"
+  },
+  {
+    "id": "s15",
+    "num": "15",
+    "title": "Ocular & Neurologic POCUS",
+    "desc": "ONSD, retinal detachment, vitreous hemorrhage, foreign body"
+  },
+  {
+    "id": "s16",
+    "num": "16",
+    "title": "Soft Tissue & Musculoskeletal POCUS",
+    "desc": "Abscess, foreign body, fracture, joint effusion"
+  },
+  {
+    "id": "s17",
+    "num": "17",
+    "title": "Competency Framework & Curriculum",
+    "desc": "ASRA/ASA 2025 competency structure, society volume requirements, credentialing pathways"
+  },
+  {
+    "id": "s18",
+    "num": "18",
+    "title": "References",
+    "desc": "Numbered in order of first appearance in the text above"
+  },
+  {
+    "id": "s19",
+    "num": "19",
+    "title": "Regional Anesthesia / Nerve Blocks",
+    "desc": "Ultrasound-guided peripheral nerve blockade: upper and lower extremity, truncal blocks, needle technique, and LAST recognition & management"
+  }
+]
