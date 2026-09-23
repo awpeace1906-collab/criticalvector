@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AnesCalc — ASA 2026 ePoster</title>
+<meta name="description" content="AI-Assisted 'Vibe Coding' for Clinical Workflow Optimization: An Anesthesiology Use Case — ePoster, demo video, and project materials for ANESTHESIOLOGY® 2026, Abstract A1325.">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  /* Palette pulled directly from the ASA 2026 ePoster (AnesCalc_ASA2026_ePoster_v3.pptx) */
+  :root {
+    --bg: #ECEEF5;
+    --card: #FFFFFF;
+    --card-alt: #F3EEE6;
+    --border: #D7DBE8;
+    --border-soft: #C9D2EC;
+    --navy: #253E85;
+    --navy-dim: rgba(37,62,133,.07);
+    --gold: #8A6D47;
+    --gold-soft: #BD9B70;
+    --gold-dim: rgba(189,155,112,.16);
+    --text: #231F20;
+    --text2: #3a3f4f;
+    --text3: #5A6176;
+  }
+  body {
+    background: var(--bg);
+    color: var(--text2);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height: 1.65;
+    padding: 48px 24px 80px;
+  }
+  .wrap { max-width: 860px; margin: 0 auto; }
+  a { color: var(--gold); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .back { display: inline-block; color: var(--text3); font-size: 0.85rem; margin-bottom: 40px; }
+  .back:hover { color: var(--navy); text-decoration: none; }
+
+  .event-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--navy); border: 1px solid var(--navy);
+    color: #fff; font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 0.04em; text-transform: uppercase;
+    padding: 5px 12px; border-radius: 20px; margin-bottom: 20px;
+  }
+  .event-badge .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold-soft); }
+
+  h1 { font-size: 2rem; font-weight: 700; color: var(--navy); line-height: 1.25; margin-bottom: 6px; }
+  h1 .app-name { color: var(--gold); }
+  .subtitle { font-size: 1.05rem; color: var(--text2); margin-bottom: 22px; max-width: 640px; }
+
+  .authors { font-size: 0.92rem; color: var(--text3); margin-bottom: 4px; }
+  .authors strong { color: var(--text); font-weight: 600; }
+  .affil { font-size: 0.82rem; color: var(--text3); margin-bottom: 28px; }
+
+  .session-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+    padding: 18px 20px; margin-bottom: 40px;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px;
+  }
+  .session-item .label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gold); margin-bottom: 4px; font-weight: 700; }
+  .session-item .value { font-size: 0.88rem; color: var(--text); font-weight: 500; }
+
+  h2 {
+    font-size: 0.72rem; font-weight: 700; color: #fff;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    margin: 48px 0 16px; background: var(--navy);
+    padding: 7px 14px; border-radius: 5px; display: inline-block;
+  }
+  h2:first-of-type { margin-top: 0; }
+  h3 { font-size: 1rem; font-weight: 600; color: var(--navy); margin: 18px 0 8px; }
+  p { color: var(--text2); margin-bottom: 12px; }
+  .lede { color: var(--text2); font-size: 0.98rem; }
+
+  video {
+    width: 100%; border-radius: 10px; border: 1px solid var(--border);
+    background: #000; display: block;
+  }
+  .video-caption { font-size: 0.82rem; color: var(--text3); margin-top: 10px; text-align: center; }
+
+  .stat-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 14px;
+  }
+  .stat-card {
+    background: var(--card-alt); border: 1px solid var(--border); border-radius: 10px;
+    padding: 16px; text-align: center;
+  }
+  .stat-card .num { font-size: 1.7rem; font-weight: 700; color: var(--navy); line-height: 1.1; }
+  .stat-card .num .from { font-size: 1rem; color: var(--gold-soft); font-weight: 400; }
+  .stat-card .label { font-size: 0.76rem; color: var(--text3); margin-top: 4px; }
+
+  .workflow { display: flex; flex-direction: column; gap: 10px; }
+  .workflow-step {
+    display: grid; grid-template-columns: 34px 1fr; gap: 14px; align-items: start;
+    background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 12px 16px;
+  }
+  .workflow-step .n {
+    width: 34px; height: 34px; border-radius: 50%; background: var(--gold-soft);
+    color: #fff; font-weight: 700; font-size: 0.9rem;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .workflow-step .t { font-weight: 600; color: var(--navy); font-size: 0.92rem; }
+  .workflow-step .d { font-size: 0.84rem; color: var(--text3); margin-top: 2px; }
+  .workflow-repeat { font-size: 0.78rem; color: var(--text3); font-style: italic; padding-left: 48px; }
+
+  .shot-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+  .shot { background: var(--card); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+  .shot img { width: 100%; display: block; }
+  .shot .cap { padding: 10px 12px; font-size: 0.82rem; color: var(--text3); border-top: 1px solid var(--border); }
+
+  .audit-card {
+    background: var(--card-alt); border: 1px solid var(--border); border-left: 3px solid var(--gold-soft);
+    border-radius: 8px; padding: 18px 20px; margin-bottom: 16px;
+  }
+  .audit-nums { display: flex; gap: 28px; margin-bottom: 12px; flex-wrap: wrap; }
+  .audit-nums .item .num { font-size: 1.5rem; font-weight: 700; color: var(--navy); }
+  .audit-nums .item .label { font-size: 0.76rem; color: var(--text3); }
+
+  ul.plain { list-style: none; }
+  ul.plain li { position: relative; padding-left: 18px; margin-bottom: 8px; color: var(--text2); font-size: 0.92rem; }
+  ul.plain li::before { content: "–"; position: absolute; left: 0; color: var(--gold-soft); }
+
+  .callout {
+    background: var(--navy-dim); border: 1px solid var(--border-soft);
+    border-radius: 8px; padding: 14px 18px; font-size: 0.88rem; color: var(--text2);
+  }
+
+  .refs { font-size: 0.82rem; color: var(--text3); }
+  .refs li { margin-bottom: 8px; padding-left: 20px; text-indent: -20px; list-style: none; }
+
+  .downloads { display: flex; flex-wrap: wrap; gap: 10px; }
+  .dl-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--card); border: 1px solid var(--border); color: var(--navy);
+    font-size: 0.86rem; font-weight: 500; padding: 10px 16px; border-radius: 8px;
+  }
+  .dl-btn:hover { border-color: var(--gold-soft); color: var(--gold); text-decoration: none; }
+
+  .contact-card {
+    background: var(--navy); border: 1px solid var(--navy); border-radius: 10px; padding: 22px 24px;
+  }
+  .contact-card .name { font-weight: 700; color: #fff; font-size: 1.05rem; }
+  .contact-card .role { color: var(--border-soft); font-size: 0.86rem; margin-bottom: 12px; }
+  .contact-card a.email { font-size: 0.95rem; color: var(--gold-soft); }
+  .contact-card a.email:hover { color: #fff; }
+
+  hr { border: none; border-top: 1px solid var(--border); margin: 48px 0 32px; }
+  .footer { font-size: 0.8rem; color: var(--text3); text-align: center; }
+  .footer a { color: var(--text3); }
+  .footer a:hover { color: var(--gold); }
+
+  @media (max-width: 600px) {
+    h1 { font-size: 1.5rem; }
+    body { padding: 32px 16px 60px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back" href="https://awpeace1906-collab.github.io/criticalvector/">← The Critical Vector</a>
+
+  <div class="event-badge"><span class="dot"></span>ANESTHESIOLOGY® 2026 · San Diego, CA</div>
+
+  <h1><span class="app-name">AnesCalc</span> — ASA 2026 ePoster</h1>
+  <p class="subtitle">AI-Assisted "Vibe Coding" for Clinical Workflow Optimization: An Anesthesiology Use Case</p>
+
+  <p class="authors"><strong>Andrew Peace, BS, FP-C</strong>¹ &nbsp;·&nbsp; Alexander Morris, MS²</p>
+  <p class="affil">¹²Burrell College School of Osteopathic Medicine, Class of 2027 &nbsp;—&nbsp; ¹Las Cruces, NM &nbsp;·&nbsp; ²Albuquerque, NM</p>
+
+  <div class="session-card">
+    <div class="session-item"><div class="label">Session</div><div class="value">Equipment, Monitoring &amp; Engineering Technology VII — ePosters</div></div>
+    <div class="session-item"><div class="label">Date &amp; Time</div><div class="value">Mon, Oct 19, 2026 · 10:15–11:15 AM</div></div>
+    <div class="session-item"><div class="label">Location</div><div class="value">Exhibit Hall, Monitor 24</div></div>
+    <div class="session-item"><div class="label">Abstract</div><div class="value">A1325 · Control #26-SA-9624-ASAHQ</div></div>
+  </div>
+
+  <h2>Demo</h2>
+  <video controls preload="metadata" playsinline poster="media/screenshot_patient_inputs.png">
+    <source src="media/anescalc_demo.mp4" type="video/mp4">
+    Your browser doesn't support embedded video. <a href="media/anescalc_demo.mp4">Download the demo (MP4)</a> instead.
+  </video>
+  <p class="video-caption">AnesCalc v2.0 walkthrough — patient inputs, live calculations, drug reference library, and PDF export.</p>
+
+  <h2>At a Glance</h2>
+  <div class="stat-grid">
+    <div class="stat-card"><div class="num"><span class="from">116→</span>236</div><div class="label">Live calculations</div></div>
+    <div class="stat-card"><div class="num"><span class="from">10→</span>55</div><div class="label">Drug reference cards</div></div>
+    <div class="stat-card"><div class="num"><span class="from">0→</span>10</div><div class="label">Bedside clinical tools</div></div>
+    <div class="stat-card"><div class="num">0</div><div class="label">Lines of code authored</div></div>
+  </div>
+
+  <h2>Background</h2>
+  <p class="lede">Large language model (LLM)-based AI has introduced a software development paradigm termed <strong>"vibe coding"</strong>: domain experts without formal programming training direct AI to iteratively generate, debug, and refine production-ready code through natural language. The bottleneck moves from programming skill to clinical domain expertise. AnesCalc is the worked example — the replicable six-step workflow is the actual result.</p>
+
+  <h2>Development Workflow</h2>
+  <div class="workflow">
+    <div class="workflow-step"><div class="n">1</div><div><div class="t">Think of an application</div><div class="d">User forms the idea</div></div></div>
+    <div class="workflow-step"><div class="n">2</div><div><div class="t">Define constraints</div><div class="d">User gives the AI requirements</div></div></div>
+    <div class="workflow-step"><div class="n">3</div><div><div class="t">Create a prototype</div><div class="d">AI builds a first version</div></div></div>
+    <div class="workflow-step"><div class="n">4</div><div><div class="t">Test the prototype</div><div class="d">Try it, gather feedback</div></div></div>
+    <div class="workflow-step"><div class="n">5</div><div><div class="t">Define new features</div><div class="d">Identify what to add</div></div></div>
+    <div class="workflow-step"><div class="n">6</div><div><div class="t">Build the next version</div><div class="d">AI updates the prototype</div></div></div>
+  </div>
+  <p class="workflow-repeat">Steps 4–6 repeat until the prototype meets requirements.</p>
+
+  <h2>Screenshots</h2>
+  <div class="shot-grid">
+    <div class="shot"><img src="media/screenshot_patient_inputs.png" alt="AnesCalc patient inputs screen" loading="lazy"><div class="cap">Patient inputs — demographics, perioperative parameters, ABG &amp; pulmonary</div></div>
+    <div class="shot"><img src="media/screenshot_ob_epidural.png" alt="AnesCalc OB/epidural module screen" loading="lazy"><div class="cap">Labor &amp; regional obstetric module — indication-specific dosing</div></div>
+    <div class="shot"><img src="media/screenshot_drug_reference.png" alt="AnesCalc drug reference library screen" loading="lazy"><div class="cap">Searchable drug reference — 55 cards across 14 classes</div></div>
+  </div>
+
+  <h2>Features</h2>
+  <ul class="plain">
+    <li><strong>16 clinical domains</strong> — MAC, NMB, TIVA, vasopressors, LAST, OB, peds, and more</li>
+    <li><strong>55 drug reference cards</strong> spanning 14 classes, fully searchable</li>
+    <li><strong>10 bedside clinical tools</strong> — RSBI, RASS, Fick CO, driving pressure, and others</li>
+    <li><strong>100% offline</strong> — no data transmitted off-device</li>
+    <li>Also: OB/regional protocols · unit conversions · PDF export</li>
+  </ul>
+
+  <h2>Dosing Verification Audit</h2>
+  <div class="audit-card">
+    <div class="audit-nums">
+      <div class="item"><div class="num">191</div><div class="label">Rows audited</div></div>
+      <div class="item"><div class="num">24</div><div class="label">Sections</div></div>
+      <div class="item"><div class="num">3</div><div class="label">Independent passes</div></div>
+    </div>
+    <p style="margin-bottom:0;">An external reviewer independently audited every calculation. Each entry passed through triage, a targeted deep dive, then a full independent literature search — cross-referenced against UpToDate, Miller's 9e, and Barash 8e. All confirmed discrepancies were corrected before the version was finalized.</p>
+  </div>
+
+  <h2>Methods, Results &amp; Conclusions</h2>
+  <p>A third-year medical student engaged a conversational AI assistant (Claude, Anthropic) in an iterative development session to design and build a comprehensive anesthesia clinical decision support platform, with no prior software engineering experience. All AI-generated drug dosing, pharmacokinetic parameters, and clinical protocols were independently verified against UpToDate prior to inclusion.</p>
+  <p>The workflow proceeded in three phases: structured requirements elicitation across 14 clinical domains; a Microsoft Excel prototype with 116 live formulae as a validated reference layer; and a native iOS/iPadOS SwiftUI application (iOS 17+) incorporating all calculation domains, a TIVA module with Marsh/Schnider propofol pharmacokinetic modeling, a labor and regional obstetric module with five indication-specific protocols, and a searchable drug reference library. Debugging followed a patch-based workflow in which Xcode compiler errors were submitted verbatim to the AI and resolved across targeted iterations.</p>
+  <p>A fully functional, offline-capable native iOS application was produced without the student writing a single line of code, compiling and running on physical iPhone and iPad hardware across seven discrete compiler-error resolution cycles. All dosing outputs were confirmed accurate against UpToDate references, including age-corrected MAC algorithms, weight-based pediatric dosing, and obstetric-specific vasopressor guidance.</p>
+  <p>This case demonstrates that AI-assisted vibe coding may democratize clinical software development beyond attending-level practitioners. Independent verification against established clinical references is feasible within this workflow and essential for safe deployment. Early trainees may be uniquely positioned to leverage AI-assisted development, translating emerging clinical knowledge into validated bedside tools during training itself.</p>
+
+  <h2>Beyond This Application</h2>
+  <p>The workflow — not the app — is the transferable product. The same six steps apply to almost any clinical need: custom calculators and order-set helpers inside the EMR, desktop widgets for rapid reference at the workstation, anesthetic plan generators from structured case data, custom case simulators for resident training, and departmental protocol, checklist, and QI dashboards.</p>
+
+  <h2>Limitations &amp; Future Work</h2>
+  <h3>Of AI-assisted development, generally</h3>
+  <ul class="plain">
+    <li>LLMs reason in language, not graphics — visual and UI design still require human iteration</li>
+    <li>Output is bounded by the model's knowledge and the target platform's SDK</li>
+    <li>Hardware and OS compatibility must be verified on real devices</li>
+    <li>Institutional IT and security policy may restrict custom software and PHI handling</li>
+  </ul>
+  <h3>Of this implementation</h3>
+  <ul class="plain">
+    <li>iOS only; not a regulated medical device — every output requires clinician verification</li>
+  </ul>
+  <h3>Future work</h3>
+  <ul class="plain">
+    <li>Prospective outcomes validation · FDA SaMD regulatory classification</li>
+    <li>Clinician evaluation · formal usability review in training contexts</li>
+    <li>App Store sponsorship · Android functionality</li>
+  </ul>
+
+  <h2>AI Disclosure</h2>
+  <div class="callout">A conversational LLM, Claude Sonnet 4.6 (Anthropic, PBC), was utilized for native code generation ("vibe coding"). The first author (AP) directed all prompt engineering, designed the system architecture, and verified compilation outputs. The AI assistant does not hold authorship status.</div>
+
+  <h2>References</h2>
+  <ol class="refs">
+    <li>Gropper MA, Miller RD, Cohen NH, et al., eds. <em>Miller's Anesthesia.</em> 9th ed. Philadelphia, PA: Elsevier; 2020.</li>
+    <li>Barash PG, et al., eds. <em>Clinical Anesthesia.</em> 8th ed. Philadelphia, PA: Wolters Kluwer; 2017.</li>
+    <li>Eger EI 2nd. Age, minimum alveolar anesthetic concentration, and minimum alveolar anesthetic concentration-awake. <em>Anesth Analg.</em> 2001;93(4):947-953.</li>
+    <li>Gan TJ, Diemunsch P, Habib AS, et al. Consensus guidelines for the management of postoperative nausea and vomiting. <em>Anesth Analg.</em> 2014;118(1):85-113.</li>
+    <li>Panchal AR, Bartos JA, Cabañas JG, et al. Part 3: Adult Basic and Advanced Life Support: 2020 American Heart Association Guidelines for CPR and Emergency Cardiovascular Care. <em>Circulation.</em> 2020;142(16 Suppl 2):S366-S468.</li>
+  </ol>
+
+  <h2>Materials</h2>
+  <div class="downloads">
+    <a class="dl-btn" href="media/AnesCalc_ASA2026_ePoster.pptx" download>↓ ePoster (.pptx)</a>
+    <a class="dl-btn" href="media/anescalc_demo.mp4" download>↓ Demo video (.mp4)</a>
+  </div>
+
+  <h2>Contact</h2>
+  <div class="contact-card">
+    <div class="name">Andrew Peace, BS, FP-C</div>
+    <div class="role">OMS-III, Burrell College School of Osteopathic Medicine · Class of 2027</div>
+    <a class="email" href="mailto:andrew.peace@burrell.edu">andrew.peace@burrell.edu</a>
+  </div>
+  <p style="margin-top:14px;">The authors thank Emily Waddle, Class of 2029 at Burrell College School of Osteopathic Medicine, NM, for technical data support during the external UpToDate reference validation and algorithmic verification phases.</p>
+
+  <hr>
+  <div class="footer">
+    A project of <a href="https://awpeace1906-collab.github.io/criticalvector/">The Critical Vector</a> · AnesCalc is not a regulated medical device — every output requires independent clinician verification.
+  </div>
+
+</div>
+</body>
+</html>
