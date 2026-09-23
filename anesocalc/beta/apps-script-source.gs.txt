@@ -1,0 +1,81 @@
+// AnesCalc Beta Program — Apps Script backend
+//
+// Bound to: "AnesCalc Beta Program — Responses"
+// https://docs.google.com/spreadsheets/d/1gFZWuQ8IcE8aGolrbW_c9NkxM04iXZ1lj-e_BtPbzZ4/edit
+//
+// SETUP (one-time, ~2 minutes):
+//   1. Open the sheet above.
+//   2. Extensions > Apps Script.
+//   3. Delete the placeholder code, paste this whole file in.
+//   4. Deploy > New deployment > type: Web app.
+//        - Execute as: Me
+//        - Who has access: Anyone
+//   5. Click Deploy, authorize when prompted (it's your own script, on your own
+//      sheet — the "unverified app" warning is expected for a script you just
+//      wrote; click Advanced > Go to project (unsafe) > Allow).
+//   6. Copy the Web app URL it gives you and send it back — it goes into the
+//      ENDPOINT constant in anesocalc/beta/index.html and
+//      anesocalc/beta/feedback.html on the site.
+//
+// This file itself is not executed by the site — it's a reference copy of
+// what's pasted into the Apps Script editor, kept here for version control.
+
+function doPost(e) {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var data = e.parameter;
+  var formType = data.formType || 'unknown';
+
+  if (formType === 'signup') {
+    var sheet = getOrCreateSheet(ss, 'Beta Signups',
+      ['Timestamp', 'Name', 'Email', 'Device', 'iOS Version', 'Notes']);
+    sheet.appendRow([
+      new Date(), data.name || '', data.email || '',
+      data.device || '', data.iosVersion || '', data.notes || ''
+    ]);
+    notifyNewSignup(data, ss);
+  } else if (formType === 'feedback') {
+    var fsheet = getOrCreateSheet(ss, 'Feedback',
+      ['Timestamp', 'Name', 'Email', 'Rating', "What's Working", 'Issues / Bugs', 'Feature Requests']);
+    fsheet.appendRow([
+      new Date(), data.name || '', data.email || '', data.rating || '',
+      data.working || '', data.issues || '', data.requests || ''
+    ]);
+  }
+
+  return ContentService
+    .createTextOutput(JSON.stringify({ status: 'ok' }))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+
+function notifyNewSignup(data, ss) {
+  try {
+    MailApp.sendEmail({
+      to: 'andrew.peace@burrell.edu',
+      subject: 'New AnesCalc beta tester: ' + (data.name || data.email || 'Unknown'),
+      body:
+        'A new beta tester signed up.\n\n' +
+        'Name: ' + (data.name || '') + '\n' +
+        'Email: ' + (data.email || '') + '\n' +
+        'Device: ' + (data.device || '') + '\n' +
+        'iOS Version: ' + (data.iosVersion || '') + '\n' +
+        'Notes: ' + (data.notes || '') + '\n\n' +
+        'View all responses: ' + ss.getUrl()
+    });
+  } catch (err) {
+    // Swallow — a failed notification shouldn't fail the signup itself.
+  }
+}
+
+function getOrCreateSheet(ss, name, headers) {
+  var sheet = ss.getSheetByName(name);
+  if (!sheet) {
+    sheet = ss.insertSheet(name);
+    sheet.appendRow(headers);
+    sheet.setFrozenRows(1);
+  }
+  var placeholder = ss.getSheetByName('Sheet1');
+  if (placeholder && ss.getSheets().length > 1) {
+    ss.deleteSheet(placeholder);
+  }
+  return sheet;
+}

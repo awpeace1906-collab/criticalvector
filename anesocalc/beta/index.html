@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Become an AnesCalc Beta Tester</title>
+<meta name="description" content="Sign up to beta test AnesCalc, a native iOS anesthesia clinical calculator.">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg: #ECEEF5; --card: #FFFFFF; --card-alt: #F3EEE6;
+    --border: #D7DBE8; --border-soft: #C9D2EC;
+    --navy: #253E85; --navy-dim: rgba(37,62,133,.07);
+    --gold: #8A6D47; --gold-soft: #BD9B70; --gold-dim: rgba(189,155,112,.16);
+    --text: #231F20; --text2: #3a3f4f; --text3: #5A6176;
+  }
+  body {
+    background: var(--bg); color: var(--text2);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height: 1.6; padding: 48px 24px 80px;
+  }
+  .wrap { max-width: 520px; margin: 0 auto; }
+  a { color: var(--gold); }
+  .back { display: inline-block; color: var(--text3); font-size: 0.82rem; margin-bottom: 28px; text-decoration: none; }
+  .back:hover { color: var(--navy); }
+
+  .badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--navy); color: #fff; font-size: 0.72rem; font-weight: 600;
+    letter-spacing: 0.04em; text-transform: uppercase;
+    padding: 5px 12px; border-radius: 20px; margin-bottom: 20px;
+  }
+  .badge .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold-soft); }
+
+  h1 { font-size: 1.7rem; font-weight: 700; color: var(--navy); line-height: 1.3; margin-bottom: 10px; }
+  .sub { font-size: 0.98rem; color: var(--text2); margin-bottom: 32px; }
+
+  form { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 28px; }
+  label { display: block; font-size: 0.8rem; font-weight: 700; color: var(--navy); text-transform: uppercase; letter-spacing: 0.03em; margin: 18px 0 6px; }
+  label:first-child { margin-top: 0; }
+  input, select, textarea {
+    width: 100%; font-family: inherit; font-size: 0.95rem; color: var(--text);
+    background: var(--bg); border: 1px solid var(--border); border-radius: 8px;
+    padding: 10px 12px; outline: none;
+  }
+  input:focus, select:focus, textarea:focus { border-color: var(--gold-soft); }
+  textarea { resize: vertical; min-height: 80px; }
+  .req { color: var(--gold); }
+
+  button {
+    width: 100%; margin-top: 24px; background: var(--navy); color: #fff;
+    border: none; border-radius: 8px; padding: 13px; font-size: 0.95rem; font-weight: 600;
+    font-family: inherit; cursor: pointer;
+  }
+  button:hover { background: #1c2f68; }
+  button:disabled { opacity: 0.6; cursor: default; }
+
+  .note { font-size: 0.78rem; color: var(--text3); margin-top: 14px; text-align: center; }
+
+  .success {
+    display: none; background: var(--card); border: 1px solid var(--border);
+    border-left: 3px solid var(--gold-soft); border-radius: 12px; padding: 28px; text-align: center;
+  }
+  .success h2 { color: var(--navy); font-size: 1.3rem; margin-bottom: 8px; }
+  .success p { color: var(--text2); font-size: 0.92rem; }
+
+  .footer-cv { font-size: 0.7rem; color: var(--border-soft); text-align: center; margin-top: 40px; }
+  .footer-cv a { color: var(--border-soft); }
+  .footer-cv a:hover { color: var(--text3); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back" href="../asa2026/">← AnesCalc ASA 2026 ePoster</a>
+
+  <div class="badge"><span class="dot"></span>Beta Program</div>
+  <h1>Become an AnesCalc Beta Tester</h1>
+  <p class="sub">AnesCalc is a native iOS anesthesia clinical calculator, currently in active development. Sign up below and you'll get a TestFlight invite as new builds go out.</p>
+
+  <form id="signupForm">
+    <label for="name">Name <span class="req">*</span></label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="email">Email <span class="req">*</span></label>
+    <input type="email" id="email" name="email" required placeholder="For your TestFlight invite">
+
+    <label for="device">Device</label>
+    <select id="device" name="device">
+      <option value="iPhone">iPhone</option>
+      <option value="iPad">iPad</option>
+      <option value="Both">Both</option>
+    </select>
+
+    <label for="iosVersion">iOS Version <span style="text-transform:none;font-weight:500;color:var(--text3);">(optional)</span></label>
+    <input type="text" id="iosVersion" name="iosVersion" placeholder="e.g. iOS 18.2">
+
+    <label for="notes">What draws you to testing AnesCalc? <span style="text-transform:none;font-weight:500;color:var(--text3);">(optional)</span></label>
+    <textarea id="notes" name="notes" placeholder="Clinical background, specialty, what you're hoping to try..."></textarea>
+
+    <button type="submit" id="submitBtn">Sign Up to Test</button>
+    <p class="note">Your info is used only to send TestFlight invites and beta updates — never shared.</p>
+  </form>
+
+  <div class="success" id="successMsg">
+    <h2>You're on the list</h2>
+    <p>Thanks for signing up — a TestFlight invite will follow as new builds go out. Once you've had a chance to try it, feedback is always welcome.</p>
+  </div>
+
+  <div class="footer-cv"><a href="https://awpeace1906-collab.github.io/criticalvector/">The Critical Vector</a></div>
+
+</div>
+<script>
+  const ENDPOINT = "https://script.google.com/macros/s/AKfycbwsjtuO0ddTXX7IeKm6oOka2BpanxdP9_M3puO_ovu4oO-4HV4-LLQ1VfTRH6dottwN/exec";
+
+  const form = document.getElementById('signupForm');
+  const btn = document.getElementById('submitBtn');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    btn.disabled = true;
+    btn.textContent = 'Signing up…';
+
+    const body = new URLSearchParams({
+      formType: 'signup',
+      name: form.name.value,
+      email: form.email.value,
+      device: form.device.value,
+      iosVersion: form.iosVersion.value,
+      notes: form.notes.value
+    });
+
+    try {
+      await fetch(ENDPOINT, { method: 'POST', mode: 'no-cors', body });
+      form.style.display = 'none';
+      document.getElementById('successMsg').style.display = 'block';
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = 'Sign Up to Test';
+      alert('Something went wrong — please try again in a moment.');
+    }
+  });
+</script>
+</body>
+</html>

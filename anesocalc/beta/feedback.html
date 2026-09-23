@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AnesCalc Beta Feedback</title>
+<meta name="description" content="Feedback form for AnesCalc beta testers.">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg: #ECEEF5; --card: #FFFFFF; --card-alt: #F3EEE6;
+    --border: #D7DBE8; --border-soft: #C9D2EC;
+    --navy: #253E85; --navy-dim: rgba(37,62,133,.07);
+    --gold: #8A6D47; --gold-soft: #BD9B70; --gold-dim: rgba(189,155,112,.16);
+    --text: #231F20; --text2: #3a3f4f; --text3: #5A6176;
+  }
+  body {
+    background: var(--bg); color: var(--text2);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height: 1.6; padding: 48px 24px 80px;
+  }
+  .wrap { max-width: 520px; margin: 0 auto; }
+  a { color: var(--gold); }
+  .back { display: inline-block; color: var(--text3); font-size: 0.82rem; margin-bottom: 28px; text-decoration: none; }
+  .back:hover { color: var(--navy); }
+
+  .badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--navy); color: #fff; font-size: 0.72rem; font-weight: 600;
+    letter-spacing: 0.04em; text-transform: uppercase;
+    padding: 5px 12px; border-radius: 20px; margin-bottom: 20px;
+  }
+  .badge .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold-soft); }
+
+  h1 { font-size: 1.7rem; font-weight: 700; color: var(--navy); line-height: 1.3; margin-bottom: 10px; }
+  .sub { font-size: 0.98rem; color: var(--text2); margin-bottom: 32px; }
+
+  form { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 28px; }
+  label { display: block; font-size: 0.8rem; font-weight: 700; color: var(--navy); text-transform: uppercase; letter-spacing: 0.03em; margin: 18px 0 6px; }
+  label:first-child { margin-top: 0; }
+  .optional { text-transform: none; font-weight: 500; color: var(--text3); }
+  input, select, textarea {
+    width: 100%; font-family: inherit; font-size: 0.95rem; color: var(--text);
+    background: var(--bg); border: 1px solid var(--border); border-radius: 8px;
+    padding: 10px 12px; outline: none;
+  }
+  input:focus, select:focus, textarea:focus { border-color: var(--gold-soft); }
+  textarea { resize: vertical; min-height: 80px; }
+
+  .rating { display: flex; gap: 8px; }
+  .rating label {
+    flex: 1; margin: 0; text-align: center; text-transform: none; font-weight: 600;
+    background: var(--bg); border: 1px solid var(--border); border-radius: 8px;
+    padding: 10px 0; cursor: pointer; color: var(--text2); font-size: 0.9rem;
+  }
+  .rating input { display: none; }
+  .rating input:checked + label { background: var(--navy); color: #fff; border-color: var(--navy); }
+
+  button {
+    width: 100%; margin-top: 24px; background: var(--navy); color: #fff;
+    border: none; border-radius: 8px; padding: 13px; font-size: 0.95rem; font-weight: 600;
+    font-family: inherit; cursor: pointer;
+  }
+  button:hover { background: #1c2f68; }
+  button:disabled { opacity: 0.6; cursor: default; }
+
+  .success {
+    display: none; background: var(--card); border: 1px solid var(--border);
+    border-left: 3px solid var(--gold-soft); border-radius: 12px; padding: 28px; text-align: center;
+  }
+  .success h2 { color: var(--navy); font-size: 1.3rem; margin-bottom: 8px; }
+  .success p { color: var(--text2); font-size: 0.92rem; }
+
+  .footer-cv { font-size: 0.7rem; color: var(--border-soft); text-align: center; margin-top: 40px; }
+  .footer-cv a { color: var(--border-soft); }
+  .footer-cv a:hover { color: var(--text3); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back" href="../asa2026/">← AnesCalc ASA 2026 ePoster</a>
+
+  <div class="badge"><span class="dot"></span>Beta Program</div>
+  <h1>AnesCalc Beta Feedback</h1>
+  <p class="sub">Thanks for testing AnesCalc — a few minutes of feedback directly shapes the next build.</p>
+
+  <form id="feedbackForm">
+    <div class="rating-group">
+      <label>Overall, how's it going?</label>
+      <div class="rating">
+        <input type="radio" id="r1" name="rating" value="1"><label for="r1">1</label>
+        <input type="radio" id="r2" name="rating" value="2"><label for="r2">2</label>
+        <input type="radio" id="r3" name="rating" value="3"><label for="r3">3</label>
+        <input type="radio" id="r4" name="rating" value="4"><label for="r4">4</label>
+        <input type="radio" id="r5" name="rating" value="5"><label for="r5">5</label>
+      </div>
+    </div>
+
+    <label for="working">What's working well? <span class="optional">(optional)</span></label>
+    <textarea id="working" name="working"></textarea>
+
+    <label for="issues">Any issues or bugs?</label>
+    <textarea id="issues" name="issues" placeholder="What happened, and what device/iOS version were you on?"></textarea>
+
+    <label for="requests">Anything you wish it did? <span class="optional">(optional)</span></label>
+    <textarea id="requests" name="requests"></textarea>
+
+    <label for="name">Name <span class="optional">(optional)</span></label>
+    <input type="text" id="name" name="name">
+
+    <label for="email">Email <span class="optional">(optional, in case there's a follow-up)</span></label>
+    <input type="email" id="email" name="email">
+
+    <button type="submit" id="submitBtn">Send Feedback</button>
+  </form>
+
+  <div class="success" id="successMsg">
+    <h2>Thank you</h2>
+    <p>Your feedback was sent. It genuinely shapes what gets fixed and built next.</p>
+  </div>
+
+  <div class="footer-cv"><a href="https://awpeace1906-collab.github.io/criticalvector/">The Critical Vector</a></div>
+
+</div>
+<script>
+  const ENDPOINT = "https://script.google.com/macros/s/AKfycbwsjtuO0ddTXX7IeKm6oOka2BpanxdP9_M3puO_ovu4oO-4HV4-LLQ1VfTRH6dottwN/exec";
+
+  const form = document.getElementById('feedbackForm');
+  const btn = document.getElementById('submitBtn');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    const ratingEl = form.querySelector('input[name="rating"]:checked');
+    const body = new URLSearchParams({
+      formType: 'feedback',
+      rating: ratingEl ? ratingEl.value : '',
+      working: form.working.value,
+      issues: form.issues.value,
+      requests: form.requests.value,
+      name: form.name.value,
+      email: form.email.value
+    });
+
+    try {
+      await fetch(ENDPOINT, { method: 'POST', mode: 'no-cors', body });
+      form.style.display = 'none';
+      document.getElementById('successMsg').style.display = 'block';
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = 'Send Feedback';
+      alert('Something went wrong — please try again in a moment.');
+    }
+  });
+</script>
+</body>
+</html>

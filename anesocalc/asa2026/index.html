@@ -170,6 +170,18 @@
     h1 .title-sub { font-size: 1rem; }
     body { padding: 32px 16px 60px; }
   }
+
+  .tester-badge {
+    position: fixed; bottom: 18px; right: 18px; z-index: 20;
+    display: flex; align-items: center; gap: 8px;
+    background: var(--navy); color: #fff; text-decoration: none;
+    font-size: 0.8rem; font-weight: 600; letter-spacing: 0.02em;
+    padding: 10px 16px; border-radius: 24px;
+    box-shadow: 0 4px 16px rgba(37,62,133,.35);
+  }
+  .tester-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold-soft); flex: none; }
+  .tester-badge:hover { background: #1c2f68; text-decoration: none; }
+  @media (max-width: 600px) { .tester-badge { font-size: 0.74rem; padding: 8px 13px; bottom: 12px; right: 12px; } }
 </style>
 </head>
 <body>
@@ -186,6 +198,12 @@
     <div class="session-item"><div class="label">Session</div><div class="value">Equipment, Monitoring &amp; Engineering Technology VII — ePosters</div></div>
     <div class="session-item"><div class="label">Abstract</div><div class="value">A1325 · Control #26-SA-9624-ASAHQ</div></div>
   </div>
+
+  <h2>Abstract</h2>
+  <p>A third-year medical student engaged a conversational AI assistant (Claude, Anthropic) in an iterative development session to design and build a comprehensive anesthesia clinical decision support platform, with no prior software engineering experience. All AI-generated drug dosing, pharmacokinetic parameters, and clinical protocols were independently verified against UpToDate prior to inclusion.</p>
+  <p>The workflow proceeded in three phases: structured requirements elicitation across 14 clinical domains; a Microsoft Excel prototype with 116 live formulae as a validated reference layer; and a native iOS/iPadOS SwiftUI application (iOS 17+) incorporating all calculation domains, a TIVA module with Marsh/Schnider propofol pharmacokinetic modeling, a labor and regional obstetric module with five indication-specific protocols, and a searchable drug reference library. Debugging followed a patch-based workflow in which Xcode compiler errors were submitted verbatim to the AI and resolved across targeted iterations.</p>
+  <p>A fully functional, offline-capable native iOS application was produced without the student writing a single line of code, compiling and running on physical iPhone and iPad hardware across seven discrete compiler-error resolution cycles. All dosing outputs were confirmed accurate against UpToDate references, including age-corrected MAC algorithms, weight-based pediatric dosing, and obstetric-specific vasopressor guidance.</p>
+  <p>This case demonstrates that AI-assisted vibe coding may democratize clinical software development beyond attending-level practitioners. Independent verification against established clinical references is feasible within this workflow and essential for safe deployment. Early trainees may be uniquely positioned to leverage AI-assisted development, translating emerging clinical knowledge into validated bedside tools during training itself.</p>
 
   <h2>Background</h2>
   <p class="lede">Large language model (LLM)-based AI has introduced a software development paradigm termed <strong>"vibe coding"</strong>: domain experts without formal programming training direct AI to iteratively generate, debug, and refine production-ready code through natural language. The bottleneck moves from programming skill to clinical domain expertise. The application shown here is a worked example.</p>
@@ -287,12 +305,6 @@
   </video>
   <p class="video-caption">AnesCalc v2.0 walkthrough — patient inputs, live calculations, drug reference library, and PDF export.</p>
 
-  <h2>Methods, Results &amp; Conclusions</h2>
-  <p>A third-year medical student engaged a conversational AI assistant (Claude, Anthropic) in an iterative development session to design and build a comprehensive anesthesia clinical decision support platform, with no prior software engineering experience. All AI-generated drug dosing, pharmacokinetic parameters, and clinical protocols were independently verified against UpToDate prior to inclusion.</p>
-  <p>The workflow proceeded in three phases: structured requirements elicitation across 14 clinical domains; a Microsoft Excel prototype with 116 live formulae as a validated reference layer; and a native iOS/iPadOS SwiftUI application (iOS 17+) incorporating all calculation domains, a TIVA module with Marsh/Schnider propofol pharmacokinetic modeling, a labor and regional obstetric module with five indication-specific protocols, and a searchable drug reference library. Debugging followed a patch-based workflow in which Xcode compiler errors were submitted verbatim to the AI and resolved across targeted iterations.</p>
-  <p>A fully functional, offline-capable native iOS application was produced without the student writing a single line of code, compiling and running on physical iPhone and iPad hardware across seven discrete compiler-error resolution cycles. All dosing outputs were confirmed accurate against UpToDate references, including age-corrected MAC algorithms, weight-based pediatric dosing, and obstetric-specific vasopressor guidance.</p>
-  <p>This case demonstrates that AI-assisted vibe coding may democratize clinical software development beyond attending-level practitioners. Independent verification against established clinical references is feasible within this workflow and essential for safe deployment. Early trainees may be uniquely positioned to leverage AI-assisted development, translating emerging clinical knowledge into validated bedside tools during training itself.</p>
-
   <h2>Materials</h2>
   <div class="downloads">
     <a class="dl-btn" href="media/AnesCalc_ASA2026_ePoster.pptx" download>↓ ePoster (.pptx)</a>
@@ -312,5 +324,8 @@
   <div class="footer-cv"><a href="https://awpeace1906-collab.github.io/criticalvector/">The Critical Vector</a></div>
 
 </div>
+
+<a class="tester-badge" href="../beta/"><span class="dot"></span>Testers Wanted</a>
+
 </body>
 </html>
