@@ -114,9 +114,13 @@
     color: #fff; font-weight: 700; font-size: 0.9rem;
     display: flex; align-items: center; justify-content: center;
   }
+  .workflow-step.ai .n { background: #3F8F5F; }
   .workflow-step .t { font-weight: 600; color: var(--navy); font-size: 0.92rem; }
   .workflow-step .d { font-size: 0.84rem; color: var(--text3); margin-top: 2px; }
   .workflow-repeat { font-size: 0.78rem; color: var(--text3); font-style: italic; padding-left: 48px; }
+  .workflow-legend { font-size: 0.76rem; color: var(--text3); padding-left: 48px; display: flex; gap: 16px; }
+  .workflow-legend span::before { content: ""; display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 6px; background: var(--gold-soft); }
+  .workflow-legend span.ai::before { background: #3F8F5F; }
 
   .shot-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
   .shot { background: var(--card); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
@@ -175,25 +179,25 @@
     position: fixed; bottom: 22px; right: 22px; z-index: 20;
     display: flex; align-items: center; gap: 10px;
     background: var(--gold-soft); color: var(--navy); text-decoration: none;
-    font-size: 0.98rem; font-weight: 700; letter-spacing: 0.02em;
-    padding: 15px 24px; border-radius: 30px;
+    font-size: 1.225rem; font-weight: 700; letter-spacing: 0.02em;
+    padding: 19px 30px; border-radius: 38px;
     box-shadow: 0 8px 24px rgba(138,109,71,.5);
     animation: tester-pulse 2.6s ease-in-out infinite;
   }
-  .tester-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--navy); flex: none; }
+  .tester-badge .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--navy); flex: none; }
   .tester-badge:hover { background: #cfae82; transform: scale(1.05); text-decoration: none; }
   @keyframes tester-pulse {
     0%, 100% { box-shadow: 0 8px 24px rgba(138,109,71,.5); }
     50% { box-shadow: 0 8px 28px rgba(138,109,71,.75), 0 0 0 8px rgba(189,155,112,.18); }
   }
   @media (prefers-reduced-motion: reduce) { .tester-badge { animation: none; } }
-  @media (max-width: 600px) { .tester-badge { font-size: 0.86rem; padding: 12px 19px; bottom: 14px; right: 14px; } }
+  @media (max-width: 600px) { .tester-badge { font-size: 1.075rem; padding: 15px 24px; bottom: 14px; right: 14px; } }
 </style>
 </head>
 <body>
 <div class="wrap">
 
-  <div class="event-badge"><span class="dot"></span>ANESTHESIOLOGY® 2026 · San Diego, CA</div>
+  <div class="event-badge"><span class="dot"></span>ANESTHESIOLOGY® 2026 · San Diego, CA · October 16–20, 2026 · #ANES26</div>
 
   <h1>AI-Assisted "Vibe Coding" for Clinical Workflow Optimization<span class="title-sub">An Anesthesiology Use Case</span></h1>
 
@@ -201,7 +205,7 @@
   <p class="affil">¹²Burrell College School of Osteopathic Medicine, Class of 2027 &nbsp;—&nbsp; ¹Las Cruces, NM &nbsp;·&nbsp; ²Albuquerque, NM</p>
 
   <div class="session-card">
-    <div class="session-item"><div class="label">Session</div><div class="value">Equipment, Monitoring &amp; Engineering Technology VII — ePosters</div></div>
+    <div class="session-item"><div class="label">Session</div><div class="value">Session 08.5 · Equipment, Monitoring, and Engineering Technology – Machine Learning/AI</div></div>
     <div class="session-item"><div class="label">Abstract</div><div class="value">A1325 · Control #26-SA-9624-ASAHQ</div></div>
   </div>
 
@@ -212,41 +216,43 @@
   <p>This case demonstrates that AI-assisted vibe coding may democratize clinical software development beyond attending-level practitioners. Independent verification against established clinical references is feasible within this workflow and essential for safe deployment. Early trainees may be uniquely positioned to leverage AI-assisted development, translating emerging clinical knowledge into validated bedside tools during training itself.</p>
 
   <h2>Background</h2>
-  <p class="lede">Large language model (LLM)-based AI has introduced a software development paradigm termed <strong>"vibe coding"</strong>: domain experts without formal programming training direct AI to iteratively generate, debug, and refine production-ready code through natural language. The bottleneck moves from programming skill to clinical domain expertise. The application shown here is a worked example.</p>
+  <p class="lede">In the traditional software development pipeline, software engineering expertise often represents a bottleneck between ideation and a working prototype. Large language models (LLMs) have lowered this barrier, enabling end users, including clinicians, to translate novel ideas into functional applications tailored to their workflows through an emerging practice sometimes termed <strong>"vibe coding."</strong> The following workflow was used to develop an iOS application providing point-of-care anesthetic reference values.</p>
 
   <h2>Development Workflow</h2>
+  <p class="lede"><em>An iterative build loop with the AI assistant</em></p>
   <div class="workflow">
     <div class="workflow-step"><div class="n">1</div><div><div class="t">Think of an application</div><div class="d">User forms the idea</div></div></div>
     <div class="workflow-step"><div class="n">2</div><div><div class="t">Define constraints</div><div class="d">User gives the AI requirements</div></div></div>
-    <div class="workflow-step"><div class="n">3</div><div><div class="t">Create a prototype</div><div class="d">AI builds a first version</div></div></div>
+    <div class="workflow-step ai"><div class="n">3</div><div><div class="t">Create a prototype</div><div class="d">AI builds a first version</div></div></div>
     <div class="workflow-step"><div class="n">4</div><div><div class="t">Test the prototype</div><div class="d">Try it, gather feedback</div></div></div>
     <div class="workflow-step"><div class="n">5</div><div><div class="t">Define new features</div><div class="d">Identify what to add</div></div></div>
-    <div class="workflow-step"><div class="n">6</div><div><div class="t">Build the next version</div><div class="d">AI updates the prototype</div></div></div>
+    <div class="workflow-step ai"><div class="n">6</div><div><div class="t">Build the next version</div><div class="d">AI updates the prototype</div></div></div>
   </div>
-  <p class="workflow-repeat">Steps 4–6 repeat until the prototype meets requirements.</p>
+  <p class="workflow-repeat">Steps 4–6 repeat until the prototype meets requirements. No programming training needed — <strong>zero lines of code authored by hand.</strong></p>
+  <p class="workflow-legend"><span>User</span><span class="ai">AI</span></p>
 
-  <h2>Worked Example — AnesCalc</h2>
-  <p class="lede">A native iOS anesthesia calculator, built end to end through this workflow.</p>
+  <h2>Worked Example — AnesCalc, a Native iOS Anesthesia Calculator</h2>
+  <p class="lede">Built end to end through this workflow.</p>
   <div class="shot-grid">
-    <div class="shot"><img src="media/screenshot_patient_inputs.png" alt="AnesCalc patient inputs screen" loading="lazy"><div class="cap">Patient inputs — demographics, perioperative parameters, ABG &amp; pulmonary</div></div>
-    <div class="shot"><img src="media/screenshot_ob_epidural.png" alt="AnesCalc OB/epidural module screen" loading="lazy"><div class="cap">Labor &amp; regional obstetric module — indication-specific dosing</div></div>
-    <div class="shot"><img src="media/screenshot_drug_reference.png" alt="AnesCalc drug reference library screen" loading="lazy"><div class="cap">Searchable drug reference — 55 cards across 14 classes</div></div>
+    <div class="shot"><img src="media/screenshot_patient_inputs.png" alt="AnesCalc patient inputs screen" loading="lazy"><div class="cap">Patient inputs</div></div>
+    <div class="shot"><img src="media/screenshot_ob_epidural.png" alt="AnesCalc results dashboard screen" loading="lazy"><div class="cap">Results dashboard</div></div>
+    <div class="shot"><img src="media/screenshot_drug_reference.png" alt="AnesCalc drug reference library screen" loading="lazy"><div class="cap">Drug reference cards</div></div>
   </div>
 
-  <h2>At a Glance</h2>
+  <h2>Scope — v1.0 Session → v2.0 Today</h2>
   <div class="stat-grid">
     <div class="stat-card"><div class="num"><span class="from">116→</span>236</div><div class="label">Live calculations</div></div>
     <div class="stat-card"><div class="num"><span class="from">10→</span>55</div><div class="label">Drug reference cards</div></div>
-    <div class="stat-card"><div class="num"><span class="from">0→</span>10</div><div class="label">Bedside clinical tools</div></div>
-    <div class="stat-card"><div class="num">0</div><div class="label">Lines of code authored</div></div>
+    <div class="stat-card"><div class="num"><span class="from">0→</span>10</div><div class="label">Clinical tools</div></div>
+    <div class="stat-card"><div class="num"><span class="from">0→</span>0</div><div class="label">Lines of code authored</div></div>
   </div>
 
   <h2>Features</h2>
   <ul class="plain">
-    <li><strong>16 clinical domains</strong> — MAC, NMB, TIVA, vasopressors, LAST, OB, peds, and more</li>
-    <li><strong>55 drug reference cards</strong> spanning 14 classes, fully searchable</li>
-    <li><strong>10 bedside clinical tools</strong> — RSBI, RASS, Fick CO, driving pressure, and others</li>
-    <li><strong>100% offline</strong> — no data transmitted off-device</li>
+    <li><strong>16 clinical domains</strong> — MAC, NMB, TIVA, vasopressors, LAST, OB, peds</li>
+    <li><strong>55 drug reference cards</strong> — 14 classes, searchable</li>
+    <li><strong>10 bedside clinical tools</strong> — RSBI, RASS, Fick, driving pressure</li>
+    <li><strong>100% offline</strong> — no data transmitted</li>
     <li>Also: OB/regional protocols · unit conversions · PDF export</li>
   </ul>
 
@@ -257,23 +263,31 @@
       <div class="item"><div class="num">24</div><div class="label">Sections</div></div>
       <div class="item"><div class="num">3</div><div class="label">Independent passes</div></div>
     </div>
-    <p style="margin-bottom:0;">An external reviewer independently audited every calculation. Each entry passed through triage, a targeted deep dive, then a full independent literature search — cross-referenced against UpToDate, Miller's 9e, and Barash 8e. All confirmed discrepancies were corrected before the version was finalized.</p>
+    <p style="margin-bottom:0;">An external reviewer independently audited every calculation. Each entry passed through triage, a targeted deep dive, then a full independent literature search — cross-referenced against UpToDate, Miller's 9e, and Barash 8e. <strong>All confirmed discrepancies were corrected before version finalized.</strong></p>
   </div>
 
   <h2>Beyond This Application</h2>
-  <p><span class="quote-lead">The workflow is replicable, making this a viable option for the future of clinical workflow program design.</span> The same six steps apply to almost any clinical need: custom calculators and order-set helpers inside the EMR, desktop widgets for rapid reference at the workstation, anesthetic plan generators from structured case data, custom case simulators for resident training, and departmental protocol, checklist, and QI dashboards.</p>
+  <p><span class="quote-lead">The workflow, not the app, is the transferable product.</span> The same six steps apply to almost any clinical need:</p>
+  <ul class="plain">
+    <li>Custom calculators and order-set helpers inside the EMR</li>
+    <li>Desktop widgets for rapid reference at the workstation</li>
+    <li>Anesthetic plan generators from structured case data</li>
+    <li>Custom case simulators for resident training</li>
+    <li>Departmental protocol, checklist, and QI dashboards</li>
+  </ul>
 
   <h2>Limitations &amp; Future Work</h2>
   <h3>Of AI-assisted development, generally</h3>
   <ul class="plain">
     <li>LLMs reason in language, not graphics — visual and UI design still require human iteration</li>
-    <li>Output is bounded by the model's knowledge and the target platform's SDK</li>
+    <li>Output is bounded by the model's knowledge and the target platform's Software Development Kit</li>
     <li>Hardware and OS compatibility must be verified on real devices</li>
     <li>Institutional IT and security policy may restrict custom software and PHI handling</li>
   </ul>
   <h3>Of this implementation</h3>
   <ul class="plain">
     <li>iOS only; not a regulated medical device — every output requires clinician verification</li>
+    <li>Final product capability is constrained by the LLM's tooling — user-defined feature scope is bounded by what the model can generate</li>
   </ul>
   <h3>Future work</h3>
   <ul class="plain">
@@ -317,7 +331,7 @@
     <a class="dl-btn" href="media/anescalc_demo.mp4" download>↓ Demo video (.mp4)</a>
   </div>
 
-  <h2>Contact</h2>
+  <h2>Acknowledgments / Contact</h2>
   <div class="contact-card">
     <div class="name">Andrew Peace, BS, FP-C</div>
     <div class="role">OMS-III, Burrell College School of Osteopathic Medicine · Class of 2027</div>
