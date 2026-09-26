@@ -19,6 +19,8 @@
     --gold: #8A6D47;
     --gold-soft: #BD9B70;
     --gold-dim: rgba(189,155,112,.16);
+    --gold-text: #7A5E3D; /* gold that passes WCAG AA on light cards */
+    --green: #2E7A4E;
     --text: #231F20;
     --text2: #3a3f4f;
     --text3: #5A6176;
@@ -28,7 +30,7 @@
     color: var(--text2);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     line-height: 1.65;
-    padding: 48px 24px 80px;
+    padding: 48px 24px 130px; /* bottom space keeps the fixed Testers Wanted badge off the footer */
   }
   .wrap { max-width: 860px; margin: 0 auto; }
   a { color: var(--gold); text-decoration: none; }
@@ -101,7 +103,7 @@
     padding: 16px; text-align: center;
   }
   .stat-card .num { font-size: 1.7rem; font-weight: 700; color: var(--navy); line-height: 1.1; }
-  .stat-card .num .from { font-size: 1rem; color: var(--gold-soft); font-weight: 400; }
+  .stat-card .num .from { font-size: 1rem; color: var(--gold-text); font-weight: 400; }
   .stat-card .label { font-size: 0.76rem; color: var(--text3); margin-top: 4px; }
 
   .workflow { display: flex; flex-direction: column; gap: 10px; }
@@ -110,17 +112,17 @@
     background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 12px 16px;
   }
   .workflow-step .n {
-    width: 34px; height: 34px; border-radius: 50%; background: var(--gold-soft);
+    width: 34px; height: 34px; border-radius: 50%; background: var(--gold);
     color: #fff; font-weight: 700; font-size: 0.9rem;
     display: flex; align-items: center; justify-content: center;
   }
-  .workflow-step.ai .n { background: #3F8F5F; }
+  .workflow-step.ai .n { background: var(--green); }
   .workflow-step .t { font-weight: 600; color: var(--navy); font-size: 0.92rem; }
   .workflow-step .d { font-size: 0.84rem; color: var(--text3); margin-top: 2px; }
   .workflow-repeat { font-size: 0.78rem; color: var(--text3); font-style: italic; padding-left: 48px; }
   .workflow-legend { font-size: 0.76rem; color: var(--text3); padding-left: 48px; display: flex; gap: 16px; }
-  .workflow-legend span::before { content: ""; display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 6px; background: var(--gold-soft); }
-  .workflow-legend span.ai::before { background: #3F8F5F; }
+  .workflow-legend span::before { content: ""; display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 6px; background: var(--gold); }
+  .workflow-legend span.ai::before { background: var(--green); }
 
   .shot-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
   .shot { background: var(--card); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
@@ -165,27 +167,72 @@
 
   hr { border: none; border-top: 1px solid var(--border); margin: 48px 0 20px; }
   .footer { font-size: 0.78rem; color: var(--text3); text-align: center; }
-  .footer-cv { font-size: 0.7rem; color: var(--border-soft); text-align: center; margin-top: 10px; }
-  .footer-cv a { color: var(--border-soft); }
-  .footer-cv a:hover { color: var(--text3); }
+  .footer-cv { font-size: 0.7rem; color: var(--text3); text-align: center; margin-top: 10px; }
+  .footer-cv a { color: var(--text3); }
+  .footer-cv a:hover { color: var(--navy); }
 
   @media (max-width: 600px) {
     h1 { font-size: 1.4rem; }
     h1 .title-sub { font-size: 1rem; }
-    body { padding: 32px 16px 60px; }
+    body { padding: 32px 16px 110px; }
   }
+
+
+  .hero-video { margin-top: 18px; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+  .cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 0.92rem; font-weight: 600; padding: 11px 18px; border-radius: 8px;
+    border: 1px solid var(--border); background: var(--card); color: var(--navy);
+  }
+  .cta.primary { background: var(--navy); border-color: var(--navy); color: #fff; }
+  .cta:hover { border-color: var(--gold); text-decoration: none; }
+  .cta.primary:hover { background: #1c3170; }
+
+  details.abstract {
+    background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 14px 20px;
+  }
+  details.abstract summary {
+    cursor: pointer; font-weight: 600; color: var(--navy); font-size: 0.94rem; list-style: none;
+  }
+  details.abstract summary::-webkit-details-marker { display: none; }
+  details.abstract summary::before { content: "+"; display: inline-block; width: 18px; color: var(--gold); font-weight: 700; }
+  details.abstract[open] summary::before { content: "–"; }
+  details.abstract[open] summary { margin-bottom: 12px; }
+  details.abstract p { font-size: 0.93rem; }
+
+  .calc {
+    background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px;
+  }
+  .calc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 14px; }
+  .calc label { display: block; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gold-text); margin-bottom: 5px; }
+  .calc label .opt { text-transform: none; letter-spacing: 0; font-weight: 400; color: var(--text3); }
+  .calc input, .calc select {
+    width: 100%; font: inherit; font-size: 1rem; color: var(--text);
+    background: var(--bg); border: 1px solid var(--border); border-radius: 7px; padding: 9px 11px;
+  }
+  .calc input:focus, .calc select:focus { outline: 2px solid var(--navy); outline-offset: 1px; }
+  .calc-out { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 14px; margin-top: 18px; }
+  .calc-out .stat-card .num { font-size: 1.5rem; }
+  @media (max-width: 600px) {
+    .shot-grid { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 12px; margin: 0 -16px; padding: 0 16px 6px; }
+    .shot { flex: 0 0 78%; scroll-snap-align: center; }
+    .swipe-hint { display: block; }
+  }
+  .swipe-hint { display: none; font-size: 0.76rem; color: var(--text3); text-align: center; margin-top: 6px; }
+  .calc-note { font-size: 0.78rem; color: var(--text3); margin: 14px 0 0; }
 
   .tester-badge {
     position: fixed; bottom: 22px; right: 22px; z-index: 20;
     display: flex; align-items: center; gap: 10px;
-    background: var(--gold-soft); color: var(--navy); text-decoration: none;
+    background: #CFB288; color: var(--navy); text-decoration: none;
     font-size: 1.225rem; font-weight: 700; letter-spacing: 0.02em;
     padding: 19px 30px; border-radius: 38px;
     box-shadow: 0 8px 24px rgba(138,109,71,.5);
     animation: tester-pulse 2.6s ease-in-out infinite;
   }
   .tester-badge .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--navy); flex: none; }
-  .tester-badge:hover { background: #cfae82; transform: scale(1.05); text-decoration: none; }
+  .tester-badge:hover { background: #D9C09A; transform: scale(1.05); text-decoration: none; }
   @keyframes tester-pulse {
     0%, 100% { box-shadow: 0 8px 24px rgba(138,109,71,.5); }
     50% { box-shadow: 0 8px 28px rgba(138,109,71,.75), 0 0 0 8px rgba(189,155,112,.18); }
@@ -209,11 +256,34 @@
     <div class="session-item"><div class="label">Abstract</div><div class="value">A1325 · Control #26-SA-9624-ASAHQ</div></div>
   </div>
 
+  <h2>Worked Example — AnesCalc, a Native iOS Anesthesia Calculator</h2>
+  <p class="lede">Built end to end by a medical student directing an AI assistant — zero lines of code written by hand.</p>
+  <div class="shot-grid">
+    <div class="shot"><picture><source srcset="media/screenshot_patient_inputs.webp" type="image/webp"><img src="media/screenshot_patient_inputs.png" width="780" height="742" alt="AnesCalc patient inputs screen" loading="lazy"></picture><div class="cap">Patient inputs</div></div>
+    <div class="shot"><picture><source srcset="media/screenshot_ob_epidural.webp" type="image/webp"><img src="media/screenshot_ob_epidural.png" width="780" height="742" alt="AnesCalc results dashboard screen" loading="lazy"></picture><div class="cap">Results dashboard</div></div>
+    <div class="shot"><picture><source srcset="media/screenshot_drug_reference.webp" type="image/webp"><img src="media/screenshot_drug_reference.png" width="780" height="742" alt="AnesCalc drug reference library screen" loading="lazy"></picture><div class="cap">Drug reference cards</div></div>
+  </div>
+  <p class="swipe-hint">Swipe for more screens →</p>
+  <video class="hero-video" controls preload="metadata" playsinline poster="media/screenshot_patient_inputs.webp">
+    <source src="media/anescalc_demo.mp4" type="video/mp4">
+    Your browser doesn't support embedded video. <a href="media/anescalc_demo.mp4">Download the demo (MP4)</a> instead.
+  </video>
+  <p class="video-caption">AnesCalc v2.0 walkthrough — patient inputs, live calculations, drug reference library, and PDF export.</p>
+  <div class="cta-row">
+    <a class="cta primary" href="../beta/">Become a beta tester</a>
+    <a class="cta" href="#try">Try a calculation ↓</a>
+    <a class="cta" href="media/AnesCalc_ASA2026_ePoster.pptx" download>↓ ePoster (.pptx)</a>
+  </div>
+
   <h2>Abstract</h2>
-  <p>A third-year medical student engaged a conversational AI assistant (Claude, Anthropic) in an iterative development session to design and build a comprehensive anesthesia clinical decision support platform, with no prior software engineering experience. All AI-generated drug dosing, pharmacokinetic parameters, and clinical protocols were independently verified against UpToDate prior to inclusion.</p>
-  <p>The workflow proceeded in three phases: structured requirements elicitation across 14 clinical domains; a Microsoft Excel prototype with 116 live formulae as a validated reference layer; and a native iOS/iPadOS SwiftUI application (iOS 17+) incorporating all calculation domains, a TIVA module with Marsh/Schnider propofol pharmacokinetic modeling, a labor and regional obstetric module with five indication-specific protocols, and a searchable drug reference library. Debugging followed a patch-based workflow in which Xcode compiler errors were submitted verbatim to the AI and resolved across targeted iterations.</p>
-  <p>A fully functional, offline-capable native iOS application was produced without the student writing a single line of code, compiling and running on physical iPhone and iPad hardware across seven discrete compiler-error resolution cycles. All dosing outputs were confirmed accurate against UpToDate references, including age-corrected MAC algorithms, weight-based pediatric dosing, and obstetric-specific vasopressor guidance.</p>
-  <p>This case demonstrates that AI-assisted vibe coding may democratize clinical software development beyond attending-level practitioners. Independent verification against established clinical references is feasible within this workflow and essential for safe deployment. Early trainees may be uniquely positioned to leverage AI-assisted development, translating emerging clinical knowledge into validated bedside tools during training itself.</p>
+  <details class="abstract">
+    <summary>Read the full abstract</summary>
+    <p>A third-year medical student engaged a conversational AI assistant (Claude, Anthropic) in an iterative development session to design and build a comprehensive anesthesia clinical decision support platform, with no prior software engineering experience. All AI-generated drug dosing, pharmacokinetic parameters, and clinical protocols were independently verified against UpToDate prior to inclusion.</p>
+    <p>The workflow proceeded in three phases: structured requirements elicitation across 14 clinical domains; a Microsoft Excel prototype with 116 live formulae as a validated reference layer; and a native iOS/iPadOS SwiftUI application (iOS 17+) incorporating all calculation domains, a TIVA module with Marsh/Schnider propofol pharmacokinetic modeling, a labor and regional obstetric module with five indication-specific protocols, and a searchable drug reference library. Debugging followed a patch-based workflow in which Xcode compiler errors were submitted verbatim to the AI and resolved across targeted iterations.</p>
+    <p>A fully functional, offline-capable native iOS application was produced without the student writing a single line of code, compiling and running on physical iPhone and iPad hardware across seven discrete compiler-error resolution cycles. All dosing outputs were confirmed accurate against UpToDate references, including age-corrected MAC algorithms, weight-based pediatric dosing, and obstetric-specific vasopressor guidance.</p>
+    <p>This case demonstrates that AI-assisted vibe coding may democratize clinical software development beyond attending-level practitioners. Independent verification against established clinical references is feasible within this workflow and essential for safe deployment. Early trainees may be uniquely positioned to leverage AI-assisted development, translating emerging clinical knowledge into validated bedside tools during training itself.</p>
+
+  </details>
 
   <h2>Background</h2>
   <p class="lede">In the traditional software development pipeline, software engineering expertise often represents a bottleneck between ideation and a working prototype. Large language models (LLMs) have lowered this barrier, enabling end users, including clinicians, to translate novel ideas into functional applications tailored to their workflows through an emerging practice sometimes termed <strong>"vibe coding."</strong> The following workflow was used to develop an iOS application providing point-of-care anesthetic reference values.</p>
@@ -231,12 +301,15 @@
   <p class="workflow-repeat">Steps 4–6 repeat until the prototype meets requirements. No programming training needed — <strong>zero lines of code authored by hand.</strong></p>
   <p class="workflow-legend"><span>User</span><span class="ai">AI</span></p>
 
-  <h2>Worked Example — AnesCalc, a Native iOS Anesthesia Calculator</h2>
-  <p class="lede">Built end to end through this workflow.</p>
-  <div class="shot-grid">
-    <div class="shot"><img src="media/screenshot_patient_inputs.png" alt="AnesCalc patient inputs screen" loading="lazy"><div class="cap">Patient inputs</div></div>
-    <div class="shot"><img src="media/screenshot_ob_epidural.png" alt="AnesCalc results dashboard screen" loading="lazy"><div class="cap">Results dashboard</div></div>
-    <div class="shot"><img src="media/screenshot_drug_reference.png" alt="AnesCalc drug reference library screen" loading="lazy"><div class="cap">Drug reference cards</div></div>
+  <div class="convo-card" style="margin-top:22px;">
+    <div class="convo-lead-wrap">
+      <div class="convo-lead">… then the conversation became an app</div>
+      <div class="convo-underline"></div>
+    </div>
+    <div class="chat">
+      <div class="bubble user">Now turn this into a native SwiftUI app.</div>
+      <div class="bubble ai">Generating PatientInputView, ResultsDashboard, DrugCards<br><span class="chip">Building…</span></div>
+    </div>
   </div>
 
   <h2>Scope — v1.0 Session → v2.0 Today</h2>
@@ -255,6 +328,27 @@
     <li><strong>100% offline</strong> — no data transmitted</li>
     <li>Also: OB/regional protocols · unit conversions · PDF export</li>
   </ul>
+
+  <h2 id="try">Try It — Age-Adjusted MAC</h2>
+  <p class="lede">A web sample of the kind of age-corrected calculation AnesCalc runs on-device. Nothing you enter leaves this page.</p>
+  <div class="calc">
+    <div class="calc-grid">
+      <div><label for="c-agent">Agent</label>
+        <select id="c-agent">
+          <option value="1.80">Sevoflurane</option>
+          <option value="1.17">Isoflurane</option>
+          <option value="6.6">Desflurane</option>
+        </select></div>
+      <div><label for="c-age">Age (years)</label><input id="c-age" type="number" inputmode="decimal" min="1" max="100" step="1" value="40"></div>
+      <div><label for="c-et">End-tidal agent % <span class="opt">(optional)</span></label><input id="c-et" type="number" inputmode="decimal" min="0" max="20" step="0.1" placeholder="e.g. 1.5"></div>
+      <div><label for="c-n2o">End-tidal N₂O % <span class="opt">(optional)</span></label><input id="c-n2o" type="number" inputmode="decimal" min="0" max="80" step="1" placeholder="e.g. 50"></div>
+    </div>
+    <div class="calc-out" aria-live="polite">
+      <div class="stat-card"><div class="num" id="o-mac">—</div><div class="label">1.0 MAC at this age</div></div>
+      <div class="stat-card"><div class="num" id="o-total">—</div><div class="label">Total MAC delivered</div></div>
+    </div>
+    <p class="calc-note">MAC<sub>age</sub> = MAC<sub>40</sub> × 10<sup>−0.00269 × (age − 40)</sup>, with MAC<sub>40</sub> sevoflurane 1.80%, isoflurane 1.17%, desflurane 6.6%, N₂O 104% (Mapleson WW. <em>Br J Anaesth.</em> 1996;76(2):179-185). Valid for ages ≥ 1 year. Total MAC sums agent and N₂O fractions. Educational demonstration only — not for clinical decision-making.</p>
+  </div>
 
   <h2>Dosing Verification Audit</h2>
   <div class="audit-card">
@@ -308,23 +402,6 @@
     <li>Panchal AR, Bartos JA, Cabañas JG, et al. Part 3: Adult Basic and Advanced Life Support: 2020 American Heart Association Guidelines for CPR and Emergency Cardiovascular Care. <em>Circulation.</em> 2020;142(16 Suppl 2):S366-S468.</li>
   </ol>
 
-  <h2>Demo</h2>
-  <div class="convo-card">
-    <div class="convo-lead-wrap">
-      <div class="convo-lead">… then the conversation became an app</div>
-      <div class="convo-underline"></div>
-    </div>
-    <div class="chat">
-      <div class="bubble user">Now turn this into a native SwiftUI app.</div>
-      <div class="bubble ai">Generating PatientInputView, ResultsDashboard, DrugCards<br><span class="chip">Building…</span></div>
-    </div>
-  </div>
-  <video controls preload="metadata" playsinline poster="media/screenshot_patient_inputs.png">
-    <source src="media/anescalc_demo.mp4" type="video/mp4">
-    Your browser doesn't support embedded video. <a href="media/anescalc_demo.mp4">Download the demo (MP4)</a> instead.
-  </video>
-  <p class="video-caption">AnesCalc v2.0 walkthrough — patient inputs, live calculations, drug reference library, and PDF export.</p>
-
   <h2>Materials</h2>
   <div class="downloads">
     <a class="dl-btn" href="media/AnesCalc_ASA2026_ePoster.pptx" download>↓ ePoster (.pptx)</a>
@@ -346,6 +423,26 @@
 </div>
 
 <a class="tester-badge" href="../beta/"><span class="dot"></span>Testers Wanted</a>
+
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  function ageMac(mac40, age) { return mac40 * Math.pow(10, -0.00269 * (age - 40)); }
+  function num(el) { var v = parseFloat(el.value); return isNaN(v) ? null : v; }
+  function update() {
+    var mac40 = parseFloat($("c-agent").value), age = num($("c-age"));
+    var et = num($("c-et")), n2o = num($("c-n2o"));
+    if (age === null || age < 1 || age > 100) { $("o-mac").textContent = "—"; $("o-total").textContent = "—"; return; }
+    var mac = ageMac(mac40, age);
+    $("o-mac").textContent = mac.toFixed(2) + "%";
+    if (et === null && n2o === null) { $("o-total").textContent = "—"; return; }
+    var total = (et || 0) / mac + (n2o || 0) / ageMac(104, age);
+    $("o-total").textContent = total.toFixed(2) + " MAC";
+  }
+  ["c-agent", "c-age", "c-et", "c-n2o"].forEach(function (id) { $(id).addEventListener("input", update); });
+  update();
+})();
+</script>
 
 </body>
 </html>
