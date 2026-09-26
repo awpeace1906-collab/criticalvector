@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AnesCalc demo video timeline</title>
+<!--
+  Source for media/anescalc_demo*.mp4. Every frame is a pure function of time:
+  render(t) lays out the whole 1920×1080 frame for t seconds. render.py captures
+  frames with Playwright and composites the app screen recordings (clips/) under
+  the transparent phone screen during the "app" scene. Open this file directly in
+  a browser to preview (the phone screen shows grey instead of the recordings).
+-->
+<style>
+  @font-face { font-family: 'Lato'; font-weight: 400; font-style: normal; src: url('fonts/lato-400-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Lato'; font-weight: 700; font-style: normal; src: url('fonts/lato-700-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Lato'; font-weight: 400; font-style: italic; src: url('fonts/lato-400-italic.woff2') format('woff2'); }
+  :root {
+    --navy: #1B2A61; --blue: #243D84; --gold: #BE996D; --gold-text: #8A6D47;
+    --ink: #272526; --grey: #5A6176; --panel: #F3F4F9; --line: #DADCEB; --green: #2E7A4E; --red: #C0392B;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1920px; height: 1080px; overflow: hidden; background: transparent; }
+  body { font-family: 'Lato', sans-serif; color: var(--ink); position: relative; }
+  body.preview { background: #888; }
+
+  /* White canvas with a phone-screen-shaped hole; hole opacity follows the app scene */
+  #canvas { position: absolute; border-radius: 0 0 48px 48px; box-shadow: 0 0 0 4000px #fff; }
+
+  .scene { position: absolute; inset: 0; opacity: 0; }
+  .title {
+    position: absolute; top: 120px; left: 0; right: 0; text-align: center;
+    font-size: 60px; font-weight: 700; color: var(--navy); letter-spacing: -0.5px;
+  }
+  .rule { position: absolute; top: 218px; left: 50%; width: 300px; height: 6px; margin-left: -150px; background: var(--gold); border-radius: 3px; }
+  .caption { position: absolute; left: 0; right: 0; text-align: center; font-size: 36px; color: var(--grey); }
+  .caption.gold { color: var(--gold-text); font-style: italic; }
+
+  /* chat */
+  .panel {
+    position: absolute; background: var(--panel); border: 2px solid var(--line); border-radius: 26px;
+    box-shadow: 0 18px 50px rgba(27,42,97,.10); padding: 40px; display: flex; flex-direction: column; gap: 26px;
+  }
+  .bubble { max-width: 920px; padding: 18px 28px; border-radius: 18px; font-size: 31px; line-height: 1.4; }
+  .bubble.user { align-self: flex-end; background: var(--blue); color: #fff; border-bottom-right-radius: 6px; }
+  .bubble.ai { align-self: flex-start; background: #fff; border: 2px solid var(--line); border-bottom-left-radius: 6px; box-shadow: 0 6px 18px rgba(27,42,97,.06); }
+  .who { display: block; font-size: 20px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; opacity: .7; margin-bottom: 6px; }
+  .tag { position: absolute; left: 0; right: 0; text-align: center; font-size: 26px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gold-text); }
+  .mono { font-family: 'DejaVu Sans Mono', 'Liberation Mono', monospace; }
+
+  /* build loop */
+  .step {
+    position: absolute; width: 470px; height: 170px; border-radius: 20px; background: #fff; border: 2px solid var(--line);
+    padding: 28px 30px 0 118px; box-shadow: 0 10px 28px rgba(27,42,97,.07);
+  }
+  .step .n { position: absolute; left: 30px; top: 42px; width: 64px; height: 64px; border-radius: 50%; color: #fff; font-weight: 700; font-size: 32px; display: flex; align-items: center; justify-content: center; background: var(--gold-text); }
+  .step.ai .n { background: var(--green); }
+  .step .t { font-size: 36px; font-weight: 700; color: var(--navy); }
+  .step .d { font-size: 28px; color: var(--grey); margin-top: 6px; }
+  .arrow { position: absolute; color: var(--gold); font-size: 54px; font-weight: 700; }
+  .legend { position: absolute; top: 940px; left: 0; right: 0; text-align: center; font-size: 30px; color: var(--grey); }
+  .legend span { display: inline-flex; align-items: center; gap: 12px; margin: 0 22px; }
+  .legend i { width: 22px; height: 22px; border-radius: 50%; display: inline-block; background: var(--gold-text); }
+  .legend i.ai { background: var(--green); }
+
+  /* table */
+  table.sheet { position: absolute; left: 190px; top: 330px; width: 1540px; border-collapse: separate; border-spacing: 0; font-size: 32px; border-radius: 18px; overflow: hidden; box-shadow: 0 18px 50px rgba(27,42,97,.10); background: #fff; }
+  table.sheet th { background: var(--blue); color: #fff; text-align: left; padding: 22px 28px; font-weight: 700; }
+  table.sheet td { padding: 24px 28px; border-top: 1px solid #ECEEF5; }
+  table.sheet tr:nth-child(even) td { background: #F7F8FC; }
+
+  /* code window */
+  .code { position: absolute; left: 330px; top: 300px; width: 1260px; height: 600px; background: #1C202D; border-radius: 22px; overflow: hidden; box-shadow: 0 24px 60px rgba(0,0,0,.25); }
+  .code .bar { height: 64px; background: #12151E; display: flex; align-items: center; gap: 14px; padding: 0 26px; }
+  .code .bar i { width: 18px; height: 18px; border-radius: 50%; display: inline-block; }
+  .code .bar span { margin-left: 18px; color: #C9CCD6; font-size: 26px; }
+  .code pre { padding: 30px 40px; font-size: 29px; line-height: 1.55; color: #E6E8EE; white-space: pre; }
+  .tk-c { color: #7F8AA3; } .tk-k { color: #9BBCF7; } .tk-t { color: #6FD1C4; } .tk-n { color: #E8C27A; } .tk-f { color: #F0A8D0; }
+  .cursor { display: inline-block; width: 16px; height: 34px; background: #E8C27A; vertical-align: -6px; }
+
+  /* debug */
+  .issue { position: absolute; left: 260px; top: 280px; width: 1400px; background: #fff; border: 2px solid #F1C4BE; border-left: 12px solid var(--red); border-radius: 18px; padding: 26px 34px; box-shadow: 0 12px 34px rgba(192,57,43,.12); }
+  .issue .file { font-size: 26px; color: var(--grey); }
+  .issue .msg { font-size: 38px; font-weight: 700; color: var(--red); margin-top: 6px; }
+  .fix { font-size: 32px; background: #1C202D; color: #E6E8EE; border-radius: 12px; padding: 14px 22px; margin-top: 12px; display: inline-block; }
+  .success { position: absolute; left: 50%; top: 925px; transform: translateX(-50%); background: #E7F4EC; color: var(--green); border: 2px solid #B9DEC7; border-radius: 40px; padding: 14px 40px; font-size: 36px; font-weight: 700; }
+
+  /* phone */
+  #phone { position: absolute; }
+  .bezel { position: absolute; border: 14px solid #111317; border-radius: 62px; box-shadow: 0 30px 70px rgba(27,42,97,.28); }
+  .status { position: absolute; background: #000; border-radius: 48px 48px 0 0; color: #fff; font-weight: 700; font-size: 20px; }
+  .status .time { position: absolute; left: 46px; top: 22px; font-family: -apple-system, 'Lato', sans-serif; }
+  .status .island { position: absolute; left: 50%; top: 12px; width: 124px; height: 36px; margin-left: -62px; background: #0B0B0D; border-radius: 20px; box-shadow: 0 0 0 1px #1d1d20; }
+  .status .icons { position: absolute; right: 40px; top: 24px; display: flex; gap: 7px; align-items: flex-end; }
+  .status .bars i { display: inline-block; width: 4px; background: #fff; margin-left: 2px; border-radius: 1px; }
+  .status .batt { width: 30px; height: 15px; border: 2px solid rgba(255,255,255,.55); border-radius: 5px; padding: 1px; }
+  .status .batt b { display: block; height: 100%; width: 80%; background: #fff; border-radius: 2px; }
+  #preview-screen { position: absolute; background: #3a3d46; border-radius: 0 0 48px 48px; display: none; }
+  body.preview #preview-screen { display: block; }
+
+  .feat { position: absolute; left: 900px; width: 900px; padding-left: 34px; border-left: 8px solid transparent; }
+  .feat .h { font-size: 46px; font-weight: 700; color: var(--navy); }
+  .feat .s { font-size: 29px; color: var(--grey); margin-top: 6px; line-height: 1.35; }
+
+  /* stat cards */
+  .card { position: absolute; top: 400px; width: 390px; height: 250px; background: var(--blue); border-radius: 22px; text-align: center; box-shadow: 0 18px 44px rgba(27,42,97,.20); }
+  .card .num { font-size: 104px; font-weight: 700; color: var(--gold); margin-top: 34px; line-height: 1.1; }
+  .card .sub { font-size: 28px; color: #C9D2EC; margin-top: 6px; }
+  .card-label { position: absolute; top: 676px; width: 390px; text-align: center; font-size: 32px; color: var(--ink); }
+
+  .big3 { position: absolute; top: 330px; width: 470px; height: 270px; border: 3px solid var(--gold); background: #FBF8F3; border-radius: 22px; text-align: center; }
+  .big3 .num { font-size: 120px; font-weight: 700; color: var(--navy); margin-top: 26px; line-height: 1.1; }
+  .big3 .lab { font-size: 32px; color: var(--grey); }
+
+  .bullet { position: absolute; left: 420px; font-size: 44px; color: var(--ink); display: flex; align-items: center; gap: 28px; }
+  .bullet i { width: 20px; height: 20px; border-radius: 50%; background: var(--gold); display: inline-block; flex: none; }
+
+  #bar-track { position: absolute; left: 0; right: 0; bottom: 0; height: 6px; background: #EDEDF5; }
+  #bar { position: absolute; left: 0; bottom: 0; height: 6px; background: var(--gold); }
+</style>
+</head>
+<body>
+
+<div id="canvas"></div>
+
+<!-- 1 · Title -->
+<div class="scene" id="s-title">
+  <div class="tag" style="top:210px;">ANESTHESIOLOGY® 2026 · San Diego · Abstract A1325</div>
+  <div style="position:absolute; top:290px; left:160px; right:160px; text-align:center; font-size:84px; font-weight:700; color:var(--navy); line-height:1.18;">AI-Assisted “Vibe Coding” for Clinical Workflow Optimization</div>
+  <div style="position:absolute; top:510px; left:0; right:0; text-align:center; font-size:48px; color:var(--grey);">An Anesthesiology Use Case</div>
+  <div class="rule" id="title-rule" style="top:610px;"></div>
+  <div style="position:absolute; top:670px; left:0; right:0; text-align:center; font-size:38px; color:var(--ink);"><b>Andrew Peace, BS, FP-C</b> &nbsp;·&nbsp; Alexander Morris, MS</div>
+  <div style="position:absolute; top:730px; left:0; right:0; text-align:center; font-size:32px; color:var(--grey);">Burrell College School of Osteopathic Medicine · Class of 2027</div>
+</div>
+
+<!-- 2 · Paradigm -->
+<div class="scene" id="s-paradigm">
+  <div class="tag" style="top:250px;">The paradigm</div>
+  <div class="pl" style="position:absolute; top:330px; left:0; right:0; text-align:center; font-size:72px; font-weight:700; color:var(--navy);">Clinicians can now build working software</div>
+  <div class="pl" style="position:absolute; top:440px; left:0; right:0; text-align:center; font-size:46px; color:var(--grey);">without formal programming training —</div>
+  <div class="pl" style="position:absolute; top:520px; left:0; right:0; text-align:center; font-size:56px; font-weight:700; color:var(--blue);">by describing it in plain language.</div>
+  <div class="pl caption gold" style="top:690px; font-size:42px;">The bottleneck moves from programming skill to clinical expertise.</div>
+</div>
+
+<!-- 3 · Build loop -->
+<div class="scene" id="s-loop">
+  <div class="title">An iterative build loop</div><div class="rule"></div>
+  <div class="step" data-i="1" style="left:150px; top:340px;"><div class="n">1</div><div class="t">Think of an app</div><div class="d">You form the idea</div></div>
+  <div class="step" data-i="2" style="left:725px; top:340px;"><div class="n">2</div><div class="t">Define constraints</div><div class="d">You set requirements</div></div>
+  <div class="step ai" data-i="3" style="left:1300px; top:340px;"><div class="n">3</div><div class="t">Create a prototype</div><div class="d">AI builds version 1</div></div>
+  <div class="step" data-i="4" style="left:1300px; top:640px;"><div class="n">4</div><div class="t">Test the prototype</div><div class="d">Try it, gather feedback</div></div>
+  <div class="step" data-i="5" style="left:725px; top:640px;"><div class="n">5</div><div class="t">New features</div><div class="d">Decide what to add</div></div>
+  <div class="step ai" data-i="6" style="left:150px; top:640px;"><div class="n">6</div><div class="t">Build next version</div><div class="d">AI updates the app</div></div>
+  <div class="arrow" style="left:643px; top:385px;">→</div>
+  <div class="arrow" style="left:1218px; top:385px;">→</div>
+  <div class="arrow" style="left:1515px; top:522px;">↓</div>
+  <div class="arrow" style="left:1218px; top:685px;">←</div>
+  <div class="arrow" style="left:643px; top:685px;">←</div>
+  <div class="arrow" id="loop-back" style="left:366px; top:522px;">↻</div>
+  <div class="legend"><span><i></i>You</span><span><i class="ai"></i>AI assistant</span><span style="color:var(--gold-text); font-style:italic;">Steps 4–6 repeat until the app meets requirements</span></div>
+</div>
+
+<!-- 4 · The first prompts (verbatim from the development session transcript) -->
+<div class="scene" id="s-question">
+  <div class="title">It started with a question</div><div class="rule"></div>
+  <div class="tag" style="top:250px; font-size:22px;">From the original development session</div>
+  <div class="panel" style="left:260px; top:300px; width:1400px; height:720px; gap:22px;">
+    <div class="bubble user" id="q1"></div>
+    <div class="bubble ai" id="q2"></div>
+    <div class="bubble user" id="q3"></div>
+  </div>
+</div>
+
+<!-- 5 · Spreadsheet -->
+<div class="scene" id="s-sheet">
+  <div class="title">Spreadsheet prototype — clinical logic first</div><div class="rule"></div>
+  <table class="sheet">
+    <tr><th style="width:26%">Domain</th><th style="width:20%">Input</th><th style="width:34%">Formula</th><th>Output</th></tr>
+    <tr class="row"><td>MAC (age-corrected)</td><td>Age, MAC₄₀</td><td>MAC₄₀ × 10<sup>−0.00269 (age − 40)</sup></td><td>1.86% sevo</td></tr>
+    <tr class="row"><td>Propofol TIVA</td><td>Weight, target</td><td>Marsh / Schnider PK</td><td>4.2 mcg/mL</td></tr>
+    <tr class="row"><td>Vasopressor</td><td>MAP, weight</td><td>mcg/kg/min × rate</td><td>0.05 mcg/kg/min</td></tr>
+    <tr class="row"><td>Fluid management</td><td>NPO, weight</td><td>4-2-1 rule + deficit</td><td>620 mL</td></tr>
+  </table>
+  <div class="caption gold" id="sheet-cap" style="top:880px; font-size:42px;">116 live formulae — validated before a single line of Swift</div>
+</div>
+
+<!-- 6 · Conversation became an app -->
+<div class="scene" id="s-app">
+  <div class="title">… then the conversation became an app</div><div class="rule"></div>
+  <div class="panel" style="left:260px; top:300px; width:1400px; height:720px; gap:22px;">
+    <div class="bubble user" id="a1"></div>
+    <div class="bubble ai" id="a2" style="max-width:1000px;"><span class="who">AI assistant</span><span id="a2t"></span><div class="mono" id="files" style="font-size:25px; line-height:1.45; margin-top:10px; color:var(--blue);"></div></div>
+  </div>
+</div>
+
+<!-- 7 · Debug loop -->
+<div class="scene" id="s-debug">
+  <div class="title">Debugging: paste the error, get the fix</div><div class="rule"></div>
+  <div class="issue" id="d-issue"><div class="file mono">CalculationEngine.swift : 679</div><div class="msg">✕ &nbsp;Cannot find 'spinalBupiMl' in scope</div></div>
+  <div class="panel" style="left:260px; top:450px; width:1400px; height:440px; background:transparent; border:none; box-shadow:none; padding:0 0;">
+    <div class="bubble user" id="d1"></div>
+    <div class="bubble ai" id="d2"><span class="who">AI assistant</span><span id="d2t"></span><div class="fix mono" id="d2c"></div></div>
+  </div>
+  <div class="success" id="d-ok">✓ &nbsp;Build Succeeded</div>
+</div>
+
+<!-- 8 · Code -->
+<div class="scene" id="s-code">
+  <div class="title">AI-directed code generation</div><div class="rule"></div>
+  <div class="code"><div class="bar"><i style="background:#E5534B"></i><i style="background:#E6B73A"></i><i style="background:#57C04F"></i><span>CalculationEngine.swift</span></div><pre class="mono" id="code"></pre></div>
+  <div class="caption" id="code-cap" style="top:940px;">Prompt engineering directed by the first author — zero lines written by hand</div>
+</div>
+
+<!-- 9 · The app (screen recordings composited under the phone screen) -->
+<div class="scene" id="s-phone">
+  <div id="preview-screen"></div>
+  <div id="phone"><div class="bezel"></div><div class="status"><span class="time">9:41</span><span class="island"></span><span class="icons"><span class="bars"><i style="height:7px"></i><i style="height:10px"></i><i style="height:13px"></i><i style="height:16px"></i></span><span class="batt"><b></b></span></span></div></div>
+  <div class="tag" style="left:934px; right:auto; top:118px; text-align:left;">AnesCalc v2.0 · native iOS</div>
+  <div id="feats"></div>
+</div>
+
+<!-- 10 · Scope -->
+<div class="scene" id="s-stats">
+  <div class="title">From first session to today</div><div class="rule"></div>
+  <div id="cards"></div>
+</div>
+
+<!-- 11 · Verification -->
+<div class="scene" id="s-verify">
+  <div class="title">Every calculation independently audited</div><div class="rule"></div>
+  <div class="big3" style="left:175px;"><div class="num" id="v1">191</div><div class="lab">rows audited</div></div>
+  <div class="big3" style="left:725px;"><div class="num" id="v2">24</div><div class="lab">sections</div></div>
+  <div class="big3" style="left:1275px;"><div class="num" id="v3">3</div><div class="lab">independent passes</div></div>
+  <div class="caption vl" style="top:660px; font-size:40px; color:var(--ink);">Triage → targeted deep dive → full independent literature search</div>
+  <div class="caption vl" style="top:730px; font-size:34px;">Cross-referenced against UpToDate · Miller’s Anesthesia 9e · Barash Clinical Anesthesia 8e</div>
+  <div class="caption vl" style="top:830px; font-size:38px; font-weight:700; color:var(--navy);">Every confirmed discrepancy was corrected before release.</div>
+</div>
+
+<!-- 12 · Transferable -->
+<div class="scene" id="s-transfer">
+  <div class="title">The workflow is the transferable product</div><div class="rule"></div>
+  <div class="bullet" style="top:330px;"><i></i>Custom calculators and order-set helpers inside the EMR</div>
+  <div class="bullet" style="top:430px;"><i></i>Desktop widgets for rapid reference at the workstation</div>
+  <div class="bullet" style="top:530px;"><i></i>Anesthetic plan generators from structured case data</div>
+  <div class="bullet" style="top:630px;"><i></i>Case simulators for resident training</div>
+  <div class="bullet" style="top:730px;"><i></i>Departmental protocol, checklist, and QI dashboards</div>
+</div>
+
+<!-- 13 · End card -->
+<div class="scene" id="s-end">
+  <div class="e" style="position:absolute; left:170px; top:220px; font-size:30px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--gold-text);">AnesCalc · ASA 2026 ePoster A1325</div>
+  <div class="e" style="position:absolute; left:170px; top:280px; font-size:92px; font-weight:700; color:var(--navy); line-height:1.12;">Try it.<br>Become a beta tester.</div>
+  <div class="e" style="position:absolute; left:170px; top:540px; width:1000px; font-size:36px; color:var(--grey); line-height:1.45;">Scan for the ePoster, demo, calculator sample, and TestFlight sign-up.</div>
+  <div class="e mono" style="position:absolute; left:170px; top:680px; font-size:27px; color:var(--blue);">awpeace1906-collab.github.io/criticalvector/anesocalc/asa2026</div>
+  <div class="e" style="position:absolute; left:170px; top:800px; font-size:26px; color:var(--grey);">Code generated with Claude (Anthropic) · Not a regulated medical device — verify every output</div>
+  <div class="e" style="position:absolute; left:1290px; top:250px; width:460px; height:460px; background:#fff; border:3px solid var(--line); border-radius:28px; padding:36px; box-shadow:0 18px 50px rgba(27,42,97,.12);"><img src="qr.svg" style="width:100%; height:100%; display:block;"></div>
+</div>
+
+<div id="bar-track"></div><div id="bar"></div>
+
+<script>
+// ─── Timeline ───────────────────────────────────────────────────────────────
+const FADE = 0.5;
+// App-segment clip lengths (seconds, after speed-up in render.py) and their captions
+const CLIPS = [
+  { file: '1-inputs.mp4',      dur: 5.2,  h: 'Enter the patient once',        s: 'Age, weight, labs, and perioperative values drive every output' },
+  { file: '2-results.mp4',     dur: 8.0,  h: '231 live calculations',         s: '16 clinical domains — MAC, NMB, TIVA, vasopressors, LAST, OB, peds' },
+  { file: '3-drugs.mp4',       dur: 6.67, h: '55 drug reference cards',       s: '14 classes, searchable — dosing, cautions, and clinical pearls' },
+  { file: '4-conversions.mp4', dur: 3.67, h: 'Built-in conversions',          s: 'Weight, drug concentration, length, temperature, pressure' },
+  { file: '5-tools.mp4',       dur: 6.0,  h: '10 bedside clinical tools',     s: 'RSBI, RASS, driving pressure, Fick cardiac output, and more' },
+];
+const APP_DUR = CLIPS.reduce((a, c) => a + c.dur, 0);
+
+// [id, duration]; each scene starts FADE seconds before the previous one ends (crossfade)
+const ORDER = [
+  ['s-title', 6], ['s-paradigm', 7], ['s-loop', 9], ['s-question', 10.5], ['s-sheet', 6.5],
+  ['s-app', 8], ['s-debug', 8], ['s-code', 7], ['s-phone', APP_DUR], ['s-stats', 7],
+  ['s-verify', 7.5], ['s-transfer', 6.5], ['s-end', 8.5],
+];
+const SCENES = {}; let cursor = 0;
+ORDER.forEach(([id, dur], i) => { SCENES[id] = { start: cursor, dur, first: i === 0, last: i === ORDER.length - 1 }; cursor += dur - FADE; });
+const TOTAL = cursor + FADE;
+
+// Phone geometry (render.py reads these to place the clips)
+const SCREEN = { x: 314, y: 133, w: 432, h: 880, status: 59, bezel: 14 };
+
+// ─── Helpers ────────────────────────────────────────────────────────────────
+const $ = id => document.getElementById(id);
+const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+const ease = x => 1 - Math.pow(1 - clamp(x), 3);
+const easeIO = x => { x = clamp(x); return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
+const span = (lt, a, b) => clamp((lt - a) / (b - a));
+function type(text, lt, a, b) { return text.slice(0, Math.round(text.length * span(lt, a, b))); }
+function show(el, p, dy = 18) { el.style.opacity = ease(p); el.style.transform = `translateY(${(1 - ease(p)) * dy}px)`; }
+function bubble(el, text, lt, a, b, label) {
+  const s = type(text, lt, a, b);
+  el.style.display = lt >= a ? '' : 'none';
+  el.innerHTML = (label ? `<span class="who">${label}</span>` : '') + s;
+}
+
+// Swift highlighter → tokens [{t, c}]
+function tokens(src) {
+  const out = []; const re = /(\/\/[^\n]*)|\b(func|var|let|return)\b|\b(Double|Int)\b|\b(max|pow|mac)\b(?=\()|(\b\d+(?:\.\d+)?\b)|([\s\S])/g; let m;
+  while ((m = re.exec(src))) out.push({ t: m[0], c: m[1] ? 'c' : m[2] ? 'k' : m[3] ? 't' : m[4] ? 'f' : m[5] ? 'n' : '' });
+  return out;
+}
+function renderTokens(tks, n) {
+  let html = '', left = n;
+  for (const k of tks) { if (left <= 0) break; const s = k.t.slice(0, left); left -= s.length; const e = s.replace(/&/g, '&amp;').replace(/</g, '&lt;'); html += k.c ? `<span class="tk-${k.c}">${e}</span>` : e; }
+  return html;
+}
+
+// ─── Static content ─────────────────────────────────────────────────────────
+const Q1 = 'Pull a list of all necessary calculated information that an anesthesiologist could want based on simple inputs of age, weight, procedure, type of anesthesia, etc.';
+const Q2 = 'A 14-category output table — airway, induction, MAC, NMB, fluids, ventilator, vasopressors, and more — with the inputs each calculation needs.';
+const Q3 = 'Please build this as a spreadsheet where one enters the demographic information and variables at the top…';
+const A1 = 'Can this be coded into an iOS compatible app for iPhone and iPad?';
+const A2 = 'Generating a native SwiftUI project:';
+const FILES = ['AnesthesiaCalcApp.swift', 'Models/PatientModel.swift', 'Models/CalculationEngine.swift', 'Views/PatientInputView.swift', 'Views/ResultsDashboardView.swift', 'Views/DrugCardsView.swift', 'Utilities/PDFExporter.swift'];
+const D1 = 'Cannot find \'spinalBupiMl\' in scope — CalculationEngine.swift:679';
+const D2 = 'Missing alias. Patch:';
+const D2C = 'let spinalBupiMl = spinalBupiHeavy';
+const CODE = `// Age-corrected MAC — Mapleson/Nickalls (BJA 1996)
+// MACage = MAC40 × 10^[-0.00269 × (age - 40)]
+func mac(base: Double, floor: Double) -> Double {
+    max(floor, base * pow(10, -0.00269 * (p.age - 40)))
+}
+
+var macSevo: Double { mac(base: 1.8,  floor: 0.5) }
+var macDes:  Double { mac(base: 6.6,  floor: 2.0) }
+var macIso:  Double { mac(base: 1.17, floor: 0.4) }`;
+const CODE_TK = tokens(CODE);
+const STATS = [ { a: 116, b: 231, l: 'Live calculations' }, { a: 10, b: 55, l: 'Drug reference cards' }, { a: 0, b: 10, l: 'Clinical tools' }, { a: 0, b: 0, l: 'Lines of code authored' } ];
+
+// Build repeated DOM once
+(function build() {
+  const c = $('canvas'); Object.assign(c.style, { left: SCREEN.x + 'px', top: SCREEN.y + 'px', width: SCREEN.w + 'px', height: SCREEN.h + 'px' });
+  const ps = $('preview-screen'); Object.assign(ps.style, { left: SCREEN.x + 'px', top: SCREEN.y + 'px', width: SCREEN.w + 'px', height: SCREEN.h + 'px' });
+  const b = SCREEN.bezel, top = SCREEN.y - SCREEN.status;
+  const bz = document.querySelector('.bezel');
+  Object.assign(bz.style, { left: (SCREEN.x - b) + 'px', top: (top - b) + 'px', width: (SCREEN.w + 2 * b) + 'px', height: (SCREEN.h + SCREEN.status + 2 * b) + 'px' });
+  Object.assign(document.querySelector('.status').style, { left: SCREEN.x + 'px', top: top + 'px', width: SCREEN.w + 'px', height: SCREEN.status + 'px' });
+  $('feats').innerHTML = CLIPS.map((c, i) => `<div class="feat" style="top:${200 + i * 160}px"><div class="h">${c.h}</div><div class="s">${c.s}</div></div>`).join('');
+  $('cards').innerHTML = STATS.map((s, i) => `<div class="card" style="left:${105 + i * 440}px"><div class="num">${s.a}</div><div class="sub">v1.0</div></div><div class="card-label" style="left:${105 + i * 440}px">${s.l}</div>`).join('');
+})();
+
+// ─── Frame renderer ─────────────────────────────────────────────────────────
+function render(t) {
+  let phoneOpacity = 0;
+  for (const [id, sc] of Object.entries(SCENES)) {
+    const lt = t - sc.start, el = $(id);
+    const fin = sc.first ? 1 : span(lt, 0, FADE), fout = sc.last ? 1 : span(sc.dur - lt, 0, FADE);
+    const o = lt < 0 || lt > sc.dur ? 0 : Math.min(fin, fout);
+    el.style.opacity = o; el.style.display = o > 0 ? '' : 'none';
+    if (id === 's-phone') phoneOpacity = o;
+    if (o > 0) SCENE_FN[id] && SCENE_FN[id](lt, sc.dur);
+  }
+  $('canvas').style.background = `rgba(255,255,255,${1 - phoneOpacity})`;
+  $('bar').style.width = (1920 * clamp(t / TOTAL)) + 'px';
+}
+
+const SCENE_FN = {
+  's-title'(lt) { $('title-rule').style.width = 300 + 'px'; },
+  's-paradigm'(lt) { document.querySelectorAll('#s-paradigm .pl').forEach((e, i) => show(e, span(lt, 0.3 + i * 1.2, 0.9 + i * 1.2))); },
+  's-loop'(lt) {
+    const steps = [...document.querySelectorAll('#s-loop .step')];
+    // highlight 1→6, then 4→6 again
+    const seq = [1, 2, 3, 4, 5, 6, 4, 5, 6]; const k = Math.floor((lt - 0.8) / 0.85);
+    const active = k >= 0 && k < seq.length ? seq[k] : 0;
+    steps.forEach(s => {
+      const i = +s.dataset.i, on = i === active;
+      show(s, span(lt, 0.1 + (i - 1) * 0.08, 0.6 + (i - 1) * 0.08), 24);
+      s.style.borderColor = on ? 'var(--gold)' : 'var(--line)';
+      s.style.background = on ? '#FBF6EE' : '#fff';
+      s.style.transform += on ? ' scale(1.04)' : '';
+    });
+    $('loop-back').style.opacity = k >= 6 ? 1 : 0.35;
+  },
+  's-question'(lt) {
+    bubble($('q1'), Q1, lt, 0.4, 3.0, 'You');
+    bubble($('q2'), Q2, lt, 3.6, 5.2, 'AI assistant');
+    bubble($('q3'), Q3, lt, 6.0, 7.8, 'You');
+  },
+  's-sheet'(lt) {
+    document.querySelectorAll('#s-sheet .row').forEach((r, i) => { r.style.opacity = ease(span(lt, 0.5 + i * 0.5, 0.9 + i * 0.5)); });
+    show($('sheet-cap'), span(lt, 2.8, 3.4));
+  },
+  's-app'(lt) {
+    bubble($('a1'), A1, lt, 0.4, 1.8, 'You');
+    $('a2').style.display = lt >= 2.3 ? '' : 'none';
+    $('a2t').textContent = type(A2, lt, 2.3, 2.9);
+    const n = Math.floor(clamp((lt - 3.0) / 0.45, 0, FILES.length));
+    $('files').innerHTML = FILES.slice(0, n).map(f => `<div><span style="color:var(--green)">✓</span> ${f}</div>`).join('');
+  },
+  's-debug'(lt) {
+    show($('d-issue'), span(lt, 0.3, 0.8));
+    bubble($('d1'), D1, lt, 1.5, 2.6, 'You · pasted verbatim');
+    $('d2').style.display = lt >= 3.2 ? '' : 'none';
+    $('d2t').textContent = type(D2, lt, 3.2, 3.6);
+    $('d2c').textContent = type(D2C, lt, 3.8, 4.6); $('d2c').style.display = lt >= 3.8 ? '' : 'none';
+    const p = span(lt, 5.2, 5.6); $('d-ok').style.opacity = p; $('d-ok').style.transform = `translateX(-50%) scale(${0.9 + 0.1 * ease(p)})`;
+  },
+  's-code'(lt) {
+    const n = Math.round(CODE.length * span(lt, 0.4, 4.6));
+    $('code').innerHTML = renderTokens(CODE_TK, n) + (lt < 6.2 ? '<span class="cursor"></span>' : '');
+    show($('code-cap'), span(lt, 4.8, 5.3));
+  },
+  's-phone'(lt) {
+    let acc = 0, idx = CLIPS.length - 1;
+    for (let i = 0; i < CLIPS.length; i++) { if (lt < acc + CLIPS[i].dur) { idx = i; break; } acc += CLIPS[i].dur; }
+    document.querySelectorAll('#feats .feat').forEach((f, i) => {
+      const on = i === idx;
+      f.style.opacity = on ? 1 : 0.32;
+      f.style.borderLeftColor = on ? 'var(--gold)' : 'transparent';
+      f.querySelector('.h').style.color = on ? 'var(--navy)' : 'var(--grey)';
+    });
+  },
+  's-stats'(lt) {
+    const p = easeIO(span(lt, 1.4, 3.8));
+    document.querySelectorAll('#cards .card').forEach((c, i) => {
+      show(c, span(lt, 0.2 + i * 0.12, 0.7 + i * 0.12), 30);
+      c.querySelector('.num').textContent = Math.round(STATS[i].a + (STATS[i].b - STATS[i].a) * p);
+      c.querySelector('.sub').textContent = p > 0.85 ? 'v2.0 today' : 'v1.0';
+    });
+  },
+  's-verify'(lt) {
+    [['v1', 191], ['v2', 24], ['v3', 3]].forEach(([id, v], i) => { const e = $(id); show(e.parentNode, span(lt, 0.2 + i * 0.15, 0.7 + i * 0.15), 24); e.textContent = Math.round(v * easeIO(span(lt, 0.5, 2.0))); });
+    document.querySelectorAll('#s-verify .vl').forEach((e, i) => show(e, span(lt, 2.2 + i * 0.7, 2.7 + i * 0.7)));
+  },
+  's-transfer'(lt) { document.querySelectorAll('#s-transfer .bullet').forEach((e, i) => show(e, span(lt, 0.4 + i * 0.45, 0.9 + i * 0.45))); },
+  's-end'(lt) { document.querySelectorAll('#s-end .e').forEach((e, i) => show(e, span(lt, 0.2 + i * 0.15, 0.8 + i * 0.15))); },
+};
+
+window.TIMELINE = { TOTAL, SCREEN, CLIPS, appStart: SCENES['s-phone'].start };
+
+// Preview mode: open the file in a browser to watch the timeline loop.
+if (!navigator.webdriver) {
+  document.body.classList.add('preview');
+  const t0 = performance.now();
+  (function loop() { render(((performance.now() - t0) / 1000) % TOTAL); requestAnimationFrame(loop); })();
+} else { render(0); }
+</script>
+</body>
+</html>

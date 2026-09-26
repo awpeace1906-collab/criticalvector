@@ -86,7 +86,8 @@
     background: var(--card); border: 1px solid var(--border); border-radius: 10px;
     padding: 40px 28px; margin-bottom: 18px;
   }
-  .convo-lead-wrap { text-align: center; margin-bottom: 30px; }
+  .convo-lead-wrap { text-align: center; margin-bottom: 18px; }
+  .convo-source { text-align: center; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gold-text); margin-bottom: 22px; }
   .convo-lead { font-size: 1.3rem; font-weight: 700; color: var(--navy); }
   .convo-underline { width: 90px; height: 3px; background: var(--gold-soft); margin: 10px auto 0; border-radius: 2px; }
   .chat { display: flex; flex-direction: column; gap: 12px; max-width: 460px; margin: 0 auto; }
@@ -264,11 +265,11 @@
     <div class="shot"><picture><source srcset="media/screenshot_drug_reference.webp" type="image/webp"><img src="media/screenshot_drug_reference.png" width="780" height="742" alt="AnesCalc drug reference library screen" loading="lazy"></picture><div class="cap">Drug reference cards</div></div>
   </div>
   <p class="swipe-hint">Swipe for more screens →</p>
-  <video class="hero-video" controls preload="metadata" playsinline poster="media/screenshot_patient_inputs.webp">
-    <source src="media/anescalc_demo.mp4" type="video/mp4">
+  <video class="hero-video" controls preload="metadata" playsinline poster="media/anescalc_demo_poster.jpg">
+    <source src="media/anescalc_demo_720p.mp4" type="video/mp4">
     Your browser doesn't support embedded video. <a href="media/anescalc_demo.mp4">Download the demo (MP4)</a> instead.
   </video>
-  <p class="video-caption">AnesCalc v2.0 walkthrough — patient inputs, live calculations, drug reference library, and PDF export.</p>
+  <p class="video-caption">How AnesCalc was built, then the app itself — patient inputs, 231 live calculations, drug reference cards, conversions, and bedside tools.</p>
   <div class="cta-row">
     <a class="cta primary" href="../beta/">Become a beta tester</a>
     <a class="cta" href="#try">Try a calculation ↓</a>
@@ -306,15 +307,20 @@
       <div class="convo-lead">… then the conversation became an app</div>
       <div class="convo-underline"></div>
     </div>
+    <p class="convo-source">Real prompts from the original development session</p>
     <div class="chat">
-      <div class="bubble user">Now turn this into a native SwiftUI app.</div>
-      <div class="bubble ai">Generating PatientInputView, ResultsDashboard, DrugCards<br><span class="chip">Building…</span></div>
+      <div class="bubble user">Pull a list of all necessary calculated information that an anesthesiologist could want based on simple inputs of age, weight, procedure, type of anesthesia, etc.</div>
+      <div class="bubble ai">A 14-category output table — airway, induction, MAC, NMB, fluids, ventilator, vasopressors, and more — with the inputs each calculation needs.</div>
+      <div class="bubble user">Please build this as a spreadsheet where one enters the demographic information and variables at the top…</div>
+      <div class="bubble ai">Built a workbook with 116 live formulae across 14 sections.</div>
+      <div class="bubble user">Can this be coded into an iOS compatible app for iPhone and iPad?</div>
+      <div class="bubble ai">Generating a native SwiftUI project: PatientInputView, CalculationEngine, ResultsDashboardView, DrugCardsView…<br><span class="chip">Building…</span></div>
     </div>
   </div>
 
   <h2>Scope — v1.0 Session → v2.0 Today</h2>
   <div class="stat-grid">
-    <div class="stat-card"><div class="num"><span class="from">116→</span>236</div><div class="label">Live calculations</div></div>
+    <div class="stat-card"><div class="num"><span class="from">116→</span>231</div><div class="label">Live calculations</div></div>
     <div class="stat-card"><div class="num"><span class="from">10→</span>55</div><div class="label">Drug reference cards</div></div>
     <div class="stat-card"><div class="num"><span class="from">0→</span>10</div><div class="label">Clinical tools</div></div>
     <div class="stat-card"><div class="num"><span class="from">0→</span>0</div><div class="label">Lines of code authored</div></div>
@@ -330,14 +336,14 @@
   </ul>
 
   <h2 id="try">Try It — Age-Adjusted MAC</h2>
-  <p class="lede">A web sample of the kind of age-corrected calculation AnesCalc runs on-device. Nothing you enter leaves this page.</p>
+  <p class="lede">The same age-corrected MAC calculation AnesCalc runs on-device. Nothing you enter leaves this page.</p>
   <div class="calc">
     <div class="calc-grid">
       <div><label for="c-agent">Agent</label>
         <select id="c-agent">
-          <option value="1.80">Sevoflurane</option>
-          <option value="1.17">Isoflurane</option>
-          <option value="6.6">Desflurane</option>
+          <option value="1.80" data-floor="0.5">Sevoflurane</option>
+          <option value="1.17" data-floor="0.4">Isoflurane</option>
+          <option value="6.6" data-floor="2.0">Desflurane</option>
         </select></div>
       <div><label for="c-age">Age (years)</label><input id="c-age" type="number" inputmode="decimal" min="1" max="100" step="1" value="40"></div>
       <div><label for="c-et">End-tidal agent % <span class="opt">(optional)</span></label><input id="c-et" type="number" inputmode="decimal" min="0" max="20" step="0.1" placeholder="e.g. 1.5"></div>
@@ -345,9 +351,11 @@
     </div>
     <div class="calc-out" aria-live="polite">
       <div class="stat-card"><div class="num" id="o-mac">—</div><div class="label">1.0 MAC at this age</div></div>
+      <div class="stat-card"><div class="num" id="o-awake">—</div><div class="label">MAC-awake (0.33×)</div></div>
+      <div class="stat-card"><div class="num" id="o-bar">—</div><div class="label">MAC-BAR (1.6×)</div></div>
       <div class="stat-card"><div class="num" id="o-total">—</div><div class="label">Total MAC delivered</div></div>
     </div>
-    <p class="calc-note">MAC<sub>age</sub> = MAC<sub>40</sub> × 10<sup>−0.00269 × (age − 40)</sup>, with MAC<sub>40</sub> sevoflurane 1.80%, isoflurane 1.17%, desflurane 6.6%, N₂O 104% (Mapleson WW. <em>Br J Anaesth.</em> 1996;76(2):179-185). Valid for ages ≥ 1 year. Total MAC sums agent and N₂O fractions. Educational demonstration only — not for clinical decision-making.</p>
+    <p class="calc-note">MAC<sub>age</sub> = MAC<sub>40</sub> × 10<sup>−0.00269 × (age − 40)</sup>, with MAC<sub>40</sub> sevoflurane 1.80%, isoflurane 1.17%, desflurane 6.6%, N₂O 104% (Mapleson WW. <em>Br J Anaesth.</em> 1996;76(2):179-185). Same equation, constants, and minimum floors as AnesCalc’s <code>CalculationEngine.swift</code>. Valid for ages ≥ 1 year. Total MAC sums agent and N₂O fractions. Educational demonstration only — not for clinical decision-making.</p>
   </div>
 
   <h2>Dosing Verification Audit</h2>
@@ -405,13 +413,13 @@
   <h2>Materials</h2>
   <div class="downloads">
     <a class="dl-btn" href="media/AnesCalc_ASA2026_ePoster.pptx" download>↓ ePoster (.pptx)</a>
-    <a class="dl-btn" href="media/anescalc_demo.mp4" download>↓ Demo video (.mp4)</a>
+    <a class="dl-btn" href="media/anescalc_demo.mp4" download>↓ Demo video (1080p .mp4)</a>
   </div>
 
   <h2>Acknowledgments / Contact</h2>
   <div class="contact-card">
     <div class="name">Andrew Peace, BS, FP-C</div>
-    <div class="role">OMS-III, Burrell College School of Osteopathic Medicine · Class of 2027</div>
+    <div class="role">OMS-IV, Burrell College School of Osteopathic Medicine · Class of 2027</div>
     <a class="email" href="mailto:andrew.peace@burrell.edu">andrew.peace@burrell.edu</a>
   </div>
   <p style="margin-top:14px;">The authors thank Emily Waddle, Class of 2029 at Burrell College School of Osteopathic Medicine, NM, for technical data support during the external UpToDate reference validation and algorithmic verification phases.</p>
@@ -427,16 +435,20 @@
 <script>
 (function () {
   var $ = function (id) { return document.getElementById(id); };
-  function ageMac(mac40, age) { return mac40 * Math.pow(10, -0.00269 * (age - 40)); }
+  // Mirrors CalculationEngine.swift: max(floor, base * pow(10, -0.00269 * (age - 40)))
+  function ageMac(mac40, floor, age) { return Math.max(floor, mac40 * Math.pow(10, -0.00269 * (age - 40))); }
   function num(el) { var v = parseFloat(el.value); return isNaN(v) ? null : v; }
   function update() {
-    var mac40 = parseFloat($("c-agent").value), age = num($("c-age"));
+    var opt = $("c-agent").selectedOptions[0];
+    var mac40 = parseFloat(opt.value), floor = parseFloat(opt.dataset.floor), age = num($("c-age"));
     var et = num($("c-et")), n2o = num($("c-n2o"));
-    if (age === null || age < 1 || age > 100) { $("o-mac").textContent = "—"; $("o-total").textContent = "—"; return; }
-    var mac = ageMac(mac40, age);
+    if (age === null || age < 1 || age > 100) { ["o-mac", "o-awake", "o-bar", "o-total"].forEach(function (id) { $(id).textContent = "—"; }); return; }
+    var mac = ageMac(mac40, floor, age);
     $("o-mac").textContent = mac.toFixed(2) + "%";
+    $("o-awake").textContent = (mac * 0.33).toFixed(2) + "%";
+    $("o-bar").textContent = (mac * 1.6).toFixed(2) + "%";
     if (et === null && n2o === null) { $("o-total").textContent = "—"; return; }
-    var total = (et || 0) / mac + (n2o || 0) / ageMac(104, age);
+    var total = (et || 0) / mac + (n2o || 0) / ageMac(104, 60, age);
     $("o-total").textContent = total.toFixed(2) + " MAC";
   }
   ["c-agent", "c-age", "c-et", "c-n2o"].forEach(function (id) { $(id).addEventListener("input", update); });
