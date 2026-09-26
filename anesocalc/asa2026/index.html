@@ -125,7 +125,7 @@
   .workflow-legend span::before { content: ""; display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 6px; background: var(--gold); }
   .workflow-legend span.ai::before { background: var(--green); }
 
-  .shot-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+  .shot-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
   .shot { background: var(--card); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
   .shot img { width: 100%; display: block; }
   .shot .cap { padding: 10px 12px; font-size: 0.82rem; color: var(--text3); border-top: 1px solid var(--border); }
@@ -260,9 +260,10 @@
   <h2>Worked Example — AnesCalc, a Native iOS Anesthesia Calculator</h2>
   <p class="lede">Built end to end by a medical student directing an AI assistant — zero lines of code written by hand.</p>
   <div class="shot-grid">
-    <div class="shot"><picture><source srcset="media/screenshot_patient_inputs.webp" type="image/webp"><img src="media/screenshot_patient_inputs.png" width="780" height="742" alt="AnesCalc patient inputs screen" loading="lazy"></picture><div class="cap">Patient inputs</div></div>
-    <div class="shot"><picture><source srcset="media/screenshot_ob_epidural.webp" type="image/webp"><img src="media/screenshot_ob_epidural.png" width="780" height="742" alt="AnesCalc results dashboard screen" loading="lazy"></picture><div class="cap">Results dashboard</div></div>
-    <div class="shot"><picture><source srcset="media/screenshot_drug_reference.webp" type="image/webp"><img src="media/screenshot_drug_reference.png" width="780" height="742" alt="AnesCalc drug reference library screen" loading="lazy"></picture><div class="cap">Drug reference cards</div></div>
+    <div class="shot"><picture><source srcset="media/shot_inputs.webp" type="image/webp"><img src="media/shot_inputs.png" width="900" height="624" alt="AnesCalc patient inputs: demographics, perioperative values, ABG, and TIVA parameters" loading="lazy"></picture><div class="cap">Patient inputs</div></div>
+    <div class="shot"><picture><source srcset="media/shot_results.webp" type="image/webp"><img src="media/shot_results.png" width="900" height="624" alt="AnesCalc results dashboard with the TIVA section expanded showing computed propofol doses and pump rates" loading="lazy"></picture><div class="cap">Results dashboard</div></div>
+    <div class="shot"><picture><source srcset="media/shot_drugs.webp" type="image/webp"><img src="media/shot_drugs.png" width="900" height="624" alt="AnesCalc drug reference list with 14 class filters" loading="lazy"></picture><div class="cap">Drug reference cards — 14 classes</div></div>
+    <div class="shot"><picture><source srcset="media/shot_tools.webp" type="image/webp"><img src="media/shot_tools.png" width="900" height="624" alt="AnesCalc clinical tools list: RSBI, RASS, driving pressure, Fick cardiac output, BP targets, NPO fasting, machine checkout, dermatomal levels, vasopressor drips, anticoagulant calculator" loading="lazy"></picture><div class="cap">10 bedside clinical tools</div></div>
   </div>
   <p class="swipe-hint">Swipe for more screens →</p>
   <video class="hero-video" controls preload="metadata" playsinline poster="media/anescalc_demo_poster.jpg">
