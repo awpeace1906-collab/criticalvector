@@ -73,7 +73,7 @@ def compose(frames, tl):
     tail = n - lead - sum(int(round(c["dur"] * FPS)) for c in tl["CLIPS"])  # hold the last clip frame to the end
     graph = (
         "".join(f"[{i + 1}:v]" for i in range(k)) + f"concat=n={k}:v=1,"
-        f"fps={FPS},setpts=N/({FPS}*TB),tpad=start={lead}:stop={max(tail, 0)}:stop_mode=clone:color=white[cl];"
+        f"fps={FPS},tpad=start={lead}:stop={max(tail, 0)}:stop_mode=clone:color=white,setpts=N/({FPS}*TB)[cl];"
         f"color=white:s=1920x1080:r={FPS}:d={n / FPS}[bg];"
         f"[bg][cl]overlay={s['x']}:{s['y']}[b];"
         "[b][0:v]overlay=0:0:format=auto,format=yuv420p[out]"
