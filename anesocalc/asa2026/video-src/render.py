@@ -38,12 +38,19 @@ def stills(times):
         browser.close()
 
 
-def full(workdir):
-    frames = pathlib.Path(workdir); shutil.rmtree(frames, ignore_errors=True); frames.mkdir(parents=True)
+def timeline():
     with sync_playwright() as p:
         browser, page = open_page(p)
         tl = page.evaluate("window.TIMELINE")
-        n = int(round(tl["TOTAL"] * FPS))
+        browser.close()
+    return tl
+
+
+def capture(frames, tl):
+    shutil.rmtree(frames, ignore_errors=True); frames.mkdir(parents=True)
+    n = int(round(tl["TOTAL"] * FPS))
+    with sync_playwright() as p:
+        browser, page = open_page(p)
         for i in range(n):
             page.evaluate(f"render({i / FPS})")
             page.screenshot(path=str(frames / f"{i:05d}.png"), omit_background=True)
@@ -51,17 +58,24 @@ def full(workdir):
                 print(f"frame {i}/{n}", flush=True)
         browser.close()
 
+
+def compose(frames, tl):
+    n = int(round(tl["TOTAL"] * FPS))
     s, app = tl["SCREEN"], tl["appStart"]
     clips = [str(HERE / "clips" / c["file"]) for c in tl["CLIPS"]]
     inputs = ["-framerate", str(FPS), "-i", str(frames / "%05d.png")]
     for c in clips:
         inputs += ["-i", c]
     k = len(clips)
+    # The clip track is padded with exactly round(app*FPS) leading frames (rather than
+    # shifted with setpts) so it stays frame-locked to the captured overlay frames.
+    lead = int(round(app * FPS))
+    tail = n - lead - sum(int(round(c["dur"] * FPS)) for c in tl["CLIPS"])  # hold the last clip frame to the end
     graph = (
-        "".join(f"[{i + 1}:v]" for i in range(k)) + f"concat=n={k}:v=1[clip];"
-        f"[clip]setpts=PTS-STARTPTS+{app}/TB[cl];"
+        "".join(f"[{i + 1}:v]" for i in range(k)) + f"concat=n={k}:v=1,"
+        f"fps={FPS},setpts=N/({FPS}*TB),tpad=start={lead}:stop={max(tail, 0)}:stop_mode=clone:color=white[cl];"
         f"color=white:s=1920x1080:r={FPS}:d={n / FPS}[bg];"
-        f"[bg][cl]overlay={s['x']}:{s['y']}:eof_action=pass[b];"
+        f"[bg][cl]overlay={s['x']}:{s['y']}[b];"
         "[b][0:v]overlay=0:0:format=auto,format=yuv420p[out]"
     )
     MEDIA.mkdir(exist_ok=True)
@@ -80,5 +94,12 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--stills", nargs="+", type=float)
     ap.add_argument("--workdir", default="/tmp/anescalc-frames")
+    ap.add_argument("--compose-only", action="store_true", help="reuse frames already in --workdir")
     a = ap.parse_args()
-    stills(a.stills) if a.stills else full(a.workdir)
+    if a.stills:
+        stills(a.stills)
+    else:
+        tl, frames = timeline(), pathlib.Path(a.workdir)
+        if not a.compose_only:
+            capture(frames, tl)
+        compose(frames, tl)
