@@ -71,9 +71,10 @@
   p { color: var(--text2); margin-bottom: 12px; }
   .lede { color: var(--text2); font-size: 0.98rem; }
 
-  .quote-lead {
-    display: block; font-size: 1.15rem; font-weight: 700; color: var(--navy); line-height: 1.5;
-    border-left: 3px solid var(--gold-soft); padding-left: 16px; margin-bottom: 14px;
+  .infographic {
+    display: block; width: 100%; height: auto;
+    border: 1px solid var(--border); border-radius: 10px;
+    background: #fff; margin: 4px 0 14px;
   }
 
   video {
@@ -107,25 +108,9 @@
   .stat-card .num .from { font-size: 1rem; color: var(--gold-text); font-weight: 400; }
   .stat-card .label { font-size: 0.76rem; color: var(--text3); margin-top: 4px; }
 
-  .workflow { display: flex; flex-direction: column; gap: 10px; }
-  .workflow-step {
-    display: grid; grid-template-columns: 34px 1fr; gap: 14px; align-items: start;
-    background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 12px 16px;
-  }
-  .workflow-step .n {
-    width: 34px; height: 34px; border-radius: 50%; background: var(--gold);
-    color: #fff; font-weight: 700; font-size: 0.9rem;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .workflow-step.ai .n { background: var(--green); }
-  .workflow-step .t { font-weight: 600; color: var(--navy); font-size: 0.92rem; }
-  .workflow-step .d { font-size: 0.84rem; color: var(--text3); margin-top: 2px; }
-  .workflow-repeat { font-size: 0.78rem; color: var(--text3); font-style: italic; padding-left: 48px; }
-  .workflow-legend { font-size: 0.76rem; color: var(--text3); padding-left: 48px; display: flex; gap: 16px; }
-  .workflow-legend span::before { content: ""; display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 6px; background: var(--gold); }
-  .workflow-legend span.ai::before { background: var(--green); }
+  .workflow-repeat { font-size: 0.84rem; color: var(--text3); font-style: italic; text-align: center; }
 
-  .shot-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+  .shot-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
   .shot { background: var(--card); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
   .shot img { width: 100%; display: block; }
   .shot .cap { padding: 10px 12px; font-size: 0.82rem; color: var(--text3); border-top: 1px solid var(--border); }
@@ -292,16 +277,8 @@
 
   <h2>Development Workflow</h2>
   <p class="lede"><em>An iterative build loop with the AI assistant</em></p>
-  <div class="workflow">
-    <div class="workflow-step"><div class="n">1</div><div><div class="t">Think of an application</div><div class="d">User forms the idea</div></div></div>
-    <div class="workflow-step"><div class="n">2</div><div><div class="t">Define constraints</div><div class="d">User gives the AI requirements</div></div></div>
-    <div class="workflow-step ai"><div class="n">3</div><div><div class="t">Create a prototype</div><div class="d">AI builds a first version</div></div></div>
-    <div class="workflow-step"><div class="n">4</div><div><div class="t">Test the prototype</div><div class="d">Try it, gather feedback</div></div></div>
-    <div class="workflow-step"><div class="n">5</div><div><div class="t">Define new features</div><div class="d">Identify what to add</div></div></div>
-    <div class="workflow-step ai"><div class="n">6</div><div><div class="t">Build the next version</div><div class="d">AI updates the prototype</div></div></div>
-  </div>
-  <p class="workflow-repeat">Steps 4–6 repeat until the prototype meets requirements. No programming training needed — <strong>zero lines of code authored by hand.</strong></p>
-  <p class="workflow-legend"><span>User</span><span class="ai">AI</span></p>
+  <img class="infographic" src="media/infographic_workflow.png" width="800" height="1760" alt="Development workflow diagram: 1 Idea (user forms the idea), 2 Define constraints (user gives the AI requirements), 3 Create a prototype (AI builds a first version), 4 Test the prototype (try it, gather feedback), 5 Fixes and new features, 6 Build the next version (AI updates the prototype) — steps 4 to 6 repeat until the prototype meets requirements" loading="lazy">
+  <p class="workflow-repeat">No programming training needed — <strong>zero lines of code authored by hand.</strong></p>
 
   <div class="convo-card" style="margin-top:22px;">
     <div class="convo-lead-wrap">
@@ -370,14 +347,7 @@
   </div>
 
   <h2>Beyond This Application</h2>
-  <p><span class="quote-lead">The workflow, not the app, is the transferable product.</span> The same six steps apply to almost any clinical need:</p>
-  <ul class="plain">
-    <li>Custom calculators and order-set helpers inside the EMR</li>
-    <li>Desktop widgets for rapid reference at the workstation</li>
-    <li>Anesthetic plan generators from structured case data</li>
-    <li>Custom case simulators for resident training</li>
-    <li>Departmental protocol, checklist, and QI dashboards</li>
-  </ul>
+  <img class="infographic" src="media/infographic_beyond_application.png" width="1806" height="573" alt="The workflow, not the app, is the transferable product. Same 6 steps, any clinical need: EMR tools (calculators and order-set helpers), desktop widgets (quick reference at the workstation), plan generators (anesthetic plans from case data), case simulators (resident training scenarios), QI dashboards (protocols, checklists, and metrics)" loading="lazy">
 
   <h2>Limitations &amp; Future Work</h2>
   <h3>Of AI-assisted development, generally</h3>
