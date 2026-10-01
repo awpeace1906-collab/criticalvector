@@ -110,6 +110,52 @@
 
   .workflow-repeat { font-size: 0.84rem; color: var(--text3); font-style: italic; text-align: center; }
 
+  .workflow-layout { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: start; }
+  .workflow-list { display: flex; flex-direction: column; gap: 10px; }
+  .workflow-step {
+    display: grid; grid-template-columns: 34px 1fr; gap: 14px; align-items: start;
+    background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 12px 16px;
+  }
+  .workflow-step .n {
+    width: 34px; height: 34px; border-radius: 50%; background: var(--gold);
+    color: #fff; font-weight: 700; font-size: 0.9rem;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .workflow-step.ai .n { background: var(--green); }
+  .workflow-step .t { font-weight: 600; color: var(--navy); font-size: 0.92rem; }
+  .workflow-step .d { font-size: 0.84rem; color: var(--text3); margin-top: 2px; }
+  .workflow-group {
+    position: relative; display: flex; flex-direction: column; gap: 10px;
+    background: var(--gold-dim); border: 1px solid var(--gold-soft); border-radius: 10px;
+    padding: 10px 38px 10px 10px;
+  }
+  .repeat-bracket {
+    position: absolute; top: 16px; bottom: 16px; right: 14px; width: 16px;
+    border-top: 2px solid var(--gold-soft); border-right: 2px solid var(--gold-soft); border-bottom: 2px solid var(--gold-soft);
+    border-top-right-radius: 8px; border-bottom-right-radius: 8px;
+  }
+  .repeat-bracket::before {
+    content: ""; position: absolute; top: -5px; left: -8px;
+    border: 5px solid transparent; border-right-color: var(--gold-soft);
+  }
+  .repeat-bracket .label {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(90deg);
+    font-size: 0.6rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--gold); white-space: nowrap; background: var(--gold-dim); padding: 0 4px;
+  }
+  .workflow-diagram {
+    display: block; width: auto; max-width: 100%; max-height: 560px;
+    border: 1px solid var(--border); border-radius: 10px; background: #fff;
+  }
+  .workflow-legend { font-size: 0.78rem; color: var(--text3); display: flex; gap: 16px; margin-top: 10px; }
+  .workflow-legend span { display: inline-flex; align-items: center; }
+  .workflow-legend span::before { content: ""; display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 6px; background: var(--gold); }
+  .workflow-legend span.ai::before { background: var(--green); }
+  @media (max-width: 760px) {
+    .workflow-layout { grid-template-columns: 1fr; }
+    .workflow-diagram { width: 100%; height: auto; max-height: none; }
+  }
+
   .shot-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
   .shot { background: var(--card); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
   .shot img { width: 100%; display: block; }
@@ -273,12 +319,26 @@
   </details>
 
   <h2>Background</h2>
-  <p class="lede">In the traditional software development pipeline, software engineering expertise often represents a bottleneck between ideation and a working prototype. Large language models (LLMs) have lowered this barrier, enabling end users, including clinicians, to translate novel ideas into functional applications tailored to their workflows through an emerging practice sometimes termed <strong>"vibe coding."</strong> The following workflow was used to develop an iOS application providing point-of-care anesthetic reference values.</p>
+  <p class="lede">Traditional software development requires programming expertise, creating a barrier between clinical ideas and working prototypes. Large language models (LLMs) lower this barrier by allowing clinicians to translate natural-language requirements into functional applications. We demonstrate this workflow through development of a native iOS application providing point-of-care anesthetic reference values.</p>
 
   <h2>Development Workflow</h2>
   <p class="lede"><em>An iterative build loop with the AI assistant</em></p>
-  <img class="infographic" src="media/infographic_workflow.png" width="800" height="1760" alt="Development workflow diagram: 1 Idea (user forms the idea), 2 Define constraints (user gives the AI requirements), 3 Create a prototype (AI builds a first version), 4 Test the prototype (try it, gather feedback), 5 Fixes and new features, 6 Build the next version (AI updates the prototype) — steps 4 to 6 repeat until the prototype meets requirements" loading="lazy">
-  <p class="workflow-repeat">No programming training needed — <strong>zero lines of code authored by hand.</strong></p>
+  <div class="workflow-layout">
+    <div class="workflow-list">
+      <div class="workflow-step"><div class="n">1</div><div><div class="t">Think of an application</div><div class="d">User forms the idea</div></div></div>
+      <div class="workflow-step"><div class="n">2</div><div><div class="t">Define constraints</div><div class="d">User gives the AI requirements</div></div></div>
+      <div class="workflow-step ai"><div class="n">3</div><div><div class="t">Create a prototype</div><div class="d">AI builds a first version</div></div></div>
+      <div class="workflow-group">
+        <div class="workflow-step"><div class="n">4</div><div><div class="t">Test the prototype</div><div class="d">Try it, gather feedback</div></div></div>
+        <div class="workflow-step"><div class="n">5</div><div><div class="t">Define new features</div><div class="d">Identify what to add</div></div></div>
+        <div class="workflow-step ai"><div class="n">6</div><div><div class="t">Build the next version</div><div class="d">AI updates the prototype</div></div></div>
+        <div class="repeat-bracket"><span class="label">Repeat</span></div>
+      </div>
+    </div>
+    <img class="workflow-diagram" src="media/infographic_workflow.png" width="800" height="1760" alt="Development workflow diagram: idea, constraints, AI builds a prototype, user tests it, AI applies fixes and new features, AI builds the next version, loop repeats until requirements are met" loading="lazy">
+  </div>
+  <p class="workflow-repeat">Steps 4–6 repeat until the prototype meets requirements. No programming training needed — <strong>zero lines of code authored by hand.</strong></p>
+  <p class="workflow-legend"><span>User</span><span class="ai">AI</span></p>
 
   <div class="convo-card" style="margin-top:22px;">
     <div class="convo-lead-wrap">
@@ -343,30 +403,28 @@
       <div class="item"><div class="num">24</div><div class="label">Sections</div></div>
       <div class="item"><div class="num">3</div><div class="label">Independent passes</div></div>
     </div>
-    <p style="margin-bottom:0;">An external reviewer independently audited every calculation. Each entry passed through triage, a targeted deep dive, then a full independent literature search — cross-referenced against UpToDate, Miller's 9e, and Barash 8e. <strong>All confirmed discrepancies were corrected before version finalized.</strong></p>
+    <p style="margin-bottom:0;">All values externally reviewed and cross-referenced against UpToDate, Miller's 9e, and Barash 8e.</p>
   </div>
 
   <h2>Beyond This Application</h2>
   <img class="infographic" src="media/infographic_beyond_application.png" width="1806" height="573" alt="The workflow, not the app, is the transferable product. Same 6 steps, any clinical need: EMR tools (calculators and order-set helpers), desktop widgets (quick reference at the workstation), plan generators (anesthetic plans from case data), case simulators (resident training scenarios), QI dashboards (protocols, checklists, and metrics)" loading="lazy">
 
   <h2>Limitations &amp; Future Work</h2>
-  <h3>Of AI-assisted development, generally</h3>
+  <h3>Limitations</h3>
   <ul class="plain">
-    <li>LLMs reason in language, not graphics — visual and UI design still require human iteration</li>
-    <li>Output is bounded by the model's knowledge and the target platform's Software Development Kit</li>
-    <li>Hardware and OS compatibility must be verified on real devices</li>
-    <li>Institutional IT and security policy may restrict custom software and PHI handling</li>
+    <li>AI-generated content and calculations require independent verification</li>
+    <li>Visual and UI design require iterative human refinement</li>
+    <li>Hardware and OS compatibility require testing on physical devices</li>
+    <li>Institutional IT, security, and protected health information policies may limit deployment</li>
+    <li>Current implementation is iOS-only and has not undergone prospective clinical validation</li>
   </ul>
-  <h3>Of this implementation</h3>
+  <h3>Future Work</h3>
   <ul class="plain">
-    <li>iOS only; not a regulated medical device — every output requires clinician verification</li>
-    <li>Final product capability is constrained by the LLM's tooling — user-defined feature scope is bounded by what the model can generate</li>
-  </ul>
-  <h3>Future work</h3>
-  <ul class="plain">
-    <li>Prospective outcomes validation · FDA SaMD regulatory classification</li>
+    <li>Prospective outcomes validation</li>
+    <li>FDA SaMD regulatory classification</li>
     <li>Clinician evaluation · formal usability review in training contexts</li>
-    <li>App Store sponsorship · Android functionality</li>
+    <li>App Store sponsorship for publication</li>
+    <li>Android functionality</li>
   </ul>
 
   <h2>AI Disclosure</h2>
