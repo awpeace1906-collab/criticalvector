@@ -125,7 +125,7 @@
   .workflow-legend span::before { content: ""; display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 6px; background: var(--gold); }
   .workflow-legend span.ai::before { background: var(--green); }
 
-  .shot-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .shot-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
   .shot { background: var(--card); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
   .shot img { width: 100%; display: block; }
   .shot .cap { padding: 10px 12px; font-size: 0.82rem; color: var(--text3); border-top: 1px solid var(--border); }
@@ -224,22 +224,22 @@
   .calc-note { font-size: 0.78rem; color: var(--text3); margin: 14px 0 0; }
 
   .tester-badge {
-    position: fixed; bottom: 22px; right: 22px; z-index: 20;
-    display: flex; align-items: center; gap: 10px;
+    position: fixed; bottom: 24px; right: 24px; z-index: 20;
+    display: flex; align-items: center; gap: 12px;
     background: #CFB288; color: var(--navy); text-decoration: none;
-    font-size: 1.225rem; font-weight: 700; letter-spacing: 0.02em;
-    padding: 19px 30px; border-radius: 38px;
-    box-shadow: 0 8px 24px rgba(138,109,71,.5);
+    font-size: 1.5rem; font-weight: 700; letter-spacing: 0.02em;
+    padding: 24px 38px; border-radius: 46px;
+    box-shadow: 0 10px 28px rgba(138,109,71,.55);
     animation: tester-pulse 2.6s ease-in-out infinite;
   }
-  .tester-badge .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--navy); flex: none; }
+  .tester-badge .dot { width: 13px; height: 13px; border-radius: 50%; background: var(--navy); flex: none; }
   .tester-badge:hover { background: #D9C09A; transform: scale(1.05); text-decoration: none; }
   @keyframes tester-pulse {
-    0%, 100% { box-shadow: 0 8px 24px rgba(138,109,71,.5); }
-    50% { box-shadow: 0 8px 28px rgba(138,109,71,.75), 0 0 0 8px rgba(189,155,112,.18); }
+    0%, 100% { box-shadow: 0 10px 28px rgba(138,109,71,.55); }
+    50% { box-shadow: 0 10px 32px rgba(138,109,71,.8), 0 0 0 10px rgba(189,155,112,.2); }
   }
   @media (prefers-reduced-motion: reduce) { .tester-badge { animation: none; } }
-  @media (max-width: 600px) { .tester-badge { font-size: 1.075rem; padding: 15px 24px; bottom: 14px; right: 14px; } }
+  @media (max-width: 600px) { .tester-badge { font-size: 1.3rem; padding: 18px 30px; bottom: 14px; right: 14px; } }
 </style>
 </head>
 <body>
