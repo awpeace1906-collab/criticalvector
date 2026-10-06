@@ -198,6 +198,16 @@ body{background:var(--bg);color:var(--tx);font-family:var(--fn);display:flex;fle
 .score-hi td{background:rgba(232,57,74,.08)!important;}
 .score-lo td{background:rgba(74,222,128,.07)!important;}
 </style>
+<style id="cv-responsive">
+/* Phone: stack the section title above its sources; give the header title room */
+@media(max-width:640px){
+  .shdr{flex-direction:column;align-items:flex-start;gap:6px;}
+  .supd{text-align:left;}
+  .hlogo{display:none;}
+  .htitle{font-size:13px;line-height:1.2;}
+  .hrt .hbtn[onclick="window.print()"]{display:none;}
+}
+</style>
 </head>
 <body>
 <div class="sbbd" id="sbbd"></div>

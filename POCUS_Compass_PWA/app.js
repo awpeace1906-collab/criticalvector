@@ -230,5 +230,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   if('serviceWorker' in navigator){
     navigator.serviceWorker.register('sw.js').catch(()=>{});
+    // When an updated worker takes over, reload once so the new files show without a second refresh
+    if(navigator.serviceWorker.controller){
+      let reloaded=false;
+      navigator.serviceWorker.addEventListener('controllerchange', ()=>{ if(!reloaded){ reloaded=true; location.reload(); } });
+    }
   }
 });
