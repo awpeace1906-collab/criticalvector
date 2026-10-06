@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>POCUS-Guided Nerve Block — Procedural Reference</title>
+<title>POCUS-Guided Nerve Block — Procedural Reference | The Critical Vector</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Syne:wght@600;700;800&family=DM+Mono:wght@400;500&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
   --navy:        #1B2A4A;
@@ -434,6 +434,109 @@ hr.rule { border: none; border-top: 1px solid var(--rule); margin: 32px 0; }
   .doc-footer { padding: 20px; flex-direction: column; align-items: flex-start; gap: 10px; }
 }
 
+/* ── CRITICAL VECTOR SCREEN THEME ──
+   Screen only: print keeps the light, ink-safe palette below. */
+@media screen {
+  .page-wrap { --cv-bg:#0a0e14; --cv-page:#0d121a; --cv-surface:#111720; --cv-surface2:#182030;
+    --cv-line:rgba(255,255,255,0.08); --cv-text:#e8edf5; --cv-body:#c9d3e3; --cv-dim:#8a9ab5; --cv-mute:#4a5670;
+    --cv-accent:#00d4aa; }
+  body { background: #0a0e14; color: #e8edf5; }
+  .page-wrap { background: var(--cv-page); box-shadow: 0 0 0 1px var(--cv-line); }
+
+  .cv-back { display:block; padding:14px 64px; font-family: var(--mono); font-size:11px; letter-spacing:.12em;
+    text-transform:uppercase; color: var(--cv-dim); text-decoration:none; background: var(--cv-bg); border-bottom:1px solid var(--cv-line); }
+  .cv-back:hover { color: var(--cv-accent); }
+
+  .cover { background: var(--cv-surface); }
+  .cover::before { background: radial-gradient(circle, rgba(0,212,170,0.16) 0%, transparent 70%); }
+  .cover::after { background: linear-gradient(90deg, var(--cv-accent), #60a5fa, var(--cv-accent)); }
+  .cover-eyebrow { color: var(--cv-accent); }
+  .cover-title { font-family: 'Syne', sans-serif; font-weight: 800; letter-spacing: -0.02em; color: var(--cv-text); }
+  .cover-title span { color: var(--cv-accent); }
+  .cover-subtitle { color: var(--cv-dim); }
+  .cover-tag { border-color: rgba(0,212,170,0.25); color: var(--cv-dim); }
+
+  .part-divider { background: var(--cv-surface); border-top-color: var(--cv-accent); }
+  .part-num { color: var(--cv-accent); }
+  .part-title { font-family: 'Syne', sans-serif; font-weight: 700; color: var(--cv-text); }
+  .part-sub { color: var(--cv-dim); }
+
+  /* Phase colours: one hue each, as tints on the dark page */
+  .phase--teal  { --ph:#00d4aa; --ph-tint:rgba(0,212,170,0.08); }
+  .phase--slate { --ph:#60a5fa; --ph-tint:rgba(96,165,250,0.08); }
+  .phase--green { --ph:#4ade80; --ph-tint:rgba(74,222,128,0.08); }
+  .phase--amber { --ph:#f59e0b; --ph-tint:rgba(245,158,11,0.08); }
+  .phase--red   { --ph:#f87171; --ph-tint:rgba(232,76,76,0.10); }
+  .phase--navy  { --ph:#a78bfa; --ph-tint:rgba(167,139,250,0.08); }
+  .phase .phase-num { background: var(--ph); color: #0a0e14; font-family: 'Syne', sans-serif; font-weight: 800; }
+  .phase .phase-body { background: var(--ph-tint); }
+  .phase .phase-label, .phase .phase-title { color: var(--ph); }
+  .phase-title { font-family: 'Syne', sans-serif; }
+
+  .section-title { color: var(--cv-text); border-color: var(--cv-accent); }
+  .section-title.teal  { color:#00d4aa; border-color:#00d4aa; }
+  .section-title.slate { color:#60a5fa; border-color:#60a5fa; }
+  .section-title.green { color:#4ade80; border-color:#4ade80; }
+  .section-title.amber { color:#f59e0b; border-color:#f59e0b; }
+  .section-title.red   { color:#f87171; border-color:#f87171; }
+  .section-title.navy  { color:#a78bfa; border-color:#a78bfa; }
+
+  p.body-text, ul.bullets li { color: var(--cv-body); }
+  p.body-text b, ul.bullets li b { color: var(--cv-text); }
+  ul.bullets li::before { color: var(--cv-accent); }
+
+  .callout--red   { --co:#f87171; --co-tint:rgba(232,76,76,0.10); }
+  .callout--amber { --co:#f59e0b; --co-tint:rgba(245,158,11,0.08); }
+  .callout--green { --co:#4ade80; --co-tint:rgba(74,222,128,0.08); }
+  .callout--slate { --co:#60a5fa; --co-tint:rgba(96,165,250,0.08); }
+  .callout--teal  { --co:#00d4aa; --co-tint:rgba(0,212,170,0.08); }
+  .callout .callout-stripe { background: var(--co); }
+  .callout .callout-inner { background: var(--co-tint); }
+  .callout .callout-label { color: var(--co); }
+  .callout-text { color: var(--cv-body); }
+
+  .data-table th { background: var(--cv-surface2); color: var(--cv-text); }
+  .data-table td { border-bottom-color: var(--cv-line); color: var(--cv-body); }
+  .data-table tr:nth-child(odd) td  { background: var(--cv-surface); }
+  .data-table tr:nth-child(even) td { background: var(--cv-page); }
+  .data-table.red-header th { background: rgba(232,76,76,0.18); color: #f87171; }
+  .data-table.red-header td:first-child { color: #f87171; }
+
+  .step-group-label { color: var(--cv-accent); }
+  .step-group-label::before { background: var(--cv-accent); }
+  .step-group-label.red { color: #f87171; }
+  .step-group-label.red::before { background: #f87171; }
+  .step-card { border-color: var(--cv-line); }
+  .step-num { background: var(--cv-surface); color: var(--cv-accent); border-right-color: var(--cv-line); }
+  .step-num.letter { color: #f87171; }
+  .step-body-text { color: var(--cv-body); }
+  .step-body-text strong { color: var(--cv-text); }
+  .step-subs li { color: var(--cv-dim); }
+  .step-subs li::before { color: var(--cv-mute); }
+
+  .safety-table td { border-color: var(--cv-line); }
+  .safety-table .num-cell { background: var(--cv-accent); color: #0a0e14; border-color: var(--cv-accent); }
+  .safety-table .rule-cell { color: var(--cv-text); }
+  .safety-table .rule-cell em { color: var(--cv-dim); }
+  .safety-table tr:nth-child(odd)  .rule-cell { background: rgba(0,212,170,0.06); }
+  .safety-table tr:nth-child(even) .rule-cell { background: var(--cv-page); }
+  p.body-text[style*="text-align:center"] { color: var(--cv-dim) !important; }
+
+  hr.rule { border-top-color: var(--cv-line); }
+  .doc-footer { background: var(--cv-surface); border-top-color: var(--cv-line); }
+  .doc-footer-refs { color: var(--cv-dim); }
+  .doc-footer-brand { color: var(--cv-mute); }
+}
+@media screen and (max-width: 640px) {
+  .cv-back { padding: 12px 20px; }
+  .data-table tr { border-color: var(--cv-line); }
+  .data-table td { background: var(--cv-page) !important; border-bottom-color: var(--cv-line); }
+  .data-table td:first-child { background: var(--cv-surface) !important; color: var(--cv-text); }
+  .data-table.red-header td:first-child { color: #f87171; }
+  .data-table td[data-label]:not(:first-child)::before { color: var(--cv-dim); }
+}
+@media print { .cv-back { display: none; } }
+
 /* ── PRINT (CV light mode) ── */
 @media print {
   body { background: white; font-size: 12px; }
@@ -516,6 +619,8 @@ hr.rule { border: none; border-top: 1px solid var(--rule); margin: 32px 0; }
 </head>
 <body>
 <div class="page-wrap">
+
+<a class="cv-back" href="../workshop.html">← The Workshop · The Critical Vector</a>
 
 <!-- COVER -->
 <div class="cover">
