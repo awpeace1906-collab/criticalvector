@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>POCUS-Guided Nerve Block — Procedural Reference</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:        #1B2A4A;
+  --teal:        #0B6E6E;
+  --teal-light:  #E6F4F4;
+  --teal-mid:    #0D8888;
+  --slate:       #3D5470;
+  --slate-light: #EEF1F6;
+  --red:         #B03030;
+  --red-light:   #FDECEA;
+  --amber:       #8A5C00;
+  --amber-light: #FEF6E4;
+  --green:       #1E5C3A;
+  --green-light: #E8F5EE;
+  --rule:        #C8D4E8;
+  --offwhite:    #F7F9FC;
+  --gray1:       #2C3E50;
+  --gray2:       #5A6A7A;
+  --gray3:       #8A9BAC;
+  --gray4:       #D0DBE6;
+  --white:       #FFFFFF;
+  --page-width:  900px;
+  --serif:       'DM Serif Display', Georgia, serif;
+  --sans:        'Figtree', system-ui, sans-serif;
+  --mono:        'DM Mono', monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 15px; }
+
+body {
+  font-family: var(--sans);
+  color: var(--gray1);
+  background: #ECF0F5;
+  line-height: 1.6;
+}
+
+.page-wrap {
+  max-width: var(--page-width);
+  margin: 0 auto;
+  background: var(--white);
+  box-shadow: 0 4px 40px rgba(27,42,74,0.12);
+}
+
+/* ── COVER ── */
+.cover {
+  background: var(--navy);
+  padding: 80px 64px 64px;
+  position: relative;
+  overflow: hidden;
+}
+.cover::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 340px; height: 340px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(11,110,110,0.3) 0%, transparent 70%);
+}
+.cover::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--teal), #26C6C6, var(--teal));
+}
+.cover-eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--teal-mid);
+  margin-bottom: 20px;
+}
+.cover-title {
+  font-family: var(--serif);
+  font-size: 58px;
+  line-height: 1.05;
+  color: var(--white);
+  margin-bottom: 6px;
+}
+.cover-title span { color: #4DD9D9; }
+.cover-subtitle {
+  font-size: 17px;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 40px;
+  font-weight: 400;
+}
+.cover-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.cover-tag {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  padding: 5px 12px;
+  border: 1px solid rgba(77,217,217,0.3);
+  border-radius: 2px;
+  color: rgba(255,255,255,0.5);
+}
+
+/* ── PART DIVIDER ── */
+.part-divider {
+  background: var(--navy);
+  padding: 36px 64px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border-top: 3px solid var(--teal);
+}
+.part-num {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: var(--teal-mid);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.part-rule { flex: 1; height: 1px; background: rgba(255,255,255,0.12); }
+.part-title {
+  font-family: var(--serif);
+  font-size: 26px;
+  color: var(--white);
+}
+.part-sub {
+  font-size: 13px;
+  color: rgba(255,255,255,0.45);
+  font-style: italic;
+  padding-top: 2px;
+}
+
+/* ── PHASE HEADER ── */
+.phase {
+  display: flex;
+  align-items: stretch;
+  margin: 40px 0 0;
+}
+.phase-num {
+  width: 64px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--serif);
+  font-size: 22px;
+  color: var(--white);
+  letter-spacing: 0.02em;
+}
+.phase-body {
+  flex: 1;
+  padding: 16px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.phase-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 3px;
+  opacity: 0.65;
+}
+.phase-title { font-size: 17px; font-weight: 700; line-height: 1.2; }
+
+.phase--teal .phase-num   { background: var(--teal); }
+.phase--teal .phase-body  { background: var(--teal-light); }
+.phase--teal .phase-label { color: var(--teal); }
+.phase--teal .phase-title { color: var(--teal); }
+
+.phase--slate .phase-num  { background: var(--slate); }
+.phase--slate .phase-body { background: var(--slate-light); }
+.phase--slate .phase-label{ color: var(--slate); }
+.phase--slate .phase-title{ color: var(--slate); }
+
+.phase--green .phase-num  { background: var(--green); }
+.phase--green .phase-body { background: var(--green-light); }
+.phase--green .phase-label{ color: var(--green); }
+.phase--green .phase-title{ color: var(--green); }
+
+.phase--amber .phase-num  { background: var(--amber); }
+.phase--amber .phase-body { background: var(--amber-light); }
+.phase--amber .phase-label{ color: var(--amber); }
+.phase--amber .phase-title{ color: var(--amber); }
+
+.phase--red .phase-num    { background: var(--red); }
+.phase--red .phase-body   { background: var(--red-light); }
+.phase--red .phase-label  { color: var(--red); }
+.phase--red .phase-title  { color: var(--red); }
+
+.phase--navy .phase-num   { background: var(--navy); }
+.phase--navy .phase-body  { background: var(--offwhite); }
+.phase--navy .phase-label { color: var(--navy); }
+.phase--navy .phase-title { color: var(--navy); }
+
+/* ── CONTENT AREA ── */
+.content { padding: 0 64px; }
+
+.section-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--navy);
+  border-left: 3px solid var(--teal);
+  padding-left: 12px;
+  margin: 32px 0 10px;
+  letter-spacing: 0.01em;
+}
+.section-title.teal   { border-color: var(--teal);  color: var(--teal); }
+.section-title.slate  { border-color: var(--slate); color: var(--slate); }
+.section-title.green  { border-color: var(--green); color: var(--green); }
+.section-title.amber  { border-color: var(--amber); color: var(--amber); }
+.section-title.red    { border-color: var(--red);   color: var(--red); }
+.section-title.navy   { border-color: var(--navy);  color: var(--navy); }
+
+p.body-text {
+  font-size: 14px;
+  color: var(--gray1);
+  margin-bottom: 10px;
+  line-height: 1.65;
+}
+
+ul.bullets { list-style: none; margin: 0 0 12px 0; padding: 0; }
+ul.bullets li {
+  font-size: 14px;
+  color: var(--gray1);
+  padding: 3px 0 3px 22px;
+  position: relative;
+  line-height: 1.55;
+}
+ul.bullets li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--teal);
+  font-weight: 700;
+}
+ul.bullets li b { color: var(--navy); }
+
+/* ── CALLOUT ── */
+.callout {
+  display: flex;
+  margin: 16px 0;
+  border-radius: 2px;
+  overflow: hidden;
+}
+.callout-stripe { width: 5px; flex-shrink: 0; }
+.callout-inner  { padding: 14px 18px; flex: 1; }
+.callout-label  { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 5px; }
+.callout-text   { font-size: 13px; color: var(--gray1); line-height: 1.6; }
+
+.callout--red   .callout-stripe { background: var(--red); }
+.callout--red   .callout-inner  { background: var(--red-light); }
+.callout--red   .callout-label  { color: var(--red); }
+
+.callout--amber .callout-stripe { background: var(--amber); }
+.callout--amber .callout-inner  { background: var(--amber-light); }
+.callout--amber .callout-label  { color: var(--amber); }
+
+.callout--green .callout-stripe { background: var(--green); }
+.callout--green .callout-inner  { background: var(--green-light); }
+.callout--green .callout-label  { color: var(--green); }
+
+.callout--slate .callout-stripe { background: var(--slate); }
+.callout--slate .callout-inner  { background: var(--slate-light); }
+.callout--slate .callout-label  { color: var(--slate); }
+
+.callout--teal  .callout-stripe { background: var(--teal); }
+.callout--teal  .callout-inner  { background: var(--teal-light); }
+.callout--teal  .callout-label  { color: var(--teal); }
+
+/* ── TABLES ── */
+.data-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 13px; }
+.data-table th {
+  background: var(--navy);
+  color: var(--white);
+  padding: 9px 12px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+.data-table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+  line-height: 1.45;
+}
+.data-table tr:nth-child(odd) td  { background: var(--offwhite); }
+.data-table tr:nth-child(even) td { background: var(--white); }
+.data-table.red-header th         { background: var(--red); }
+.data-table.red-header td:first-child { font-weight: 700; color: var(--red); }
+
+/* ── STEP CARDS ── */
+.step-group-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--teal);
+  margin: 36px 0 10px;
+  padding-left: 2px;
+  letter-spacing: 0.01em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.step-group-label::before {
+  content: '';
+  display: inline-block;
+  width: 10px; height: 10px;
+  background: var(--teal);
+  flex-shrink: 0;
+}
+.step-group-label.red   { color: var(--red); }
+.step-group-label.red::before { background: var(--red); }
+
+.step-card {
+  display: flex;
+  align-items: stretch;
+  margin-bottom: 5px;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.step-num {
+  width: 52px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--offwhite);
+  font-family: var(--mono);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--teal);
+  border-right: 1px solid var(--rule);
+}
+.step-num.letter { color: var(--red); }
+.step-body-text {
+  padding: 10px 14px;
+  flex: 1;
+  font-size: 13.5px;
+  color: var(--gray1);
+  line-height: 1.55;
+}
+.step-body-text strong { color: var(--navy); }
+.step-subs { margin-top: 6px; padding: 0; list-style: none; }
+.step-subs li {
+  font-size: 12.5px;
+  color: var(--gray2);
+  padding: 2px 0 2px 16px;
+  position: relative;
+  line-height: 1.45;
+}
+.step-subs li::before {
+  content: '–';
+  position: absolute;
+  left: 0;
+  color: var(--gray3);
+}
+
+/* ── SAFETY RULES ── */
+.safety-table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+.safety-table td { padding: 10px 14px; border: 1px solid var(--rule); font-size: 13.5px; vertical-align: middle; }
+.safety-table .num-cell {
+  width: 48px;
+  text-align: center;
+  background: var(--teal);
+  color: var(--white);
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 14px;
+  border-color: var(--teal);
+}
+.safety-table .rule-cell { font-weight: 700; color: var(--navy); }
+.safety-table .rule-cell em { font-weight: 400; color: var(--gray2); font-style: italic; }
+.safety-table tr:nth-child(odd)  .rule-cell { background: var(--teal-light); }
+.safety-table tr:nth-child(even) .rule-cell { background: var(--white); }
+
+/* ── FOOTER ── */
+.doc-footer {
+  padding: 28px 64px;
+  border-top: 1px solid var(--rule);
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--offwhite);
+}
+.doc-footer-refs { font-size: 11px; color: var(--gray3); font-style: italic; line-height: 1.5; }
+.doc-footer-brand { font-family: var(--mono); font-size: 11px; color: var(--gray4); letter-spacing: 0.08em; }
+
+.spacer { height: 20px; }
+.spacer-sm { height: 10px; }
+.spacer-lg { height: 40px; }
+
+hr.rule { border: none; border-top: 1px solid var(--rule); margin: 32px 0; }
+
+/* ── PHONE ── */
+@media (max-width: 640px) {
+  .cover { padding: 48px 20px 36px; }
+  .cover-title { font-size: 38px; }
+  .cover-subtitle { font-size: 15px; margin-bottom: 28px; }
+  .part-divider { padding: 24px 20px; }
+  .part-title { font-size: 22px; }
+  .content { padding: 0 20px; }
+  .phase { margin-top: 28px; }
+  .phase-num { width: 48px; font-size: 18px; }
+  .phase-body { padding: 12px 16px; }
+  .phase-title { font-size: 15.5px; }
+  /* Tables become one card per row, each value labelled from its column header */
+  .data-table thead { display: none; }
+  .data-table, .data-table tbody, .data-table tr, .data-table td { display: block; width: 100%; }
+  .data-table tr { border: 1px solid var(--rule); border-radius: 3px; margin-bottom: 8px; overflow: hidden; }
+  .data-table td { border-bottom: 1px solid var(--rule); padding: 7px 12px; background: var(--white) !important; }
+  .data-table td:last-child { border-bottom: none; }
+  .data-table td:first-child { background: var(--offwhite) !important; font-weight: 700; color: var(--navy); }
+  .data-table td[data-label]:not(:first-child)::before {
+    content: attr(data-label); display: block; font-size: 10.5px; font-weight: 700;
+    letter-spacing: 0.06em; text-transform: uppercase; color: var(--gray2); margin-bottom: 2px;
+  }
+  .step-num { width: 40px; font-size: 13px; }
+  .step-body-text { padding: 9px 11px; }
+  .safety-table .num-cell { width: 38px; }
+  .doc-footer { padding: 20px; flex-direction: column; align-items: flex-start; gap: 10px; }
+}
+
+/* ── PRINT (CV light mode) ── */
+@media print {
+  body { background: white; font-size: 12px; }
+  .page-wrap { box-shadow: none; max-width: 100%; }
+  .content { padding: 0 48px; }
+  .part-divider { padding: 24px 48px; }
+  .phase { page-break-inside: avoid; }
+  .step-card { page-break-inside: avoid; }
+  .callout { page-break-inside: avoid; }
+  .data-table { page-break-inside: avoid; }
+  .part-divider { page-break-before: always; }
+  @page { margin: 0.6in 0.5in; }
+
+  /* Cover: navy panel → white with border, ink-safe */
+  .cover {
+    background: var(--white);
+    padding: 32px 48px 28px;
+    border: 1px solid var(--rule);
+    border-bottom: 3px solid var(--teal);
+  }
+  .cover::before { display: none; }
+  .cover::after { display: none; }
+  .cover-eyebrow { color: var(--teal); }
+  .cover-title { font-size: 38px; color: var(--navy); }
+  .cover-title span { color: var(--teal); }
+  .cover-subtitle { color: var(--gray2); }
+  .cover-tag { color: var(--slate); border-color: var(--rule); }
+
+  /* Part divider: navy panel → white with rule */
+  .part-divider {
+    background: var(--white);
+    border-top: 3px solid var(--teal);
+    border-bottom: 1px solid var(--rule);
+  }
+  .part-rule { background: var(--rule); }
+  .part-title { color: var(--navy); }
+  .part-sub { color: var(--gray2); }
+
+  /* Phase headers: colored num block → white with colored border, text recolored */
+  .phase-num {
+    background: var(--white) !important;
+    border: 1px solid var(--rule);
+    border-right: none;
+  }
+  .phase--teal  .phase-num { color: var(--teal);  border-color: var(--teal); }
+  .phase--slate .phase-num { color: var(--slate); border-color: var(--slate); }
+  .phase--green .phase-num { color: var(--green); border-color: var(--green); }
+  .phase--amber .phase-num { color: var(--amber); border-color: var(--amber); }
+  .phase--red   .phase-num { color: var(--red);   border-color: var(--red); }
+  .phase--navy  .phase-num { color: var(--navy);  border-color: var(--navy); }
+  .phase-body { border: 1px solid var(--rule); border-left: none; }
+
+  /* Data table headers: navy/red fill → white with bottom rule, dark text */
+  .data-table th {
+    background: var(--white) !important;
+    color: var(--navy) !important;
+    border-bottom: 2px solid var(--navy);
+  }
+  .data-table.red-header th {
+    background: var(--white) !important;
+    color: var(--red) !important;
+    border-bottom: 2px solid var(--red);
+  }
+
+  /* Safety table num cell: teal fill → white with teal text/border */
+  .safety-table .num-cell {
+    background: var(--white) !important;
+    color: var(--teal) !important;
+    border: 1px solid var(--teal);
+  }
+
+  /* Step group marker square → outline instead of solid fill */
+  .step-group-label::before {
+    background: var(--white) !important;
+    border: 1.5px solid var(--teal);
+  }
+  .step-group-label.red::before { border-color: var(--red); }
+}
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-eyebrow">Point-of-Care Ultrasound · Procedural Reference</div>
+  <div class="cover-title">POCUS-Guided<br><span>Nerve Block</span></div>
+  <div class="cover-subtitle">Procedural Framework &amp; Step-by-Step Instructions</div>
+  <div class="cover-tags">
+    <span class="cover-tag">ASRA 2023</span>
+    <span class="cover-tag">ACEP Guidelines</span>
+    <span class="cover-tag">SOAP Standards</span>
+    <span class="cover-tag">Neal et al. Reg Anesth Pain Med 2023</span>
+  </div>
+</div>
+
+<!-- PART I -->
+<div class="part-divider">
+  <div>
+    <div class="part-num">Part I</div>
+    <div class="part-title">Procedural Framework</div>
+    <div class="part-sub">Phase-by-Phase Reference</div>
+  </div>
+</div>
+
+<!-- PHASE 1 -->
+<div class="phase phase--teal">
+  <div class="phase-num">01</div>
+  <div class="phase-body">
+    <div class="phase-label">Phase One</div>
+    <div class="phase-title">Pre-Procedure Preparation</div>
+  </div>
+</div>
+<div class="content">
+
+<div class="section-title teal">1.1  Indication, Consent &amp; Contraindication Screen</div>
+<p class="body-text">Confirm the clinical indication. US-guided peripheral nerve blocks are indicated for procedural analgesia, opioid-sparing analgesia, facilitation of extremity procedures, and acute pain management in the ED or perioperative setting.</p>
+<p class="body-text">Obtain informed consent. Discuss:</p>
+<ul class="bullets">
+  <li>Local anesthetic systemic toxicity (LAST)</li>
+  <li>Nerve injury — neuropraxia, axonotmesis</li>
+  <li>Hematoma or vascular injury</li>
+  <li>Infection</li>
+  <li>Block failure or incomplete analgesia</li>
+  <li>Pneumothorax — for blocks in proximity to pleura (interscalene, supraclavicular)</li>
+  <li>Phrenic nerve palsy — bilateral blocks contraindicated</li>
+</ul>
+<p class="body-text"><b>Absolute contraindications:</b></p>
+<ul class="bullets">
+  <li>Patient refusal</li>
+  <li>Infection overlying the injection site</li>
+  <li>Known allergy to the selected local anesthetic class</li>
+</ul>
+<p class="body-text"><b>Relative contraindications</b> (risk-benefit analysis required):</p>
+<ul class="bullets">
+  <li>Coagulopathy or anticoagulation — use ASRA institutional thresholds</li>
+  <li>Pre-existing neuropathy in the target distribution</li>
+  <li>Hemidiaphragm compromise (contralateral phrenic palsy) for C3–C5 blocks</li>
+  <li>Uncooperative or obtunded patient</li>
+</ul>
+
+<div class="section-title teal">1.2  Baseline Neurologic &amp; Vascular Assessment</div>
+<p class="body-text">Document pre-procedure motor and sensory function in the planned block distribution. Pre-existing deficits must be recorded clearly — this protects both patient and provider if new symptoms arise post-block.</p>
+<p class="body-text">Confirm IV access is established and functional before any block is performed. This is non-negotiable. Record baseline vital signs: HR, BP, SpO₂, RR.</p>
+
+<div class="section-title teal">1.3  Local Anesthetic Selection &amp; Dosing</div>
+<p class="body-text">Always calculate the total milligram dose — not just the volume.</p>
+<table class="data-table">
+  <thead><tr><th>Agent</th><th>Conc.</th><th>Onset</th><th>Duration (plain)</th><th>Max Dose (plain / w/ epi)</th></tr></thead>
+  <tbody>
+    <tr><td>Lidocaine</td><td>1–1.5%</td><td>5–15 min</td><td>1–2 hrs</td><td>4.5 mg/kg / 7 mg/kg</td></tr>
+    <tr><td>Mepivacaine</td><td>1–1.5%</td><td>5–15 min</td><td>2–3 hrs</td><td>4.5 mg/kg / 7 mg/kg</td></tr>
+    <tr><td>Bupivacaine</td><td>0.25–0.5%</td><td>15–30 min</td><td>6–18 hrs</td><td>2.5 mg/kg / 3 mg/kg</td></tr>
+    <tr><td>Ropivacaine</td><td>0.2–0.5%</td><td>15–25 min</td><td>5–15 hrs</td><td>3 mg/kg / max 200–250 mg</td></tr>
+    <tr><td>Levobupivacaine</td><td>0.25–0.5%</td><td>15–30 min</td><td>6–18 hrs</td><td>2.5 mg/kg / 3 mg/kg</td></tr>
+  </tbody>
+</table>
+<p class="body-text"><b>Adjuvants:</b></p>
+<ul class="bullets">
+  <li><b>Dexamethasone 4–8 mg perineural:</b> extends block duration by 4–8 hrs; systemic dose may provide equivalent effect</li>
+  <li><b>Epinephrine 1:200,000 (5 mcg/mL):</b> prolongs block, reduces vascular uptake, intravascular injection marker (HR rise &gt;20 bpm = suspect IV injection)</li>
+  <li><b>Dexmedetomidine 0.5–1 mcg/kg perineural:</b> emerging evidence for duration extension; not universally adopted</li>
+</ul>
+
+<div class="section-title teal">1.4  Resuscitation Readiness</div>
+<div class="callout callout--red">
+  <div class="callout-stripe"></div>
+  <div class="callout-inner">
+    <div class="callout-label">Critical</div>
+    <div class="callout-text">LAST is the most feared complication of peripheral nerve blockade. Intralipid 20% and resuscitation equipment must be immediately accessible — not in a cabinet down the hall — before the first milliliter is injected.</div>
+  </div>
+</div>
+<p class="body-text"><b>Required at bedside:</b></p>
+<ul class="bullets">
+  <li>Intralipid 20% (lipid emulsion) — confirmed present, drawn up or immediately accessible</li>
+  <li>Airway equipment: bag-valve-mask, laryngoscope, ETT or SGA</li>
+  <li>Supplemental oxygen and suction</li>
+  <li>Emergency medications: epinephrine, benzodiazepine, atropine</li>
+  <li>Crash cart within immediate reach</li>
+</ul>
+<p class="body-text"><b>ASRA Intralipid 20% dosing for LAST:</b></p>
+<ul class="bullets">
+  <li>Bolus: 1.5 mL/kg ideal body weight IV over 2–3 minutes</li>
+  <li>Infusion: 0.25 mL/kg/min; double to 0.5 mL/kg/min if cardiovascular instability persists</li>
+  <li>Repeat bolus once if no improvement at 5 minutes</li>
+  <li>Max cumulative dose: ~12 mL/kg in first 30 minutes</li>
+</ul>
+<div class="callout callout--amber">
+  <div class="callout-stripe"></div>
+  <div class="callout-inner">
+    <div class="callout-label">Note</div>
+    <div class="callout-text">Do not substitute propofol for Intralipid. Propofol contains lipid at insufficient concentration and carries its own hemodynamic risks at the doses required for emulsion therapy.</div>
+  </div>
+</div>
+
+<div class="section-title teal">1.5  Positioning &amp; Monitoring</div>
+<p class="body-text">Position for optimal operator access, patient comfort, and rapid conversion to airway management if needed.</p>
+<ul class="bullets">
+  <li>Pulse oximetry (continuous)</li>
+  <li>Continuous ECG</li>
+  <li>NIBP cycling every 2–3 minutes during injection</li>
+</ul>
+<p class="body-text">Supplemental O₂ via nasal cannula for all moderate-to-high-risk blocks. Procedural sedation must not mask early CNS symptoms of LAST — use the minimum effective dose.</p>
+
+</div><!-- /content -->
+
+<!-- PHASE 2 -->
+<div class="phase phase--slate">
+  <div class="phase-num">02</div>
+  <div class="phase-body">
+    <div class="phase-label">Phase Two</div>
+    <div class="phase-title">Ultrasound Setup &amp; Target Identification</div>
+  </div>
+</div>
+<div class="content">
+
+<div class="section-title slate">2.1  Transducer Selection</div>
+<ul class="bullets">
+  <li><b>High-frequency linear (10–15 MHz):</b> optimal for superficial nerves (&lt;4 cm). Standard for most extremity blocks.</li>
+  <li><b>Low-frequency curvilinear (2–5 MHz):</b> required for deep targets (&gt;4–5 cm). Sciatic, obturator, deep lumbosacral plexus.</li>
+  <li><b>High-frequency curved / hockey stick (8–13 MHz):</b> pediatric and superficial blocks in tight anatomical spaces.</li>
+</ul>
+<p class="body-text">General rule: use the highest frequency that provides adequate penetration. Resolution degrades linearly with depth. Downgrading prematurely sacrifices needle visualization unnecessarily.</p>
+
+<div class="section-title slate">2.2  Systematic Survey Scan</div>
+<p class="body-text">Before committing to an injection site, perform a full survey scan:</p>
+<ul class="bullets">
+  <li>Identify the target nerve and surrounding structures</li>
+  <li>Map adjacent vasculature with color Doppler — do not skip this step even for "simple" blocks</li>
+  <li>Identify anatomical variants: bifurcations, aberrant vessels, accessory nerves</li>
+  <li>Confirm nerve identity by tracing proximally and distally — <b>honeycomb (fascicular) pattern</b> in short axis; parallel cable in long axis</li>
+  <li>Identify pleura, peritoneum, or other critical structures in the needle trajectory</li>
+</ul>
+<div class="callout callout--slate">
+  <div class="callout-stripe"></div>
+  <div class="callout-inner">
+    <div class="callout-label">Sonoanatomy</div>
+    <div class="callout-text">Peripheral nerves appear hyperechoic with internal hypoechoic fascicular bundles (honeycomb pattern). Tendons may mimic nerves — trace proximally; tendons attach to muscle, nerves do not.</div>
+  </div>
+</div>
+
+<div class="section-title slate">2.3  Image Optimization</div>
+<p class="body-text">Maximize image quality before needle insertion. Chasing the needle tip on a suboptimal image is a common source of error.</p>
+<ul class="bullets">
+  <li><b>Depth:</b> center target nerve in the middle third of the image</li>
+  <li><b>Gain:</b> over-gain washes out fascicular detail</li>
+  <li><b>Focus zone:</b> position at the level of the target nerve</li>
+  <li><b>Anisotropy correction:</b> heel-toe tilt to maximize nerve brightness — a nerve invisible at one angle becomes clearly visible with a few degrees of tilt</li>
+</ul>
+
+<div class="section-title slate">2.4  Needle Approach Planning</div>
+<p class="body-text"><b>In-plane (IP):</b> Needle inserted along the long axis of the transducer. Entire shaft and tip visible throughout. <i>Preferred for most blocks.</i></p>
+<p class="body-text"><b>Out-of-plane (OOP):</b> Needle perpendicular to beam. Only the cross-section (a single hyperechoic dot) is visible — this is the tip ONLY when the beam intersects the tip precisely. Risk: the dot may represent the shaft. Always confirm tip position with hydrodissection.</p>
+<ul class="bullets">
+  <li>Avoid crossing Doppler-confirmed vessels</li>
+  <li>Maintain the shallowest needle angle consistent with target access</li>
+  <li>Allow tip repositioning without full retraction</li>
+</ul>
+
+</div>
+
+<!-- PHASE 3 -->
+<div class="phase phase--green">
+  <div class="phase-num">03</div>
+  <div class="phase-body">
+    <div class="phase-label">Phase Three</div>
+    <div class="phase-title">Sterile Technique &amp; Needle Insertion</div>
+  </div>
+</div>
+<div class="content">
+
+<div class="section-title green">3.1  Sterile Preparation</div>
+<p class="body-text"><b>Standard single-injection block:</b></p>
+<ul class="bullets">
+  <li>Chlorhexidine-gluconate skin prep — allow full contact time (30 sec, air dry)</li>
+  <li>Sterile transducer cover with sterile coupling gel inside the cover</li>
+  <li>Sterile gloves and drape over the procedural field</li>
+</ul>
+<p class="body-text"><b>Continuous catheter technique</b> — additional requirements:</p>
+<ul class="bullets">
+  <li>Full surgical skin prep of a wide field</li>
+  <li>Maximal sterile barrier: full gown, sterile gloves, mask, cap, large sterile drape</li>
+  <li>Follow ASRA catheter insertion aseptic technique guidelines</li>
+</ul>
+<div class="callout callout--green">
+  <div class="callout-stripe"></div>
+  <div class="callout-inner">
+    <div class="callout-label">Note</div>
+    <div class="callout-text">Chlorhexidine is preferred over povidone-iodine. Allow complete drying before needle insertion — pooled chlorhexidine on the needle can be introduced into tissue.</div>
+  </div>
+</div>
+
+<div class="section-title green">3.2  Skin Wheal &amp; Needle Selection</div>
+<p class="body-text">Raise a subcutaneous lidocaine wheal (0.5–1 mL of 1% lidocaine) at the planned entry point. This reduces pain on insertion and allows a moment to confirm transducer position before committing to the block needle.</p>
+<ul class="bullets">
+  <li><b>Gauge:</b> 21–22G standard — balances injectability with procedural control</li>
+  <li><b>Length:</b> match to target depth plus approach angle; a shallow angle requires a longer needle</li>
+  <li><b>Echogenicity:</b> use echogenic needles (blunt-tip, Stimuplex, texture-surface) — most significant for OOP and deep targets</li>
+  <li><b>Blunt-tip (pencil-point):</b> may reduce nerve penetration risk; preferred at some centers for high-risk blocks</li>
+  <li><b>Short-bevel:</b> better tactile feedback when traversing fascial planes</li>
+</ul>
+
+<div class="section-title green">3.3  Needle Insertion &amp; Tip Confirmation</div>
+<div class="callout callout--green">
+  <div class="callout-stripe"></div>
+  <div class="callout-inner">
+    <div class="callout-label">Rule</div>
+    <div class="callout-text">Never advance the needle if the tip is not visible.</div>
+  </div>
+</div>
+<p class="body-text"><b>IP approach:</b> Advance slowly with the transducer stationary; watch for tissue movement ahead of the tip. If the tip is lost — do not advance. Tilt or slide the transducer until the tip reappears. Tip appears as a bright hyperechoic dot with posterior acoustic artifact.</p>
+<p class="body-text"><b>OOP approach:</b> Track the hyperechoic cross-section through successive tissue planes using the "walking" technique. Always confirm final tip position with hydrodissection.</p>
+<p class="body-text"><b>Hydrodissection:</b></p>
+<ul class="bullets">
+  <li>Inject 0.5–2 mL of NS or D5W (D5W preferred — superior echogenicity; isosmotic and non-neurotoxic)</li>
+  <li>Correct position: fluid spreads in the expected tissue plane and separates the nerve from surrounding fascia</li>
+  <li>If fluid disappears without visible spread (intramuscular absorption): reposition and repeat</li>
+</ul>
+
+</div>
+
+<!-- PHASE 4 -->
+<div class="phase phase--amber">
+  <div class="phase-num">04</div>
+  <div class="phase-body">
+    <div class="phase-label">Phase Four</div>
+    <div class="phase-title">Aspiration, Injection &amp; Spread Confirmation</div>
+  </div>
+</div>
+<div class="content">
+
+<div class="section-title amber">4.1  Aspiration Before Every Injection</div>
+<p class="body-text">Aspirate for 3–5 seconds before each injection and after any needle repositioning. Positive aspiration (blood return) mandates repositioning — do not inject.</p>
+<div class="callout callout--amber">
+  <div class="callout-stripe"></div>
+  <div class="callout-inner">
+    <div class="callout-label">Critical Caveat</div>
+    <div class="callout-text">Negative aspiration does NOT exclude intravascular placement. False-negative rates of up to 2% have been reported. The needle tip may be against a vessel wall or within a small vessel that collapses on aspiration. Negative aspiration is a screening step, not a guarantee. The true safety margin comes from incremental dosing and epinephrine markers.</div>
+  </div>
+</div>
+
+<div class="section-title amber">4.2  Injection Technique</div>
+<ul class="bullets">
+  <li>Inject in <b>2–3 mL aliquots</b></li>
+  <li>Aspirate between each aliquot</li>
+  <li>Pause 15–30 seconds between aliquots to allow time for early CNS toxicity symptoms to manifest</li>
+  <li>Total injection time should be at least 60–90 seconds regardless of volume</li>
+  <li>Target injection pressure &lt;15 psi — high resistance suggests intraneural/subfascial placement, stop and reposition</li>
+  <li>A well-positioned perineural injection flows easily with minimal resistance</li>
+</ul>
+<div class="callout callout--red">
+  <div class="callout-stripe"></div>
+  <div class="callout-inner">
+    <div class="callout-label">Stop Sign</div>
+    <div class="callout-text">If the patient reports paresthesia or pain during injection — stop immediately. Paresthesia on injection may indicate intraneural placement. Reposition before continuing.</div>
+  </div>
+</div>
+<p class="body-text"><b>Epinephrine intravascular marker:</b> A 3 mL test dose will produce &gt;20 bpm HR increase within 60 seconds if injected intravascularly. Unreliable with beta-blockers or significant baseline tachycardia. Absence of HR response does NOT exclude intravascular injection.</p>
+
+<div class="section-title amber">4.3  Real-Time Spread Visualization</div>
+<ul class="bullets">
+  <li><b>Correct perineural:</b> hypoechoic fluid surrounds the target nerve ("donut sign" in short axis)</li>
+  <li><b>Intramuscular:</b> fluid spreads diffusely through muscle planes without organizing around a structure</li>
+  <li><b>Intraneural:</b> nerve appears to swell and increase in cross-sectional area — CRITICAL WARNING SIGN, stop immediately</li>
+  <li><b>Subfascial:</b> fluid tracks along fascial planes without reaching the nerve</li>
+</ul>
+<p class="body-text">If spread is suboptimal, redirect the needle before continuing. Do not attempt to compensate with increased volume.</p>
+
+<div class="section-title amber">4.4  Needle Repositioning</div>
+<p class="body-text">Multiple repositioned aliquots deliver better circumferential coverage than a single large bolus. If spread is unilateral or incomplete:</p>
+<ul class="bullets">
+  <li>Pause injection</li>
+  <li>Withdraw needle partially under US visualization</li>
+  <li>Redirect to the opposite aspect of the nerve</li>
+  <li>Aspirate, re-confirm tip position with hydrodissection, continue</li>
+</ul>
+
+</div>
+
+<!-- PHASE 5 -->
+<div class="phase phase--red">
+  <div class="phase-num">05</div>
+  <div class="phase-body">
+    <div class="phase-label">Phase Five</div>
+    <div class="phase-title">LAST Surveillance &amp; Complication Monitoring</div>
+  </div>
+</div>
+<div class="content">
+
+<div class="section-title red">5.1  Pathophysiology of LAST</div>
+<p class="body-text">Local anesthetics block voltage-gated sodium channels. In the CNS, this inhibits inhibitory interneurons first, producing an excitatory prodrome before global CNS depression. In the cardiovascular system, sodium channel blockade prolongs conduction and depresses contractility.</p>
+<p class="body-text">Bupivacaine is the most cardiotoxic agent — it dissociates slowly from cardiac sodium channels ("fast in, slow out"), and its R(+) enantiomer additionally blocks calcium channels and mitochondrial metabolism.</p>
+<ul class="bullets">
+  <li><b>Plasma concentration rise driven by:</b> total mg dose, injection site vascularity (intercostal &gt; caudal &gt; paracervical &gt; brachial plexus &gt; femoral/sciatic), presence/absence of epinephrine, rate of injection, intravascular injection</li>
+</ul>
+
+<div class="section-title red">5.2  Clinical Presentation of LAST</div>
+<p class="body-text"><b>Early CNS excitation:</b></p>
+<ul class="bullets">
+  <li>Perioral/tongue numbness or tingling</li>
+  <li>Metallic taste</li>
+  <li>Tinnitus or auditory changes</li>
+  <li>Visual disturbances (nystagmus, diplopia)</li>
+  <li>Anxiety, agitation, or feeling of impending doom</li>
+  <li>Confusion, disorientation</li>
+</ul>
+<p class="body-text"><b>CNS depression (severe):</b> Drowsiness → unconsciousness, seizures (tonic-clonic or focal), respiratory arrest.</p>
+<p class="body-text"><b>Cardiovascular:</b> Bradycardia, QRS widening, PR prolongation, ST changes, VT/VF, cardiovascular collapse.</p>
+<div class="callout callout--red">
+  <div class="callout-stripe"></div>
+  <div class="callout-inner">
+    <div class="callout-label">Important</div>
+    <div class="callout-text">LAST can present as cardiovascular collapse WITHOUT antecedent CNS symptoms — particularly with bupivacaine, rapid injection, or in sedated/anesthetized patients. Onset window: within 60 seconds of intravascular injection, but can be delayed up to 30 minutes with perineural absorption. Maintain monitoring for the full 30-minute window.</div>
+  </div>
+</div>
+
+<div class="section-title red">5.3  LAST Management (ASRA 2023)</div>
+<table class="data-table red-header">
+  <thead><tr><th>Action</th><th>Details</th></tr></thead>
+  <tbody>
+    <tr><td>1. Call for help</td><td>Announce "possible LAST" to all team members</td></tr>
+    <tr><td>2. Stop injection</td><td>Immediately — do not give another aliquot</td></tr>
+    <tr><td>3. Secure airway</td><td>100% O₂, prevent hypoxia. Intubate if needed. Hypoxia accelerates toxicity.</td></tr>
+    <tr><td>4. Treat seizures</td><td>Midazolam 2–5 mg IV or lorazepam 2 mg IV. Avoid propofol at seizure-suppressing doses.</td></tr>
+    <tr><td>5. Intralipid 20%</td><td>Bolus 1.5 mL/kg IBW over 2–3 min. Infusion 0.25 mL/kg/min. Repeat bolus at 5 min if no response. Max ~12 mL/kg.</td></tr>
+    <tr><td>6. Cardiac arrest</td><td>CPR + REDUCED epi (10–100 mcg IV boluses). Avoid vasopressin, CCBs, beta-blockers, propofol.</td></tr>
+    <tr><td>7. Prolonged resus</td><td>Bupivacaine recovery may require 60+ min. Consider ECMO early if available.</td></tr>
+    <tr><td>8. Transfer to ICU</td><td>Monitor minimum 4–6 hours post-resolution. Recurrence risk from redistribution.</td></tr>
+  </tbody>
+</table>
+
+</div>
+
+<!-- PHASE 6 -->
+<div class="phase phase--navy">
+  <div class="phase-num">06</div>
+  <div class="phase-body">
+    <div class="phase-label">Phase Six</div>
+    <div class="phase-title">Post-Procedure Assessment &amp; Documentation</div>
+  </div>
+</div>
+<div class="content">
+
+<div class="section-title navy">6.1  Block Onset Assessment</div>
+<p class="body-text">Assess at 5-minute intervals for 30 minutes:</p>
+<ul class="bullets">
+  <li>Sensory: cold (alcohol swab), sharp (pinprick), light touch — compare to contralateral side</li>
+  <li>Motor: strength testing in the distribution of the blocked nerve</li>
+  <li>Compare all findings against pre-procedure baseline documentation</li>
+</ul>
+<p class="body-text">Onset typically 10–25 minutes for long-acting agents. Absence of sensory change at 30 minutes suggests block failure — reassess with US before proceeding with the primary procedure.</p>
+
+<div class="section-title navy">6.2  Procedure Documentation</div>
+<ul class="bullets">
+  <li>Indication; consent confirmed; timeout completed</li>
+  <li>Patient position and monitoring applied</li>
+  <li>Transducer used and approach (IP vs OOP)</li>
+  <li>Needle type, gauge, and length</li>
+  <li>LA agent, concentration, volume, and total milligram dose</li>
+  <li>Adjuvants added (if any)</li>
+  <li>Aspiration results (negative × number of aliquots)</li>
+  <li>Real-time US spread pattern observed</li>
+  <li>Onset assessment at 10, 20, and 30 minutes</li>
+  <li>Patient-reported symptoms during injection</li>
+  <li>Any complications or unplanned events; post-procedure plan</li>
+</ul>
+
+<div class="section-title navy">6.3  Patient Instructions</div>
+<ul class="bullets">
+  <li>Expected duration of sensory and motor blockade for the agent used</li>
+  <li>Limb protection: sling (upper extremity), ambulation restrictions (lower extremity)</li>
+  <li>Fall precautions — mandatory for any lower extremity block</li>
+  <li>Return precautions: prolonged paresthesia, new weakness, signs of infection, severe pain on block resolution</li>
+  <li>Contact information for questions</li>
+</ul>
+
+</div>
+
+<!-- PART II -->
+<div class="part-divider">
+  <div>
+    <div class="part-num">Part II</div>
+    <div class="part-title">Step-by-Step Instruction Set</div>
+    <div class="part-sub">Sequential Action Checklist — Use During Training &amp; Pre-Procedure Run-Through</div>
+  </div>
+</div>
+
+<div class="content">
+<p class="body-text" style="margin-top:24px">This section translates the procedural framework into a sequential, action-oriented checklist. Steps A–H constitute the LAST emergency sequence and apply at any point in the procedure.</p>
+
+<div class="step-group-label">Pre-Procedure — Before entering the room or at the bedside</div>
+
+<div class="step-card"><div class="step-num">1</div><div class="step-body-text">Confirm the clinical indication and that the appropriate nerve(s) are targeted for the procedure or pain syndrome.</div></div>
+<div class="step-card"><div class="step-num">2</div><div class="step-body-text">Review: patient weight, allergies (local anesthetic class), current anticoagulation status, and any pre-existing neuropathy in the target distribution.</div></div>
+<div class="step-card"><div class="step-num">3</div><div class="step-body-text">Calculate the maximum allowable dose in milligrams (weight-based). Determine the volume-concentration combination that achieves the target dose without exceeding the ceiling.</div></div>
+<div class="step-card"><div class="step-num">4</div><div class="step-body-text">Confirm IV access is patent and functional. If none: obtain it before proceeding.</div></div>
+<div class="step-card"><div class="step-num">5</div><div class="step-body-text">Obtain and document informed consent. Discuss: LAST, nerve injury, hematoma, infection, and block-specific risks (pneumothorax, phrenic nerve palsy where applicable).</div></div>
+<div class="step-card"><div class="step-num">6</div><div class="step-body-text"><strong>Confirm Intralipid 20% is physically present and accessible before injecting any local anesthetic.</strong></div></div>
+<div class="step-card"><div class="step-num">7</div><div class="step-body-text">Confirm at bedside: airway equipment, BVM, supplemental O₂, epinephrine, benzodiazepine.</div></div>
+<div class="step-card"><div class="step-num">8</div><div class="step-body-text">Apply monitoring: pulse oximetry, continuous ECG, NIBP cycling every 2–3 minutes.</div></div>
+<div class="step-card"><div class="step-num">9</div><div class="step-body-text">Position the patient for optimal target access. Confirm comfort and ability to maintain position for the procedure duration.</div></div>
+<div class="step-card"><div class="step-num">10</div><div class="step-body-text">Perform pre-procedure timeout: patient identity, procedure, site, allergies, consent, emergency equipment confirmed.</div></div>
+
+<div class="step-group-label">Ultrasound Setup</div>
+
+<div class="step-card"><div class="step-num">11</div><div class="step-body-text">Select the appropriate transducer:<ul class="step-subs"><li>Superficial (&lt;4 cm): high-frequency linear (10–15 MHz)</li><li>Deep (&gt;4–5 cm): low-frequency curvilinear (2–5 MHz)</li></ul></div></div>
+<div class="step-card"><div class="step-num">12</div><div class="step-body-text">Apply coupling gel to the transducer (non-sterile at this stage — survey scan only).</div></div>
+<div class="step-card"><div class="step-num">13</div><div class="step-body-text">Perform a systematic survey scan. Identify: target nerve, adjacent vessels, fascial planes, and any critical structures in the planned needle path.</div></div>
+<div class="step-card"><div class="step-num">14</div><div class="step-body-text">Activate color Doppler to map vessels in the intended needle trajectory.</div></div>
+<div class="step-card"><div class="step-num">15</div><div class="step-body-text">Confirm nerve identity by tracing in both long and short axis. Look for the honeycomb (fascicular) pattern in short axis.</div></div>
+<div class="step-card"><div class="step-num">16</div><div class="step-body-text">Optimize the image: depth, gain, focus zone, and transducer tilt (anisotropy correction) to achieve the clearest possible nerve visualization.</div></div>
+<div class="step-card"><div class="step-num">17</div><div class="step-body-text">Determine and confirm needle approach: in-plane (IP) vs. out-of-plane (OOP). IP is preferred. Identify the skin entry point.</div></div>
+
+<div class="step-group-label">Sterile Setup</div>
+
+<div class="step-card"><div class="step-num">18</div><div class="step-body-text">Open sterile supplies to the field: block needle, syringes, extension tubing, sterile transducer cover, sterile gel.</div></div>
+<div class="step-card"><div class="step-num">19</div><div class="step-body-text">Perform hand hygiene. Don sterile gloves.</div></div>
+<div class="step-card"><div class="step-num">20</div><div class="step-body-text">Prepare skin with chlorhexidine-gluconate. Apply with friction in concentric circles from center outward. Allow to fully dry.</div></div>
+<div class="step-card"><div class="step-num">21</div><div class="step-body-text">Apply sterile cover to the transducer with sterile coupling gel inside the cover.</div></div>
+<div class="step-card"><div class="step-num">22</div><div class="step-body-text">Apply sterile gel to the patient's skin at the imaging site.</div></div>
+<div class="step-card"><div class="step-num">23</div><div class="step-body-text">Draw up the local anesthetic. Verify agent, concentration, and volume against the pre-calculated dose. <strong>Label the syringe.</strong></div></div>
+<div class="step-card"><div class="step-num">24</div><div class="step-body-text">Prepare a separate syringe with 2–3 mL of normal saline or D5W for hydrodissection.</div></div>
+
+<div class="step-group-label">Needle Insertion &amp; Positioning</div>
+
+<div class="step-card"><div class="step-num">25</div><div class="step-body-text">Re-image the target with the sterile transducer cover in place. Confirm the nerve is clearly visible and the trajectory remains free of vessels.</div></div>
+<div class="step-card"><div class="step-num">26</div><div class="step-body-text">Raise a skin wheal with 0.5–1 mL of 1% lidocaine at the planned needle entry point.</div></div>
+<div class="step-card"><div class="step-num">27</div><div class="step-body-text">Insert the block needle at the planned entry point, maintaining the chosen approach (IP or OOP). Keep the needle in the plane of the ultrasound beam at all times.</div></div>
+<div class="step-card"><div class="step-num">28</div><div class="step-body-text">Advance the needle slowly, tracking the tip continuously on US. Do not advance if the tip is not visible.<ul class="step-subs"><li>IP: confirm the bright hyperechoic needle shaft and tip are advancing toward the target</li><li>OOP: track the hyperechoic cross-section dot advancing through tissue layers</li></ul></div></div>
+<div class="step-card"><div class="step-num">29</div><div class="step-body-text">Once the needle tip is in the anticipated target zone — pause advancement.</div></div>
+<div class="step-card"><div class="step-num">30</div><div class="step-body-text">Confirm tip position with hydrodissection:<ul class="step-subs"><li>Inject 0.5–2 mL of saline or D5W</li><li>Confirm fluid spreads in the correct tissue plane adjacent to the target nerve</li><li>If fluid disappears without visible spread: reposition the needle and repeat</li></ul></div></div>
+<div class="step-card"><div class="step-num">31</div><div class="step-body-text">If paresthesia is reported on needle advancement: withdraw 1–2 mm. Do not inject at a position that causes paresthesia.</div></div>
+<div class="step-card"><div class="step-num">32</div><div class="step-body-text">Reconfirm tip position with hydrodissection if the needle has been moved.</div></div>
+
+<div class="step-group-label">Injection</div>
+
+<div class="step-card"><div class="step-num">33</div><div class="step-body-text">Aspirate for 3–5 seconds. Check for blood or air return.<ul class="step-subs"><li>Blood return: withdraw needle, apply pressure, reassess and replan</li><li>Air return (rare): may indicate pleural proximity — stop and reassess</li><li>No return: proceed to Step 34</li></ul></div></div>
+<div class="step-card"><div class="step-num">34</div><div class="step-body-text">If epinephrine is included: inject a 3 mL test dose first. Monitor ECG for 60 seconds for HR increase &gt;20 bpm. Absence of response does NOT exclude intravascular injection.</div></div>
+<div class="step-card"><div class="step-num">35</div><div class="step-body-text">Begin injection in 2–3 mL aliquots:<ul class="step-subs"><li>Inject the first aliquot slowly over 15–20 seconds</li><li>Watch the US image for hypoechoic fluid spread around the nerve</li><li>Watch the patient for CNS symptoms: agitation, metallic taste, confusion</li><li>Watch the ECG for arrhythmia</li></ul></div></div>
+<div class="step-card"><div class="step-num">36</div><div class="step-body-text">After each aliquot: aspirate again before continuing.</div></div>
+<div class="step-card"><div class="step-num">37</div><div class="step-body-text">Pause 15–30 seconds between aliquots to allow time for early toxicity signs to manifest.</div></div>
+<div class="step-card"><div class="step-num">38</div><div class="step-body-text"><strong>STOP AND REASSESS</strong> if:<ul class="step-subs"><li>Patient reports paresthesia, burning, or unusual sensation</li><li>Resistance is high or increases unexpectedly</li><li>Nerve cross-sectional area increases on US (possible intraneural injection)</li><li>Patient reports metallic taste, tinnitus, dizziness, or anxiety</li><li>Heart rate change on ECG consistent with intravascular injection</li><li>Any hemodynamic change</li></ul></div></div>
+<div class="step-card"><div class="step-num">39</div><div class="step-body-text">If spread is unilateral or incomplete:<ul class="step-subs"><li>Pause injection</li><li>Withdraw needle partially under US visualization</li><li>Redirect to the opposite aspect of the nerve</li><li>Aspirate, confirm tip position, and continue injection</li></ul></div></div>
+<div class="step-card"><div class="step-num">40</div><div class="step-body-text">Once the full planned volume is injected, withdraw the needle smoothly.</div></div>
+<div class="step-card"><div class="step-num">41</div><div class="step-body-text">Apply gentle manual pressure over the injection site for 30–60 seconds to reduce hematoma risk and encourage local anesthetic spread.</div></div>
+
+<div class="step-group-label">Post-Procedure Monitoring &amp; Assessment</div>
+
+<div class="step-card"><div class="step-num">42</div><div class="step-body-text">Maintain continuous monitoring (SpO₂, ECG, NIBP) for a minimum of 30 minutes after injection.</div></div>
+<div class="step-card"><div class="step-num">43</div><div class="step-body-text">Assess the patient every 5 minutes for:<ul class="step-subs"><li>CNS symptoms: perioral numbness, metallic taste, tinnitus, visual changes, anxiety, confusion</li><li>Hemodynamic changes: heart rate, blood pressure, rhythm</li><li>Respiratory changes: rate, effort, oxygen saturation</li></ul></div></div>
+<div class="step-card"><div class="step-num">44</div><div class="step-body-text">Assess block onset at 10 and 20 minutes:<ul class="step-subs"><li>Sensory: cold discrimination, pinprick, light touch in the target distribution</li><li>Motor: strength testing appropriate to the blocked nerve</li><li>Compare to baseline documentation from Step 2</li></ul></div></div>
+<div class="step-card"><div class="step-num">45</div><div class="step-body-text">At 30 minutes, perform a final onset assessment.<ul class="step-subs"><li>Adequate block: proceed with planned procedure</li><li>Incomplete block: reassess anatomy with US, consider supplemental injection or alternative strategy</li><li>Block failure: document, assess for technical cause, pursue alternative approach</li></ul></div></div>
+<div class="step-card"><div class="step-num">46</div><div class="step-body-text">Document the procedure note (see Phase 6.2 for required elements).</div></div>
+<div class="step-card"><div class="step-num">47</div><div class="step-body-text">Counsel the patient on:<ul class="step-subs"><li>Expected block duration</li><li>Limb protection requirements (sling, non-weight-bearing, eye patch as indicated)</li><li>Fall precautions if lower extremity blocked</li><li>Return precautions and contact information</li></ul></div></div>
+
+<div class="step-group-label red">LAST Recognition &amp; Response — Emergency Sequence</div>
+<p class="body-text">If LAST is suspected at any point during or after the procedure:</p>
+
+<div class="step-card"><div class="step-num letter">A</div><div class="step-body-text"><strong>STOP injection immediately.</strong></div></div>
+<div class="step-card"><div class="step-num letter">B</div><div class="step-body-text"><strong>Call for help.</strong> Announce "possible LAST" to all team members.</div></div>
+<div class="step-card"><div class="step-num letter">C</div><div class="step-body-text">Ensure airway patency. Apply 100% O₂ via face mask. Prepare for intubation.</div></div>
+<div class="step-card"><div class="step-num letter">D</div><div class="step-body-text">Treat seizures if present: midazolam 2–5 mg IV or lorazepam 2 mg IV. Avoid propofol as primary seizure management.</div></div>
+<div class="step-card"><div class="step-num letter">E</div><div class="step-body-text">Administer Intralipid 20%:<ul class="step-subs"><li>Bolus: 1.5 mL/kg IBW IV over 2–3 minutes</li><li>Begin infusion: 0.25 mL/kg/min</li><li>Repeat bolus once if no improvement at 5 minutes</li><li>Increase infusion to 0.5 mL/kg/min if instability continues</li></ul></div></div>
+<div class="step-card"><div class="step-num letter">F</div><div class="step-body-text">If cardiac arrest: initiate CPR. Use reduced epinephrine (10–100 mcg IV boluses). Avoid vasopressin, CCBs, beta-blockers.</div></div>
+<div class="step-card"><div class="step-num letter">G</div><div class="step-body-text">Prepare for prolonged resuscitation — cardiac recovery from bupivacaine toxicity can require 60+ minutes. Consider ECMO early if available.</div></div>
+<div class="step-card"><div class="step-num letter">H</div><div class="step-body-text">Transfer to monitored setting for minimum 4–6 hours post-event resolution. Risk of recurrence from redistribution.</div></div>
+
+<hr class="rule" style="margin-top:48px">
+
+<p class="body-text" style="text-align:center; font-family: var(--mono); font-size:12px; letter-spacing:0.08em; color: var(--gray3); text-transform:uppercase; margin-bottom:8px">Quick Reference — Ten Key Safety Rules</p>
+
+<table class="safety-table">
+  <tbody>
+    <tr><td class="num-cell">1</td><td class="rule-cell">IV access before needle goes in. <em>Always.</em></td></tr>
+    <tr><td class="num-cell">2</td><td class="rule-cell">Intralipid 20% at bedside before first milliliter. <em>Always.</em></td></tr>
+    <tr><td class="num-cell">3</td><td class="rule-cell">Calculate total mg dose — not just volume.</td></tr>
+    <tr><td class="num-cell">4</td><td class="rule-cell">Negative aspiration does NOT exclude intravascular injection.</td></tr>
+    <tr><td class="num-cell">5</td><td class="rule-cell">Incremental injection: 2–3 mL aliquots. Aspirate between each.</td></tr>
+    <tr><td class="num-cell">6</td><td class="rule-cell">Never inject without confirmed tip position.</td></tr>
+    <tr><td class="num-cell">7</td><td class="rule-cell">High resistance on injection = stop and reposition.</td></tr>
+    <tr><td class="num-cell">8</td><td class="rule-cell">Nerve swelling on US during injection = STOP. <em>(Intraneural)</em></td></tr>
+    <tr><td class="num-cell">9</td><td class="rule-cell">Patient reports paresthesia during injection = stop and reposition.</td></tr>
+    <tr><td class="num-cell">10</td><td class="rule-cell">Monitor 30 minutes post-injection. <em>LAST can be delayed up to 30 min.</em></td></tr>
+  </tbody>
+</table>
+
+</div><!-- /content -->
+
+<div class="doc-footer">
+  <div class="doc-footer-refs">ASRA Practice Advisory on LAST (2023) &nbsp;·&nbsp; ACEP Ultrasound Guidelines &nbsp;·&nbsp; SOAP Regional Anesthesia Guidelines<br>Neal et al. Reg Anesth Pain Med 2023</div>
+  <div class="doc-footer-brand">POCUS · NERVE BLOCK REF</div>
+</div>
+
+</div><!-- /page-wrap -->
+<script>
+// Label each table cell with its column header so tables can stack as cards on phones
+document.querySelectorAll('.data-table').forEach(function (t) {
+  var heads = Array.prototype.map.call(t.querySelectorAll('thead th'), function (th) { return th.textContent; });
+  t.querySelectorAll('tbody tr').forEach(function (tr) {
+    Array.prototype.forEach.call(tr.children, function (td, i) { if (heads[i]) td.setAttribute('data-label', heads[i]); });
+  });
+});
+</script>
+</body>
+</html>
