@@ -189,3 +189,53 @@ body{
 @media (prefers-reduced-motion: reduce){
   *{transition:none !important; animation:none !important;}
 }
+
+/* ===== Map gutter: node #4 sits at x=20, so half of it hung off the left edge ===== */
+.navmap-svg{margin-left:60px;}
+.navmap-nodes{left:60px;}
+
+/* ===== Tab bar spans the shell (margin:auto in a flex column was shrinking it) ===== */
+#tabbar{width:100%;}
+
+/* ===== Desktop ===== */
+@media (min-width:900px){
+  #app-shell{max-width:1180px;box-shadow:0 0 0 1px rgba(255,255,255,.04);}
+  #topbar{padding:16px 32px;}
+  #topbar-title{font-size:17px;}
+  #tabbar{max-width:none;}
+  .tabbar-btn{flex-direction:row;justify-content:center;gap:8px;font-size:13px;padding:14px 8px;}
+  .tabbar-btn:hover{color:var(--navy);background:var(--lightbg);}
+  .view{padding:28px 32px;}
+
+  .home-intro h1{font-size:24px;}
+  .home-intro p{font-size:14px;}
+  .navmap-scroll{max-width:1102px;margin:0 auto;}
+  .navnode:hover{background:var(--lightbg);}
+  .home-quicklinks{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+  .quicklink:hover{background:var(--lightbg);}
+
+  /* Card: image left, text right */
+  .view-card{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:28px;align-items:start;}
+  .card-topbar,.card-prevnext{grid-column:1 / -1;}
+  .card-image-wrap{grid-column:1;grid-row:2 / span 2;position:sticky;top:76px;margin-bottom:0;}
+  .card-titleblock{grid-column:2;grid-row:2;}
+  .card-sections{grid-column:2;grid-row:3;}
+  .card-title{font-size:26px;}
+  .bullets li{font-size:14px;}
+  .pn-btn{font-size:13px;padding:12px;}
+  .pn-btn:hover{background:var(--lightbg);}
+
+  .view-probe h1,.view-sweep h1,.view-appendix h1{font-size:24px;}
+  .probe-row{display:grid;grid-template-columns:260px 1fr;gap:16px;align-items:baseline;}
+  .probe-sym{font-size:14px;margin:0;}
+  .probe-desc{font-size:14px;}
+  .callout-body{font-size:13.5px;}
+
+  .view-sweep{display:grid;grid-template-columns:1fr 1fr;gap:0 16px;align-items:start;}
+  .view-sweep > h1,.view-sweep > .sweep-intro{grid-column:1 / -1;}
+  .sweep-intro,.phase-body p{font-size:14px;}
+
+  .view-appendix{display:grid;grid-template-columns:1fr 1fr;gap:0 24px;align-items:start;}
+  .view-appendix > h1{grid-column:1 / -1;}
+  .appendix-item h3{font-size:15px;}
+}

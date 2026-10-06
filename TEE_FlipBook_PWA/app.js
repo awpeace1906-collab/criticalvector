@@ -1,4 +1,4 @@
-// ===== TEE Reference FlipBook — App Logic =====
+// ===== TEE Compass — App Logic =====
 
 let CARDS = [];
 let CARDS_BY_SLUG = {};
@@ -86,10 +86,14 @@ function renderHome(){
   const wrap = el('div', {class:'view view-home'});
   wrap.appendChild(el('div', {class:'home-intro'},
     el('h1',{}, 'Obtaining the 20 Standard Views'),
-    el('p',{}, 'Tap any view to open its full reference card. Lines trace the probe path between views.')
+    el('p',{}, 'Tap any view to open its full reference card. Lines trace the probe path between views. On a phone, swipe to pan the map.')
   ));
 
   const mapWrap = el('div', {class:'navmap-scroll'});
+  // On narrow screens the map is wider than the viewport: open it centred, not on its empty left edge
+  requestAnimationFrame(()=>{
+    if(mapWrap.scrollWidth > mapWrap.clientWidth) mapWrap.scrollLeft = (mapWrap.scrollWidth - mapWrap.clientWidth)/2;
+  });
   const svgNS = 'http://www.w3.org/2000/svg';
   const svg = document.createElementNS(svgNS,'svg');
   svg.setAttribute('viewBox','0 0 1040 770');
@@ -287,7 +291,7 @@ function route(){
 
   let view, title, showBack=true, tab=null;
   if(hash === '#/' || hash === ''){
-    view = renderHome(); title='TEE FlipBook'; showBack=false; tab='home';
+    view = renderHome(); title='TEE Compass'; showBack=false; tab='home';
   } else if(hash.startsWith('#/view/')){
     const slug = hash.replace('#/view/','');
     view = renderCard(slug);
@@ -300,7 +304,7 @@ function route(){
   } else if(hash === '#/appendix'){
     view = renderAppendix(); title='Appendix'; tab='appendix';
   } else {
-    view = renderHome(); title='TEE FlipBook'; showBack=false; tab='home';
+    view = renderHome(); title='TEE Compass'; showBack=false; tab='home';
   }
   app.appendChild(view);
   setTopbar(title, showBack);

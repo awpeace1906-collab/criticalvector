@@ -1,6 +1,6 @@
 {
-  "name": "TEE Reference FlipBook",
-  "short_name": "TEE FlipBook",
+  "name": "TEE Compass",
+  "short_name": "TEE Compass",
   "description": "ASE 20-View Comprehensive TEE Exam — interactive clinical reference",
   "start_url": "./index.html",
   "scope": "./",

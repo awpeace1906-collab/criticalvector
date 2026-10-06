@@ -1,4 +1,4 @@
-const CACHE_NAME = 'pocus-field-guide-v4';
+const CACHE_NAME = 'pocus-field-guide-v5';
 const ASSETS = [
   "./",
   "app.js",

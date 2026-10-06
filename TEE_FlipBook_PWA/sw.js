@@ -1,4 +1,4 @@
-const CACHE_NAME = 'tee-flipbook-v2';
+const CACHE_NAME = 'tee-flipbook-v3';
 const ASSETS = [
   "./",
   "app.js",

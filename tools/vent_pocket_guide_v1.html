@@ -177,6 +177,16 @@ body{background:var(--bg);color:var(--tx);font-family:var(--fn);display:flex;fle
 .bkm-txt{color:var(--tx);line-height:1.5;}
 .bkm-note{margin-top:10px;padding:8px 10px;background:var(--a4-bg);border:1px solid var(--a4-b);border-radius:5px;font-size:11px;color:var(--a4-tx);line-height:1.5;}
 </style>
+<style id="cv-responsive">
+/* Phone: stack the section title above its sources; give the header title room */
+@media(max-width:640px){
+  .shdr{flex-direction:column;align-items:flex-start;gap:6px;}
+  .supd{text-align:left;}
+  .hlogo{display:none;}
+  .htitle{font-size:13px;line-height:1.2;}
+  .hrt .hbtn[onclick="window.print()"]{display:none;}
+}
+</style>
 </head>
 <body>
 <div class="hdr">
@@ -955,7 +965,7 @@ function updateConn() {
   var b = document.getElementById('connChip');
   if (!b) return;
   var online = navigator.onLine && location.protocol !== 'file:';
-  b.textContent = online ? '&#8635; ONLINE' : '&#10003; OFFLINE';
+  b.textContent = online ? '\u27F3 ONLINE' : '\u2713 OFFLINE';
   b.className = online ? 'chip2 conn-online' : 'chip2';
 }
 window.addEventListener('online', updateConn);

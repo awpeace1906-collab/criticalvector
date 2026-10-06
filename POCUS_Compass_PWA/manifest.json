@@ -1,7 +1,7 @@
 {
   "name": "POCUS Field Guide",
   "short_name": "POCUS Guide",
-  "description": "POCUS Master Guide \u2014 EM \u00b7 Critical Care \u00b7 Anesthesia point-of-care ultrasound reference",
+  "description": "POCUS Field Guide \u2014 EM \u00b7 Critical Care \u00b7 Anesthesia point-of-care ultrasound reference",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
