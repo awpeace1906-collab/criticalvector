@@ -134,6 +134,12 @@
     btn.textContent = 'Sending…';
 
     const ratingEl = form.querySelector('input[name="rating"]:checked');
+    if (!ratingEl && !form.working.value.trim() && !form.issues.value.trim() && !form.requests.value.trim()) {
+      btn.disabled = false;
+      btn.textContent = 'Send Feedback';
+      alert('Add a rating or a comment before sending.');
+      return;
+    }
     const body = new URLSearchParams({
       formType: 'feedback',
       rating: ratingEl ? ratingEl.value : '',
