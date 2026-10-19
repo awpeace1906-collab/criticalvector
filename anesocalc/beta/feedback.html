@@ -83,7 +83,8 @@
 
   <div class="badge"><span class="dot"></span>Beta Program</div>
   <h1>AnesCalc Beta Feedback</h1>
-  <p class="sub">Thanks for testing AnesCalc — a few minutes of feedback directly shapes the next build.</p>
+  <p class="sub" style="margin-bottom:12px;">Thanks for testing AnesCalc — a few minutes of feedback directly shapes the next build.</p>
+  <p class="sub" style="font-size:0.9rem;">The quickest route is TestFlight: take a screenshot in AnesCalc and tap <strong>Share Beta Feedback</strong>, or open the TestFlight app, choose AnesCalc, and tap <strong>Send Beta Feedback</strong>. If that isn't working for you, use this form instead — it goes straight to the developer.</p>
 
   <form id="feedbackForm">
     <div class="rating-group">
@@ -134,6 +135,12 @@
     btn.textContent = 'Sending…';
 
     const ratingEl = form.querySelector('input[name="rating"]:checked');
+    if (!ratingEl && !form.working.value.trim() && !form.issues.value.trim() && !form.requests.value.trim()) {
+      btn.disabled = false;
+      btn.textContent = 'Send Feedback';
+      alert('Add a rating or a comment before sending.');
+      return;
+    }
     const body = new URLSearchParams({
       formType: 'feedback',
       rating: ratingEl ? ratingEl.value : '',

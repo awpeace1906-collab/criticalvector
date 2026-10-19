@@ -226,26 +226,15 @@
 
 <!-- 11 · Verification -->
 <div class="scene" id="s-verify">
-  <div class="title">Every calculation independently audited</div><div class="rule"></div>
+  <div class="title">Dosing verification audit</div><div class="rule"></div>
   <div class="big3" style="left:175px;"><div class="num" id="v1">191</div><div class="lab">rows audited</div></div>
   <div class="big3" style="left:725px;"><div class="num" id="v2">24</div><div class="lab">sections</div></div>
   <div class="big3" style="left:1275px;"><div class="num" id="v3">3</div><div class="lab">independent passes</div></div>
-  <div class="caption vl" style="top:660px; font-size:40px; color:var(--ink);">Triage → targeted deep dive → full independent literature search</div>
-  <div class="caption vl" style="top:730px; font-size:34px;">Cross-referenced against UpToDate · Miller’s Anesthesia 9e · Barash Clinical Anesthesia 8e</div>
-  <div class="caption vl" style="top:830px; font-size:38px; font-weight:700; color:var(--navy);">Every confirmed discrepancy was corrected before release.</div>
+  <div class="caption vl" style="top:680px; font-size:42px; color:var(--ink);">All values externally reviewed and cross-referenced against</div>
+  <div class="caption vl" style="top:750px; font-size:38px; font-weight:700; color:var(--navy);">UpToDate · Miller’s Anesthesia 9e · Barash Clinical Anesthesia 8e</div>
 </div>
 
-<!-- 12 · Transferable -->
-<div class="scene" id="s-transfer">
-  <div class="title">The workflow is the transferable product</div><div class="rule"></div>
-  <div class="bullet" style="top:330px;"><i></i>Custom calculators and order-set helpers inside the EMR</div>
-  <div class="bullet" style="top:430px;"><i></i>Desktop widgets for rapid reference at the workstation</div>
-  <div class="bullet" style="top:530px;"><i></i>Anesthetic plan generators from structured case data</div>
-  <div class="bullet" style="top:630px;"><i></i>Case simulators for resident training</div>
-  <div class="bullet" style="top:730px;"><i></i>Departmental protocol, checklist, and QI dashboards</div>
-</div>
-
-<!-- 13 · End card -->
+<!-- 12 · End card -->
 <div class="scene" id="s-end">
   <div class="e" style="position:absolute; left:170px; top:220px; font-size:30px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--gold-text);">AnesCalc · ASA 2026 ePoster A1325</div>
   <div class="e" style="position:absolute; left:170px; top:280px; font-size:92px; font-weight:700; color:var(--navy); line-height:1.12;">Try it.<br>Become a beta tester.</div>
@@ -274,7 +263,7 @@ const APP_DUR = CLIPS.reduce((a, c) => a + c.dur, 0);
 const ORDER = [
   ['s-title', 6], ['s-paradigm', 7], ['s-loop', 9], ['s-question', 10.5], ['s-sheet', 6.5],
   ['s-app', 8], ['s-debug', 8], ['s-code', 7], ['s-phone', APP_DUR], ['s-stats', 7],
-  ['s-verify', 7.5], ['s-transfer', 6.5], ['s-end', 8.5],
+  ['s-verify', 7.5], ['s-end', 8.5],
 ];
 const SCENES = {}; let cursor = 0;
 ORDER.forEach(([id, dur], i) => { SCENES[id] = { start: cursor, dur, first: i === 0, last: i === ORDER.length - 1 }; cursor += dur - FADE; });
@@ -426,7 +415,6 @@ const SCENE_FN = {
     [['v1', 191], ['v2', 24], ['v3', 3]].forEach(([id, v], i) => { const e = $(id); show(e.parentNode, span(lt, 0.2 + i * 0.15, 0.7 + i * 0.15), 24); e.textContent = Math.round(v * easeIO(span(lt, 0.5, 2.0))); });
     document.querySelectorAll('#s-verify .vl').forEach((e, i) => show(e, span(lt, 2.2 + i * 0.7, 2.7 + i * 0.7)));
   },
-  's-transfer'(lt) { document.querySelectorAll('#s-transfer .bullet').forEach((e, i) => show(e, span(lt, 0.4 + i * 0.45, 0.9 + i * 0.45))); },
   's-end'(lt) { document.querySelectorAll('#s-end .e').forEach((e, i) => show(e, span(lt, 0.2 + i * 0.15, 0.8 + i * 0.15))); },
 };
 
