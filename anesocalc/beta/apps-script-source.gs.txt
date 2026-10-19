@@ -16,9 +16,24 @@
 //   6. Copy the Web app URL it gives you and send it back — it goes into the
 //      ENDPOINT constant in anesocalc/beta/index.html and
 //      anesocalc/beta/feedback.html on the site.
+//   7. Choose installDailySummary in the function dropdown and click Run once.
+//      It schedules sendDailySummary for every morning (see DIGEST_HOUR).
+//
+// UPDATING AN EXISTING DEPLOYMENT (keeps the same Web app URL):
+//   Paste the new code, save, then Deploy > Manage deployments > pencil icon >
+//   Version: New version > Deploy. A brand-new deployment gets a new URL.
+//
+// Notifications: one summary email per day instead of one email per signup.
+// The digest covers everything added since the previous digest, so nothing is
+// skipped or repeated if a run is late.
 //
 // This file itself is not executed by the site — it's a reference copy of
 // what's pasted into the Apps Script editor, kept here for version control.
+
+var NOTIFY_EMAIL = 'andrew.peace@burrell.edu';
+var DIGEST_HOUR = 8;                      // 8–9am, in DIGEST_TIMEZONE
+var DIGEST_TIMEZONE = 'America/Los_Angeles';
+var SEND_WHEN_EMPTY = true;               // daily "0 new" email confirms the pipeline is alive
 
 function doPost(e) {
   var ss = SpreadsheetApp.getActiveSpreadsheet();
@@ -32,7 +47,6 @@ function doPost(e) {
       new Date(), data.name || '', data.email || '',
       data.device || '', data.iosVersion || '', data.notes || ''
     ]);
-    notifyNewSignup(data, ss);
   } else if (formType === 'feedback') {
     var fsheet = getOrCreateSheet(ss, 'Feedback',
       ['Timestamp', 'Name', 'Email', 'Rating', "What's Working", 'Issues / Bugs', 'Feature Requests']);
@@ -47,23 +61,69 @@ function doPost(e) {
     .setMimeType(ContentService.MimeType.JSON);
 }
 
-function notifyNewSignup(data, ss) {
-  try {
-    MailApp.sendEmail({
-      to: 'andrew.peace@burrell.edu',
-      subject: 'New AnesCalc beta tester: ' + (data.name || data.email || 'Unknown'),
-      body:
-        'A new beta tester signed up.\n\n' +
-        'Name: ' + (data.name || '') + '\n' +
-        'Email: ' + (data.email || '') + '\n' +
-        'Device: ' + (data.device || '') + '\n' +
-        'iOS Version: ' + (data.iosVersion || '') + '\n' +
-        'Notes: ' + (data.notes || '') + '\n\n' +
-        'View all responses: ' + ss.getUrl()
-    });
-  } catch (err) {
-    // Swallow — a failed notification shouldn't fail the signup itself.
+// Run once from the editor. Replaces any existing schedule for the digest.
+function installDailySummary() {
+  ScriptApp.getProjectTriggers().forEach(function (t) {
+    if (t.getHandlerFunction() === 'sendDailySummary') ScriptApp.deleteTrigger(t);
+  });
+  ScriptApp.newTrigger('sendDailySummary')
+    .timeBased().everyDays(1).atHour(DIGEST_HOUR).inTimezone(DIGEST_TIMEZONE)
+    .create();
+  var props = PropertiesService.getScriptProperties();
+  if (!props.getProperty('lastDigestAt')) {
+    props.setProperty('lastDigestAt', String(Date.now() - 24 * 3600 * 1000));
   }
+}
+
+function sendDailySummary() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var props = PropertiesService.getScriptProperties();
+  var now = new Date();
+  var since = new Date(Number(props.getProperty('lastDigestAt')) || now.getTime() - 24 * 3600 * 1000);
+
+  var signups = rowsSince(ss.getSheetByName('Beta Signups'), since);
+  var feedback = rowsSince(ss.getSheetByName('Feedback'), since);
+  var totalSignups = Math.max((ss.getSheetByName('Beta Signups') || { getLastRow: function () { return 1; } }).getLastRow() - 1, 0);
+
+  if (signups.length || feedback.length || SEND_WHEN_EMPTY) {
+    var fmt = function (d) { return Utilities.formatDate(d, DIGEST_TIMEZONE, 'MMM d, h:mm a'); };
+    var lines = [
+      'AnesCalc beta — activity since ' + fmt(since),
+      '',
+      'New sign-ups: ' + signups.length + '   (total: ' + totalSignups + ')',
+      'New feedback: ' + feedback.length,
+      ''
+    ];
+    signups.forEach(function (r, i) {
+      lines.push((i + 1) + '. ' + r[1] + ' <' + r[2] + '>' +
+        (r[3] ? ' · ' + r[3] : '') + (r[4] ? ' · ' + r[4] : ''));
+      if (r[5]) lines.push('   Notes: ' + r[5]);
+    });
+    if (feedback.length) {
+      lines.push('', 'Feedback:');
+      feedback.forEach(function (r) {
+        lines.push('- ' + (r[3] ? r[3] + '/5 ' : '') + (r[1] || r[2] || 'Anonymous'));
+        if (r[5]) lines.push('   Issues: ' + r[5]);
+        if (r[6]) lines.push('   Requests: ' + r[6]);
+        if (r[4]) lines.push('   Working: ' + r[4]);
+      });
+    }
+    lines.push('', 'All responses: ' + ss.getUrl());
+
+    MailApp.sendEmail({
+      to: NOTIFY_EMAIL,
+      subject: 'AnesCalc beta daily summary: ' + signups.length + ' new sign-up' +
+        (signups.length === 1 ? '' : 's') + (feedback.length ? ', ' + feedback.length + ' feedback' : ''),
+      body: lines.join('\n')
+    });
+  }
+  props.setProperty('lastDigestAt', String(now.getTime()));
+}
+
+function rowsSince(sheet, since) {
+  if (!sheet || sheet.getLastRow() < 2) return [];
+  var values = sheet.getRange(2, 1, sheet.getLastRow() - 1, sheet.getLastColumn()).getValues();
+  return values.filter(function (r) { return r[0] instanceof Date && r[0] > since; });
 }
 
 function getOrCreateSheet(ss, name, headers) {
