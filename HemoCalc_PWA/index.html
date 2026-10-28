@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hemo Calc — The Critical Vector</title>
+<meta name="description" content="Bedside hemodynamic, oxygen transport and CTICU calculator from The Critical Vector.">
+<meta name="theme-color" content="#0a0e14">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Hemo Calc">
+<script>(function(){var t="dark";try{t=localStorage.getItem("cv-theme")||"dark";}catch(e){}document.documentElement.setAttribute("data-theme",t);})();</script>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f4f5f7; --surface:#ffffff; --surface-2:#f0f2f5; --ink:#0f1923; --ink-2:#4a5670; --line:rgba(0,0,0,0.12);
+  --art:#c53030; --pa:#b45309; --cvp:#1d4ed8; --o2:#007a63; --cti:#7c3aed;
+  --low:#1d4ed8; --high:#c53030; --ok:#007a63;
+  --low-bg:rgba(29,78,216,0.08); --high-bg:rgba(197,48,48,0.08); --ok-bg:rgba(0,166,136,0.10);
+  --strip:#111720; --strip-ink:#e8edf5; --strip-dim:#8a9ab5; --strip-line:rgba(255,255,255,0.14);
+  --input-bg:#ffffff; --focus:#00a688;
+  color-scheme: light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+  --bg:#0a0e14; --surface:#111720; --surface-2:#182030; --ink:#e8edf5; --ink-2:#8a9ab5; --line:rgba(255,255,255,0.10);
+  --art:#e84c4c; --pa:#f59e0b; --cvp:#60a5fa; --o2:#00d4aa; --cti:#a78bfa;
+  --low:#60a5fa; --high:#ff6b6b; --ok:#00d4aa;
+  --low-bg:rgba(37,99,235,0.14); --high-bg:rgba(232,76,76,0.14); --ok-bg:rgba(0,212,170,0.10);
+  --strip:#070a0f; --strip-ink:#e8edf5; --strip-dim:#8a9ab5; --strip-line:rgba(255,255,255,0.12);
+  --input-bg:#0d121a; --focus:#00d4aa;
+  color-scheme: dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0a0e14; --surface:#111720; --surface-2:#182030; --ink:#e8edf5; --ink-2:#8a9ab5; --line:rgba(255,255,255,0.10);
+  --art:#e84c4c; --pa:#f59e0b; --cvp:#60a5fa; --o2:#00d4aa; --cti:#a78bfa;
+  --low:#60a5fa; --high:#ff6b6b; --ok:#00d4aa;
+  --low-bg:rgba(37,99,235,0.14); --high-bg:rgba(232,76,76,0.14); --ok-bg:rgba(0,212,170,0.10);
+  --strip:#070a0f; --strip-ink:#e8edf5; --strip-dim:#8a9ab5; --strip-line:rgba(255,255,255,0.12);
+  --input-bg:#0d121a; --focus:#00d4aa;
+  color-scheme: dark;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+html,body{margin:0;height:100%}
+body{background:var(--bg);color:var(--ink);font-family:"Syne",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.4;-webkit-text-size-adjust:100%}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--strip)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.num{font-family:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;font-variant-numeric:tabular-nums}
+
+/* ---------- monitor strip ---------- */
+.strip{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--strip);color:var(--strip-ink);padding:10px 14px 12px}
+.strip-top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--strip-ink);text-decoration:none;font-weight:700;font-size:17px;letter-spacing:.01em}
+.brand svg{flex:none}
+.brand span{display:flex;flex-direction:column;line-height:1.1}
+.brand small{margin-left:0!important}
+.brand small{font-weight:400;color:var(--strip-dim);font-size:13px;margin-left:6px}
+@media (max-width:360px){.brand small{display:none}}
+.actions{display:flex;gap:6px}
+.actions button{background:transparent;border:1px solid var(--strip-line);color:var(--strip-ink);border-radius:8px;padding:5px 10px;font-size:13px;cursor:pointer}
+.actions button:active{background:#182030}
+.vitals{display:grid;grid-template-columns:repeat(3,1fr);gap:4px 10px}
+.vital{display:flex;flex-direction:column;padding:2px 0 2px 8px;border-left:3px solid var(--c);min-width:0}
+.vital .lab{font-size:12px;color:var(--strip-dim);display:flex;justify-content:space-between;gap:4px}
+.vital .lab b{font-weight:700;font-size:11px}
+.vital .val{font-family:"IBM Plex Mono",ui-monospace,monospace;font-weight:700;font-size:24px;line-height:1.1;color:var(--c);font-variant-numeric:tabular-nums;white-space:nowrap}
+.vital .val.empty{color:#33405a}
+.vital .unit{font-size:11px;color:var(--strip-dim)}
+.v-art{--c:#ff5c5c}.v-pa{--c:#f5b83d}.v-cvp{--c:#60a5fa}.v-o2{--c:#00d4aa}
+
+/* ---------- layout ---------- */
+main{max-width:1200px;margin:0 auto;padding:12px 12px 96px}
+.panes{display:block}
+.pane[hidden]{display:none}
+@media (min-width:900px){
+  .panes{display:grid;grid-template-columns:minmax(360px,440px) 1fr;gap:20px;align-items:start}
+  .pane[hidden]{display:block}
+  .tabbar{display:none}
+  main{padding-bottom:40px}
+  .vitals{grid-template-columns:repeat(6,1fr)}
+  .pane-results{position:sticky;top:calc(env(safe-area-inset-top,0px) + 96px)}
+}
+.pane-title{font-size:20px;font-weight:700;margin:6px 4px 10px}
+.hint{color:var(--ink-2);font-family:"Source Serif 4",Georgia,serif;font-size:15px;margin:0 4px 12px}
+
+/* ---------- input groups ---------- */
+.group{background:var(--surface);border:1px solid var(--line);border-radius:12px;margin-bottom:10px;overflow:hidden}
+.group>summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:13px 14px;cursor:pointer;font-weight:700}
+.group>summary::-webkit-details-marker{display:none}
+.group>summary .meta{font-weight:400;font-size:13px;color:var(--ink-2);display:flex;align-items:center;gap:8px}
+.group>summary .chev{transition:transform .15s;display:inline-block}
+.group[open]>summary .chev{transform:rotate(90deg)}
+.group .fields{padding:2px 14px 14px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.field{display:flex;flex-direction:column;gap:4px;min-width:0}
+.field.wide{grid-column:1/-1}
+.field label{font-size:13px;color:var(--ink-2)}
+.inwrap{display:flex;align-items:stretch;border:1px solid var(--line);border-radius:8px;background:var(--input-bg);overflow:hidden}
+.inwrap:focus-within{border-color:var(--focus);box-shadow:0 0 0 2px color-mix(in srgb,var(--focus) 25%,transparent)}
+.inwrap input{flex:1;min-width:0;border:0;background:transparent;color:var(--ink);font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:17px;padding:9px 8px;outline:none}
+.inwrap input::placeholder{color:color-mix(in srgb,var(--ink-2) 55%,transparent)}
+.inwrap .u{display:flex;align-items:center;padding:0 8px;font-size:12px;color:var(--ink-2);background:var(--surface-2);border-left:1px solid var(--line);white-space:nowrap}
+.field .note{font-size:12px;color:var(--ink-2)}
+.seg{display:flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.seg button{flex:1;border:0;background:var(--input-bg);padding:9px 0;cursor:pointer;font-weight:700}
+.seg button+button{border-left:1px solid var(--line)}
+.seg button[aria-pressed="true"]{background:var(--o2);color:var(--bg)}
+
+/* ---------- results ---------- */
+.rtools{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 4px 10px}
+.toggle{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--ink-2);cursor:pointer;user-select:none}
+.toggle input{width:18px;height:18px;accent-color:var(--o2)}
+.count{font-size:13px;color:var(--ink-2)}
+.rgroup{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--gc);border-radius:12px;margin-bottom:10px;overflow:hidden}
+.rgroup h3{margin:0;padding:11px 14px 6px;font-size:15px;color:var(--gc)}
+.row{border-top:1px solid var(--line)}
+.row:first-of-type{border-top:0}
+.row>summary{list-style:none;display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:10px;padding:9px 14px;cursor:pointer}
+.row>summary::-webkit-details-marker{display:none}
+.row .name{font-size:15px}
+.row .value{font-family:"IBM Plex Mono",ui-monospace,monospace;font-weight:700;font-size:17px;text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.row .value small{font-family:"Syne",system-ui,sans-serif;font-weight:400;font-size:12px;color:var(--ink-2);margin-left:4px}
+.flag{font-size:12px;font-weight:700;border-radius:999px;padding:2px 8px;min-width:46px;text-align:center}
+.flag.LOW{background:var(--low-bg);color:var(--low)}
+.flag.HIGH{background:var(--high-bg);color:var(--high)}
+.flag.OK{background:var(--ok-bg);color:var(--ok)}
+.flag.none{visibility:hidden}
+.detail{padding:0 14px 12px;font-size:14px;color:var(--ink-2)}
+.detail .formula{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:13.5px;color:var(--ink);background:var(--surface-2);border-radius:8px;padding:8px 10px;margin-bottom:6px;overflow-x:auto}
+.detail p{margin:4px 0;font-family:"Source Serif 4",Georgia,serif;font-size:14.5px}
+.empty-state{background:var(--surface);border:1px dashed var(--line);border-radius:12px;padding:22px 18px;color:var(--ink-2);text-align:left}
+.empty-state b{color:var(--ink)}
+.empty-state button{margin-top:12px;background:var(--o2);color:var(--bg);border:0;border-radius:8px;padding:9px 14px;font-weight:700;cursor:pointer}
+.foot{font-family:"Source Serif 4",Georgia,serif;font-size:13px;color:var(--ink-2);margin:16px 4px}
+.cvfoot{border-top:1px solid var(--line);margin:20px 4px 0;padding-top:12px;font-size:12.5px;color:var(--ink-2);display:flex;flex-wrap:wrap;gap:6px 16px;justify-content:space-between}
+.cvfoot a{color:var(--o2);text-decoration:none;font-weight:600}
+.cvfoot a:hover{text-decoration:underline}
+.cvfoot .links{display:flex;gap:14px;flex-wrap:wrap}
+
+/* ---------- tab bar ---------- */
+.tabbar{position:fixed;left:0;right:0;bottom:0;z-index:6;background:var(--surface);border-top:1px solid var(--line);display:flex;padding-bottom:env(safe-area-inset-bottom,0px)}
+.tabbar button{flex:1;border:0;background:transparent;padding:12px 0 13px;font-size:15px;font-weight:700;color:var(--ink-2);cursor:pointer;position:relative}
+.tabbar button[aria-selected="true"]{color:var(--o2)}
+.tabbar button[aria-selected="true"]::before{content:"";position:absolute;top:0;left:30%;right:30%;height:3px;border-radius:0 0 3px 3px;background:var(--o2)}
+.tabbar .badge{display:inline-block;min-width:20px;margin-left:6px;padding:0 6px;border-radius:999px;background:var(--high-bg);color:var(--high);font-size:12px}
+@media print{
+  :root,:root[data-theme="dark"],:root:not([data-theme="light"]){
+  --bg:#f4f5f7; --surface:#ffffff; --surface-2:#f0f2f5; --ink:#0f1923; --ink-2:#4a5670; --line:rgba(0,0,0,0.12);
+  --art:#c53030; --pa:#b45309; --cvp:#1d4ed8; --o2:#007a63; --cti:#7c3aed;
+  --low:#1d4ed8; --high:#c53030; --ok:#007a63;
+  --low-bg:rgba(29,78,216,0.08); --high-bg:rgba(197,48,48,0.08); --ok-bg:rgba(0,166,136,0.10);
+  --strip:#ffffff; --strip-ink:#0f1923; --strip-dim:#4a5670; --strip-line:rgba(255,255,255,0.14);
+  --input-bg:#ffffff; --focus:#00a688;
+  color-scheme: light;
+  }
+  body::before,.tabbar,.actions,.rtools .toggle,#inputs{display:none!important}
+  .strip{position:static;border-bottom:1px solid var(--line)}
+  .panes{display:block!important}
+  #results{display:block!important;position:static!important}
+  .row .detail{display:block}
+  .rgroup,.row{break-inside:avoid}
+  .v-art{--c:#c53030}.v-pa{--c:#b45309}.v-cvp{--c:#1d4ed8}.v-o2{--c:#007a63}
+  main{padding:0}
+}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="strip" aria-label="Key values">
+  <div class="strip-top">
+    <a class="brand" href="../workshop.html" aria-label="Back to The Workshop, The Critical Vector">
+      <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect width="32" height="32" rx="6" fill="#111720"/><polyline points="2,18 7,18 9,10 12,24 15,14 17,20 19,8 22,22 24,16 30,16" stroke="#00d4aa" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" fill="none"/><circle cx="19" cy="8" r="2" fill="#00d4aa"/></svg>
+      <span>Hemo Calc<small>The Critical Vector</small></span></a>
+    <div class="actions">
+      <button id="btnExample" type="button">Example</button>
+      <button id="btnClear" type="button">Clear</button>
+      <button id="btnTheme" type="button" aria-label="Switch light or dark mode">☀</button>
+    </div>
+  </div>
+  <div class="vitals" id="vitals"></div>
+</header>
+
+<main>
+  <div class="panes">
+    <section class="pane pane-inputs" id="inputs" aria-label="Inputs">
+      <h2 class="pane-title">Patient data</h2>
+      <p class="hint">Fill in what you have. Every result updates as you type, and anything left blank is skipped.</p>
+      <div id="inputGroups"></div>
+    </section>
+    <section class="pane pane-results" id="results" aria-label="Results" hidden>
+      <h2 class="pane-title">Results</h2>
+      <div class="rtools">
+        <label class="toggle"><input type="checkbox" id="abnOnly"> Out-of-range only</label>
+        <span class="count" id="rcount"></span>
+      </div>
+      <div id="resultGroups"></div>
+      <p class="foot">Tap any result for its formula and normal range. Normal ranges vary modestly between references; interpret every number against the whole patient.</p>
+      <div class="cvfoot">
+        <div class="links"><a href="CVICU_Hemodynamic_Calculations.pdf">Reference PDF</a><a href="CVICU_Hemodynamic_Calculator.xlsx">Spreadsheet</a><a href="../workshop.html">The Workshop</a></div>
+        <div>The Critical Vector · Where the call to care meets precision</div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<nav class="tabbar" role="tablist" aria-label="Views">
+  <button role="tab" id="tabIn" aria-selected="true" aria-controls="inputs">Inputs</button>
+  <button role="tab" id="tabOut" aria-selected="false" aria-controls="results">Results<span class="badge" id="badge" hidden></span></button>
+</nav>
+
+<script>
+(function(){
+"use strict";
+
+/* ===================== INPUT DEFINITIONS ===================== */
+const GROUPS = [
+ {id:"pt", name:"Patient", open:true, f:[
+   ["ht","Height","cm"],["wt","Weight","kg"],["age","Age","yr"],["sex","Sex","",{sex:1}],["hr","Heart rate","bpm"]]},
+ {id:"press", name:"Pressures", open:true, f:[
+   ["sbp","Systolic BP","mmHg"],["dbp","Diastolic BP","mmHg"],
+   ["mapm","MAP, measured","mmHg",{note:"Optional. Calculated from SBP/DBP if blank"}],
+   ["cvp","CVP / RAP","mmHg"],["pasp","PA systolic","mmHg"],["padp","PA diastolic","mmHg"],
+   ["mpapm","mPAP, measured","mmHg",{note:"Optional. Calculated if blank"}],
+   ["pawp","Wedge (PAWP)","mmHg"],["lvedp","LVEDP","mmHg",{note:"Optional. PAWP used if blank"}]]},
+ {id:"gas", name:"Flow and blood gases", open:true, f:[
+   ["co","Cardiac output","L/min"],["hb","Hemoglobin","g/dL"],
+   ["sao2","SaO₂","%"],["svo2","SvO₂ (PA)","%"],["scvo2","ScvO₂ (CVC)","%",{note:"Optional, shown for comparison"}],
+   ["pao2","PaO₂","mmHg"],["pvo2","PvO₂","mmHg"],["paco2","PaCO₂","mmHg"],["pvco2","PvCO₂","mmHg"],
+   ["lac","Lactate","mmol/L"],["fio2","FiO₂","%"],["patm","Barometric","mmHg",{note:"760 at sea level"}],
+   ["vo2m","VO₂, measured","mL/min",{note:"Optional. Metabolic cart"}]]},
+ {id:"shunt", name:"Shunt sampling", f:[
+   ["svc","SVC sat","%"],["ivc","IVC sat","%",{note:"With SVC → Flamm mixed venous"}],
+   ["pa","PA sat","%",{note:"SvO₂ used if blank"}],["pv","Pulm vein sat","%",{note:"98% assumed if blank"}]]},
+ {id:"fluid", name:"Fluid responsiveness", f:[["ppv","PPV","%"],["svv","SVV","%"]]},
+ {id:"valve", name:"Valves and echo", f:[
+   ["avmg","AV mean gradient","mmHg"],["sep","Ejection period","s/beat"],["p2p","AV peak-to-peak","mmHg"],
+   ["lvotd","LVOT diameter","cm"],["lvotvti","LVOT VTI","cm"],["avvti","AV VTI","cm"],["trv","TR Vmax","m/s"]]},
+ {id:"drugs", name:"Vasoactive drips", f:[
+   ["dopa","Dopamine","mcg/kg/min"],["dobu","Dobutamine","mcg/kg/min"],["epi","Epinephrine","mcg/kg/min"],
+   ["ne","Norepinephrine","mcg/kg/min"],["mil","Milrinone","mcg/kg/min"],["vaso","Vasopressin","U/min"]]},
+ {id:"cpb", name:"CTICU: bypass and perfusion", f:[
+   ["hct","Pre-bypass Hct","%"],["prime","Circuit prime","mL"],["cpleg","Cardioplegia","mL"],["xtal","Other crystalloid","mL"],
+   ["hctt","Target Hct","%",{note:"For allowable blood loss"}],["pflow","Pump flow","L/min"],["hepr","Heparin remaining","U"]]},
+ {id:"vent", name:"CTICU: thoracic and ventilator", f:[
+   ["fev1","Preop FEV₁","% pred"],["dlco","Preop DLCO","% pred"],["segs","Segments resected","of 19"],
+   ["vt","Tidal volume","mL"],["pplat","Plateau","cmH₂O"],["peep","PEEP","cmH₂O"],["paw","Mean airway P","cmH₂O"],
+   ["peco2","Mixed expired CO₂","mmHg",{note:"Volumetric capnography, not end-tidal"}]]},
+ {id:"ecmo", name:"CTICU: ECMO", f:[
+   ["qe","ECMO flow","L/min"],["spre","Pre-oxygenator sat","%"],["spost","Post-oxygenator sat","%"],
+   ["ppre","Pre-oxygenator PO₂","mmHg"],["ppost","Post-oxygenator PO₂","mmHg"],["svtrue","True venous sat","%",{note:"For VV recirculation"}]]},
+ {id:"echo", name:"CTICU: post-op valve echo", f:[
+   ["pisar","PISA radius","cm"],["val","Aliasing velocity","cm/s"],["mrv","MR Vmax","cm/s"],["mrvti","MR VTI","cm"],
+   ["pht","Mitral PHT","ms"],["evel","Mitral E","cm/s"],["eprime","Average e′","cm/s"]]},
+ {id:"donor", name:"CTICU: transplant donor", f:[
+   ["dage","Donor age","yr"],["dsex","Donor sex","",{sex:1}],["dht","Donor height","cm"],["dwt","Donor weight","kg"]]}
+];
+
+const EXAMPLE = {ht:178,wt:88,age:64,sex:"M",hr:104,sbp:98,dbp:54,cvp:13,pasp:42,padp:20,pawp:17,co:3.6,hb:9.4,sao2:97,svo2:56,
+  pao2:110,pvo2:31,paco2:39,pvco2:48,lac:3.1,fio2:50,patm:760,epi:0.05,ne:0.08,mil:0.25};
+
+/* ===================== OUTPUT DEFINITIONS ===================== */
+// group colors follow bedside monitor convention: arterial red, PA yellow, CVP blue, SpO2 cyan
+const RG = {
+ derived:{name:"Derived", c:"var(--ink-2)"},
+ flow:{name:"Flow", c:"var(--art)"},
+ resist:{name:"Resistance", c:"var(--art)"},
+ work:{name:"Work and power", c:"var(--art)"},
+ rv:{name:"Right ventricle", c:"var(--pa)"},
+ o2:{name:"Oxygen transport", c:"var(--o2)"},
+ fick:{name:"Fick cardiac output", c:"var(--o2)"},
+ co2:{name:"CO₂ perfusion markers", c:"var(--o2)"},
+ shunt:{name:"Shunt and gas exchange", c:"var(--o2)"},
+ valve:{name:"Valves and coronary perfusion", c:"var(--cvp)"},
+ fluid:{name:"Fluid responsiveness", c:"var(--cvp)"},
+ drugs:{name:"Vasoactive burden and class", c:"var(--cvp)"},
+ cpb:{name:"CTICU: bypass and perfusion", c:"var(--cti)"},
+ vent:{name:"CTICU: thoracic and ventilator", c:"var(--cti)"},
+ ecmo:{name:"CTICU: ECMO", c:"var(--cti)"},
+ echo:{name:"CTICU: post-op valve echo", c:"var(--cti)"},
+ tx:{name:"CTICU: transplant sizing", c:"var(--cti)"}
+};
+const isF = (s) => String(s||"").toUpperCase()==="F";
+const def = (a,b) => (a===undefined||a===null||Number.isNaN(a)) ? b : a;
+
+// [key, group, label, unit, decimals ('%' = percent of fraction), lo, hi, formula, note, fn]
+const OUT = [
+ ["bsa","derived","Body surface area","m²",2,null,null,"√(height × weight / 3600)","Mosteller",v=>Math.sqrt(v.ht*v.wt/3600)],
+ ["map","derived","MAP used","mmHg",0,65,105,"(SBP + 2·DBP) / 3","Measured MAP used if entered",v=>def(v.mapm,(v.sbp+2*v.dbp)/3)],
+ ["mpap","derived","mPAP used","mmHg",0,null,20,"(PASP + 2·PADP) / 3","Measured mPAP used if entered. PH = mPAP >20",v=>def(v.mpapm,(v.pasp+2*v.padp)/3)],
+ ["pp","derived","Pulse pressure","mmHg",0,null,null,"SBP − DBP","",v=>v.sbp-v.dbp],
+
+ ["ci","flow","Cardiac index","L/min/m²",2,2.5,4.0,"CO / BSA","<2.2 is the classic cardiogenic shock threshold",v=>v.co/v.bsa],
+ ["sv","flow","Stroke volume","mL",0,60,100,"CO × 1000 / HR","",v=>v.co*1000/v.hr],
+ ["svi","flow","Stroke volume index","mL/m²",0,33,47,"SV / BSA","",v=>v.sv/v.bsa],
+
+ ["svr","resist","SVR","dyn·s·cm⁻⁵",0,800,1200,"80 × (MAP − CVP) / CO","Calculated, so it inherits every error in MAP, CVP and CO",v=>80*(v.map-v.cvp)/v.co],
+ ["svri","resist","SVRI","dyn·s·cm⁻⁵·m²",0,1970,2390,"80 × (MAP − CVP) / CI","",v=>80*(v.map-v.cvp)/v.ci],
+ ["svrwu","resist","SVR (Wood units)","WU",1,10,15,"(MAP − CVP) / CO","",v=>(v.map-v.cvp)/v.co],
+ ["pvr","resist","PVR","dyn·s·cm⁻⁵",0,null,160,"80 × (mPAP − PAWP) / CO","Flag at 2 WU (160) per 2022 ESC/ERS; older references use <250",v=>80*(v.mpap-v.pawp)/v.co],
+ ["pvrwu","resist","PVR (Wood units)","WU",2,null,2,"(mPAP − PAWP) / CO",">3 WU is a heart transplant concern",v=>(v.mpap-v.pawp)/v.co],
+ ["pvri","resist","PVRI","dyn·s·cm⁻⁵·m²",0,255,285,"80 × (mPAP − PAWP) / CI","",v=>80*(v.mpap-v.pawp)/v.ci],
+ ["tpg","resist","Transpulmonary gradient","mmHg",0,null,12,"mPAP − PAWP","",v=>v.mpap-v.pawp],
+ ["dpg","resist","Diastolic pulmonary gradient","mmHg",0,null,6.99,"PADP − PAWP","≥7 suggests combined pre- and post-capillary PH",v=>v.padp-v.pawp],
+
+ ["cpo","work","Cardiac power output","W",2,0.6,null,"MAP × CO / 451","<0.6 W predicts mortality in cardiogenic shock",v=>v.map*v.co/451],
+ ["cpi","work","Cardiac power index","W/m²",2,0.5,0.7,"CPO / BSA","",v=>v.cpo/v.bsa],
+ ["lvswi","work","LV stroke work index","g·m/m²",1,50,62,"SVI × (MAP − PAWP) × 0.0136","",v=>v.svi*(v.map-v.pawp)*0.0136],
+ ["rvswi","work","RV stroke work index","g·m/m²",1,5,10,"SVI × (mPAP − CVP) × 0.0136","",v=>v.svi*(v.mpap-v.cvp)*0.0136],
+ ["rvswi2","work","RVSWI (LVAD units)","mmHg·mL/m²",0,300,null,"SVI × (mPAP − CVP)","<300–450 suggests post-LVAD RV failure risk",v=>v.svi*(v.mpap-v.cvp)],
+
+ ["papi","rv","PA pulsatility index","",2,0.9,null,"(PASP − PADP) / RAP","<0.9 in AMI; <1.85 before LVAD predicts RV failure",v=>v.cvp>0?(v.pasp-v.padp)/v.cvp:NaN],
+ ["rapw","rv","RA : PCWP","",2,null,0.63,"RAP / PAWP",">0.63 = RV failing out of proportion to the LV",v=>v.pawp>0?v.cvp/v.pawp:NaN],
+ ["rvsp","rv","RVSP (echo)","mmHg",0,null,35,"4 × (TR Vmax)² + RAP","",v=>4*v.trv*v.trv+v.cvp],
+
+ ["cao2","o2","Arterial O₂ content","mL/dL",1,17,20,"1.34 × Hb × SaO₂ + 0.003 × PaO₂","",v=>1.34*v.hb*v.sao2/100+0.003*v.pao2],
+ ["cvo2","o2","Mixed venous O₂ content","mL/dL",1,12,15,"1.34 × Hb × SvO₂ + 0.003 × PvO₂","",v=>1.34*v.hb*v.svo2/100+0.003*v.pvo2],
+ ["avd","o2","a-v O₂ difference","mL/dL",1,3.5,5.5,"CaO₂ − CvO₂","",v=>v.cao2-v.cvo2],
+ ["do2","o2","O₂ delivery","mL/min",0,900,1100,"CO × CaO₂ × 10","",v=>v.co*v.cao2*10],
+ ["do2i","o2","O₂ delivery index","mL/min/m²",0,500,600,"CI × CaO₂ × 10","",v=>v.ci*v.cao2*10],
+ ["vo2","o2","O₂ consumption","mL/min",0,200,250,"CO × (CaO₂ − CvO₂) × 10","",v=>v.co*v.avd*10],
+ ["vo2i","o2","O₂ consumption index","mL/min/m²",0,110,160,"CI × (CaO₂ − CvO₂) × 10","",v=>v.ci*v.avd*10],
+ ["o2er","o2","O₂ extraction ratio","",2,0.22,0.30,"VO₂ / DO₂","Critical extraction is around 0.5–0.6",v=>v.vo2/v.do2],
+ ["o2ers","o2","O₂ER (saturation shortcut)","",2,0.22,0.30,"(SaO₂ − SvO₂) / SaO₂","",v=>(v.sao2-v.svo2)/v.sao2],
+ ["scv","o2","ScvO₂","%",0,70,null,"Measured (SVC)","Can overestimate SvO₂ in shock",v=>v.scvo2],
+ ["lacout","o2","Lactate","mmol/L",1,null,2,"Measured","",v=>v.lac],
+
+ ["vo2d","fick","Assumed VO₂ (Dehmer)","mL/min",0,null,null,"125 × BSA","",v=>125*v.bsa],
+ ["vo2w","fick","Assumed VO₂ (weight)","mL/min",0,null,null,"3 × weight","",v=>3*v.wt],
+ ["vo2l","fick","Assumed VO₂ (LaFarge)","mL/min",0,null,null,"VO₂I × BSA","Men: 138.1 − 11.49·ln(age) + 0.378·HR. Women: 138.1 − 17.04·ln(age) + 0.378·HR",
+   v=>(isF(v.sex)?138.1-17.04*Math.log(v.age)+0.378*v.hr:138.1-11.49*Math.log(v.age)+0.378*v.hr)*v.bsa],
+ ["fco1","fick","Fick CO (content, Dehmer)","L/min",2,4,8,"VO₂ / [(CaO₂ − CvO₂) × 10]","",v=>v.vo2d/(v.avd*10)],
+ ["fco2","fick","Fick CO (Hgb, Dehmer)","L/min",2,4,8,"VO₂ / [13.4 × Hb × (SaO₂ − SvO₂)]","The hemoglobin form; ignores dissolved O₂",v=>v.vo2d/(13.4*v.hb*(v.sao2-v.svo2)/100)],
+ ["fco3","fick","Fick CO (Hgb, LaFarge)","L/min",2,4,8,"VO₂ / [13.4 × Hb × (SaO₂ − SvO₂)]","",v=>v.vo2l/(13.4*v.hb*(v.sao2-v.svo2)/100)],
+ ["fcom","fick","Fick CO (measured VO₂)","L/min",2,4,8,"VO₂ / [(CaO₂ − CvO₂) × 10]","Most accurate Fick",v=>v.vo2m/(v.avd*10)],
+ ["fci","fick","Fick CI (Hgb, Dehmer)","L/min/m²",2,2.5,4.0,"Fick CO / BSA","Compare with thermodilution CI",v=>v.fco2/v.bsa],
+ ["tddiff","fick","Thermodilution vs Fick","%",0,-0.2,0.2,"(CO − Fick CO) / Fick CO","A big gap suggests TR, a shunt, or an off assumed VO₂",v=>(v.co-v.fco2)/v.fco2,"pct"],
+
+ ["gap","co2","Pv-aCO₂ gap","mmHg",0,null,6,"PvCO₂ − PaCO₂",">6 = flow is inadequate, even with a normal ScvO₂",v=>v.pvco2-v.paco2],
+ ["gapr","co2","CO₂ gap / a-v O₂ ratio","",2,null,1.4,"Gap / (CaO₂ − CvO₂)",">1.4 suggests anaerobic metabolism",v=>v.avd>0?v.gap/v.avd:NaN],
+
+ ["smv","shunt","Pre-shunt mixed venous sat","%",0,null,null,"(3 × SVC + IVC) / 4","Flamm if IVC entered, else SVC",v=>Number.isFinite(v.ivc)?(3*v.svc+v.ivc)/4:v.svc],
+ ["qpqs","shunt","Qp : Qs","",2,0.8,1.5,"(SaO₂ − SmvO₂) / (SpvO₂ − SpaO₂)",">1.5 = significant left-to-right shunt",
+   v=>{const pa=def(v.pa,v.svo2),pv=def(v.pv,98);return (v.sao2-v.smv)/(pv-pa);}],
+ ["palv","shunt","Alveolar PO₂","mmHg",0,null,null,"FiO₂ × (Patm − 47) − PaCO₂ / 0.8","",v=>v.fio2/100*(v.patm-47)-v.paco2/0.8],
+ ["aag","shunt","A-a gradient","mmHg",0,null,null,"PAO₂ − PaO₂","≈ age/4 + 4 on room air; rises with FiO₂",v=>v.palv-v.pao2],
+ ["pf","shunt","P/F ratio","",0,300,null,"PaO₂ / FiO₂","<300 mild, <200 moderate, <100 severe ARDS",v=>v.pao2/(v.fio2/100)],
+ ["qsqt","shunt","Shunt fraction (Qs/Qt)","%",0,null,0.1,"(CcO₂ − CaO₂) / (CcO₂ − CvO₂)","CcO₂ = 1.34 × Hb + 0.003 × PAO₂",
+   v=>{const cc=1.34*v.hb+0.003*v.palv;return (cc-v.cao2)/(cc-v.cvo2);},"pct"],
+
+ ["cpp","valve","Coronary perfusion pressure","mmHg",0,50,null,"DBP − LVEDP","PAWP used if LVEDP blank",v=>v.dbp-def(v.lvedp,v.pawp)],
+ ["gorlin","valve","AVA (Gorlin)","cm²",2,1.0,null,"CO(mL/min) / (HR × SEP × 44.3 × √mean gradient)","<1.0 = severe AS",v=>v.co*1000/(v.hr*v.sep*44.3*Math.sqrt(v.avmg))],
+ ["hakki","valve","AVA (Hakki)","cm²",2,1.0,null,"CO / √peak-to-peak","",v=>v.co/Math.sqrt(v.p2p)],
+ ["cont","valve","AVA (continuity)","cm²",2,1.0,null,"π(LVOTd/2)² × VTI LVOT / VTI AV","",v=>Math.PI*(v.lvotd/2)**2*v.lvotvti/v.avvti],
+ ["avai","valve","AVA index","cm²/m²",2,0.6,null,"AVA / BSA","<0.6 = severe AS",v=>v.cont/v.bsa],
+ ["lvotsv","valve","Echo stroke volume","mL",0,60,100,"π(LVOTd/2)² × VTI LVOT","",v=>Math.PI*(v.lvotd/2)**2*v.lvotvti],
+
+ ["ppvo","fluid","Pulse pressure variation","%",0,null,13,"(PPmax − PPmin) / PPmean","Valid only: controlled ventilation, VT ≥8 mL/kg, sinus rhythm, closed chest",v=>v.ppv],
+ ["svvo","fluid","Stroke volume variation","%",0,null,12,"(SVmax − SVmin) / SVmean","Same validity limits as PPV",v=>v.svv],
+
+ ["vis","drugs","Vasoactive-Inotropic Score","",1,null,20,"dopa + dobu + 100(epi + NE) + 10(mil) + 10,000(vaso U/kg/min)",">20–30 is high risk after cardiac surgery",
+   v=>{const any=["dopa","dobu","epi","ne","mil","vaso"].some(k=>Number.isFinite(v[k]));if(!any)return NaN;const n=k=>Number.isFinite(v[k])?v[k]:0;
+       const vk=Number.isFinite(v.vaso)?v.vaso/v.wt:0;return n("dopa")+n("dobu")+100*n("epi")+100*n("ne")+10*n("mil")+10000*vk;}],
+ ["forr","drugs","Forrester class","",null,null,null,"CI 2.2 × PAWP 18","",v=>(Number.isFinite(v.ci)&&Number.isFinite(v.pawp))?(v.ci>2.2?(v.pawp<=18?"I · warm, dry":"II · warm, wet"):(v.pawp<=18?"III · cold, dry":"IV · cold, wet")):NaN],
+
+ ["ebv","cpb","Estimated blood volume","mL",0,null,null,"weight × 70 (men) or 65 (women)","",v=>v.wt*(isF(v.sex)?65:70),null,["hct","prime","pflow","hctt"]],
+ ["hctcpb","cpb","Predicted Hct on bypass","%",1,21,null,"EBV × Hct / (EBV + prime + CP + crystalloid)","Keep ≥21–24%",
+   v=>v.ebv*v.hct/(v.ebv+v.prime+(v.cpleg||0)+(v.xtal||0))],
+ ["abl","cpb","Allowable blood loss","mL",0,null,null,"EBV × (Hct − target) / mean Hct","",v=>v.ebv*(v.hct-v.hctt)/((v.hct+v.hctt)/2)],
+ ["pfi","cpb","Pump flow index","L/min/m²",2,2.2,2.4,"Pump flow / BSA","",v=>v.pflow/v.bsa],
+ ["do2cpb","cpb","DO₂I on bypass","mL/min/m²",0,272,null,"Pump flow index × CaO₂ × 10","Enter on-bypass Hb and gas. <272–280 raises AKI risk",v=>v.pfi*v.cao2*10],
+ ["hep","cpb","Heparin load","U",0,null,null,"300–400 U/kg","Target ACT >480 s",v=>300*v.wt,null,["hct","prime","pflow","hepr"],v=>`${fmtN(300*v.wt,0)}–${fmtN(400*v.wt,0)}`],
+ ["prot","cpb","Protamine","mg",0,null,null,"1–1.3 mg per 100 U heparin remaining","",v=>v.hepr/100,null,null,v=>`${fmtN(v.hepr/100,0)}–${fmtN(1.3*v.hepr/100,0)}`],
+
+ ["ppofev","vent","ppoFEV₁","% pred",0,60,null,"FEV₁ × (1 − segments / 19)",">60% low risk; <30–40% high risk",v=>v.fev1*(1-v.segs/19)],
+ ["ppodlco","vent","ppoDLCO","% pred",0,60,null,"DLCO × (1 − segments / 19)","",v=>v.dlco*(1-v.segs/19)],
+ ["drivp","vent","Driving pressure","cmH₂O",0,null,14.99,"Pplat − PEEP","Keep <15",v=>v.pplat-v.peep],
+ ["cstat","vent","Static compliance","mL/cmH₂O",0,50,80,"VT / (Pplat − PEEP)","",v=>v.vt/(v.pplat-v.peep)],
+ ["vtkg","vent","VT per kg PBW","mL/kg",1,4,8,"VT / PBW","PBW: men 50 + 0.91(ht − 152.4); women 45.5 + 0.91(ht − 152.4). 6–8 two-lung, 4–6 one-lung",
+   v=>v.vt/((isF(v.sex)?45.5:50)+0.91*(v.ht-152.4)),null,["vt"]],
+ ["vdvt","vent","Dead space fraction","",2,null,0.3,"(PaCO₂ − PĒCO₂) / PaCO₂","",v=>(v.paco2-v.peco2)/v.paco2],
+ ["oi","vent","Oxygenation index","",1,null,20,"FiO₂ × Paw × 100 / PaO₂",">20–25 = severe",v=>v.fio2/100*v.paw*100/v.pao2,null,["paw"]],
+
+ ["recirc","ecmo","VV recirculation","%",0,null,0.2,"(Spre − SvO₂) / (Spost − SvO₂)","",v=>(v.spre-v.svtrue)/(v.spost-v.svtrue),"pct"],
+ ["vo2e","ecmo","Oxygenator O₂ transfer","mL/min",0,null,null,"Q × (CpostO₂ − CpreO₂) × 10","",
+   v=>v.qe*((1.34*v.hb*v.spost/100+0.003*v.ppost)-(1.34*v.hb*v.spre/100+0.003*v.ppre))*10],
+ ["qekg","ecmo","ECMO flow per kg","mL/kg/min",0,50,80,"Q × 1000 / weight","VV typically 60–80",v=>v.qe*1000/v.wt],
+ ["ppostck","ecmo","Post-oxygenator PO₂","mmHg",0,150,null,"Measured","<150–200 on FiO₂ 1.0 suggests oxygenator failure",v=>v.ppost],
+
+ ["eroa","echo","EROA (PISA)","cm²",2,null,0.39,"2πr² × Valias / Vmax","≥0.40 = severe primary MR",v=>2*Math.PI*v.pisar**2*v.val/v.mrv],
+ ["rvol","echo","Regurgitant volume","mL",0,null,59,"EROA × VTI MR","≥60 mL = severe",v=>v.eroa*v.mrvti],
+ ["mva","echo","MVA (pressure half-time)","cm²",2,1.51,null,"220 / PHT","≤1.5 = severe MS",v=>220/v.pht],
+ ["ee","echo","E/e′","",1,null,14,"E / average e′",">14 suggests elevated LA pressure",v=>v.evel/v.eprime],
+
+ ["rphm","tx","Recipient PHM","g",0,null,null,"LV mass + RV mass","LV = a·ht^0.54·wt^0.61 (a 8.25 men, 6.82 women). RV = a·age^−0.32·ht^1.135·wt^0.315 (a 11.25 men, 10.59 women). Height in m",
+   v=>phm(v.sex,v.age,v.ht,v.wt),null,["dht"]],
+ ["dphm","tx","Donor PHM","g",0,null,null,"LV mass + RV mass","",v=>phm(v.dsex,v.dage,v.dht,v.dwt)],
+ ["phmmm","tx","PHM mismatch","%",1,-0.3,null,"(donor − recipient) / recipient","UNOS convention. Undersizing worse than −30% carries risk",v=>(v.dphm-v.rphm)/v.rphm,"pct"],
+ ["tlcr","tx","pTLC ratio (donor / recipient)","",2,0.8,1.2,"pTLC: men 7.99·ht − 7.08; women 6.60·ht − 5.79","Height in m",v=>tlc(v.dsex,v.dht)/tlc(v.sex,v.ht)]
+];
+function phm(sex,age,htcm,wt){const h=htcm/100;const f=isF(sex);return (f?6.82:8.25)*h**0.54*wt**0.61+(f?10.59:11.25)*age**-0.32*h**1.135*wt**0.315;}
+function tlc(sex,htcm){const h=htcm/100;return isF(sex)?6.6*h-5.79:7.99*h-7.08;}
+function fmtN(x,d){return Number(x).toLocaleString("en-US",{minimumFractionDigits:d,maximumFractionDigits:d});}
+
+const VITALS = [["ci","CI","L/min/m²","v-art"],["map","MAP","mmHg","v-art"],["svr","SVR","dyn","v-art"],
+                ["cpo","CPO","W","v-pa"],["do2i","DO₂I","mL/min/m²","v-o2"],["o2er","O₂ER","","v-o2"]];
+
+/* ===================== STATE ===================== */
+const KEY="hemocalc:v1";
+let state={};
+try{const s=localStorage.getItem(KEY); if(s) state=JSON.parse(s)||{};}catch(e){state={};}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){}}
+
+/* ===================== BUILD INPUTS ===================== */
+const ig=document.getElementById("inputGroups");
+const openState = (()=>{try{return JSON.parse(localStorage.getItem(KEY+":open"))||{};}catch(e){return {};}})();
+GROUPS.forEach(g=>{
+  const d=document.createElement("details"); d.className="group"; d.dataset.g=g.id;
+  d.open = (g.id in openState) ? openState[g.id] : !!g.open;
+  d.addEventListener("toggle",()=>{openState[g.id]=d.open;try{localStorage.setItem(KEY+":open",JSON.stringify(openState));}catch(e){}});
+  const s=document.createElement("summary");
+  s.innerHTML=`<span>${g.name}</span><span class="meta"><span class="filled"></span><span class="chev" aria-hidden="true">›</span></span>`;
+  d.appendChild(s);
+  const box=document.createElement("div"); box.className="fields";
+  g.f.forEach(([k,label,unit,opt])=>{
+    opt=opt||{};
+    const fld=document.createElement("div"); fld.className="field"+(opt.note&&opt.note.length>34?" wide":"");
+    const id="in-"+k;
+    if(opt.sex){
+      fld.innerHTML=`<label id="${id}-l">${label}</label><div class="seg" role="group" aria-labelledby="${id}-l">
+        <button type="button" data-k="${k}" data-v="M" aria-pressed="false">Male</button>
+        <button type="button" data-k="${k}" data-v="F" aria-pressed="false">Female</button></div>`;
+    }else{
+      fld.innerHTML=`<label for="${id}">${label}</label><div class="inwrap"><input id="${id}" data-k="${k}" type="text" inputmode="decimal" autocomplete="off" enterkeyhint="next">${unit?`<span class="u">${unit}</span>`:""}</div>${opt.note?`<span class="note">${opt.note}</span>`:""}`;
+    }
+    box.appendChild(fld);
+  });
+  d.appendChild(box); ig.appendChild(d);
+});
+
+function syncInputs(){
+  ig.querySelectorAll("input[data-k]").forEach(el=>{const v=state[el.dataset.k];el.value=(v===undefined||v===null)?"":v;});
+  ig.querySelectorAll(".seg button").forEach(b=>b.setAttribute("aria-pressed",String(state[b.dataset.k]===b.dataset.v)));
+}
+ig.addEventListener("input",e=>{
+  const el=e.target; if(!el.dataset.k) return;
+  const raw=el.value.replace(",",".").trim();
+  if(raw==="") delete state[el.dataset.k]; else state[el.dataset.k]=raw;
+  save(); compute();
+});
+ig.addEventListener("click",e=>{
+  const b=e.target.closest(".seg button"); if(!b) return;
+  state[b.dataset.k] = state[b.dataset.k]===b.dataset.v ? undefined : b.dataset.v;
+  if(state[b.dataset.k]===undefined) delete state[b.dataset.k];
+  save(); syncInputs(); compute();
+});
+ig.addEventListener("keydown",e=>{
+  if(e.key!=="Enter"||!e.target.dataset.k) return;
+  const all=[...ig.querySelectorAll("details[open] input[data-k]")]; const i=all.indexOf(e.target);
+  if(i>-1&&all[i+1]){e.preventDefault();all[i+1].focus();}
+});
+
+/* ===================== COMPUTE + RENDER ===================== */
+const rg=document.getElementById("resultGroups");
+const vit=document.getElementById("vitals");
+const abn=document.getElementById("abnOnly");
+try{abn.checked=localStorage.getItem(KEY+":abn")==="1";}catch(e){}
+abn.addEventListener("change",()=>{try{localStorage.setItem(KEY+":abn",abn.checked?"1":"0");}catch(e){}compute();});
+
+const openRows=new Set();
+function vals(){
+  const v={};
+  GROUPS.forEach(g=>g.f.forEach(([k,,,o])=>{
+    const raw=state[k]; if(raw===undefined) return;
+    if(o&&o.sex){v[k]=raw;return;}
+    const n=parseFloat(raw); if(Number.isFinite(n)) v[k]=n;
+  }));
+  if(v.sex===undefined) v.sex="M"; if(v.dsex===undefined) v.dsex="M";
+  return v;
+}
+function flagOf(x,lo,hi){ if(typeof x!=="number") return ""; if(lo!==null&&x<lo) return "LOW"; if(hi!==null&&x>hi) return "HIGH"; if(lo===null&&hi===null) return ""; return "OK"; }
+function show(x,d,mode){
+  if(typeof x==="string") return x;
+  if(mode==="pct") return fmtN(x*100,d)+"%";
+  return fmtN(x,d);
+}
+
+function compute(){
+  const v=vals();
+  const res=[];
+  OUT.forEach(([k,g,label,unit,d,lo,hi,formula,note,fn,mode,needAny,display])=>{
+    let r; try{ r=fn(v); }catch(e){ r=NaN; }
+    const ok = typeof r==="string" || (typeof r==="number" && Number.isFinite(r));
+    // outputs that need a CTICU-specific input to be meaningful
+    if(ok && needAny && !needAny.some(n=>Number.isFinite(v[n]))) { v[k]=r; return; }
+    if(ok){ v[k]=r; res.push({k,g,label,unit,d,lo,hi,formula,note,r,mode,display,flag:flagOf(r,lo,hi)}); }
+  });
+
+  // vitals strip
+  vit.innerHTML=VITALS.map(([k,lab,u,cls])=>{
+    const it=res.find(x=>x.k===k);
+    const txt=it?show(it.r,it.d,it.mode):"--";
+    const fl=it&&it.flag&&it.flag!=="OK"?(it.flag==="LOW"?"↓":"↑"):"";
+    return `<div class="vital ${cls}"><span class="lab">${lab}<b aria-label="${it?it.flag:""}">${fl}</b></span><span class="val${it?"":" empty"}">${txt}</span><span class="unit">${u}</span></div>`;
+  }).join("");
+
+  // results
+  const abnOnly=abn.checked;
+  const shown=res.filter(x=>!abnOnly||x.flag==="LOW"||x.flag==="HIGH");
+  const nAbn=res.filter(x=>x.flag==="LOW"||x.flag==="HIGH").length;
+  document.getElementById("rcount").textContent=res.length?`${res.length} results, ${nAbn} out of range`:"";
+  const badge=document.getElementById("badge"); badge.hidden=!nAbn; badge.textContent=nAbn;
+
+  if(!res.length){
+    rg.innerHTML=`<div class="empty-state"><b>No results yet.</b><br>Enter height, weight, heart rate, pressures and cardiac output on the Inputs tab, or load the example patient to see how it works.<br><button type="button" id="emptyEx">Load example</button></div>`;
+    document.getElementById("emptyEx").onclick=loadExample;
+  }else if(!shown.length){
+    rg.innerHTML=`<div class="empty-state"><b>Everything calculated is within its normal range.</b><br>Turn off “Out-of-range only” to see all ${res.length} results.</div>`;
+  }else{
+    let html="";
+    Object.keys(RG).forEach(gk=>{
+      const items=shown.filter(x=>x.g===gk); if(!items.length) return;
+      html+=`<section class="rgroup" style="--gc:${RG[gk].c}"><h3>${RG[gk].name}</h3>`;
+      items.forEach(it=>{
+        const val = it.display ? it.display(v) : show(it.r,it.d,it.mode);
+        const unit = it.mode==="pct" ? "" : it.unit;
+        const range = (it.lo!==null||it.hi!==null) ? rangeText(it) : "";
+        html+=`<details class="row" data-k="${it.k}"${openRows.has(it.k)?" open":""}><summary>
+          <span class="name">${it.label}</span><span class="value">${val}${unit?`<small>${unit}</small>`:""}</span>
+          <span class="flag ${it.flag||"none"}">${it.flag==="LOW"?"↓ Low":it.flag==="HIGH"?"↑ High":it.flag==="OK"?"OK":"·"}</span></summary>
+          <div class="detail"><div class="formula">${it.formula}</div>${range?`<p>Normal / target: ${range}</p>`:""}${it.note?`<p>${it.note}</p>`:""}</div></details>`;
+      });
+      html+=`</section>`;
+    });
+    rg.innerHTML=html;
+  }
+  // filled counts per input group
+  ig.querySelectorAll("details.group").forEach(d=>{
+    const g=GROUPS.find(x=>x.id===d.dataset.g);
+    const n=g.f.filter(([k])=>state[k]!==undefined).length;
+    d.querySelector(".filled").textContent=n?`${n} of ${g.f.length}`:"";
+  });
+}
+function rangeText(it){
+  const f=x=>it.mode==="pct"?fmtN(x*100,0)+"%":String(+x.toFixed(2));
+  if(it.lo!==null&&it.hi!==null) return `${f(it.lo)}–${f(it.hi)} ${it.mode==="pct"?"":it.unit}`.trim();
+  if(it.lo!==null) return `≥ ${f(it.lo)} ${it.mode==="pct"?"":it.unit}`.trim();
+  return `≤ ${f(it.hi)} ${it.mode==="pct"?"":it.unit}`.trim();
+}
+rg.addEventListener("toggle",e=>{const d=e.target; if(!d.dataset||!d.dataset.k) return; d.open?openRows.add(d.dataset.k):openRows.delete(d.dataset.k);},true);
+
+/* ===================== ACTIONS + TABS ===================== */
+function loadExample(){ state=Object.fromEntries(Object.entries(EXAMPLE).map(([k,x])=>[k,String(x)])); save(); syncInputs(); compute(); }
+document.getElementById("btnExample").onclick=loadExample;
+document.getElementById("btnClear").onclick=()=>{ if(Object.keys(state).length && !confirm("Clear all entered values?")) return; state={}; save(); syncInputs(); compute(); };
+
+const tIn=document.getElementById("tabIn"), tOut=document.getElementById("tabOut");
+const pIn=document.getElementById("inputs"), pOut=document.getElementById("results");
+function setTab(which){
+  const out=which==="results";
+  tIn.setAttribute("aria-selected",String(!out)); tOut.setAttribute("aria-selected",String(out));
+  pIn.hidden=out; pOut.hidden=!out; window.scrollTo(0,0);
+}
+tIn.onclick=()=>setTab("inputs"); tOut.onclick=()=>setTab("results");
+if(location.hash==="#results") setTab("results");
+window.addEventListener("hashchange",()=>{ if(location.hash==="#results") setTab("results"); if(location.hash==="#inputs") setTab("inputs"); });
+
+const btnTheme=document.getElementById("btnTheme");
+function themeLabel(){const d=document.documentElement.getAttribute("data-theme")!=="light";btnTheme.textContent=d?"☀":"☾";
+  const m=document.querySelector('meta[name="theme-color"]'); if(m) m.setAttribute("content",d?"#0a0e14":"#111720");}
+btnTheme.onclick=()=>{const next=document.documentElement.getAttribute("data-theme")==="light"?"dark":"light";
+  document.documentElement.setAttribute("data-theme",next);try{localStorage.setItem("cv-theme",next);}catch(e){}themeLabel();};
+themeLabel();
+syncInputs(); compute();
+if("serviceWorker" in navigator){ window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{})); }
+})();
+</script>
+</body>
+</html>
