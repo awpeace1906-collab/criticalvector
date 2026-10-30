@@ -666,12 +666,23 @@ img { max-width: 100%; display: block; }
   left: 0; right: 0;
   background: var(--surface);
   border-bottom: 1px solid var(--border);
-  padding: 12px 0;
+  margin-left: 0;
+  gap: 0;
+  align-items: stretch;
+  padding: 4px 0 12px;
+  box-shadow: 0 12px 24px rgba(0,0,0,0.35);
   z-index: 99;
 }
 .nav-links.open a, .nav-links.open .mode-toggle {
   padding: 10px 28px;
   border-bottom: 1px solid var(--border);
+}
+.nav-links.open .mode-toggle {
+  display: flex;
+  margin: 12px 28px 4px;
+  padding: 6px 14px;
+  align-self: flex-start;
+  border: 1px solid var(--border);
 }
 
 /* ── MODE TOGGLE ── */
