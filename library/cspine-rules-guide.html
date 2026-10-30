@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NEXUS, Canadian C-Spine &amp; CT Head Rules — The Critical Vector</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&amp;family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><style>
+:root{
+  --bg:#0a0e14; --surface:#111720; --surface2:#182030;
+  --border:rgba(255,255,255,0.08);
+  --teal:#00d4aa; --blue:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa;
+  --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  background:var(--bg); color:var(--text);
+  font-family:'Source Serif 4', Georgia, serif; font-size:16px; line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,.label,.kicker,.badge,nav a,th{font-family:'Syne', sans-serif;}
+.mono{font-family:'IBM Plex Mono', monospace;}
+.page{max-width:900px; margin:0 auto; padding:0 24px 60px;}
+
+header{padding:32px 0 20px; border-bottom:1px solid var(--border);}
+.kicker{
+  font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--teal); margin-bottom:10px;
+}
+h1{font-family:'Syne', sans-serif; font-weight:800; font-size:30px; line-height:1.15; margin:0 0 10px; letter-spacing:.005em;}
+header p{font-family:'Source Serif 4', serif; font-style:italic; color:var(--text2); font-size:15.5px; margin:0; max-width:700px;}
+
+.alert{
+  margin:18px 0; padding:13px 18px; border-radius:10px; font-size:14px;
+  background:rgba(0,212,170,0.10); border:1px solid rgba(0,212,170,0.28); color:#bdf5e8;
+}
+.alert.c-red{background:rgba(232,76,76,0.10); border-color:rgba(232,76,76,0.28); color:#ffd7d7;}
+.alert.c-amber{background:rgba(245,158,11,0.10); border-color:rgba(245,158,11,0.28); color:#ffe8bd;}
+.alert.c-blue{background:rgba(96,165,250,0.10); border-color:rgba(96,165,250,0.28); color:#cfe0ff;}
+
+nav{display:flex; flex-wrap:wrap; gap:7px; padding:18px 0; border-bottom:1px solid var(--border); margin-bottom:8px;}
+nav .navpart{
+  width:100%; font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--text3); margin:8px 0 2px 2px;
+}
+nav .navpart:first-child{margin-top:0;}
+nav a{
+  font-size:12.5px; font-weight:600; color:var(--text2); background:var(--surface);
+  border:1px solid var(--border); padding:7px 12px; border-radius:20px;
+  text-decoration:none; white-space:nowrap; transition:all .15s;
+}
+nav a:hover{color:var(--text); border-color:var(--teal);}
+
+section{padding:30px 0; border-bottom:1px solid var(--border);}
+.sec-head{
+  display:flex; align-items:baseline; gap:10px; padding:11px 18px;
+  border-left:4px solid var(--teal);
+  background:linear-gradient(90deg, rgba(0,212,170,0.10), transparent);
+  border-radius:0 8px 8px 0; margin-bottom:16px;
+}
+.sec-head.c-blue{border-left-color:var(--blue); background:linear-gradient(90deg, rgba(96,165,250,0.10), transparent);}
+.sec-head.c-red{border-left-color:var(--red); background:linear-gradient(90deg, rgba(232,76,76,0.10), transparent);}
+.sec-head.c-amber{border-left-color:var(--amber); background:linear-gradient(90deg, rgba(245,158,11,0.10), transparent);}
+.sec-head.c-purple{border-left-color:var(--purple); background:linear-gradient(90deg, rgba(167,139,250,0.10), transparent);}
+.sec-num{font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--text3);}
+h2{font-family:'Syne', sans-serif; font-weight:700; font-size:20px; margin:0; color:var(--text);}
+.tagline{font-family:'Source Serif 4', serif; font-style:italic; font-size:13.5px; color:var(--text2); margin:0 0 12px;}
+
+p.body{font-size:15.5px; margin:12px 0;}
+p.note{font-size:13.5px; color:var(--text2); font-style:italic; margin:10px 0;}
+
+.box{
+  background:var(--surface2); border:1px solid var(--border); border-radius:10px;
+  padding:16px 18px; margin:14px 0; font-size:14.5px;
+}
+.box.t-teal{border-left:3px solid var(--teal);}
+.box.t-blue{border-left:3px solid var(--blue);}
+.box.t-red{border-left:3px solid var(--red); background:rgba(232,76,76,0.06);}
+.box.t-amber{border-left:3px solid var(--amber);}
+.box.t-purple{border-left:3px solid var(--purple);}
+.box b{color:var(--text); font-weight:700;}
+.box p{margin:7px 0;}
+
+table{width:100%; border-collapse:collapse; margin:14px 0; font-size:13.5px;}
+th{background:var(--surface2); color:var(--text); text-align:left; padding:9px 11px; font-weight:600; font-size:12px; letter-spacing:.02em; border-bottom:2px solid var(--border);}
+td{padding:9px 11px; border-bottom:1px solid var(--border); vertical-align:top; font-family:'Source Serif 4', serif;}
+tr:nth-child(even) td{background:rgba(255,255,255,0.02);}
+
+.checklist, .xlist{list-style:none; padding-left:0; margin:10px 0;}
+.checklist li, .xlist li{padding:5px 0 5px 26px; position:relative; font-size:14.5px;}
+.checklist li:before{content:"\2713"; position:absolute; left:0; color:var(--teal); font-weight:700;}
+.xlist li:before{content:"\2715"; position:absolute; left:0; color:var(--red); font-weight:700;}
+
+.flow{display:flex; flex-direction:column; gap:9px; margin:14px 0;}
+.flow .step{
+  border:1px solid var(--border); border-left:3px solid var(--teal);
+  background:var(--surface); border-radius:8px; padding:11px 15px; font-size:14px;
+}
+.flow .step.t-blue{border-left-color:var(--blue);}
+.flow .step.t-red{border-left-color:var(--red);}
+.flow .step.t-amber{border-left-color:var(--amber);}
+.flow .step.t-purple{border-left-color:var(--purple);}
+
+.timeline-item{
+  padding:7px 0 7px 15px; border-left:2px solid var(--teal);
+  margin:5px 0 5px 4px; font-size:13.5px; color:var(--text2);
+}
+.timeline-item.t-blue{border-left-color:var(--blue);}
+.timeline-item.t-red{border-left-color:var(--red);}
+.timeline-item.t-amber{border-left-color:var(--amber);}
+.timeline-item.t-purple{border-left-color:var(--purple);}
+
+.xref{
+  margin:14px 0; padding:13px 17px; border-radius:10px;
+  background:var(--surface2); border:1px solid var(--border); border-left:3px solid var(--blue);
+  font-size:14px;
+}
+.xreflabel{
+  display:block; font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--blue); margin-bottom:6px; font-weight:600;
+}
+
+.peds{
+  margin:8px 0 16px 0; padding:11px 15px; border-radius:8px;
+  background:var(--surface2); border:1px solid var(--border); border-left:3px solid var(--purple);
+  font-size:13.5px;
+}
+.pedlabel{
+  display:inline-block; font-family:'Syne', sans-serif; font-size:10px; font-weight:700; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--purple); margin-right:7px;
+}
+
+.part-divider{padding:34px 0 8px;}
+.part-divider .plabel{
+  font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--teal); margin-bottom:6px; font-weight:600;
+}
+.part-divider h2{font-size:23px; margin:0 0 6px 0;}
+.part-divider p{font-family:'Source Serif 4', serif; font-size:14px; color:var(--text2); margin:0; max-width:600px;}
+
+.sources{font-size:13px; color:var(--text2); padding-left:20px;}
+.sources li{margin-bottom:7px;}
+
+.caveat{
+  margin:14px 0; padding:13px 17px; border-radius:10px; font-size:13.5px;
+  background:rgba(245,158,11,0.08); border:1px solid rgba(245,158,11,0.24); color:var(--text2);
+}
+.caveat b{color:var(--amber); font-weight:700;}
+
+.statgrid{display:grid; grid-template-columns:repeat(4, 1fr); gap:10px; margin:16px 0;}
+.statgrid div{text-align:center;}
+.statgrid .num{font-family:'Syne', sans-serif; font-size:22px; font-weight:700;}
+.statgrid .lbl{font-family:'Syne', sans-serif; font-size:10.5px; color:var(--text2); text-transform:uppercase; letter-spacing:.05em; margin-top:3px;}
+
+.arrow{text-align:center; color:var(--text3); font-size:12px;}
+
+footer{padding:26px 0 0; margin-top:6px; font-size:12.5px; color:var(--text3); font-family:'Source Serif 4', serif; font-style:italic;}
+</style>
+<style id="cv-print">
+/* ===== CV PRINT v1.0 (per _cv-schema.html) ===== */
+@media print{
+  :root{
+    --bg:#f4f5f7; --surface:#ffffff; --surface2:#eef1f4; --border:#d7dde3;
+    --teal:#00a688; --blue:#1d4ed8; --accent:#00a688; --accent2:#1d4ed8;
+    --red:#c53030; --amber:#b45309; --purple:#7c3aed;
+    --text:#0f1923; --text2:#4a5670; --text3:#6b7688;
+  }
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  html, body{background:#f4f5f7 !important; color:#0f1923 !important;}
+  nav, .nav, .toc-pills{display:none !important;}
+  .alert{background:rgba(0,166,136,.08) !important; color:#0f1923 !important;}
+  td{color:#0f1923 !important;}
+  section, .box, table, .card, .stat-card, .statcard, .step-row, .step{break-inside:avoid;}
+  h2, .sec-head{break-after:avoid;}
+  a{color:inherit; text-decoration:none;}
+}
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ a{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../workshop.html">The Workshop</a><span class="cv-sb-meta">Published 6 Oct 2026 · R. E. Suscitate &amp; A. Systole</span></nav><div class="page">
+<header>
+<div class="kicker">The Critical Vector · Clinical Decision Rules</div>
+<h1>NEXUS, C-Spine, CT Head &amp; New Orleans Rules</h1>
+<p>Four validated ways to skip imaging after trauma, spine and head. Verified against
+  the original derivation and validation studies. July 2026.</p>
+</header>
+<nav>
+<a href="#s1">1 · Why these rules exist</a>
+<a href="#s2">2 · NEXUS criteria</a>
+<a href="#s3">3 · Canadian C-Spine Rule</a>
+<a href="#s4">4 · Spine rules head-to-head</a>
+<a href="#s5">5 · Why CCR outperforms NEXUS</a>
+<a href="#s6">6 · Limitations &amp; pitfalls</a>
+<a href="#s7">7 · Canadian CT Head Rule</a>
+<a href="#s8">8 · New Orleans Criteria</a>
+<a href="#s9">9 · Head rules head-to-head</a>
+<a href="#s10">10 · Quick card &amp; sources</a>
+</nav>
+<main>
+<section id="s1">
+<div class="sec-head c-blue"><span class="sec-num">01</span><h2>Why These Rules Exist</h2></div>
+<p class="body">Both cervical spine injury and clinically important brain injury after
+  blunt trauma are uncommon relative to how often clinicians worry about them, roughly 2 to
+  5 percent of imaged patients for the spine, single digits for the head. Imaging everyone
+  is safe but expensive, slow, and exposes a lot of people to radiation for no reason. Four
+  validated rules exist to answer the same underlying question in two different regions of
+  the body: which patients can skip the scan entirely, based on history and exam alone?</p>
+<div class="box t-blue">
+<p><b>For the cervical spine:</b> NEXUS and the Canadian C-Spine Rule (CCR).</p>
+<p><b>For the head:</b> the Canadian CT Head Rule (CCHR) and the New Orleans Criteria
+    (NOC).</p>
+</div>
+<p class="body">Within each pair, one rule is a flat checklist and the other adds a
+  tiered or functional test, and that structural difference is what drives most of the
+  performance gap. None of the four are interchangeable with each other, and the
+  differences between them matter more than any one rule alone.</p>
+</section>
+<section id="s2">
+<div class="sec-head"><span class="sec-num">02</span><h2>NEXUS Criteria</h2></div>
+<p class="body">From Hoffman et al, NEJM 2000: 34,069 patients across 21 US hospitals. If
+  all five criteria are absent, the cervical spine can be clinically cleared without
+  imaging.</p>
+<div class="box t-teal">
+<ul class="checklist">
+<li>No posterior midline cervical tenderness</li>
+<li>Normal alertness</li>
+<li>No intoxication</li>
+<li>No focal neurologic deficit</li>
+<li>No painful distracting injury</li>
+</ul>
+</div>
+<table>
+<tr><td><b>Sensitivity</b></td><td>99.6% (derivation/validation cohort)</td></tr>
+<tr><td><b>Specificity</b></td><td>12.9%</td></tr>
+<tr><td><b>Age applicability</b></td><td>No formal age cutoff, theoretically all ages over 1 year</td></tr>
+</table>
+<p class="note">The low specificity is the tradeoff for simplicity: NEXUS is easy to
+  apply but clears comparatively few patients, since any one positive criterion mandates
+  imaging.</p>
+</section>
+<section id="s3">
+<div class="sec-head c-purple"><span class="sec-num">03</span><h2>Canadian C-Spine Rule</h2></div>
+<p class="body">From Stiell et al, JAMA 2001: 8,924 patients across Canadian emergency
+  departments. Built specifically for alert (GCS 15), hemodynamically stable trauma
+  patients. It works as a three-tier decision tree rather than a single checklist.</p>
+<div class="flow">
+<div class="step t-purple"><b>Step 1, high-risk factors (any one mandates imaging):</b> age 65
+    or older, dangerous mechanism (fall from 3+ feet/5 stairs, axial load to head, high-speed
+    MVC, rollover, ejection, motorized recreational vehicle, bicycle collision), or
+    paresthesias in the extremities.</div>
+<div class="arrow">↓ none present</div>
+<div class="step t-purple"><b>Step 2, low-risk factors (any one allows range-of-motion testing):</b>
+    simple rear-end MVC, sitting position in the ED, ambulatory at any point since injury,
+    delayed onset of neck pain, absence of midline C-spine tenderness.</div>
+<div class="arrow">↓ at least one present</div>
+<div class="step t-purple"><b>Step 3, range of motion:</b> can the patient actively rotate their
+    neck 45 degrees left and right? If yes, no imaging needed. If no, or if none of the
+    low-risk factors are present, image.</div>
+</div>
+<table>
+<tr><td><b>Sensitivity</b></td><td>100% (derivation cohort)</td></tr>
+<tr><td><b>Specificity</b></td><td>42.5%</td></tr>
+<tr><td><b>Age applicability</b></td><td>Alert, stable trauma patients only; age 65+ is itself a high-risk criterion requiring imaging</td></tr>
+</table>
+</section>
+<section id="s4">
+<div class="sec-head c-amber"><span class="sec-num">04</span><h2>Spine Rules Head-to-Head</h2></div>
+<p class="body">Stiell et al ran the only prospective direct comparison, NEJM 2003:
+  8,283 patients across nine Canadian EDs, both rules applied by the same treating
+  physicians before imaging.</p>
+<table>
+<tr><th>Metric</th><th>CCR</th><th>NEXUS</th></tr>
+<tr><td>Sensitivity</td><td>99.4%</td><td>90.7%</td></tr>
+<tr><td>Specificity</td><td>45.1%</td><td>36.8%</td></tr>
+<tr><td>Would-be imaging rate</td><td>55.9%</td><td>66.6%</td></tr>
+</table>
+<p class="note">Both differences were statistically significant (P&lt;0.001). In this
+  head-to-head, the CCR caught more injuries and ordered fewer scans doing it.</p>
+</section>
+<section id="s5">
+<div class="sec-head"><span class="sec-num">05</span><h2>Why CCR Outperforms NEXUS</h2></div>
+<p class="body">The gap isn't about one rule being smarter. It's structural.</p>
+<div class="box t-teal">
+<p>NEXUS is a flat checklist: any one positive finding sends the patient to imaging,
+    with no further discrimination. It can't distinguish a truly dangerous mechanism from a
+    minor one once tenderness or distraction is present.</p>
+<p>CCR adds a functional test, active range of motion, for the intermediate group who
+    have a low-risk factor but aren't automatically clear. That extra step lets it release
+    more true negatives without missing true positives, which is exactly why its specificity
+    and would-be imaging rate both beat NEXUS at a comparable sensitivity.</p>
+</div>
+<p class="note">The cost is complexity. CCR takes longer to learn and apply correctly,
+  and range-of-motion testing on a trauma patient makes some clinicians uneasy even when
+  the rule says it's appropriate.</p>
+</section>
+<section id="s6">
+<div class="sec-head c-red"><span class="sec-num">06</span><h2>Limitations &amp; Pitfalls</h2></div>
+<div class="box t-red">
+<p><b>NEXUS in the elderly:</b> despite no formal age cutoff, sensitivity drops in
+    patients over 65, reported as low as 66 to 84% in some cohorts, against 99.6% overall. A
+    large retrospective study of 231,018 patients still found sensitivity holding at 94.8%
+    (95% CI 92.1-96.7%), so the picture is mixed, but caution in the elderly is warranted
+    either way.</p>
+<p><b>CCR structurally excludes what NEXUS includes:</b> CCR only applies to alert
+    (GCS 15), hemodynamically stable patients, and treats age 65+ as an automatic imaging
+    indication rather than something to be reasoned through. It also excludes penetrating
+    trauma, known vertebral disease, pregnancy, and acute paralysis.</p>
+<p><b>Neither rule applies to:</b> unconscious or intubated patients, children under
+    16 (NEXUS has pediatric data but weaker support; CCR was not derived in children at
+    all), or patients presenting more than 48 hours after injury.</p>
+<p><b>"Distracting injury" and "intoxication" in NEXUS are not rigidly defined.</b> The
+    original study left this to clinician judgment, which is part of why NEXUS specificity
+    is so low: different clinicians apply the criteria differently.</p>
+</div>
+</section>
+<section id="s7">
+<div class="sec-head c-amber"><span class="sec-num">07</span><h2>Canadian CT Head Rule</h2></div>
+<p class="body">From Stiell et al, The Lancet 2001: a prospective cohort of 3,121
+  patients across 10 Canadian centres. Built for minor head injury, defined as witnessed
+  loss of consciousness, definite amnesia, or witnessed disorientation, with a GCS of 13 to
+  15. Same two-tier logic as the CCR: a high-risk tier that flags who needs neurosurgery,
+  and a wider medium-risk tier layered on top that flags who needs a CT at all.</p>
+<div class="box t-amber">
+<p><b>High-risk factors (any one predicts need for neurosurgical intervention,
+    mandates CT):</b></p>
+<ul class="checklist">
+<li>GCS under 15 at 2 hours after injury</li>
+<li>Suspected open or depressed skull fracture</li>
+<li>Any sign of basal skull fracture (hemotympanum, raccoon eyes, CSF otorrhea or
+      rhinorrhea, Battle's sign)</li>
+<li>Vomiting, 2 or more episodes</li>
+<li>Age 65 or older</li>
+</ul>
+</div>
+<div class="box t-amber">
+<p><b>Medium-risk factors (added on top of the high-risk list; any one predicts
+    clinically important brain injury on CT):</b></p>
+<ul class="checklist">
+<li>Amnesia before impact greater than 30 minutes</li>
+<li>Dangerous mechanism (pedestrian struck by vehicle, occupant ejected from
+      vehicle, fall from height greater than 3 feet or 5 stairs)</li>
+</ul>
+</div>
+<p class="note">Excludes patients under 16, those on anticoagulants in the original
+  derivation, obvious open skull fracture on presentation, seizure before assessment, and
+  anyone returning for reassessment of the same head injury.</p>
+</section>
+<section id="s8">
+<div class="sec-head c-red"><span class="sec-num">08</span><h2>New Orleans Criteria</h2></div>
+<p class="body">From Haydel et al, NEJM 2000: 520 patients derivation, 909 patients
+  prospective validation. Narrower population than CCHR: adults with a normal GCS of 15
+  and a normal neurologic exam, with witnessed LOC, definite amnesia, or witnessed
+  disorientation. Structured as a single flat checklist, like NEXUS: any one criterion
+  present means CT.</p>
+<div class="box t-red">
+<ul class="checklist">
+<li>Headache</li>
+<li>Vomiting, any episode</li>
+<li>Age over 60</li>
+<li>Drug or alcohol intoxication</li>
+<li>Deficits in short-term memory (persistent anterograde amnesia)</li>
+<li>Physical evidence of trauma above the clavicles</li>
+<li>Seizure</li>
+</ul>
+</div>
+<table>
+<tr><td><b>Sensitivity</b></td><td>100% in the original derivation and validation cohorts; pooled meta-analysis estimates 97.2 to 98.3%</td></tr>
+<tr><td><b>Specificity</b></td><td>Roughly 25% in the derivation cohort; pooled meta-analysis estimates 8.5 to 12.3%</td></tr>
+<tr><td><b>Age applicability</b></td><td>Derived across ages 3 to 97, though anticoagulated and GCS &lt;15 patients were underrepresented</td></tr>
+</table>
+<p class="note">"Headache" and "vomiting" alone will flag a large share of any minor head
+  injury population. NOC is intentionally loose: it trades away specificity for a simple,
+  hard-to-miss checklist.</p>
+</section>
+<section id="s9">
+<div class="sec-head"><span class="sec-num">09</span><h2>Head Rules Head-to-Head</h2></div>
+<p class="body">Stiell et al ran the direct comparison, JAMA 2005: 2,707 adults across
+  nine Canadian EDs, narrowed to a 1,822-patient subgroup with GCS 15 to allow a fair
+  comparison against NOC, which was derived only in that population. 8 patients (0.4%)
+  needed neurosurgical intervention; 97 (5.3%) had a clinically important brain injury.</p>
+<table>
+<tr><th>Metric</th><th>CCHR</th><th>NOC</th></tr>
+<tr><td>Sensitivity, neurosurgical intervention</td><td>100%</td><td>100%</td></tr>
+<tr><td>Specificity, neurosurgical intervention</td><td>76.3%</td><td>12.1%</td></tr>
+</table>
+<p class="note">Both rules found in this comparison caught every case that mattered.
+  The entire practical difference is specificity: CCHR would have sent far fewer people to
+  CT for the same safety margin. A broader pooled meta-analysis (14 studies, 21,140
+  patients) found a similar pattern for clinically important brain injury more generally:
+  CCHR sensitivity 89.8 to 92.5% and specificity 38 to 40%, versus NOC sensitivity 97.2 to
+  98.3% and specificity 8.5 to 12.3%. NOC's extra sensitivity in that broader estimate comes
+  at a steep specificity cost.</p>
+<p class="note">Where either rule is contraindicated, CCHR excludes anticoagulated and
+  pediatric patients; NOC does not carry those exclusions, which is part of why it still
+  gets reached for in practice.</p>
+</section>
+<section id="s10" style="border-bottom:none;">
+<div class="sec-head" style="border-left-color:var(--text3); background:none;"><span class="sec-num">10</span><h2>Quick Reference Card &amp; Primary Sources</h2></div>
+<table>
+<tr><th>Question</th><th>Answer</th></tr>
+<tr><td>Which spine rule catches more injuries?</td><td>CCR, 99.4% vs 90.7% sensitivity head-to-head</td></tr>
+<tr><td>Which spine rule is simpler to apply?</td><td>NEXUS, a flat five-item checklist</td></tr>
+<tr><td>Which head rule catches more injuries for neurosurgery?</td><td>Tied at 100% head-to-head (CCHR and NOC), but CCHR is far more specific: 76.3% vs 12.1%</td></tr>
+<tr><td>Which head rule is simpler to apply?</td><td>NOC, a flat seven-item checklist; CCHR requires the two-tier high/medium-risk structure</td></tr>
+<tr><td>Which rules work in obtunded patients?</td><td>None of the four; all require an alert, cooperative exam</td></tr>
+<tr><td>Which rules have an age cutoff?</td><td>CCR and CCHR treat 65+ as an automatic imaging trigger; NOC uses 60; NEXUS has none formally</td></tr>
+<tr><td>Bottom line</td><td>Alert, stable, cooperative patient: CCR for the neck, CCHR for the head, both trade a little simplicity for meaningfully fewer scans. NEXUS and NOC are reasonable, faster fallbacks where the Canadian rules' stricter enrollment criteria aren't met, at the cost of sending more patients to imaging.</td></tr>
+</table>
+<p class="body"><b>Primary sources checked for this guide:</b></p>
+<ul class="sources">
+<li>Hoffman JR, Mower WR, Wolfson AB, Todd KH, Zucker MI. Validity of a Set of Clinical Criteria to Rule Out Injury to the Cervical Spine in Patients with Blunt Trauma (NEXUS). N Engl J Med. 2000;343(2):94-99.</li>
+<li>Stiell IG, Wells GA, Vandemheen KL, et al. The Canadian C-Spine Rule for Radiography in Alert and Stable Trauma Patients. JAMA. 2001;286(15):1841-1848.</li>
+<li>Stiell IG, Clement CM, McKnight RD, et al. The Canadian C-Spine Rule versus the NEXUS Low-Risk Criteria in Patients with Trauma. N Engl J Med. 2003;349(26):2510-2518.</li>
+<li>Michaleff ZA, Maher CG, Verhagen AP, et al. Accuracy of the Canadian C-spine rule and NEXUS to screen for clinically important cervical spine injury in patients following blunt trauma: a systematic review. CMAJ. 2012;184(16):E867-E876.</li>
+<li>Paykin G, et al. Sensitivity of NEXUS criteria in a large retrospective trauma registry (n=231,018). 2017.</li>
+<li>Stiell IG, Wells GA, Vandemheen K, et al. The Canadian CT Head Rule for patients with minor head injury. Lancet. 2001;357(9266):1391-1396.</li>
+<li>Haydel MJ, Preston CA, Mills TJ, et al. Indications for Computed Tomography in Patients with Minor Head Injury. N Engl J Med. 2000;343(2):100-105.</li>
+<li>Stiell IG, Clement CM, Rowe BH, et al. Comparison of the Canadian CT Head Rule and the New Orleans Criteria in Patients with Minor Head Injury. JAMA. 2005;294(12):1511-1518.</li>
+<li>Accuracy of Canadian CT Head Rule and New Orleans Criteria for Minor Head Trauma: a Systematic Review and Meta-Analysis. 2020 (14 studies, 21,140 patients pooled).</li>
+</ul>
+</section>
+</main>
+<footer>
+  A working reference for four of the most-used clinical decision rules in trauma, two for
+  the cervical spine and two for the head. Every sensitivity, specificity, and enrollment
+  criterion above traces to the original derivation, validation, or head-to-head comparison
+  studies. Verified as of July 2026.
+<div class="cv-tagline" style="margin-top:8px">The Critical Vector · Direction and magnitude.</div></footer>
+</div></body>
+</html>

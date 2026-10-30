@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clinical Mnemonics — Critical Vector</title>
+<style>
+  :root {
+    --bg: #121212;
+    --card: #1a1a1a;
+    --text: #e8e8e8;
+    --muted: #9a9a9a;
+    --line: #2c2c2c;
+  }
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0 0 60px 0;
+    line-height: 1.5;
+  }
+  header { padding: 28px 20px 18px 20px; border-bottom: 1px solid var(--line); }
+  header .kicker {
+    font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 6px;
+  }
+  header h1 { font-size: 26px; margin: 0 0 8px 0; }
+  header p { color: var(--muted); font-size: 14px; margin: 0; }
+  nav {
+    display: flex; flex-wrap: wrap; gap: 6px;
+    padding: 16px 20px; border-bottom: 1px solid var(--line);
+  }
+  nav a {
+    font-size: 12px; color: var(--text); background: var(--card);
+    border: 1px solid var(--line); padding: 6px 10px; border-radius: 20px;
+    text-decoration: none; white-space: nowrap;
+  }
+  main { padding: 0 20px; max-width: 720px; margin: 0 auto; }
+  section { padding: 24px 0; border-bottom: 1px solid var(--line); }
+  section h2 {
+    font-size: 19px; margin: 0 0 4px 0; letter-spacing: 0.5px;
+  }
+  section h2 .secnum { color: var(--accent, #888); margin-right: 8px; }
+  section .for {
+    font-size: 13px; color: var(--muted); margin: 0 0 12px 0;
+  }
+  .card {
+    background: var(--tint, var(--card));
+    border-left: 4px solid var(--accent, #888);
+    border-radius: 6px;
+    padding: 14px 16px;
+    color: #1a1a1a;
+  }
+  .items { font-size: 14px; line-height: 1.9; }
+  .items span.word { font-weight: 700; color: #000; }
+  footer {
+    padding: 24px 20px 0 20px; max-width: 720px; margin: 0 auto;
+    font-size: 12px; color: var(--muted);
+  }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style id="cv-retheme">
+/* CV re-theme v1.0 — maps this file onto _cv-schema.html tokens */
+:root{--bg:#0a0e14; --surface:#111720; --surface2:#182030; --border:rgba(255,255,255,0.08); --teal:#00d4aa; --blue:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa; --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670; --t-teal:rgba(0,212,170,0.10); --t-blue:rgba(96,165,250,0.10); --t-red:rgba(232,76,76,0.10); --t-amber:rgba(245,158,11,0.10); --t-purple:rgba(167,139,250,0.10);}
+:root{--card:var(--surface); --muted:var(--text2); --line:var(--border);}
+body{font-family:'Source Serif 4', Georgia, serif !important; background:var(--bg) !important; color:var(--text);}
+h1,h2,h3,h4,th,nav a,.label,.lbl,.badge,.pill{font-family:'Syne', sans-serif !important;}
+h1{font-weight:800 !important; letter-spacing:.005em;}
+h2,h3{font-weight:700;}
+.kicker, header .kicker{font-family:'IBM Plex Mono', monospace !important; color:var(--teal) !important; letter-spacing:.12em; font-size:11px !important;}
+code, pre, .mono{font-family:'IBM Plex Mono', monospace;}
+main{max-width:900px !important;}
+header{max-width:900px; margin:0 auto;}
+section h2{font-size:20px; border-bottom:2px solid var(--accent, var(--teal)) !important;}
+.box{background:var(--surface2) !important; color:var(--text) !important; border:1px solid var(--border) !important; border-left:3px solid var(--accent, var(--teal)) !important; border-radius:10px; font-size:14.5px;}
+.box b, .box strong{color:var(--text) !important;}
+th{background:var(--surface2) !important; color:var(--text) !important; border-bottom:2px solid var(--accent, var(--border));}
+nav a{background:var(--surface) !important; color:var(--text2) !important; border:1px solid var(--border) !important; font-weight:600;}
+nav a:hover{color:var(--text) !important; border-color:var(--teal) !important;}
+.alert{background:var(--t-amber) !important; border:1px solid rgba(245,158,11,0.35) !important; color:#fde6b8 !important;}
+.note-banner{background:var(--t-amber) !important; color:var(--text) !important; border-color:rgba(245,158,11,0.35) !important;}
+.pill-yes{background:var(--t-teal) !important; color:var(--teal) !important;}
+.pill-no{background:var(--t-red) !important; color:var(--red) !important;}
+.pill-offlabel{background:var(--t-amber) !important; color:var(--amber) !important;}
+.statgrid > div{background:var(--surface) !important; border:1px solid var(--border) !important; border-left:4px solid var(--accent, var(--teal)) !important; text-align:left !important; color:var(--text) !important;}
+.statgrid .num{font-family:'Syne', sans-serif; color:var(--accent, var(--teal)) !important;}
+.statgrid .lbl{color:var(--text2) !important;}
+.card{background:var(--surface) !important; border-color:var(--border) !important; color:var(--text) !important;}
+.word{font-family:'Syne', sans-serif; color:var(--teal) !important;}
+.fig{background:var(--surface) !important; border-color:var(--border) !important;}
+footer{font-style:italic; color:var(--text3) !important;}
+[style*="--accent:#7A1620"],[style*="--accent:#9C2B3B"],[style*="--accent:#8B2635"]{--accent:var(--red) !important; --tint:var(--t-red) !important;}
+[style*="--accent:#5B3A8E"]{--accent:var(--purple) !important; --tint:var(--t-purple) !important;}
+[style*="--accent:#1F6F5C"],[style*="--accent:#2E6B3E"]{--accent:var(--teal) !important; --tint:var(--t-teal) !important;}
+[style*="--accent:#1F3A5F"],[style*="--accent:#3A5A8C"]{--accent:var(--blue) !important; --tint:var(--t-blue) !important;}
+[style*="--accent:#B5591F"],[style*="--accent:#96700A"]{--accent:var(--amber) !important; --tint:var(--t-amber) !important;}
+[style*="--accent:#444444"]{--accent:var(--text3) !important; --tint:var(--surface2) !important;}
+@media print{
+  :root{--bg:#f4f5f7; --surface:#ffffff; --surface2:#eef1f4; --border:#d7dde3; --teal:#00a688; --blue:#1d4ed8; --red:#c53030; --amber:#b45309; --purple:#7c3aed; --text:#0f1923; --text2:#4a5670; --text3:#6b7688;
+    --t-teal:rgba(0,166,136,0.08); --t-blue:rgba(29,78,216,0.07); --t-red:rgba(197,48,48,0.07); --t-amber:rgba(180,83,9,0.08); --t-purple:rgba(124,58,237,0.07); --card:#ffffff; --muted:#4a5670; --line:#d7dde3;}
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  html, body{background:#f4f5f7 !important; color:#0f1923 !important;}
+  nav{display:none !important;}
+  td{color:#0f1923 !important;}
+  .box{background:#ffffff !important; color:#0f1923 !important;}
+  .alert, .note-banner{color:#0f1923 !important;}
+  .alert{background:rgba(180,83,9,0.08) !important;}
+  section, .box, table, .card, .step, .statgrid > div, .fig{break-inside:avoid;}
+  h2{break-after:avoid;}
+  a{color:inherit; text-decoration:none;}
+}
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ a{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../workshop.html">The Workshop</a><span class="cv-sb-meta">Published 6 Oct 2026 · R. E. Suscitate &amp; A. Systole</span></nav>
+
+<header>
+  <div class="kicker">Critical Vector · Quick Reference</div>
+  <h1>Clinical Mnemonics</h1>
+  <p>Ten high-yield mnemonics, bedside and exam use. July 2026.</p>
+</header>
+
+<nav>
+  <a href="#s1">1 · Pancreatitis</a>
+  <a href="#s2">2 · Delirium</a>
+  <a href="#s3">3 · Pain history</a>
+  <a href="#s4">4 · Hypercalcaemia</a>
+  <a href="#s5">5 · Back pain</a>
+  <a href="#s6">6 · Bad news</a>
+  <a href="#s7">7 · Airway</a>
+  <a href="#s8">8 · Altered LOC</a>
+  <a href="#s9">9 · Metabolic acidosis</a>
+  <a href="#s10">10 · CXR</a>
+</nav>
+
+<main>
+
+<section id="s1" style="--accent:#8B2635; --tint:#F7E8E9;">
+  <h2><span class="secnum">1.</span>I GET SMASHED</h2>
+  <p class="for">Causes of pancreatitis</p>
+  <div class="card">
+    <div class="items">
+      <span class="word">I</span>diopathic &nbsp;·&nbsp;
+      <span class="word">G</span>allstones &nbsp;·&nbsp;
+      <span class="word">E</span>thanol &nbsp;·&nbsp;
+      <span class="word">T</span>rauma &nbsp;·&nbsp;
+      <span class="word">S</span>teroids &nbsp;·&nbsp;
+      <span class="word">M</span>umps &nbsp;·&nbsp;
+      <span class="word">A</span>utoimmune &nbsp;·&nbsp;
+      <span class="word">S</span>corpion sting &nbsp;·&nbsp;
+      <span class="word">H</span>ypercalcaemia &nbsp;·&nbsp;
+      <span class="word">E</span>RCP &nbsp;·&nbsp;
+      <span class="word">D</span>rugs
+    </div>
+  </div>
+</section>
+
+<section id="s2" style="--accent:#1F3A5F; --tint:#E7EDF4;">
+  <h2><span class="secnum">2.</span>PINCH ME</h2>
+  <p class="for">Reversible contributors to delirium</p>
+  <div class="card">
+    <div class="items">
+      <span class="word">P</span>ain &nbsp;·&nbsp;
+      <span class="word">I</span>nfection &nbsp;·&nbsp;
+      <span class="word">N</span>utrition &nbsp;·&nbsp;
+      <span class="word">C</span>onstipation &nbsp;·&nbsp;
+      <span class="word">H</span>ydration &nbsp;·&nbsp;
+      <span class="word">M</span>edication &nbsp;·&nbsp;
+      <span class="word">E</span>nvironment
+    </div>
+  </div>
+</section>
+
+<section id="s3" style="--accent:#1F6F5C; --tint:#E6F2EF;">
+  <h2><span class="secnum">3.</span>SOCRATES</h2>
+  <p class="for">Structured pain history</p>
+  <div class="card">
+    <div class="items">
+      <span class="word">S</span>ite &nbsp;·&nbsp;
+      <span class="word">O</span>nset &nbsp;·&nbsp;
+      <span class="word">C</span>haracter &nbsp;·&nbsp;
+      <span class="word">R</span>adiation &nbsp;·&nbsp;
+      <span class="word">A</span>ssociated symptoms &nbsp;·&nbsp;
+      <span class="word">T</span>iming &nbsp;·&nbsp;
+      <span class="word">E</span>xacerbating/relieving factors &nbsp;·&nbsp;
+      <span class="word">S</span>everity
+    </div>
+  </div>
+</section>
+
+<section id="s4" style="--accent:#5B3A8E; --tint:#EFE9F5;">
+  <h2><span class="secnum">4.</span>CHIMPANZEES</h2>
+  <p class="for">Causes of hypercalcaemia</p>
+  <div class="card">
+    <div class="items">
+      <span class="word">C</span>alcium supplementation &nbsp;·&nbsp;
+      <span class="word">H</span>yperparathyroidism &nbsp;·&nbsp;
+      <span class="word">I</span>atrogenic &nbsp;·&nbsp;
+      <span class="word">M</span>yeloma &nbsp;·&nbsp;
+      <span class="word">P</span>aget's disease &nbsp;·&nbsp;
+      <span class="word">A</span>ddison's disease &nbsp;·&nbsp;
+      <span class="word">N</span>eoplasm &nbsp;·&nbsp;
+      <span class="word">Z</span>ollinger-Ellison syndrome &nbsp;·&nbsp;
+      <span class="word">E</span>xcess vitamin D &nbsp;·&nbsp;
+      <span class="word">E</span>xcess vitamin A &nbsp;·&nbsp;
+      <span class="word">S</span>arcoidosis
+    </div>
+  </div>
+</section>
+
+<section id="s5" style="--accent:#B5591F; --tint:#F8ECE0;">
+  <h2><span class="secnum">5.</span>TUNA FISH</h2>
+  <p class="for">Red flags in back pain</p>
+  <div class="card">
+    <div class="items">
+      <span class="word">T</span>rauma &nbsp;·&nbsp;
+      <span class="word">U</span>nexplained weight loss &nbsp;·&nbsp;
+      <span class="word">N</span>euro symptoms &nbsp;·&nbsp;
+      <span class="word">A</span>ge over 50 &nbsp;·&nbsp;
+      <span class="word">F</span>ever &nbsp;·&nbsp;
+      <span class="word">I</span>VDU &nbsp;·&nbsp;
+      <span class="word">S</span>teroids &nbsp;·&nbsp;
+      <span class="word">H</span>istory of cancer
+    </div>
+  </div>
+</section>
+
+<section id="s6" style="--accent:#2E6B3E; --tint:#E9F3EA;">
+  <h2><span class="secnum">6.</span>SPIKES</h2>
+  <p class="for">Framework for breaking bad news</p>
+  <div class="card">
+    <div class="items">
+      <span class="word">S</span>etting &nbsp;·&nbsp;
+      <span class="word">P</span>erception &nbsp;·&nbsp;
+      <span class="word">I</span>nvitation &nbsp;·&nbsp;
+      <span class="word">K</span>nowledge &nbsp;·&nbsp;
+      <span class="word">E</span>mpathy &nbsp;·&nbsp;
+      <span class="word">S</span>ummary/strategy
+    </div>
+  </div>
+</section>
+
+<section id="s7" style="--accent:#3A5A8C; --tint:#E8ECF5;">
+  <h2><span class="secnum">7.</span>LEMON</h2>
+  <p class="for">Predicting a difficult airway</p>
+  <div class="card">
+    <div class="items">
+      <span class="word">L</span>ook externally &nbsp;·&nbsp;
+      <span class="word">E</span>valuate 3-3-2 rule &nbsp;·&nbsp;
+      <span class="word">M</span>allampati score &nbsp;·&nbsp;
+      <span class="word">O</span>bstruction/obesity &nbsp;·&nbsp;
+      <span class="word">N</span>eck mobility
+    </div>
+  </div>
+</section>
+
+<section id="s8" style="--accent:#96700A; --tint:#F7EFDD;">
+  <h2><span class="secnum">8.</span>AEIOU TIPS</h2>
+  <p class="for">Causes of altered consciousness</p>
+  <div class="card">
+    <div class="items">
+      <span class="word">A</span>lcohol &nbsp;·&nbsp;
+      <span class="word">E</span>pilepsy &nbsp;·&nbsp;
+      <span class="word">I</span>nsulin &nbsp;·&nbsp;
+      <span class="word">O</span>piates/overdose &nbsp;·&nbsp;
+      <span class="word">U</span>raemia &nbsp;·&nbsp;
+      <span class="word">T</span>rauma &nbsp;·&nbsp;
+      <span class="word">I</span>nfection &nbsp;·&nbsp;
+      <span class="word">P</span>oisoning &nbsp;·&nbsp;
+      <span class="word">S</span>troke
+    </div>
+  </div>
+</section>
+
+<section id="s9" style="--accent:#7A1620; --tint:#F5E4E5;">
+  <h2><span class="secnum">9.</span>MUDPILES</h2>
+  <p class="for">Causes of a high anion gap metabolic acidosis</p>
+  <div class="card">
+    <div class="items">
+      <span class="word">M</span>ethanol &nbsp;·&nbsp;
+      <span class="word">U</span>raemia &nbsp;·&nbsp;
+      <span class="word">D</span>KA &nbsp;·&nbsp;
+      <span class="word">P</span>araldehyde &nbsp;·&nbsp;
+      <span class="word">I</span>ron/isoniazid &nbsp;·&nbsp;
+      <span class="word">L</span>actate &nbsp;·&nbsp;
+      <span class="word">E</span>thylene glycol &nbsp;·&nbsp;
+      <span class="word">S</span>alicylates
+    </div>
+  </div>
+</section>
+
+<section id="s10" style="--accent:#444444; --tint:#EFEFEF; border-bottom:none;">
+  <h2><span class="secnum">10.</span>DR ABCDE</h2>
+  <p class="for">Systematic approach to reading a chest X-ray</p>
+  <div class="card">
+    <div class="items">
+      <span class="word">D</span>etails (name, date, projection, penetration) &nbsp;·&nbsp;
+      <span class="word">R</span>IPE (rotation, inspiration, projection, exposure) &nbsp;·&nbsp;
+      <span class="word">A</span>irway &nbsp;·&nbsp;
+      <span class="word">B</span>reathing (lung fields) &nbsp;·&nbsp;
+      <span class="word">C</span>irculation (heart, mediastinum) &nbsp;·&nbsp;
+      <span class="word">D</span>iaphragm &nbsp;·&nbsp;
+      <span class="word">E</span>verything else (bones, soft tissue, lines, tubes)
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  Ten standard mnemonics in everyday clinical and exam use. No corrections needed, this is a
+  formatting pass on well-established teaching devices.
+<div class="cv-tagline" style="margin-top:8px">The Critical Vector · Direction and magnitude.</div></footer>
+
+</body>
+</html>

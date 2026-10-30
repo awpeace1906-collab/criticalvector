@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="cv:schema" content="1.0">
+<meta name="cv:verified" content="2026-10-05">
+<title>Hypoxemia vs Hypoxia — The Critical Vector</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style id="cv-base">
+/* ===== CV BASE v1.0 — copy this block verbatim into every guide ===== */
+:root{
+  --bg:#0a0e14; --surface:#111720; --surface2:#182030;
+  --border:rgba(255,255,255,0.08);
+  --teal:#00d4aa; --blue:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa;
+  --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670;
+  --t-teal:rgba(0,212,170,0.10); --t-blue:rgba(96,165,250,0.10); --t-red:rgba(232,76,76,0.10);
+  --t-amber:rgba(245,158,11,0.10); --t-purple:rgba(167,139,250,0.10);
+  /* legacy aliases: older guides use these names; same values */
+  --accent:var(--teal); --accent2:var(--blue);
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{background:var(--bg); color:var(--text); font-family:'Source Serif 4', Georgia, serif; font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased;}
+h1,h2,h3,.label,.kicker,.badge,nav a,th,.step-num,.stat-num{font-family:'Syne', sans-serif;}
+.mono, code{font-family:'IBM Plex Mono', monospace;}
+.page{max-width:900px; margin:0 auto; padding:0 24px 60px;}
+header{padding:32px 0 20px; border-bottom:1px solid var(--border);}
+.kicker{font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--teal); margin-bottom:10px;}
+h1{font-weight:800; font-size:30px; line-height:1.15; margin:0 0 10px; letter-spacing:.005em;}
+header p{font-style:italic; color:var(--text2); font-size:15.5px; margin:0; max-width:700px;}
+.byline{font-size:13px; color:var(--text3); margin-top:8px;}
+.badges{display:flex; flex-wrap:wrap; gap:6px; margin-top:16px;}
+.badge{font-size:11px; font-weight:700; letter-spacing:.04em; padding:4px 10px; border-radius:20px; border:1px solid var(--border); color:var(--text2); background:var(--surface);}
+.badge.ok{color:var(--teal); border-color:rgba(0,212,170,0.35); background:var(--t-teal);}
+.badge.flag{color:var(--red); border-color:rgba(232,76,76,0.40); background:var(--t-red);}
+.alert{margin:18px 0; padding:13px 18px; border-radius:10px; font-size:14px; background:var(--t-teal); border:1px solid rgba(0,212,170,0.28); color:#bdf5e8;}
+.alert.flag{background:rgba(232,76,76,0.08); border-color:rgba(232,76,76,0.35); color:#ffd2d2;}
+nav{display:flex; flex-wrap:wrap; gap:7px; padding:18px 0; border-bottom:1px solid var(--border); margin-bottom:8px;}
+nav a{font-size:12.5px; font-weight:600; color:var(--text2); background:var(--surface); border:1px solid var(--border); padding:7px 12px; border-radius:20px; text-decoration:none; white-space:nowrap; transition:all .15s;}
+nav a:hover, nav a:focus-visible{color:var(--text); border-color:var(--teal); outline:none;}
+section{padding:30px 0; border-bottom:1px solid var(--border);}
+.sec-head{display:flex; align-items:baseline; gap:10px; padding:11px 18px; border-left:4px solid var(--teal); background:linear-gradient(90deg, var(--t-teal), transparent); border-radius:0 8px 8px 0; margin-bottom:16px;}
+.sec-head.c-blue{border-left-color:var(--blue); background:linear-gradient(90deg, var(--t-blue), transparent);}
+.sec-head.c-red{border-left-color:var(--red); background:linear-gradient(90deg, var(--t-red), transparent);}
+.sec-head.c-amber{border-left-color:var(--amber); background:linear-gradient(90deg, var(--t-amber), transparent);}
+.sec-head.c-purple{border-left-color:var(--purple); background:linear-gradient(90deg, var(--t-purple), transparent);}
+.sec-num{font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--text3);}
+h2{font-weight:700; font-size:20px; margin:0; color:var(--text);}
+h3{font-weight:700; font-size:16px; margin:0 0 6px;}
+.tagline{font-style:italic; font-size:13.5px; color:var(--text2); margin:0 0 12px;}
+p.body{font-size:15.5px; margin:12px 0; max-width:72ch;}
+p.note{font-size:13.5px; color:var(--text2); font-style:italic; margin:10px 0;}
+.box{background:var(--surface2); border:1px solid var(--border); border-radius:10px; padding:16px 18px; margin:14px 0; font-size:14.5px;}
+.box.t-teal{border-left:3px solid var(--teal);} .box.t-blue{border-left:3px solid var(--blue);}
+.box.t-red{border-left:3px solid var(--red); background:rgba(232,76,76,0.06);}
+.box.t-amber{border-left:3px solid var(--amber);} .box.t-purple{border-left:3px solid var(--purple);}
+.box b{color:var(--text); font-weight:700;} .box p{margin:7px 0;}
+.stat-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:10px; margin:16px 0;}
+.stat-card{background:var(--surface); border:1px solid var(--border); border-left:4px solid var(--c,var(--teal)); border-radius:6px; padding:14px 16px 14px 18px; text-align:left;}
+.stat-num{font-weight:800; font-size:26px; line-height:1.1; color:var(--c,var(--teal));}
+.stat-label{font-size:13px; color:var(--text2); margin-top:4px;}
+.steps{display:flex; flex-direction:column; gap:10px; margin:16px 0;}
+.step-row{display:flex; gap:14px; align-items:flex-start; background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:12px 16px;}
+.step-num{flex-shrink:0; width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:13px; color:#0a0e14; background:var(--c,var(--teal));}
+.step-body{font-size:14.5px;} .step-body b{color:var(--text);}
+.scroll{overflow-x:auto; -webkit-overflow-scrolling:touch;}
+table{width:100%; border-collapse:collapse; margin:14px 0; font-size:13.5px;}
+th{background:var(--surface2); color:var(--text); text-align:left; padding:9px 11px; font-weight:600; font-size:12px; letter-spacing:.02em; border-bottom:2px solid var(--border);}
+td{padding:9px 11px; border-bottom:1px solid var(--border); vertical-align:top;}
+tr:nth-child(even) td{background:rgba(255,255,255,0.02);}
+.xlist,.clist{list-style:none; padding-left:0; margin:10px 0;}
+.xlist li,.clist li{padding:5px 0 5px 26px; position:relative; font-size:14.5px;}
+.xlist li:before{content:"✗"; position:absolute; left:0; color:var(--red); font-weight:700;}
+.clist li:before{content:"✓"; position:absolute; left:0; color:var(--teal); font-weight:700;}
+.sources{font-size:13px; color:var(--text2); padding-left:20px;}
+.sources li{margin-bottom:7px;} .sources a{color:var(--text2);}
+footer{padding:26px 0 0; margin-top:6px; font-size:12.5px; color:var(--text3); font-style:italic;}
+@media (max-width:640px){ h1{font-size:25px;} .page{padding:0 16px 48px;} }
+@media (prefers-reduced-motion:reduce){ *{transition:none !important;} }
+
+/* ===== PRINT: light-mode token swap (mandatory, non-optional) ===== */
+@media print{
+  :root{
+    --bg:#f4f5f7; --surface:#ffffff; --surface2:#eef1f4; --border:#d7dde3;
+    --teal:#00a688; --blue:#1d4ed8; --red:#c53030; --amber:#b45309; --purple:#7c3aed;
+    --text:#0f1923; --text2:#4a5670; --text3:#6b7688;
+    --t-teal:rgba(0,166,136,0.08); --t-blue:rgba(29,78,216,0.07); --t-red:rgba(197,48,48,0.07);
+    --t-amber:rgba(180,83,9,0.08); --t-purple:rgba(124,58,237,0.07);
+  }
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  body{background:var(--bg) !important; color:var(--text) !important; font-size:11pt;}
+  nav{display:none;}
+  .page{max-width:none; padding:0;}
+  .alert{background:var(--t-teal) !important; border-color:var(--teal); color:var(--text) !important;}
+  .alert.flag{background:var(--t-red) !important; border-color:var(--red);}
+  .box.t-red{background:var(--t-red);}
+  td{color:var(--text) !important;}
+  .step-num{color:#ffffff;}
+  section, .box, table, .stat-card, .step-row{break-inside:avoid;}
+  h2, .sec-head{break-after:avoid;}
+  a{color:inherit; text-decoration:none;}
+  @page{margin:14mm 14mm 16mm;}
+}
+/* ===== END CV BASE ===== */
+</style>
+<style>
+/* page layout */
+
+.kicker{color:var(--blue);}
+.split{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:22px 0 4px;}
+.def{padding:16px 18px; border-radius:12px; border:1px solid var(--border); background:var(--surface);}
+.def .term{font-family:'Syne',sans-serif; font-weight:800; font-size:22px;}
+.def.a .term{color:var(--blue);} .def.b .term{color:var(--purple);}
+.def .where{font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--text2); margin:2px 0 8px;}
+.def p{margin:6px 0; font-size:14.5px;}
+.mech td:first-child{font-family:'Syne',sans-serif; font-weight:700; white-space:nowrap;}
+.yes{color:var(--teal); font-weight:700;} .no{color:var(--red); font-weight:700;} .part{color:var(--amber); font-weight:700;}
+.calc{display:grid; grid-template-columns:1.1fr 1fr; gap:14px; margin:14px 0; padding:16px 18px; background:var(--surface); border:1px solid var(--border); border-radius:12px;}
+.calc label{display:block; font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--text2); margin:8px 0 3px;}
+.calc input{width:100%; background:var(--surface2); border:1px solid var(--border); border-radius:8px; color:var(--text); padding:8px 10px; font-family:'IBM Plex Mono',monospace; font-size:14px;}
+.calc input:focus{outline:2px solid var(--teal); outline-offset:1px;}
+.calc .out{display:flex; flex-direction:column; gap:10px; justify-content:center;}
+.calc .big{font-family:'Syne',sans-serif; font-weight:800; font-size:30px; color:var(--teal); line-height:1;}
+.calc .read{font-size:14px; color:var(--text2);}
+.calc .read b{color:var(--text);}
+.fixgrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:10px; margin:14px 0;}
+.fixgrid .box{margin:0;}
+@media (max-width:640px){ .split,.calc{grid-template-columns:1fr;} }
+@media print{ .calc input{border-color:#d7dde3;} }
+
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ a{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../continuum.html">The Continuum</a><span class="cv-sb-meta">Published 6 Oct 2026 · R. E. Suscitate &amp; A. Systole</span></nav>
+<div class="page">
+
+<header>
+  <div class="kicker">The Critical Vector · Continuum</div>
+  <h1>Hypoxemia vs Hypoxia</h1>
+  <p class="byline">R. E. Suscitate &amp; A. Systole</p>
+  <p>One is a blood gas number. The other is a cell running out of oxygen. Five mechanisms produce the first, two bedside questions separate them, and the answer decides whether more oxygen will help.</p>
+  <div class="badges"><span class="badge ok">VERIFIED</span><span class="badge">Sarkar et al., Lung India 2017</span><span class="badge flag">Corrects a circulating caption</span></div>
+</header>
+
+<div class="split">
+  <div class="def a"><div class="term">Hypoxemia</div><div class="where">in the blood · measured</div><p>Low oxygen in arterial blood: a low PaO₂ on the gas, or a low SpO₂ as its surrogate.</p><p>A lung and gas-exchange problem until shown otherwise.</p></div>
+  <div class="def b"><div class="term">Hypoxia</div><div class="where">in the tissue · inferred</div><p>Oxygen delivery or use that falls short of tissue demand. Shows up as lactate, organ dysfunction, and altered mental status.</p><p>Can exist with a perfect saturation.</p></div>
+</div>
+
+<div class="alert flag"><b>On the source caption.</b> "Dead space = oxygenates, shunt = doesn't" swaps the terms. The mechanism that responds to supplemental oxygen is <b>low V/Q</b> (perfusion exceeding ventilation). Dead space is the opposite end, high V/Q, and mainly costs CO₂ clearance rather than oxygenation. The shunt half is right.</div>
+
+<nav>
+  <a href="#hypoxia">Hypoxia without hypoxemia</a><a href="#five">Five mechanisms</a><a href="#aa">A-a gradient</a><a href="#approach">Bedside approach</a><a href="#fix">Fix by mechanism</a><a href="#sources">Sources</a>
+</nav>
+
+<section id="hypoxia">
+  <div class="sec-head c-purple"><span class="sec-num">01</span><h2>Hypoxia without hypoxemia</h2></div>
+  <p class="tagline">Oxygen delivery = cardiac output × arterial oxygen content. PaO₂ is only one input.</p>
+  <div class="scroll"><table>
+    <tr><th>Type</th><th>What fails</th><th>SpO₂</th><th>Examples</th></tr>
+    <tr><td>Hypoxemic</td><td>Arterial oxygenation</td><td>Low</td><td>Pneumonia, ARDS, PE, hypoventilation</td></tr>
+    <tr><td>Anemic</td><td>Oxygen-carrying capacity</td><td>Normal</td><td>Hemorrhage, severe anemia, carbon monoxide (pulse oximetry reads COHb as oxyhemoglobin)</td></tr>
+    <tr><td>Circulatory</td><td>Flow</td><td>Normal or unreadable</td><td>Cardiogenic or hypovolemic shock, regional ischemia</td></tr>
+    <tr><td>Histotoxic</td><td>Cellular oxygen use</td><td>Normal</td><td>Cyanide, sepsis-related mitochondrial dysfunction</td></tr>
+  </table></div>
+  <p class="note">A normal saturation does not clear a patient of hypoxia. A lactate and a look at perfusion are the check.</p>
+</section>
+
+<section id="five">
+  <div class="sec-head c-blue"><span class="sec-num">02</span><h2>Five mechanisms of hypoxemia</h2></div>
+  <div class="scroll"><table class="mech">
+    <tr><th>Mechanism</th><th>A-a gradient</th><th>Responds to O₂</th><th>Typical causes</th></tr>
+    <tr><td>Low inspired O₂</td><td>Normal</td><td class="yes">Yes</td><td>Altitude, hypoxic gas mixtures</td></tr>
+    <tr><td>Hypoventilation</td><td>Normal</td><td class="yes">Yes, but masks rising CO₂</td><td>Opioids, sedation, neuromuscular weakness, obesity hypoventilation</td></tr>
+    <tr><td>V/Q mismatch (low V/Q)</td><td>Raised</td><td class="yes">Yes</td><td>COPD, asthma, pneumonia, PE. The most common mechanism.</td></tr>
+    <tr><td>Shunt</td><td>Raised</td><td class="no">Poorly</td><td>Lobar collapse, consolidation, ARDS, pulmonary edema, intracardiac shunt</td></tr>
+    <tr><td>Diffusion limitation</td><td>Raised</td><td class="part">Yes</td><td>Interstitial lung disease, often unmasked by exercise</td></tr>
+  </table></div>
+  <div class="box t-blue"><p><b>Where dead space fits.</b> Dead space is ventilation without perfusion (V/Q → ∞). It raises the work of breathing and the PaCO₂. When a PE drops the saturation, the culprit is mostly overperfusion of the remaining lung (low V/Q) and shunt, not the dead space itself.</p></div>
+</section>
+
+<section id="aa">
+  <div class="sec-head"><span class="sec-num">03</span><h2>A-a gradient</h2></div>
+  <p class="body">PAO₂ = FiO₂ × (P<sub>atm</sub> − 47) − PaCO₂ / 0.8. Gradient = PAO₂ − PaO₂. The expected value on room air is roughly (age ÷ 4) + 4 mmHg, and it widens with higher FiO₂, so it is most useful on room air.</p>
+  <div class="calc" id="calc">
+    <div>
+      <label for="fio2">FiO₂ (0.21–1.0)</label><input id="fio2" type="number" step="0.01" min="0.21" max="1" value="0.21">
+      <label for="patm">Barometric pressure, mmHg (760 sea level)</label><input id="patm" type="number" step="1" value="760">
+      <label for="paco2">PaCO₂, mmHg</label><input id="paco2" type="number" step="1" value="40">
+      <label for="pao2">PaO₂, mmHg</label><input id="pao2" type="number" step="1" value="60">
+      <label for="age">Age, years</label><input id="age" type="number" step="1" value="50">
+    </div>
+    <div class="out" aria-live="polite">
+      <div><div class="read">Alveolar PO₂</div><div class="big" id="pAO2">—</div></div>
+      <div><div class="read">A-a gradient</div><div class="big" id="aagrad">—</div></div>
+      <div class="read" id="interp"></div>
+    </div>
+  </div>
+  <p class="note">At altitude, enter local barometric pressure. A normal A-a gradient with a low PaO₂ at elevation points to low inspired oxygen, not lung disease.</p>
+</section>
+
+<section id="approach">
+  <div class="sec-head c-amber"><span class="sec-num">04</span><h2>Bedside approach</h2></div>
+  <div class="steps">
+    <div class="step-row"><div class="step-num">1</div><div class="step-body"><b>Confirm the number.</b> Check the waveform and probe site; a poor pleth signal or cold extremity can read falsely low. If carbon monoxide or methemoglobin is possible, get co-oximetry.</div></div>
+    <div class="step-row"><div class="step-num">2</div><div class="step-body"><b>Look at the PaCO₂.</b> High PaCO₂ with a normal A-a gradient is pure hypoventilation. Treat the ventilation, not just the saturation.</div></div>
+    <div class="step-row"><div class="step-num" style="--c:var(--amber)">3</div><div class="step-body"><b>Calculate the A-a gradient.</b> Normal: low inspired O₂ or hypoventilation. Raised: the lung is involved.</div></div>
+    <div class="step-row"><div class="step-num" style="--c:var(--red)">4</div><div class="step-body"><b>Watch the response to oxygen.</b> A brisk rise favors V/Q mismatch or diffusion. Little rise despite high FiO₂ means shunt, and shunt needs alveoli opened, not more oxygen.</div></div>
+  </div>
+  <div class="box t-red"><p><b>Pitfall: oxygen hides hypoventilation.</b> On supplemental oxygen a patient can hold a normal SpO₂ while PaCO₂ climbs. A reassuring saturation in a drowsy patient after opioids or sedation is not proof of adequate ventilation; check CO₂.</p></div>
+</section>
+
+<section id="fix">
+  <div class="sec-head c-blue"><span class="sec-num">05</span><h2>Fix by mechanism</h2></div>
+  <div class="fixgrid">
+    <div class="box t-teal"><p><b>Hypoventilation</b></p><p>Reverse the cause (naloxone for opioids), then support ventilation with NIV or intubation. Oxygen alone buys saturation, not CO₂ clearance.</p></div>
+    <div class="box t-blue"><p><b>V/Q mismatch</b></p><p>Supplemental oxygen works. Treat the driver: bronchodilators, antibiotics, anticoagulation.</p></div>
+    <div class="box t-red"><p><b>Shunt</b></p><p>Recruit alveoli: PEEP or CPAP, positioning, prone positioning in ARDS. Drain, diurese, or re-expand what is filling or collapsing them.</p></div>
+    <div class="box t-purple"><p><b>Hypoxia with a normal SpO₂</b></p><p>Restore delivery: blood for anemia, flow for shock, and specific antidotes for CO (high-flow oxygen) or cyanide (hydroxocobalamin).</p></div>
+  </div>
+</section>
+
+<section id="sources">
+  <div class="sec-head"><span class="sec-num">06</span><h2>Sources</h2></div>
+  <ol class="sources">
+    <li>Sarkar M, Niranjan N, Banyal PK. Mechanisms of hypoxemia. <i>Lung India</i>. 2017;34(1):47-60. <a href="https://doi.org/10.4103/0970-2113.197116">doi:10.4103/0970-2113.197116</a></li>
+    <li>Gierhardt M, Pak O, Walmrath D, et al. Impairment of hypoxic pulmonary vasoconstriction in acute respiratory distress syndrome. <i>Eur Respir Rev</i>. 2021;30(161):210059. <a href="https://doi.org/10.1183/16000617.0059-2021">doi:10.1183/16000617.0059-2021</a></li>
+    <li>West JB, Luks AM. <i>West's Respiratory Physiology: The Essentials</i>. Wolters Kluwer.</li>
+    <li>Acker E, Lodeserto F. REBEL Core Cast 135.0: A simple approach to hypoxemia (vs. hypoxia). REBEL EM.</li>
+  </ol>
+</section>
+
+<script>
+(function(){
+  var ids=['fio2','patm','paco2','pao2','age'];
+  function v(id){return parseFloat(document.getElementById(id).value);}
+  function run(){
+    var f=v('fio2'),p=v('patm'),c=v('paco2'),o=v('pao2'),a=v('age');
+    var out=document.getElementById('interp');
+    if([f,p,c,o].some(isNaN)||f<0.21||f>1||p<300){document.getElementById('pAO2').textContent='—';document.getElementById('aagrad').textContent='—';out.textContent='Enter FiO₂ 0.21–1.0 and a plausible barometric pressure.';return;}
+    var A=f*(p-47)-c/0.8, g=A-o;
+    document.getElementById('pAO2').textContent=A.toFixed(0)+' mmHg';
+    document.getElementById('aagrad').textContent=g.toFixed(0)+' mmHg';
+    if(f>0.25){out.innerHTML='On supplemental oxygen the normal range widens, so interpret the gradient cautiously.';return;}
+    var exp=isNaN(a)?null:(a/4+4);
+    if(exp===null){out.textContent='Add age for the expected value.';return;}
+    out.innerHTML=g<=exp+5?'<b>Within the expected range</b> (≈'+exp.toFixed(0)+' mmHg). If PaO₂ is low, think low inspired O₂ or hypoventilation.':'<b>Raised</b> (expected ≈'+exp.toFixed(0)+' mmHg). The lung is involved: V/Q mismatch, shunt, or diffusion. The response to oxygen separates them.';
+  }
+  ids.forEach(function(id){document.getElementById(id).addEventListener('input',run);});
+  run();
+})();
+</script>
+
+<footer>The Critical Vector · Direction and magnitude.</footer>
+</div>
+</body>
+</html>

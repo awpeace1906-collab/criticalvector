@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Higher vs. Lower PEEP in Sepsis — The Critical Vector</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400;1,600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0e14; --surface:#111720; --surface2:#182030; --border:rgba(255,255,255,.08);
+    --teal:#00d4aa; --blue:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa;
+    --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670;
+  }
+  @media print{
+    :root{
+      --bg:#f4f5f7; --surface:#fff; --surface2:#eef0f3; --border:rgba(15,25,35,.12);
+      --teal:#00a688; --blue:#1d4ed8; --red:#c53030; --amber:#b45309; --purple:#7c3aed;
+      --text:#0f1923; --text2:#4a5670; --text3:#6b7688;
+    }
+    body{background:var(--bg);}
+    .page{box-shadow:none; margin:0; max-width:100%;}
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:'Source Serif 4', Georgia, serif; font-size:16px; line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.kicker,.badge,.sec-num,.stat-num,.step-badge{font-family:'Syne',sans-serif;}
+  mono, .mono{font-family:'IBM Plex Mono',monospace;}
+  .page{max-width:900px; margin:0 auto; padding:48px 56px 40px;}
+
+  .kicker{color:var(--purple); font-weight:700; font-size:12px; letter-spacing:.14em; text-transform:uppercase; margin-bottom:10px;}
+  h1{font-weight:800; font-size:30px; line-height:1.2; margin:0 0 10px; color:var(--text);}
+  .subtitle{font-family:'Source Serif 4',serif; font-style:italic; color:var(--text2); font-size:16px; margin:0 0 22px; max-width:70ch;}
+  .header-meta{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:8px;}
+
+  .badge{display:inline-block; font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:4px 10px; border-radius:20px; margin-right:6px;}
+  .badge.b-red{background:rgba(232,76,76,.12); border:1px solid rgba(232,76,76,.28); color:var(--red);}
+  .badge.b-amber{background:rgba(245,158,11,.12); border:1px solid rgba(245,158,11,.28); color:var(--amber);}
+  .badge.b-teal{background:rgba(0,212,170,.12); border:1px solid rgba(0,212,170,.28); color:var(--teal);}
+  .badge.b-blue{background:rgba(96,165,250,.12); border:1px solid rgba(96,165,250,.28); color:var(--blue);}
+  .badge.b-purple{background:rgba(167,139,250,.12); border:1px solid rgba(167,139,250,.28); color:var(--purple);}
+
+  .sec-head{display:flex; align-items:center; gap:12px; margin:40px 0 16px; padding:10px 16px; border-radius:6px; border-left:4px solid; }
+  .sec-head.c-teal{border-color:var(--teal); background:linear-gradient(90deg, rgba(0,212,170,.10), transparent 70%);}
+  .sec-head.c-blue{border-color:var(--blue); background:linear-gradient(90deg, rgba(96,165,250,.10), transparent 70%);}
+  .sec-head.c-red{border-color:var(--red); background:linear-gradient(90deg, rgba(232,76,76,.10), transparent 70%);}
+  .sec-head.c-amber{border-color:var(--amber); background:linear-gradient(90deg, rgba(245,158,11,.10), transparent 70%);}
+  .sec-head.c-purple{border-color:var(--purple); background:linear-gradient(90deg, rgba(167,139,250,.10), transparent 70%);}
+  .sec-num{font-weight:800; font-size:13px; color:var(--text3); min-width:24px;}
+  .sec-head h2{margin:0; font-size:19px; font-weight:700; color:var(--text);}
+
+  p{margin:0 0 14px; color:var(--text);}
+  ul,ol{margin:0 0 14px; padding-left:22px;}
+  li{margin-bottom:6px;}
+  strong{color:var(--text); font-weight:600;}
+  a{color:var(--teal); text-decoration:none; border-bottom:1px solid rgba(0,212,170,.3);}
+
+  .box{border:3px solid; border-radius:8px; padding:16px 18px; margin:16px 0; background:var(--surface);}
+  .box h3{margin:0 0 8px; font-size:14px; font-weight:700; text-transform:uppercase; letter-spacing:.04em;}
+  .box p:last-child, .box ul:last-child{margin-bottom:0;}
+  .box.t-teal{border-color:var(--teal);} .box.t-teal h3{color:var(--teal);}
+  .box.t-blue{border-color:var(--blue);} .box.t-blue h3{color:var(--blue);}
+  .box.t-red{border-color:var(--red);} .box.t-red h3{color:var(--red);}
+  .box.t-amber{border-color:var(--amber);} .box.t-amber h3{color:var(--amber);}
+  .box.t-purple{border-color:var(--purple);} .box.t-purple h3{color:var(--purple);}
+
+  .alert{border-radius:6px; padding:14px 18px; margin:18px 0; font-size:15px; border:1px solid;}
+  .alert.a-red{background:rgba(232,76,76,.08); border-color:rgba(232,76,76,.3); color:var(--text);}
+  .alert.a-amber{background:rgba(245,158,11,.08); border-color:rgba(245,158,11,.3); color:var(--text);}
+  .alert.a-teal{background:rgba(0,212,170,.08); border-color:rgba(0,212,170,.3); color:var(--text);}
+  .alert strong{display:block; margin-bottom:4px; font-family:'Syne',sans-serif; font-size:12px; text-transform:uppercase; letter-spacing:.06em;}
+  .alert.a-red strong{color:var(--red);} .alert.a-amber strong{color:var(--amber);} .alert.a-teal strong{color:var(--teal);}
+
+  .caveat{border-radius:6px; padding:12px 16px; margin:16px 0; background:rgba(245,158,11,.07); border:1px dashed rgba(245,158,11,.35); font-size:14px; color:var(--text2);}
+  .caveat strong{color:var(--amber); font-family:'Syne',sans-serif; font-size:11px; text-transform:uppercase; letter-spacing:.06em;}
+
+  table{width:100%; border-collapse:collapse; margin:16px 0; font-size:14.5px;}
+  th{background:var(--surface2); color:var(--text); font-family:'Syne',sans-serif; font-weight:700; font-size:12px; text-transform:uppercase; letter-spacing:.04em; text-align:left; padding:10px 12px; border-bottom:2px solid var(--border);}
+  td{padding:10px 12px; border-bottom:1px solid var(--border); vertical-align:top; color:var(--text2);}
+  tr:last-child td{border-bottom:none;}
+  td strong{color:var(--text);}
+
+  .statgrid{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:18px 0;}
+  .statcard{background:var(--surface); border:1px solid var(--border); border-left:4px solid; border-radius:6px; padding:14px 16px;}
+  .statcard.s-teal{border-left-color:var(--teal);} .statcard.s-blue{border-left-color:var(--blue);}
+  .statcard.s-red{border-left-color:var(--red);} .statcard.s-amber{border-left-color:var(--amber);}
+  .statcard.s-purple{border-left-color:var(--purple);}
+  .stat-num{font-size:22px; font-weight:800; color:var(--text); display:block; line-height:1.15;}
+  .stat-label{font-size:12px; color:var(--text2); margin-top:4px;}
+
+  .steps{display:flex; flex-direction:column; gap:10px; margin:18px 0;}
+  .step{display:flex; gap:14px; align-items:flex-start; background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:12px 16px;}
+  .step-badge{flex-shrink:0; width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:12px; color:#0a0e14;}
+  .step-body .step-date{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--text2); margin-bottom:2px;}
+  .step-body .step-title{font-weight:600; color:var(--text); font-size:14.5px;}
+
+  .cite-list{list-style:none; padding:0; margin:16px 0;}
+  .cite-list li{padding:10px 0; border-bottom:1px solid var(--border); font-size:14px; color:var(--text2);}
+  .cite-list li:last-child{border-bottom:none;}
+  .cite-list .cite-src{color:var(--teal); font-weight:600; font-size:12px; text-transform:uppercase; letter-spacing:.03em; display:block; margin-bottom:2px;}
+
+  footer{margin-top:44px; padding-top:20px; border-top:1px solid var(--border); font-family:'Source Serif 4',serif; font-style:italic; color:var(--text3); font-size:13px;}
+
+  @media (max-width:700px){
+    .page{padding:28px 20px;}
+    .statgrid{grid-template-columns:1fr;}
+  }
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ a{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../locker.html">The Evidence Locker</a><span class="cv-sb-meta">Published 19 Aug 2026 · R. E. Suscitate &amp; A. Systole</span></nav>
+<div class="page">
+
+  <div class="kicker">The Critical Vector — Evidence Locker</div>
+  <h1>Higher vs. Lower PEEP in Sepsis: A Mortality Signal ARDSnet Wasn't Built to Catch</h1>
+  <p class="subtitle">A three-cohort German multicenter analysis suggests septic patients with mild-moderate lung injury — the population the classic PEEP trials barely enrolled — may do better above the ARDSnet low-PEEP table, without the hemodynamic cost everyone assumed came with it.</p>
+  <div class="header-meta">
+    <span class="badge b-purple">Critical Care</span>
+    <span class="badge b-amber">Hypothesis-Generating Only</span>
+    <span class="badge b-red">Observational</span>
+    <span class="badge b-blue">EM Relevant</span>
+  </div>
+
+  <div class="alert a-amber">
+    <strong>Read this before the numbers below</strong>
+    This is a retrospective, multicenter, multi-cohort observational analysis — not a randomized trial. The authors are explicit that it's hypothesis-generating and cannot establish causality. Treat every mortality figure here as an association worth testing prospectively, not a new standard of care.
+  </div>
+
+  <!-- 01 -->
+  <div class="sec-head c-purple"><span class="sec-num">01</span><h2>What This Is</h2></div>
+  <p>Rehn, Dietrich, and colleagues out of Heidelberg, Mannheim, and Cologne pooled three separate cohorts of mechanically ventilated septic patients — one of them a dedicated retrospective sepsis registry ("RetroSep") — and asked a question the landmark PEEP trials never really answered: does higher PEEP help in <strong>sepsis</strong>, as opposed to ARDS broadly defined.</p>
+  <p>That's a real gap. ALVEOLI, LOVS, and EXPRESS — the three trials underpinning most higher-vs-lower-PEEP practice — enrolled ARDS patients across the full severity spectrum and largely found no mortality benefit from higher PEEP except in more severe, more recruitable lung injury (roughly P/F &lt;200). Most septic patients on the vent, though, sit in a milder oxygenation-impairment band, and sepsis-specific lung physiology — inflammatory, often patchy, frequently without the diffuse alveolar damage of classic ARDS — isn't the same substrate those trials were built around.</p>
+
+  <div class="statgrid">
+    <div class="statcard s-red"><span class="stat-num">39.4% vs 50.4%</span><span class="stat-label">ICU mortality, high- vs low-PEEP group, in the cohorts showing benefit</span></div>
+    <div class="statcard s-amber"><span class="stat-num">22% vs 41.7%</span><span class="stat-label">30-day mortality, same comparison</span></div>
+    <div class="statcard s-blue"><span class="stat-num">OR 0.62</span><span class="stat-label">propensity-matched mortality benefit (38.4% vs 49.4%) after adjusting for severity, BMI, lactate, and vasopressor burden</span></div>
+  </div>
+
+  <!-- 02 -->
+  <div class="sec-head c-blue"><span class="sec-num">02</span><h2>Study Design</h2></div>
+  <p>Three cohorts, multicenter, retrospective. Patients were mechanically ventilated septic adults, most with only mild-to-moderate oxygenation impairment (P/F roughly 100–300) — a population <strong>underrepresented</strong> in the original higher-vs-lower-PEEP RCTs, which skewed toward more severe ARDS. Patients were grouped by whether their PEEP ran above or below the ARDSnet low-PEEP table.</p>
+  <p>To address confounding by indication — the obvious worry being that sicker patients get more aggressive vent settings, which would bias mortality the wrong direction — the authors ran propensity score matching as a sensitivity analysis on the RetroSep cohort. The logistic regression model matched on BMI, day-1 P/F ratio, day-1 lactate, SOFA score, age, and day-1 vasoactive-inotropic score (VIS), using 1:1 nearest-neighbor matching with a caliper of 0.2 SD of the logit-propensity score and a standardized mean difference &lt;0.10 as the balance threshold. The matched-pair mortality comparison used McNemar's test.</p>
+  <p>Hemodynamic and perfusion endpoints included MAP, VIS trajectory, cumulative fluid balance, lactate clearance, and — notably — bedside hyperspectral imaging (TIVITA-type system) measuring tissue oxygen saturation (StO₂) and tissue water index (TWI) as a non-invasive window into peripheral microcirculation, layered on top of the standard macrohemodynamic markers.</p>
+
+  <!-- 03 -->
+  <div class="sec-head c-teal"><span class="sec-num">03</span><h2>Key Findings</h2></div>
+
+  <div class="box t-teal">
+    <h3>Oxygenation & Fluid</h3>
+    <p>Higher PEEP improved P/F ratio consistently across all three cohorts — the one finding that held everywhere. The high-PEEP group also ran a lower FiO₂ requirement and a significantly lower cumulative fluid balance at 36 hours, consistent with the idea that better lung recruitment lets you get away with more conservative fluid management without giving up oxygenation.</p>
+  </div>
+
+  <div class="box t-blue">
+    <h3>Mortality — Inconsistent Across Cohorts</h3>
+    <p>Two of three cohorts showed the ICU and 30-day mortality benefit above; the third didn't reach the same signal. That inconsistency is a real part of the result, not a footnote — it's exactly why "hypothesis-generating" is the right label rather than "practice-changing." The benefit was most pronounced specifically in patients with mild oxygenation impairment (P/F 200–300), which cuts against a simple "more PEEP is always better" reading and toward a recruitability-dependent one.</p>
+  </div>
+
+  <div class="box t-purple">
+    <h3>Hemodynamics Didn't Suffer</h3>
+    <p>Contrary to the standard worry — higher PEEP raises intrathoracic pressure, drops venous return, tanks preload, and forces more pressor — the high-PEEP group did not need more vasopressor support. In the largest cohort, VIS and lactate were actually <em>lower</em> in the high-PEEP group on days 1 and 3. Hyperspectral imaging of StO₂ and TWI showed no significant difference between groups, which is the non-invasive microcirculatory evidence backing up the macrohemodynamic numbers: peripheral perfusion wasn't being sacrificed for the oxygenation gain.</p>
+  </div>
+
+  <!-- 04 -->
+  <div class="sec-head c-red"><span class="sec-num">04</span><h2>Why This Cuts Against Two Decades of PEEP Literature</h2></div>
+  <p>Worth being explicit about the tension here, because it's the whole reason this is interesting rather than confirmatory. The major RCTs — ALVEOLI (NEJM 2004), LOVS, EXPRESS (JAMA 2008), and the individual-patient-data meta-analysis that followed — consistently found that a blanket higher-PEEP strategy across the full ARDS severity spectrum does <strong>not</strong> improve mortality, and only shows benefit in the more severe/more recruitable subgroup. The ART trial (JAMA 2017) went further and found aggressive recruitment-maneuver-plus-titrated-PEEP strategies could actually <em>increase</em> mortality in unselected ARDS.</p>
+  <p>This paper isn't overturning that literature — it's arguing those trials answered a different question. They studied ARDS as a syndrome, heavily weighted toward more severe cases, largely irrespective of etiology. This analysis isolates sepsis specifically, in a milder oxygenation band, and finds a different signal. Whether that's a genuine sepsis-specific physiological effect (inflammatory, patchy lung injury responding differently to recruitment than diffuse alveolar damage) or a confounded observational artifact that a real RCT would wash out is exactly the open question the authors are flagging.</p>
+
+  <!-- 05 -->
+  <div class="sec-head c-amber"><span class="sec-num">05</span><h2>Individualize, Don't Standardize</h2></div>
+  <div class="caveat"><strong>The authors' own framing</strong> The mortality benefit clustered in patients with milder oxygenation impairment and appears tied to recruitability — not a flat "PEEP 10+ for everyone septic" rule. They explicitly frame this as support for a physiologically tailored PEEP titration approach — driven by recruitability, RV function, and perfusion markers — rather than a one-size-fits-all table, whether that table says high or low.</div>
+  <p>This is also the paper's own honest limitation, not a critique from outside it: observational design, cohort heterogeneity, residual confounding that PSM can reduce but not eliminate, and an explicit call for a dedicated prospective RCT before any guideline changes. Current Surviving Sepsis Campaign guidance still favors the conventional ARDSnet approach in the interim.</p>
+
+  <!-- 06 -->
+  <div class="sec-head c-teal"><span class="sec-num">06</span><h2>Clinical Takeaways for the ICU</h2></div>
+  <div class="box t-teal">
+    <ul>
+      <li>Don't change your default PEEP strategy off this paper alone — it's explicitly not designed to support that, and the authors say so directly</li>
+      <li>Do let it push back on the reflexive fear that titrating PEEP upward in a septic patient with milder hypoxemia will cost you hemodynamically — the hemodynamic and microcirculatory data here argue that fear is overstated in this population, at least at the PEEP levels studied</li>
+      <li>The P/F 200–300 subgroup — mild impairment — is where the signal concentrated; that's a reason to individualize recruitability assessment rather than anchor purely on the ARDSnet table's FiO₂/PEEP pairing</li>
+      <li>Watch for the RCT this paper is explicitly calling for — that's the study that actually answers the causal question</li>
+    </ul>
+  </div>
+
+  <!-- 07 -->
+  <div class="sec-head c-blue"><span class="sec-num">07</span><h2>Emergency Medicine Relevance</h2></div>
+  <p>EM increasingly owns the first several hours of mechanical ventilation in septic patients, especially with ICU boarding stretching that window from minutes into hours. The vent settings dialed in at intubation in the ED often persist unchanged into the ICU, which makes this directly relevant upstream of where the study population was captured.</p>
+
+  <div class="box t-blue">
+    <h3>Initial Vent Settings at ED Intubation</h3>
+    <p>Most EM post-intubation order sets default toward a conservative, ARDSnet-anchored PEEP (5–8 cmH₂O) unless hypoxemia is severe enough to prompt titration. This paper's population — septic, mild-moderate impairment, exactly the patients least likely to get aggressive PEEP by default — is precisely the group in whom the signal appeared. It's not a mandate to run higher PEEP on every septic intubation, but it's a reason not to treat "low PEEP, low FiO₂, reassess later" as automatically the safest default in a septic patient who's borderline hypoxemic at the tube.</p>
+  </div>
+
+  <div class="box t-blue">
+    <h3>Boarding Reality</h3>
+    <p>When a septic, mechanically ventilated patient sits in the ED for 4–12 hours awaiting an ICU bed — increasingly the norm rather than the exception — the EM team is the one making the ongoing PEEP/FiO2 titration decisions during exactly the window (day 1) where this study's hemodynamic and mortality signals were measured. The reassurance that higher PEEP didn't worsen VIS or lactate in this population is relevant to an EM physician managing that patient for the fourth hour, not just to the intensivist who inherits them.</p>
+  </div>
+
+  <div class="box t-blue">
+    <h3>Prehospital / Critical Care Transport</h3>
+    <p>For interfacility transport of septic, ventilated patients — a routine flight and critical-care-ground scenario — the same logic applies in miniature: don't assume dropping PEEP to a "safe" low number protects hemodynamics during transport. If the patient is recruitable and mildly-to-moderately hypoxemic, maintaining adequate PEEP through the transport window is not obviously the hemodynamically riskier choice this literature used to suggest it was. Continue titrating to oxygenation and mechanics as usual — the point isn't a new protocol, it's recalibrating the instinct that higher PEEP is the aggressive, dangerous choice in a septic patient.</p>
+  </div>
+
+  <!-- 08 -->
+  <div class="sec-head c-purple"><span class="sec-num">08</span><h2>Primary Sources</h2></div>
+  <ul class="cite-list">
+    <li><span class="cite-src">Journal of Critical Care, Oct 2026</span>Rehn P, Koos B, Witowski A, et al. Impact of higher versus lower PEEP on mortality in mechanically ventilated patients with Sepsis — a multicenter, multi-cohort observational analysis. <em>J Crit Care</em>. 2026;95:155645. doi: 10.1016/j.jcrc.2026.155645. Open access.</li>
+    <li><span class="cite-src">NEJM, 2004</span>Brower RG, et al. (ALVEOLI). Higher versus lower positive end-expiratory pressures in patients with the acute respiratory distress syndrome. <em>N Engl J Med</em>. 2004.</li>
+    <li><span class="cite-src">JAMA, 2008</span>Mercat A, et al. (EXPRESS). Positive end-expiratory pressure setting in adults with acute lung injury and acute respiratory distress syndrome. <em>JAMA</em>. 2008.</li>
+    <li><span class="cite-src">JAMA, 2017</span>Cavalcanti AB, et al. (ART Trial). Effect of lung recruitment and titrated PEEP vs low PEEP on mortality in patients with ARDS: a randomized clinical trial. <em>JAMA</em>. 2017;318(14):1335–1345.</li>
+    <li><span class="cite-src">Cochrane, 2021</span>Santa Cruz R, et al. High versus low PEEP levels for mechanically ventilated adult patients with acute lung injury and ARDS. <em>Cochrane Database Syst Rev</em>. 2021.</li>
+    <li><span class="cite-src">SCCM, 2026</span>Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock, 2026 update.</li>
+    <li><span class="cite-src">Critical Care, 2026</span>Rehn P, Hölzl K, von Garrel A, et al. High vasopressor doses are associated with decreased tissue oxygenation in critically ill patients — background on the same group's hyperspectral/StO₂ methodology applied in the PEEP analysis.</li>
+  </ul>
+
+  <footer>The Critical Vector — Evidence Locker · @CriticalCareNow's #CritBits carousel condensed the original findings; this reference expands on the primary source, methodology, and prior PEEP literature it sits against · treat all mortality figures as hypothesis-generating pending a prospective RCT.<div class="cv-tagline" style="margin-top:8px">The Critical Vector · Direction and magnitude.</div></footer>
+
+</div>
+</body>
+</html>

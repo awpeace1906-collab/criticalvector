@@ -1,0 +1,2223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Critical Vector — Intoxicating Substances Reference: Stimulants</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0b0f;
+    --bg-panel:#141419;
+    --bg-panel-2:#1b1b22;
+    --border:#2a2a33;
+    --text:#e8e8ec;
+    --text-dim:#a8a8b3;
+    --teal:#00d4aa;
+    --blue:#60a5fa;
+    --red:#e84c4c;
+    --amber:#f59e0b;
+    --purple:#a78bfa;
+  }
+  *{box-sizing:border-box;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Source Serif 4', Georgia, serif;
+    margin:0;
+    padding:0;
+    line-height:1.6;
+  }
+  h1,h2,h3,h4,.label,.nav a,.pill,.tag{font-family:'Syne',sans-serif;}
+  .wrap{max-width:980px;margin:0 auto;padding:0 24px 120px;}
+
+  /* Masthead */
+  .masthead{
+    padding:64px 24px 40px;
+    text-align:center;
+    border-bottom:2px solid var(--border);
+    background:radial-gradient(ellipse at top, rgba(0,212,170,0.08), transparent 60%);
+  }
+  .masthead .kicker{
+    color:var(--teal);
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    font-size:13px;
+    font-weight:700;
+    margin-bottom:14px;
+  }
+  .masthead h1{
+    font-size:42px;
+    font-weight:800;
+    margin:0 0 12px;
+    letter-spacing:-0.01em;
+  }
+  .masthead h1 span{color:var(--amber);}
+  .masthead p.sub{
+    color:var(--text-dim);
+    font-size:17px;
+    max-width:640px;
+    margin:0 auto;
+    font-style:italic;
+  }
+  .meta-row{
+    display:flex;justify-content:center;gap:24px;margin-top:22px;flex-wrap:wrap;
+  }
+  .meta-row .chip{
+    background:var(--bg-panel);
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:6px 16px;
+    font-family:'Syne',sans-serif;
+    font-size:12px;
+    color:var(--text-dim);
+  }
+
+  /* Nav / TOC */
+  .toc{
+    background:var(--bg-panel);
+    border:1px solid var(--border);
+    border-radius:14px;
+    margin:36px auto 0;
+    padding:22px 26px;
+  }
+  .toc h2{
+    font-size:14px;text-transform:uppercase;letter-spacing:.12em;
+    color:var(--purple);margin:0 0 14px;
+  }
+  .toc ol{margin:0;padding-left:20px;columns:2;column-gap:32px;}
+  .toc li{margin-bottom:8px;}
+  .toc a{color:var(--text);text-decoration:none;font-size:15px;font-weight:600;}
+  .toc a:hover{color:var(--teal);}
+  .toc .street{color:var(--text-dim);font-weight:400;font-size:13px;font-family:'Source Serif 4',serif;font-style:italic;}
+
+  /* Symptom search */
+  .search-wrap{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(11,11,15,0.97);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--border);
+    padding:14px 24px;
+  }
+  .search-inner{max-width:980px;margin:0 auto;display:flex;flex-direction:column;gap:6px;}
+  #symptomSearch{
+    width:100%;
+    box-sizing:border-box;
+    background:var(--bg-panel);
+    border:1.5px solid var(--border);
+    border-radius:10px;
+    padding:12px 16px;
+    color:var(--text);
+    font-family:'Source Serif 4',serif;
+    font-size:15px;
+    outline:none;
+  }
+  #symptomSearch:focus{border-color:var(--teal);}
+  #symptomSearch::placeholder{color:var(--text-dim);}
+  .search-meta{
+    display:flex;justify-content:space-between;align-items:center;
+    font-family:'Syne',sans-serif;font-size:11.5px;color:var(--text-dim);
+    min-height:14px;
+  }
+  #searchCount{color:var(--teal);font-weight:700;}
+  .search-hint{font-style:italic;font-family:'Source Serif 4',serif;}
+  mark{background:var(--amber);color:#171208;padding:0 2px;border-radius:2px;}
+  .no-results-msg{
+    text-align:center;color:var(--text-dim);padding:60px 20px;font-size:15px;display:none;
+  }
+
+  /* Class banner */
+  .class-banner{
+    margin:56px 0 8px;
+    text-align:center;
+  }
+  .class-banner .tag{
+    display:inline-block;
+    background:var(--amber);
+    color:#171208;
+    font-weight:800;
+    font-size:13px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    padding:6px 18px;
+    border-radius:6px;
+    transform:rotate(-1deg);
+  }
+  .class-banner h2{
+    font-size:34px;font-weight:800;margin:16px 0 6px;
+  }
+  .class-banner p{color:var(--text-dim);max-width:680px;margin:0 auto;font-size:16px;}
+
+  /* Substance card */
+  .substance{
+    margin:52px 0;
+    border:1px solid var(--border);
+    border-radius:16px;
+    overflow:hidden;
+    background:linear-gradient(180deg, var(--bg-panel) 0%, var(--bg) 100%);
+    scroll-margin-top:20px;
+  }
+  .sub-head{
+    padding:26px 30px 20px;
+    border-bottom:1px solid var(--border);
+  }
+  .sub-head .class-label{
+    color:var(--teal);font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;
+  }
+  .sub-head h3{
+    font-size:28px;font-weight:800;margin:6px 0 4px;
+  }
+  .sub-head .formal{color:var(--text-dim);font-size:14px;font-style:italic;margin:0 0 12px;}
+  .street-names{
+    display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;
+  }
+  .street-names span{
+    background:var(--bg-panel-2);
+    border:1px solid var(--border);
+    color:var(--text-dim);
+    padding:4px 11px;
+    border-radius:14px;
+    font-size:12.5px;
+    font-family:'Syne',sans-serif;
+  }
+  .legal-badge{
+    display:inline-block;margin-top:12px;padding:4px 12px;border-radius:6px;
+    font-family:'Syne',sans-serif;font-size:11.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+  }
+  .legal-cii{background:rgba(232,76,76,0.15);color:var(--red);border:1px solid rgba(232,76,76,0.4);}
+  .legal-legal{background:rgba(0,212,170,0.15);color:var(--teal);border:1px solid rgba(0,212,170,0.4);}
+  .legal-otc{background:rgba(96,165,250,0.15);color:#7ea6ff;border:1px solid rgba(96,165,250,0.4);}
+
+  .sub-body{padding:6px 30px 28px;}
+  .section{margin-top:26px;}
+  .section h4{
+    font-size:13px;text-transform:uppercase;letter-spacing:.1em;
+    margin:0 0 10px;
+    display:flex;align-items:center;gap:8px;
+  }
+  .section h4::before{content:"";width:18px;height:2px;background:currentColor;display:inline-block;}
+  .section.moa h4{color:var(--purple);}
+  .section.pk h4{color:var(--blue);}
+  .section.dose h4{color:var(--amber);}
+  .section.tox h4{color:var(--red);}
+  .section.bedside h4{color:var(--teal);}
+  .section.crit h4{color:var(--red);}
+  .section.signs h4{color:var(--blue);}
+
+  .patho-box{
+    margin-top:14px;
+    border-left:4px solid var(--red);
+    background:rgba(232,76,76,0.08);
+    border-radius:0 10px 10px 0;
+    padding:14px 18px;
+  }
+  .patho-box .patho-label{
+    font-family:'Syne',sans-serif;font-weight:800;font-size:11.5px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--red);display:block;margin-bottom:6px;
+  }
+  .patho-box p{margin:0;font-size:15px;}
+  .patho-box p + p{margin-top:8px;}
+  .no-patho{
+    margin-top:14px;
+    border-left:4px solid var(--text-dim);
+    background:rgba(168,168,179,0.06);
+    border-radius:0 10px 10px 0;
+    padding:14px 18px;
+  }
+  .no-patho .patho-label{
+    font-family:'Syne',sans-serif;font-weight:800;font-size:11.5px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--text-dim);display:block;margin-bottom:6px;
+  }
+  .no-patho p{margin:0;font-size:15px;color:var(--text-dim);}
+  .section p{margin:0 0 10px;font-size:15.5px;color:var(--text);}
+  .section p:last-child{margin-bottom:0;}
+
+  table{width:100%;border-collapse:collapse;margin:10px 0 4px;font-size:14.5px;}
+  th{
+    text-align:left;background:var(--bg-panel-2);color:var(--text-dim);
+    font-family:'Syne',sans-serif;font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;
+    padding:9px 12px;border-bottom:2px solid var(--border);
+  }
+  td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top;}
+  tr:last-child td{border-bottom:none;}
+
+  ul.bedside-list{margin:0;padding-left:0;list-style:none;}
+  ul.bedside-list li{
+    padding:7px 0 7px 26px;position:relative;font-size:15px;
+  }
+  ul.bedside-list li::before{
+    content:"✓";position:absolute;left:0;top:7px;color:var(--teal);font-weight:800;
+  }
+  .section.crit ul.bedside-list li::before{color:var(--red);}
+
+  .pearl{
+    margin-top:24px;
+    border:1px solid var(--amber);
+    border-radius:12px;
+    padding:18px 22px;
+    background:rgba(245,158,11,0.07);
+  }
+  .pearl .pearl-label{
+    font-family:'Syne',sans-serif;font-weight:800;font-size:12px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--amber);margin-bottom:6px;display:block;
+  }
+  .pearl p{margin:0;font-size:15.5px;}
+  .pearl strong{color:var(--amber);}
+
+  .citations{
+    margin-top:22px;padding-top:16px;border-top:1px dashed var(--border);
+    font-size:12.5px;color:var(--text-dim);
+  }
+  .citations .cite-label{
+    font-family:'Syne',sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:.1em;
+    color:var(--text-dim);display:block;margin-bottom:6px;
+  }
+  .citations ol{margin:0;padding-left:18px;}
+  .citations li{margin-bottom:3px;}
+
+  .closer{
+    margin-top:70px;padding:32px;text-align:center;
+    border:1px solid var(--border);border-radius:14px;background:var(--bg-panel);
+  }
+  .closer h3{font-size:20px;margin:0 0 8px;}
+  .closer p{color:var(--text-dim);font-size:14.5px;margin:0;}
+  .footer-note{text-align:center;color:var(--text-dim);font-size:12px;margin-top:24px;}
+  a{color:var(--teal);}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style id="cv-retheme">
+/* CV re-theme v1.0 — maps this file onto _cv-schema.html tokens */
+:root{--bg:#0a0e14; --surface:#111720; --surface2:#182030; --border:rgba(255,255,255,0.08); --teal:#00d4aa; --blue:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa; --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670; --t-teal:rgba(0,212,170,0.10); --t-blue:rgba(96,165,250,0.10); --t-red:rgba(232,76,76,0.10); --t-amber:rgba(245,158,11,0.10); --t-purple:rgba(167,139,250,0.10);}
+:root{--bg-panel:var(--surface); --bg-panel-2:var(--surface2); --text-dim:var(--text2);}
+body{font-family:'Source Serif 4', Georgia, serif !important; background:var(--bg) !important; color:var(--text);}
+h1,h2,h3,h4,th,nav a,.label,.lbl,.badge,.pill{font-family:'Syne', sans-serif !important;}
+h1{font-weight:800 !important; letter-spacing:.005em;}
+h2,h3{font-weight:700;}
+.kicker, header .kicker{font-family:'IBM Plex Mono', monospace !important; color:var(--teal) !important; letter-spacing:.12em; font-size:11px !important;}
+code, pre, .mono{font-family:'IBM Plex Mono', monospace;}
+@media print{
+  :root{--bg:#f4f5f7; --surface:#ffffff; --surface2:#eef1f4; --border:#d7dde3; --teal:#00a688; --blue:#1d4ed8; --red:#c53030; --amber:#b45309; --purple:#7c3aed; --text:#0f1923; --text2:#4a5670; --text3:#6b7688;
+    --t-teal:rgba(0,166,136,0.08); --t-blue:rgba(29,78,216,0.07); --t-red:rgba(197,48,48,0.07); --t-amber:rgba(180,83,9,0.08); --t-purple:rgba(124,58,237,0.07); --bg-panel:#ffffff; --bg-panel-2:#eef1f4; --text-dim:#4a5670;}
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  html, body{background:#f4f5f7 !important; color:#0f1923 !important;}
+  nav{display:none !important;}
+  td{color:#0f1923 !important;}
+  section, .box, table, .card{break-inside:avoid;}
+  h2{break-after:avoid;}
+  a{color:inherit; text-decoration:none;}
+}
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ a{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../workshop.html">The Workshop</a><span class="cv-sb-meta">Published 7 Oct 2026 · R. E. Suscitate &amp; A. Systole</span></nav>
+
+<div class="masthead">
+  <div class="kicker">The Critical Vector · Clinical Reference</div>
+  <h1>Intoxicating <span>Substances</span> Reference</h1>
+  <p class="sub">Legal, illicit, and prescription agents prone to abuse and intoxication — mechanism, dosing thresholds, and front-line through critical-care management, at the resuscitation continuum's every stage.</p>
+  <div class="meta-row">
+    <span class="chip">12 classes · 39 substances</span>
+    <span class="chip">v2.0 — full build</span>
+    <span class="chip">Symptom-searchable</span>
+  </div>
+</div>
+
+<div class="search-wrap">
+  <div class="search-inner">
+    <input type="text" id="symptomSearch" placeholder="Search a symptom, sign, or finding — e.g. &quot;retiform purpura&quot;, &quot;meth mouth&quot;, &quot;wide QRS&quot;, &quot;clonus&quot;..." autocomplete="off" oninput="filterSubstances()" onkeydown="handleSearchKey(event)">
+    <div class="search-meta">
+      <span class="search-hint">Searches every field — symptoms, MOA, dosing, treatment, street names</span>
+      <span id="searchCount"></span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div id="noResultsMsg" class="no-results-msg">No substances match that search. Try a broader term.</div>
+
+  <div class="toc">
+    <h2>Full Index — 12 Classes, 39 Substances</h2>
+    <ol>
+      <li><a href="#cocaine">Cocaine</a><br><span class="street">coke, blow, crack</span></li>
+      <li><a href="#amphetamine">Amphetamine / Dextroamphetamine</a><br><span class="street">Adderall, addies</span></li>
+      <li><a href="#methamphetamine">Methamphetamine</a><br><span class="street">meth, crystal, ice</span></li>
+      <li><a href="#mdma">MDMA / MDA</a><br><span class="street">molly, ecstasy</span></li>
+      <li><a href="#cathinones">Synthetic Cathinones</a><br><span class="street">bath salts, flakka</span></li>
+      <li><a href="#methylphenidate">Methylphenidate</a><br><span class="street">Ritalin, Concerta</span></li>
+      <li><a href="#caffeine">Caffeine</a><br><span class="street">energy drinks</span></li>
+      <li><a href="#heroin">Heroin</a><br><span class="street">H, smack, dope</span></li>
+      <li><a href="#fentanyl">Fentanyl &amp; Analogs</a><br><span class="street">fent, apache</span></li>
+      <li><a href="#methadone-buprenorphine">Methadone &amp; Buprenorphine</a><br><span class="street">dolls, subs, bupe</span></li>
+      <li><a href="#tramadol-loperamide">Tramadol &amp; Loperamide</a><br><span class="street">Ultram, Imodium</span></li>
+      <li><a href="#benzodiazepines">Benzodiazepines</a><br><span class="street">benzos, xannies, bars</span></li>
+      <li><a href="#barbiturates-zdrugs">Barbiturates &amp; Z-Drugs</a><br><span class="street">barbs, Ambien</span></li>
+      <li><a href="#ghb">GHB / GBL</a><br><span class="street">G, liquid ecstasy</span></li>
+      <li><a href="#ketamine-pcp">Ketamine &amp; PCP</a><br><span class="street">Special K, angel dust</span></li>
+      <li><a href="#dxm-nitrous">DXM &amp; Nitrous Oxide</a><br><span class="street">robotripping, whippets</span></li>
+      <li><a href="#lsd-psilocybin-mescaline">LSD, Psilocybin &amp; Mescaline</a><br><span class="street">acid, shrooms, peyote</span></li>
+      <li><a href="#nbome">NBOMe Compounds</a><br><span class="street">N-Bomb, Smiles, 25I</span></li>
+      <li><a href="#thc-cannabis">Cannabis / THC</a><br><span class="street">weed, edibles, dabs</span></li>
+      <li><a href="#synthetic-cannabinoids">Synthetic Cannabinoids</a><br><span class="street">K2, Spice</span></li>
+      <li><a href="#inhalants">Volatile Solvents &amp; Nitrites</a><br><span class="street">huffing, poppers</span></li>
+      <li><a href="#anticholinergics">Diphenhydramine &amp; Jimsonweed</a><br><span class="street">Benadryl, loco weed</span></li>
+      <li><a href="#ethanol">Ethanol</a><br><span class="street">alcohol, liquor</span></li>
+      <li><a href="#toxic-alcohols">Methanol &amp; Ethylene Glycol</a><br><span class="street">antifreeze, wood alcohol</span></li>
+      <li><a href="#nicotine">Nicotine &amp; E-Liquid</a><br><span class="street">vape juice, nic salts</span></li>
+      <li><a href="#kratom">Kratom</a><br><span class="street">biak, ketum</span></li>
+      <li><a href="#anabolic-steroids">Anabolic-Androgenic Steroids</a><br><span class="street">gear, juice, roids</span></li>
+    </ol>
+  </div>
+
+  <div class="class-banner">
+    <span class="tag">Drug Class</span>
+    <h2>Stimulants</h2>
+    <p>Agents that increase synaptic monoamine tone — dopamine, norepinephrine, and (variably) serotonin — producing a shared sympathomimetic toxidrome: tachycardia, hypertension, hyperthermia, mydriasis, diaphoresis, and agitation. The route, the specific transporter pharmacology, and the co-released neurotransmitter burden determine which complications dominate.</p>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- COCAINE -->
+  <!-- ============================================================ -->
+  <div class="substance" id="cocaine">
+    <div class="sub-head">
+      <div class="class-label">Stimulant · Tropane Alkaloid</div>
+      <h3>Cocaine</h3>
+      <p class="formal">Benzoylmethylecgonine</p>
+      <div class="street-names">
+        <span>Coke</span><span>Blow</span><span>Snow</span><span>Yayo</span><span>Yeyo</span>
+        <span>Crack (freebase)</span><span>Rock</span><span>Speedball (+ opioid)</span><span>Pink cocaine / Tusi (adulterated mix)</span>
+      </div>
+      <div class="legal-badge legal-cii">DEA Schedule II</div>
+    </div>
+    <div class="sub-body">
+
+      <div class="section moa">
+        <h4>Mechanism of Action</h4>
+        <p>Cocaine is a competitive inhibitor of the presynaptic monoamine transporters — dopamine transporter (DAT), norepinephrine transporter (NET), and serotonin transporter (SERT) — blocking reuptake and flooding the synaptic cleft with dopamine, norepinephrine, and serotonin. The dopaminergic surge in the mesolimbic reward pathway (nucleus accumbens) drives euphoria and reinforcement; the noradrenergic surge drives the peripheral sympathomimetic toxidrome.</p>
+        <p>Cocaine is also a class Ic-like sodium-channel blocker (local anesthetic property, the basis of its historical surgical use), which underlies its proarrhythmic and pro-convulsant potential — wide-complex dysrhythmias mimic tricyclic antidepressant overdose. Chronic use produces coronary vasospasm and accelerated atherosclerosis via endothelin-1 upregulation, platelet activation, and impaired nitric-oxide-mediated vasodilation, independent of any acute overdose event.<sup>[1,2]</sup></p>
+      </div>
+
+      <div class="section pk">
+        <h4>Pharmacokinetics &amp; Route</h4>
+        <table>
+          <tr><th>Route</th><th>Onset</th><th>Peak effect</th><th>Duration</th></tr>
+          <tr><td>Intranasal</td><td>1–3 min</td><td>15–20 min</td><td>60–90 min</td></tr>
+          <tr><td>Smoked (crack/freebase)</td><td>&lt;15 sec</td><td>2–5 min</td><td>5–15 min</td></tr>
+          <tr><td>IV</td><td>&lt;30 sec</td><td>3–5 min</td><td>20–30 min</td></tr>
+          <tr><td>Oral / mucosal</td><td>10–30 min</td><td>60 min</td><td>60–90 min</td></tr>
+        </table>
+        <p>Hepatic and plasma-esterase metabolism produces benzoylecgonine (the standard immunoassay target) and ecgonine methyl ester; elimination half-life of the parent compound is only ~1 hour, but benzoylecgonine remains detectable in urine 2–4 days after a binge, longer with heavy chronic use.<sup>[3]</sup></p>
+      </div>
+
+      <div class="section tox">
+        <h4>Toxicity by Route</h4>
+        <table>
+          <tr><th>Route</th><th>Signature complications</th></tr>
+          <tr><td>Snorted</td><td>Nasal septal perforation, chronic rhinosinusitis, ischemic stroke</td></tr>
+          <tr><td>Smoked (crack)</td><td>"Crack lung" — diffuse alveolar hemorrhage, eosinophilic pneumonitis, barotrauma/pneumomediastinum from Valsalva-style inhalation</td></tr>
+          <tr><td>Injected</td><td>Infective endocarditis, bacteremia, skin/soft-tissue infection, bloodborne viral transmission (HIV/HCV)</td></tr>
+          <tr><td>Swallowed (body packing/stuffing)</td><td>Massive overdose if packet rupture; bowel obstruction/perforation</td></tr>
+        </table>
+        <p><strong>Urine drug screen:</strong> cocaine immunoassays target benzoylecgonine specifically — there is essentially no cross-reactive substance in modern assays, so a positive result is almost never a true false positive. That reliability does not extend to attributing every symptom in front of you to the positive result.<sup>[4]</sup></p>
+      </div>
+
+      <div class="section signs">
+        <h4>Symptomology</h4>
+        <p>Classic sympathomimetic triad: tachycardia, hypertension, and mydriasis, layered with diaphoresis, agitation, and — in heavy or binge use — paranoia and formication-type tactile hallucinations. Chest pain and palpitations are common presenting complaints even without infarction.</p>
+        <div class="patho-box">
+          <span class="patho-label">Pathognomonic Clue</span>
+          <p><strong>Painful retiform purpura with a predilection for the ears, cheeks, and nose, occurring alongside agranulocytosis/neutropenia and high-titer dual p-ANCA/c-ANCA positivity</strong>, is essentially diagnostic of <em>levamisole-adulterated cocaine</em> toxicity — an adulterant present in up to 70–80% of the current US supply. Seeing bilateral ear necrosis in a young patient should trigger this diagnosis before an autoimmune vasculitis workup.<sup>[7]</sup></p>
+          <p>Cocaine-induced midline destructive lesions (CIMDL) — septal perforation with palatal/nasal cartilage destruction from chronic insufflation — mimic granulomatosis with polyangiitis on exam and imaging, but lack the pulmonary-renal involvement of true GPA.</p>
+        </div>
+      </div>
+
+      <div class="section bedside">
+        <h4>At the Bedside — Front Line</h4>
+        <ul class="bedside-list">
+          <li>Benzodiazepines are first-line for agitation, hypertension, tachycardia, and seizure prophylaxis — they address the shared adrenergic driver.</li>
+          <li>Active external cooling for hyperthermia; treat as excited delirium physiology, not infectious fever — antipyretics do not work and are not indicated.</li>
+          <li>Chest pain: treat as possible ACS until proven otherwise. ECG, troponin, aspirin if no contraindication, nitroglycerin/calcium-channel blockers for vasospasm.</li>
+          <li><strong>Avoid unopposed beta-blockade</strong> in the acutely intoxicated patient — pure beta-blockade can leave alpha-mediated vasoconstriction unopposed, worsening hypertension and coronary vasospasm. If beta-blockade is needed for rate control, a combined alpha/beta agent (labetalol) is the accepted approach per AHA/ACC guidance, after benzodiazepines and vasodilator therapy.<sup>[5,6]</sup></li>
+        </ul>
+      </div>
+
+      <div class="section crit">
+        <h4>Critical Care Escalation</h4>
+        <ul class="bedside-list">
+          <li>Wide QRS or ventricular dysrhythmia → sodium bicarbonate (treat as sodium-channel blockade, akin to TCA overdose); avoid lidocaine and class Ia/Ic antiarrhythmics, which are synergistically pro-convulsant/pro-arrhythmic.</li>
+          <li>Refractory agitation/excited delirium → ketamine with airway readiness; ICU maintenance with dexmedetomidine to prevent recrudescent agitation.</li>
+          <li>Rhabdomyolysis, DIC, and AKI are downstream of uncontrolled hyperthermia and muscular hyperactivity — aggressive IV fluids and early cooling prevent the cascade rather than treating it after the fact.</li>
+          <li>Aortic dissection and cardiomyopathy are on the differential for any cocaine-associated chest pain or heart failure presentation — imaging per usual AD/heart-failure pathways once ACS is excluded.<sup>[6]</sup></li>
+        </ul>
+      </div>
+
+      <div class="pearl">
+        <span class="pearl-label">Practice Shift</span>
+        <p>Believe the positive UDS, but don't anchor on it. The route of use predicts the complication — always ask how the patient uses. And once acute intoxication resolves, don't reflexively withhold guideline-indicated beta-blocker therapy (e.g., HFrEF, prior MI) on the basis of remote cocaine history alone.</p>
+      </div>
+
+      <div class="citations">
+        <span class="cite-label">Sources</span>
+        <ol>
+          <li>Prosser JM, Hoffman RS. Cocaine. In: Goldfrank's Toxicologic Emergencies, 10th ed.</li>
+          <li>Richards JR, Le JK. Cocaine Toxicity. StatPearls [Internet]. NCBI Bookshelf NBK430976, 2023.</li>
+          <li>Lavonas EJ, et al. 2023 AHA Focused Update on Management of Cardiac Arrest/Life-Threatening Toxicity Due to Poisoning. Circulation. 2023;148(16):e149-e184.</li>
+          <li>ACMT Position Statement, Interpretation of Urine Analysis for Cocaine Metabolites.</li>
+          <li>2012 ACCF/AHA Focused Update, Unstable Angina/NSTEMI Guidelines — cocaine and methamphetamine section.</li>
+          <li>Vilke GM, et al. Excited Delirium Syndrome (ExDS): Treatment Options and Considerations. J Forensic Leg Med. 2012;19(3):117-121.</li>
+          <li>Chung C, et al. Characteristic Purpura of the Ears, Vasculitis, and Neutropenia — A Potential Public Health Epidemic Associated with Levamisole-Adulterated Cocaine. J Am Acad Dermatol. 2011;65(4):722-725.</li>
+        </ol>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- AMPHETAMINE / DEXTROAMPHETAMINE -->
+  <!-- ============================================================ -->
+  <div class="substance" id="amphetamine">
+    <div class="sub-head">
+      <div class="class-label">Stimulant · Phenethylamine</div>
+      <h3>Amphetamine / Dextroamphetamine</h3>
+      <p class="formal">Mixed amphetamine salts (Adderall), lisdexamfetamine (Vyvanse, a prodrug)</p>
+      <div class="street-names">
+        <span>Addies</span><span>Dexies</span><span>Uppers</span><span>Study drug</span><span>Speed</span><span>Bennies</span>
+      </div>
+      <div class="legal-badge legal-cii">DEA Schedule II (Rx) — widely diverted/misused</div>
+    </div>
+    <div class="sub-body">
+
+      <div class="section moa">
+        <h4>Mechanism of Action</h4>
+        <p>Amphetamine is primarily a <strong>transporter-mediated releaser</strong>, not just a reuptake blocker. It is taken up into the presynaptic terminal via DAT and NET, then reverses their normal direction of transport (via interaction with VMAT2 and phosphorylation of the transporters), causing dopamine and norepinephrine to be released into the synapse independent of neuronal firing. It also inhibits monoamine oxidase (MAO) at higher concentrations, further prolonging the extracellular monoamine surge.<sup>[1]</sup></p>
+        <p>Lisdexamfetamine is inactive until cleaved by red-blood-cell peptidases to release dextroamphetamine, which blunts the abuse-deterrent kinetics somewhat (slower onset, harder to achieve an IV/insufflation rush) compared to immediate-release salts.</p>
+      </div>
+
+      <div class="section pk">
+        <h4>Pharmacokinetics</h4>
+        <p>Oral bioavailability is high with peak plasma levels around 3 hours (immediate-release) to 7 hours (extended-release/lisdexamfetamine). Elimination half-life is 10–13 hours in adults and is pH-dependent — acidic urine accelerates renal elimination, alkaline urine prolongs it. Misuse routes include oral supratherapeutic dosing, insufflation of crushed IR/ER tablets, and rarely IV injection of dissolved tablets (which carries embolic risk from tablet fillers/binders).</p>
+      </div>
+
+      <div class="section dose">
+        <h4>Intoxication Thresholds</h4>
+        <table>
+          <tr><th>Level</th><th>Typical picture</th></tr>
+          <tr><td>Therapeutic (ADHD dosing)</td><td>5–60 mg/day divided, titrated to effect</td></tr>
+          <tr><td>Misuse/diversion dose</td><td>Often 2–10× prescribed dose; insufflation for rapid onset</td></tr>
+          <tr><td>Toxic</td><td>Agitation, mydriasis, tremor, hyperreflexia, tachycardia, hypertension</td></tr>
+          <tr><td>Severe/life-threatening</td><td>Hyperthermia, seizures, wide-complex dysrhythmia, intracranial hemorrhage</td></tr>
+        </table>
+      </div>
+
+      <div class="section signs">
+        <h4>Symptomology</h4>
+        <p>Mydriasis, tremor, agitation, hyperreflexia, combative or paranoid behavior, and — at high doses — hallucinations, delirium, and choreoathetoid movements. Insomnia and anorexia dominate at prescribed doses; the picture escalates toward the full sympathomimetic toxidrome only in supratherapeutic misuse.</p>
+        <div class="no-patho">
+          <span class="patho-label">No True Pathognomonic Sign</span>
+          <p>Amphetamine intoxication has no exam finding that distinguishes it from methamphetamine or other stimulant toxicity — the toxidrome, dosing thresholds, and management are shared across the class. The clinical distinguishing feature is context: a prescribed ADHD medication history, a crushed/insufflated tablet, or an adolescent/young-adult diversion pattern.</p>
+        </div>
+      </div>
+
+      <div class="section bedside">
+        <h4>At the Bedside</h4>
+        <ul class="bedside-list">
+          <li>Benzodiazepines first-line for agitation and sympathomimetic excess — same approach as cocaine and methamphetamine.</li>
+          <li>Cardiac monitoring; treat hypertension/tachycardia symptomatically rather than with a beta-blocker alone.</li>
+          <li>Activated charcoal reasonable if presenting early after a large oral ingestion and airway is protected.</li>
+        </ul>
+      </div>
+
+      <div class="section crit">
+        <h4>Critical Care Escalation</h4>
+        <ul class="bedside-list">
+          <li>Seizures and dysrhythmias take priority in severe overdose — benzodiazepines for seizures; sodium bicarbonate if QRS widening is present.</li>
+          <li>Management is otherwise supportive and mirrors the broader sympathomimetic toxidrome pathway — there is no specific antidote.<sup>[2]</sup></li>
+        </ul>
+      </div>
+
+      <div class="pearl">
+        <span class="pearl-label">Practice Shift</span>
+        <p>Prescription stimulant misuse is a legal-substance problem with an illegal-substance toxidrome. Screen for diversion in any patient with a new sympathomimetic presentation and an ADHD diagnosis — theirs, a sibling's, or a classmate's.</p>
+      </div>
+
+      <div class="citations">
+        <span class="cite-label">Sources</span>
+        <ol>
+          <li>Spiller HA, Hays HL, Aleguas A. Overdose of Drugs for ADHD: Clinical Presentation, Mechanisms of Toxicity, and Management. CNS Drugs. 2013;27(7):531-543.</li>
+          <li>Klein-Schwartz W. Abuse and Toxicity of Methylphenidate/Amphetamine class. Curr Opin Pediatr. 2002;14(2):219-223.</li>
+        </ol>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- METHAMPHETAMINE -->
+  <!-- ============================================================ -->
+  <div class="substance" id="methamphetamine">
+    <div class="sub-head">
+      <div class="class-label">Stimulant · Phenethylamine</div>
+      <h3>Methamphetamine</h3>
+      <p class="formal">N-methylamphetamine</p>
+      <div class="street-names">
+        <span>Meth</span><span>Crystal</span><span>Ice</span><span>Glass</span><span>Tina</span><span>Crank</span><span>Tweak</span>
+      </div>
+      <div class="legal-badge legal-cii">DEA Schedule II</div>
+    </div>
+    <div class="sub-body">
+
+      <div class="section moa">
+        <h4>Mechanism of Action</h4>
+        <p>Methamphetamine shares amphetamine's transporter-reversal mechanism (DAT/NET-mediated dopamine and norepinephrine release, with weaker serotonergic activity) but is more lipophilic, crosses the blood-brain barrier faster, and is a more potent CNS stimulant with greater neurotoxic potential. Chronic high-dose use depletes dopaminergic terminals and is associated with methamphetamine-induced psychosis and long-term neurocognitive deficits distinct from acute intoxication.<sup>[1,2]</sup></p>
+      </div>
+
+      <div class="section pk">
+        <h4>Pharmacokinetics &amp; Route</h4>
+        <p>Oral onset in 2–4 hours; smoking, snorting, and injection produce effects within minutes. Elimination half-life is markedly longer than cocaine's — 6–15 hours (commonly cited as 11–12 hours) versus cocaine's ~1 hour — which is why methamphetamine intoxication and its downstream complications (agitation, psychosis) tend to be more prolonged and resource-intensive in the ED. Metabolized via CYP2D6 to active amphetamine plus inactive p-OH-amphetamine and norephedrine; renal excretion is enhanced by urinary acidification.<sup>[1]</sup></p>
+      </div>
+
+      <div class="section tox">
+        <h4>Clinical Toxidrome</h4>
+        <p>Sympathomimetic toxidrome across cardiovascular (tachycardia, hypertension, dysrhythmia), CNS (agitation, psychosis, seizures, intracranial hemorrhage), renal (rhabdomyolysis-driven AKI), and GI systems. &gt;150,000 US ED visits annually are attributed to methamphetamine toxicity.<sup>[2]</sup></p>
+      </div>
+
+      <div class="section signs">
+        <h4>Symptomology</h4>
+        <p>Acute intoxication produces the standard sympathomimetic picture — tachycardia, hypertension, mydriasis, agitation, and psychosis — but methamphetamine's chronic-use stigmata are unusually distinctive and often visible before a history is even obtained.</p>
+        <div class="patho-box">
+          <span class="patho-label">Pathognomonic Clue</span>
+          <p><strong>"Meth mouth"</strong> — rampant interproximal and buccal caries at the cementoenamel junction with a blackened, crumbling appearance, combined with severe xerostomia and bruxism/trismus — is a chronic-use finding specific enough that dental literature uses it as a recognition tool independent of history.<sup>[4]</sup></p>
+          <p><strong>Formication</strong> ("crank bugs," "meth mites") — the tactile hallucination of insects crawling under the skin — drives compulsive skin-picking with characteristic linear excoriations concentrated on the face, forearms, and lower legs. The combination of meth mouth plus formication-pattern excoriations in the same patient is highly specific for chronic methamphetamine use.<sup>[5]</sup></p>
+        </div>
+      </div>
+
+      <div class="section bedside">
+        <h4>At the Bedside</h4>
+        <ul class="bedside-list">
+          <li>Benzodiazepines remain first-line for agitation, hypertension, and seizure prevention; titrate to effect, doses are often higher than typical due to tolerance.</li>
+          <li>Active cooling for hyperthermia; IV fluids for volume status and to support renal perfusion given rhabdomyolysis risk.</li>
+          <li>Screen for heavy-metal contamination from illicit synthesis byproducts in atypical presentations.</li>
+        </ul>
+      </div>
+
+      <div class="section crit">
+        <h4>Critical Care Escalation</h4>
+        <ul class="bedside-list">
+          <li>Refractory agitation/excited delirium → consider ketamine; have airway management ready.</li>
+          <li>Severe oral ingestions: whole-bowel irrigation can be considered for body packers, though controlled outcome data is lacking.</li>
+          <li>Seizures and dysrhythmias managed per standard sympathomimetic-overdose algorithms; sodium bicarbonate for QRS widening.<sup>[3]</sup></li>
+        </ul>
+      </div>
+
+      <div class="pearl">
+        <span class="pearl-label">Practice Shift</span>
+        <p>Methamphetamine's long half-life means the agitation and hemodynamic instability you're managing at hour 1 may still be there at hour 8 — plan disposition and staffing accordingly rather than expecting a cocaine-length course.</p>
+      </div>
+
+      <div class="citations">
+        <span class="cite-label">Sources</span>
+        <ol>
+          <li>Richards JR, Laurin EG. Methamphetamine Toxicity. StatPearls [Internet]. NCBI Bookshelf NBK430895.</li>
+          <li>Sympathomimetic Toxicity. StatPearls [Internet]. NCBI Bookshelf NBK430757, 2025.</li>
+          <li>Wagner E, et al. Emergency Department Management of Methamphetamine Toxicity. Ann Emerg Med / EB Medicine evidence review, 2023.</li>
+          <li>American Dental Association. Methamphetamine — Oral Health Topics. ADA.org, clinical review.</li>
+          <li>"Meth Mouth": How Methamphetamine Affects the Face — formication and skin-picking pattern. Clinical review.</li>
+        </ol>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- MDMA / MDA -->
+  <!-- ============================================================ -->
+  <div class="substance" id="mdma">
+    <div class="sub-head">
+      <div class="class-label">Stimulant-Entactogen · Substituted Amphetamine</div>
+      <h3>MDMA / MDA</h3>
+      <p class="formal">3,4-Methylenedioxymethamphetamine / 3,4-Methylenedioxyamphetamine</p>
+      <div class="street-names">
+        <span>Molly</span><span>Ecstasy</span><span>X</span><span>E</span><span>Sass</span><span>Rolls</span>
+      </div>
+      <div class="legal-badge legal-cii">DEA Schedule I</div>
+    </div>
+    <div class="sub-body">
+
+      <div class="section moa">
+        <h4>Mechanism of Action</h4>
+        <p>MDMA is a potent serotonin releaser (SERT-mediated, analogous to amphetamine's DAT/NET mechanism) with additional dopamine and norepinephrine release — roughly one-tenth the pure CNS stimulant potency of amphetamine but a much larger serotonergic signature. Direct 5-HT2A agonism contributes to the perceptual/empathogenic effects. MDMA also stimulates arginine vasopressin (ADH) release, promoting free-water retention — a mechanism with no real analog in cocaine or methamphetamine and the direct cause of MDMA's signature hyponatremia risk, especially compounded by compulsive water intake at events.<sup>[1,2]</sup></p>
+        <p>A subset of users are CYP2D6 poor metabolizers (or co-ingest a CYP2D6 inhibitor, e.g., ritonavir), leading to markedly prolonged and intensified exposure and higher risk of severe toxicity.</p>
+      </div>
+
+      <div class="section pk">
+        <h4>Pharmacokinetics</h4>
+        <p>Oral onset 20–60 min, peak ~2 hours, duration 4–6 hours; half-life ~8–9 hours for a single dose, but repeated dosing autoinhibits its own metabolism, prolonging and intensifying toxicity ("stacking"/"boofing" behavior at multi-day events).</p>
+      </div>
+
+      <div class="section tox">
+        <h4>Clinical Toxidrome</h4>
+        <p>Mixed adrenergic-serotonergic picture: hypertension, tachycardia, mydriasis, diaphoresis, bruxism/trismus, plus hyperthermia and, when severe, frank serotonin syndrome (hyperthermia, clonus, hyperreflexia, altered mental status). The two dominant causes of MDMA death are <strong>hyperthermia</strong> and <strong>hyponatremia</strong> — not cardiac events, which distinguishes it from cocaine/methamphetamine mortality patterns.<sup>[1]</sup></p>
+      </div>
+
+      <div class="section signs">
+        <h4>Symptomology</h4>
+        <p>Bruxism and trismus (jaw clenching) are so consistent that users at raves and festivals often carry pacifiers or chewing gum specifically to manage it — a near-universal exam finding rather than an incidental one.</p>
+        <div class="patho-box">
+          <span class="patho-label">Pathognomonic Clue</span>
+          <p>The <strong>combination of hyperthermia and hyponatremia</strong> in the same patient — rather than either alone — is distinctive for MDMA/MDA among the stimulants: no other agent on this list produces both a heat-generating sympathomimetic state <em>and</em> an ADH-mediated free-water retention problem simultaneously. Spontaneous or inducible <strong>clonus</strong> in this setting confirms serotonin-toxicity physiology (Hunter Criteria) over simple sympathomimetic excess.<sup>[1,3]</sup></p>
+        </div>
+      </div>
+
+      <div class="section bedside">
+        <h4>At the Bedside</h4>
+        <ul class="bedside-list">
+          <li>Benzodiazepines for agitation and as first-line serotonin-syndrome-adjacent sedation.</li>
+          <li>Active cooling — ice-water immersion for severe hyperthermia (&gt;40°C); dantrolene has case-series support specifically in MDMA-related hyperpyrexia, particularly above 40–42°C, despite mechanistic uncertainty.<sup>[4]</sup></li>
+          <li>Check serum sodium in any patient with altered mental status or seizure after MDMA — do not assume the presentation is purely sympathomimetic.</li>
+        </ul>
+      </div>
+
+      <div class="section crit">
+        <h4>Critical Care Escalation</h4>
+        <ul class="bedside-list">
+          <li>Seizure from acute symptomatic hyponatremia → 100 mL bolus of 3% hypertonic saline; correct no faster than 6–8 mEq/L per 24 hours to avoid osmotic demyelination.</li>
+          <li>Seizure not attributable to hyponatremia → benzodiazepines as usual.</li>
+          <li>Cyproheptadine (12 mg initial, then 2 mg q2h) as an adjunct for serotonin-syndrome features refractory to benzodiazepines and cooling.</li>
+          <li>ICU-level monitoring for severe hyperthermia given risk of DIC, rhabdomyolysis, and acute renal failure.<sup>[1,3]</sup></li>
+        </ul>
+      </div>
+
+      <div class="pearl">
+        <span class="pearl-label">Practice Shift</span>
+        <p>Two failure modes kill MDMA patients and they pull in opposite directions: treating everyone as "just dehydrated" and under-hydrating a hyperthermic patient, or treating everyone as "at risk of hyponatremia" and over-hydrating a normonatremic one. Check the sodium before you decide which patient you have.</p>
+      </div>
+
+      <div class="citations">
+        <span class="cite-label">Sources</span>
+        <ol>
+          <li>Rosenbaum C, Boyer EW. MDMA (Ecstasy) Toxicity. StatPearls [Internet]. NCBI Bookshelf NBK538482, 2024.</li>
+          <li>MDMA (ecstasy) intoxication. UpToDate, 2026.</li>
+          <li>UCSF Hospital Handbook, MDMA (Ecstasy) Intoxication chapter.</li>
+          <li>Grunbaum AM, et al. Dantrolene in MDMA-induced hyperthermia — systematic case review. Clin Toxicol.</li>
+        </ol>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- SYNTHETIC CATHINONES -->
+  <!-- ============================================================ -->
+  <div class="substance" id="cathinones">
+    <div class="sub-head">
+      <div class="class-label">Stimulant · Synthetic Cathinone (β-keto-amphetamine)</div>
+      <h3>Synthetic Cathinones</h3>
+      <p class="formal">Mephedrone, MDPV, methylone, alpha-PVP ("flakka"), and related designer analogs</p>
+      <div class="street-names">
+        <span>Bath salts</span><span>Plant food</span><span>Flakka</span><span>Cloud nine</span><span>Ivory wave</span><span>Not for human consumption</span>
+      </div>
+      <div class="legal-badge legal-cii">DEA-scheduled by analog; new derivatives outpace scheduling</div>
+    </div>
+    <div class="sub-body">
+
+      <div class="section moa">
+        <h4>Mechanism of Action</h4>
+        <p>Synthetic cathinones are ring-substituted derivatives of cathinone, the natural psychoactive compound in khat (<em>Catha edulis</em>). Structurally they sit within the phenethylamine/amphetamine family and act on the same DAT/NET/SERT machinery, but individual compounds vary widely in selectivity: MDPV is a potent, highly selective DAT/NET reuptake inhibitor (cocaine-like, not a releaser) with essentially no direct serotonergic activity, while mephedrone behaves more like a non-selective releaser closer to MDMA. This heterogeneity — new analogs appear faster than they can be characterized or scheduled — is why there is no single "cathinone toxidrome," only a family of related sympathomimetic-plus-serotonergic pictures.<sup>[1,2]</sup></p>
+      </div>
+
+      <div class="section tox">
+        <h4>Clinical Toxidrome</h4>
+        <p>Tachycardia, hypertension, hyperthermia, mydriasis, diaphoresis, agitation, and — disproportionately compared to cocaine/methamphetamine — severe agitated psychosis, which is frequently the presenting complaint and the main driver of ED resource use. Deaths have been reported, generally from hyperthermia, seizure, or cardiovascular collapse in the setting of prolonged agitation.<sup>[3]</sup></p>
+        <p>Routine immunoassay urine drug screens frequently do <strong>not</strong> detect synthetic cathinones; confirmation requires send-out testing to a forensic/reference lab, which is too slow to inform acute management. Clinical suspicion (young patient, new-onset psychosis/agitated delirium, negative standard tox screen) should drive treatment, not a lab result.</p>
+      </div>
+
+      <div class="section signs">
+        <h4>Symptomology</h4>
+        <p>The presenting picture is the standard sympathomimetic toxidrome, but skewed heavily toward the psychiatric end of the spectrum — agitation and psychosis are frequently the chief complaint, out of proportion to the cardiovascular findings, and tend to be more prolonged than a comparable cocaine presentation.</p>
+        <div class="no-patho">
+          <span class="patho-label">No Single Pathognomonic Sign</span>
+          <p>No individual exam finding is unique to synthetic cathinones — the class is defined by structural heterogeneity (MDPV behaves like cocaine, mephedrone behaves more like MDMA), so the toxidrome varies by which analog was actually consumed. The strongest clinical clue is a <strong>mismatch between severe, prolonged agitated psychosis and a negative standard urine immunoassay</strong> — the assay simply doesn't detect this class, so a "clean" screen in a floridly psychotic young patient should raise suspicion rather than lower it.<sup>[4]</sup></p>
+        </div>
+      </div>
+
+      <div class="section bedside">
+        <h4>At the Bedside</h4>
+        <ul class="bedside-list">
+          <li>Supportive care is the core of management — there is no antidote and no established standard protocol; treatment targets the sympathomimetic/psychotic syndrome, not a specific compound.</li>
+          <li>Benzodiazepines and antipsychotics (e.g., olanzapine) together, titrated aggressively, are the most consistently reported successful approach across case series.</li>
+          <li>Aggressive cooling for hyperthermia.</li>
+          <li>Support renal perfusion with IV fluids given high rates of rhabdomyolysis-associated AKI in this group.<sup>[1,4]</sup></li>
+        </ul>
+      </div>
+
+      <div class="section crit">
+        <h4>Critical Care Escalation</h4>
+        <ul class="bedside-list">
+          <li>Refractory agitation with escalating sedation requirements is common — plan early for airway control if benzodiazepine/antipsychotic doses climb without effect.</li>
+          <li>A high proportion of synthetic cathinone presentations in early case series required inpatient admission — have a low threshold to admit for monitoring, especially with any organ dysfunction.</li>
+        </ul>
+      </div>
+
+      <div class="pearl">
+        <span class="pearl-label">Practice Shift</span>
+        <p>"Not for human consumption" on the packaging is the tell, not a disclaimer. If a young patient presents with new agitated psychosis and a negative standard urine tox screen, synthetic cathinones belong high on your differential — treat the syndrome you see, not the lab you don't have yet.</p>
+      </div>
+
+      <div class="citations">
+        <span class="cite-label">Sources</span>
+        <ol>
+          <li>Mas-Morey P, et al. Clinical Toxicology and Management of Intoxications with Synthetic Cathinones ("Bath Salts"). J Pharm Pract. 2013;26(4):353-357.</li>
+          <li>Prosser JM, Nelson LS. The Toxicology of Bath Salts: A Review of Synthetic Cathinones. J Med Toxicol. 2012;8(1):33-42.</li>
+          <li>Spiller HA, et al. Clinical Experience with and Analytical Confirmation of "Bath Salts" and "Legal Highs." Clin Toxicol (Phila). 2011;49(6):499-505.</li>
+          <li>California Poison Control System, Bath Salts/Synthetic Cathinones clinical guidance.</li>
+        </ol>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- METHYLPHENIDATE -->
+  <!-- ============================================================ -->
+  <div class="substance" id="methylphenidate">
+    <div class="sub-head">
+      <div class="class-label">Stimulant · Piperidine Derivative</div>
+      <h3>Methylphenidate</h3>
+      <p class="formal">Ritalin (IR), Concerta/Metadate/Quillivant (ER), dexmethylphenidate (Focalin)</p>
+      <div class="street-names">
+        <span>Ritalin</span><span>Vitamin R</span><span>Kiddie coke</span><span>Skittles</span><span>R-ball</span>
+      </div>
+      <div class="legal-badge legal-cii">DEA Schedule II (Rx) — abuse via oral, insufflated, and IV routes</div>
+    </div>
+    <div class="sub-body">
+
+      <div class="section moa">
+        <h4>Mechanism of Action</h4>
+        <p>Unlike amphetamine, methylphenidate is a pure <strong>reuptake inhibitor</strong> — it blocks DAT (and to a lesser extent NET) without reversing transporter direction, so it does not directly trigger vesicular dopamine release the way amphetamine does. Functionally, in overdose the net result is the same excessive-extracellular-dopamine/norepinephrine picture, just reached by a different transporter mechanism — which is why its overdose toxidrome is described as clinically indistinguishable from amphetamine intoxication.<sup>[1,2]</sup></p>
+        <p>Crushed tablets used intranasally or intravenously introduce insoluble tablet fillers (talc, cellulose) that cause pulmonary/retinal microembolization and, with repeated IV misuse, has been reported to precipitate multi-organ failure.<sup>[3]</sup></p>
+      </div>
+
+      <div class="section pk">
+        <h4>Pharmacokinetics &amp; Formulations</h4>
+        <p>Immediate-release: onset ~20–30 min, duration 3–4 hours, dosed 2–3×/day. Extended-release (osmotic-pump Concerta, biphasic Metadate CD, liquid Quillivant XR, transdermal patch): duration 8–12 hours, once-daily dosing. Formulation matters clinically — a crushed ER tablet can dump a full day's dose at once, and osmotic-pump "ghost tablets" may appear intact in stool despite full drug release.</p>
+      </div>
+
+      <div class="section tox">
+        <h4>Clinical Toxidrome</h4>
+        <p>Agitation, hallucinations, psychosis (can mimic cocaine- or amphetamine-induced psychosis, particularly with chronic insufflation "runs"), lethargy paradoxically at very high doses, seizures, tachycardia, dysrhythmias, hypertension, and hyperthermia. Effects are dose-dependent; death has been reported but is rare.<sup>[2]</sup></p>
+      </div>
+
+      <div class="section signs">
+        <h4>Symptomology</h4>
+        <p>The overdose picture is indistinguishable on exam from amphetamine toxicity — the same sympathomimetic and neuropsychiatric findings apply, and there is no clinical sign specific to methylphenidate over other stimulants of this class.</p>
+        <div class="no-patho">
+          <span class="patho-label">Clinically Distinctive, Not Pathognomonic</span>
+          <p>One formulation-specific clue is worth knowing rather than a true toxicity sign: the osmotic-release (OROS) shell of Concerta-type extended-release tablets can pass intact in the stool after the drug has been fully released, alarming caregivers who find a "whole pill" — this reflects normal pharmacokinetics of that delivery system, not treatment failure or non-absorption, and should not be mistaken for an unabsorbed, retrievable overdose.</p>
+        </div>
+      </div>
+
+      <div class="section bedside">
+        <h4>At the Bedside</h4>
+        <ul class="bedside-list">
+          <li>Management is largely supportive, centered on benzodiazepines to interrupt the sympathomimetic syndrome — mirrors amphetamine overdose management directly.</li>
+          <li>Consider activated charcoal for large, recent oral ingestions with a protected airway.</li>
+          <li>For pediatric unintentional ingestions (the majority of ADHD-medication poison-center calls), risk stratify by formulation and time since ingestion — ER products carry a longer observation window.<sup>[4]</sup></li>
+        </ul>
+      </div>
+
+      <div class="section crit">
+        <h4>Critical Care Escalation</h4>
+        <ul class="bedside-list">
+          <li>Seizures and dysrhythmias managed per standard stimulant-overdose pathways.</li>
+          <li>IV/insufflation misuse presenting with embolic phenomena (pulmonary infiltrates, retinal findings) or multi-organ dysfunction warrants ICU-level workup beyond simple overdose management.</li>
+        </ul>
+      </div>
+
+      <div class="pearl">
+        <span class="pearl-label">Practice Shift</span>
+        <p>A "prescribed" stimulant is not a "safe" stimulant once it's crushed and insufflated. Ask about route, not just substance — the same pill bottle can represent a therapeutic dose or an IV drug of abuse depending on how it was taken.</p>
+      </div>
+
+      <div class="citations">
+        <span class="cite-label">Sources</span>
+        <ol>
+          <li>Spiller HA, Hays HL, Aleguas A. Overdose of Drugs for ADHD. CNS Drugs. 2013;27(7):531-543.</li>
+          <li>Klein-Schwartz W. Abuse and Toxicity of Methylphenidate. Curr Opin Pediatr. 2002;14(2):219-223.</li>
+          <li>Stecyk O, et al. Multiple Organ Failure Resulting from Intravenous Abuse of Methylphenidate Hydrochloride. Ann Emerg Med. 1985;14(6):597-599.</li>
+          <li>Manini AF, et al. Methylphenidate Poisoning: An Evidence-Based Consensus Guideline for Out-of-Hospital Management. Clin Toxicol. 2007;45(7):737-752.</li>
+        </ol>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- CAFFEINE -->
+  <!-- ============================================================ -->
+  <div class="substance" id="caffeine">
+    <div class="sub-head">
+      <div class="class-label">Stimulant · Methylxanthine</div>
+      <h3>Caffeine</h3>
+      <p class="formal">1,3,7-Trimethylxanthine</p>
+      <div class="street-names">
+        <span>Energy drinks</span><span>Pre-workout</span><span>No-Doz</span><span>Caffeine powder/pills</span>
+      </div>
+      <div class="legal-badge legal-legal">Unscheduled — legal, OTC, ubiquitous</div>
+    </div>
+    <div class="sub-body">
+
+      <div class="section moa">
+        <h4>Mechanism of Action</h4>
+        <p>Caffeine is a nonselective antagonist of adenosine A1 and A2A receptors, blocking adenosine's normal inhibitory/sedating tone on the CNS and cardiovascular system — the opposite mechanistic family from the monoamine-transporter stimulants above. At toxic doses it additionally inhibits phosphodiesterase (raising intracellular cAMP) and promotes catecholamine release from the adrenal medulla and sympathetic terminals, which is what produces a sympathomimetic-like toxidrome despite the fundamentally different primary target.<sup>[1]</sup></p>
+      </div>
+
+      <div class="section dose">
+        <h4>Intoxicating &amp; Lethal Levels</h4>
+        <table>
+          <tr><th>Exposure</th><th>Amount</th></tr>
+          <tr><td>Typical cup of coffee</td><td>40–150 mg</td></tr>
+          <tr><td>Daily consumption, ~85% of US adults</td><td>Variable, generally &lt;400 mg/day without toxicity</td></tr>
+          <tr><td>Pure caffeine powder, 1 teaspoon</td><td>~2,700 mg (≈28 cups of coffee)</td></tr>
+          <tr><td>Reported lethal serum level</td><td>80–100 μg/mL</td></tr>
+          <tr><td>Estimated LD50</td><td>150–200 mg/kg (≈10–14 g in a 70 kg adult)</td></tr>
+        </table>
+        <p>Caffeine clearance varies up to 40-fold between individuals based on CYP1A2 genotype; pregnancy (third trimester) triples the half-life, and oral contraceptives roughly double it — the same nominal dose is not equally risky across patients.<sup>[1,2]</sup></p>
+      </div>
+
+      <div class="section tox">
+        <h4>Clinical Toxidrome</h4>
+        <p>Tachycardia, hypertension progressing to hypotension in severe cases, tremor, anxiety, GI upset, and — at toxic serum levels — seizures and cardiac dysrhythmias, which are the dominant causes of fatality. Rhabdomyolysis, significant electrolyte disturbance (notably hypokalemia from catecholamine-driven intracellular potassium shift), and aspiration from airway compromise contribute to morbidity in severe overdose.<sup>[1,3]</sup></p>
+      </div>
+
+      <div class="section signs">
+        <h4>Symptomology</h4>
+        <p>Tremor, anxiety, GI upset, and tachycardia dominate mild-moderate toxicity; there is no skin, mucosal, or dental finding characteristic of caffeine the way there is for cocaine or methamphetamine — caffeine toxicity is a biochemical diagnosis more than an exam diagnosis.</p>
+        <div class="no-patho">
+          <span class="patho-label">Closest Thing to a Signature Finding</span>
+          <p><strong>Marked hypokalemia out of proportion to any GI losses</strong>, in a patient with tremor and tachycardia and no history of another sympathomimetic, is the closest caffeine comes to a distinguishing lab pattern — it reflects catecholamine-driven intracellular potassium shift rather than true total-body depletion, and over-correction with IV potassium risks rebound hyperkalemia as catecholamine excess resolves.</p>
+        </div>
+      </div>
+
+      <div class="section bedside">
+        <h4>At the Bedside</h4>
+        <ul class="bedside-list">
+          <li>Supportive care and oral hydration suffice for minor ingestions.</li>
+          <li>Activated charcoal if presenting early after a large ingestion, with airway protected.</li>
+          <li><strong>Esmolol is first-line for tachydysrhythmia</strong> — beta-blockade is not contraindicated here the way it is a concern in cocaine toxicity, since caffeine's mechanism doesn't leave an unopposed-alpha problem.</li>
+          <li>IV fluids and correct hypokalemia for more significant toxicity.<sup>[1]</sup></li>
+        </ul>
+      </div>
+
+      <div class="section crit">
+        <h4>Critical Care Escalation</h4>
+        <ul class="bedside-list">
+          <li>Benzodiazepines for seizures.</li>
+          <li>Refractory, supralethal ingestions have been successfully managed with combined lipid emulsion therapy and hemodialysis in case reports — consider early nephrology/toxicology consultation for massive intentional overdoses.<sup>[4]</sup></li>
+          <li>Any intentional caffeine overdose warrants psychiatric evaluation prior to discharge.</li>
+        </ul>
+      </div>
+
+      <div class="pearl">
+        <span class="pearl-label">Practice Shift</span>
+        <p>Caffeine is the one stimulant on this list where beta-blockade isn't a trap — esmolol is the actual first-line agent for its tachydysrhythmias. Don't extrapolate the "avoid unopposed beta-blockade" rule from cocaine onto every stimulant reflexively.</p>
+      </div>
+
+      <div class="citations">
+        <span class="cite-label">Sources</span>
+        <ol>
+          <li>Murray A, Traylor J. Caffeine Toxicity. StatPearls [Internet]. NCBI Bookshelf NBK532910, 2025.</li>
+          <li>Seifert SM, et al. An Analysis of Energy-Drink Toxicity in the National Poison Data System. Clin Toxicol (Phila). 2013;51(7):566-574.</li>
+          <li>Voskoboinik A, et al. Caffeine and Arrhythmias: Time to Grind the Data. JACC Clin Electrophysiol. 2018;4(4):425-432.</li>
+          <li>Duska F, et al. Successful Treatment of Supralethal Caffeine Overdose with Lipid Infusion and Dialysis. Am J Emerg Med. 2015;33(5):738.e5-7.</li>
+        </ol>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ============================================================ -->
+  <!-- CLASS: OPIOIDS -->
+  <!-- ============================================================ -->
+  <div class="class-banner">
+    <span class="tag">Drug Class</span>
+    <h2>Opioids</h2>
+    <p>Agents acting at the mu-opioid receptor to produce analgesia, euphoria, and dose-dependent respiratory depression. The shared toxidrome — miosis, respiratory depression, CNS depression — is remarkably consistent across the class; what differs is potency, receptor kinetics, half-life, and non-opioid mechanisms layered on top (serotonergic, sodium-channel, cardiac).</p>
+  </div>
+
+  <div class="substance" id="heroin">
+    <div class="sub-head">
+      <div class="class-label">Opioid · Semisynthetic (Diacetylmorphine)</div>
+      <h3>Heroin</h3>
+      <p class="formal">Diacetylmorphine — prodrug rapidly deacetylated to 6-monoacetylmorphine then morphine</p>
+      <div class="street-names"><span>H</span><span>Smack</span><span>Dope</span><span>Horse</span><span>Black tar</span><span>China white</span></div>
+      <div class="legal-badge legal-cii">DEA Schedule I</div>
+    </div>
+    <div class="sub-body">
+      <div class="section moa">
+        <h4>Mechanism of Action</h4>
+        <p>Diacetylmorphine itself is largely inactive; its high lipophilicity allows rapid blood-brain-barrier penetration, after which it is deacetylated to 6-monoacetylmorphine (6-MAM, a potent, itself lipophilic metabolite) and then morphine. Both act as full agonists at the mu-opioid receptor, a Gi-coupled GPCR that inhibits adenylate cyclase, opens potassium channels, and closes voltage-gated calcium channels — the net effect is neuronal hyperpolarization and reduced neurotransmitter release, producing analgesia in the periaqueductal gray/spinal cord and euphoria via disinhibition of ventral tegmental dopamine neurons. Respiratory depression follows from mu-receptor-mediated blunting of the brainstem's response to hypercapnia.<sup>[1]</sup></p>
+      </div>
+      <div class="section pk">
+        <h4>Pharmacokinetics &amp; Route</h4>
+        <p>IV/IM onset seconds-to-minutes; smoked/insufflated onset within minutes. 6-MAM is the only metabolite specific to heroin (vs. other morphine-derived opioids) and is the forensic/urine marker distinguishing heroin use from poppy-seed exposure or prescribed morphine, but it is detectable for only a few hours.</p>
+      </div>
+      <div class="section signs">
+        <h4>Symptomology</h4>
+        <p>Classic opioid toxidrome: miosis, respiratory depression (rate and depth both reduced), CNS depression, and hyporeflexia.</p>
+        <div class="patho-box">
+          <span class="patho-label">Pathognomonic Clue</span>
+          <p>The triad of <strong>pinpoint pupils, depressed respiration, and depressed consciousness</strong> reversing promptly with naloxone is as close to a bedside-diagnostic sign as toxicology offers — response to the antidote confirms the diagnosis in real time. Track marks, skin-popping scars, and necrotic ulcers at injection sites support a chronic-use history; noncardiogenic pulmonary edema (heroin lung) shortly after use is a recognized, distinctive complication.<sup>[2]</sup></p>
+        </div>
+      </div>
+      <div class="section bedside">
+        <h4>At the Bedside</h4>
+        <ul class="bedside-list">
+          <li>Bag-valve-mask ventilation first while preparing naloxone — respiratory support should not wait on the antidote.</li>
+          <li>Naloxone 0.04–0.4 mg IV/IM/IN titrated to adequate respiration (not full arousal) — the goal is breathing, not precipitating withdrawal.</li>
+          <li>Observe 6–12 hours post-reversal given naloxone's short half-life (30–80 min) relative to heroin/morphine's duration.<sup>[3]</sup></li>
+        </ul>
+      </div>
+      <div class="section crit">
+        <h4>Critical Care Escalation</h4>
+        <ul class="bedside-list">
+          <li>Recurrent re-sedation despite bolus dosing → naloxone infusion (typically two-thirds of the effective bolus dose per hour).</li>
+          <li>Noncardiogenic pulmonary edema managed with supportive oxygenation/ventilation, not diuretics.</li>
+          <li>All patients with OUD, regardless of stated interest, should be offered take-home naloxone and a buprenorphine/OUD-treatment pathway before discharge.<sup>[3]</sup></li>
+        </ul>
+      </div>
+      <div class="pearl">
+        <span class="pearl-label">Practice Shift</span>
+        <p>Titrate naloxone to respiration, not wakefulness — over-reversal in an opioid-dependent patient buys you vomiting, aspiration, and a combative patient, not a better outcome.</p>
+      </div>
+      <div class="citations">
+        <span class="cite-label">Sources</span>
+        <ol>
+          <li>Opioid Toxicity. StatPearls [Internet]. NCBI Bookshelf NBK551554, 2025.</li>
+          <li>Sporer KA, Dorn E. Heroin-Related Noncardiogenic Pulmonary Edema: A Case Series. Chest. 2001;120(5):1628-1632.</li>
+          <li>Naloxone. StatPearls [Internet]. NCBI Bookshelf NBK441910, 2024; WikEM Opioid Toxicity, 2026.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <div class="substance" id="fentanyl">
+    <div class="sub-head">
+      <div class="class-label">Opioid · Synthetic Phenylpiperidine</div>
+      <h3>Fentanyl &amp; Analogs</h3>
+      <p class="formal">Fentanyl, carfentanil, nitazenes (structurally distinct but functionally grouped here)</p>
+      <div class="street-names"><span>Fent</span><span>China white</span><span>Apache</span><span>Tango &amp; Cash</span><span>Blues</span></div>
+      <div class="legal-badge legal-cii">DEA Schedule II (Rx) — dominant illicit-supply contaminant</div>
+    </div>
+    <div class="sub-body">
+      <div class="section moa">
+        <h4>Mechanism of Action</h4>
+        <p>Full mu-opioid agonist, 50–100× more potent than morphine by weight, with extreme lipophilicity giving near-instant CNS penetration. Fentanyl and its analogs (carfentanil ~10,000× morphine potency, nitazenes with variable but often very high potency) share the same mu-receptor mechanism as heroin/morphine but bind with slower dissociation kinetics at high concentrations, which is the pharmacologic basis for concern about naloxone-resistant toxicity in mass-overdose events.<sup>[1]</sup></p>
+      </div>
+      <div class="section tox">
+        <h4>Clinical Considerations</h4>
+        <p>Onset is faster and duration often shorter than heroin per dose, but illicit fentanyl's extreme potency-per-milligram and inconsistent adulteration of the drug supply make dosing unpredictable; rapid-onset apnea without the gradual sedation seen with lower-potency opioids is characteristic. High-dose fentanyl (including rapid IV push in anesthesia) can cause fentanyl-induced chest wall rigidity ("wooden chest syndrome") severe enough to prevent bag-mask ventilation.</p>
+      </div>
+      <div class="section signs">
+        <h4>Symptomology</h4>
+        <div class="patho-box">
+          <span class="patho-label">Pathognomonic Clue</span>
+          <p><strong>Sudden apnea/cyanosis without the typical progressive sedation curve</strong>, especially in a cluster of overdoses tied to one supply source, points to fentanyl or an analog rather than heroin alone. <strong>Chest wall rigidity refractory to bag-mask ventilation</strong> after rapid high-dose fentanyl exposure is distinctive enough that it changes the immediate resuscitation plan (see below).<sup>[2]</sup></p>
+        </div>
+      </div>
+      <div class="section bedside">
+        <h4>At the Bedside</h4>
+        <ul class="bedside-list">
+          <li>Standard naloxone dosing is effective for fentanyl analogs per current animal and clinical data, contrary to earlier anecdotal concern — but a higher proportion of patients need a naloxone infusion rather than a single bolus.</li>
+          <li>Fentanyl test strips and harm-reduction supply checks are appropriate discharge counseling in any community with a contaminated drug supply.<sup>[3]</sup></li>
+        </ul>
+      </div>
+      <div class="section crit">
+        <h4>Critical Care Escalation</h4>
+        <ul class="bedside-list">
+          <li>Wooden chest rigidity unresponsive to naloxone → neuromuscular blockade and intubation, since naloxone reversal may be too slow for an acutely obstructed airway.</li>
+          <li>Naloxone infusion titrated to respiratory rate/depth for recurrent re-sedation; observe well beyond naloxone's half-life given fentanyl's own variable duration.<sup>[3,4]</sup></li>
+        </ul>
+      </div>
+      <div class="pearl">
+        <span class="pearl-label">Practice Shift</span>
+        <p>Don't over-anchor on "naloxone won't work on fentanyl" — it does, at standard doses, in the overwhelming majority of cases. The real practice shift is infrastructure: plan for repeat dosing and infusions, not higher single-bolus doses.</p>
+      </div>
+      <div class="citations">
+        <span class="cite-label">Sources</span>
+        <ol>
+          <li>Opioid Overdose Management: Guidelines and Antidotes. European Society of Medicine, 2025.</li>
+          <li>Buprenorphine/Naloxone Toxicity. Medscape/emedicine, 2025.</li>
+          <li>Naloxone Dosing Strategies. University of Utah Poison Control, 2026.</li>
+          <li>Moss MJ, Warrick BJ, Nelson LS, et al. ACMT/AACT Position Statement: Preventing Occupational Fentanyl Exposure. Clin Toxicol. 2018;56(4):297-300.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <div class="substance" id="methadone-buprenorphine">
+    <div class="sub-head">
+      <div class="class-label">Opioid · OUD Treatment Agents (Long-Acting)</div>
+      <h3>Methadone &amp; Buprenorphine</h3>
+      <p class="formal">Methadone (full mu agonist); buprenorphine (partial mu agonist / kappa antagonist)</p>
+      <div class="street-names"><span>Dolls</span><span>Done</span><span>Subs</span><span>Bupe</span><span>Strips</span></div>
+      <div class="legal-badge legal-cii">Methadone Schedule II; buprenorphine Schedule III</div>
+    </div>
+    <div class="sub-body">
+      <div class="section moa">
+        <h4>Mechanism of Action</h4>
+        <p>Methadone is a full mu-opioid agonist with an additional NMDA-antagonist property (useful for opioid-tolerant pain and reducing withdrawal-related hyperalgesia) but also blocks the cardiac hERG potassium channel, prolonging the QT interval independent of opioid effect. Buprenorphine is a high-affinity partial mu agonist with a ceiling effect on respiratory depression and analgesia at higher doses, plus kappa-receptor antagonism and slow receptor dissociation — properties that make it safer in overdose but capable of precipitating withdrawal by displacing full agonists (heroin, fentanyl, methadone) from the receptor without providing equivalent activation.<sup>[1,2]</sup></p>
+      </div>
+      <div class="section pk">
+        <h4>Pharmacokinetics</h4>
+        <p>Methadone half-life 8–59 hours (highly variable, accumulates with repeat dosing) — a major reason methadone overdose is more dangerous and prolonged than its single-dose potency suggests. Buprenorphine sublingual bioavailability is high; its ceiling effect and slow dissociation give it a long duration of action (24+ hours) with a wide safety margin as monotherapy, though combination with other CNS depressants removes much of that margin.</p>
+      </div>
+      <div class="section signs">
+        <h4>Symptomology</h4>
+        <div class="no-patho">
+          <span class="patho-label">Shared Toxidrome, Distinct Cardiac Signature</span>
+          <p>Both present with the standard opioid toxidrome. Methadone's distinguishing feature is <strong>QT prolongation and torsades risk</strong> disproportionate to its opioid effect — an ECG showing a long QT in an opioid-toxic patient should prompt methadone suspicion even without a confirmed history.</p>
+        </div>
+      </div>
+      <div class="section bedside">
+        <h4>At the Bedside</h4>
+        <ul class="bedside-list">
+          <li>Methadone overdose: naloxone titrated to respiration, with much higher cumulative doses and a naloxone infusion typically required given methadone's long half-life; obtain an ECG for QTc.</li>
+          <li>Buprenorphine-precipitated withdrawal in a patient on full agonists: supportive care, and — counterintuitively — continued/escalated buprenorphine dosing has case-report support for resolving precipitated withdrawal faster than stopping it.<sup>[3]</sup></li>
+        </ul>
+      </div>
+      <div class="section crit">
+        <h4>Critical Care Escalation</h4>
+        <ul class="bedside-list">
+          <li>Torsades from methadone-associated QT prolongation: magnesium, overdrive pacing/isoproterenol as needed, correct electrolytes; avoid other QT-prolonging agents.</li>
+          <li>ICU-level buprenorphine (IV) has shown efficacy comparable to or exceeding titrated naloxone for methadone-induced respiratory depression in small studies, with less precipitated withdrawal and fewer intubations — an emerging alternative worth knowing even though naloxone remains first-line.<sup>[4]</sup></li>
+        </ul>
+      </div>
+      <div class="pearl">
+        <span class="pearl-label">Practice Shift</span>
+        <p>A patient in buprenorphine-precipitated withdrawal needs more buprenorphine, not less — the instinct to stop the "causative" drug is backwards here.</p>
+      </div>
+      <div class="citations">
+        <span class="cite-label">Sources</span>
+        <ol>
+          <li>Buprenorphine/Naloxone Toxicity. Medscape/emedicine, 2025.</li>
+          <li>Low-Dose Initiation of Buprenorphine/Naloxone for Chronic Non-Cancer Pain. Case Series, PMC, 2024.</li>
+          <li>Case Report: Buprenorphine-Precipitated Fentanyl Withdrawal Treated with High-Dose Buprenorphine. PMC, 2023.</li>
+          <li>Opioid Overdose Management: Guidelines and Antidote Advances. European Society of Medicine, 2025.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <div class="substance" id="tramadol-loperamide">
+    <div class="sub-head">
+      <div class="class-label">Opioid · Atypical / OTC Misuse</div>
+      <h3>Tramadol &amp; Loperamide</h3>
+      <p class="formal">Tramadol (weak mu agonist + SNRI); loperamide (peripheral mu agonist, antidiarrheal)</p>
+      <div class="street-names"><span>Ultram</span><span>Trammies</span><span>Imodium (loperamide OTC)</span></div>
+      <div class="legal-badge legal-otc">Tramadol Schedule IV; loperamide OTC/unscheduled</div>
+    </div>
+    <div class="sub-body">
+      <div class="section moa">
+        <h4>Mechanism of Action</h4>
+        <p>Tramadol is a weak mu-opioid agonist whose analgesic effect depends heavily on its serotonin-norepinephrine reuptake inhibition — a mechanism shared with SNRI antidepressants rather than classic opioids, which is why it can cause both seizures and serotonin syndrome independent of any co-ingested serotonergic agent.<sup>[1]</sup> Loperamide is a peripherally restricted mu agonist at therapeutic dose (excluded from the CNS by P-glycoprotein efflux), but at grossly supratherapeutic doses (misused for opioid-like euphoria or self-treatment of withdrawal) it saturates P-glycoprotein, crosses into the CNS, and also blocks cardiac hERG potassium and sodium channels — a dual-channel cardiotoxicity distinct from any other opioid on this list.<sup>[2]</sup></p>
+      </div>
+      <div class="section signs">
+        <h4>Symptomology</h4>
+        <div class="patho-box">
+          <span class="patho-label">Pathognomonic Clue</span>
+          <p><strong>Seizures in a patient with an otherwise mild opioid toxidrome</strong> is characteristic of tramadol — an opioid causing convulsions at or near therapeutic doses is atypical enough to point directly at this agent. For loperamide, <strong>QRS widening and QT prolongation with torsades or ventricular tachycardia in a patient using antidiarrheal medication at absurd doses</strong> (case reports document &gt;100 mg/day, sometimes hundreds of tablets) is the signature finding — a mechanism no other opioid on this list produces.<sup>[3,4]</sup></p>
+        </div>
+      </div>
+      <div class="section bedside">
+        <h4>At the Bedside</h4>
+        <ul class="bedside-list">
+          <li>Tramadol seizures: benzodiazepines; naloxone helps the opioid component but will not address the SNRI-mediated seizure/serotonin-syndrome risk.</li>
+          <li>Loperamide cardiotoxicity: continuous cardiac monitoring, correct electrolytes (especially potassium/magnesium), and treat as you would any sodium-channel-blocker/QT-prolonging overdose.</li>
+        </ul>
+      </div>
+      <div class="section crit">
+        <h4>Critical Care Escalation</h4>
+        <ul class="bedside-list">
+          <li>Sodium bicarbonate for loperamide-associated QRS widening; magnesium and overdrive pacing for torsades.</li>
+          <li>Serotonin syndrome from tramadol: benzodiazepines first-line, cyproheptadine for refractory cases, discontinue all serotonergic co-medications.<sup>[1]</sup></li>
+        </ul>
+      </div>
+      <div class="pearl">
+        <span class="pearl-label">Practice Shift</span>
+        <p>"It's just an over-the-counter antidiarrheal" is exactly the assumption that delays recognizing loperamide cardiotoxicity — ask about dose, not just drug name.</p>
+      </div>
+      <div class="citations">
+        <span class="cite-label">Sources</span>
+        <ol>
+          <li>Tramadol: Understanding the Risk of Serotonin Syndrome and Seizures. Am J Med. 2018.</li>
+          <li>Cardiac Arrhythmia Secondary to Loperamide Abuse and Toxicity. PMC, 2020.</li>
+          <li>Loperamide Cases Reported to US Poison Centers, 2010-2022. PMC.</li>
+          <li>Tramadol Use and Risk of Seizure. PMC, 2025.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- CLASS: SEDATIVE-HYPNOTICS -->
+  <!-- ============================================================ -->
+  <div class="class-banner">
+    <span class="tag">Drug Class</span>
+    <h2>Sedative-Hypnotics</h2>
+    <p>GABAergic and GABA-adjacent agents used for anxiety, insomnia, and sedation, sharing a common CNS-depressant toxidrome but differing sharply in safety margin, antidote availability, and withdrawal severity.</p>
+  </div>
+
+  <div class="substance" id="benzodiazepines">
+    <div class="sub-head">
+      <div class="class-label">Sedative-Hypnotic · GABA-A Positive Allosteric Modulator</div>
+      <h3>Benzodiazepines</h3>
+      <p class="formal">Alprazolam, diazepam, lorazepam, clonazepam, and related agents</p>
+      <div class="street-names"><span>Benzos</span><span>Xannies</span><span>Bars</span><span>Bricks</span><span>Downers</span></div>
+      <div class="legal-badge legal-cii">DEA Schedule IV</div>
+    </div>
+    <div class="sub-body">
+      <div class="section moa">
+        <h4>Mechanism of Action</h4>
+        <p>Positive allosteric modulators at the GABA-A receptor — they don't open the chloride channel directly but increase the frequency of channel opening in the presence of GABA, enhancing inhibitory neurotransmission throughout the CNS. This is mechanistically distinct from barbiturates (which increase channel <em>duration</em> and can activate the channel independent of GABA at high dose) — the reason benzodiazepines have a ceiling effect on respiratory depression as monotherapy while barbiturates do not.<sup>[1]</sup></p>
+      </div>
+      <div class="section tox">
+        <h4>Clinical Toxidrome</h4>
+        <p>Sedation, ataxia, slurred speech, and — in isolated overdose — rarely progresses to significant respiratory depression or cardiovascular instability; the ceiling effect makes isolated benzodiazepine overdose one of the safer intentional overdoses in toxicology. Co-ingestion with alcohol, opioids, or other CNS depressants removes that safety margin and is the actual driver of most fatal benzodiazepine-involved overdoses.<sup>[2]</sup></p>
+      </div>
+      <div class="section signs">
+        <h4>Symptomology</h4>
+        <div class="no-patho">
+          <span class="patho-label">No Distinguishing Sign — the Absence of Findings Is the Clue</span>
+          <p>Deep coma, hyperreflexia/clonus, cardiovascular instability, or respiratory failure requiring ventilation in a suspected isolated benzodiazepine overdose should prompt a search for a co-ingestant (ethanol, opioids, TCAs) rather than confirming benzodiazepine severity — that clinical picture is not what benzodiazepines alone produce.<sup>[2]</sup></p>
+        </div>
+      </div>
+      <div class="section bedside">
+        <h4>At the Bedside</h4>
+        <ul class="bedside-list">
+          <li>Supportive care — airway positioning, monitoring — is sufficient for the overwhelming majority of cases.</li>
+          <li>GI decontamination is not routinely indicated; the risk of aspiration in a sedated patient outweighs any benefit.</li>
+        </ul>
+      </div>
+      <div class="section crit">
+        <h4>Critical Care Escalation</h4>
+        <ul class="bedside-list">
+          <li>Flumazenil is a specific antidote but is <strong>relatively contraindicated</strong> in unknown/mixed overdose, chronic benzodiazepine use, seizure history, or QRS prolongation — it can precipitate seizures and life-threatening withdrawal, and a meta-analysis found significantly more serious adverse events with flumazenil than placebo (NNH = 50). Reserve for isolated, benzodiazepine-naive, iatrogenic reversal scenarios, and consult poison control first.<sup>[3,4]</sup></li>
+          <li>Intubate for airway protection if truly compromised — this is far more common with co-ingestants than with benzodiazepines alone.</li>
+        </ul>
+      </div>
+      <div class="pearl">
+        <span class="pearl-label">Practice Shift</span>
+        <p>Reach for flumazenil far less often than intuition suggests. In real-world mixed overdoses — which is most of them — the antidote causes more harm than the drug it's reversing.</p>
+      </div>
+      <div class="citations">
+        <span class="cite-label">Sources</span>
+        <ol>
+          <li>Sedative-Hypnotic Drug Overdose. AMBOSS, 2025.</li>
+          <li>Benzodiazepine Toxicity. LITFL Toxicology Library, 2020.</li>
+          <li>Flumazenil in Benzodiazepine Overdose. CMAJ. 2016;188(17-18):e537.</li>
+          <li>Benzodiazepine Toxicity Treatment &amp; Management. Medscape/emedicine.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <div class="substance" id="barbiturates-zdrugs">
+    <div class="sub-head">
+      <div class="class-label">Sedative-Hypnotic · GABA-A Agonist</div>
+      <h3>Barbiturates &amp; Z-Drugs</h3>
+      <p class="formal">Phenobarbital, secobarbital (barbiturates); zolpidem, zaleplon, eszopiclone (Z-drugs)</p>
+      <div class="street-names"><span>Barbs</span><span>Reds</span><span>Downers (barbiturates)</span><span>Ambien</span><span>Zombie pills (zolpidem)</span></div>
+      <div class="legal-badge legal-cii">Barbiturates Schedule II-IV; Z-drugs Schedule IV</div>
+    </div>
+    <div class="sub-body">
+      <div class="section moa">
+        <h4>Mechanism of Action</h4>
+        <p>Barbiturates increase the <em>duration</em> of GABA-A chloride channel opening and, at high concentration, can activate the channel directly without GABA present — unlike benzodiazepines' GABA-dependent modulation, this gives barbiturates no ceiling effect and a narrow therapeutic index, making overdose far more dangerous. Z-drugs were designed to act more selectively at the alpha-1 GABA-A subunit (favoring sedation over the anxiolytic/muscle-relaxant effects of benzodiazepines) and behave clinically like low-toxicity benzodiazepines as monotherapy.<sup>[1]</sup></p>
+      </div>
+      <div class="section tox">
+        <h4>Clinical Toxidrome</h4>
+        <p>Barbiturate overdose: dose-dependent progression from sedation to respiratory failure, hypotension, and cardiogenic shock — potentially fatal even in isolated ingestion, unlike benzodiazepines. Z-drug overdose: sedation is the dominant finding; coma, respiratory depression, and cardiovascular instability are rare as monotherapy, mirroring benzodiazepines' relative safety.<sup>[1]</sup></p>
+      </div>
+      <div class="section bedside">
+        <h4>At the Bedside</h4>
+        <ul class="bedside-list">
+          <li>Supportive care is the mainstay for both; GI decontamination is not routinely indicated for either.</li>
+          <li>Flumazenil may be cautiously considered for isolated Z-drug overdose (it does cross-react at the GABA-A benzodiazepine site) but carries the same seizure/withdrawal caveats as in benzodiazepine overdose — it has no effect on barbiturates at all, since they act at a separate site on the receptor.<sup>[2]</sup></li>
+        </ul>
+      </div>
+      <div class="section crit">
+        <h4>Critical Care Escalation</h4>
+        <ul class="bedside-list">
+          <li>Severe barbiturate toxicity: airway/ventilatory support, vasopressors for cardiogenic shock, and — for phenobarbital specifically — urinary alkalinization plus multi-dose activated charcoal to enhance elimination (phenobarbital undergoes enterohepatic recirculation and has a pH-dependent renal clearance, unlike most other sedative-hypnotics).</li>
+          <li>Extracorporeal removal (hemodialysis/hemoperfusion) can be considered in massive, refractory barbiturate overdose.</li>
+        </ul>
+      </div>
+      <div class="pearl">
+        <span class="pearl-label">Practice Shift</span>
+        <p>Don't lump barbiturates in with the "benzos are basically safe" mental model — the no-ceiling-effect mechanism makes isolated barbiturate overdose genuinely lethal in a way isolated benzodiazepine overdose rarely is.</p>
+      </div>
+      <div class="citations">
+        <span class="cite-label">Sources</span>
+        <ol>
+          <li>Sedative-Hypnotic Drug Overdose. AMBOSS, 2025.</li>
+          <li>FLUMAZENIL. Poisoning &amp; Drug Overdose, 8e. AccessMedicine, McGraw Hill.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <div class="substance" id="ghb">
+    <div class="sub-head">
+      <div class="class-label">Sedative-Hypnotic · GHB-B/GABA-B Receptor Agonist</div>
+      <h3>GHB / GBL / 1,4-Butanediol</h3>
+      <p class="formal">Gamma-hydroxybutyrate; gamma-butyrolactone and 1,4-butanediol are prodrugs converted to GHB in vivo</p>
+      <div class="street-names"><span>G</span><span>Liquid ecstasy</span><span>Georgia home boy</span><span>Fantasy</span><span>Goop</span></div>
+      <div class="legal-badge legal-cii">DEA Schedule I (recreational) / III (sodium oxybate, narcolepsy Rx)</div>
+    </div>
+    <div class="sub-body">
+      <div class="section moa">
+        <h4>Mechanism of Action</h4>
+        <p>GHB is an endogenous CNS metabolite of GABA that acts at two distinct sites: a specific, excitatory GHB receptor, and — at the higher concentrations reached with exogenous use — as a weak GABA-B receptor agonist, which is the inhibitory action responsible for its sedative-hypnotic and euphoric-disinhibiting effects. GBL and 1,4-BD are not active themselves but are rapidly converted to GHB by lactonase and alcohol/aldehyde dehydrogenase respectively, functioning as prodrugs with the same downstream toxicity.<sup>[1,2]</sup></p>
+      </div>
+      <div class="section pk">
+        <h4>Pharmacokinetics</h4>
+        <p>Extremely short half-life (~27–30 minutes), which produces a narrow, unpredictable dose-response curve — the difference between an intoxicating dose and a coma-inducing dose is small, and effects can end almost as abruptly as they began.</p>
+      </div>
+      <div class="section signs">
+        <h4>Symptomology</h4>
+        <div class="patho-box">
+          <span class="patho-label">Pathognomonic Clue</span>
+          <p><strong>Abrupt-onset coma with unpredictable, rapid spontaneous recovery within a few hours</strong> — a patient who is deeply unresponsive one hour and abruptly awake, agitated, and trying to self-extubate the next — is the classic GHB presentation and distinguishes it from virtually every other sedative-hypnotic on this list, which have more gradual onset/offset. This kinetic signature is often more diagnostic than any lab test, since GHB is not detected on routine screens.<sup>[3]</sup></p>
+        </div>
+      </div>
+      <div class="section bedside">
+        <h4>At the Bedside</h4>
+        <ul class="bedside-list">
+          <li>Supportive care — there is no specific antidote. Airway support and mechanical ventilation may be required for severe intoxication.</li>
+          <li>Bradycardia responds to atropine; hypotension usually responds to IV fluids.</li>
+          <li>Consider naloxone if opioid co-ingestion is suspected, but recognize it will not affect GHB itself.<sup>[4]</sup></li>
+        </ul>
+      </div>
+      <div class="section crit">
+        <h4>Critical Care Escalation</h4>
+        <ul class="bedside-list">
+          <li>Because of the abrupt-awakening pattern, sedation is often unnecessary during mechanical ventilation — plan for possible sudden extubation attempts.</li>
+          <li>GHB withdrawal is a distinct, life-threatening emergency (unlike acute intoxication) — it can progress rapidly to severe agitation, autonomic instability, and delirium resembling severe alcohol withdrawal, sometimes within hours of last use. High-dose benzodiazepines are first-line; refractory cases have used barbiturates, baclofen, propofol, or dexmedetomidine, and case reports describe thiopental-induced burst-suppression coma for treatment-resistant withdrawal.<sup>[5,6]</sup></li>
+        </ul>
+      </div>
+      <div class="pearl">
+        <span class="pearl-label">Practice Shift</span>
+        <p>Don't mistake GHB withdrawal for a milder cousin of alcohol withdrawal — its onset is faster, it can be just as lethal, and standard benzodiazepine dosing often needs to go higher and faster than for alcohol withdrawal protocols.</p>
+      </div>
+      <div class="citations">
+        <span class="cite-label">Sources</span>
+        <ol>
+          <li>Acute Toxicity and Withdrawal Syndromes Related to GHB and Its Analogues. PubMed, 2011.</li>
+          <li>Management of Gamma-Butyrolactone Dependence with Assisted Self-Administration. PMC, 2014.</li>
+          <li>Gamma-Hydroxybutyrate Toxicity. StatPearls [Internet]. NCBI Bookshelf NBK430781.</li>
+          <li>Gamma-Hydroxybutyrate Toxicity Treatment &amp; Management. Medscape/emedicine.</li>
+          <li>G-Hydroxybutyrate (GHB) Overdose and Withdrawal. UCSF Hospital Handbook.</li>
+          <li>Vos CF, et al. Successful Treatment of Severe, Treatment-Resistant GHB Withdrawal Through Thiopental-Coma. J Addict Med. 2021.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- CLASS: DISSOCIATIVES -->
+  <!-- ============================================================ -->
+  <div class="class-banner">
+    <span class="tag">Drug Class</span>
+    <h2>Dissociatives</h2>
+    <p>NMDA-receptor antagonists producing a characteristic detachment from surroundings and self — analgesia, altered perception, and, at high dose, catatonia or coma — distinct from the serotonergic hallucinogens despite superficial overlap in street use.</p>
+  </div>
+
+  <div class="substance" id="ketamine-pcp">
+    <div class="sub-head">
+      <div class="class-label">Dissociative · NMDA Receptor Antagonist</div>
+      <h3>Ketamine &amp; Phencyclidine (PCP)</h3>
+      <p class="formal">Arylcyclohexylamines</p>
+      <div class="street-names"><span>Special K</span><span>K</span><span>Vitamin K</span><span>Angel dust (PCP)</span><span>Wet</span><span>Embalming fluid</span></div>
+      <div class="legal-badge legal-cii">Ketamine Schedule III; PCP Schedule II</div>
+    </div>
+    <div class="sub-body">
+      <div class="section moa">
+        <h4>Mechanism of Action</h4>
+        <p>Both are non-competitive antagonists at the NMDA glutamate receptor, blocking the channel pore in an open-channel, use-dependent manner. This produces functional disconnection between the cortex and limbic/thalamic structures — the "dissociative" state — along with analgesia (ketamine's clinical anesthetic use) and, at high concentration, catalepsy. PCP additionally has dopaminergic and sigma-receptor activity contributing to its more prominent and prolonged psychotomimetic effects compared to ketamine.<sup>[1]</sup></p>
+      </div>
+      <div class="section tox">
+        <h4>Clinical Toxidrome</h4>
+        <p>Nystagmus (classically vertical or rotatory, a distinguishing feature from most other intoxications), dissociation, catatonia, hypertension, tachycardia, and — especially with PCP — violent, unpredictable agitation. Overdose can produce coma; death is rare from either agent alone but co-ingestion risk (CNS depressants) compounds respiratory risk.</p>
+      </div>
+      <div class="section signs">
+        <h4>Symptomology</h4>
+        <div class="patho-box">
+          <span class="patho-label">Pathognomonic Clue</span>
+          <p><strong>Vertical or rotary nystagmus</strong> combined with a dissociative/catatonic state is distinctive for this class among recreational drugs — most other intoxications produce horizontal nystagmus if any. The <strong>emergence reaction</strong> — bizarre behavior, vivid dreams, derealization, or frank psychosis appearing specifically during the recovery phase rather than at peak intoxication — is a named, recognized phenomenon unique to ketamine/PCP recovery.<sup>[1]</sup> Chronic ketamine use also produces a distinctive <strong>ulcerative cystitis</strong> with dysuria, frequency, and hematuria not seen with other dissociatives or stimulants.</p>
+        </div>
+      </div>
+      <div class="section bedside">
+        <h4>At the Bedside</h4>
+        <ul class="bedside-list">
+          <li>Quiet, low-stimulation environment reduces emergence-reaction severity; benzodiazepines for agitation or significant emergence phenomena.</li>
+          <li>Supportive care for hypertension/tachycardia; these are usually self-limited.</li>
+        </ul>
+      </div>
+      <div class="section crit">
+        <h4>Critical Care Escalation</h4>
+        <ul class="bedside-list">
+          <li>Severe agitation refractory to benzodiazepines may require antipsychotics or, rarely, sedation/airway control for safety.</li>
+          <li>Evaluate any chronic ketamine user with dysuria/hematuria for ketamine-associated cystitis rather than assuming a routine UTI.<sup>[1]</sup></li>
+        </ul>
+      </div>
+      <div class="pearl">
+        <span class="pearl-label">Practice Shift</span>
+        <p>Vertical nystagmus in an agitated patient is your fastest bedside clue to this class — check for it before reaching for a broad differential.</p>
+      </div>
+      <div class="citations">
+        <span class="cite-label">Sources</span>
+        <ol>
+          <li>Ketamine and Phencyclidine (PCP). Merck Manual Professional Edition, 2026.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <div class="substance" id="dxm-nitrous">
+    <div class="sub-head">
+      <div class="class-label">Dissociative · OTC Antitussive / Inhaled Anesthetic Gas</div>
+      <h3>Dextromethorphan &amp; Nitrous Oxide</h3>
+      <p class="formal">DXM (OTC cough suppressant); N2O (medical/industrial gas)</p>
+      <div class="street-names"><span>Robotripping</span><span>DXM</span><span>Skittles</span><span>Whippets</span><span>Laughing gas</span><span>Nos</span></div>
+      <div class="legal-badge legal-otc">DXM unscheduled OTC; nitrous unscheduled, sold as culinary/whippet cartridges</div>
+    </div>
+    <div class="sub-body">
+      <div class="section moa">
+        <h4>Mechanism of Action</h4>
+        <p>DXM is an NMDA-receptor antagonist structurally related to opioids (a dextrorotatory morphinan) but with negligible mu-opioid activity at typical misuse doses — its dissociative effects come from the same NMDA-blockade mechanism as ketamine/PCP. It also inhibits serotonin reuptake, creating meaningful serotonin-syndrome risk, especially in combination with MAOIs or other serotonergic agents — a risk not shared by ketamine or PCP.<sup>[1]</sup> Nitrous oxide's mechanism is distinct entirely: it is a weak NMDA antagonist and GABA-A modulator producing rapid-onset, rapid-offset dissociation and euphoria, but its most clinically important effect is irreversible oxidation of the cobalt ion in vitamin B12, inactivating it as a coenzyme and producing a functional B12 deficiency with chronic use.<sup>[2,3]</sup></p>
+      </div>
+      <div class="section signs">
+        <h4>Symptomology</h4>
+        <div class="patho-box">
+          <span class="patho-label">Pathognomonic Clue</span>
+          <p>For nitrous oxide: <strong>subacute combined degeneration</strong> of the spinal cord — ascending paresthesias, gait ataxia, and absent reflexes progressing over days-to-weeks in an otherwise healthy young person — in the setting of a normal-to-borderline serum B12 (because it's the functional cobalamin activity, not the serum level, that's impaired) should trigger suspicion for chronic nitrous use specifically; standard toxicology screens do not detect it.<sup>[3,4]</sup> DXM has no comparably distinctive sign — its dissociative "plateaus" are a dose-dependent continuum shared conceptually with ketamine.</p>
+        </div>
+      </div>
+      <div class="section bedside">
+        <h4>At the Bedside</h4>
+        <ul class="bedside-list">
+          <li>DXM: supportive care, benzodiazepines for agitation; screen for serotonin syndrome, especially with co-ingested SSRIs/MAOIs.</li>
+          <li>Acute nitrous intoxication: typically resolves with removal from exposure and supportive observation; assess for hypoxia if used in a closed space (asphyxiation risk from displacing oxygen).</li>
+        </ul>
+      </div>
+      <div class="section crit">
+        <h4>Critical Care Escalation</h4>
+        <ul class="bedside-list">
+          <li>Suspected nitrous-induced subacute combined degeneration: high-dose IV vitamin B12 replacement started empirically without waiting for confirmatory testing, given the risk of irreversible neurologic injury with delay; MRI spine may show cord signal change but a normal MRI does not exclude the diagnosis.<sup>[4]</sup></li>
+          <li>DXM serotonin syndrome: benzodiazepines, cyproheptadine for refractory cases, discontinue serotonergic co-medications.</li>
+        </ul>
+      </div>
+      <div class="pearl">
+        <span class="pearl-label">Practice Shift</span>
+        <p>A normal serum B12 does not rule out nitrous-induced cord disease — treat the clinical syndrome, and don't let a "normal" lab talk you out of starting B12 while you wait on further workup.</p>
+      </div>
+      <div class="citations">
+        <span class="cite-label">Sources</span>
+        <ol>
+          <li>Dextromethorphan mechanism/serotonergic activity — standard toxicology pharmacology references.</li>
+          <li>Recreational Nitrous Oxide-Induced Subacute Combined Degeneration. PMC, 2021.</li>
+          <li>Nitrous Oxide-Induced Subacute Combined Degeneration in a Pregnant Female. PMC, 2023.</li>
+          <li>Clinical-Radiological Dissociation in Nitrous Oxide-Induced SCD. PMC, 2020.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- CLASS: HALLUCINOGENS / PSYCHEDELICS -->
+  <!-- ============================================================ -->
+  <div class="class-banner">
+    <span class="tag">Drug Class</span>
+    <h2>Hallucinogens / Psychedelics</h2>
+    <p>Serotonin 2A receptor agonists producing perceptual distortion and altered consciousness. Classic psychedelics (LSD, psilocybin, mescaline) have a strong safety record for acute medical toxicity; designer analogs sold as substitutes (NBOMe) do not.</p>
+  </div>
+
+  <div class="substance" id="lsd-psilocybin-mescaline">
+    <div class="sub-head">
+      <div class="class-label">Hallucinogen · Serotonergic (Classic Psychedelics)</div>
+      <h3>LSD, Psilocybin &amp; Mescaline</h3>
+      <p class="formal">Lysergic acid diethylamide; psilocybin/psilocin; mescaline</p>
+      <div class="street-names"><span>Acid</span><span>Tabs</span><span>Shrooms</span><span>Magic mushrooms</span><span>Peyote</span><span>San Pedro</span></div>
+      <div class="legal-badge legal-cii">DEA Schedule I (psilocybin decriminalized/legal in some US jurisdictions)</div>
+    </div>
+    <div class="sub-body">
+      <div class="section moa">
+        <h4>Mechanism of Action</h4>
+        <p>All three act primarily as agonists at the serotonin 5-HT2A receptor, with LSD showing additional affinity at 5-HT1A/2C and dopamine receptors. 5-HT2A activation in cortical layer V pyramidal neurons is thought to underlie the characteristic perceptual and cognitive distortions, via altered thalamocortical gating and reduced precision-weighting of prior beliefs (the basis of current "REBUS" models of psychedelic action).<sup>[1,2]</sup></p>
+      </div>
+      <div class="section tox">
+        <h4>Clinical Considerations</h4>
+        <p>The acute medical toxicity of classic psychedelics at typical recreational doses is low — no documented LSD fatalities from direct pharmacologic toxicity exist in the literature, and psilocybin's safety margin is similarly wide. The overwhelming majority of ED presentations relate to acute anxiety/panic ("bad trip"), trauma from impaired judgment, or (rarely) exacerbation of underlying psychiatric illness rather than organ toxicity. True serotonin toxicity is uncommon with these agents alone but has been reported, particularly with LSD combined with serotonergic antidepressants.<sup>[3]</sup></p>
+      </div>
+      <div class="section bedside">
+        <h4>At the Bedside</h4>
+        <ul class="bedside-list">
+          <li>"Talk-down" in a calm, low-stimulation environment is first-line for acute anxiety/panic reactions and resolves most presentations without medication.</li>
+          <li>Benzodiazepines for significant agitation or anxiety that doesn't respond to reassurance and environment.</li>
+          <li>Screen for trauma and co-ingestants; the psychedelic itself is rarely the source of any objective abnormal vital signs.</li>
+        </ul>
+      </div>
+      <div class="section crit">
+        <h4>Critical Care Escalation</h4>
+        <ul class="bedside-list">
+          <li>True serotonin toxicity (rare with these agents alone): benzodiazepines, cyproheptadine for refractory cases, discontinue serotonergic co-medications.</li>
+          <li>Persistent psychosis or prolonged perceptual disturbance beyond the expected duration warrants psychiatric evaluation and consideration of an alternative diagnosis (underlying psychiatric illness unmasked, or a misrepresented/adulterated substance such as NBOMe).</li>
+        </ul>
+      </div>
+      <div class="pearl">
+        <span class="pearl-label">Practice Shift</span>
+        <p>Most of what brings these patients to the ED is the environment and the fear, not the pharmacology — a quiet room and reassurance outperforms a medication cabinet for the majority of presentations.</p>
+      </div>
+      <div class="citations">
+        <span class="cite-label">Sources</span>
+        <ol>
+          <li>Serotonergic Psychedelics: A Comparative Review. ScienceDirect, 2024.</li>
+          <li>LSD and Psilocybin Flatten the Brain's Energy Landscape. bioRxiv, 2021.</li>
+          <li>Interactions Between Psilocybin, LSD, and Serotonergic Antidepressants. ScienceDirect, 2025.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <div class="substance" id="nbome">
+    <div class="sub-head">
+      <div class="class-label">Hallucinogen · Synthetic Phenethylamine (Designer Analog)</div>
+      <h3>NBOMe Compounds</h3>
+      <p class="formal">25I-NBOMe, 25C-NBOMe, and related N-benzyl phenethylamines</p>
+      <div class="street-names"><span>N-Bomb</span><span>Smiles</span><span>25I</span><span>Sold falsely as "acid"</span></div>
+      <div class="legal-badge legal-cii">DEA Schedule I (analog act)</div>
+    </div>
+    <div class="sub-body">
+      <div class="section moa">
+        <h4>Mechanism of Action</h4>
+        <p>NBOMe compounds are full agonists at 5-HT2A with far greater receptor affinity than LSD, developed originally as research radioligands rather than intended recreational drugs. Critically, they are frequently sold on blotter paper marketed and mistaken as LSD — but their mechanism produces a substantially more dangerous, stimulant-heavy toxidrome layered on top of the hallucinogenic effect, unlike true LSD.<sup>[1]</sup></p>
+      </div>
+      <div class="section tox">
+        <h4>Clinical Toxidrome</h4>
+        <p>Tachycardia (62%), hypertension (52%), hallucinations (81%), agitation, seizures, hyperthermia, rhabdomyolysis, and — in a meaningful minority — death. A literature review of 42 published cases found 9 fatalities, in sharp contrast to LSD's essentially zero-fatality record from direct toxicity.<sup>[2]</sup></p>
+      </div>
+      <div class="section signs">
+        <h4>Symptomology</h4>
+        <div class="patho-box">
+          <span class="patho-label">Pathognomonic Clue</span>
+          <p>A patient who believes they took "acid" (LSD) but presents with <strong>seizures, hyperthermia, severe hypertension, and rhabdomyolysis</strong> almost certainly did not — this severity profile is essentially diagnostic of NBOMe misrepresented as LSD, since true LSD toxicity this severe is exceptionally rare. Fatal cases have also shown <strong>toxic leukoencephalopathy</strong> on imaging in survivors with severe or prolonged exposure.<sup>[3,4]</sup></p>
+        </div>
+      </div>
+      <div class="section bedside">
+        <h4>At the Bedside</h4>
+        <ul class="bedside-list">
+          <li>Benzodiazepines aggressively for agitation, seizures, and hypertension/tachycardia — this is functionally a stimulant-hallucinogen hybrid toxidrome, not a "just wait it out" bad trip.</li>
+          <li>Active cooling for hyperthermia; IV fluids for rhabdomyolysis prevention/treatment.</li>
+        </ul>
+      </div>
+      <div class="section crit">
+        <h4>Critical Care Escalation</h4>
+        <ul class="bedside-list">
+          <li>Status epilepticus, severe hyperthermia, and multi-organ failure have been fatal even with aggressive care in reported cases — treat any suspected NBOMe presentation as a serious toxicologic emergency from the outset, not a routine hallucinogen visit.<sup>[3]</sup></li>
+        </ul>
+      </div>
+      <div class="pearl">
+        <span class="pearl-label">Practice Shift</span>
+        <p>"Bad acid trip" with seizures and hyperthermia is a red flag, not a description — real LSD essentially never does this. Treat it as NBOMe until proven otherwise.</p>
+      </div>
+      <div class="citations">
+        <span class="cite-label">Sources</span>
+        <ol>
+          <li>Pathological Findings in 2 Cases of Fatal 25I-NBOMe Toxicity. PubMed, 2015.</li>
+          <li>NBOMe Toxicity and Fatalities: A Review of the Literature. Tower Health, 2021.</li>
+          <li>Fatal Outcome of Status Epilepticus, Hyperthermia, Rhabdomyolysis After 25I-NBOMe Ingestion. Neurology, 2014.</li>
+          <li>Humston, et al. Toxic Leukoencephalopathy After Recreational 25I-NBOMe. J Med Cases, 2017.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- CLASS: CANNABINOIDS -->
+  <!-- ============================================================ -->
+  <div class="class-banner">
+    <span class="tag">Drug Class</span>
+    <h2>Cannabinoids</h2>
+    <p>CB1/CB2 receptor agonists spanning a legal, low-acute-toxicity plant product and a family of synthetic analogs with a substantially more dangerous and unpredictable profile.</p>
+  </div>
+
+  <div class="substance" id="thc-cannabis">
+    <div class="sub-head">
+      <div class="class-label">Cannabinoid · Phytocannabinoid</div>
+      <h3>Cannabis / THC</h3>
+      <p class="formal">Delta-9-tetrahydrocannabinol</p>
+      <div class="street-names"><span>Weed</span><span>Pot</span><span>Marijuana</span><span>Edibles</span><span>Dabs (concentrate)</span></div>
+      <div class="legal-badge legal-legal">Federally Schedule I; legal/regulated in many US states</div>
+    </div>
+    <div class="sub-body">
+      <div class="section moa">
+        <h4>Mechanism of Action</h4>
+        <p>THC is a partial agonist at CB1 receptors (dense in the CNS, especially basal ganglia, cerebellum, and hippocampus) and CB2 receptors (predominantly peripheral/immune). CB1 activation inhibits presynaptic neurotransmitter release across multiple systems, producing the euphoric, anxiolytic-at-low-dose/anxiogenic-at-high-dose, and appetite-stimulating effects. Modern concentrate products (dabs, vape carts) can exceed 70-90% THC by weight, versus roughly 10-25% in traditional flower — a potency shift responsible for much of the rise in acute ED presentations.</p>
+      </div>
+      <div class="section tox">
+        <h4>Clinical Toxidrome</h4>
+        <p>Tachycardia, conjunctival injection, dry mouth, impaired coordination, anxiety/panic at high dose, and — with edibles specifically — delayed, unpredictable onset (30-90+ minutes) that drives accidental re-dosing and disproportionately severe presentations in naive users, especially children.</p>
+      </div>
+      <div class="section signs">
+        <h4>Symptomology</h4>
+        <div class="patho-box">
+          <span class="patho-label">Pathognomonic Clue</span>
+          <p><strong>Cannabinoid hyperemesis syndrome</strong> — cyclical, severe nausea and vomiting in a chronic heavy user, classically relieved by compulsive hot showers or baths — is distinctive enough that the hot-water-seeking behavior itself is considered a diagnostic clue, despite marijuana's well-known antiemetic reputation making this paradoxical presentation easy to miss for years.<sup>[1,2]</sup></p>
+        </div>
+      </div>
+      <div class="section bedside">
+        <h4>At the Bedside</h4>
+        <ul class="bedside-list">
+          <li>Acute intoxication/anxiety: reassurance, low-stimulation environment, benzodiazepines for severe agitation.</li>
+          <li>Cannabinoid hyperemesis syndrome: capsaicin cream applied topically to the abdomen is a reasonable first-line adjunct despite limited high-quality trial evidence; supportive antiemetics and IV fluids; counsel on cessation as the only definitive treatment.<sup>[3]</sup></li>
+        </ul>
+      </div>
+      <div class="section crit">
+        <h4>Critical Care Escalation</h4>
+        <ul class="bedside-list">
+          <li>Pediatric edible ingestion with significant CNS depression: supportive airway management and observation; symptoms can be prolonged relative to inhaled exposure given delayed, variable absorption.</li>
+          <li>CHS refractory to standard antiemetics/capsaicin may need haloperidol or benzodiazepines as adjuncts per emerging case series.</li>
+        </ul>
+      </div>
+      <div class="pearl">
+        <span class="pearl-label">Practice Shift</span>
+        <p>Cyclical vomiting plus compulsive hot showers in a heavy cannabis user is CHS until proven otherwise — it can take years and an extensive, expensive workup to reach this diagnosis if nobody asks about cannabis use directly.</p>
+      </div>
+      <div class="citations">
+        <span class="cite-label">Sources</span>
+        <ol>
+          <li>Sorensen CJ, et al. Cannabinoid Hyperemesis Syndrome: Diagnosis, Pathophysiology, and Treatment. J Med Toxicol. 2017;13:71-87.</li>
+          <li>A Gut Gone to Pot: A Case of Cannabinoid Hyperemesis Syndrome. PMC, 2014.</li>
+          <li>McConachie SM, et al. Efficacy of Capsaicin for the Treatment of CHS: A Systematic Review. 2019.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <div class="substance" id="synthetic-cannabinoids">
+    <div class="sub-head">
+      <div class="class-label">Cannabinoid · Synthetic CB1/CB2 Full Agonist</div>
+      <h3>Synthetic Cannabinoids</h3>
+      <p class="formal">JWH-018, AB-CHMINACA, MDMB-CHMICA, and related designer compounds</p>
+      <div class="street-names"><span>K2</span><span>Spice</span><span>Fake weed</span><span>Herbal incense</span></div>
+      <div class="legal-badge legal-cii">DEA-scheduled by analog; new derivatives outpace scheduling</div>
+    </div>
+    <div class="sub-body">
+      <div class="section moa">
+        <h4>Mechanism of Action</h4>
+        <p>Unlike THC's partial agonism, most synthetic cannabinoids are <strong>full agonists</strong> at CB1 with far higher receptor affinity — a mechanistic difference that translates directly into greater toxicity, longer duration, and a much higher seizure/psychosis rate than natural cannabis, independent of dose comparisons.<sup>[1]</sup></p>
+      </div>
+      <div class="section tox">
+        <h4>Clinical Toxidrome</h4>
+        <p>Tachycardia and seizures are the most common findings across systematic review; third-generation compounds carry a higher rate of neuropsychiatric symptoms including psychosis. Standard cannabinoid immunoassays do not detect most synthetic cannabinoids, which is a major reason for delayed recognition.<sup>[1]</sup></p>
+      </div>
+      <div class="section signs">
+        <h4>Symptomology</h4>
+        <div class="patho-box">
+          <span class="patho-label">Pathognomonic Clue</span>
+          <p><strong>Unexplained coagulopathy with bleeding</strong> (hematuria, epistaxis, GI bleeding, bruising disproportionate to injury) in a synthetic cannabinoid user is diagnostic of <em>brodifacoum</em> (superwarfarin rodenticide) contamination — a 2018 multistate outbreak traced hundreds of cases to tainted product supply. This finding is unrelated to the drug's own pharmacology and is entirely an adulterant effect, but it is specific enough to this class that any unexplained vitamin-K-responsive coagulopathy in a young patient should prompt this history.<sup>[2,3]</sup></p>
+        </div>
+      </div>
+      <div class="section bedside">
+        <h4>At the Bedside</h4>
+        <ul class="bedside-list">
+          <li>Benzodiazepines for agitation/seizures; supportive care is otherwise the mainstay.</li>
+          <li>Check coagulation studies (INR/PT) in any synthetic cannabinoid user with bleeding symptoms, even minor ones.</li>
+        </ul>
+      </div>
+      <div class="section crit">
+        <h4>Critical Care Escalation</h4>
+        <ul class="bedside-list">
+          <li>Confirmed or suspected brodifacoum coagulopathy: high-dose oral and/or IV vitamin K1, with 4-factor prothrombin complex concentrate and/or fresh-frozen plasma for active severe bleeding. Because brodifacoum has an extremely long half-life, treatment requires weeks-to-months of oral vitamin K1 with close INR monitoring — this is not a one-time reversal.<sup>[2,3]</sup></li>
+        </ul>
+      </div>
+      <div class="pearl">
+        <span class="pearl-label">Practice Shift</span>
+        <p>"Fake weed" with unexplained bleeding is a public-health-outbreak pattern, not a coincidence — think brodifacoum, not just synthetic cannabinoid toxicity itself, and expect a long vitamin K taper, not a single dose.</p>
+      </div>
+      <div class="citations">
+        <span class="cite-label">Sources</span>
+        <ol>
+          <li>Toxicity of Synthetic Cannabinoids in K2/Spice: A Systematic Review. PMC, 2023.</li>
+          <li>Kelkar AH, et al. An Outbreak of Synthetic Cannabinoid-Associated Coagulopathy in Illinois. N Engl J Med. 2018.</li>
+          <li>Arepally GM, Ortel TL. Bad Weed: Synthetic Cannabinoid-Associated Coagulopathy. Blood. 2019;133(9):902-905.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- CLASS: INHALANTS -->
+  <!-- ============================================================ -->
+  <div class="class-banner">
+    <span class="tag">Drug Class</span>
+    <h2>Inhalants</h2>
+    <p>A heterogeneous group of volatile substances abused by inhalation for rapid-onset intoxication — organic solvents, aerosols/gases, and alkyl nitrites — unified by route rather than a shared receptor mechanism.</p>
+  </div>
+
+  <div class="substance" id="inhalants">
+    <div class="sub-head">
+      <div class="class-label">Inhalant · Volatile Solvents &amp; Alkyl Nitrites</div>
+      <h3>Volatile Solvents &amp; Nitrites</h3>
+      <p class="formal">Toluene, butane, propane (solvents/aerosols); isobutyl/amyl nitrite (poppers)</p>
+      <div class="street-names"><span>Huffing</span><span>Sniffing</span><span>Bagging</span><span>Poppers</span><span>Rush</span><span>Whippets</span></div>
+      <div class="legal-badge legal-legal">Legal, unscheduled household/industrial products</div>
+    </div>
+    <div class="sub-body">
+      <div class="section moa">
+        <h4>Mechanism of Action</h4>
+        <p>Volatile solvents (toluene and related hydrocarbons) are CNS depressants by a nonspecific mechanism resembling inhaled anesthetics — membrane fluidization and enhancement of GABA-A/glycine receptor function — but their most dangerous property is direct cardiac toxicity: sensitization of the myocardium to circulating catecholamines, producing a substrate for sudden fatal ventricular dysrhythmia. Alkyl nitrites work by an entirely different mechanism — they are potent oxidizing agents that convert hemoglobin's ferrous (Fe2+) iron to the ferric (Fe3+) state, producing methemoglobin, which cannot carry oxygen.<sup>[1,2]</sup></p>
+      </div>
+      <div class="section tox">
+        <h4>Clinical Toxidrome</h4>
+        <p>Solvents: euphoria, hallucinations, headache, dizziness progressing to ataxia, seizures, and coma with heavy exposure; chronic use causes metabolic acidosis, renal tubular acidosis, and hepatic/renal impairment. Nitrites: headache, syncope, and — the hallmark — cyanosis and hypoxemia that does not correct with supplemental oxygen, reflecting methemoglobinemia rather than true hypoxia.<sup>[3]</sup></p>
+      </div>
+      <div class="section signs">
+        <h4>Symptomology</h4>
+        <div class="patho-box">
+          <span class="patho-label">Pathognomonic Clue</span>
+          <p><strong>"Sudden sniffing death"</strong> — cardiac arrest from ventricular fibrillation occurring during or shortly after a single inhalation session in an otherwise healthy young person, often precipitated by a sudden catecholamine surge (e.g., being startled and running) — is a recognized, distinctive fatal syndrome specific to volatile solvent abuse. For nitrites: <strong>cyanosis with a normal pulse oximetry reading that doesn't match the clinical picture, or a chocolate-brown arterial blood sample</strong>, is classic for methemoglobinemia — pulse oximeters cannot distinguish methemoglobin from normal hemoglobin and will overestimate true oxygen saturation.<sup>[4,5]</sup></p>
+        </div>
+      </div>
+      <div class="section bedside">
+        <h4>At the Bedside</h4>
+        <ul class="bedside-list">
+          <li>Remove from exposure, provide supportive oxygen, and monitor closely for dysrhythmia with continuous cardiac monitoring — avoid catecholamine-driven stimuli (exertion, fright) given the myocardial sensitization risk.</li>
+          <li>Suspected methemoglobinemia: send a co-oximetry panel (standard ABG/pulse ox will not reliably detect it) and treat symptomatic patients.</li>
+        </ul>
+      </div>
+      <div class="section crit">
+        <h4>Critical Care Escalation</h4>
+        <ul class="bedside-list">
+          <li>Ventricular dysrhythmia from solvent-sensitized myocardium: avoid epinephrine/catecholamines if possible; beta-blockade has been used to blunt the sensitized response in refractory cases.</li>
+          <li>Symptomatic methemoglobinemia: methylene blue 1-2 mg/kg IV over several minutes, repeatable if needed — check for G6PD deficiency first when feasible, since methylene blue can precipitate hemolysis in G6PD-deficient patients.<sup>[5]</sup></li>
+        </ul>
+      </div>
+      <div class="pearl">
+        <span class="pearl-label">Practice Shift</span>
+        <p>A normal-looking pulse oximeter reading does not clear methemoglobinemia — if the clinical cyanosis doesn't match the number on the monitor, trust the patient and send a co-oximetry gas.</p>
+      </div>
+      <div class="citations">
+        <span class="cite-label">Sources</span>
+        <ol>
+          <li>Toluene Toxicity. Medscape/emedicine, 2025.</li>
+          <li>Toluene Abuse and White Matter Degeneration. ScienceDirect, 2016.</li>
+          <li>Inhalant Abuse. California Poison Control System.</li>
+          <li>Possible Biological Mechanisms of Sudden Sniffing Death Syndrome. J Dependence.</li>
+          <li>Severe Methemoglobinemia Secondary to Isobutyl Nitrite Toxicity: The Case of the 'Gold Rush'. PMC, 2021.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- CLASS: ANTICHOLINERGICS -->
+  <!-- ============================================================ -->
+  <div class="class-banner">
+    <span class="tag">Drug Class</span>
+    <h2>Anticholinergics</h2>
+    <p>Competitive antagonists at muscarinic acetylcholine receptors, spanning an OTC sleep aid/antihistamine and a naturally occurring, highly toxic plant.</p>
+  </div>
+
+  <div class="substance" id="anticholinergics">
+    <div class="sub-head">
+      <div class="class-label">Anticholinergic · Muscarinic Antagonist</div>
+      <h3>Diphenhydramine &amp; Jimsonweed (Datura)</h3>
+      <p class="formal">Diphenhydramine (first-generation antihistamine); atropine/scopolamine (Datura stramonium alkaloids)</p>
+      <div class="street-names"><span>Benadryl</span><span>Sominex</span><span>Jimsonweed</span><span>Loco weed</span><span>Devil's trumpet</span><span>Moon flower</span></div>
+      <div class="legal-badge legal-otc">Diphenhydramine OTC/unscheduled; jimsonweed legal (wild plant)</div>
+    </div>
+    <div class="sub-body">
+      <div class="section moa">
+        <h4>Mechanism of Action</h4>
+        <p>Competitive antagonism of acetylcholine at central and peripheral muscarinic receptors, blocking parasympathetic tone throughout the body. Diphenhydramine has the added complication of being a sodium-channel blocker at high dose — a mechanism entirely separate from its anticholinergic activity and the reason its overdose can produce QRS widening and TCA-like cardiotoxicity, unlike pure anticholinergics such as atropine or scopolamine.<sup>[1,2]</sup></p>
+      </div>
+      <div class="section tox">
+        <h4>Clinical Toxidrome</h4>
+        <p>The classic anticholinergic (more precisely antimuscarinic) toxidrome is captured by the mnemonic: <em>hot as a hare</em> (hyperthermia), <em>blind as a bat</em> (mydriasis, blurred vision), <em>mad as a hatter</em> (delirium, often with mumbling speech and repetitive "picking" behaviors), <em>red as a beet</em> (flushed skin), <em>dry as a bone</em> (dry mucous membranes/axillae), and <em>full as a flask</em> (urinary retention) — plus tachycardia and decreased bowel sounds.<sup>[3,4]</sup></p>
+      </div>
+      <div class="section signs">
+        <h4>Symptomology</h4>
+        <div class="patho-box">
+          <span class="patho-label">Pathognomonic Clue</span>
+          <p>The <strong>full six-feature mnemonic constellation together</strong> — dry, flushed, hot skin; mydriasis; urinary retention; absent bowel sounds; and a mumbling, "picking" delirium — is genuinely distinctive for this toxidrome as a whole, even though no single feature is unique in isolation. Hallucinations described as <strong>Lilliputian</strong> (seeing tiny people) or <strong>Alice-in-Wonderland-type</strong> distortions of size are classically associated with anticholinergic delirium specifically.<sup>[5]</sup></p>
+        </div>
+      </div>
+      <div class="section bedside">
+        <h4>At the Bedside</h4>
+        <ul class="bedside-list">
+          <li>Benzodiazepines for agitation and seizures; evaporative cooling for hyperthermia.</li>
+          <li>Activated charcoal within one hour of ingestion is reasonable given anticholinergic-delayed gastric emptying, which extends the window somewhat beyond the usual one-hour rule.</li>
+          <li>Obtain an ECG and monitor QRS duration in any diphenhydramine ingestion — the anticholinergic and sodium-channel-blocking effects require separate assessment.<sup>[1]</sup></li>
+        </ul>
+      </div>
+      <div class="section crit">
+        <h4>Critical Care Escalation</h4>
+        <ul class="bedside-list">
+          <li>Wide QRS from diphenhydramine's sodium-channel blockade: sodium bicarbonate, as in TCA overdose.</li>
+          <li>Physostigmine (acetylcholinesterase inhibitor) can rapidly reverse the central delirium in a <strong>pure</strong> antimuscarinic poisoning and may avoid unnecessary intubation/imaging — but it is contraindicated or should be used only with toxicology guidance when a sodium-channel blocker (diphenhydramine) or another mixed-mechanism agent is involved, since it can precipitate bradycardia, seizures, or asystole in that setting. Benzodiazepines remain the default first-line for undifferentiated or mixed presentations.<sup>[6,7]</sup></li>
+        </ul>
+      </div>
+      <div class="pearl">
+        <span class="pearl-label">Practice Shift</span>
+        <p>Diphenhydramine is not a "pure" anticholinergic — its sodium-channel blockade means physostigmine, the classic antidote taught for this toxidrome, is often the wrong move for this specific, most common cause of it.</p>
+      </div>
+      <div class="citations">
+        <span class="cite-label">Sources</span>
+        <ol>
+          <li>Anticholinergic (Antimuscarinic) Toxidrome. The Atlas of Emergency Medicine, 5e, AccessMedicine.</li>
+          <li>Anticholinergic Intoxication. EMCrit/IBCC, 2025.</li>
+          <li>Episode 74 — Physostigmine and Anticholinergic Toxidrome. FOAMcast.</li>
+          <li>Anticholinergic Toxicity and Poisoning. CorePendium.</li>
+          <li>Anticholinergic Syndrome. ScienceDirect Topics.</li>
+          <li>Physostigmine or Rivastigmine for Anticholinergic Toxicity. University of Utah Poison Control, 2024.</li>
+          <li>Physostigmine in Anticholinergic Poisoning: An Old Antidote with Resurgence. PMC, 2020.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- CLASS: ALCOHOL & TOXIC ALCOHOLS -->
+  <!-- ============================================================ -->
+  <div class="class-banner">
+    <span class="tag">Drug Class</span>
+    <h2>Alcohol &amp; Toxic Alcohols</h2>
+    <p>Ethanol is the most widely used and normalized intoxicant on this entire reference; methanol and ethylene glycol share ethanol's chemistry (metabolized by the same enzyme) but their metabolites, not the parent compounds, are what kill.</p>
+  </div>
+
+  <div class="substance" id="ethanol">
+    <div class="sub-head">
+      <div class="class-label">Alcohol · Simple Alcohol</div>
+      <h3>Ethanol</h3>
+      <p class="formal">Ethyl alcohol</p>
+      <div class="street-names"><span>Booze</span><span>Liquor</span><span>Beer</span><span>Wine</span></div>
+      <div class="legal-badge legal-legal">Legal for adults 21+ in the US; unscheduled</div>
+    </div>
+    <div class="sub-body">
+      <div class="section moa">
+        <h4>Mechanism of Action</h4>
+        <p>Ethanol potentiates GABA-A receptor function and inhibits NMDA glutamate receptors — a dual mechanism (enhancing inhibition, blocking excitation) that explains both its acute sedative/disinhibiting effects and the severity of withdrawal, which represents unmasked NMDA-receptor hyperexcitability and reduced GABA tone once the drug is removed after chronic adaptation.<sup>[1]</sup></p>
+      </div>
+      <div class="section tox">
+        <h4>Clinical Toxidrome</h4>
+        <p>Dose-dependent CNS depression from disinhibition through ataxia, slurred speech, and — at high blood alcohol concentrations — respiratory depression, aspiration risk, and coma. Chronic use produces tolerance that shifts the dose-response curve, meaning a "normal" blood alcohol level in a naive user can be lethal while a dependent user may be conversant at levels that would incapacitate others.</p>
+      </div>
+      <div class="section signs">
+        <h4>Symptomology</h4>
+        <div class="no-patho">
+          <span class="patho-label">Withdrawal Is the Distinctive Emergency, Not Intoxication</span>
+          <p>Acute intoxication has no distinguishing exam finding beyond the odor and standard CNS-depressant picture. Withdrawal, however, has a distinctive, staged natural history worth knowing cold: tremulousness at 6-12 hours, withdrawal seizures at 12-48 hours, alcoholic hallucinosis (clear sensorium with isolated hallucinations) at 12-24 hours, and <strong>delirium tremens</strong> — autonomic storm plus true delirium — at 2-7 days after the last drink, occurring in only 3-5% of hospitalized withdrawal patients but carrying meaningful mortality if unrecognized.<sup>[2,3]</sup></p>
+        </div>
+      </div>
+      <div class="section bedside">
+        <h4>At the Bedside</h4>
+        <ul class="bedside-list">
+          <li>Acute intoxication: airway protection, IV fluids, glucose-containing fluids for hypoglycemia (common in binge drinkers), and thiamine — give thiamine before or with glucose, not after, given the theoretical risk of precipitating Wernicke's encephalopathy in a thiamine-deficient patient receiving glucose alone.</li>
+          <li>Withdrawal: use a validated scale (CIWA-Ar) to guide symptom-triggered benzodiazepine dosing, titrating to comfortable sedation rather than a fixed schedule.<sup>[4]</sup></li>
+        </ul>
+      </div>
+      <div class="section crit">
+        <h4>Critical Care Escalation</h4>
+        <ul class="bedside-list">
+          <li>Suspected Wernicke's encephalopathy (nystagmus, ataxia, confusion): high-dose IV thiamine 500 mg q8h for 72 hours, not the standard 100 mg prophylactic dose.</li>
+          <li>Severe/refractory alcohol withdrawal or delirium tremens: escalating benzodiazepine doses; phenobarbital is a validated alternative/adjunct for benzodiazepine-refractory cases.<sup>[5]</sup></li>
+        </ul>
+      </div>
+      <div class="pearl">
+        <span class="pearl-label">Practice Shift</span>
+        <p>The emergency isn't usually the drunk patient in front of you — it's the withdrawal that hasn't started yet. Ask about last drink and typical daily intake on every alcohol-involved visit, not just the ones who look intoxicated.</p>
+      </div>
+      <div class="citations">
+        <span class="cite-label">Sources</span>
+        <ol>
+          <li>Alcohol Withdrawal Syndrome. Wikipedia/standard pharmacology references, cross-checked against clinical sources below.</li>
+          <li>Episode 87 — Alcohol Withdrawal and Delirium Tremens. EM Cases.</li>
+          <li>03. Alcohol Withdrawal. UCSF Hospital Handbook.</li>
+          <li>Alcohol Withdrawal Syndrome: Identification and Management. emDocs.</li>
+          <li>Delirium Tremens (DTs) Differential Diagnoses. Medscape/emedicine, 2024.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <div class="substance" id="toxic-alcohols">
+    <div class="sub-head">
+      <div class="class-label">Toxic Alcohol · Alcohol Dehydrogenase Substrates</div>
+      <h3>Methanol &amp; Ethylene Glycol</h3>
+      <p class="formal">Methanol (windshield washer fluid, bootleg liquor); ethylene glycol (antifreeze)</p>
+      <div class="street-names"><span>Antifreeze</span><span>Wood alcohol</span><span>Moonshine (methanol contamination)</span></div>
+      <div class="legal-badge legal-legal">Legal industrial products; toxicity is from ingestion, accidental or intentional</div>
+    </div>
+    <div class="sub-body">
+      <div class="section moa">
+        <h4>Mechanism of Action</h4>
+        <p>Both are relatively nontoxic in their parent form — the danger comes entirely from their metabolism by alcohol dehydrogenase (ADH), the same enzyme that metabolizes ethanol. Methanol is converted to formaldehyde and then formic acid, which is directly toxic to the optic nerve and retina. Ethylene glycol is converted through a cascade to glycolic acid (the main driver of the severe anion-gap metabolic acidosis) and then oxalic acid, which precipitates as calcium oxalate crystals in the renal tubules, causing acute kidney injury.<sup>[1,2]</sup></p>
+      </div>
+      <div class="section tox">
+        <h4>Clinical Toxidrome</h4>
+        <p>Both present initially with an ethanol-like inebriation (sometimes minimal), followed after a latent period — as the parent compound is metabolized into its toxic acid — by severe high-anion-gap metabolic acidosis. Methanol's distinguishing late feature is visual disturbance progressing to blindness; ethylene glycol's is acute kidney injury.</p>
+      </div>
+      <div class="section signs">
+        <h4>Symptomology</h4>
+        <div class="patho-box">
+          <span class="patho-label">Pathognomonic Clue</span>
+          <p>For methanol: <strong>"snowstorm" or blurred vision progressing to complete blindness</strong>, with fundoscopic exam showing optic disc hyperemia/edema, is the hallmark finding pointing directly at formic-acid-mediated optic neurotoxicity. For ethylene glycol: <strong>calcium oxalate crystals in the urine</strong> (envelope-shaped or needle-shaped) combined with hypocalcemia and an elevated anion gap in a patient with a nontoxic or absent blood alcohol level is close to diagnostic — and a fluorescent antifreeze dye under a Wood's lamp on skin/clothing/vomitus is an old but real supporting clue.<sup>[3,4]</sup></p>
+        </div>
+      </div>
+      <div class="section bedside">
+        <h4>At the Bedside</h4>
+        <ul class="bedside-list">
+          <li>Any unexplained high-anion-gap metabolic acidosis with an elevated osmolar gap should trigger empiric treatment before confirmatory levels return — these labs are frequently sent-out and slow.</li>
+          <li>Sodium bicarbonate for severe acidosis, recognizing that alkalinizing the urine in ethylene glycol poisoning can paradoxically promote calcium oxalate crystal precipitation and worsen renal injury — treat the systemic acidosis, not the urine pH, as the goal.<sup>[5]</sup></li>
+        </ul>
+      </div>
+      <div class="section crit">
+        <h4>Critical Care Escalation</h4>
+        <ul class="bedside-list">
+          <li>Fomepizole (competitive ADH inhibitor) is first-line antidotal therapy for both, blocking further toxic metabolite formation — give empirically for a documented recent ingestion with an osmolar gap &gt;10, or for strong suspicion plus at least two of: pH &lt;7.3, bicarbonate &lt;20 mEq/L, osmolar gap &gt;10, or urinary oxalate crystals (AACT criteria), rather than waiting for a confirmatory level that may take days.<sup>[6]</sup></li>
+          <li>Hemodialysis is indicated for severe acidosis, visual symptoms (methanol), renal impairment (ethylene glycol), or very high measured levels — dialysis clears both the parent compound and toxic metabolites and is the EXTRIP-guideline standard for severe cases.<sup>[6,7]</sup></li>
+          <li>If fomepizole is unavailable, IV ethanol can competitively saturate ADH as a bridge therapy, though it requires careful serum-level-guided titration and carries its own CNS-depressant and hypoglycemic risk.</li>
+        </ul>
+      </div>
+      <div class="pearl">
+        <span class="pearl-label">Practice Shift</span>
+        <p>Don't wait for the send-out toxic alcohol level to start treatment — an elevated osmolar gap plus anion gap acidosis in the right clinical context is enough to start fomepizole today, not in two days when the confirmatory result arrives.</p>
+      </div>
+      <div class="citations">
+        <span class="cite-label">Sources</span>
+        <ol>
+          <li>Fomepizole for Ethylene Glycol and Methanol Poisoning. N Engl J Med, 2009 (clinical therapeutics review).</li>
+          <li>Ethylene Glycol Toxicity. StatPearls [Internet]. NCBI Bookshelf NBK537009, 2022.</li>
+          <li>Treatment of Ethylene Glycol Poisoning. American Family Physician, 2002.</li>
+          <li>Ethylene Glycol Intoxication: Mind Your Gap(s)! J Emerg Crit Care Med, 2024.</li>
+          <li>Ethylene Glycol Poisoning Complicated by Cardiac Arrest and Raised Lactate Gap. PMC, 2025.</li>
+          <li>Diagnostics — Toxic Alcohols. Taming the SRU, 2019.</li>
+          <li>Methanol/Ethylene Glycol — Fomepizole and Hemodialysis Guide. Liv Hospital, 2026.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- CLASS: NICOTINE -->
+  <!-- ============================================================ -->
+  <div class="class-banner">
+    <span class="tag">Drug Class</span>
+    <h2>Nicotine</h2>
+    <p>The most widely used addictive substance globally, now reformulated into high-concentration liquid form that has meaningfully changed the acute-toxicity picture for children and naive users.</p>
+  </div>
+
+  <div class="substance" id="nicotine">
+    <div class="sub-head">
+      <div class="class-label">Stimulant/Cholinergic · Nicotinic Acetylcholine Receptor Agonist</div>
+      <h3>Nicotine &amp; E-Liquid</h3>
+      <p class="formal">Nicotine; e-liquid also contains propylene glycol/vegetable glycerin as carrier</p>
+      <div class="street-names"><span>Vape juice</span><span>E-liquid</span><span>Juul pods</span><span>Nic salts</span></div>
+      <div class="legal-badge legal-legal">Legal, age-restricted; e-liquid largely unregulated for concentration/purity</div>
+    </div>
+    <div class="sub-body">
+      <div class="section moa">
+        <h4>Mechanism of Action</h4>
+        <p>Nicotine is an agonist at nicotinic acetylcholine receptors throughout the peripheral and central nervous system — both at ganglionic synapses (sympathetic and parasympathetic) and at the neuromuscular junction. This dual autonomic activation is why nicotine toxicity produces a classically <strong>biphasic</strong> picture: an initial stimulatory phase (sympathetic ganglion activation) followed by a later depressor phase as ganglionic transmission is overwhelmed and blocked (depolarizing blockade), flipping the clinical picture from hyperactivity to depression within the same overdose.<sup>[1]</sup></p>
+      </div>
+      <div class="section dose">
+        <h4>Intoxication Considerations</h4>
+        <p>Liquid nicotine concentration varies enormously across products (often 20-60 mg/mL, with some "nic salt" formulations higher), and ingested dose correlates poorly with resulting symptom severity across case reports, making risk stratification by history alone unreliable — any pediatric e-liquid ingestion should be treated as potentially serious regardless of the stated concentration.<sup>[2]</sup></p>
+      </div>
+      <div class="section signs">
+        <h4>Symptomology</h4>
+        <div class="patho-box">
+          <span class="patho-label">Pathognomonic Clue</span>
+          <p>The <strong>biphasic syndrome</strong> — early nausea, hypertension, tachycardia, tremor, and possibly seizures, followed hours later by hypotension, bradycardia, weakness, and CNS/respiratory depression in the same patient — is the signature, well-described pattern of significant nicotine toxicity and should prompt extended observation even after apparent early improvement, since the second (depressor) phase can be the more dangerous one.<sup>[3]</sup></p>
+        </div>
+      </div>
+      <div class="section bedside">
+        <h4>At the Bedside</h4>
+        <ul class="bedside-list">
+          <li>Supportive care is the mainstay; monitor through both phases rather than discharging after early symptom resolution.</li>
+          <li>Atropine for symptomatic bradycardia/excessive parasympathetic (muscarinic) symptoms during the depressor phase; vasopressor support for hypotension as needed.<sup>[4]</sup></li>
+        </ul>
+      </div>
+      <div class="section crit">
+        <h4>Critical Care Escalation</h4>
+        <ul class="bedside-list">
+          <li>Respiratory failure from neuromuscular blockade (depolarizing block at high nicotine levels, analogous mechanistically to a depolarizing paralytic) may require ventilatory support until the receptor blockade resolves.</li>
+          <li>Seizures managed with benzodiazepines per usual protocols.</li>
+        </ul>
+      </div>
+      <div class="pearl">
+        <span class="pearl-label">Practice Shift</span>
+        <p>Don't discharge a significant e-liquid ingestion just because the early stimulatory phase has settled down — the depressor phase can arrive later and be the more dangerous half of the same overdose.</p>
+      </div>
+      <div class="citations">
+        <span class="cite-label">Sources</span>
+        <ol>
+          <li>Managing Intoxications with Nicotine-Containing E-Liquids. Taylor &amp; Francis, 2022.</li>
+          <li>Nicotine Intoxication by E-Cigarette Liquids: A Study of Case Reports and Pathophysiology. Taylor &amp; Francis, 2019.</li>
+          <li>Lush Ice High: A Rare Case of Nicotine E-Liquid-Induced Toxic Encephalopathy. Cureus, 2025.</li>
+          <li>Symptomatic Bradycardia Due to Nicotine Intoxication. PMC, 2018.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- CLASS: KRATOM -->
+  <!-- ============================================================ -->
+  <div class="class-banner">
+    <span class="tag">Drug Class</span>
+    <h2>Kratom</h2>
+    <p>An herbal product occupying an ambiguous legal and pharmacologic middle ground — botanically unrelated to opium poppy but acting substantially through opioid receptors.</p>
+  </div>
+
+  <div class="substance" id="kratom">
+    <div class="sub-head">
+      <div class="class-label">Opioid-Adjacent Herbal · Partial Mu Agonist</div>
+      <h3>Kratom</h3>
+      <p class="formal">Mitragyna speciosa — active alkaloids mitragynine and 7-hydroxymitragynine</p>
+      <div class="street-names"><span>Kratom</span><span>Biak</span><span>Ketum</span><span>Thang</span><span>Gas station dope</span></div>
+      <div class="legal-badge legal-legal">Legal/unscheduled federally; banned in several US states</div>
+    </div>
+    <div class="sub-body">
+      <div class="section moa">
+        <h4>Mechanism of Action</h4>
+        <p>Mitragynine is a partial mu-opioid receptor agonist (with kappa/delta antagonism) using G-protein-biased signaling with limited beta-arrestin recruitment — theoretically less respiratory depression than classic full agonist opioids, though clinically significant respiratory depression is still reported, especially in combination with other CNS depressants. Its minor but far more potent metabolite/co-constituent, 7-hydroxymitragynine, has roughly 10-fold greater mu-receptor affinity than mitragynine itself and is disproportionately responsible for toxicity in concentrated extracts. Additional activity at alpha-2 adrenergic and serotonin receptors produces the mixed stimulant-at-low-dose/opioid-at-high-dose clinical picture users describe.<sup>[1,2]</sup></p>
+      </div>
+      <div class="section tox">
+        <h4>Clinical Toxidrome</h4>
+        <p>Low doses: stimulant-like energy and alertness. Higher doses: opioid-like sedation, analgesia, and — in overdose or with concentrated/adulterated products — respiratory depression, seizures, and rarely cardiac arrest (primarily reported with polydrug use).<sup>[3]</sup></p>
+      </div>
+      <div class="section signs">
+        <h4>Symptomology</h4>
+        <div class="patho-box">
+          <span class="patho-label">Pathognomonic Clue</span>
+          <p><strong>Cholestatic hepatotoxicity</strong> — jaundice with markedly elevated bilirubin (case reports exceeding 20 mg/dL) developing over 1-8 weeks of regular use, generally reversible with cessation — is a distinctive pattern for kratom among the substances in this reference, most of which don't cause liver injury as a primary toxicity. Kratom does <strong>not</strong> appear on standard opioid immunoassays and can cause a <strong>false-negative</strong> standard opioid screen even in a patient with a genuinely opioid-like clinical picture.<sup>[3]</sup></p>
+        </div>
+      </div>
+      <div class="section bedside">
+        <h4>At the Bedside</h4>
+        <ul class="bedside-list">
+          <li>Naloxone can reverse kratom-related respiratory depression given its mu-receptor mechanism, though response may be less predictable than with classic opioids.</li>
+          <li>Supportive care and benzodiazepines for seizures.</li>
+          <li>Ask specifically about kratom/herbal supplement use — a negative standard opioid screen does not rule it out and patients may not volunteer it as a "drug."<sup>[3]</sup></li>
+        </ul>
+      </div>
+      <div class="section crit">
+        <h4>Critical Care Escalation</h4>
+        <ul class="bedside-list">
+          <li>Withdrawal resembles mild-to-moderate opioid withdrawal (myalgias, rhinorrhea, diaphoresis, insomnia, irritability) and can be scored/managed using the Clinical Opiate Withdrawal Scale (COWS); generally less severe than classic opioid withdrawal but real and can drive dependency.<sup>[3]</sup></li>
+          <li>Hepatotoxicity workup and supportive management; usually reversible with abstinence, though monitor closely if bilirubin is markedly elevated.</li>
+        </ul>
+      </div>
+      <div class="pearl">
+        <span class="pearl-label">Practice Shift</span>
+        <p>A negative opioid screen does not clear kratom off your differential for an opioid-like presentation — the standard immunoassay simply doesn't see it.</p>
+      </div>
+      <div class="citations">
+        <span class="cite-label">Sources</span>
+        <ol>
+          <li>Kratom (Mitragyna speciosa): Friend or Foe? Psychiatrist.com, 2023.</li>
+          <li>Decoding Kratom: Molecular Mechanisms and Epigenetic Factors. Translational Psychiatry, 2026.</li>
+          <li>Kratom Toxicity. WikEM, 2026.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- CLASS: ANABOLIC-ANDROGENIC STEROIDS -->
+  <!-- ============================================================ -->
+  <div class="class-banner">
+    <span class="tag">Drug Class</span>
+    <h2>Anabolic-Androgenic Steroids</h2>
+    <p>Synthetic testosterone derivatives abused for muscle mass and athletic performance rather than acute intoxication — the harm profile here is chronic organ toxicity and sudden cardiac events rather than an overdose toxidrome.</p>
+  </div>
+
+  <div class="substance" id="anabolic-steroids">
+    <div class="sub-head">
+      <div class="class-label">Performance-Enhancing Hormone · Androgen Receptor Agonist</div>
+      <h3>Anabolic-Androgenic Steroids</h3>
+      <p class="formal">Testosterone esters, nandrolone, stanozolol, trenbolone, and related compounds</p>
+      <div class="street-names"><span>Gear</span><span>Juice</span><span>Roids</span><span>Stackers</span><span>Cycle</span></div>
+      <div class="legal-badge legal-cii">DEA Schedule III</div>
+    </div>
+    <div class="sub-body">
+      <div class="section moa">
+        <h4>Mechanism of Action</h4>
+        <p>Full agonists at the androgen receptor, driving increased protein synthesis and muscle hypertrophy (the anabolic effect) alongside masculinizing effects (the androgenic effect) that cannot be pharmacologically separated. 17-alpha-alkylated oral formulations (methandrostenolone, stanozolol, oxandrolone) resist first-pass hepatic metabolism to achieve oral bioavailability, but this same structural modification is directly responsible for their disproportionate hepatotoxicity compared to injectable, non-alkylated esters.<sup>[1,2]</sup></p>
+      </div>
+      <div class="section tox">
+        <h4>Chronic Toxicity Profile</h4>
+        <p>Cardiovascular: left ventricular hypertrophy, diastolic dysfunction, dyslipidemia (reduced HDL), hypertension, prothrombotic state, and sudden cardiac death in young, otherwise healthy athletes/bodybuilders — a pattern increasingly documented on forensic autopsy series. Hepatic: cholestatic jaundice with 17-alpha-alkylated agents, and rare but serious peliosis hepatis (blood-filled hepatic cysts) or hepatocellular adenoma/carcinoma with prolonged use. Renal: focal segmental glomerulosclerosis and chronic kidney disease from direct toxicity, hypertension, and rhabdomyolysis related to intense training.<sup>[3,4,5]</sup></p>
+      </div>
+      <div class="section signs">
+        <h4>Symptomology</h4>
+        <div class="patho-box">
+          <span class="patho-label">Pathognomonic Clue</span>
+          <p><strong>Peliosis hepatis</strong> — blood-filled cystic cavities within the liver, which can present with spontaneous hepatic rupture or subcapsular hematoma — is a distinctive, if rare, complication strongly associated with 17-alpha-alkylated AAS use and rarely seen from other causes in an otherwise healthy young adult. In a young bodybuilder-type patient, the combination of <strong>marked polycythemia (elevated hematocrit), significant left ventricular hypertrophy on echo without a hypertensive or valvular explanation, and gynecomastia</strong> together points strongly toward chronic AAS use even without a volunteered history.<sup>[4,6]</sup></p>
+        </div>
+      </div>
+      <div class="section bedside">
+        <h4>At the Bedside</h4>
+        <ul class="bedside-list">
+          <li>This is not an acute-overdose toxidrome — presentations are typically related to a chronic complication (chest pain/arrhythmia, abdominal pain from hepatic pathology, or an incidental lab/imaging finding).</li>
+          <li>Ask directly and non-judgmentally about supplement and injectable use in any young patient with unexplained cardiomyopathy, hepatic lesions, or marked polycythemia — AAS are also frequently present, undeclared, in over-the-counter "supplements."<sup>[2]</sup></li>
+        </ul>
+      </div>
+      <div class="section crit">
+        <h4>Critical Care Escalation</h4>
+        <ul class="bedside-list">
+          <li>Suspected peliosis hepatis with hemorrhage: this is a surgical/interventional radiology emergency — hemodynamic support and urgent imaging/consultation for possible embolization or surgical intervention.</li>
+          <li>Ventricular arrhythmia/sudden cardiac event in a young AAS user: standard ACLS, with cardiology workup for structural cardiomyopathy once stabilized.<sup>[5]</sup></li>
+        </ul>
+      </div>
+      <div class="pearl">
+        <span class="pearl-label">Practice Shift</span>
+        <p>Unexplained LVH, polycythemia, or a liver lesion in a young, muscular patient deserves a direct, nonjudgmental question about AAS and supplement use — this population underreports use to physicians far more than the prevalence data would suggest.</p>
+      </div>
+      <div class="citations">
+        <span class="cite-label">Sources</span>
+        <ol>
+          <li>Anabolic Androgenic Steroid-Induced Hepatotoxicity. ScienceDirect, 2016.</li>
+          <li>Hepatotoxicity Associated with Illicit Use of AAS in Doping. PubMed, 2017.</li>
+          <li>Forensic Approach in Cases of AAS Abuse and Cardiovascular Mortality. PMC, 2025.</li>
+          <li>Anabolic Steroid Misuse Damages Heart, Liver, Kidneys, and Brain. Medscape, 2026.</li>
+          <li>Impact of AAS Abuse on the Cardiovascular System. PMC, 2025.</li>
+          <li>AAS and Hepatocellular Adenoma and Carcinoma: Molecular Mechanisms and Clinical Implications. MDPI, 2024.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="closer">
+    <h3>Full Build Complete — 12 Classes, 39 Substances</h3>
+    <p>Every entry follows the locked schema: identity/legal status → mechanism → pharmacokinetics → intoxication thresholds → toxidrome → symptomology with pathognomonic-or-honestly-flagged findings → front-line bedside management → critical-care escalation → practice-shift pearl → citations. Use the search bar above to jump straight to a substance by symptom, sign, street name, or treatment.</p>
+    <p style="margin-top:14px;font-size:13px;">Not yet covered, for future lateral expansion: individual tricyclic/SSRI/SNRI antidepressants in overdose, lithium, digoxin, salicylates/NSAIDs, acetaminophen, antipsychotics, novel psychoactive "research chemical" fentanyl analogs beyond the class overview given, and khat in its unprocessed leaf form as distinct from synthetic cathinones.</p>
+  </div>
+
+  <p class="footer-note">The Critical Vector — Clinical Reference Series. For educational use by clinicians and trainees. Not a substitute for institutional protocols, poison control consultation, or primary literature review.</p>
+
+</div>
+
+<script>
+function highlightText(el, query) {
+  // Remove old marks first
+  el.querySelectorAll('mark').forEach(m => {
+    const parent = m.parentNode;
+    parent.replaceChild(document.createTextNode(m.textContent), m);
+    parent.normalize();
+  });
+  if (!query) return;
+  const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null);
+  const nodes = [];
+  let node;
+  while (node = walker.nextNode()) {
+    if (node.parentNode.tagName !== 'SCRIPT' && node.nodeValue.toLowerCase().includes(query)) {
+      nodes.push(node);
+    }
+  }
+  nodes.forEach(textNode => {
+    const text = textNode.nodeValue;
+    const lower = text.toLowerCase();
+    let idx = lower.indexOf(query);
+    if (idx === -1) return;
+    const frag = document.createDocumentFragment();
+    let cursor = 0;
+    while (idx !== -1) {
+      frag.appendChild(document.createTextNode(text.slice(cursor, idx)));
+      const mark = document.createElement('mark');
+      mark.textContent = text.slice(idx, idx + query.length);
+      frag.appendChild(mark);
+      cursor = idx + query.length;
+      idx = lower.indexOf(query, cursor);
+    }
+    frag.appendChild(document.createTextNode(text.slice(cursor)));
+    textNode.parentNode.replaceChild(frag, textNode);
+  });
+}
+
+function filterSubstances() {
+  const raw = document.getElementById('symptomSearch').value.trim();
+  const q = raw.toLowerCase();
+  const cards = document.querySelectorAll('.substance');
+  let matches = 0;
+  let firstMatch = null;
+
+  cards.forEach(card => {
+    const text = card.textContent.toLowerCase();
+    const isMatch = (q === '' || text.includes(q));
+    card.style.display = isMatch ? '' : 'none';
+    if (isMatch) {
+      matches++;
+      if (!firstMatch) firstMatch = card;
+    }
+    // highlight within symptomology sections primarily, but do full-card text
+    if (q !== '' && isMatch) {
+      highlightText(card, q);
+    } else if (q === '') {
+      highlightText(card, '');
+    }
+  });
+
+  // Hide class banners with zero visible substances beneath them
+  document.querySelectorAll('.class-banner').forEach(banner => {
+    let sib = banner.nextElementSibling;
+    let anyVisible = false;
+    while (sib && !sib.classList.contains('class-banner') && !sib.classList.contains('closer')) {
+      if (sib.classList.contains('substance') && sib.style.display !== 'none') anyVisible = true;
+      sib = sib.nextElementSibling;
+    }
+    banner.style.display = (q === '' || anyVisible) ? '' : 'none';
+  });
+
+  const countEl = document.getElementById('searchCount');
+  const noResultsEl = document.getElementById('noResultsMsg');
+  if (q === '') {
+    countEl.textContent = '';
+    noResultsEl.style.display = 'none';
+  } else {
+    countEl.textContent = matches + ' match' + (matches !== 1 ? 'es' : '') + ' found';
+    noResultsEl.style.display = matches === 0 ? '' : 'none';
+  }
+
+  window._firstMatch = firstMatch;
+}
+
+function handleSearchKey(e) {
+  if (e.key === 'Enter' && window._firstMatch) {
+    window._firstMatch.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
+// Also allow clicking the TOC to work as normal anchor links (native browser behavior, no JS needed)
+</script>
+
+<footer style="max-width:900px;margin:24px auto 0;padding:24px 16px 32px;font-size:12.5px;color:var(--text3);font-family:'Source Serif 4',serif;font-style:italic;text-align:center">The Critical Vector · Direction and magnitude.</footer>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Peripheral IV Vasopressors: How Risky, Really? | The Critical Vector</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400;1,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#0a0e14; --surface:#111720; --surface2:#182030; --border:rgba(255,255,255,.08); --accent:#00d4aa; --accent2:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa; --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670;}
+  *{box-sizing:border-box;}
+  body{background:var(--bg); color:var(--text); margin:0; padding:2.5rem 1rem 5rem; font-family:'Source Serif 4', Georgia, serif; line-height:1.65;}
+  .page{max-width:920px; margin:0 auto;}
+  h1,h2,h3,.sec-num,.kicker,th,.label,.step-num{font-family:'Syne', sans-serif;}
+  code, .mono{font-family:'IBM Plex Mono', monospace;}
+  .kicker{color:var(--accent); font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; font-weight:600;}
+  h1{font-weight:800; font-size:1.7rem; margin:.4rem 0 .5rem; color:var(--text); line-height:1.3;}
+  header p{font-style:italic; color:var(--text2); font-size:1rem; margin:0 0 .4rem;}
+  .byline{color:var(--text3); font-size:.85rem; margin:0 0 1.5rem;}
+  .alert{background:rgba(0,212,170,.10); border:1px solid rgba(0,212,170,.28); color:#bdf5e8; border-radius:10px; padding:1rem 1.2rem; margin:1.2rem 0 2rem; font-size:.98rem;}
+  .alert strong{color:var(--accent);}
+  .sec-head{display:flex; align-items:baseline; gap:.7rem; padding:.6rem .9rem; border-left:4px solid var(--accent); background:linear-gradient(90deg, rgba(0,212,170,.10), transparent); border-radius:6px; margin-top:2.6rem;}
+  .sec-head.c-blue{border-left-color:var(--accent2); background:linear-gradient(90deg, rgba(96,165,250,.12), transparent);}
+  .sec-head.c-red{border-left-color:var(--red); background:linear-gradient(90deg, rgba(232,76,76,.12), transparent);}
+  .sec-head.c-amber{border-left-color:var(--amber); background:linear-gradient(90deg, rgba(245,158,11,.12), transparent);}
+  .sec-head.c-purple{border-left-color:var(--purple); background:linear-gradient(90deg, rgba(167,139,250,.12), transparent);}
+  .sec-num{color:var(--text3); font-size:.85rem; font-weight:600;}
+  .sec-head h2{margin:0; font-size:1.15rem; font-weight:700; color:var(--text);}
+  .tagline{font-style:italic; color:var(--text2); font-size:.92rem; margin:.4rem 0 1rem; padding-left:.9rem;}
+  p{margin:.8rem 0;}
+  .box{background:var(--surface2); border:1px solid var(--border); border-radius:10px; padding:1rem 1.2rem; margin:1.1rem 0;}
+  .box.t-teal{border-left:3px solid var(--accent);} .box.t-blue{border-left:3px solid var(--accent2);}
+  .box.t-amber{border-left:3px solid var(--amber);} .box.t-purple{border-left:3px solid var(--purple);}
+  .box.t-red{border-left:3px solid var(--red); background:rgba(232,76,76,.06);}
+  .box .label{display:block; font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; font-weight:700; margin-bottom:.4rem;}
+  .box.t-teal .label{color:var(--accent);} .box.t-blue .label{color:var(--accent2);}
+  .box.t-amber .label{color:var(--amber);} .box.t-purple .label{color:var(--purple);} .box.t-red .label{color:var(--red);}
+  table{width:100%; border-collapse:collapse; margin:1.1rem 0; font-size:.83rem;}
+  th{background:var(--surface2); color:var(--text); text-align:left; padding:.5rem .55rem; font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; font-weight:700; border-bottom:1px solid var(--border);}
+  td{padding:.5rem .55rem; border-bottom:1px solid var(--border); vertical-align:top; color:var(--text);}
+  tr:nth-child(even) td{background:rgba(255,255,255,.02);}
+  td.num{font-family:'IBM Plex Mono',monospace; font-size:.8rem;}
+  tr.sig td{background:rgba(232,76,76,.07);} tr.notsig td{color:var(--text2);}
+  ul.plain{margin:.6rem 0; padding-left:1.3rem;} ul.plain li{margin-bottom:.4rem;}
+  .sources{list-style:none; padding:0; margin:1rem 0; font-size:.85rem; color:var(--text2);}
+  .sources li{padding:.55rem 0; border-bottom:1px solid var(--border);} .sources a{color:var(--accent);}
+  footer{font-style:italic; color:var(--text3); font-size:.85rem; text-align:center; margin-top:3rem; padding-top:1.2rem; border-top:1px solid var(--border);}
+  @media print{
+    :root{--bg:#f4f5f7; --surface:#fff; --surface2:#eef1f4; --border:#d7dde3; --accent:#00a688; --accent2:#1d4ed8; --red:#c53030; --amber:#b45309; --purple:#7c3aed; --text:#0f1923; --text2:#4a5670; --text3:#6b7688;}
+    body{background:var(--bg) !important; color:var(--text) !important;}
+    .alert{background:rgba(0,166,136,.08) !important; color:#0f1923 !important;}
+    td{color:var(--text) !important;}
+  }
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ a{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../locker.html">The Evidence Locker</a><span class="cv-sb-meta">Published 2 Sep 2026 · R. E. Suscitate &amp; A. Systole</span></nav>
+<div class="page">
+
+<header>
+  <div class="kicker">The Critical Vector &middot; Study Breakdown</div>
+  <h1>Peripheral IV Vasopressors: How Risky, Really?</h1>
+  <p>ZhangJian S-J, Niu K-Y, Chen C-B, Seak C-J, Yen C-C. Incidence of Adverse Events in Peripheral Intravenous Vasopressor Use: A Systematic Review and Meta-Analysis.</p>
+  <p class="byline"><em>JAMA Network Open.</em> 2026;9(3):e260710. doi:10.1001/jamanetworkopen.2026.0710 &middot; Chang Gung Memorial Hospital &amp; New Taipei Municipal Tucheng Hospital, Taiwan</p>
+</header>
+
+<div class="alert">
+<strong>Why this one matters:</strong> "central line first, vasopressors second" is deeply ingrained teaching, largely built on case reports of skin necrosis from the 1950s onward. This is the largest meta-analysis to date testing whether that caution is proportionate to the actual, measured risk &mdash; 49 studies, 33,060 catheters, agent-by-agent.
+</div>
+
+<div class="sec-head"><span class="sec-num">01</span><h2>The Setup</h2></div>
+<p class="tagline">Delayed vasopressor initiation kills. CVC placement takes time, and isn't free of its own risk. The question is whether the peripheral route is actually as dangerous as tradition assumes.</p>
+<p>Central venous catheters have been the traditional default for vasopressor infusion largely out of concern for extravasation and tissue necrosis &mdash; concerns that trace back partly to individual case reports (skin necrosis after IV norepinephrine, <i>BMJ</i> 1955; skin necrosis after vasopressin extravasation, <i>Crit Care Med</i> 2002). But CVC placement carries its own immediate risks (arrhythmia, vascular injury, pneumothorax) and delayed ones (DVT, bloodstream infection), and takes time to place &mdash; time during which a hypotensive patient isn't getting pressor support. The 2021 Surviving Sepsis Campaign formally recommended starting vasopressors peripherally rather than delaying for central access, which makes this exactly the right moment for a large, current evidence synthesis.</p>
+
+<div class="sec-head c-blue"><span class="sec-num">02</span><h2>Design</h2></div>
+<table>
+<tr><td><b>Design</b></td><td>Systematic review and meta-analysis, PRISMA-reported, PROSPERO-registered</td></tr>
+<tr><td><b>Search</b></td><td>PubMed, Embase, Cochrane CENTRAL, inception to Dec 13, 2025; no language restriction</td></tr>
+<tr><td><b>Included</b></td><td>49 studies, 33,060 catheters, published 1997&ndash;2025 (14 prospective, 31 retrospective, 4 RCTs)</td></tr>
+<tr><td><b>Population</b></td><td>Adults with hypotension, shock, or critical illness receiving vasopressors via PIV (including midline) catheters</td></tr>
+<tr><td><b>Primary outcome</b></td><td>Pooled incidence of minor and major adverse events per catheter</td></tr>
+<tr><td><b>Secondary outcome</b></td><td>Pooled proportion of CVC avoidance</td></tr>
+<tr><td><b>Setting mix</b></td><td>53.1% ICU, 18.4% ED, 8.2% OR, 12.2% mixed, remainder ward/intermediate care</td></tr>
+</table>
+
+<div class="sec-head c-red"><span class="sec-num">03</span><h2>Minor Adverse Events, by Agent</h2></div>
+<p class="tagline">Pain, swelling, infiltration, extravasation, cellulitis, thrombophlebitis &mdash; real, but manageable conservatively.</p>
+<table>
+<tr><th>Agent</th><th>Studies</th><th>Catheters</th><th>Minor AE incidence</th></tr>
+<tr><td>Norepinephrine</td><td class="num">30</td><td class="num">23,118</td><td class="num">2.6% (95% CI 1.4&ndash;4.7)</td></tr>
+<tr><td>Phenylephrine</td><td class="num">11</td><td class="num">1,756</td><td class="num">2.9% (95% CI 1.8&ndash;4.8)</td></tr>
+<tr><td>Dopamine</td><td class="num">8</td><td class="num">375</td><td class="num">1.4% (95% CI 0.3&ndash;5.9)</td></tr>
+<tr><td>Metaraminol</td><td class="num">4</td><td class="num">462</td><td class="num">0.9% (95% CI 0.1&ndash;11.5)</td></tr>
+<tr><td>Vasopressin</td><td class="num">7</td><td class="num">440</td><td class="num">0.5% (95% CI 0.1&ndash;1.8)</td></tr>
+<tr><td>Epinephrine</td><td class="num">11</td><td class="num">643</td><td class="num">0.0% (95% CI 0.0&ndash;24.6)</td></tr>
+<tr class="sig"><td><b>All agents combined</b></td><td class="num">49</td><td class="num">31,212</td><td class="num"><b>2.3% (95% CI 1.5&ndash;3.7)</b></td></tr>
+</table>
+<p class="note" style="color:var(--text2); font-style:italic; font-size:.85rem;">Note the epinephrine and metaraminol confidence intervals are wide (0&ndash;24.6% and 0.1&ndash;11.5%) &mdash; fewer catheters means less precision, not necessarily a truly higher ceiling of risk.</p>
+
+<div class="sec-head c-amber"><span class="sec-num">04</span><h2>Major Adverse Events: the Whole Story Is Catheter Type</h2></div>
+<p class="tagline">This is the paper's central, clinically actionable finding.</p>
+<table>
+<tr><th>Catheter type</th><th>Studies</th><th>Catheters</th><th>Major AEs</th><th>Pooled incidence</th></tr>
+<tr class="sig"><td>Midline catheter</td><td class="num">4</td><td class="num">1,126</td><td class="num">30 VTE</td><td class="num">1.4% (95% CI 0.4&ndash;5.4)</td></tr>
+<tr class="notsig"><td>Short PIV catheter</td><td class="num">43</td><td class="num">29,596</td><td class="num">1 tissue necrosis</td><td class="num">0.0% (95% CI 0.0&ndash;0.0)</td></tr>
+</table>
+<div class="box t-amber">
+<span class="label">P&lt;.001 between subgroups</span>
+<p>Every single major adverse event captured across this entire 33,060-catheter dataset that wasn't a VTE in a midline catheter was <b>one</b> tissue necrosis case, out of nearly 30,000 short-PIV catheters. All 30 venous thromboembolism events occurred in the much smaller midline-catheter subgroup. The authors attribute this to dwell time, not the drug: midline catheters commonly stay in for over a week, while short PIV catheters are typically used for hours to days &mdash; and longer vascular device dwell time is an independently established VTE risk factor, consistent with a broader midline-catheter thrombosis literature estimating roughly 22 VTE events per 1,000 catheter-days.</p>
+</div>
+
+<div class="sec-head c-purple"><span class="sec-num">05</span><h2>CVC Avoidance: 60%, but Wildly Setting-Dependent</h2></div>
+<p class="tagline">The practical payoff metric, and the one most directly relevant to your own department's protocol design.</p>
+<p>Across 38 studies (15,371 catheters) reporting it, the pooled CVC avoidance proportion was <b>59.7%</b> (95% CI 46.4&ndash;71.7), but individual studies ranged from 0% to 100%. The OR and ward settings showed significantly higher avoidance than ICU/ED/mixed settings &mdash; largely because OR peripheral pressor use is typically for transient anesthesia-related hypotension under intensive monitoring, while ED/ICU peripheral use often functions as a bridge to, rather than a replacement for, eventual central access. Midline catheters showed significantly higher CVC avoidance than short PIV (83.8% vs. 58.1%, P&lt;.001) &mdash; the flip side of their higher VTE signal: they buy more days off a central line at the cost of measurably more clot risk.</p>
+
+<div class="sec-head" style="border-left-color:var(--text3); background:none;"><span class="sec-num">06</span><h2>Two Findings Worth Reading Carefully, Not Just Citing</h2></div>
+<ul class="plain">
+<li><b>Retrospective studies significantly underreport minor AEs</b> compared with prospective studies and RCTs (1.5% vs. 4.5% vs. 11.1%, P&lt;.001) &mdash; consistent with under-ascertainment of mild, self-limited events in chart-review-driven cohorts. Since 63% of the included studies were retrospective, the pooled 2.3% headline figure is likely a floor, not a ceiling, on true minor AE incidence.</li>
+<li><b>Post-2021 studies report significantly higher minor AE rates</b> than pre-2021 studies (3.4% vs. 1.4%, P=.048) &mdash; the authors attribute this to increased peripheral pressor adoption and reporting vigilance following the 2021 Surviving Sepsis Campaign recommendation, not to the practice becoming less safe over time.</li>
+</ul>
+
+<div class="sec-head" style="border-left-color:var(--text3); background:none;"><span class="sec-num">07</span><h2>Limitations, as Stated by the Authors</h2></div>
+<ul class="plain">
+<li>61.2% of included studies were rated unclear or high risk of bias, mainly for lack of standardized AE ascertainment methods and missing confidence intervals in the source studies.</li>
+<li>Considerable heterogeneity (I² up to 95.2% for pooled minor AEs) reflects real variation in study design, protocols, and clinical settings &mdash; this limits how confidently the pooled point estimates generalize to any single department's practice.</li>
+<li>Dosage and concentration data were inconsistently reported and could not be analyzed &mdash; this review cannot tell you whether higher-dose peripheral norepinephrine carries materially more risk than lower-dose.</li>
+<li>The authors are explicit: <b>no high-quality RCT has directly compared PIV against CVC</b> for AE outcomes, so this synthesis should not be read as license to categorically replace CVCs with PIVs &mdash; only as evidence that short-term, monitored short-PIV vasopressor use carries a low measured complication rate.</li>
+</ul>
+
+<div class="sec-head" style="border-left-color:var(--text3); background:none;"><span class="sec-num">08</span><h2>Bottom Line</h2></div>
+<p>Across the largest dataset assembled on this question to date, short peripheral IV catheters placed in proximal veins carried an essentially negligible major-complication rate (0.0%, one tissue necrosis event in ~29,600 catheters) and a low minor-complication rate (2.3% overall, mostly self-limited). The real caution flag in this whole dataset is specifically the <b>midline catheter</b> subgroup, where VTE risk was meaningfully higher (1.4%) &mdash; plausibly a dwell-time effect rather than a drug effect, but real enough to warrant deliberate duration limits and monitoring if midlines are your institution's chosen route. None of this replaces individualized judgment about when central access is still the right call (prolonged infusion, need for other central-line-dependent therapies, difficult peripheral access) &mdash; but for short-term, appropriately monitored pressor support via a short PIV catheter in a proximal vein, the evidence base for caution has gotten a lot thinner than the traditional teaching implies.</p>
+
+<div class="sec-head" style="border-left-color:var(--text3); background:none;"><span class="sec-num">09</span><h2>Sources</h2></div>
+<ul class="sources">
+<li>ZhangJian S-J, Niu K-Y, Chen C-B, Seak C-J, Yen C-C. Incidence of Adverse Events in Peripheral Intravenous Vasopressor Use: A Systematic Review and Meta-Analysis. <em>JAMA Netw Open.</em> 2026;9(3):e260710. doi:10.1001/jamanetworkopen.2026.0710.</li>
+<li>Owen VS, Rosgen BK, Cherak SJ, et al. Adverse events associated with administration of vasopressor medications through a peripheral intravenous catheter: a systematic review and meta-analysis. <em>Crit Care.</em> 2021;25(1):146.</li>
+<li>Evans L, Rhodes A, Alhazzani W, et al. Surviving Sepsis Campaign: international guidelines for management of sepsis and septic shock 2021. <em>Intensive Care Med.</em> 2021;47(11):1181&ndash;1247.</li>
+<li>Teja B, Bosch NA, Diep C, et al. Complication rates of central venous catheters: a systematic review and meta-analysis. <em>JAMA Intern Med.</em> 2024;184(5):474&ndash;482.</li>
+<li>Delaney A, Finnis M, Bellomo R, et al. Initiation of vasopressor infusions via peripheral versus central access in patients with early septic shock: a retrospective cohort study. <em>Emerg Med Australas.</em> 2020;32(2):210&ndash;219.</li>
+</ul>
+
+<footer>The Critical Vector &middot; Direction and magnitude.</footer>
+
+</div>
+</body>
+</html>

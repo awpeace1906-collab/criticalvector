@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AID-ICU: Does Haloperidol Actually Help ICU Delirium? | The Critical Vector</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400;1,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#0a0e14; --surface:#111720; --surface2:#182030; --border:rgba(255,255,255,.08); --accent:#00d4aa; --accent2:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa; --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670;}
+  *{box-sizing:border-box;}
+  body{background:var(--bg); color:var(--text); margin:0; padding:2.5rem 1rem 5rem; font-family:'Source Serif 4', Georgia, serif; line-height:1.65;}
+  .page{max-width:920px; margin:0 auto;}
+  h1,h2,h3,.sec-num,.kicker,th,.label,.step-num{font-family:'Syne', sans-serif;}
+  code, .mono{font-family:'IBM Plex Mono', monospace;}
+  .kicker{color:var(--accent); font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; font-weight:600;}
+  h1{font-weight:800; font-size:1.7rem; margin:.4rem 0 .5rem; color:var(--text); line-height:1.3;}
+  header p{font-style:italic; color:var(--text2); font-size:1rem; margin:0 0 .4rem;}
+  .byline{color:var(--text3); font-size:.85rem; margin:0 0 1.5rem;}
+  .alert{background:rgba(0,212,170,.10); border:1px solid rgba(0,212,170,.28); color:#bdf5e8; border-radius:10px; padding:1rem 1.2rem; margin:1.2rem 0 2rem; font-size:.98rem;}
+  .alert strong{color:var(--accent);}
+  .sec-head{display:flex; align-items:baseline; gap:.7rem; padding:.6rem .9rem; border-left:4px solid var(--accent); background:linear-gradient(90deg, rgba(0,212,170,.10), transparent); border-radius:6px; margin-top:2.6rem;}
+  .sec-head.c-blue{border-left-color:var(--accent2); background:linear-gradient(90deg, rgba(96,165,250,.12), transparent);}
+  .sec-head.c-red{border-left-color:var(--red); background:linear-gradient(90deg, rgba(232,76,76,.12), transparent);}
+  .sec-head.c-amber{border-left-color:var(--amber); background:linear-gradient(90deg, rgba(245,158,11,.12), transparent);}
+  .sec-head.c-purple{border-left-color:var(--purple); background:linear-gradient(90deg, rgba(167,139,250,.12), transparent);}
+  .sec-num{color:var(--text3); font-size:.85rem; font-weight:600;}
+  .sec-head h2{margin:0; font-size:1.15rem; font-weight:700; color:var(--text);}
+  .tagline{font-style:italic; color:var(--text2); font-size:.92rem; margin:.4rem 0 1rem; padding-left:.9rem;}
+  p{margin:.8rem 0;}
+  .box{background:var(--surface2); border:1px solid var(--border); border-radius:10px; padding:1rem 1.2rem; margin:1.1rem 0;}
+  .box.t-teal{border-left:3px solid var(--accent);} .box.t-blue{border-left:3px solid var(--accent2);}
+  .box.t-amber{border-left:3px solid var(--amber);} .box.t-purple{border-left:3px solid var(--purple);}
+  .box.t-red{border-left:3px solid var(--red); background:rgba(232,76,76,.06);}
+  .box .label{display:block; font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; font-weight:700; margin-bottom:.4rem;}
+  .box.t-teal .label{color:var(--accent);} .box.t-blue .label{color:var(--accent2);}
+  .box.t-amber .label{color:var(--amber);} .box.t-purple .label{color:var(--purple);} .box.t-red .label{color:var(--red);}
+  table{width:100%; border-collapse:collapse; margin:1.1rem 0; font-size:.83rem;}
+  th{background:var(--surface2); color:var(--text); text-align:left; padding:.5rem .55rem; font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; font-weight:700; border-bottom:1px solid var(--border);}
+  td{padding:.5rem .55rem; border-bottom:1px solid var(--border); vertical-align:top; color:var(--text);}
+  tr:nth-child(even) td{background:rgba(255,255,255,.02);}
+  td.num{font-family:'IBM Plex Mono',monospace; font-size:.8rem;}
+  tr.sig td{background:rgba(232,76,76,.07);} tr.notsig td{color:var(--text2);}
+  ul.plain{margin:.6rem 0; padding-left:1.3rem;} ul.plain li{margin-bottom:.4rem;}
+  .sources{list-style:none; padding:0; margin:1rem 0; font-size:.85rem; color:var(--text2);}
+  .sources li{padding:.55rem 0; border-bottom:1px solid var(--border);} .sources a{color:var(--accent);}
+  footer{font-style:italic; color:var(--text3); font-size:.85rem; text-align:center; margin-top:3rem; padding-top:1.2rem; border-top:1px solid var(--border);}
+  @media print{
+    :root{--bg:#f4f5f7; --surface:#fff; --surface2:#eef1f4; --border:#d7dde3; --accent:#00a688; --accent2:#1d4ed8; --red:#c53030; --amber:#b45309; --purple:#7c3aed; --text:#0f1923; --text2:#4a5670; --text3:#6b7688;}
+    body{background:var(--bg) !important; color:var(--text) !important;}
+    .alert{background:rgba(0,166,136,.08) !important; color:#0f1923 !important;}
+    td{color:var(--text) !important;}
+  }
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ a{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../locker.html">The Evidence Locker</a><span class="cv-sb-meta">Published 1 Sep 2026 · R. E. Suscitate &amp; A. Systole</span></nav>
+<div class="page">
+
+<header>
+  <div class="kicker">The Critical Vector &middot; Study Breakdown &amp; Content Audit &mdash; Verified</div>
+  <h1>AID-ICU: Does Haloperidol Actually Help ICU Delirium?</h1>
+  <p>Andersen-Ranberg NC, Poulsen LM, Perner A, et al; AID-ICU Trial Group. Haloperidol for the Treatment of Delirium in ICU Patients.</p>
+  <p class="byline"><em>N Engl J Med.</em> 2022;387(26):2425&ndash;2435. doi:10.1056/NEJMoa2211868 &middot; Original social summary: RebelEM, plus CAM-ICU algorithm reference card</p>
+</header>
+
+<div class="alert">
+<strong>Verdict on the source post:</strong> the RebelEM caption asks the right question and links the right primary trial, but leaves the actual answer as a cliffhanger ("find out here"). This audit gives the answer AID-ICU found &mdash; plus a follow-up analysis published a year later that meaningfully complicates it, and two prior trials that set up why AID-ICU was needed in the first place.
+</div>
+
+<div class="sec-head"><span class="sec-num">01</span><h2>The Setup</h2></div>
+<p class="tagline">Haloperidol is the most commonly used ICU delirium drug in the world. Until AID-ICU, the evidence for it was thin.</p>
+<p>Delirium affects an estimated 30&ndash;50% of ICU patients and is associated with longer ICU stay, longer mechanical ventilation, and worse long-term cognitive outcomes. Haloperidol has been the default pharmacologic treatment for decades largely on the strength of clinical tradition rather than trial data. Two prior trials had already cast doubt: HOPE-ICU found early prophylactic haloperidol did not prevent delirium from developing, and MIND-USA (2018, n=566) found no difference in days alive without delirium or coma with haloperidol or ziprasidone versus placebo &mdash; and haloperidol nearly reached statistical significance for <i>worse</i> 90-day mortality (38% vs. 34%, OR 1.17, 95% CI 0.99&ndash;1.40). AID-ICU was designed as a larger, dedicated test of haloperidol specifically for <i>treating</i> delirium once it's already present, using CAM-ICU or ICDSC to confirm the diagnosis first &mdash; the same algorithm shown in the companion post.</p>
+
+<div class="sec-head c-blue"><span class="sec-num">02</span><h2>Design</h2></div>
+<table>
+<tr><td><b>Design</b></td><td>Multicenter, blinded, placebo-controlled RCT</td></tr>
+<tr><td><b>Population</b></td><td>1,000 adults admitted to ICU for an acute condition, screened positive for delirium by CAM-ICU or ICDSC</td></tr>
+<tr><td><b>Intervention</b></td><td>IV haloperidol 2.5 mg TID + up to 2.5 mg PRN, max 20 mg/day, for as long as delirium persisted or recurred</td></tr>
+<tr><td><b>Control</b></td><td>Matched placebo</td></tr>
+<tr><td><b>Primary outcome</b></td><td>Days alive and out of hospital at 90 days</td></tr>
+<tr><td><b>Analyzed</b></td><td>987 of 1,000 randomized (501 haloperidol, 486 placebo)</td></tr>
+</table>
+
+<div class="sec-head c-red"><span class="sec-num">03</span><h2>The Frequentist Result: Negative</h2></div>
+<div class="box t-red">
+<span class="label">The primary, published NEJM finding</span>
+<p>Treatment with haloperidol did <b>not</b> lead to a significantly greater number of days alive and out of hospital at 90 days than placebo. On the standard frequentist analysis that made the NEJM headline, this was a negative trial.</p>
+</div>
+
+<div class="sec-head c-amber"><span class="sec-num">04</span><h2>The Part Most Summaries Skip: the Bayesian Reanalysis</h2></div>
+<p class="tagline">A pre-planned secondary analysis, published a year later, tells a meaningfully different story from the same dataset.</p>
+<p>The AID-ICU investigators had pre-specified a Bayesian reanalysis of their own trial, published in <i>Intensive Care Medicine</i> in 2023. Using weakly informative priors, adjusted Bayesian regression on the same 987 patients found:</p>
+<table>
+<tr><th>Outcome</th><th>Result</th></tr>
+<tr><td>Days alive and out of hospital (primary outcome)</td><td class="num">Mean difference +2.9 days (95% CrI &minus;1.1 to 6.9); 92% probability of any benefit, 82% probability of clinically important benefit</td></tr>
+<tr><td>Mortality (risk difference)</td><td class="num">&minus;6.8 percentage points (95% CrI &minus;12.8 to &minus;0.8); 99% probability of any benefit, 94% probability of clinically important benefit</td></tr>
+<tr><td>Serious adverse reactions</td><td class="num">+0.3 percentage points (95% CrI &minus;1.3 to 1.9); 98% probability of no clinically important difference</td></tr>
+</table>
+<div class="box t-amber">
+<span class="label">Two statistically legitimate readings of the same trial</span>
+<p>The frequentist analysis says "no significant difference." The pre-planned Bayesian analysis of the identical dataset says "high probability of clinically important benefit, including on mortality." Both are valid statistical approaches to the same 987 patients &mdash; the discrepancy comes from how each framework treats uncertainty and prior information, not from a data error. This is exactly the kind of nuance a single-slide "how effective is haloperidol" caption can't hold, and it's the single most important thing missing from the original post.</p>
+</div>
+
+<div class="sec-head c-purple"><span class="sec-num">05</span><h2>How AID-ICU Fits With the Trials Before It</h2></div>
+<table>
+<tr><th>Trial</th><th>N</th><th>Question</th><th>Result</th></tr>
+<tr><td>HOPE-ICU</td><td>&mdash;</td><td>Early prophylactic haloperidol</td><td>Did not prevent delirium</td></tr>
+<tr><td>MIND-USA, 2018</td><td>566</td><td>Haloperidol or ziprasidone vs. placebo, treatment</td><td>No benefit on delirium/coma-free days; near-significant mortality signal <i>against</i> haloperidol (OR 1.17, 95% CI 0.99&ndash;1.40)</td></tr>
+<tr><td>AID-ICU, 2022 (frequentist)</td><td>1,000</td><td>Haloperidol vs. placebo, treatment</td><td>No significant difference, days alive out of hospital</td></tr>
+<tr><td>AID-ICU, 2023 (Bayesian reanalysis)</td><td>987</td><td>Same trial, same data</td><td>High probability of benefit, including on mortality</td></tr>
+</table>
+<p>Read across all four, the picture is genuinely unsettled rather than clearly negative: the largest, best-designed trial to date produced a null frequentist result but a favorable Bayesian one, while the prior trial (MIND-USA) leaned toward possible harm. That's not a clean story, and any single-post summary claiming certainty in either direction is oversimplifying.</p>
+
+<div class="sec-head" style="border-left-color:var(--text3); background:none;"><span class="sec-num">06</span><h2>Bottom Line</h2></div>
+<p>The RebelEM post correctly identifies AID-ICU as the trial to know here and correctly links the CAM-ICU algorithm as the diagnostic step that has to happen first. What it leaves as an exercise for the reader is the actual finding &mdash; and the honest answer is two-part: the primary, published frequentist result was negative, but the trial's own pre-planned Bayesian reanalysis of the same patients found a high probability of meaningful benefit, including on mortality. Combined with MIND-USA's near-significant harm signal beforehand, haloperidol for ICU delirium remains a genuinely open question rather than a settled negative or positive &mdash; treat any confident claim in either direction with the same skepticism this audit is applying to the source post.</p>
+
+<div class="sec-head" style="border-left-color:var(--text3); background:none;"><span class="sec-num">07</span><h2>Sources</h2></div>
+<ul class="sources">
+<li>Andersen-Ranberg NC, Poulsen LM, Perner A, et al; AID-ICU Trial Group. Haloperidol for the Treatment of Delirium in ICU Patients. <em>N Engl J Med.</em> 2022;387(26):2425&ndash;2435. doi:10.1056/NEJMoa2211868.</li>
+<li>Andersen-Ranberg NC, et al. Haloperidol vs. placebo for the treatment of delirium in ICU patients: a pre-planned, secondary Bayesian analysis of the AID-ICU trial. <em>Intensive Care Med.</em> 2023;49:411&ndash;420. PMID: 36971791.</li>
+<li>Girard TD, Exline MC, Carson SS, et al. Haloperidol and Ziprasidone for Treatment of Delirium in Critical Illness (MIND-USA). <em>N Engl J Med.</em> 2018;379:2506&ndash;2516.</li>
+<li>Page VJ, et al. Effect of intravenous haloperidol on the duration of delirium and coma in critically ill patients (HOPE-ICU). <em>Lancet Respir Med.</em> 2013.</li>
+<li>Ely EW, et al. Delirium in mechanically ventilated patients: validity and reliability of the confusion assessment method for the intensive care unit (CAM-ICU). <em>JAMA.</em> 2001;286(21):2703&ndash;2710.</li>
+</ul>
+
+<footer>The Critical Vector &middot; Direction and magnitude.</footer>
+
+</div>
+</body>
+</html>

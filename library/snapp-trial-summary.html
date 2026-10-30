@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SNaPP Trial — Critical Vector</title>
+<style>
+  :root {
+    --bg: #121212;
+    --card: #1a1a1a;
+    --text: #e8e8e8;
+    --muted: #9a9a9a;
+    --line: #2c2c2c;
+  }
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0 0 60px 0;
+    line-height: 1.5;
+  }
+  header { padding: 28px 20px 18px 20px; border-bottom: 1px solid var(--line); }
+  header .kicker {
+    font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 6px;
+  }
+  header h1 { font-size: 24px; margin: 0 0 8px 0; }
+  header p { color: var(--muted); font-size: 14px; margin: 0; }
+  nav {
+    display: flex; flex-wrap: wrap; gap: 6px;
+    padding: 16px 20px; border-bottom: 1px solid var(--line);
+  }
+  nav a {
+    font-size: 12px; color: var(--text); background: var(--card);
+    border: 1px solid var(--line); padding: 6px 10px; border-radius: 20px;
+    text-decoration: none; white-space: nowrap;
+  }
+  main { padding: 0 20px; max-width: 720px; margin: 0 auto; }
+  section { padding: 24px 0; border-bottom: 1px solid var(--line); }
+  section h2 {
+    font-size: 19px; margin: 0 0 12px 0; padding-bottom: 10px;
+    border-bottom: 2px solid var(--accent, #888);
+  }
+  section h2 .secnum { color: var(--accent, #888); margin-right: 6px; }
+  .box {
+    background: var(--tint, var(--card));
+    border: 1px solid var(--accent, var(--line));
+    border-radius: 8px; padding: 14px 16px; margin: 12px 0;
+    color: #1a1a1a; font-size: 14px;
+  }
+  .box p { margin: 6px 0; }
+  .box b { color: #000; }
+  p.body { font-size: 14.5px; margin: 10px 0; }
+  p.note { font-size: 12.5px; color: var(--muted); font-style: italic; margin: 8px 0; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13.5px; }
+  th { background: var(--accent, #444); color: #fff; text-align: left; padding: 8px 10px; }
+  td { padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  tr:nth-child(even) td { background: rgba(255,255,255,0.03); }
+  .statgrid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 14px 0;
+  }
+  .statgrid div { text-align: center; }
+  .statgrid .num { font-size: 20px; font-weight: 700; }
+  .statgrid .lbl { font-size: 10.5px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+  .sources { font-size: 12.5px; color: var(--muted); padding-left: 18px; }
+  .sources li { margin-bottom: 6px; }
+  footer {
+    padding: 24px 20px 0 20px; max-width: 720px; margin: 0 auto;
+    font-size: 12px; color: var(--muted);
+  }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style id="cv-retheme">
+/* CV re-theme v1.0 — maps this file onto _cv-schema.html tokens */
+:root{--bg:#0a0e14; --surface:#111720; --surface2:#182030; --border:rgba(255,255,255,0.08); --teal:#00d4aa; --blue:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa; --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670; --t-teal:rgba(0,212,170,0.10); --t-blue:rgba(96,165,250,0.10); --t-red:rgba(232,76,76,0.10); --t-amber:rgba(245,158,11,0.10); --t-purple:rgba(167,139,250,0.10);}
+:root{--card:var(--surface); --muted:var(--text2); --line:var(--border);}
+body{font-family:'Source Serif 4', Georgia, serif !important; background:var(--bg) !important; color:var(--text);}
+h1,h2,h3,h4,th,nav a,.label,.lbl,.badge,.pill{font-family:'Syne', sans-serif !important;}
+h1{font-weight:800 !important; letter-spacing:.005em;}
+h2,h3{font-weight:700;}
+.kicker, header .kicker{font-family:'IBM Plex Mono', monospace !important; color:var(--teal) !important; letter-spacing:.12em; font-size:11px !important;}
+code, pre, .mono{font-family:'IBM Plex Mono', monospace;}
+main{max-width:900px !important;}
+header{max-width:900px; margin:0 auto;}
+section h2{font-size:20px; border-bottom:2px solid var(--accent, var(--teal)) !important;}
+.box{background:var(--surface2) !important; color:var(--text) !important; border:1px solid var(--border) !important; border-left:3px solid var(--accent, var(--teal)) !important; border-radius:10px; font-size:14.5px;}
+.box b, .box strong{color:var(--text) !important;}
+th{background:var(--surface2) !important; color:var(--text) !important; border-bottom:2px solid var(--accent, var(--border));}
+nav a{background:var(--surface) !important; color:var(--text2) !important; border:1px solid var(--border) !important; font-weight:600;}
+nav a:hover{color:var(--text) !important; border-color:var(--teal) !important;}
+.alert{background:var(--t-amber) !important; border:1px solid rgba(245,158,11,0.35) !important; color:#fde6b8 !important;}
+.note-banner{background:var(--t-amber) !important; color:var(--text) !important; border-color:rgba(245,158,11,0.35) !important;}
+.pill-yes{background:var(--t-teal) !important; color:var(--teal) !important;}
+.pill-no{background:var(--t-red) !important; color:var(--red) !important;}
+.pill-offlabel{background:var(--t-amber) !important; color:var(--amber) !important;}
+.statgrid > div{background:var(--surface) !important; border:1px solid var(--border) !important; border-left:4px solid var(--accent, var(--teal)) !important; text-align:left !important; color:var(--text) !important;}
+.statgrid .num{font-family:'Syne', sans-serif; color:var(--accent, var(--teal)) !important;}
+.statgrid .lbl{color:var(--text2) !important;}
+.card{background:var(--surface) !important; border-color:var(--border) !important; color:var(--text) !important;}
+.word{font-family:'Syne', sans-serif; color:var(--teal) !important;}
+.fig{background:var(--surface) !important; border-color:var(--border) !important;}
+footer{font-style:italic; color:var(--text3) !important;}
+[style*="--accent:#7A1620"],[style*="--accent:#9C2B3B"],[style*="--accent:#8B2635"]{--accent:var(--red) !important; --tint:var(--t-red) !important;}
+[style*="--accent:#5B3A8E"]{--accent:var(--purple) !important; --tint:var(--t-purple) !important;}
+[style*="--accent:#1F6F5C"],[style*="--accent:#2E6B3E"]{--accent:var(--teal) !important; --tint:var(--t-teal) !important;}
+[style*="--accent:#1F3A5F"],[style*="--accent:#3A5A8C"]{--accent:var(--blue) !important; --tint:var(--t-blue) !important;}
+[style*="--accent:#B5591F"],[style*="--accent:#96700A"]{--accent:var(--amber) !important; --tint:var(--t-amber) !important;}
+[style*="--accent:#444444"]{--accent:var(--text3) !important; --tint:var(--surface2) !important;}
+@media print{
+  :root{--bg:#f4f5f7; --surface:#ffffff; --surface2:#eef1f4; --border:#d7dde3; --teal:#00a688; --blue:#1d4ed8; --red:#c53030; --amber:#b45309; --purple:#7c3aed; --text:#0f1923; --text2:#4a5670; --text3:#6b7688;
+    --t-teal:rgba(0,166,136,0.08); --t-blue:rgba(29,78,216,0.07); --t-red:rgba(197,48,48,0.07); --t-amber:rgba(180,83,9,0.08); --t-purple:rgba(124,58,237,0.07); --card:#ffffff; --muted:#4a5670; --line:#d7dde3;}
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  html, body{background:#f4f5f7 !important; color:#0f1923 !important;}
+  nav{display:none !important;}
+  td{color:#0f1923 !important;}
+  .box{background:#ffffff !important; color:#0f1923 !important;}
+  .alert, .note-banner{color:#0f1923 !important;}
+  .alert{background:rgba(180,83,9,0.08) !important;}
+  section, .box, table, .card, .step, .statgrid > div, .fig{break-inside:avoid;}
+  h2{break-after:avoid;}
+  a{color:inherit; text-decoration:none;}
+}
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ a{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../locker.html">The Evidence Locker</a><span class="cv-sb-meta">Published 6 Oct 2026 · R. E. Suscitate &amp; A. Systole</span></nav>
+
+<header>
+  <div class="kicker">Critical Vector · Trial Snapshot</div>
+  <h1>SNaPP: Sugammadex vs Neostigmine</h1>
+  <p>Lancet Respiratory Medicine, published online June 9, 2026. Reviewed against the
+  primary trial and its companion commentary.</p>
+</header>
+
+<nav>
+  <a href="#s1">1 · The question</a>
+  <a href="#s2">2 · Trial design</a>
+  <a href="#s3">3 · Headline result</a>
+  <a href="#s4">4 · What actually drove it</a>
+  <a href="#s5">5 · A word of caution</a>
+  <a href="#s6">6 · Prior evidence, for contrast</a>
+  <a href="#s7">7 · Bottom line &amp; sources</a>
+</nav>
+
+<main>
+
+<section id="s1" style="--accent:#1F3A5F; --tint:#E7EDF4;">
+  <h2><span class="secnum">1.</span>The Question</h2>
+  <p class="body">Sugammadex and neostigmine both reverse aminosteroid neuromuscular
+  blockade (rocuronium, vecuronium) at the end of surgery. Sugammadex reverses it more
+  completely and faster: a systematic review found complete recovery in 2.2 minutes versus
+  12.0 minutes for neostigmine, and residual block in 4.8% of patients versus 16.0%.</p>
+  <p class="body">What was never nailed down by a large, definitive trial: does that better
+  reversal actually translate into fewer postoperative pulmonary complications, the thing
+  that matters to the patient? SNaPP was built to answer exactly that.</p>
+</section>
+
+<section id="s2" style="--accent:#1F6F5C; --tint:#E6F2EF;">
+  <h2><span class="secnum">2.</span>Trial Design</h2>
+  <table>
+    <tr><td><b>Design</b></td><td>International, multicentre, phase 4, patient- and assessor-blinded RCT</td></tr>
+    <tr><td><b>Population</b></td><td>Age 40+, abdominal or thoracic surgery under general anesthesia lasting 2+ hours, anticipated hospital stay of 1+ night</td></tr>
+    <tr><td><b>N</b></td><td>3,500 enrolled (July 2023 to July 2025), 1:1 randomization</td></tr>
+    <tr><td><b>Groups</b></td><td>1,746 sugammadex vs 1,754 neostigmine</td></tr>
+    <tr><td><b>Primary outcome</b></td><td>Composite of new postoperative pulmonary complication or death, up to hospital discharge or postoperative day 7</td></tr>
+    <tr><td><b>Funding</b></td><td>Australian Medical Research Future Fund; Hong Kong Health and Medical Research Fund</td></tr>
+  </table>
+</section>
+
+<section id="s3" style="--accent:#5B3A8E; --tint:#EFE9F5;">
+  <h2><span class="secnum">3.</span>Headline Result</h2>
+  <div class="statgrid">
+    <div><div class="num" style="color:#f87171;">19.0%</div><div class="lbl">Sugammadex</div></div>
+    <div><div class="num" style="color:#fbbf24;">21.5%</div><div class="lbl">Neostigmine</div></div>
+    <div><div class="num" style="color:#e8e8e8;">RR 0.88</div><div class="lbl">P = .049</div></div>
+  </div>
+  <div class="box">
+    <p>Postoperative pulmonary complications or death occurred in 331 of 1,743 patients
+    (19.0%) on sugammadex versus 377 of 1,752 (21.5%) on neostigmine. Risk ratio 0.88
+    (95% CI 0.77 to 1.00), P=.049. Absolute risk difference: 2.1 percentage points.</p>
+  </div>
+  <p class="note">P=.049 is a significant result, but only just. This crossed the line by a
+  hair, not by a wide margin.</p>
+</section>
+
+<section id="s4" style="--accent:#B5591F; --tint:#F8ECE0;">
+  <h2><span class="secnum">4.</span>What Actually Drove the Number</h2>
+  <p class="body">The trial authors' own conclusion is carefully worded: sugammadex reduced
+  the composite outcome, but the risk reduction was small, and atelectasis of uncertain
+  clinical significance was the single most common complication in that composite.</p>
+  <div class="box">
+    <p>That matters because atelectasis picked up on routine postoperative imaging, without
+    clinical consequence, is a soft endpoint. It inflates a composite outcome without
+    necessarily meaning fewer patients got pneumonia, needed reintubation, or died.</p>
+  </div>
+  <p class="note">The trial's own authors still concluded sugammadex "can be considered as
+  a first-line drug" for reversal, so this isn't a null result. It's a real but modest
+  result, and the modesty is the headline as much as the direction.</p>
+</section>
+
+<section id="s5" style="--accent:#7A1620; --tint:#F5E4E5;">
+  <h2><span class="secnum">5.</span>A Word of Caution</h2>
+  <p class="body">The Lancet paired SNaPP with an invited commentary from
+  Fernandez-Bustamante and colleagues, titled, plainly, "a word of caution." The gist:
+  a borderline P value driven substantially by a soft imaging endpoint is not the same
+  evidentiary weight as a clear reduction in pneumonia, reintubation, or death.</p>
+  <p class="body">This lands in a context that predates SNaPP: sugammadex is considerably
+  more expensive than neostigmine, and carries a meaningfully higher anaphylaxis risk.
+  Those two facts don't disappear because SNaPP found a small benefit. They just now have
+  to be weighed against a small benefit rather than an unproven one.</p>
+</section>
+
+<section id="s6" style="--accent:#2E6B3E; --tint:#E9F3EA;">
+  <h2><span class="secnum">6.</span>Prior Evidence, for Contrast</h2>
+  <p class="body">Before SNaPP, the observational literature was a mixed bag, and some of
+  it suggested a much larger effect than SNaPP ultimately found.</p>
+  <table>
+    <tr><th>Source</th><th>Finding</th></tr>
+    <tr><td>STRONGER cohort (n=45,712)</td><td>Adjusted OR 0.70 (0.63-0.77) favoring sugammadex</td></tr>
+    <tr><td>Large retrospective cohort (n=83,250)</td><td>No difference, adjusted OR 1.01 (0.94-1.08)</td></tr>
+    <tr><td>Prospective cohort (n=8,795)</td><td>No difference at 28 days, adjusted OR 1.03 (0.85-1.25)</td></tr>
+    <tr><td>RCT systematic review (13 trials, 1,307 patients)</td><td>OR 0.67 (0.47-0.96) favoring sugammadex</td></tr>
+    <tr><td>2023 meta-analysis (mixed observational + RCT)</td><td>Pneumonia RR 0.65, atelectasis RR 0.64, reintubation RR 0.62, all favoring sugammadex</td></tr>
+  </table>
+  <p class="note">The pattern across this literature: bigger, more rigorous studies tend to
+  shrink the effect. SNaPP, the largest and most rigorous of all of them, found the
+  smallest effect, right at the edge of significance.</p>
+</section>
+
+<section id="s7" style="--accent:#444444; --tint:#EFEFEF; border-bottom:none;">
+  <h2><span class="secnum">7.</span>Bottom Line &amp; Sources</h2>
+  <div class="box">
+    <p><b>Clinical takeaway:</b> sugammadex modestly outperforms neostigmine for
+    postoperative pulmonary complications or death in this population, but the margin is
+    thin and leans heavily on a soft imaging endpoint. It's a reasonable first-line choice
+    where cost and anaphylaxis risk are acceptable, not a mandate that neostigmine is
+    dangerous or that using it reflects cost-cutting at the expense of safety.</p>
+  </div>
+  <ul class="sources">
+    <li>Leslie K, Darvall JN, Chan MTV, et al, for the SNaPP Study Investigators. Sugammadex versus neostigmine for reversal of neuromuscular blockade and postoperative pulmonary complications (SNaPP): an international, randomised, controlled, phase 4 trial. Lancet Respir Med. 2026; published online June 9. doi:10.1016/S2213-2600(26)00158-X</li>
+    <li>Fernandez-Bustamante A, et al. Sugammadex versus neostigmine and postoperative pulmonary complications: a word of caution [Comment]. Lancet Respir Med. 2026; published online June 9. doi:10.1016/S2213-2600(26)00185-2</li>
+    <li>Leslie K, et al. Sugammadex, neostigmine, and postoperative pulmonary complications: protocol of the SNaPP multicentre randomised controlled trial. BJA Open. 2026. doi:10.1016/j.bjao.2026.100531</li>
+    <li>Kheterpal S, Vaughn MT, Dubovoy TZ, et al. Sugammadex versus neostigmine for reversal of neuromuscular blockade and postoperative pulmonary complications (STRONGER). Anesthesiology. 2020;132:1371-1381.</li>
+    <li>Systematic review and meta-analysis with trial sequential analysis. BMC Anesthesiology. 2023. doi:10.1186/s12871-023-02094-0</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  Built from the primary trial report and its companion commentary, both in Lancet
+  Respiratory Medicine, June 2026. The comment thread's framing (hospitals choosing
+  cheaper, more dangerous drugs) overstates what SNaPP actually shows: a real but narrow
+  benefit, not a stark safety gap.
+<div class="cv-tagline" style="margin-top:8px">The Critical Vector · Direction and magnitude.</div></footer>
+
+</body>
+</html>

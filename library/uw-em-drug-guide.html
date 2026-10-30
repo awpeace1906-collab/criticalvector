@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emergency Medicine Drug Guide: Peds &amp; Adult — The Critical Vector</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0e14; --surface:#111720; --surface2:#182030;
+  --border:rgba(255,255,255,0.08);
+  --teal:#00d4aa; --blue:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa;
+  --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  background:var(--bg); color:var(--text);
+  font-family:'Source Serif 4', Georgia, serif; font-size:16px; line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,.label,.kicker,.badge,nav a,th{font-family:'Syne', sans-serif;}
+.mono{font-family:'IBM Plex Mono', monospace;}
+.page{max-width:960px; margin:0 auto; padding:0 24px 60px;}
+
+header{padding:32px 0 20px; border-bottom:1px solid var(--border);}
+.kicker{
+  font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--teal); margin-bottom:10px;
+}
+h1{font-family:'Syne', sans-serif; font-weight:800; font-size:29px; line-height:1.15; margin:0 0 10px; letter-spacing:.005em;}
+header p{font-family:'Source Serif 4', serif; font-style:italic; color:var(--text2); font-size:15.5px; margin:0; max-width:720px;}
+
+.alert{
+  margin:18px 0; padding:13px 18px; border-radius:10px; font-size:14px;
+  background:rgba(232,76,76,0.10); border:1px solid rgba(232,76,76,0.28); color:#f5b8b8;
+}
+
+nav{display:flex; flex-wrap:wrap; gap:7px; padding:18px 0; border-bottom:1px solid var(--border); margin-bottom:8px;}
+nav a{
+  font-size:12px; font-weight:600; color:var(--text2); background:var(--surface);
+  border:1px solid var(--border); padding:6px 11px; border-radius:20px;
+  text-decoration:none; white-space:nowrap; transition:all .15s;
+}
+nav a:hover{color:var(--text); border-color:var(--teal);}
+
+section{padding:28px 0; border-bottom:1px solid var(--border);}
+.sec-head{
+  display:flex; align-items:baseline; gap:10px; padding:11px 18px;
+  border-left:4px solid var(--teal);
+  background:linear-gradient(90deg, rgba(0,212,170,0.10), transparent);
+  border-radius:0 8px 8px 0; margin-bottom:16px;
+}
+.sec-head.c-blue{border-left-color:var(--blue); background:linear-gradient(90deg, rgba(96,165,250,0.10), transparent);}
+.sec-head.c-red{border-left-color:var(--red); background:linear-gradient(90deg, rgba(232,76,76,0.10), transparent);}
+.sec-head.c-amber{border-left-color:var(--amber); background:linear-gradient(90deg, rgba(245,158,11,0.10), transparent);}
+.sec-head.c-purple{border-left-color:var(--purple); background:linear-gradient(90deg, rgba(167,139,250,0.10), transparent);}
+.sec-num{font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--text3);}
+h2{font-family:'Syne', sans-serif; font-weight:700; font-size:19px; margin:0; color:var(--text);}
+h3.sub{font-family:'Syne', sans-serif; font-weight:600; font-size:14.5px; color:var(--teal); margin:16px 0 6px;}
+.tagline{font-family:'Source Serif 4', serif; font-style:italic; font-size:13px; color:var(--text2); margin:0 0 10px;}
+
+p.body{font-size:15px; margin:10px 0;}
+p.note{font-size:13px; color:var(--text2); font-style:italic; margin:8px 0;}
+
+.box{
+  background:var(--surface2); border:1px solid var(--border); border-radius:10px;
+  padding:14px 16px; margin:12px 0; font-size:14px;
+}
+.box.t-teal{border-left:3px solid var(--teal);}
+.box.t-blue{border-left:3px solid var(--blue);}
+.box.t-red{border-left:3px solid var(--red); background:rgba(232,76,76,0.06);}
+.box.t-amber{border-left:3px solid var(--amber);}
+.box.t-purple{border-left:3px solid var(--purple);}
+.box b{color:var(--text); font-weight:700;}
+.box p{margin:6px 0;}
+
+table{width:100%; border-collapse:collapse; margin:10px 0; font-size:13px;}
+th{background:var(--surface2); color:var(--text); text-align:left; padding:7px 9px; font-weight:600; font-size:11px; letter-spacing:.02em; border-bottom:2px solid var(--border);}
+td{padding:7px 9px; border-bottom:1px solid var(--border); vertical-align:top; font-family:'Source Serif 4', serif;}
+tr:nth-child(even) td{background:rgba(255,255,255,0.02);}
+td.d{font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--teal);}
+
+.dualgrid{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:12px 0;}
+.dualcol h4{font-family:'Syne', sans-serif; font-size:12px; text-transform:uppercase; letter-spacing:.06em; color:var(--text2); margin:0 0 6px;}
+.dualcol.peds h4{color:var(--purple);}
+.dualcol.adult h4{color:var(--blue);}
+
+.sources{font-size:12.5px; color:var(--text2); padding-left:20px;}
+.sources li{margin-bottom:6px;}
+
+footer{padding:24px 0 0; margin-top:6px; font-size:12px; color:var(--text3); font-family:'Source Serif 4', serif; font-style:italic;}
+@media (max-width:640px){.dualgrid{grid-template-columns:1fr;}}
+</style>
+<style id="cv-print">
+/* ===== CV PRINT v1.0 (per _cv-schema.html) ===== */
+@media print{
+  :root{
+    --bg:#f4f5f7; --surface:#ffffff; --surface2:#eef1f4; --border:#d7dde3;
+    --teal:#00a688; --blue:#1d4ed8; --accent:#00a688; --accent2:#1d4ed8;
+    --red:#c53030; --amber:#b45309; --purple:#7c3aed;
+    --text:#0f1923; --text2:#4a5670; --text3:#6b7688;
+  }
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  html, body{background:#f4f5f7 !important; color:#0f1923 !important;}
+  nav, .nav, .toc-pills{display:none !important;}
+  .alert{background:rgba(0,166,136,.08) !important; color:#0f1923 !important;}
+  td{color:#0f1923 !important;}
+  section, .box, table, .card, .stat-card, .statcard, .step-row, .step{break-inside:avoid;}
+  h2, .sec-head{break-after:avoid;}
+  a{color:inherit; text-decoration:none;}
+}
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ a{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../workshop.html">The Workshop</a><span class="cv-sb-meta">Published 6 Oct 2026 · R. E. Suscitate &amp; A. Systole</span></nav>
+<div class="page">
+
+<header>
+  <div class="kicker">The Critical Vector &middot; Pocket Reference</div>
+  <h1>Emergency Medicine Drug Guide: Pediatric &amp; Adult</h1>
+  <p>Built from a UW Health Kids pediatric emergency card, expanded with adult dosing
+  throughout and organized for actual EM use: a function-based quick-recall table up front
+  (vasopressors, antiarrhythmics, paralytics, reversal agents, and more, all in one scan),
+  then full clinical-scenario context after. Verified against current ACLS/PALS, status
+  epilepticus, and toxicology literature — including a real 2026 dosing change and an
+  adult/peds divergence worth knowing. Verified against AHA, ANZCOR, and primary emergency
+  medicine literature. July 2026.</p>
+</header>
+
+<div class="alert">
+  Two things changed or diverged recently and are flagged where they appear: the 2026 AHA
+  update doubled the adult atropine starting dose for symptomatic bradycardia from 0.5 mg to
+  1 mg, and vasopressin has been removed from the adult ACLS algorithm entirely — while
+  pediatric arrest protocols (including the source card) still use it. Don't cross-apply doses
+  between the two populations.
+</div>
+
+<nav>
+  <a href="#s1">1 &middot; Quick recall: by drug function</a>
+  <a href="#s2">2 &middot; Vitals &amp; airway by age</a>
+  <a href="#s3">3 &middot; RSI</a>
+  <a href="#s4">4 &middot; Seizures</a>
+  <a href="#s5">5 &middot; Increased ICP</a>
+  <a href="#s6">6 &middot; Hyperkalemia &amp; endocrine</a>
+  <a href="#s7">7 &middot; Anaphylaxis</a>
+  <a href="#s8">8 &middot; Asthma &amp; croup</a>
+  <a href="#s9">9 &middot; Cardiac arrest &amp; electrical therapy</a>
+  <a href="#s10">10 &middot; Pressors &amp; antihypertensives</a>
+  <a href="#s11">11 &middot; Antimicrobials</a>
+  <a href="#s12">12 &middot; Volume resuscitation</a>
+  <a href="#s13">13 &middot; Pain, sedation &amp; antiemetic</a>
+  <a href="#s14">14 &middot; Reversal agents</a>
+  <a href="#s15">15 &middot; GCS, pupils &amp; pain scale</a>
+  <a href="#s16">16 &middot; Formulas &amp; equations</a>
+  <a href="#s17">17 &middot; Quick card &amp; sources</a>
+</nav>
+
+<section id="s1">
+  <div class="sec-head"><span class="sec-num">01</span><h2>Quick Recall: Dosing by Drug Function</h2></div>
+  <p class="tagline">One scan, whatever the scenario — organized by what you reach for, not which diagnosis it's filed under</p>
+  <p class="note">This is the fast-access index. Every number here is repeated in its full
+  clinical-scenario context later in the document (sections 3&ndash;13) — use this table to
+  grab a dose in seconds, and the later sections when you need the surrounding decision-making.</p>
+
+  <h3 class="sub" style="color:var(--red);">Resuscitation Drugs</h3>
+  <p class="note" style="margin-top:-4px;">The core code-cart drugs — mirrors the source card's
+  own dedicated "resuscitation drugs" list, first and fastest to find.</p>
+  <table>
+    <tr><th>Drug</th><th>Pediatric</th><th>Adult</th></tr>
+    <tr><td>Epinephrine</td><td class="d">0.01 mg/kg IV/IO (0.1 mg/mL); 0.1 mg/kg ETT (1 mg/mL)</td><td class="d">1 mg IV/IO q3&ndash;5min (arrest); 0.3&ndash;0.5 mg IM (1 mg/mL) for anaphylaxis</td></tr>
+    <tr><td>Dextrose</td><td class="d">D50 1&ndash;2 mL/kg (adolescent); D25 2&ndash;4 mL/kg (child); D10 5&ndash;10 mL/kg (infant)</td><td class="d">D50 25&ndash;50 mL IV</td></tr>
+    <tr><td>Atropine</td><td class="d">0.02 mg/kg IV/IO or ETT (min 0.1 mg, max child 0.5 mg, adolescent 1 mg)</td><td class="d">1 mg IV q3&ndash;5min, max 3 mg (2026 update — was 0.5 mg)</td></tr>
+    <tr><td>Amiodarone</td><td class="d">5 mg/kg IV/IO push, refractory VT/VF (max 300 mg); 5 mg/kg over 20 min for perfusing VT</td><td class="d">300 mg first dose, 150 mg second dose, refractory VF/pVT</td></tr>
+    <tr><td>Calcium chloride</td><td class="d">10&ndash;30 mg/kg IV/IO (central access preferred)</td><td class="d">500&ndash;1000 mg IV via central line</td></tr>
+    <tr><td>Calcium gluconate</td><td class="d">50&ndash;100 mg/kg IV/IO (max 3 g)</td><td class="d">1&ndash;3 g IV over 2&ndash;3 min</td></tr>
+    <tr><td>Lidocaine</td><td class="d">1 mg/kg IV/IO bolus; 2&ndash;3 mg/kg ETT (min volume 1 mL)</td><td class="d">1&ndash;1.5 mg/kg IV/IO (repeat to max 3 mg/kg); drip 20&ndash;50 mcg/kg/min</td></tr>
+    <tr><td>Magnesium sulfate</td><td class="d">25&ndash;50 mg/kg IV/IO (max 2 g); torsades dosing</td><td class="d">1&ndash;2 g IV (torsades)</td></tr>
+    <tr><td>Vasopressin</td><td class="d">0.5 units/kg IV/IO (max 40 units)</td><td class="d">Removed from adult arrest algorithm (see section 9)</td></tr>
+    <tr><td>Sodium bicarbonate</td><td class="d">1&ndash;2 mEq/kg IV/IO</td><td class="d">50 mEq IV</td></tr>
+    <tr><td>Mannitol</td><td class="d">0.25&ndash;1 g/kg IV/IO</td><td class="d">0.25&ndash;1 g/kg IV; avoid if osmolality &gt;320 mOsm/L</td></tr>
+  </table>
+
+  <h3 class="sub">Vasopressors / Inotropes</h3>
+  <table>
+    <tr><th>Drug</th><th>Pediatric</th><th>Adult</th></tr>
+    <tr><td>Epinephrine (infusion)</td><td class="d">0.1&ndash;1 mcg/kg/min</td><td class="d">1&ndash;10 mcg/min (peri-arrest); titrate to effect</td></tr>
+    <tr><td>Norepinephrine</td><td class="d">0.05&ndash;2 mcg/kg/min</td><td class="d">0.05&ndash;2 mcg/kg/min typical, some critical care protocols extend to 3 mcg/kg/min — current first-line adult vasopressor</td></tr>
+    <tr><td>Dopamine</td><td class="d">2&ndash;20 mcg/kg/min</td><td class="d">2&ndash;20 mcg/kg/min — second-line, largely supplanted by norepi</td></tr>
+    <tr><td>Dobutamine</td><td class="d">2&ndash;20 mcg/kg/min</td><td class="d">2&ndash;20 mcg/kg/min</td></tr>
+    <tr><td>Vasopressin</td><td class="d">0.5 units/kg bolus (arrest); infusion 0.0002&ndash;0.002 units/kg/min</td><td class="d">Removed from adult arrest algorithm; 0.01&ndash;0.04 units/min as adjunct vasopressor in septic shock</td></tr>
+    <tr><td>Phenylephrine</td><td class="d">5&ndash;20 mcg/kg slow push (max 200 mcg); drip 0.1&ndash;0.5 mcg/kg/min</td><td class="d">50&ndash;200 mcg IV push; drip 0.5&ndash;6 mcg/kg/min (septic/vasodilatory shock, FDA label) or 0.5&ndash;1.4 mcg/kg/min (routine perioperative maintenance) — not exceed 200 mcg/min; doses above 6 mcg/kg/min show no further BP benefit</td></tr>
+  </table>
+
+  <h3 class="sub">Antiarrhythmics</h3>
+  <table>
+    <tr><th>Drug</th><th>Pediatric</th><th>Adult</th></tr>
+    <tr><td>Amiodarone</td><td class="d">5 mg/kg IV/IO push, refractory VT/VF (max 300 mg)</td><td class="d">300 mg first dose, 150 mg second, refractory VF/pVT; 150 mg over 10 min for stable wide-complex tachycardia</td></tr>
+    <tr><td>Lidocaine</td><td class="d">1 mg/kg IV/IO bolus</td><td class="d">1&ndash;1.5 mg/kg IV/IO (can repeat to max 3 mg/kg); drip 20&ndash;50 mcg/kg/min</td></tr>
+    <tr><td>Adenosine</td><td class="d">0.1 mg/kg rapid push (max 6 mg), then 0.2 mg/kg (max 12 mg)</td><td class="d">6 mg rapid push + flush; repeat 12 mg once</td></tr>
+    <tr><td>Procainamide</td><td class="d">15 mg/kg IV/IO over 30&ndash;60 min</td><td class="d">15&ndash;17 mg/kg (or 20&ndash;50 mg/min) IV, max total 17 mg/kg</td></tr>
+  </table>
+
+  <h3 class="sub">Bradycardia / Chronotropic</h3>
+  <table>
+    <tr><th>Drug</th><th>Pediatric</th><th>Adult</th></tr>
+    <tr><td>Atropine</td><td class="d">0.02 mg/kg IV/IO (min 0.1 mg, max 0.5 mg child/1 mg adolescent)</td><td class="d">1 mg IV q3&ndash;5min, max 3 mg (2026 update — was 0.5 mg)</td></tr>
+  </table>
+
+  <h3 class="sub">Induction / Sedation</h3>
+  <table>
+    <tr><th>Drug</th><th>Pediatric (RSI)</th><th>Adult (RSI)</th></tr>
+    <tr><td>Etomidate</td><td class="d">0.2&ndash;0.4 mg/kg IV/IO</td><td class="d">0.3 mg/kg IV</td></tr>
+    <tr><td>Ketamine</td><td class="d">2 mg/kg IV/IO</td><td class="d">1&ndash;2 mg/kg IV</td></tr>
+    <tr><td>Propofol</td><td class="d">2 mg/kg IV/IO</td><td class="d">1.5&ndash;2.5 mg/kg IV</td></tr>
+    <tr><td>Midazolam</td><td class="d">0.1&ndash;0.3 mg/kg IV/IO</td><td class="d">0.1&ndash;0.3 mg/kg IV</td></tr>
+  </table>
+
+  <h3 class="sub">Paralytics (Neuromuscular Blockers)</h3>
+  <table>
+    <tr><th>Drug</th><th>Pediatric</th><th>Adult</th></tr>
+    <tr><td>Succinylcholine</td><td class="d">1&ndash;2 mg/kg IV/IO</td><td class="d">1&ndash;1.5 mg/kg IV</td></tr>
+    <tr><td>Rocuronium</td><td class="d">1.2 mg/kg IV/IO</td><td class="d">1&ndash;1.2 mg/kg IV</td></tr>
+    <tr><td>Vecuronium</td><td class="d">0.1&ndash;0.2 mg/kg, then 0.1 mg/kg/hr</td><td class="d">0.08&ndash;0.1 mg/kg, then 0.8&ndash;1.2 mcg/kg/min</td></tr>
+  </table>
+
+  <h3 class="sub">Reversal Agents</h3>
+  <table>
+    <tr><th>Drug</th><th>Pediatric</th><th>Adult</th></tr>
+    <tr><td>Naloxone</td><td class="d">0.1 mg/kg IV/IO/IM/ETT (max 2 mg)</td><td class="d">0.4&ndash;2 mg IV/IM/IN, titrate</td></tr>
+    <tr><td>Flumazenil</td><td class="d">0.01 mg/kg IV/IO (max 0.2 mg)</td><td class="d">0.2 mg IV, repeat q1min (max 1 mg)</td></tr>
+  </table>
+
+  <h3 class="sub">Anticonvulsants</h3>
+  <table>
+    <tr><th>Drug</th><th>Pediatric</th><th>Adult</th></tr>
+    <tr><td>Lorazepam</td><td class="d">0.05&ndash;0.1 mg/kg IV/IO</td><td class="d">4 mg IV push (up to 8 mg)</td></tr>
+    <tr><td>Midazolam (seizure)</td><td class="d">0.3 mg/kg IN (max 10 mg)</td><td class="d">10 mg IM if no IV access</td></tr>
+    <tr><td>Diazepam</td><td class="d">0.05&ndash;0.1 mg/kg IV/IO; 0.3&ndash;0.5 mg/kg PR</td><td class="d">10&ndash;20 mg IV</td></tr>
+    <tr><td>Fosphenytoin</td><td class="d">20 mg PE/kg IV/IO/IM</td><td class="d">20 mg PE/kg IV (max ~1500 mg PE)</td></tr>
+    <tr><td>Levetiracetam</td><td class="d">20 mg/kg IV/IO</td><td class="d">60 mg/kg IV (max 4500 mg)</td></tr>
+    <tr><td>Phenobarbital</td><td class="d">20 mg/kg IV/IO</td><td class="d">15&ndash;20 mg/kg IV, slow infusion</td></tr>
+  </table>
+
+  <h3 class="sub">Steroids</h3>
+  <table>
+    <tr><th>Drug</th><th>Pediatric</th><th>Adult</th></tr>
+    <tr><td>Methylprednisolone</td><td class="d">2 mg/kg IV/IO/IM (max 125 mg)</td><td class="d">125 mg IV</td></tr>
+    <tr><td>Hydrocortisone</td><td class="d">1&ndash;2 mg/kg IV/IO/IM</td><td class="d">100 mg IV stress-dose</td></tr>
+    <tr><td>Dexamethasone</td><td class="d">0.6 mg/kg IV/IO/IM/PO (max 10 mg, croup)</td><td class="d">10 mg IV (post-extubation stridor, off-label)</td></tr>
+    <tr><td>Prednisolone</td><td class="d">2 mg/kg PO (max 60 mg)</td><td class="d">40&ndash;60 mg PO</td></tr>
+  </table>
+
+  <h3 class="sub">Antihistamines / H2 Blockers</h3>
+  <table>
+    <tr><th>Drug</th><th>Pediatric</th><th>Adult</th></tr>
+    <tr><td>Diphenhydramine</td><td class="d">1 mg/kg IV/IO/IM/PO (max 50 mg)</td><td class="d">25&ndash;50 mg IV/IM/PO</td></tr>
+    <tr><td>Famotidine</td><td class="d">Not standard first-line pediatric (ranitidine historically used, now withdrawn)</td><td class="d">20 mg IV — current H2 blocker of choice since ranitidine's 2020 withdrawal</td></tr>
+  </table>
+
+  <h3 class="sub">Antihypertensives</h3>
+  <table>
+    <tr><th>Drug</th><th>Pediatric</th><th>Adult</th></tr>
+    <tr><td>Labetalol</td><td class="d">0.25&ndash;1.5 mg/kg IV/IO (max 20 mg); drip 0.25&ndash;1 mg/kg/hr</td><td class="d">10&ndash;20 mg IV, double q10min (max 300 mg); drip 0.5&ndash;2 mg/min</td></tr>
+    <tr><td>Hydralazine</td><td class="d">0.1&ndash;0.4 mg/kg IV/IO</td><td class="d">10&ndash;20 mg IV q4&ndash;6h</td></tr>
+    <tr><td>Nitroprusside</td><td class="d">0.3&ndash;8 mcg/kg/min</td><td class="d">0.3&ndash;10 mcg/kg/min</td></tr>
+    <tr><td>Nicardipine</td><td class="d">Not standard pediatric first-line</td><td class="d">5&ndash;15 mg/hr infusion — often preferred over nitroprusside</td></tr>
+  </table>
+
+  <h3 class="sub">Analgesics</h3>
+  <table>
+    <tr><th>Drug</th><th>Pediatric</th><th>Adult</th></tr>
+    <tr><td>Fentanyl</td><td class="d">1&ndash;2 mcg/kg IV/IO; 1.5 mcg/kg IN (max 50 mcg)</td><td class="d">50&ndash;100 mcg IV/IN, titrate</td></tr>
+    <tr><td>Morphine</td><td class="d">0.05&ndash;0.1 mg/kg IV/IO/IM</td><td class="d">2&ndash;4 mg IV, titrate</td></tr>
+    <tr><td>Hydromorphone</td><td class="d">0.01&ndash;0.015 mg/kg IV/IO/IM</td><td class="d">0.5&ndash;1 mg IV, titrate</td></tr>
+    <tr><td>Ketorolac</td><td class="d">0.5 mg/kg IV/IO/IM (max 30 mg)</td><td class="d">15&ndash;30 mg IV/IM</td></tr>
+    <tr><td>Acetaminophen</td><td class="d">15 mg/kg/dose PO/PR q4h</td><td class="d">650&ndash;1000 mg PO/PR/IV q4&ndash;6h</td></tr>
+    <tr><td>Ibuprofen</td><td class="d">10 mg/kg/dose PO q6h</td><td class="d">400&ndash;800 mg PO q6&ndash;8h</td></tr>
+  </table>
+
+  <h3 class="sub">Antiemetics</h3>
+  <table>
+    <tr><th>Drug</th><th>Pediatric</th><th>Adult</th></tr>
+    <tr><td>Ondansetron</td><td class="d">0.15 mg/kg IV/IO/PO (max 4 mg)</td><td class="d">4&ndash;8 mg IV/PO</td></tr>
+  </table>
+
+  <h3 class="sub">Metabolic / Electrolyte Emergency</h3>
+  <table>
+    <tr><th>Drug</th><th>Pediatric</th><th>Adult</th></tr>
+    <tr><td>Calcium gluconate</td><td class="d">50&ndash;100 mg/kg IV/IO over 3 min (max 3 g)</td><td class="d">1&ndash;3 g IV over 2&ndash;3 min</td></tr>
+    <tr><td>Calcium chloride</td><td class="d">10&ndash;30 mg/kg IV/IO (central access preferred)</td><td class="d">500&ndash;1000 mg IV via central line</td></tr>
+    <tr><td>Sodium bicarbonate</td><td class="d">1&ndash;2 mEq/kg IV/IO</td><td class="d">50 mEq IV</td></tr>
+    <tr><td>Dextrose (hypoglycemia)</td><td class="d">D10 5&ndash;10 mL/kg (infant); D25 2&ndash;4 mL/kg (child); D50 1&ndash;2 mL/kg (adolescent)</td><td class="d">D50 25&ndash;50 mL IV</td></tr>
+    <tr><td>Insulin (DKA)</td><td class="d">0.1 units/kg/hr IV (no bolus)</td><td class="d">0.1 units/kg/hr IV infusion (no bolus)</td></tr>
+    <tr><td>Magnesium sulfate</td><td class="d">25&ndash;50 mg/kg IV over 20 min (max 2000 mg)</td><td class="d">1&ndash;2 g IV (torsades); 2 g over 20 min (asthma)</td></tr>
+    <tr><td>Glucagon</td><td class="d">0.02 mg/kg IV/IM/SQ (max 1 mg)</td><td class="d">1 mg IV/IM/SQ (0.5&ndash;1 mg for beta-blocker/CCB OD)</td></tr>
+  </table>
+</section>
+
+<section id="s2">
+  <div class="sec-head"><span class="sec-num">02</span><h2>Vitals &amp; Airway Parameters by Age</h2></div>
+  <table>
+    <tr><th>Age</th><th>Weight (kg)</th><th>HR range</th><th>RR/min</th><th>SBP</th><th>ET tube ID (mm, cuffed)</th><th>Laryngoscopy blade</th><th>Chest tube (Fr)</th></tr>
+    <tr><td>Preterm</td><td>&lt;3</td><td>120&ndash;160</td><td>40&ndash;60</td><td>40&ndash;60</td><td>2.5&ndash;3.0 (uncuffed)</td><td>Miller 0</td><td>8&ndash;10</td></tr>
+    <tr><td>Term</td><td>3</td><td>100&ndash;165</td><td>40&ndash;60</td><td>60&ndash;80</td><td>2.5&ndash;3.0</td><td>Miller 1</td><td>10&ndash;12</td></tr>
+    <tr><td>1 month</td><td>4</td><td>120&ndash;180</td><td>40&ndash;60</td><td>65&ndash;95</td><td>2.5&ndash;3.0</td><td>Miller 1</td><td>10&ndash;12</td></tr>
+    <tr><td>6 months</td><td>8</td><td>110&ndash;185</td><td>25&ndash;40</td><td>65&ndash;105</td><td>3.5&ndash;4.0</td><td>Miller 1</td><td>12&ndash;16</td></tr>
+    <tr><td>12 months</td><td>10</td><td>110&ndash;170</td><td>20&ndash;30</td><td>70&ndash;110</td><td>3.5&ndash;4.0</td><td>Miller 1&ndash;2</td><td>14&ndash;24</td></tr>
+    <tr><td>2 years</td><td>12</td><td>90&ndash;150</td><td>20&ndash;30</td><td>70&ndash;110</td><td>4.0&ndash;4.5</td><td>Miller/Mac 1&ndash;2</td><td>14&ndash;24</td></tr>
+    <tr><td>4 years</td><td>16</td><td>75&ndash;135</td><td>20&ndash;30</td><td>80&ndash;110</td><td>4.5&ndash;5.0</td><td>Mac 2</td><td>20&ndash;32</td></tr>
+    <tr><td>6 years</td><td>20</td><td>60&ndash;130</td><td>12&ndash;25</td><td>90&ndash;115</td><td>5.0&ndash;5.5</td><td>Mac 2</td><td>20&ndash;32</td></tr>
+    <tr><td>8 years</td><td>26</td><td>60&ndash;120</td><td>12&ndash;25</td><td>90&ndash;115</td><td>6.0</td><td>Mac 2&ndash;3</td><td>28&ndash;38</td></tr>
+    <tr><td>10 years</td><td>32</td><td>60&ndash;120</td><td>12&ndash;25</td><td>95&ndash;120</td><td>6.0&ndash;6.5</td><td>Mac 2&ndash;3</td><td>28&ndash;38</td></tr>
+    <tr><td>12 years</td><td>42</td><td>60&ndash;120</td><td>12&ndash;25</td><td>95&ndash;120</td><td>6.5</td><td>Mac 3</td><td>32&ndash;42</td></tr>
+    <tr><td>14 years</td><td>50</td><td>60&ndash;120</td><td>12&ndash;18</td><td>100&ndash;130</td><td>6.5&ndash;7.0</td><td>Mac 3</td><td>32&ndash;42</td></tr>
+    <tr style="background:rgba(96,165,250,0.08);"><td><b>Adult</b></td><td>&mdash;</td><td>60&ndash;100</td><td>12&ndash;20</td><td>90&ndash;140</td><td>7.0&ndash;8.0 (M), 6.5&ndash;7.5 (F)</td><td>Mac 3&ndash;4</td><td>28&ndash;40 (36&ndash;40 trauma/hemothorax)</td></tr>
+  </table>
+  <p class="note">Adult ET tube size is a starting estimate — always confirm with the patient's
+  actual anatomy; adult chest tube sizing follows the indication-based table in the ballistics
+  manual (simple pneumothorax vs. hemothorax vs. empyema) rather than a single fixed number.</p>
+</section>
+
+<section id="s3">
+  <div class="sec-head c-blue"><span class="sec-num">03</span><h2>Rapid Sequence Intubation</h2></div>
+  <h3 class="sub">Premedication</h3>
+  <div class="dualgrid">
+    <div class="dualcol peds"><h4>Pediatric</h4>
+      <table>
+        <tr><td>Atropine</td><td class="d">0.02 mg/kg IV/IO (min 0.1 mg, max 0.5 mg child/1 mg adolescent)</td></tr>
+        <tr><td>Lidocaine</td><td class="d">1.5 mg/kg IV/IO (if &uarr;ICP)</td></tr>
+        <tr><td>Fentanyl</td><td class="d">1 mcg/kg IV/IO (if &uarr;ICP)</td></tr>
+      </table>
+    </div>
+    <div class="dualcol adult"><h4>Adult</h4>
+      <table>
+        <tr><td>Atropine</td><td class="d">Not routinely used for RSI premedication in adults — reserved for symptomatic bradycardia (section 8)</td></tr>
+        <tr><td>Lidocaine</td><td class="d">1&ndash;1.5 mg/kg IV, 2&ndash;3 min pre-induction if &uarr;ICP (evidence for blunting ICP response is weaker than historically taught)</td></tr>
+        <tr><td>Fentanyl</td><td class="d">1&ndash;3 mcg/kg IV, blunts sympathetic response to laryngoscopy</td></tr>
+      </table>
+    </div>
+  </div>
+  <h3 class="sub">Sedation / Induction</h3>
+  <div class="dualgrid">
+    <div class="dualcol peds"><h4>Pediatric</h4>
+      <table>
+        <tr><td>Etomidate</td><td class="d">0.2&ndash;0.4 mg/kg IV/IO</td></tr>
+        <tr><td>Midazolam</td><td class="d">0.1&ndash;0.3 mg/kg IV/IO</td></tr>
+        <tr><td>Ketamine</td><td class="d">2 mg/kg IV/IO</td></tr>
+        <tr><td>Propofol</td><td class="d">2 mg/kg IV/IO (drip 25&ndash;125 mcg/kg/min)</td></tr>
+      </table>
+    </div>
+    <div class="dualcol adult"><h4>Adult</h4>
+      <table>
+        <tr><td>Etomidate</td><td class="d">0.3 mg/kg IV — caution: adrenal suppression, avoid as sole agent in septic shock per some guidance</td></tr>
+        <tr><td>Midazolam</td><td class="d">0.1&ndash;0.3 mg/kg IV — less hemodynamically predictable than etomidate/ketamine for RSI</td></tr>
+        <tr><td>Ketamine</td><td class="d">1&ndash;2 mg/kg IV — preferred in hypotension/bronchospasm; caution with severe hypertension or psychosis history</td></tr>
+        <tr><td>Propofol</td><td class="d">1.5&ndash;2.5 mg/kg IV — caution: hypotension, avoid as primary induction in shock</td></tr>
+      </table>
+    </div>
+  </div>
+  <h3 class="sub">Paralysis</h3>
+  <div class="dualgrid">
+    <div class="dualcol peds"><h4>Pediatric</h4>
+      <table>
+        <tr><td>Succinylcholine</td><td class="d">1&ndash;2 mg/kg IV/IO — avoid if hyperK, malignant hyperthermia, neuromuscular disease</td></tr>
+        <tr><td>Rocuronium</td><td class="d">1.2 mg/kg IV/IO</td></tr>
+        <tr><td>Vecuronium</td><td class="d">0.1&ndash;0.2 mg/kg, then 0.1 mg/kg/hr maintenance</td></tr>
+      </table>
+    </div>
+    <div class="dualcol adult"><h4>Adult</h4>
+      <table>
+        <tr><td>Succinylcholine</td><td class="d">1&ndash;1.5 mg/kg IV — same contraindications; additionally caution in burns/crush &gt;24&ndash;48h old, denervation</td></tr>
+        <tr><td>Rocuronium</td><td class="d">1&ndash;1.2 mg/kg IV — full details on high-dose rationale and reversal in the dedicated rocuronium/first-pass-success reference</td></tr>
+        <tr><td>Vecuronium</td><td class="d">0.08&ndash;0.1 mg/kg, then 0.8&ndash;1.2 mcg/kg/min maintenance</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="s4">
+  <div class="sec-head c-red"><span class="sec-num">04</span><h2>Seizures / Status Epilepticus</h2></div>
+  <div class="dualgrid">
+    <div class="dualcol peds"><h4>Pediatric</h4>
+      <table>
+        <tr><td>Lorazepam</td><td class="d">0.05&ndash;0.1 mg/kg IV/IO</td></tr>
+        <tr><td>Midazolam</td><td class="d">0.3 mg/kg IN (max 10 mg)</td></tr>
+        <tr><td>Diazepam</td><td class="d">0.05&ndash;0.1 mg/kg IV/IO; 0.3&ndash;0.5 mg/kg PR</td></tr>
+        <tr><td>Phenobarbital</td><td class="d">20 mg/kg IV/IO</td></tr>
+        <tr><td>Fosphenytoin</td><td class="d">20 mg PE/kg IV/IO/IM</td></tr>
+        <tr><td>Levetiracetam</td><td class="d">20 mg/kg IV/IO</td></tr>
+      </table>
+    </div>
+    <div class="dualcol adult"><h4>Adult</h4>
+      <table>
+        <tr><td>Lorazepam</td><td class="d">4 mg IV push (up to 8 mg in alcohol use/high BMI); repeat q2&ndash;3 min</td></tr>
+        <tr><td>Midazolam</td><td class="d">10 mg IM if no IV access (RAMPART protocol)</td></tr>
+        <tr><td>Diazepam</td><td class="d">10&ndash;20 mg IV (0.15 mg/kg, up to 10 mg per some guidelines)</td></tr>
+        <tr><td>Fosphenytoin</td><td class="d">20 mg PE/kg IV (max ~1500 mg PE)</td></tr>
+        <tr><td>Levetiracetam</td><td class="d">60 mg/kg IV (max 4500 mg) — increasingly favored second-line agent</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="box t-red">
+    <p><b>The most common real-world failure isn't drug choice — it's underdosing.</b> A 2025
+    ED cohort study found guideline-adherent initial benzodiazepine dosing in only 17% of
+    patients, with inadequate dosing rates of 77% for lorazepam, 90% for midazolam, and 97% for
+    diazepam — and inadequate total dosing was independently associated with higher in-hospital
+    mortality. Push the full weight-based or fixed adult dose; don't split it "to be safe."</p>
+  </div>
+</section>
+
+<section id="s5">
+  <div class="sec-head c-purple"><span class="sec-num">05</span><h2>Increased Intracranial Pressure</h2></div>
+  <div class="dualgrid">
+    <div class="dualcol peds"><h4>Pediatric</h4>
+      <table>
+        <tr><td>Mannitol</td><td class="d">0.5&ndash;1 g/kg IV/IO</td></tr>
+        <tr><td>3% Saline</td><td class="d">2&ndash;6 mL/kg IV/IO</td></tr>
+      </table>
+    </div>
+    <div class="dualcol adult"><h4>Adult</h4>
+      <table>
+        <tr><td>Mannitol</td><td class="d">0.25&ndash;1 g/kg IV; avoid if osmolality &gt;320 mOsm/L</td></tr>
+        <tr><td>3% Saline</td><td class="d">150&ndash;250 mL bolus; cap correction at 8 mEq/L/24h</td></tr>
+      </table>
+    </div>
+  </div>
+  <p class="note">Full mechanism comparison, the meta-analytic evidence (including where it
+  contradicts itself), and the bedside decision framework for choosing between these two agents
+  live in the dedicated hypertonic saline vs. mannitol reference — this table is the dosing
+  quick-reference only.</p>
+</section>
+
+<section id="s6">
+  <div class="sec-head c-amber"><span class="sec-num">06</span><h2>Hyperkalemia &amp; Endocrine</h2></div>
+  <h3 class="sub">Hyperkalemia</h3>
+  <div class="dualgrid">
+    <div class="dualcol peds"><h4>Pediatric</h4>
+      <table>
+        <tr><td>Albuterol neb</td><td class="d">0.15 mg/kg/dose (2.5 or 5 mg)</td></tr>
+        <tr><td>Sodium bicarbonate</td><td class="d">1&ndash;2 mEq/kg IV/IO</td></tr>
+        <tr><td>Calcium gluconate</td><td class="d">50&ndash;100 mg/kg IV/IO over 3 min (max 3 g)</td></tr>
+        <tr><td>Dextrose + insulin</td><td class="d">Regular insulin 0.1 units/kg (max 10 units) IV/IO + dextrose 0.5 g/kg (max 25 g; D10W 5 mL/kg) given together; check glucose for hypoglycemia</td></tr>
+        <tr><td>Sodium polystyrene sulfonate</td><td class="d">1 g/kg PO/PR (max 30 g PO, 50 g PR)</td></tr>
+        <tr><td>Furosemide</td><td class="d">1&ndash;2 mg/kg IV/IO/PO</td></tr>
+      </table>
+    </div>
+    <div class="dualcol adult"><h4>Adult</h4>
+      <table>
+        <tr><td>Albuterol neb</td><td class="d">10&ndash;20 mg nebulized (higher than the standard bronchodilator dose)</td></tr>
+        <tr><td>Sodium bicarbonate</td><td class="d">50 mEq IV, most useful if concurrent metabolic acidosis</td></tr>
+        <tr><td>Calcium gluconate</td><td class="d">1&ndash;3 g IV over 2&ndash;3 min (or calcium chloride 500&ndash;1000 mg via central line)</td></tr>
+        <tr><td>Dextrose + insulin</td><td class="d">D50 25 g IV + regular insulin 10 units IV</td></tr>
+        <tr><td>Sodium zirconium/patiromer</td><td class="d">Newer binders, onset hours not minutes — not for acute stabilization</td></tr>
+        <tr><td>Furosemide</td><td class="d">20&ndash;40 mg IV if adequate renal function/urine output</td></tr>
+      </table>
+    </div>
+  </div>
+  <h3 class="sub">Endocrine</h3>
+  <div class="dualgrid">
+    <div class="dualcol peds"><h4>Pediatric</h4>
+      <table>
+        <tr><td>Dextrose</td><td class="d">D50 1&ndash;2 mL/kg (adolescent); D25 2&ndash;4 mL/kg (child); D10 5&ndash;10 mL/kg (infant)</td></tr>
+        <tr><td>Glucagon</td><td class="d">0.02 mg/kg IV/IM/SQ (max 1 mg)</td></tr>
+        <tr><td>Hydrocortisone</td><td class="d">1&ndash;2 mg/kg IV/IO/IM (~25 mg infant, 50 mg child, 100 mg adolescent)</td></tr>
+        <tr><td>Insulin</td><td class="d">0.1 units/kg/hr IV (no bolus)</td></tr>
+      </table>
+    </div>
+    <div class="dualcol adult"><h4>Adult</h4>
+      <table>
+        <tr><td>Dextrose</td><td class="d">D50 25&ndash;50 mL (12.5&ndash;25 g) IV</td></tr>
+        <tr><td>Glucagon</td><td class="d">1 mg IV/IM/SQ (0.5&ndash;1 mg if beta-blocker/CCB overdose, may need repeat dosing or infusion)</td></tr>
+        <tr><td>Hydrocortisone</td><td class="d">100 mg IV (stress-dose) — 50&ndash;100 mg IV q6&ndash;8h if adrenal crisis</td></tr>
+        <tr><td>Insulin (DKA)</td><td class="d">0.1 units/kg/hr IV infusion (no bolus per current guidance in most protocols)</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="s7">
+  <div class="sec-head c-red"><span class="sec-num">07</span><h2>Anaphylaxis</h2></div>
+  <div class="dualgrid">
+    <div class="dualcol peds"><h4>Pediatric</h4>
+      <table>
+        <tr><td>Epinephrine</td><td class="d">0.01 mg/kg IM (1 mg/mL) (max 0.5 mg/dose)</td></tr>
+        <tr><td>Diphenhydramine</td><td class="d">1 mg/kg IV/IO/IM/PO (max 50 mg)</td></tr>
+        <tr><td>Methylprednisolone</td><td class="d">2 mg/kg IV/IO/IM initial (max 125 mg)</td></tr>
+        <tr><td>Ranitidine/H2 blocker</td><td class="d">2 mg/kg IV/IO/PO (max 150 mg)</td></tr>
+      </table>
+    </div>
+    <div class="dualcol adult"><h4>Adult</h4>
+      <table>
+        <tr><td>Epinephrine</td><td class="d">0.3&ndash;0.5 mg IM (1 mg/mL), anterolateral thigh — repeat q5&ndash;15 min as needed</td></tr>
+        <tr><td>Diphenhydramine</td><td class="d">25&ndash;50 mg IV/IM/PO</td></tr>
+        <tr><td>Methylprednisolone</td><td class="d">125 mg IV (or prednisone 40&ndash;60 mg PO if tolerating oral)</td></tr>
+        <tr><td>Famotidine</td><td class="d">20 mg IV (ranitidine largely withdrawn from the US market since 2020 — famotidine is the current H2 blocker of choice)</td></tr>
+      </table>
+    </div>
+  </div>
+  <p class="note">Epinephrine is the only intervention proven to reduce mortality in
+  anaphylaxis — antihistamines and steroids treat symptoms and prevent biphasic reactions but
+  are not substitutes for epi, in either population.</p>
+</section>
+
+<section id="s8">
+  <div class="sec-head c-teal"><span class="sec-num">08</span><h2>Asthma &amp; Croup</h2></div>
+  <h3 class="sub">Asthma / Bronchospasm</h3>
+  <div class="dualgrid">
+    <div class="dualcol peds"><h4>Pediatric</h4>
+      <table>
+        <tr><td>Albuterol</td><td class="d">0.15 mg/kg/dose neb (2.5&ndash;5 mg); MDI 4&ndash;8 puffs</td></tr>
+        <tr><td>Continuous albuterol</td><td class="d">0.5 mg/kg/hr (max 15 mg/hr)</td></tr>
+        <tr><td>Ipratropium</td><td class="d">250 mcg (child), 500 mcg (adolescent)</td></tr>
+        <tr><td>Methylprednisolone</td><td class="d">2 mg/kg IV/IO (max 125 mg)</td></tr>
+        <tr><td>Magnesium sulfate</td><td class="d">25&ndash;50 mg/kg IV over 20 min (max 2000 mg)</td></tr>
+        <tr><td>Terbutaline</td><td class="d">2&ndash;10 mcg/kg loading, then 0.1&ndash;0.8 mcg/kg/min infusion</td></tr>
+      </table>
+    </div>
+    <div class="dualcol adult"><h4>Adult</h4>
+      <table>
+        <tr><td>Albuterol</td><td class="d">2.5&ndash;5 mg neb q20min x3, then q1&ndash;4h; MDI 4&ndash;8 puffs</td></tr>
+        <tr><td>Continuous albuterol</td><td class="d">10&ndash;15 mg/hr continuous nebulized</td></tr>
+        <tr><td>Ipratropium</td><td class="d">500 mcg neb, combined with albuterol first 3 doses</td></tr>
+        <tr><td>Methylprednisolone</td><td class="d">125 mg IV (or prednisone 40&ndash;60 mg PO)</td></tr>
+        <tr><td>Magnesium sulfate</td><td class="d">2 g IV over 20 min — reserved for severe exacerbations</td></tr>
+        <tr><td>Terbutaline</td><td class="d">0.25 mg SQ, may repeat once in 15&ndash;30 min</td></tr>
+      </table>
+    </div>
+  </div>
+  <h3 class="sub">Upper Airway Obstruction / Croup</h3>
+  <div class="dualgrid">
+    <div class="dualcol peds"><h4>Pediatric</h4>
+      <table>
+        <tr><td>Racemic epinephrine</td><td class="d">0.5 mL (2.25%) in 3 mL NS nebulized</td></tr>
+        <tr><td>Dexamethasone</td><td class="d">0.6 mg/kg IV/IO/IM/PO (max 10 mg)</td></tr>
+      </table>
+    </div>
+    <div class="dualcol adult"><h4>Adult</h4>
+      <table>
+        <tr><td colspan="2" style="color:var(--text2); font-style:italic;">Croup is overwhelmingly a pediatric condition (narrow subglottic airway). Adult upper airway obstruction from other causes (angioedema, epiglottitis, anaphylaxis) is managed per the specific etiology — nebulized racemic epinephrine is used off-label in adult post-extubation stridor at similar dosing, with dexamethasone 10 mg IV as a common adjunct.</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="s9">
+  <div class="sec-head c-blue"><span class="sec-num">09</span><h2>Cardiac Arrest &amp; Electrical Therapy</h2></div>
+  <div class="box t-red">
+    <p><b>Two recent changes worth knowing precisely:</b> the 2026 AHA update doubled the adult
+    atropine starting dose for symptomatic bradycardia from 0.5 mg to 1 mg IV, repeated q3&ndash;5
+    min to a max of 3 mg. Separately, vasopressin has been removed from the adult ACLS cardiac
+    arrest algorithm — ANZCOR explicitly suggests <em>against</em> substituting vasopressin for
+    epinephrine or adding it alongside epinephrine, since combined trial evidence (PARAMEDIC2,
+    PACA) showed no neurological outcome benefit. Pediatric arrest protocols, including the
+    source card here, still specify vasopressin 0.5 units/kg — the two populations have
+    genuinely diverged on this drug.</p>
+  </div>
+  <div class="dualgrid">
+    <div class="dualcol peds"><h4>Pediatric</h4>
+      <table>
+        <tr><td>Epinephrine</td><td class="d">0.01 mg/kg IV/IO (0.1 mg/mL); 0.1 mg/kg ETT (1 mg/mL)</td></tr>
+        <tr><td>Amiodarone</td><td class="d">5 mg/kg IV/IO push, refractory VT/VF (max 300 mg)</td></tr>
+        <tr><td>Lidocaine</td><td class="d">1 mg/kg IV/IO bolus; 2&ndash;3 mg/kg ETT</td></tr>
+        <tr><td>Vasopressin</td><td class="d">0.5 units/kg IV/IO (max 40 units)</td></tr>
+        <tr><td>Defibrillation</td><td class="d">2 J/kg, then 4 J/kg (do not exceed adult max)</td></tr>
+        <tr><td>Synchronized cardioversion</td><td class="d">0.5&ndash;1 J/kg, then 2 J/kg</td></tr>
+      </table>
+    </div>
+    <div class="dualcol adult"><h4>Adult</h4>
+      <table>
+        <tr><td>Epinephrine</td><td class="d">1 mg IV/IO q3&ndash;5 min</td></tr>
+        <tr><td>Amiodarone</td><td class="d">300 mg IV/IO first dose, 150 mg second dose, refractory VF/pVT</td></tr>
+        <tr><td>Lidocaine</td><td class="d">1&ndash;1.5 mg/kg IV/IO, alternative to amiodarone</td></tr>
+        <tr><td>Atropine</td><td class="d">1 mg IV q3&ndash;5 min, max 3 mg (2026 update — was 0.5 mg)</td></tr>
+        <tr><td>Vasopressin</td><td class="d">Removed from current adult ACLS algorithm</td></tr>
+        <tr><td>Defibrillation</td><td class="d">Biphasic, manufacturer-recommended (commonly 120&ndash;200 J)</td></tr>
+        <tr><td>Synchronized cardioversion</td><td class="d">Per rhythm — narrow regular 50&ndash;100J, narrow irregular/wide 120&ndash;200J</td></tr>
+      </table>
+    </div>
+  </div>
+  <p class="note">Calcium chloride (10&ndash;30 mg/kg peds; 1 g adult, central line preferred) and
+  sodium bicarbonate (1&ndash;2 mEq/kg peds; 1 mEq/kg adult) are not routine cardiac arrest
+  drugs in either population per current guidance — reserved specifically for suspected
+  hyperkalemia, calcium channel blocker toxicity, or severe pre-existing acidosis.</p>
+</section>
+
+<section id="s10">
+  <div class="sec-head c-purple"><span class="sec-num">10</span><h2>Pressors &amp; Antihypertensives</h2></div>
+  <div class="dualgrid">
+    <div class="dualcol peds"><h4>Pediatric</h4>
+      <table>
+        <tr><td>Dopamine</td><td class="d">2&ndash;20 mcg/kg/min IV/IO</td></tr>
+        <tr><td>Dobutamine</td><td class="d">2&ndash;20 mcg/kg/min IV/IO</td></tr>
+        <tr><td>Adenosine</td><td class="d">0.1 mg/kg rapid IV/IO push (max 6 mg 1st dose); repeat 0.2 mg/kg (max 12 mg)</td></tr>
+        <tr><td>Labetalol</td><td class="d">0.25&ndash;1.5 mg/kg IV/IO (max 20 mg); drip 0.25&ndash;1 mg/kg/hr</td></tr>
+        <tr><td>Nitroprusside</td><td class="d">0.3&ndash;8 mcg/kg/min IV/IO</td></tr>
+        <tr><td>Hydralazine</td><td class="d">0.1&ndash;0.4 mg/kg IV/IO</td></tr>
+      </table>
+    </div>
+    <div class="dualcol adult"><h4>Adult</h4>
+      <table>
+        <tr><td>Norepinephrine</td><td class="d">0.05&ndash;2 mcg/kg/min IV typical, some protocols extend to 3 mcg/kg/min — current first-line vasopressor in most shock states</td></tr>
+        <tr><td>Dopamine</td><td class="d">2&ndash;20 mcg/kg/min IV — largely supplanted by norepinephrine as first-line</td></tr>
+        <tr><td>Adenosine</td><td class="d">6 mg rapid IV push + flush; repeat 12 mg once if needed</td></tr>
+        <tr><td>Labetalol</td><td class="d">10&ndash;20 mg IV, repeat/double q10min (max 300 mg); drip 0.5&ndash;2 mg/min</td></tr>
+        <tr><td>Nitroprusside</td><td class="d">0.3&ndash;10 mcg/kg/min IV, titrate to effect</td></tr>
+        <tr><td>Hydralazine</td><td class="d">10&ndash;20 mg IV q4&ndash;6h</td></tr>
+        <tr><td>Nicardipine</td><td class="d">5&ndash;15 mg/hr IV infusion — commonly preferred over nitroprusside for controllable titration</td></tr>
+      </table>
+    </div>
+  </div>
+  <p class="note">The single biggest adult/peds framing difference here: adult septic/vasodilatory
+  shock management has moved decisively toward norepinephrine as the first-line agent, with
+  dopamine now a second-line or historical choice — the peds card's dopamine-forward framing
+  reflects standard pediatric practice, which hasn't shifted the same way.</p>
+</section>
+
+<section id="s11">
+  <div class="sec-head c-amber"><span class="sec-num">11</span><h2>Antimicrobials</h2></div>
+  <table>
+    <tr><th>Drug</th><th>Pediatric dose</th><th>Adult dose</th></tr>
+    <tr><td>Ceftriaxone</td><td class="d">50 mg/kg IV/IO (max 2g); 100 mg/kg meningitis dosing</td><td class="d">1&ndash;2 g IV q24h; 2g q12h meningitis dosing</td></tr>
+    <tr><td>Cefepime</td><td class="d">50 mg/kg IV/IO</td><td class="d">1&ndash;2 g IV q8&ndash;12h</td></tr>
+    <tr><td>Vancomycin</td><td class="d">15 mg/kg/dose IV</td><td class="d">15&ndash;20 mg/kg IV (actual body weight) q8&ndash;12h, trough-guided</td></tr>
+    <tr><td>Piperacillin/Tazobactam</td><td class="d">100 mg/kg IV/IO (max 3.375 g)</td><td class="d">3.375&ndash;4.5 g IV q6&ndash;8h</td></tr>
+    <tr><td>Metronidazole</td><td class="d">7.5 mg/kg/dose IV/IO</td><td class="d">500 mg IV/PO q8h</td></tr>
+    <tr><td>Clindamycin</td><td class="d">10 mg/kg/dose IV/IO/PO</td><td class="d">600&ndash;900 mg IV q8h</td></tr>
+    <tr><td>Gentamicin</td><td class="d">2.5 mg/kg/dose IV/IO</td><td class="d">5&ndash;7 mg/kg IV once-daily dosing (level-guided)</td></tr>
+    <tr><td>Acyclovir</td><td class="d">20 mg/kg/dose IV/IO (encephalitis dosing)</td><td class="d">10 mg/kg IV q8h (encephalitis dosing)</td></tr>
+    <tr><td>Azithromycin</td><td class="d">10 mg/kg/dose x1, then 5 mg/kg/day x4d</td><td class="d">500 mg IV/PO x1, then 250 mg daily x4d</td></tr>
+    <tr><td>TMP-SMX</td><td class="d">5 mg TMP/kg/dose BID</td><td class="d">1&ndash;2 DS tablets PO BID (dose varies substantially by indication)</td></tr>
+  </table>
+  <p class="note">Adult dosing above is presented as typical starting doses for common serious
+  infections — renal dosing adjustment, actual-vs-ideal body weight considerations (especially
+  vancomycin and aminoglycosides), and indication-specific duration all modify these in practice
+  and should be confirmed against local antibiogram and pharmacy guidance.</p>
+</section>
+
+<section id="s12">
+  <div class="sec-head c-teal"><span class="sec-num">12</span><h2>Volume Resuscitation</h2></div>
+  <div class="dualgrid">
+    <div class="dualcol peds"><h4>Pediatric</h4>
+      <table>
+        <tr><td>Crystalloid bolus</td><td class="d">20 mL/kg IV/IO</td></tr>
+        <tr><td>PRBC</td><td class="d">10&ndash;20 mL/kg/dose IV/IO</td></tr>
+        <tr><td>5% Albumin</td><td class="d">10 mL/kg IV/IO</td></tr>
+        <tr><td>FFP</td><td class="d">10&ndash;15 mL/kg IV/IO</td></tr>
+        <tr><td>Platelets</td><td class="d">1 unit/10 kg raises count ~50,000</td></tr>
+      </table>
+    </div>
+    <div class="dualcol adult"><h4>Adult</h4>
+      <table>
+        <tr><td>Crystalloid bolus</td><td class="d">500 mL&ndash;1L boluses, reassess — permissive hypotension favored in active hemorrhage (see volemic status reference)</td></tr>
+        <tr><td>PRBC</td><td class="d">1 unit (~300&ndash;350 mL) raises Hgb ~1 g/dL; transfuse over 1&ndash;4h (faster if actively hemorrhaging)</td></tr>
+        <tr><td>FFP</td><td class="d">10&ndash;15 mL/kg, or 2&ndash;4 units typical initial dose; 1 unit &asymp;200&ndash;250 mL</td></tr>
+        <tr><td>Platelets</td><td class="d">1 apheresis unit (or 4&ndash;6 pooled units) raises count ~30,000&ndash;50,000/&mu;L</td></tr>
+        <tr><td>Massive transfusion ratio</td><td class="d">1:1:1 PRBC:FFP:platelets — full evidence discussion (including that PROPPR itself didn't reach mortality significance) in the volemic status/blood-product reference</td></tr>
+        <tr><td>5% Albumin</td><td class="d">250&ndash;500 mL, targeted uses only (paracentesis, SBP, hepatorenal) — not routine resuscitation</td></tr>
+      </table>
+    </div>
+  </div>
+  <p class="note">Full crystalloid selection (composition, indications/contraindications by
+  fluid type), the sepsis-vs-TBI evidence reversal, and blood product ratio evidence all live in
+  the dedicated IV fluids and volemic status references — this table is dosing only.</p>
+</section>
+
+<section id="s13">
+  <div class="sec-head c-red"><span class="sec-num">13</span><h2>Pain, Sedation &amp; Antiemetic</h2></div>
+  <h3 class="sub">Analgesics</h3>
+  <div class="dualgrid">
+    <div class="dualcol peds"><h4>Pediatric</h4>
+      <table>
+        <tr><td>Acetaminophen</td><td class="d">15 mg/kg/dose PO/PR q4h</td></tr>
+        <tr><td>Fentanyl</td><td class="d">1.5 mcg/kg IN (max 50 mcg); 1&ndash;2 mcg/kg IV/IO</td></tr>
+        <tr><td>Morphine</td><td class="d">0.05&ndash;0.1 mg/kg IV/IO/IM</td></tr>
+        <tr><td>Hydromorphone</td><td class="d">0.01&ndash;0.015 mg/kg IV/IO/IM</td></tr>
+        <tr><td>Ketorolac</td><td class="d">0.5 mg/kg IV/IO/IM (max 30 mg)</td></tr>
+        <tr><td>Ibuprofen</td><td class="d">10 mg/kg/dose PO q6h</td></tr>
+      </table>
+    </div>
+    <div class="dualcol adult"><h4>Adult</h4>
+      <table>
+        <tr><td>Acetaminophen</td><td class="d">650&ndash;1000 mg PO/PR/IV q4&ndash;6h (max 3&ndash;4 g/day)</td></tr>
+        <tr><td>Fentanyl</td><td class="d">50&ndash;100 mcg IV/IN, titrate</td></tr>
+        <tr><td>Morphine</td><td class="d">2&ndash;4 mg IV, titrate q5&ndash;10min</td></tr>
+        <tr><td>Hydromorphone</td><td class="d">0.5&ndash;1 mg IV, titrate</td></tr>
+        <tr><td>Ketorolac</td><td class="d">15&ndash;30 mg IV/IM</td></tr>
+        <tr><td>Ibuprofen</td><td class="d">400&ndash;800 mg PO q6&ndash;8h</td></tr>
+      </table>
+    </div>
+  </div>
+  <h3 class="sub">Sedatives &amp; Antiemetic</h3>
+  <div class="dualgrid">
+    <div class="dualcol peds"><h4>Pediatric</h4>
+      <table>
+        <tr><td>Etomidate</td><td class="d">0.2 mg/kg IV/IO</td></tr>
+        <tr><td>Midazolam</td><td class="d">0.5 mg/kg PO (max 20 mg); 0.3 mg/kg IN; 0.05&ndash;0.1 mg/kg IV/IO</td></tr>
+        <tr><td>Ketamine</td><td class="d">1&ndash;2 mg/kg IV/IO; 4 mg/kg IM</td></tr>
+        <tr><td>Propofol</td><td class="d">1&ndash;2 mg/kg IV/IO</td></tr>
+        <tr><td>Ondansetron</td><td class="d">0.15 mg/kg IV/IO/PO (max 4 mg)</td></tr>
+      </table>
+    </div>
+    <div class="dualcol adult"><h4>Adult</h4>
+      <table>
+        <tr><td>Etomidate</td><td class="d">0.1&ndash;0.15 mg/kg IV for procedural sedation (lower than RSI dose)</td></tr>
+        <tr><td>Midazolam</td><td class="d">1&ndash;2 mg IV titrated (procedural sedation) — see remimazolam/ciprofol reference for newer alternatives</td></tr>
+        <tr><td>Ketamine</td><td class="d">1&ndash;1.5 mg/kg IV; 3&ndash;4 mg/kg IM (procedural sedation)</td></tr>
+        <tr><td>Propofol</td><td class="d">0.5&ndash;1 mg/kg IV increments (procedural sedation)</td></tr>
+        <tr><td>Ondansetron</td><td class="d">4&ndash;8 mg IV/PO</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="s14">
+  <div class="sec-head c-blue"><span class="sec-num">14</span><h2>Reversal Agents</h2></div>
+  <div class="dualgrid">
+    <div class="dualcol peds"><h4>Pediatric</h4>
+      <table>
+        <tr><td>Naloxone</td><td class="d">0.1 mg/kg IV/IO/IM/ETT (max 2 mg/dose)</td></tr>
+        <tr><td>Flumazenil</td><td class="d">0.01 mg/kg IV/IO (max 0.2 mg/dose)</td></tr>
+      </table>
+    </div>
+    <div class="dualcol adult"><h4>Adult</h4>
+      <table>
+        <tr><td>Naloxone</td><td class="d">0.4&ndash;2 mg IV/IM/IN, titrate to reverse respiratory depression without precipitating withdrawal; up to 2 mg per dose repeated</td></tr>
+        <tr><td>Flumazenil</td><td class="d">0.2 mg IV over 15 sec, repeat 0.2mg q1min (max 1 mg) — precipitated-withdrawal risk in chronic benzo users, use cautiously</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="s15">
+  <div class="sec-head c-purple"><span class="sec-num">15</span><h2>GCS, Pupils &amp; Pain Scale</h2></div>
+  <table>
+    <tr><th>Category</th><th>Score</th><th>Adult/Child</th><th>Infant modification</th></tr>
+    <tr><td rowspan="4">Eye opening</td><td>4</td><td>Spontaneous</td><td>Spontaneous</td></tr>
+    <tr><td>3</td><td>To voice</td><td>To voice</td></tr>
+    <tr><td>2</td><td>To pain</td><td>To pain</td></tr>
+    <tr><td>1</td><td>None</td><td>None</td></tr>
+    <tr><td rowspan="5">Verbal</td><td>5</td><td>Oriented</td><td>Coos/babbles</td></tr>
+    <tr><td>4</td><td>Confused</td><td>Irritable cry</td></tr>
+    <tr><td>3</td><td>Inappropriate words</td><td>Cries to pain</td></tr>
+    <tr><td>2</td><td>Incomprehensible</td><td>Moans to pain</td></tr>
+    <tr><td>1</td><td>None</td><td>None</td></tr>
+    <tr><td rowspan="6">Motor</td><td>6</td><td>Obeys commands</td><td>Spontaneous movement</td></tr>
+    <tr><td>5</td><td>Localizes pain</td><td>Withdraws to touch</td></tr>
+    <tr><td>4</td><td>Withdraws to pain</td><td>Withdraws to pain</td></tr>
+    <tr><td>3</td><td>Abnormal flexion</td><td>Abnormal flexion</td></tr>
+    <tr><td>2</td><td>Abnormal extension</td><td>Abnormal extension</td></tr>
+    <tr><td>1</td><td>None</td><td>None</td></tr>
+  </table>
+  <p class="note">Total 3&ndash;15. Adult GCS is identical to the "Child" column above — the
+  infant-specific verbal/motor modifications exist because standard verbal and command-following
+  criteria don't apply below roughly 2 years of developmental age.</p>
+  <div class="box t-purple">
+    <p><b>Pupil size reference:</b> 2&ndash;7 mm scale used identically in both populations.
+    <b>Pain scale:</b> the 0&ndash;10 FACES scale (0/2/4/6/8/10) is validated primarily for
+    pediatric and nonverbal use; cognitively intact adults are more commonly scored on a direct
+    0&ndash;10 numeric rating scale, though FACES remains usable across ages when verbal
+    numeric self-report isn't reliable.</p>
+  </div>
+</section>
+
+<section id="s16">
+  <div class="sec-head c-teal"><span class="sec-num">16</span><h2>Formulas &amp; Equations</h2></div>
+  <table>
+    <tr><th>Formula</th><th>Equation</th><th>Population</th></tr>
+    <tr><td>Minimum SBP</td><td class="d">&lt;1mo: 60 mmHg &middot; 1mo&ndash;10y: (2 &times; age) + 70 &middot; &gt;10y: 90 mmHg</td><td>Pediatric</td></tr>
+    <tr><td>ET tube size (cuffed)</td><td class="d">age/4 + 3.5</td><td>Pediatric, &gt;2 years</td></tr>
+    <tr><td>ET tube size (uncuffed)</td><td class="d">age/4 + 4</td><td>Pediatric, &gt;2 years</td></tr>
+    <tr><td>ET tube depth (lip to tip)</td><td class="d">3 &times; ET tube size</td><td>Pediatric</td></tr>
+    <tr><td>Low-line UA catheter length</td><td class="d">birth weight (kg) + 7</td><td>Neonatal</td></tr>
+    <tr><td>High-line UA catheter length</td><td class="d">(3 &times; birth weight) + 9</td><td>Neonatal</td></tr>
+    <tr><td>UV catheter length</td><td class="d">(0.5 &times; high-line UA) + 1</td><td>Neonatal</td></tr>
+    <tr><td>Parkland formula</td><td class="d">4 mL &times; weight (kg) &times; %BSA burned (2nd/3rd degree); half over first 8h, remainder over next 16h from time of burn</td><td>Both — same formula, adult and pediatric alike</td></tr>
+    <tr><td>Predicted body weight (adult)</td><td class="d">Male: 50 + 2.3&times;[height(in)&minus;60] &middot; Female: 45.5 + 2.3&times;[height(in)&minus;60]</td><td>Adult — for lung-protective VT dosing, full detail in mechanical ventilation reference</td></tr>
+  </table>
+  <p class="note">The Parkland formula is genuinely one of the few calculations on this page
+  that doesn't change between populations — weight and %BSA already scale the answer
+  appropriately for pediatric patients without a separate pediatric-specific version.</p>
+</section>
+
+<section id="s17" style="border-bottom:none;">
+  <div class="sec-head" style="border-left-color:var(--text3); background:none;"><span class="sec-num">17</span><h2>Quick Reference Card &amp; Primary Sources</h2></div>
+  <table>
+    <tr><th>Situation</th><th>Key number to remember</th></tr>
+    <tr><td>Symptomatic bradycardia, adult</td><td>Atropine 1 mg IV (2026 update, was 0.5 mg) — not vasopressin</td></tr>
+    <tr><td>Symptomatic bradycardia, pediatric</td><td>Atropine 0.02 mg/kg IV/IO, min 0.1 mg</td></tr>
+    <tr><td>Adult cardiac arrest vasopressor</td><td>Epinephrine only — vasopressin removed from algorithm</td></tr>
+    <tr><td>Status epilepticus, adult</td><td>Lorazepam 4 mg IV (up to 8 mg) — don't underdose</td></tr>
+    <tr><td>Anaphylaxis, adult</td><td>Epinephrine 0.3&ndash;0.5 mg IM, repeat q5&ndash;15min</td></tr>
+    <tr><td>Massive transfusion ratio</td><td>1:1:1 PRBC:FFP:platelets, adult</td></tr>
+    <tr><td>Parkland formula</td><td>Same formula both populations — 4mL &times; kg &times; %BSA</td></tr>
+  </table>
+  <p class="body"><b>Primary sources checked for this guide:</b></p>
+  <ul class="sources">
+    <li>UW Health Kids. Emergency Medicine pocket card (pediatric drug reference source).</li>
+    <li>2025/2026 American Heart Association Guidelines for CPR and Emergency Cardiovascular Care, Adult Advanced Life Support.</li>
+    <li>ANZCOR Guideline 11.5: Medications in Adult Cardiac Arrest, including PARAMEDIC2/PACA meta-analysis discussion.</li>
+    <li>Perkins GD, et al. A randomized trial of epinephrine in out-of-hospital cardiac arrest (PARAMEDIC2). N Engl J Med. 2018.</li>
+    <li>Management of convulsive status epilepticus: recent updates. PMC10295829, 2023.</li>
+    <li>Assessment of benzodiazepine dosing in status epilepticus patients in the emergency department. Front Neurol. 2025 (underdosing and mortality association).</li>
+    <li>Silbergleit R, et al. Intramuscular versus intravenous therapy for prehospital status epilepticus (RAMPART). N Engl J Med. 2012.</li>
+    <li>Alldredge BK, et al. A comparison of lorazepam, diazepam, and placebo for out-of-hospital status epilepticus. N Engl J Med. 2001.</li>
+    <li>Holcomb JB, et al. Transfusion of plasma, platelets, and red blood cells in a 1:1:1 vs. 1:1:2 ratio (PROPPR). JAMA. 2015.</li>
+    <li>FDA. Ranitidine market withdrawal notice, 2020 (basis for famotidine as current H2-blocker standard).</li>
+    <li>Standard PALS/APLS pediatric emergency drug dosing references, cross-checked against source card.</li>
+    <li>CHEO ED Outreach. Insulin, regular (pediatric hyperkalemia: 0.1 unit/kg, max 10 units, with D10W 5 mL/kg). Children's Hospital of Eastern Ontario.</li>
+    <li>Standard ACLS adult emergency drug dosing references (epinephrine, amiodarone, lidocaine, atropine, adenosine, defibrillation/cardioversion energy).</li>
+  </ul>
+</section>
+
+</div>
+
+<footer>
+  Built from a single pediatric source card, doubled in scope to cover adult dosing throughout
+  — the two most clinically important corrections are the 2026 adult atropine dose change and
+  vasopressin's removal from the adult (but not pediatric) arrest algorithm. Every dose above was
+  cross-checked against current guideline sources as of July 2026; always verify against local
+  protocol and current drug references before clinical use.
+<div class="cv-tagline" style="margin-top:8px">The Critical Vector · Direction and magnitude.</div></footer>
+
+</body>
+</html>

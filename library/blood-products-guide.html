@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Blood Products — The Critical Vector</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&amp;family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><style>
+:root{
+  --bg:#0a0e14; --surface:#111720; --surface2:#182030;
+  --border:rgba(255,255,255,0.08);
+  --teal:#00d4aa; --blue:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa;
+  --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  background:var(--bg); color:var(--text);
+  font-family:'Source Serif 4', Georgia, serif; font-size:16px; line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,.label,.kicker,.badge,nav a,th{font-family:'Syne', sans-serif;}
+.mono{font-family:'IBM Plex Mono', monospace;}
+.page{max-width:900px; margin:0 auto; padding:0 24px 60px;}
+
+header{padding:32px 0 20px; border-bottom:1px solid var(--border);}
+.kicker{
+  font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--teal); margin-bottom:10px;
+}
+h1{font-family:'Syne', sans-serif; font-weight:800; font-size:30px; line-height:1.15; margin:0 0 10px; letter-spacing:.005em;}
+header p{font-family:'Source Serif 4', serif; font-style:italic; color:var(--text2); font-size:15.5px; margin:0; max-width:700px;}
+
+.alert{
+  margin:18px 0; padding:13px 18px; border-radius:10px; font-size:14px;
+  background:rgba(0,212,170,0.10); border:1px solid rgba(0,212,170,0.28); color:#bdf5e8;
+}
+.alert.c-red{background:rgba(232,76,76,0.10); border-color:rgba(232,76,76,0.28); color:#ffd7d7;}
+.alert.c-amber{background:rgba(245,158,11,0.10); border-color:rgba(245,158,11,0.28); color:#ffe8bd;}
+.alert.c-blue{background:rgba(96,165,250,0.10); border-color:rgba(96,165,250,0.28); color:#cfe0ff;}
+
+nav{display:flex; flex-wrap:wrap; gap:7px; padding:18px 0; border-bottom:1px solid var(--border); margin-bottom:8px;}
+nav .navpart{
+  width:100%; font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--text3); margin:8px 0 2px 2px;
+}
+nav .navpart:first-child{margin-top:0;}
+nav a{
+  font-size:12.5px; font-weight:600; color:var(--text2); background:var(--surface);
+  border:1px solid var(--border); padding:7px 12px; border-radius:20px;
+  text-decoration:none; white-space:nowrap; transition:all .15s;
+}
+nav a:hover{color:var(--text); border-color:var(--teal);}
+
+section{padding:30px 0; border-bottom:1px solid var(--border);}
+.sec-head{
+  display:flex; align-items:baseline; gap:10px; padding:11px 18px;
+  border-left:4px solid var(--teal);
+  background:linear-gradient(90deg, rgba(0,212,170,0.10), transparent);
+  border-radius:0 8px 8px 0; margin-bottom:16px;
+}
+.sec-head.c-blue{border-left-color:var(--blue); background:linear-gradient(90deg, rgba(96,165,250,0.10), transparent);}
+.sec-head.c-red{border-left-color:var(--red); background:linear-gradient(90deg, rgba(232,76,76,0.10), transparent);}
+.sec-head.c-amber{border-left-color:var(--amber); background:linear-gradient(90deg, rgba(245,158,11,0.10), transparent);}
+.sec-head.c-purple{border-left-color:var(--purple); background:linear-gradient(90deg, rgba(167,139,250,0.10), transparent);}
+.sec-num{font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--text3);}
+h2{font-family:'Syne', sans-serif; font-weight:700; font-size:20px; margin:0; color:var(--text);}
+.tagline{font-family:'Source Serif 4', serif; font-style:italic; font-size:13.5px; color:var(--text2); margin:0 0 12px;}
+
+p.body{font-size:15.5px; margin:12px 0;}
+p.note{font-size:13.5px; color:var(--text2); font-style:italic; margin:10px 0;}
+
+.box{
+  background:var(--surface2); border:1px solid var(--border); border-radius:10px;
+  padding:16px 18px; margin:14px 0; font-size:14.5px;
+}
+.box.t-teal{border-left:3px solid var(--teal);}
+.box.t-blue{border-left:3px solid var(--blue);}
+.box.t-red{border-left:3px solid var(--red); background:rgba(232,76,76,0.06);}
+.box.t-amber{border-left:3px solid var(--amber);}
+.box.t-purple{border-left:3px solid var(--purple);}
+.box b{color:var(--text); font-weight:700;}
+.box p{margin:7px 0;}
+
+table{width:100%; border-collapse:collapse; margin:14px 0; font-size:13.5px;}
+th{background:var(--surface2); color:var(--text); text-align:left; padding:9px 11px; font-weight:600; font-size:12px; letter-spacing:.02em; border-bottom:2px solid var(--border);}
+td{padding:9px 11px; border-bottom:1px solid var(--border); vertical-align:top; font-family:'Source Serif 4', serif;}
+tr:nth-child(even) td{background:rgba(255,255,255,0.02);}
+
+.checklist, .xlist{list-style:none; padding-left:0; margin:10px 0;}
+.checklist li, .xlist li{padding:5px 0 5px 26px; position:relative; font-size:14.5px;}
+.checklist li:before{content:"\2713"; position:absolute; left:0; color:var(--teal); font-weight:700;}
+.xlist li:before{content:"\2715"; position:absolute; left:0; color:var(--red); font-weight:700;}
+
+.flow{display:flex; flex-direction:column; gap:9px; margin:14px 0;}
+.flow .step{
+  border:1px solid var(--border); border-left:3px solid var(--teal);
+  background:var(--surface); border-radius:8px; padding:11px 15px; font-size:14px;
+}
+.flow .step.t-blue{border-left-color:var(--blue);}
+.flow .step.t-red{border-left-color:var(--red);}
+.flow .step.t-amber{border-left-color:var(--amber);}
+.flow .step.t-purple{border-left-color:var(--purple);}
+
+.timeline-item{
+  padding:7px 0 7px 15px; border-left:2px solid var(--teal);
+  margin:5px 0 5px 4px; font-size:13.5px; color:var(--text2);
+}
+.timeline-item.t-blue{border-left-color:var(--blue);}
+.timeline-item.t-red{border-left-color:var(--red);}
+.timeline-item.t-amber{border-left-color:var(--amber);}
+.timeline-item.t-purple{border-left-color:var(--purple);}
+
+.xref{
+  margin:14px 0; padding:13px 17px; border-radius:10px;
+  background:var(--surface2); border:1px solid var(--border); border-left:3px solid var(--blue);
+  font-size:14px;
+}
+.xreflabel{
+  display:block; font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--blue); margin-bottom:6px; font-weight:600;
+}
+
+.peds{
+  margin:8px 0 16px 0; padding:11px 15px; border-radius:8px;
+  background:var(--surface2); border:1px solid var(--border); border-left:3px solid var(--purple);
+  font-size:13.5px;
+}
+.pedlabel{
+  display:inline-block; font-family:'Syne', sans-serif; font-size:10px; font-weight:700; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--purple); margin-right:7px;
+}
+
+.part-divider{padding:34px 0 8px;}
+.part-divider .plabel{
+  font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--teal); margin-bottom:6px; font-weight:600;
+}
+.part-divider h2{font-size:23px; margin:0 0 6px 0;}
+.part-divider p{font-family:'Source Serif 4', serif; font-size:14px; color:var(--text2); margin:0; max-width:600px;}
+
+.sources{font-size:13px; color:var(--text2); padding-left:20px;}
+.sources li{margin-bottom:7px;}
+
+.caveat{
+  margin:14px 0; padding:13px 17px; border-radius:10px; font-size:13.5px;
+  background:rgba(245,158,11,0.08); border:1px solid rgba(245,158,11,0.24); color:var(--text2);
+}
+.caveat b{color:var(--amber); font-weight:700;}
+
+.statgrid{display:grid; grid-template-columns:repeat(4, 1fr); gap:10px; margin:16px 0;}
+.statgrid div{text-align:center;}
+.statgrid .num{font-family:'Syne', sans-serif; font-size:22px; font-weight:700;}
+.statgrid .lbl{font-family:'Syne', sans-serif; font-size:10.5px; color:var(--text2); text-transform:uppercase; letter-spacing:.05em; margin-top:3px;}
+
+.arrow{text-align:center; color:var(--text3); font-size:12px;}
+
+footer{padding:26px 0 0; margin-top:6px; font-size:12.5px; color:var(--text3); font-family:'Source Serif 4', serif; font-style:italic;}
+</style>
+<style id="cv-print">
+/* ===== CV PRINT v1.0 (per _cv-schema.html) ===== */
+@media print{
+  :root{
+    --bg:#f4f5f7; --surface:#ffffff; --surface2:#eef1f4; --border:#d7dde3;
+    --teal:#00a688; --blue:#1d4ed8; --accent:#00a688; --accent2:#1d4ed8;
+    --red:#c53030; --amber:#b45309; --purple:#7c3aed;
+    --text:#0f1923; --text2:#4a5670; --text3:#6b7688;
+  }
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  html, body{background:#f4f5f7 !important; color:#0f1923 !important;}
+  nav, .nav, .toc-pills{display:none !important;}
+  .alert{background:rgba(0,166,136,.08) !important; color:#0f1923 !important;}
+  td{color:#0f1923 !important;}
+  section, .box, table, .card, .stat-card, .statcard, .step-row, .step{break-inside:avoid;}
+  h2, .sec-head{break-after:avoid;}
+  a{color:inherit; text-decoration:none;}
+}
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ a{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../workshop.html">The Workshop</a><span class="cv-sb-meta">Published 7 Oct 2026 · R. E. Suscitate &amp; A. Systole</span></nav><div class="page">
+<header>
+<div class="kicker">The Critical Vector · Blood &amp; Blood Products</div>
+<h1>6 Blood Products You Must Know Cold</h1>
+<p>Indication, constituents, and the clock on each one. Verified against AABB 2023 RBC
+  guidance and the 2025 AABB/ICTMG platelet guideline. July 2026.</p>
+</header>
+<div class="alert">
+  VERIFIED: the AABB 2023 restrictive RBC thresholds (7 / 7.5 / 8 g/dL) and the 2025
+  AABB/ICTMG platelet thresholds (10 / 50 / 100 ×10⁹/L) both matched the published
+  guidelines exactly. One number, the 80 ×10⁹/L neuraxial threshold, is a distinct
+  anesthesia-specific convention rather than the hematology lumbar-puncture threshold; see
+  the note in Section 2.
+</div>
+<nav>
+<a href="#s1">1 · Packed red cells</a>
+<a href="#s2">2 · Platelets</a>
+<a href="#s3">3 · Fresh frozen plasma</a>
+<a href="#s4">4 · Cryoprecipitate</a>
+<a href="#s5">5 · Whole blood</a>
+<a href="#s6">6 · Prothrombin complex concentrate</a>
+<a href="#s7">7 · Time &amp; temperature</a>
+<a href="#s8">8 · Quick card &amp; sources</a>
+</nav>
+<main>
+<section id="s1">
+<div class="sec-head c-red"><span class="sec-num">01</span><h2>Packed Red Cells (PRBC)</h2></div>
+<p class="tagline">Raises oxygen-carrying capacity, not volume, not clotting.</p>
+<table>
+<tr><td><b>Indication</b></td><td>Symptomatic anemia. Transfuse below Hb 7 g/dL (general), 7.5 g/dL for cardiac surgery, 8 g/dL for orthopedic surgery or known cardiovascular disease</td></tr>
+<tr><td><b>Contains</b></td><td>Red cells in preservative; Hct ~55-65% (additive solution) or ~70-80% (CPDA-1); no platelets, no clotting factors</td></tr>
+<tr><td><b>Effect</b></td><td>1 unit raises Hb ~1 g/dL, Hct ~3%</td></tr>
+<tr><td><b>Storage</b></td><td>1-6°C; shelf life up to 42 days (additive) or 35 days (CPDA-1)</td></tr>
+<tr><td><b>Clock</b></td><td>Start within 30 min of issue, complete within 4 hours</td></tr>
+</table>
+<div class="box t-red"><p><b>Must be ABO and Rh compatible, and cross-matched.</b></p></div>
+<p class="note">These thresholds come directly from the 2023 AABB international RBC
+  guideline (45 RCTs, 20,599 adult participants). The 7.5/8 g/dL exceptions are not
+  arbitrary, they reflect the actual thresholds used in the cardiac surgery and orthopedic
+  surgery trials that the recommendation is built on.</p>
+</section>
+<section id="s2">
+<div class="sec-head c-amber"><span class="sec-num">02</span><h2>Platelets</h2></div>
+<p class="tagline">Stored warm and moving, the most fragile product.</p>
+<table>
+<tr><td><b>Prophylaxis</b></td><td>Transfuse below 10 ×10⁹/L if non-bleeding (hypoproliferative thrombocytopenia, active chemo or allogeneic stem cell transplant)</td></tr>
+<tr><td><b>Procedures</b></td><td>Below 50 ×10⁹/L for major non-neuraxial surgery; below 100 ×10⁹/L for neurosurgery or posterior-eye surgery</td></tr>
+<tr><td><b>Dose</b></td><td>1 adult pool or apheresis unit raises count ~30-50 ×10⁹/L</td></tr>
+<tr><td><b>Storage</b></td><td>20-24°C with continuous agitation; shelf life 5 days (7 days if pathogen-reduced); not refrigerated</td></tr>
+<tr><td><b>Clock</b></td><td>Transfuse over 30-60 minutes at room temperature</td></tr>
+</table>
+<div class="box t-amber"><p><b>Do not give for cardiac bypass or spontaneous ICH without active bleeding.</b></p></div>
+<p class="caveat">
+<b>Worth clarifying:</b> the 80 ×10⁹/L figure quoted for neuraxial or epidural
+  procedures is a long-standing anesthesia-specific convention, distinct from the 2025
+  AABB/ICTMG hematology guideline's lumbar puncture threshold of 20 ×10⁹/L. The two numbers
+  answer different questions (diagnostic LP vs an indwelling epidural catheter with a much
+  higher consequence if it bleeds), so don't be surprised if they don't match when you look
+  them up side by side.</p>
+</section>
+<section id="s3">
+<div class="sec-head c-amber"><span class="sec-num">03</span><h2>Fresh Frozen Plasma (FFP)</h2></div>
+<p class="tagline">All the clotting factors, for bleeding, not for volume.</p>
+<table>
+<tr><td><b>Indication</b></td><td>Bleeding with multiple factor deficiency (massive transfusion, DIC, liver disease); TTP plasma exchange</td></tr>
+<tr><td><b>Contains</b></td><td>All coagulation factors, roughly 1 IU/mL each, including labile factors V and VIII</td></tr>
+<tr><td><b>Dose</b></td><td>10-15 mL/kg, raises factor levels roughly 20%</td></tr>
+<tr><td><b>Storage</b></td><td>Frozen at or below -18°C, roughly 12 months; thaw takes 20-30 min</td></tr>
+<tr><td><b>Clock</b></td><td>Once thawed, use within 24 hours stored at 1-6°C</td></tr>
+</table>
+<div class="box t-amber"><p><b>ABO-compatible, opposite convention to red cells. Not first-line
+  for warfarin reversal if PCC is available.</b></p></div>
+</section>
+<section id="s4">
+<div class="sec-head c-purple"><span class="sec-num">04</span><h2>Cryoprecipitate</h2></div>
+<p class="tagline">The fibrinogen concentrate. Small bag, big clot.</p>
+<table>
+<tr><td><b>Indication</b></td><td>Fibrinogen under 1.5 g/L with bleeding (DIC, massive transfusion); under 2 g/L in obstetric hemorrhage</td></tr>
+<tr><td><b>Contains</b></td><td>Fibrinogen, factor VIII, factor XIII, von Willebrand factor, fibronectin</td></tr>
+<tr><td><b>Per unit</b></td><td>At least 150 mg fibrinogen plus at least 80 IU factor VIII; a 10-unit adult pool raises fibrinogen roughly 1 g/L</td></tr>
+<tr><td><b>Storage</b></td><td>Frozen at or below -18°C, roughly 12 months</td></tr>
+<tr><td><b>Clock</b></td><td>Once thawed, use within 6 hours if closed system, 4 hours if open-pooled; room temperature, do not refrigerate</td></tr>
+</table>
+<div class="box t-purple"><p><b>Not for warfarin reversal. Not a "concentrated plasma," it's a fibrinogen concentrate specifically.</b></p></div>
+</section>
+<section id="s5">
+<div class="sec-head c-red"><span class="sec-num">05</span><h2>Whole Blood (LTOWB)</h2></div>
+<p class="tagline">Balanced resuscitation in a single bag.</p>
+<table>
+<tr><td><b>Indication</b></td><td>Trauma or massive hemorrhage resuscitation</td></tr>
+<tr><td><b>Contains</b></td><td>Red cells, plasma, and cold-stored platelets together; group O, low anti-A/anti-B titer</td></tr>
+<tr><td><b>Volume</b></td><td>Roughly 500 mL, leukoreduced with a platelet-sparing filter</td></tr>
+<tr><td><b>Storage</b></td><td>1-6°C; shelf life 21 days (CPD) or 35 days (CPDA-1)</td></tr>
+<tr><td><b>Clock</b></td><td>Start within 30 min of issue, complete within 4 hours</td></tr>
+</table>
+<div class="box t-red"><p><b>Cold-stored platelet function falls after roughly 14 days,</b>
+  even though the red cells and plasma remain usable for the full shelf life.</p></div>
+</section>
+<section id="s6">
+<div class="sec-head c-blue"><span class="sec-num">06</span><h2>Prothrombin Complex Concentrate (PCC)</h2></div>
+<p class="tagline">Fast warfarin reversal. Small volume, no thawing.</p>
+<table>
+<tr><td><b>Indication</b></td><td>Urgent warfarin reversal with major bleeding, or before emergency surgery</td></tr>
+<tr><td><b>4-factor PCC</b></td><td>Factors II, VII, IX, X, plus proteins C and S</td></tr>
+<tr><td><b>Dose</b></td><td>25-50 IU/kg, INR-based; always co-administer IV vitamin K</td></tr>
+<tr><td><b>Onset</b></td><td>Corrects INR within roughly 10-30 minutes</td></tr>
+</table>
+<div class="box t-blue">
+<p>Plasma-derived factor concentrate, not a cellular blood component. Low volume means
+    minimal TACO (transfusion-associated circulatory overload) risk compared to FFP.</p>
+<p><b>Main risk is thrombosis.</b> Always co-give IV vitamin K. 3-factor PCC contains only
+    low levels of factor VII and is not equivalent for warfarin reversal.</p>
+</div>
+</section>
+<section id="s7">
+<div class="sec-head"><span class="sec-num">07</span><h2>Time &amp; Temperature</h2></div>
+<p class="tagline">The clock starts the moment it leaves the fridge.</p>
+<table>
+<tr><th>Product</th><th>Clock &amp; storage</th></tr>
+<tr><td>Red cells / whole blood</td><td>Start within 30 min, finish within 4 h; store 1-6°C</td></tr>
+<tr><td>Platelets</td><td>20-24°C, agitated; not refrigerated</td></tr>
+<tr><td>FFP</td><td>Thawed, use within 24 h at 1-6°C</td></tr>
+<tr><td>Cryoprecipitate</td><td>Thawed, use within 6 h (4 h if open-pooled), room temperature, not refrigerated</td></tr>
+</table>
+<div class="box t-teal">
+<p><b>The 30-minute rule:</b> a unit out of controlled storage for more than 30 minutes
+    usually cannot return to stock.</p>
+<p><b>Right product, right patient, right dose, right time, right documentation.</b>
+    Two-person bedside check, every time.</p>
+</div>
+</section>
+<section id="s8" style="border-bottom:none;">
+<div class="sec-head" style="border-left-color:var(--text3); background:none;"><span class="sec-num">08</span><h2>Quick Reference Card &amp; Primary Sources</h2></div>
+<table>
+<tr><th>Product</th><th>One-line reminder</th></tr>
+<tr><td>PRBC</td><td>Oxygen-carrying capacity; 1 unit ≈ Hb +1 g/dL</td></tr>
+<tr><td>Platelets</td><td>Clotting cells; store warm, agitated, 5-7 day shelf life</td></tr>
+<tr><td>FFP</td><td>All clotting factors; 10-15 mL/kg; not first-line for warfarin reversal</td></tr>
+<tr><td>Cryoprecipitate</td><td>Fibrinogen concentrate; 10-unit pool ≈ fibrinogen +1 g/L</td></tr>
+<tr><td>Whole blood</td><td>Red cells, plasma, platelets together; platelet function fades after ~14 days</td></tr>
+<tr><td>PCC</td><td>Fastest warfarin reversal; always pair with IV vitamin K</td></tr>
+</table>
+<p class="body"><b>Primary sources checked for this guide:</b></p>
+<ul class="sources">
+<li>Carson JL, Stanworth SJ, Guyatt G, et al. Red Blood Cell Transfusion: 2023 AABB International Guidelines. JAMA. 2023;330(19):1892-1902.</li>
+<li>Metcalf RA, Nahirniak S, Guyatt G, et al. Platelet Transfusion: 2025 AABB and ICTMG International Clinical Practice Guidelines. JAMA. 2025;334(7):606-617. PMID 40440268.</li>
+<li>AABB. Updates in Red Blood Cell Transfusion Thresholds. Patient Blood Management Bulletin, April 2024.</li>
+<li>AABB. New 2025 AABB Platelet Transfusion Guidelines. Summary, JournalFeed, October 2025.</li>
+</ul>
+</section>
+</main>
+<footer>
+  This guide checks and condenses a 10-slide post on the six core blood products; only
+  slides 1 through 8 were provided here, so slides 9 and 10 aren't reflected above. The
+  AABB thresholds cited (RBC and platelet) matched the published guidelines exactly.
+  Verified as of July 2026.
+<div class="cv-tagline" style="margin-top:8px">The Critical Vector · Direction and magnitude.</div></footer>
+</div></body>
+</html>

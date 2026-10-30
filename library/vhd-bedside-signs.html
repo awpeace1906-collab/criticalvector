@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Valvular Heart Disease: Bedside Signs — The Critical Vector</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<style>
+:root{
+  --bg:#0a0e14; --surface:#111720; --surface2:#182030;
+  --border:rgba(255,255,255,0.08);
+  --teal:#00d4aa; --blue:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa;
+  --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  background:var(--bg); color:var(--text);
+  font-family:'Source Serif 4', Georgia, serif; font-size:16px; line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,.label,.kicker,.badge,nav a,th{font-family:'Syne', sans-serif;}
+.mono{font-family:'IBM Plex Mono', monospace;}
+.page{max-width:900px; margin:0 auto; padding:0 24px 60px;}
+header{padding:32px 0 20px; border-bottom:1px solid var(--border);}
+.kicker{
+  font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--teal); margin-bottom:10px;
+}
+h1{font-family:'Syne', sans-serif; font-weight:800; font-size:30px; line-height:1.15; margin:0 0 10px; letter-spacing:.005em;}
+header p{font-family:'Source Serif 4', serif; font-style:italic; color:var(--text2); font-size:15.5px; margin:0; max-width:700px;}
+.alert{
+  margin:18px 0; padding:13px 18px; border-radius:10px; font-size:14px;
+  background:rgba(0,212,170,0.10); border:1px solid rgba(0,212,170,0.28); color:#bdf5e8;
+}
+.alert.c-red{background:rgba(232,76,76,0.10); border-color:rgba(232,76,76,0.28); color:#ffd7d7;}
+.alert.c-amber{background:rgba(245,158,11,0.10); border-color:rgba(245,158,11,0.28); color:#ffe8bd;}
+.alert.c-blue{background:rgba(96,165,250,0.10); border-color:rgba(96,165,250,0.28); color:#cfe0ff;}
+nav{display:flex; flex-wrap:wrap; gap:7px; padding:18px 0; border-bottom:1px solid var(--border); margin-bottom:8px;}
+nav a{
+  font-size:12.5px; font-weight:600; color:var(--text2); background:var(--surface);
+  border:1px solid var(--border); padding:7px 12px; border-radius:20px;
+  text-decoration:none; white-space:nowrap; transition:all .15s;
+}
+nav a:hover{color:var(--text); border-color:var(--teal);}
+section{padding:30px 0; border-bottom:1px solid var(--border);}
+.sec-head{
+  display:flex; align-items:baseline; gap:10px; padding:11px 18px;
+  border-left:4px solid var(--teal);
+  background:linear-gradient(90deg, rgba(0,212,170,0.10), transparent);
+  border-radius:0 8px 8px 0; margin-bottom:16px;
+}
+.sec-head.c-blue{border-left-color:var(--blue); background:linear-gradient(90deg, rgba(96,165,250,0.10), transparent);}
+.sec-head.c-red{border-left-color:var(--red); background:linear-gradient(90deg, rgba(232,76,76,0.10), transparent);}
+.sec-head.c-amber{border-left-color:var(--amber); background:linear-gradient(90deg, rgba(245,158,11,0.10), transparent);}
+.sec-head.c-purple{border-left-color:var(--purple); background:linear-gradient(90deg, rgba(167,139,250,0.10), transparent);}
+.sec-num{font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--text3);}
+h2{font-family:'Syne', sans-serif; font-weight:700; font-size:20px; margin:0; color:var(--text);}
+.tagline{font-family:'Source Serif 4', serif; font-style:italic; font-size:13.5px; color:var(--text2); margin:0 0 12px;}
+p.body{font-size:15.5px; margin:12px 0;}
+p.note{font-size:13.5px; color:var(--text2); font-style:italic; margin:10px 0;}
+.box{
+  background:var(--surface2); border:1px solid var(--border); border-radius:10px;
+  padding:16px 18px; margin:14px 0; font-size:14.5px;
+}
+.box.t-teal{border-left:3px solid var(--teal);}
+.box.t-blue{border-left:3px solid var(--blue);}
+.box.t-red{border-left:3px solid var(--red); background:rgba(232,76,76,0.06);}
+.box.t-amber{border-left:3px solid var(--amber);}
+.box.t-purple{border-left:3px solid var(--purple);}
+.box b{color:var(--text); font-weight:700;}
+.box p{margin:7px 0;}
+table{width:100%; border-collapse:collapse; margin:14px 0; font-size:13.5px;}
+th{background:var(--surface2); color:var(--text); text-align:left; padding:9px 11px; font-weight:600; font-size:12px; letter-spacing:.02em; border-bottom:2px solid var(--border);}
+td{padding:9px 11px; border-bottom:1px solid var(--border); vertical-align:top; font-family:'Source Serif 4', serif;}
+tr:nth-child(even) td{background:rgba(255,255,255,0.02);}
+.sources{font-size:13px; color:var(--text2); padding-left:20px;}
+.sources li{margin-bottom:7px;}
+footer{padding:26px 0 0; margin-top:6px; font-size:12.5px; color:var(--text3); font-family:'Source Serif 4', serif; font-style:italic;}
+</style>
+<style id="cv-print">
+/* ===== CV PRINT v1.0 (per _cv-schema.html) ===== */
+@media print{
+  :root{
+    --bg:#f4f5f7; --surface:#ffffff; --surface2:#eef1f4; --border:#d7dde3;
+    --teal:#00a688; --blue:#1d4ed8; --accent:#00a688; --accent2:#1d4ed8;
+    --red:#c53030; --amber:#b45309; --purple:#7c3aed;
+    --text:#0f1923; --text2:#4a5670; --text3:#6b7688;
+  }
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  html, body{background:#f4f5f7 !important; color:#0f1923 !important;}
+  nav, .nav, .toc-pills{display:none !important;}
+  .alert{background:rgba(0,166,136,.08) !important; color:#0f1923 !important;}
+  td{color:#0f1923 !important;}
+  section, .box, table, .card, .stat-card, .statcard, .step-row, .step{break-inside:avoid;}
+  h2, .sec-head{break-after:avoid;}
+  a{color:inherit; text-decoration:none;}
+}
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ a{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../continuum.html">The Continuum</a><span class="cv-sb-meta">Published 6 Oct 2026 · R. E. Suscitate &amp; A. Systole</span></nav><div class="page">
+<header>
+<div class="kicker">The Critical Vector · Valvular Heart Disease</div>
+<h1>Bedside Signs You Must Not Miss</h1>
+<p>Cardiology exam skills. Part 1 of 2 — Mitral Stenosis, Mitral Regurgitation, Aortic Stenosis. Verified against the 2025 ESC/EACTS VHD Guidelines and Braunwald's, 12th ed. September 2026.</p>
+</header>
+<div class="alert">
+  VERIFIED: the 2025 ESC/EACTS VHD Guidelines are a real, current document (update to the 2021 guideline, presented ESC Congress Madrid, Aug 2025). The "~45% GP sensitivity" figure traces to a real dataset — 46.2% traditional-stethoscope sensitivity vs. 92.3% AI-assisted, in a 357-patient primary-care study (Eur Heart J Digital Health, Feb 2026).
+</div>
+<div class="alert c-amber">
+  INCOMPLETE SOURCE: the original carousel runs 17 slides covering all six valve lesions plus eponymous mimics and prosthetic-valve sounds. Only slides 1–5 were captured (framework + MS, MR, AS). Aortic Regurgitation, Tricuspid Disease, Pulmonic Valve Disease, and the mimics/prosthetics slides are pending for Part 2.
+</div>
+<nav>
+<a href="#s1">1 · Bedside framework</a>
+<a href="#s2">2 · Mitral stenosis</a>
+<a href="#s3">3 · Mitral regurgitation</a>
+<a href="#s4">4 · Aortic stenosis</a>
+<a href="#s5">5 · Sources</a>
+</nav>
+<main>
+
+<section id="s1">
+<div class="sec-head c-blue"><span class="sec-num">01</span><h2>The Bedside Framework</h2></div>
+<div class="box t-blue">
+<p>1. <b>General exam:</b> facies, cyanosis, clubbing, pulse character/volume, JVP, peripheral edema.</p>
+<p>2. <b>Precordial exam:</b> apex beat location/character, heaves, thrills, palpable sounds.</p>
+<p>3. <b>Auscultation:</b> murmur timing, character, radiation, dynamic maneuvers (Valsalva, hand-grip, squat).</p>
+</div>
+<p class="body">Exam alone misses roughly half of significant VHD — a low threshold for echo referral is essential, but the exam still tells you <i>what</i> to look for.</p>
+</section>
+
+<section id="s2">
+<div class="sec-head" style="border-left-color:var(--purple); background:linear-gradient(90deg, rgba(167,139,250,0.10), transparent);"><span class="sec-num">02</span><h2>Mitral Stenosis</h2></div>
+<div class="tagline">Valve 1 of 6</div>
+<table>
+<tr><th>Domain</th><th>Findings</th></tr>
+<tr><td>Inspection</td><td>Malar flush / mitral facies; peripheral cyanosis (lips, nose tip)</td></tr>
+<tr><td>Palpation</td><td>Tapping apex beat (palpable S1); left parasternal heave (RVH from pulmonary hypertension); diastolic thrill at apex, left lateral position</td></tr>
+<tr><td>Pulse / JVP</td><td>Often irregularly irregular (AF common); prominent 'a' wave if still in sinus rhythm</td></tr>
+<tr><td>Auscultation</td><td>Loud S1; opening snap after S2 — shorter S2–OS interval = more severe; low-pitched rumbling diastolic murmur at apex, best heard left lateral with the bell, accentuated by exercise</td></tr>
+</table>
+<div class="box t-purple">
+<p><b>Severity red flags:</b> shorter S2–OS gap · longer murmur duration · signs of pulmonary hypertension (loud P2, RV heave) · new AF</p>
+</div>
+</section>
+
+<section id="s3">
+<div class="sec-head" style="border-left-color:var(--purple); background:linear-gradient(90deg, rgba(167,139,250,0.10), transparent);"><span class="sec-num">03</span><h2>Mitral Regurgitation</h2></div>
+<div class="tagline">Valve 2 of 6</div>
+<table>
+<tr><th>Domain</th><th>Findings</th></tr>
+<tr><td>Inspection</td><td>Signs of LV failure if decompensated; visible hyperdynamic apical impulse</td></tr>
+<tr><td>Palpation</td><td>Apex beat displaced, hyperdynamic/thrusting; systolic thrill at apex (severe MR); left parasternal heave (LA enlargement pushing RV)</td></tr>
+<tr><td>Pulse</td><td>Often normal volume; sharp upstroke; AF common in chronic MR</td></tr>
+<tr><td>Auscultation</td><td>Soft/absent S1; pansystolic murmur at apex radiating to axilla; widely split S2; S3 gallop (high flow, not always LV dysfunction); louder on expiration, left lateral position</td></tr>
+</table>
+<div class="box t-purple">
+<p><b>Severity red flags:</b> presence of S3 · displaced hyperdynamic apex · early-peaking systolic murmur</p>
+<p><b>Don't be falsely reassured:</b> acute severe MR can be soft or short — a quiet murmur does not rule out severe disease.</p>
+</div>
+</section>
+
+<section id="s4">
+<div class="sec-head" style="border-left-color:var(--purple); background:linear-gradient(90deg, rgba(167,139,250,0.10), transparent);"><span class="sec-num">04</span><h2>Aortic Stenosis</h2></div>
+<div class="tagline">Valve 3 of 6</div>
+<div class="box t-red">
+<p><b>Symptom triad:</b> angina, syncope (exertional), dyspnea — each additional symptom drops survival further.</p>
+</div>
+<table>
+<tr><th>Domain</th><th>Findings</th></tr>
+<tr><td>Palpation</td><td>Sustained, heaving apex beat (not displaced until late disease); systolic thrill at aortic area/carotids; slow-rising carotid upstroke</td></tr>
+<tr><td>Pulse</td><td><i>Pulsus parvus et tardus</i>; low pulse pressure; narrow pulse pressure in severe AS</td></tr>
+<tr><td>Auscultation</td><td>Harsh ejection systolic murmur, crescendo–decrescendo, radiates to carotids; soft/absent A2 in severe AS; Gallavardin phenomenon — musical/high-frequency component at the apex that can mimic MR; paradoxically split S2</td></tr>
+</table>
+<div class="box t-purple">
+<p><b>Severity red flags:</b> soft/inaudible A2 · late-peaking murmur · slow carotid upstroke · any syncope or angina — these change management urgency</p>
+</div>
+</section>
+
+<section id="s5" style="border-bottom:none;">
+<div class="sec-head" style="border-left-color:var(--text3); background:none;"><span class="sec-num">05</span><h2>Primary Sources</h2></div>
+<ul class="sources">
+<li>2025 ESC/EACTS Guidelines for the Management of Valvular Heart Disease (update to the 2021 document; presented ESC Congress, Madrid, Aug 2025).</li>
+<li>Braunwald's Heart Disease, 12th ed.</li>
+<li>McDonald A, et al. Development and validation of AI-enhanced auscultation for valvular heart disease screening through a multi-centre study. npj Cardiovasc Health. 2026. doi:10.1038/s44325-026-00103-y</li>
+<li>Artificial-intelligence-enabled digital stethoscope improves point-of-care screening for moderate-to-severe valvular heart disease. Eur Heart J Digit Health. 2026 (ESC news release, Feb 5, 2026).</li>
+<li>Merck Manual; GP Notebook (secondary/tertiary references, as cited in the original carousel).</li>
+</ul>
+</section>
+
+</main>
+<footer>
+  This guide checks a 5-of-17-slide VHD bedside exam carousel (CardiacAxis / @drsakettoshniwal). The bedside framework, the MS/MR/AS findings, and the cited guideline and AI-auscultation figures all matched their primary sources. The carousel is incomplete as captured — Part 2 (AR, tricuspid, pulmonic, mimics, prosthetics) is pending the remaining slides. Verified as of September 2026.
+<div class="cv-tagline" style="margin-top:8px">The Critical Vector · Direction and magnitude.</div></footer>
+</div></body>
+</html>

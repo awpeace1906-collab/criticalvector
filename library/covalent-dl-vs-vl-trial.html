@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>COVALENT: DL vs. VL Mac vs. VL Hyperangulated | The Critical Vector</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400;1,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#0a0e14; --surface:#111720; --surface2:#182030; --border:rgba(255,255,255,.08); --accent:#00d4aa; --accent2:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa; --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670;}
+  *{box-sizing:border-box;}
+  body{background:var(--bg); color:var(--text); margin:0; padding:2.5rem 1rem 5rem; font-family:'Source Serif 4', Georgia, serif; line-height:1.65;}
+  .page{max-width:920px; margin:0 auto;}
+  h1,h2,h3,.sec-num,.kicker,th,.label,.step-num{font-family:'Syne', sans-serif;}
+  code, .mono{font-family:'IBM Plex Mono', monospace;}
+  .kicker{color:var(--accent); font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; font-weight:600;}
+  h1{font-weight:800; font-size:1.7rem; margin:.4rem 0 .5rem; color:var(--text); line-height:1.3;}
+  header p{font-style:italic; color:var(--text2); font-size:1rem; margin:0 0 .4rem;}
+  .byline{color:var(--text3); font-size:.85rem; margin:0 0 1.5rem;}
+  .alert{background:rgba(0,212,170,.10); border:1px solid rgba(0,212,170,.28); color:#bdf5e8; border-radius:10px; padding:1rem 1.2rem; margin:1.2rem 0 2rem; font-size:.98rem;}
+  .alert strong{color:var(--accent);}
+  .sec-head{display:flex; align-items:baseline; gap:.7rem; padding:.6rem .9rem; border-left:4px solid var(--accent); background:linear-gradient(90deg, rgba(0,212,170,.10), transparent); border-radius:6px; margin-top:2.6rem;}
+  .sec-head.c-blue{border-left-color:var(--accent2); background:linear-gradient(90deg, rgba(96,165,250,.12), transparent);}
+  .sec-head.c-red{border-left-color:var(--red); background:linear-gradient(90deg, rgba(232,76,76,.12), transparent);}
+  .sec-head.c-amber{border-left-color:var(--amber); background:linear-gradient(90deg, rgba(245,158,11,.12), transparent);}
+  .sec-head.c-purple{border-left-color:var(--purple); background:linear-gradient(90deg, rgba(167,139,250,.12), transparent);}
+  .sec-num{color:var(--text3); font-size:.85rem; font-weight:600;}
+  .sec-head h2{margin:0; font-size:1.15rem; font-weight:700; color:var(--text);}
+  .tagline{font-style:italic; color:var(--text2); font-size:.92rem; margin:.4rem 0 1rem; padding-left:.9rem;}
+  p{margin:.8rem 0;}
+  .box{background:var(--surface2); border:1px solid var(--border); border-radius:10px; padding:1rem 1.2rem; margin:1.1rem 0;}
+  .box.t-teal{border-left:3px solid var(--accent);} .box.t-blue{border-left:3px solid var(--accent2);}
+  .box.t-amber{border-left:3px solid var(--amber);} .box.t-purple{border-left:3px solid var(--purple);}
+  .box.t-red{border-left:3px solid var(--red); background:rgba(232,76,76,.06);}
+  .box .label{display:block; font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; font-weight:700; margin-bottom:.4rem;}
+  .box.t-teal .label{color:var(--accent);} .box.t-blue .label{color:var(--accent2);}
+  .box.t-amber .label{color:var(--amber);} .box.t-purple .label{color:var(--purple);} .box.t-red .label{color:var(--red);}
+  table{width:100%; border-collapse:collapse; margin:1.1rem 0; font-size:.83rem;}
+  th{background:var(--surface2); color:var(--text); text-align:left; padding:.5rem .55rem; font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; font-weight:700; border-bottom:1px solid var(--border);}
+  td{padding:.5rem .55rem; border-bottom:1px solid var(--border); vertical-align:top; color:var(--text);}
+  tr:nth-child(even) td{background:rgba(255,255,255,.02);}
+  td.num{font-family:'IBM Plex Mono',monospace; font-size:.8rem;}
+  tr.sig td{background:rgba(232,76,76,.07);} tr.notsig td{color:var(--text2);}
+  ul.plain{margin:.6rem 0; padding-left:1.3rem;} ul.plain li{margin-bottom:.4rem;}
+  .sources{list-style:none; padding:0; margin:1rem 0; font-size:.85rem; color:var(--text2);}
+  .sources li{padding:.55rem 0; border-bottom:1px solid var(--border);} .sources a{color:var(--accent);}
+  footer{font-style:italic; color:var(--text3); font-size:.85rem; text-align:center; margin-top:3rem; padding-top:1.2rem; border-top:1px solid var(--border);}
+  @media print{
+    :root{--bg:#f4f5f7; --surface:#fff; --surface2:#eef1f4; --border:#d7dde3; --accent:#00a688; --accent2:#1d4ed8; --red:#c53030; --amber:#b45309; --purple:#7c3aed; --text:#0f1923; --text2:#4a5670; --text3:#6b7688;}
+    body{background:var(--bg) !important; color:var(--text) !important;}
+    .alert{background:rgba(0,166,136,.08) !important; color:#0f1923 !important;}
+    td{color:var(--text) !important;}
+  }
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ a{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../locker.html">The Evidence Locker</a><span class="cv-sb-meta">Published 8 Sep 2026 · R. E. Suscitate &amp; A. Systole</span></nav>
+<div class="page">
+
+<header>
+  <div class="kicker">The Critical Vector &middot; Study Breakdown &amp; Content Audit &mdash; Verified</div>
+  <h1>COVALENT: Direct vs. Video Laryngoscopy (Mac vs. Hyperangulated) &mdash; the Triple-Arm Trial We Needed</h1>
+  <p>Schmid B, Grüßer L, Müller L, et al; German Society of Anaesthesiology and Intensive Care (GSAIC) Trials Group. Conventional vs Video-Assisted Laryngoscopy for Perioperative Endotracheal Intubations: A Randomized Clinical Trial.</p>
+  <p class="byline"><em>JAMA Netw Open.</em> 2026 Aug 3;9(8):e2625965. doi:10.1001/jamanetworkopen.2026.25965 &middot; 6 centers, Germany &amp; Austria, 2532 patients &middot; Original social summary: Viren Kaul, MD, FACP, FCCP (<a href="https://www.instagram.com/drvirenkaul" style="color:var(--accent);">@drvirenkaul</a>), pulmonary &amp; critical care medicine, Crouse Health/SUNY Upstate. This page is an independent third-party evaluation, not affiliated with or endorsed by Dr. Kaul.</p>
+</header>
+
+<div class="alert">
+<strong>Verdict on the source post:</strong> the framing is accurate &mdash; this genuinely is the three-arm, adequately-powered trial the field had been missing, and the headline result (VL beats DL, hyperangulated beats Mac) checks out exactly. What's worth adding is the site-to-site variability in the supplementary data, which meaningfully complicates a clean "VL wins" takeaway.
+</div>
+
+<div class="sec-head"><span class="sec-num">01</span><h2>The Setup</h2></div>
+<p class="tagline">Prior VL-vs-DL evidence was inconsistent largely because trials were small and didn't separate video laryngoscopy by blade geometry. COVALENT was purpose-built to fix both problems at once.</p>
+<p>Video laryngoscopy has increasingly become the perioperative default, but prior evidence directly comparing it with direct laryngoscopy has been mixed, and&mdash;critically&mdash;most trials pooled Macintosh-shaped and hyperangulated VL blades together despite them being functionally different tools with different learning curves and use cases. COVALENT was designed from the outset (registered 2022) as a three-arm trial specifically to separate these two VL geometries from each other and from DL, in a large enough sample to detect real differences.</p>
+
+<div class="sec-head c-blue"><span class="sec-num">02</span><h2>Design</h2></div>
+<table>
+<tr><td><b>Design</b></td><td>Multicenter (6 sites, Germany &amp; Austria), randomized, 3-arm parallel-group trial</td></tr>
+<tr><td><b>Population</b></td><td>2,532 adults (mean age 59.7, 56.3% male) undergoing surgery under general anesthesia requiring tracheal intubation, Mar 2022&ndash;Feb 2025</td></tr>
+<tr><td><b>Arms</b></td><td>Direct laryngoscopy (DL) vs. video laryngoscopy with Macintosh-shaped blade (VLM) vs. video laryngoscopy with hyperangulated blade (VLH)</td></tr>
+<tr><td><b>Primary outcome</b></td><td>First-pass intubation success</td></tr>
+<tr><td><b>Secondary outcomes</b></td><td>Complications (dental/lip injury, blood on blade), human-factors measures (team communication, task load)</td></tr>
+</table>
+
+<div class="sec-head c-red"><span class="sec-num">03</span><h2>Headline Results, Confirmed</h2></div>
+<table>
+<tr><th>Device</th><th>First-pass success</th><th>Complication rate</th></tr>
+<tr class="notsig"><td>Direct laryngoscopy (DL)</td><td class="num">78.2%</td><td class="num">24.1%</td></tr>
+<tr class="sig"><td>Video laryngoscopy, Macintosh blade (VLM)</td><td class="num">82.9%</td><td class="num">23.2%</td></tr>
+<tr class="sig"><td>Video laryngoscopy, hyperangulated blade (VLH)</td><td class="num">87.6%</td><td class="num">10.9%</td></tr>
+</table>
+<p>All pairwise comparisons vs. DL were statistically significant (P&lt;.001). The hyperangulated blade specifically produced roughly half the complication rate of either DL or VLM &mdash; not just better first-pass success but a meaningfully cleaner safety profile, consistent with prior hyperangulated-blade data in anticipated difficult airways.</p>
+
+<div class="sec-head c-amber"><span class="sec-num">04</span><h2>The Wrinkle Worth Knowing: Site-to-Site Variability</h2></div>
+<p class="tagline">The trial's own supplementary data complicates a simple "video wins, case closed" reading.</p>
+<div class="box t-amber">
+<span class="label">Same trial, wildly different numbers by site</span>
+<p>Per-site first-pass success with DL ranged from 74% (Bonn) to 88% (Leipzig); VLM ranged from 71% (Salzburg) to 96% (Leipzig). That's a wider spread <i>within</i> a single device across sites than the overall gap <i>between</i> devices. This pattern &mdash; along with the trial's overall success rates running noticeably lower than some prior single-center VL studies (e.g., a Cleveland Clinic cohort reporting ~98% first-pass VL success) &mdash; suggests local training, staffing mix, and definitions of "attempt" are doing real work here, not just the device itself.</p>
+</div>
+<p>A further counterintuitive finding worth flagging: the clearest first-pass improvement from switching to hyperangulated VL wasn't in the least experienced operators (where you'd expect a device to compensate most for skill gaps) &mdash; it was in anesthesiologists with &ge;5 years of experience. Independent commentary on this trial (Desmedt &amp; Lascarrou's invited JAMA Netw Open commentary, and independent analysis) both flag that without knowing each experience stratum's actual DL vs. VL success numbers side by side, it's hard to fully separate "VL is intrinsically better" from "this particular cohort's DL skills were comparatively underdeveloped relative to other published DL benchmarks."</p>
+
+<div class="sec-head c-purple"><span class="sec-num">05</span><h2>What This Doesn't Settle</h2></div>
+<ul class="plain">
+<li>Which specific hyperangulated blade or VL platform performs best &mdash; the trial pools VL by blade geometry, not by manufacturer/model.</li>
+<li>Cost-effectiveness and equipment availability in lower-resource perioperative settings.</li>
+<li>Whether the result generalizes to non-academic/non-intermediate-care community settings, or to prehospital/ED airways with different physiology and time pressure.</li>
+</ul>
+
+<div class="sec-head" style="border-left-color:var(--text3); background:none;"><span class="sec-num">06</span><h2>Bottom Line</h2></div>
+<p>The source post's framing holds up well: this is a genuinely well-powered, purpose-built trial answering a question smaller studies couldn't &mdash; and it does support hyperangulated VL as the strongest performer on both first-pass success and complication rate, consistent with recent calls to adopt VL as the default. The one caveat worth carrying forward from the supplementary data: the magnitude of the DL-vs-VL gap varied enormously by site, large enough that local training and DL proficiency likely explain part of the effect size &mdash; worth keeping in mind before treating "87.6% vs. 78.2%" as a fixed, portable number for your own department's DL-skilled operators.</p>
+
+<div class="sec-head" style="border-left-color:var(--text3); background:none;"><span class="sec-num">07</span><h2>Sources</h2></div>
+<ul class="sources">
+<li><b>Kaul V.</b> Original Instagram post on the COVALENT trial. <a href="https://www.instagram.com/drvirenkaul" style="color:var(--accent);">@drvirenkaul</a>. &mdash; read the original post and full trial before relying on this summary.</li>
+<li>Schmid B, Grüßer L, Müller L, et al; German Society of Anaesthesiology and Intensive Care (GSAIC) Trials Group. Conventional vs Video-Assisted Laryngoscopy for Perioperative Endotracheal Intubations: A Randomized Clinical Trial. <em>JAMA Netw Open.</em> 2026;9(8):e2625965. doi:10.1001/jamanetworkopen.2026.25965.</li>
+<li>Desmedt L, Lascarrou JB. Invited Commentary: A New Trial to Better Define the Role of Video Laryngoscopes. <em>JAMA Netw Open.</em> 2026;9(8):e2625982.</li>
+<li>Ruetzler K, Bustamante S, Schmidt MT, et al. Video Laryngoscopy vs Direct Laryngoscopy for Endotracheal Intubation in the Operating Room: A Cluster Randomized Clinical Trial. <em>JAMA.</em> 2024. (Cleveland Clinic, n=8,429)</li>
+<li>Prekker ME, et al. Video versus Direct Laryngoscopy for Tracheal Intubation of Critically Ill Adults (DEVICE). <em>N Engl J Med.</em> 2023;389:418&ndash;429.</li>
+</ul>
+
+<footer>The Critical Vector &middot; Direction and magnitude.</footer>
+
+</div>
+</body>
+</html>

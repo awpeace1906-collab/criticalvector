@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Benumof Graph: Whose Curve Is It Really? | The Critical Vector</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400;1,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#0a0e14; --surface:#111720; --surface2:#182030; --border:rgba(255,255,255,.08); --accent:#00d4aa; --accent2:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa; --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670;}
+  *{box-sizing:border-box;}
+  body{background:var(--bg); color:var(--text); margin:0; padding:2.5rem 1rem 5rem; font-family:'Source Serif 4', Georgia, serif; line-height:1.65;}
+  .page{max-width:920px; margin:0 auto;}
+  h1,h2,h3,.sec-num,.kicker,th,.label,.step-num{font-family:'Syne', sans-serif;}
+  code, .mono{font-family:'IBM Plex Mono', monospace;}
+  .kicker{color:var(--accent); font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; font-weight:600;}
+  h1{font-weight:800; font-size:1.7rem; margin:.4rem 0 .5rem; color:var(--text); line-height:1.3;}
+  header p{font-style:italic; color:var(--text2); font-size:1rem; margin:0 0 .4rem;}
+  .byline{color:var(--text3); font-size:.85rem; margin:0 0 1.5rem;}
+  .alert{background:rgba(0,212,170,.10); border:1px solid rgba(0,212,170,.28); color:#bdf5e8; border-radius:10px; padding:1rem 1.2rem; margin:1.2rem 0 2rem; font-size:.98rem;}
+  .alert strong{color:var(--accent);}
+  .sec-head{display:flex; align-items:baseline; gap:.7rem; padding:.6rem .9rem; border-left:4px solid var(--accent); background:linear-gradient(90deg, rgba(0,212,170,.10), transparent); border-radius:6px; margin-top:2.6rem;}
+  .sec-head.c-blue{border-left-color:var(--accent2); background:linear-gradient(90deg, rgba(96,165,250,.12), transparent);}
+  .sec-head.c-red{border-left-color:var(--red); background:linear-gradient(90deg, rgba(232,76,76,.12), transparent);}
+  .sec-head.c-amber{border-left-color:var(--amber); background:linear-gradient(90deg, rgba(245,158,11,.12), transparent);}
+  .sec-head.c-purple{border-left-color:var(--purple); background:linear-gradient(90deg, rgba(167,139,250,.12), transparent);}
+  .sec-num{color:var(--text3); font-size:.85rem; font-weight:600;}
+  .sec-head h2{margin:0; font-size:1.15rem; font-weight:700; color:var(--text);}
+  .tagline{font-style:italic; color:var(--text2); font-size:.92rem; margin:.4rem 0 1rem; padding-left:.9rem;}
+  p{margin:.8rem 0;}
+  .box{background:var(--surface2); border:1px solid var(--border); border-radius:10px; padding:1rem 1.2rem; margin:1.1rem 0;}
+  .box.t-teal{border-left:3px solid var(--accent);} .box.t-blue{border-left:3px solid var(--accent2);}
+  .box.t-amber{border-left:3px solid var(--amber);} .box.t-purple{border-left:3px solid var(--purple);}
+  .box.t-red{border-left:3px solid var(--red); background:rgba(232,76,76,.06);}
+  .box .label{display:block; font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; font-weight:700; margin-bottom:.4rem;}
+  .box.t-teal .label{color:var(--accent);} .box.t-blue .label{color:var(--accent2);}
+  .box.t-amber .label{color:var(--amber);} .box.t-purple .label{color:var(--purple);} .box.t-red .label{color:var(--red);}
+  table{width:100%; border-collapse:collapse; margin:1.1rem 0; font-size:.83rem;}
+  th{background:var(--surface2); color:var(--text); text-align:left; padding:.5rem .55rem; font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; font-weight:700; border-bottom:1px solid var(--border);}
+  td{padding:.5rem .55rem; border-bottom:1px solid var(--border); vertical-align:top; color:var(--text);}
+  tr:nth-child(even) td{background:rgba(255,255,255,.02);}
+  td.num{font-family:'IBM Plex Mono',monospace; font-size:.8rem;}
+  tr.sig td{background:rgba(232,76,76,.07);} tr.notsig td{color:var(--text2);}
+  ul.plain{margin:.6rem 0; padding-left:1.3rem;} ul.plain li{margin-bottom:.4rem;}
+  .sources{list-style:none; padding:0; margin:1rem 0; font-size:.85rem; color:var(--text2);}
+  .sources li{padding:.55rem 0; border-bottom:1px solid var(--border);} .sources a{color:var(--accent);}
+  footer{font-style:italic; color:var(--text3); font-size:.85rem; text-align:center; margin-top:3rem; padding-top:1.2rem; border-top:1px solid var(--border);}
+  @media print{
+    :root{--bg:#f4f5f7; --surface:#fff; --surface2:#eef1f4; --border:#d7dde3; --accent:#00a688; --accent2:#1d4ed8; --red:#c53030; --amber:#b45309; --purple:#7c3aed; --text:#0f1923; --text2:#4a5670; --text3:#6b7688;}
+    body{background:var(--bg) !important; color:var(--text) !important;}
+    .alert{background:rgba(0,166,136,.08) !important; color:#0f1923 !important;}
+    td{color:var(--text) !important;}
+  }
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ a{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../locker.html">The Evidence Locker</a><span class="cv-sb-meta">Published 2 Sep 2026 · R. E. Suscitate &amp; A. Systole</span></nav>
+<div class="page">
+
+<header>
+  <div class="kicker">The Critical Vector &middot; Study Breakdown &amp; Content Audit &mdash; Verified</div>
+  <h1>The "Benumof Graph": Whose Curve Is It, Really?</h1>
+  <p>Apneic hemoglobin desaturation across patient types &mdash; and the two different 1990s papers this one famous graph actually splices together.</p>
+  <p class="byline">Original social summary: Anesthesia (Facebook), #BENUMOF</p>
+</header>
+
+<div class="alert">
+<strong>Verdict on the source post:</strong> every number in the post is accurate. The one thing worth knowing before you cite this as "the Benumof graph" in a teaching slide: the desaturation curves themselves are not from Benumof's paper at all &mdash; they're from a separate 1996 model by Farmery and Roe. Benumof's own 1997 paper says so explicitly, in its own figure legend.
+</div>
+
+<div class="sec-head"><span class="sec-num">01</span><h2>The Setup</h2></div>
+<p class="tagline">This graph is really two papers, one year apart, stitched into a single teaching image &mdash; and only one of them is actually Benumof's.</p>
+<p>Farmery AD, Roe PG. "A model to describe the rate of oxyhaemoglobin desaturation during apnoea." <i>Br J Anaesth.</i> 1996;76(2):284&ndash;291. This paper built a mathematical model of SaO2 vs. apnea duration, accounting for alveolar oxygen flux, shunt fraction, circulation time, and the Bohr shift, and used it to generate the four population curves shown here (healthy adult, child, obese adult, moderately ill adult).</p>
+<p>Benumof JL, Dagg R, Benumof R. "Critical hemoglobin desaturation will occur before return to an unparalyzed state following 1 mg/kg intravenous succinylcholine." <i>Anesthesiology.</i> 1997;87(4):979&ndash;982. This is where the composite figure actually first appeared &mdash; Benumof's team took Farmery &amp; Roe's desaturation curves and overlaid their own pooled succinylcholine-recovery data on top, to make the paper's central point: full paralysis from 1 mg/kg succinylcholine outlasts safe apnea time in a healthy adult. Benumof's own figure legend is explicit about this: <i>"The SaO2 versus time curves were produced by the computer apnea model of [Farmery and Roe]."</i></p>
+<div class="box t-blue">
+<span class="label">So why does everyone call it "the Benumof graph"?</span>
+<p>Because Benumof's paper is where this specific combined image was published and popularized &mdash; it's the figure clinicians actually encountered and started screenshotting. The name stuck to the composite, not to the correct attribution of each half. Worth knowing the difference if you're citing this for something more formal than a social post: the desaturation physiology is Farmery &amp; Roe's model; the succinylcholine recovery-time data is Benumof's own contribution.</p>
+</div>
+
+<div class="sec-head c-blue"><span class="sec-num">02</span><h2>The Desaturation Curves, Confirmed</h2></div>
+<p class="tagline">Farmery &amp; Roe's model, at the same FAO2 the post cites.</p>
+<p>At an initial fractional alveolar oxygen concentration (FAO2) of 0.87 &mdash; the number shown at the top of the graph &mdash; the model's healthy 70 kg adult curve reaches 60% SaO2 at 9.9 minutes of apnea. Drop that same patient's preoxygenation to room air (FAO2 0.13) and the same 60% threshold arrives at 2.8 minutes &mdash; the physiologic basis for why thorough preoxygenation, not just "some" preoxygenation, is what buys real apnea time.</p>
+<table>
+<tr><th>Population (at FAO2 = 0.87)</th><th>Relative desaturation speed</th><th>Why</th></tr>
+<tr><td>Normal 70 kg adult</td><td>Slowest</td><td>Baseline reference curve</td></tr>
+<tr><td>Moderately ill 70 kg adult</td><td>Faster than healthy adult</td><td>Reduced FRC and/or increased shunt fraction from underlying illness</td></tr>
+<tr><td>Normal 10 kg child</td><td>Faster still</td><td>Higher metabolic rate relative to FRC &mdash; children consume oxygen faster per kilogram of reserve</td></tr>
+<tr><td>Obese 127 kg adult</td><td>Fastest</td><td>Increased body mass and oxygen consumption combined with a mechanically reduced FRC</td></tr>
+</table>
+
+<div class="sec-head c-red"><span class="sec-num">03</span><h2>The Succinylcholine Recovery Data, Confirmed</h2></div>
+<p class="tagline">Benumof's own contribution &mdash; and the numbers check out exactly.</p>
+<div class="box t-red">
+<span class="label">Pooled from 6 prior studies, as reported in Benumof et al., 1997</span>
+<p>Mean time to recovery of control single-twitch height following 1 mg/kg (or 40 mg/m&sup2;) IV succinylcholine: <b>6.8 minutes</b> to 10% recovery, <b>8.5 minutes</b> to 50% recovery, <b>10.2 minutes</b> to 90% recovery &mdash; matching the post's "6.8&ndash;10.2 minutes" range exactly.</p>
+</div>
+<p>This is the entire clinical argument of the 1997 paper in one image: overlay the succinylcholine recovery timeline onto the healthy-adult desaturation curve, and full neuromuscular recovery (10% twitch height at 6.8 min) still arrives well after a healthy adult has already crossed critical desaturation thresholds if ventilation hasn't been reestablished. The paralysis reliably outlasts the safe apnea window &mdash; which is the paper's argument for why "the patient will just wake up and breathe" is not a valid failed-airway backup plan.</p>
+
+<div class="sec-head c-amber"><span class="sec-num">04</span><h2>Why This Distinction Actually Matters</h2></div>
+<ul class="plain">
+<li>If you're teaching or citing the desaturation curves specifically (why obese patients or children desaturate faster), the primary source is Farmery &amp; Roe 1996 &mdash; citing "Benumof" alone for that specific claim skips the paper that actually built and validated the model.</li>
+<li>If you're teaching or citing the succinylcholine recovery timeline specifically, Benumof et al. 1997 is the correct and complete citation &mdash; that data is genuinely theirs, pooled from six earlier dose-response studies.</li>
+<li>The composite image itself is fine to call "the Benumof graph" colloquially, the way FOAMed circles do &mdash; just know what you're actually citing if the context calls for precision (a paper, a lecture, a board-style answer).</li>
+</ul>
+
+<div class="sec-head" style="border-left-color:var(--text3); background:none;"><span class="sec-num">05</span><h2>Bottom Line</h2></div>
+<p>Every number in the source post is accurate, and the clinical takeaways it draws &mdash; children and obese patients desaturate faster, succinylcholine paralysis outlasts safe apnea time in a healthy adult &mdash; are exactly right. The only correction worth filing away is attribution: this is a composite of two separate papers, and only the succinylcholine recovery-time overlay is actually Benumof's own data. The desaturation curves themselves belong to Farmery and Roe.</p>
+
+<div class="sec-head" style="border-left-color:var(--text3); background:none;"><span class="sec-num">06</span><h2>Sources</h2></div>
+<ul class="sources">
+<li>Farmery AD, Roe PG. A model to describe the rate of oxyhaemoglobin desaturation during apnoea. <em>Br J Anaesth.</em> 1996;76(2):284&ndash;291. doi:10.1093/bja/76.2.284.</li>
+<li>Benumof JL, Dagg R, Benumof R. Critical hemoglobin desaturation will occur before return to an unparalyzed state following 1 mg/kg intravenous succinylcholine. <em>Anesthesiology.</em> 1997;87(4):979&ndash;982. doi:10.1097/00000542-199710000-00034.</li>
+<li>Weingart SD, Levitan RM. Preoxygenation and prevention of desaturation during emergency airway management. <em>Ann Emerg Med.</em> 2012;59(3):165&ndash;175.</li>
+<li>Kopman AF, Zhaku B, Lai KS. The "intubating dose" of succinylcholine: the effect of decreasing doses on recovery time. <em>Anesthesiology.</em> 2003;99(5):1050&ndash;1054.</li>
+</ul>
+
+<footer>The Critical Vector &middot; Direction and magnitude.</footer>
+
+</div>
+</body>
+</html>

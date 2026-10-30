@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="cv:schema" content="1.0">
+<meta name="cv:verified" content="2026-10-05">
+<title>Pancreatitis Severity: Ranson vs BISAP — The Critical Vector</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style id="cv-base">
+/* ===== CV BASE v1.0 — copy this block verbatim into every guide ===== */
+:root{
+  --bg:#0a0e14; --surface:#111720; --surface2:#182030;
+  --border:rgba(255,255,255,0.08);
+  --teal:#00d4aa; --blue:#2563eb; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa;
+  --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670;
+  --t-teal:rgba(0,212,170,0.10); --t-blue:rgba(37,99,235,0.10); --t-red:rgba(232,76,76,0.10);
+  --t-amber:rgba(245,158,11,0.10); --t-purple:rgba(167,139,250,0.10);
+  /* legacy aliases: older guides use these names; same values */
+  --accent:var(--teal); --accent2:var(--blue);
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{background:var(--bg); color:var(--text); font-family:'Source Serif 4', Georgia, serif; font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased;}
+h1,h2,h3,.label,.kicker,.badge,nav a,th,.step-num,.stat-num{font-family:'Syne', sans-serif;}
+.mono, code{font-family:'IBM Plex Mono', monospace;}
+.page{max-width:900px; margin:0 auto; padding:0 24px 60px;}
+header{padding:32px 0 20px; border-bottom:1px solid var(--border);}
+.kicker{font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--teal); margin-bottom:10px;}
+h1{font-weight:800; font-size:30px; line-height:1.15; margin:0 0 10px; letter-spacing:.005em;}
+header p{font-style:italic; color:var(--text2); font-size:15.5px; margin:0; max-width:700px;}
+.byline{font-size:13px; color:var(--text3); margin-top:8px;}
+.badges{display:flex; flex-wrap:wrap; gap:6px; margin-top:16px;}
+.badge{font-size:11px; font-weight:700; letter-spacing:.04em; padding:4px 10px; border-radius:20px; border:1px solid var(--border); color:var(--text2); background:var(--surface);}
+.badge.ok{color:var(--teal); border-color:rgba(0,212,170,0.35); background:var(--t-teal);}
+.badge.flag{color:var(--red); border-color:rgba(232,76,76,0.40); background:var(--t-red);}
+.alert{margin:18px 0; padding:13px 18px; border-radius:10px; font-size:14px; background:var(--t-teal); border:1px solid rgba(0,212,170,0.28); color:#bdf5e8;}
+.alert.flag{background:rgba(232,76,76,0.08); border-color:rgba(232,76,76,0.35); color:#ffd2d2;}
+nav{display:flex; flex-wrap:wrap; gap:7px; padding:18px 0; border-bottom:1px solid var(--border); margin-bottom:8px;}
+nav a{font-size:12.5px; font-weight:600; color:var(--text2); background:var(--surface); border:1px solid var(--border); padding:7px 12px; border-radius:20px; text-decoration:none; white-space:nowrap; transition:all .15s;}
+nav a:hover, nav a:focus-visible{color:var(--text); border-color:var(--teal); outline:none;}
+section{padding:30px 0; border-bottom:1px solid var(--border);}
+.sec-head{display:flex; align-items:baseline; gap:10px; padding:11px 18px; border-left:4px solid var(--teal); background:linear-gradient(90deg, var(--t-teal), transparent); border-radius:0 8px 8px 0; margin-bottom:16px;}
+.sec-head.c-blue{border-left-color:var(--blue); background:linear-gradient(90deg, var(--t-blue), transparent);}
+.sec-head.c-red{border-left-color:var(--red); background:linear-gradient(90deg, var(--t-red), transparent);}
+.sec-head.c-amber{border-left-color:var(--amber); background:linear-gradient(90deg, var(--t-amber), transparent);}
+.sec-head.c-purple{border-left-color:var(--purple); background:linear-gradient(90deg, var(--t-purple), transparent);}
+.sec-num{font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--text3);}
+h2{font-weight:700; font-size:20px; margin:0; color:var(--text);}
+h3{font-weight:700; font-size:16px; margin:0 0 6px;}
+.tagline{font-style:italic; font-size:13.5px; color:var(--text2); margin:0 0 12px;}
+p.body{font-size:15.5px; margin:12px 0; max-width:72ch;}
+p.note{font-size:13.5px; color:var(--text2); font-style:italic; margin:10px 0;}
+.box{background:var(--surface2); border:1px solid var(--border); border-radius:10px; padding:16px 18px; margin:14px 0; font-size:14.5px;}
+.box.t-teal{border-left:3px solid var(--teal);} .box.t-blue{border-left:3px solid var(--blue);}
+.box.t-red{border-left:3px solid var(--red); background:rgba(232,76,76,0.06);}
+.box.t-amber{border-left:3px solid var(--amber);} .box.t-purple{border-left:3px solid var(--purple);}
+.box b{color:var(--text); font-weight:700;} .box p{margin:7px 0;}
+.stat-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:10px; margin:16px 0;}
+.stat-card{background:var(--surface); border:1px solid var(--border); border-left:4px solid var(--c,var(--teal)); border-radius:6px; padding:14px 16px 14px 18px; text-align:left;}
+.stat-num{font-weight:800; font-size:26px; line-height:1.1; color:var(--c,var(--teal));}
+.stat-label{font-size:13px; color:var(--text2); margin-top:4px;}
+.steps{display:flex; flex-direction:column; gap:10px; margin:16px 0;}
+.step-row{display:flex; gap:14px; align-items:flex-start; background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:12px 16px;}
+.step-num{flex-shrink:0; width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:13px; color:#0a0e14; background:var(--c,var(--teal));}
+.step-body{font-size:14.5px;} .step-body b{color:var(--text);}
+.scroll{overflow-x:auto; -webkit-overflow-scrolling:touch;}
+table{width:100%; border-collapse:collapse; margin:14px 0; font-size:13.5px;}
+th{background:var(--surface2); color:var(--text); text-align:left; padding:9px 11px; font-weight:600; font-size:12px; letter-spacing:.02em; border-bottom:2px solid var(--border);}
+td{padding:9px 11px; border-bottom:1px solid var(--border); vertical-align:top;}
+tr:nth-child(even) td{background:rgba(255,255,255,0.02);}
+.xlist,.clist{list-style:none; padding-left:0; margin:10px 0;}
+.xlist li,.clist li{padding:5px 0 5px 26px; position:relative; font-size:14.5px;}
+.xlist li:before{content:"✗"; position:absolute; left:0; color:var(--red); font-weight:700;}
+.clist li:before{content:"✓"; position:absolute; left:0; color:var(--teal); font-weight:700;}
+.sources{font-size:13px; color:var(--text2); padding-left:20px;}
+.sources li{margin-bottom:7px;} .sources a{color:var(--text2);}
+footer{padding:26px 0 0; margin-top:6px; font-size:12.5px; color:var(--text3); font-style:italic;}
+@media (max-width:640px){ h1{font-size:25px;} .page{padding:0 16px 48px;} }
+@media (prefers-reduced-motion:reduce){ *{transition:none !important;} }
+
+/* ===== PRINT: light-mode token swap (mandatory, non-optional) ===== */
+@media print{
+  :root{
+    --bg:#f4f5f7; --surface:#ffffff; --surface2:#eef1f4; --border:#d7dde3;
+    --teal:#00a688; --blue:#1d4ed8; --red:#c53030; --amber:#b45309; --purple:#7c3aed;
+    --text:#0f1923; --text2:#4a5670; --text3:#6b7688;
+    --t-teal:rgba(0,166,136,0.08); --t-blue:rgba(29,78,216,0.07); --t-red:rgba(197,48,48,0.07);
+    --t-amber:rgba(180,83,9,0.08); --t-purple:rgba(124,58,237,0.07);
+  }
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  body{background:var(--bg) !important; color:var(--text) !important; font-size:11pt;}
+  nav{display:none;}
+  .page{max-width:none; padding:0;}
+  .alert{background:var(--t-teal) !important; border-color:var(--teal); color:var(--text) !important;}
+  .alert.flag{background:var(--t-red) !important; border-color:var(--red);}
+  .box.t-red{background:var(--t-red);}
+  td{color:var(--text) !important;}
+  .step-num{color:#ffffff;}
+  section, .box, table, .stat-card, .step-row{break-inside:avoid;}
+  h2, .sec-head{break-after:avoid;}
+  a{color:inherit; text-decoration:none;}
+  @page{margin:14mm 14mm 16mm;}
+}
+/* ===== END CV BASE ===== */
+</style>
+<style>
+/* page layout */
+
+.kicker{color:var(--purple);}
+.matrix{width:100%; table-layout:fixed; border-collapse:separate; border-spacing:0; margin:24px 0 8px; font-size:13.5px; min-width:600px;}
+.matrix th,.matrix td{padding:10px 12px; border-bottom:1px solid var(--border); vertical-align:top;}
+.matrix thead th{font-size:16px; font-weight:800; background:var(--surface); border-top:4px solid var(--c); border-bottom:none;}
+.matrix thead th small{display:block; font-family:'Source Serif 4',serif; font-weight:400; font-style:italic; font-size:12.5px; color:var(--text2);}
+.matrix thead th.corner{border-top:none; background:transparent;}
+.matrix tbody th{background:transparent; font-size:12.5px; color:var(--text2); width:20%;}
+.matrix td{background:var(--surface);} .matrix tr:nth-child(even) td{background:var(--surface2);}
+.atlanta{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:14px 0;}
+.atlanta div{border:1px solid var(--border); border-top:4px solid var(--c); border-radius:0 0 10px 10px; padding:12px 14px; background:var(--surface); font-size:13.5px;}
+.atlanta b{display:block; font-family:'Syne',sans-serif; font-size:15px; color:var(--c); margin-bottom:4px;}
+@media (max-width:720px){ .atlanta{grid-template-columns:1fr;} }
+@media print{ .matrix{min-width:0; font-size:9.5pt;} }
+
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ a{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../workshop.html">The Workshop</a><span class="cv-sb-meta">Published 15 Oct 2026 · R. E. Suscitate &amp; A. Systole</span></nav>
+<div class="page">
+
+<header>
+  <div class="kicker">The Critical Vector · Stack</div>
+  <h1>Pancreatitis Severity: Ranson vs BISAP</h1>
+  <p class="byline">R. E. Suscitate &amp; A. Systole</p>
+  <p>Two scores, one question: who will get sick? Ranson needs 48 hours of data; BISAP needs one set of labs and a chest film. Both are now framed by the definition that actually decides severity, persistent organ failure.</p>
+  <div class="badges"><span class="badge ok">VERIFIED</span><span class="badge">Ranson 1974 · Wu 2008 · Revised Atlanta 2012</span><span class="badge flag">1 correction to circulating chart</span></div>
+</header>
+
+<div class="scroll"><table class="matrix">
+  <thead><tr><th class="corner"></th>
+    <th style="--c:var(--amber)">Ranson<small>1974 · 11 criteria</small></th>
+    <th style="--c:var(--teal)">BISAP<small>2008 · 5 criteria</small></th></tr></thead>
+  <tbody>
+    <tr><th>When</th><td>5 at admission, 6 more at 48 hours</td><td>Within 24 hours of presentation</td></tr>
+    <tr><th>Criteria</th><td><b>Admission:</b> age &gt;55, WBC &gt;16,000, glucose &gt;200 mg/dL, LDH &gt;350 IU/L, AST &gt;250 IU/L.<br><b>48 h:</b> hematocrit fall &gt;10 points, BUN rise &gt;5 mg/dL, calcium &lt;8 mg/dL, PaO₂ &lt;60 mmHg, base deficit &gt;4 mEq/L, fluid sequestration &gt;6 L.</td><td><b>B</b>UN &gt;25 mg/dL · <b>I</b>mpaired mental status · <b>S</b>IRS (≥2 criteria) · <b>A</b>ge &gt;60 · <b>P</b>leural effusion on imaging. One point each.</td></tr>
+    <tr><th>Severe if</th><td>≥3</td><td>≥3</td></tr>
+    <tr><th>Mortality</th><td>Rises steeply with score in the original cohorts; the highest bands carried very high mortality in the 1970s</td><td>From under 1% at 0 to about 22% at 5</td></tr>
+    <tr><th>Strength</th><td>Well studied; captures early fluid shifts</td><td>Bedside, early, similar discrimination to APACHE II</td></tr>
+    <tr><th>Weakness</th><td>Can't be completed until 48 h; criteria differ for gallstone pancreatitis</td><td>Single time point; misses later deterioration</td></tr>
+  </tbody></table></div>
+
+<nav><a href="#fix">Correction</a><a href="#atlanta">What "severe" means now</a><a href="#bedside">At the bedside</a><a href="#sources">Sources</a></nav>
+
+<section id="fix">
+  <div class="sec-head c-red"><span class="sec-num">01</span><h2>Correction to the circulating chart</h2></div>
+  <div class="alert flag"><b>"Ranson &gt;6 → 100% mortality" is a 1970s number.</b> The original Ranson cohorts showed very high mortality in the top score band, but those figures predate modern critical care. Quoting 100% today overstates risk. The chart itself notes Ranson "likely overestimates mortality," and that is the reason.</div>
+  <p class="body">The rest of the chart is accurate: Ranson requires serial data and is delayed by design; BISAP trades completeness for speed; both perform similarly for early risk stratification.</p>
+</section>
+
+<section id="atlanta">
+  <div class="sec-head c-purple"><span class="sec-num">02</span><h2>What "severe" means now</h2></div>
+  <p class="body">Scores predict. The Revised Atlanta classification defines, and it defines severity by organ failure and its duration (modified Marshall score ≥2 in respiratory, cardiovascular, or renal systems).</p>
+  <div class="atlanta">
+    <div style="--c:var(--teal)"><b>Mild</b>No organ failure, no local or systemic complications.</div>
+    <div style="--c:var(--amber)"><b>Moderately severe</b>Organ failure that resolves within 48 hours, and/or local or systemic complications.</div>
+    <div style="--c:var(--red)"><b>Severe</b>Persistent organ failure beyond 48 hours.</div>
+  </div>
+  <p class="note">This is why neither score settles the question at hour 24: the defining feature of severe disease, persistence, can't be known until hour 48.</p>
+</section>
+
+<section id="bedside">
+  <div class="sec-head"><span class="sec-num">03</span><h2>At the bedside</h2></div>
+  <ul class="clist">
+    <li>Use BISAP early for triage; a score of 3 or more is a reason for closer monitoring or ICU review.</li>
+    <li>Reassess repeatedly. Persistent SIRS beyond 48 hours and a rising BUN over the first 24 hours both track with worse outcomes.</li>
+    <li>Classify with Revised Atlanta once the 48-hour course is known.</li>
+  </ul>
+  <ul class="xlist">
+    <li>Don't let a low early score close the question; organ failure can develop after the score was calculated.</li>
+    <li>Don't chase scores with fluid. Aggressive early fluid caused harm without preventing severe disease (WATERFALL; see <i>waterfall-fluids-pancreatitis</i>).</li>
+  </ul>
+</section>
+
+<section id="sources">
+  <div class="sec-head"><span class="sec-num">04</span><h2>Sources</h2></div>
+  <ol class="sources">
+    <li>Ranson JH, Rifkind KM, Roses DF, et al. Prognostic signs and the role of operative management in acute pancreatitis. <i>Surg Gynecol Obstet</i>. 1974;139(1):69-81.</li>
+    <li>Wu BU, Johannes RS, Sun X, et al. The early prediction of mortality in acute pancreatitis: a large population-based study. <i>Gut</i>. 2008;57(12):1698-1703.</li>
+    <li>Singh VK, Wu BU, Bollen TL, et al. A prospective evaluation of the bedside index for severity in acute pancreatitis score in assessing mortality and intermediate markers of severity in acute pancreatitis. <i>Am J Gastroenterol</i>. 2009;104(4):966-971.</li>
+    <li>Banks PA, Bollen TL, Dervenis C, et al. Classification of acute pancreatitis—2012: revision of the Atlanta classification and definitions by international consensus. <i>Gut</i>. 2013;62(1):102-111.</li>
+  </ol>
+</section>
+
+<footer>The Critical Vector · Direction and magnitude.</footer>
+</div>
+</body>
+</html>

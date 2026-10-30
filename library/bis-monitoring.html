@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BIS Monitoring — The Critical Vector</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&amp;family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><style>
+:root{
+  --bg:#0a0e14; --surface:#111720; --surface2:#182030;
+  --border:rgba(255,255,255,0.08);
+  --teal:#00d4aa; --blue:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa;
+  --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  background:var(--bg); color:var(--text);
+  font-family:'Source Serif 4', Georgia, serif; font-size:16px; line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,.label,.kicker,.badge,nav a,th{font-family:'Syne', sans-serif;}
+.mono{font-family:'IBM Plex Mono', monospace;}
+.page{max-width:900px; margin:0 auto; padding:0 24px 60px;}
+
+header{padding:32px 0 20px; border-bottom:1px solid var(--border);}
+.kicker{
+  font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--teal); margin-bottom:10px;
+}
+h1{font-family:'Syne', sans-serif; font-weight:800; font-size:30px; line-height:1.15; margin:0 0 10px; letter-spacing:.005em;}
+header p{font-family:'Source Serif 4', serif; font-style:italic; color:var(--text2); font-size:15.5px; margin:0; max-width:700px;}
+
+.alert{
+  margin:18px 0; padding:13px 18px; border-radius:10px; font-size:14px;
+  background:rgba(0,212,170,0.10); border:1px solid rgba(0,212,170,0.28); color:#bdf5e8;
+}
+.alert.c-red{background:rgba(232,76,76,0.10); border-color:rgba(232,76,76,0.28); color:#ffd7d7;}
+.alert.c-amber{background:rgba(245,158,11,0.10); border-color:rgba(245,158,11,0.28); color:#ffe8bd;}
+.alert.c-blue{background:rgba(96,165,250,0.10); border-color:rgba(96,165,250,0.28); color:#cfe0ff;}
+
+nav{display:flex; flex-wrap:wrap; gap:7px; padding:18px 0; border-bottom:1px solid var(--border); margin-bottom:8px;}
+nav .navpart{
+  width:100%; font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--text3); margin:8px 0 2px 2px;
+}
+nav .navpart:first-child{margin-top:0;}
+nav a{
+  font-size:12.5px; font-weight:600; color:var(--text2); background:var(--surface);
+  border:1px solid var(--border); padding:7px 12px; border-radius:20px;
+  text-decoration:none; white-space:nowrap; transition:all .15s;
+}
+nav a:hover{color:var(--text); border-color:var(--teal);}
+
+section{padding:30px 0; border-bottom:1px solid var(--border);}
+.sec-head{
+  display:flex; align-items:baseline; gap:10px; padding:11px 18px;
+  border-left:4px solid var(--teal);
+  background:linear-gradient(90deg, rgba(0,212,170,0.10), transparent);
+  border-radius:0 8px 8px 0; margin-bottom:16px;
+}
+.sec-head.c-blue{border-left-color:var(--blue); background:linear-gradient(90deg, rgba(96,165,250,0.10), transparent);}
+.sec-head.c-red{border-left-color:var(--red); background:linear-gradient(90deg, rgba(232,76,76,0.10), transparent);}
+.sec-head.c-amber{border-left-color:var(--amber); background:linear-gradient(90deg, rgba(245,158,11,0.10), transparent);}
+.sec-head.c-purple{border-left-color:var(--purple); background:linear-gradient(90deg, rgba(167,139,250,0.10), transparent);}
+.sec-num{font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--text3);}
+h2{font-family:'Syne', sans-serif; font-weight:700; font-size:20px; margin:0; color:var(--text);}
+.tagline{font-family:'Source Serif 4', serif; font-style:italic; font-size:13.5px; color:var(--text2); margin:0 0 12px;}
+
+p.body{font-size:15.5px; margin:12px 0;}
+p.note{font-size:13.5px; color:var(--text2); font-style:italic; margin:10px 0;}
+
+.box{
+  background:var(--surface2); border:1px solid var(--border); border-radius:10px;
+  padding:16px 18px; margin:14px 0; font-size:14.5px;
+}
+.box.t-teal{border-left:3px solid var(--teal);}
+.box.t-blue{border-left:3px solid var(--blue);}
+.box.t-red{border-left:3px solid var(--red); background:rgba(232,76,76,0.06);}
+.box.t-amber{border-left:3px solid var(--amber);}
+.box.t-purple{border-left:3px solid var(--purple);}
+.box b{color:var(--text); font-weight:700;}
+.box p{margin:7px 0;}
+
+table{width:100%; border-collapse:collapse; margin:14px 0; font-size:13.5px;}
+th{background:var(--surface2); color:var(--text); text-align:left; padding:9px 11px; font-weight:600; font-size:12px; letter-spacing:.02em; border-bottom:2px solid var(--border);}
+td{padding:9px 11px; border-bottom:1px solid var(--border); vertical-align:top; font-family:'Source Serif 4', serif;}
+tr:nth-child(even) td{background:rgba(255,255,255,0.02);}
+
+.checklist, .xlist{list-style:none; padding-left:0; margin:10px 0;}
+.checklist li, .xlist li{padding:5px 0 5px 26px; position:relative; font-size:14.5px;}
+.checklist li:before{content:"\2713"; position:absolute; left:0; color:var(--teal); font-weight:700;}
+.xlist li:before{content:"\2715"; position:absolute; left:0; color:var(--red); font-weight:700;}
+
+.flow{display:flex; flex-direction:column; gap:9px; margin:14px 0;}
+.flow .step{
+  border:1px solid var(--border); border-left:3px solid var(--teal);
+  background:var(--surface); border-radius:8px; padding:11px 15px; font-size:14px;
+}
+.flow .step.t-blue{border-left-color:var(--blue);}
+.flow .step.t-red{border-left-color:var(--red);}
+.flow .step.t-amber{border-left-color:var(--amber);}
+.flow .step.t-purple{border-left-color:var(--purple);}
+
+.timeline-item{
+  padding:7px 0 7px 15px; border-left:2px solid var(--teal);
+  margin:5px 0 5px 4px; font-size:13.5px; color:var(--text2);
+}
+.timeline-item.t-blue{border-left-color:var(--blue);}
+.timeline-item.t-red{border-left-color:var(--red);}
+.timeline-item.t-amber{border-left-color:var(--amber);}
+.timeline-item.t-purple{border-left-color:var(--purple);}
+
+.xref{
+  margin:14px 0; padding:13px 17px; border-radius:10px;
+  background:var(--surface2); border:1px solid var(--border); border-left:3px solid var(--blue);
+  font-size:14px;
+}
+.xreflabel{
+  display:block; font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--blue); margin-bottom:6px; font-weight:600;
+}
+
+.peds{
+  margin:8px 0 16px 0; padding:11px 15px; border-radius:8px;
+  background:var(--surface2); border:1px solid var(--border); border-left:3px solid var(--purple);
+  font-size:13.5px;
+}
+.pedlabel{
+  display:inline-block; font-family:'Syne', sans-serif; font-size:10px; font-weight:700; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--purple); margin-right:7px;
+}
+
+.part-divider{padding:34px 0 8px;}
+.part-divider .plabel{
+  font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--teal); margin-bottom:6px; font-weight:600;
+}
+.part-divider h2{font-size:23px; margin:0 0 6px 0;}
+.part-divider p{font-family:'Source Serif 4', serif; font-size:14px; color:var(--text2); margin:0; max-width:600px;}
+
+.sources{font-size:13px; color:var(--text2); padding-left:20px;}
+.sources li{margin-bottom:7px;}
+
+footer{padding:26px 0 0; margin-top:6px; font-size:12.5px; color:var(--text3); font-family:'Source Serif 4', serif; font-style:italic;}
+</style>
+<style id="cv-print">
+/* ===== CV PRINT v1.0 (per _cv-schema.html) ===== */
+@media print{
+  :root{
+    --bg:#f4f5f7; --surface:#ffffff; --surface2:#eef1f4; --border:#d7dde3;
+    --teal:#00a688; --blue:#1d4ed8; --accent:#00a688; --accent2:#1d4ed8;
+    --red:#c53030; --amber:#b45309; --purple:#7c3aed;
+    --text:#0f1923; --text2:#4a5670; --text3:#6b7688;
+  }
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  html, body{background:#f4f5f7 !important; color:#0f1923 !important;}
+  nav, .nav, .toc-pills{display:none !important;}
+  .alert{background:rgba(0,166,136,.08) !important; color:#0f1923 !important;}
+  td{color:#0f1923 !important;}
+  section, .box, table, .card, .stat-card, .statcard, .step-row, .step{break-inside:avoid;}
+  h2, .sec-head{break-after:avoid;}
+  a{color:inherit; text-decoration:none;}
+}
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ a{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../workshop.html">The Workshop</a><span class="cv-sb-meta">Published 6 Oct 2026 · R. E. Suscitate &amp; A. Systole</span></nav><div class="page">
+<header>
+<div class="kicker">The Critical Vector · Pocket Reference</div>
+<h1>BIS Monitoring</h1>
+<p>v1. What the number and waveform mean, the artifacts that fool it, and the actually
+  unsettled evidence behind whether it prevents awareness. Verified against Lancet, NEJM, and
+  primary anesthesia RCT literature. July 2026.</p>
+</header>
+<div class="alert c-amber">
+  The evidence for BIS preventing awareness is genuinely contested — three major trials disagree.
+  Section 3 covers this directly; it's the part most reference cards leave out.
+</div>
+<nav>
+<a href="#s1">1 · What BIS measures</a>
+<a href="#s2">2 · Value ranges &amp; waveform patterns</a>
+<a href="#s3">3 · The evidence: does it actually work?</a>
+<a href="#s4">4 · Artifacts &amp; limitations</a>
+<a href="#s5">5 · Quick card &amp; sources</a>
+</nav>
+<main>
+<section id="s1">
+<div class="sec-head c-purple"><span class="sec-num">01</span><h2>What BIS Measures</h2></div>
+<p class="body">The Bispectral Index processes raw frontal EEG into a single dimensionless
+  number, 0 (isoelectric/no detectable activity) to 100 (fully awake), intended as a proxy for
+  hypnotic depth of anesthesia.</p>
+<div class="box t-purple">
+<p><b>What it is:</b> a proprietary algorithm combining time-domain, frequency-domain, and
+    higher-order spectral (bispectral) EEG analysis into one trended number.</p>
+<p><b>What it is not:</b> a measure of analgesia, a measure of paralysis, or a direct measure
+    of "consciousness" — it is specifically a hypnotic-depth correlate, and a correlate only.</p>
+</div>
+</section>
+<section id="s2">
+<div class="sec-head c-blue"><span class="sec-num">02</span><h2>Value Ranges &amp; Waveform Patterns</h2></div>
+<table>
+<tr><th>BIS range</th><th>State</th><th>EEG character</th></tr>
+<tr><td><b>90–100</b></td><td>Awake</td><td>High frequency, low amplitude, random —
+    inadequate anesthesia if this appears intraoperatively</td></tr>
+<tr><td><b>70–89</b></td><td>Light anesthesia / sedation</td><td>Beta activity decreasing,
+    alpha activity emerging</td></tr>
+<tr><td><b>40–60</b></td><td>Adequate general anesthesia (target range)</td><td>Alpha activity
+    predominant, &lt;12 Hz</td></tr>
+<tr><td><b>20–39</b></td><td>Deep anesthesia</td><td>Delta activity dominant, 1–4 Hz</td></tr>
+<tr><td><b>0–19</b></td><td>Very deep / burst suppression</td><td>Periods of EEG suppression
+    (flat segments) interspersed with bursts of activity</td></tr>
+<tr><td><b>0</b></td><td>Isoelectric / flatline</td><td>No detectable cortical activity —
+    excessive anesthesia, cardiac arrest, or severe hypothermia</td></tr>
+</table>
+<div class="box t-blue">
+<p><b>Target BIS for general anesthesia: 40–60.</b> This range is associated with a low
+    likelihood of explicit recall while avoiding the unnecessary depth (and hemodynamic cost) of
+    burst suppression.</p>
+</div>
+<p class="note">BIS is a trend monitor. A single number in isolation is far less useful than
+  watching where it's heading and how it responds to a dose change — treat it the way you'd treat
+  a single blood pressure reading versus a trend.</p>
+</section>
+<section id="s3">
+<div class="sec-head c-red"><span class="sec-num">03</span><h2>The Evidence: Does It Actually Work?</h2></div>
+<p class="body">This is the section most BIS reference material skips, and it's the most
+  clinically important one — the trial evidence on whether BIS monitoring actually reduces
+  awareness is genuinely mixed, not settled.</p>
+<table>
+<tr><th>Trial</th><th>Design</th><th>Finding</th></tr>
+<tr><td><b>B-Aware (Myles et al., Lancet 2004)</b></td><td>2,463 high-risk patients,
+    BIS-guided vs. routine care</td><td>BIS-guided anesthesia reduced awareness incidence —
+    the landmark positive trial. Number needed to treat to prevent one case of awareness: 138.</td></tr>
+<tr><td><b>B-Unaware (Avidan et al., NEJM 2008)</b></td><td>1,941 high-risk patients,
+    BIS-guided (target 40-60) vs. end-tidal anesthetic gas (ETAG)-guided (target MAC 0.7-1.3)</td>
+<td>No significant difference in awareness between BIS-guided and ETAG-guided protocols —
+    directly contradicted the premise that BIS specifically (rather than any structured
+    protocol) was the active ingredient.</td></tr>
+<tr><td><b>BAG-RECALL (Avidan et al., NEJM 2011)</b></td><td>Prevention of intraoperative
+    awareness in a high-risk surgical population</td><td>Again found no significant awareness
+    reduction from BIS-guided protocols compared to ETAG-guided protocols.</td></tr>
+</table>
+<div class="box t-red">
+<p><b>Why the trials disagree:</b> a commonly raised critique of B-Aware is that its "routine
+    care" comparison arm lacked a structured alternative protocol — meaning some of BIS's
+    apparent benefit may reflect the effect of following <em>any</em> defined depth-monitoring
+    protocol (increased vigilance) rather than something specific to the EEG-derived number
+    itself. B-Unaware and BAG-RECALL, by giving the comparison arm an equally structured
+    ETAG-based protocol, found the BIS-specific advantage disappeared.</p>
+</div>
+<p class="note">The honest summary: BIS monitoring is widely used and reasonable, especially in
+  high-risk-for-awareness cases or when volatile agent use is being minimized (TIVA, where
+  end-tidal gas monitoring isn't available as a cross-check) — but "BIS prevents awareness better
+  than watching your anesthetic gas concentration" is not a settled claim, it's a disputed one
+  across three major trials.</p>
+</section>
+<section id="s4">
+<div class="sec-head"><span class="sec-num">04</span><h2>Artifacts &amp; Limitations</h2></div>
+<table>
+<tr><th>Source of error</th><th>Effect</th></tr>
+<tr><td><b>EMG activity (shivering, muscle tone, patient movement)</b></td><td>Falsely
+    elevates BIS — can look like inadequate anesthesia when the patient is actually adequately
+    anesthetized but under-paralyzed</td></tr>
+<tr><td><b>Electrocautery interference</b></td><td>Falsely elevates BIS during active
+    cautery use</td></tr>
+<tr><td><b>Poor electrode contact / loose sensor</b></td><td>Unreliable or falsely elevated
+    reading — always check signal quality index before trusting the number</td></tr>
+<tr><td><b>Ketamine</b></td><td>Can paradoxically increase BIS despite clinically adequate or
+    even deep anesthesia — a genuine paradox, since ketamine's dissociative EEG pattern doesn't
+    map onto the BIS algorithm the way propofol/volatile-driven EEG changes do</td></tr>
+<tr><td><b>Hypothermia</b></td><td>Decreases BIS independent of anesthetic depth</td></tr>
+</table>
+<div class="box t-teal">
+<p><b>Before trusting any BIS value:</b> confirm electrode contact, check the signal quality
+    index (&gt;50%), rule out cautery/EMG interference, and correlate with hemodynamics and
+    clinical signs — a BIS number that doesn't match the clinical picture is a reason to
+    distrust the monitor, not the patient.</p>
+</div>
+<p class="note">BIS does not detect analgesia and does not detect paralysis — a patient can be
+  fully paralyzed, inadequately anesthetized, and in significant physiologic distress from
+  nociception with a BIS reading that looks reassuring. It is one input among several, not a
+  replacement for clinical judgment.</p>
+</section>
+<section id="s5" style="border-bottom:none;">
+<div class="sec-head" style="border-left-color:var(--text3); background:none;"><span class="sec-num">05</span><h2>Quick Reference Card &amp; Primary Sources</h2></div>
+<table>
+<tr><th>Situation</th><th>Target / action</th></tr>
+<tr><td><b>Induction</b></td><td>BIS 60–80 transiently acceptable while titrating</td></tr>
+<tr><td><b>Maintenance, general anesthesia</b></td><td>Target 40–60</td></tr>
+<tr><td><b>Deep/high-risk cases</b></td><td>20–40 acceptable if clinically indicated</td></tr>
+<tr><td><b>Recovery</b></td><td>&gt;70 expected</td></tr>
+<tr><td><b>Burst suppression appearing unexpectedly</b></td><td>Consider hypothermia, excess anesthetic, or reduce dose</td></tr>
+<tr><td><b>BIS rising unexpectedly on ketamine</b></td><td>Known paradox — correlate clinically before increasing anesthetic</td></tr>
+<tr><td><b>BIS not matching clinical picture</b></td><td>Check electrodes, SQI, cautery/EMG interference before trusting the number</td></tr>
+</table>
+<p class="body"><b>Primary sources checked for this guide:</b></p>
+<ul class="sources">
+<li>Myles PS, Leslie K, McNeil J, Forbes A, Chan MT. Bispectral index monitoring to prevent awareness during anaesthesia: the B-Aware randomised controlled trial. Lancet. 2004;363(9423):1757-1763.</li>
+<li>Avidan MS, Zhang L, Burnside BA, et al. Anesthesia awareness and the bispectral index (B-Unaware trial). N Engl J Med. 2008;358:1097-1108.</li>
+<li>Avidan MS, Jacobsohn E, Glick D, et al. Prevention of intraoperative awareness in a high-risk surgical population (BAG-RECALL). N Engl J Med. 2011;365:591-600.</li>
+<li>To BIS or not to BIS. British Journal of Anaesthesia, editorial reviewing the trial landscape, 2016.</li>
+<li>Protocol for the Michigan Awareness Control Study, contextualizing B-Aware/B-Unaware discrepancy and NNT. BMC Anesthesiology. 2009;9:7.</li>
+<li>Remifentanil alleviates propofol-induced burst suppression without affecting bispectral index. Randomized controlled trial, reviewed via PMC.</li>
+<li>Cochrane Database Syst Rev. 2014;6:CD003843 (depth-of-anesthesia monitoring systematic review).</li>
+</ul>
+</section>
+</main>
+<footer>
+  BIS is a useful trend monitor with real limitations and a genuinely contested evidence base for
+  its headline claim — awareness prevention. Use it as one input among several, correlate with
+  clinical signs, and don't treat the number as more certain than the trials behind it are. Every
+  finding above was cross-checked against the sources listed here as of July 2026.
+<div class="cv-tagline" style="margin-top:8px">The Critical Vector · Direction and magnitude.</div></footer>
+</div></body>
+</html>

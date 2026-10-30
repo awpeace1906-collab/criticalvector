@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="cv:schema" content="1.0">
+<meta name="cv:verified" content="2026-10-05">
+<title>Arrest After Cardiac Surgery — The Critical Vector</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style id="cv-base">
+/* ===== CV BASE v1.0 — copy this block verbatim into every guide ===== */
+:root{
+  --bg:#0a0e14; --surface:#111720; --surface2:#182030;
+  --border:rgba(255,255,255,0.08);
+  --teal:#00d4aa; --blue:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa;
+  --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670;
+  --t-teal:rgba(0,212,170,0.10); --t-blue:rgba(96,165,250,0.10); --t-red:rgba(232,76,76,0.10);
+  --t-amber:rgba(245,158,11,0.10); --t-purple:rgba(167,139,250,0.10);
+  /* legacy aliases: older guides use these names; same values */
+  --accent:var(--teal); --accent2:var(--blue);
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{background:var(--bg); color:var(--text); font-family:'Source Serif 4', Georgia, serif; font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased;}
+h1,h2,h3,.label,.kicker,.badge,nav a,th,.step-num,.stat-num{font-family:'Syne', sans-serif;}
+.mono, code{font-family:'IBM Plex Mono', monospace;}
+.page{max-width:900px; margin:0 auto; padding:0 24px 60px;}
+header{padding:32px 0 20px; border-bottom:1px solid var(--border);}
+.kicker{font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--teal); margin-bottom:10px;}
+h1{font-weight:800; font-size:30px; line-height:1.15; margin:0 0 10px; letter-spacing:.005em;}
+header p{font-style:italic; color:var(--text2); font-size:15.5px; margin:0; max-width:700px;}
+.byline{font-size:13px; color:var(--text3); margin-top:8px;}
+.badges{display:flex; flex-wrap:wrap; gap:6px; margin-top:16px;}
+.badge{font-size:11px; font-weight:700; letter-spacing:.04em; padding:4px 10px; border-radius:20px; border:1px solid var(--border); color:var(--text2); background:var(--surface);}
+.badge.ok{color:var(--teal); border-color:rgba(0,212,170,0.35); background:var(--t-teal);}
+.badge.flag{color:var(--red); border-color:rgba(232,76,76,0.40); background:var(--t-red);}
+.alert{margin:18px 0; padding:13px 18px; border-radius:10px; font-size:14px; background:var(--t-teal); border:1px solid rgba(0,212,170,0.28); color:#bdf5e8;}
+.alert.flag{background:rgba(232,76,76,0.08); border-color:rgba(232,76,76,0.35); color:#ffd2d2;}
+nav{display:flex; flex-wrap:wrap; gap:7px; padding:18px 0; border-bottom:1px solid var(--border); margin-bottom:8px;}
+nav a{font-size:12.5px; font-weight:600; color:var(--text2); background:var(--surface); border:1px solid var(--border); padding:7px 12px; border-radius:20px; text-decoration:none; white-space:nowrap; transition:all .15s;}
+nav a:hover, nav a:focus-visible{color:var(--text); border-color:var(--teal); outline:none;}
+section{padding:30px 0; border-bottom:1px solid var(--border);}
+.sec-head{display:flex; align-items:baseline; gap:10px; padding:11px 18px; border-left:4px solid var(--teal); background:linear-gradient(90deg, var(--t-teal), transparent); border-radius:0 8px 8px 0; margin-bottom:16px;}
+.sec-head.c-blue{border-left-color:var(--blue); background:linear-gradient(90deg, var(--t-blue), transparent);}
+.sec-head.c-red{border-left-color:var(--red); background:linear-gradient(90deg, var(--t-red), transparent);}
+.sec-head.c-amber{border-left-color:var(--amber); background:linear-gradient(90deg, var(--t-amber), transparent);}
+.sec-head.c-purple{border-left-color:var(--purple); background:linear-gradient(90deg, var(--t-purple), transparent);}
+.sec-num{font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--text3);}
+h2{font-weight:700; font-size:20px; margin:0; color:var(--text);}
+h3{font-weight:700; font-size:16px; margin:0 0 6px;}
+.tagline{font-style:italic; font-size:13.5px; color:var(--text2); margin:0 0 12px;}
+p.body{font-size:15.5px; margin:12px 0; max-width:72ch;}
+p.note{font-size:13.5px; color:var(--text2); font-style:italic; margin:10px 0;}
+.box{background:var(--surface2); border:1px solid var(--border); border-radius:10px; padding:16px 18px; margin:14px 0; font-size:14.5px;}
+.box.t-teal{border-left:3px solid var(--teal);} .box.t-blue{border-left:3px solid var(--blue);}
+.box.t-red{border-left:3px solid var(--red); background:rgba(232,76,76,0.06);}
+.box.t-amber{border-left:3px solid var(--amber);} .box.t-purple{border-left:3px solid var(--purple);}
+.box b{color:var(--text); font-weight:700;} .box p{margin:7px 0;}
+.stat-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:10px; margin:16px 0;}
+.stat-card{background:var(--surface); border:1px solid var(--border); border-left:4px solid var(--c,var(--teal)); border-radius:6px; padding:14px 16px 14px 18px; text-align:left;}
+.stat-num{font-weight:800; font-size:26px; line-height:1.1; color:var(--c,var(--teal));}
+.stat-label{font-size:13px; color:var(--text2); margin-top:4px;}
+.steps{display:flex; flex-direction:column; gap:10px; margin:16px 0;}
+.step-row{display:flex; gap:14px; align-items:flex-start; background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:12px 16px;}
+.step-num{flex-shrink:0; width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:13px; color:#0a0e14; background:var(--c,var(--teal));}
+.step-body{font-size:14.5px;} .step-body b{color:var(--text);}
+.scroll{overflow-x:auto; -webkit-overflow-scrolling:touch;}
+table{width:100%; border-collapse:collapse; margin:14px 0; font-size:13.5px;}
+th{background:var(--surface2); color:var(--text); text-align:left; padding:9px 11px; font-weight:600; font-size:12px; letter-spacing:.02em; border-bottom:2px solid var(--border);}
+td{padding:9px 11px; border-bottom:1px solid var(--border); vertical-align:top;}
+tr:nth-child(even) td{background:rgba(255,255,255,0.02);}
+.xlist,.clist{list-style:none; padding-left:0; margin:10px 0;}
+.xlist li,.clist li{padding:5px 0 5px 26px; position:relative; font-size:14.5px;}
+.xlist li:before{content:"✗"; position:absolute; left:0; color:var(--red); font-weight:700;}
+.clist li:before{content:"✓"; position:absolute; left:0; color:var(--teal); font-weight:700;}
+.sources{font-size:13px; color:var(--text2); padding-left:20px;}
+.sources li{margin-bottom:7px;} .sources a{color:var(--text2);}
+footer{padding:26px 0 0; margin-top:6px; font-size:12.5px; color:var(--text3); font-style:italic;}
+@media (max-width:640px){ h1{font-size:25px;} .page{padding:0 16px 48px;} }
+@media (prefers-reduced-motion:reduce){ *{transition:none !important;} }
+
+/* ===== PRINT: light-mode token swap (mandatory, non-optional) ===== */
+@media print{
+  :root{
+    --bg:#f4f5f7; --surface:#ffffff; --surface2:#eef1f4; --border:#d7dde3;
+    --teal:#00a688; --blue:#1d4ed8; --red:#c53030; --amber:#b45309; --purple:#7c3aed;
+    --text:#0f1923; --text2:#4a5670; --text3:#6b7688;
+    --t-teal:rgba(0,166,136,0.08); --t-blue:rgba(29,78,216,0.07); --t-red:rgba(197,48,48,0.07);
+    --t-amber:rgba(180,83,9,0.08); --t-purple:rgba(124,58,237,0.07);
+  }
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  body{background:var(--bg) !important; color:var(--text) !important; font-size:11pt;}
+  nav{display:none;}
+  .page{max-width:none; padding:0;}
+  .alert{background:var(--t-teal) !important; border-color:var(--teal); color:var(--text) !important;}
+  .alert.flag{background:var(--t-red) !important; border-color:var(--red);}
+  .box.t-red{background:var(--t-red);}
+  td{color:var(--text) !important;}
+  .step-num{color:#ffffff;}
+  section, .box, table, .stat-card, .step-row{break-inside:avoid;}
+  h2, .sec-head{break-after:avoid;}
+  a{color:inherit; text-decoration:none;}
+  @page{margin:14mm 14mm 16mm;}
+}
+/* ===== END CV BASE ===== */
+</style>
+<style>
+/* page archetype */
+
+.fork{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:22px 0 8px;}
+.prong{background:var(--surface); border:1px solid var(--border); border-top:4px solid var(--c); border-radius:0 0 12px 12px; padding:16px 16px 18px;}
+.prong .rhythm{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--text2);}
+.prong .verb{font-family:'Syne',sans-serif; font-weight:800; font-size:34px; line-height:1; margin:8px 0 12px; color:var(--c);}
+.prong p{font-size:14px; margin:6px 0;}
+.prong .fail{margin-top:12px; padding-top:10px; border-top:1px dashed var(--border); color:var(--text2); font-size:13.5px;}
+.fork-lead{font-family:'Syne',sans-serif; font-weight:700; font-size:15px; color:var(--text2); margin:26px 0 0;}
+.clock{margin:18px 0 6px; position:relative;}
+.clock-bar{display:grid; grid-template-columns:1fr 4fr; height:10px; border-radius:6px; overflow:hidden;}
+.clock-bar span:first-child{background:var(--teal);} .clock-bar span:last-child{background:linear-gradient(90deg,var(--amber),var(--red));}
+.clock-marks{display:grid; grid-template-columns:1fr 4fr; font-size:13.5px; margin-top:10px; gap:14px;}
+.clock-marks div{border-left:2px solid var(--border); padding-left:10px;}
+.clock-marks .t{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--text2); display:block;}
+.roles{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:14px 0;}
+.role{background:var(--surface2); border:1px solid var(--border); border-radius:10px; padding:12px 14px;}
+.role h3{font-size:14.5px; margin:0 0 4px;} .role p{font-size:13.5px; color:var(--text2); margin:0;}
+.role.open{grid-column:1/-1; border-color:rgba(232,76,76,0.35); background:rgba(232,76,76,0.06);}
+.pair{display:grid; grid-template-columns:1fr 1fr; gap:12px;}
+@media (max-width:720px){ .fork,.roles,.pair{grid-template-columns:1fr;} .clock-marks{grid-template-columns:1fr;} .clock-bar{display:none;} }
+@media print{ .fork{grid-template-columns:repeat(3,1fr);} .prong .verb{font-size:26px;} }
+
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ a{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../continuum.html">The Continuum</a><span class="cv-sb-meta">Published 6 Oct 2026 · R. E. Suscitate &amp; A. Systole</span></nav>
+<div class="page">
+
+<header>
+  <div class="kicker">The Critical Vector · Resuscitation</div>
+  <h1>Arrest After Cardiac Surgery</h1>
+  <p class="byline">R. E. Suscitate &amp; A. Systole</p>
+  <p>The first ten days after sternotomy run on their own protocol. The arrest is witnessed, monitored, and usually caused by something a hand or a wire can fix, so the first minute goes to the rhythm rather than to compressions and epinephrine.</p>
+  <div class="badges"><span class="badge ok">VERIFIED</span><span class="badge">STS Expert Consensus 2017</span><span class="badge">AHA 2025 Part 10</span><span class="badge">Applies through POD 10</span></div>
+</header>
+
+<p class="fork-lead">Read the rhythm before anyone touches the chest.</p>
+<div class="fork">
+  <div class="prong" style="--c:var(--red)">
+    <div class="rhythm">VF / pulseless VT</div>
+    <div class="verb">Shock</div>
+    <p>Three sequential shocks, delivered inside one minute, before external compressions.</p>
+    <div class="fail">Still in VF after the third: start CPR, give amiodarone 300 mg, call for resternotomy.</div>
+  </div>
+  <div class="prong" style="--c:var(--amber)">
+    <div class="rhythm">Asystole / extreme bradycardia</div>
+    <div class="verb">Pace</div>
+    <p>Epicardial wires connected: DDD at 80–100/min, maximum atrial and ventricular output.</p>
+    <p>Capture means an arterial waveform. Spikes on the monitor prove nothing.</p>
+    <div class="fail">No output at one minute: start CPR, consider transcutaneous pacing, call for resternotomy.</div>
+  </div>
+  <div class="prong" style="--c:var(--blue)">
+    <div class="rhythm">PEA</div>
+    <div class="verb">Open</div>
+    <p>If the patient is paced, switch the pacer off first. Spikes can hide fine VF.</p>
+    <p>True PEA: exclude airway and tension pneumothorax fast, then prompt resternotomy.</p>
+    <div class="fail">Start CPR while the chest is being prepared.</div>
+  </div>
+</div>
+
+<div class="clock" aria-label="Time course of the first five minutes">
+  <div class="clock-bar"><span></span><span></span></div>
+  <div class="clock-marks">
+    <div><span class="t">0–60 s</span>Shocks or pacing. External compressions held if this can be done inside the minute.</div>
+    <div><span class="t">60 s → 5 min</span>CPR running, airway and pneumothorax excluded, resternotomy set up. Target chest open within five minutes of arrest, then internal massage and internal defibrillation.</div>
+  </div>
+</div>
+
+<nav>
+  <a href="#before">Before the arrest</a><a href="#pea">The paced-PEA trap</a><a href="#cpr">CPR's job</a><a href="#epi">Epinephrine</a><a href="#roles">Six roles</a><a href="#window">The POD-10 window</a><a href="#sources">Sources</a>
+</nav>
+
+<section id="before">
+  <div class="sec-head c-amber"><span class="sec-num">01</span><h2>Before the arrest</h2></div>
+  <p class="tagline">Falling pressure with rising filling pressures is an obstruction until proven otherwise.</p>
+  <p class="body">The pre-arrest picture in early tamponade is low MAP, rising CVP, narrowing pulse pressure, and falling cardiac output. Chest tube output that drops at the same time is not reassurance. It often means the tubes have clotted and the blood is collecting around the heart.</p>
+  <div class="pair">
+    <div class="box t-amber"><p><b>Postoperative tamponade is often regional.</b> In a series of 510 cardiac surgery patients, 9 of the 10 tamponades had atypical findings: selective compression of one or two chambers by loculated clot, and in 6 cases no anterior fluid at all.</p></div>
+    <div class="box t-amber"><p><b>Echo is weakest when you need it most.</b> In the first 24 hours after surgery, echocardiography had a positive predictive value of 58% for tamponade confirmed at re-exploration (AUC 0.64). A reassuring early echo does not end the question.</p></div>
+  </div>
+  <p class="body">Escalating vasopressors in this state treats the number while the cause compresses the heart. The response is the surgeon and the operating room, before the arrest makes the decision.</p>
+</section>
+
+<section id="pea">
+  <div class="sec-head c-blue"><span class="sec-num">02</span><h2>The paced-PEA trap</h2></div>
+  <p class="body">A paced patient with organized complexes and no pulse may be in fine VF underneath the pacing artifact. The STS protocol has the pacer switched off at the start of a PEA arrest so the native rhythm can be seen. If it is VF, it goes down the shock pathway.</p>
+  <p class="body">Once VF is excluded, true PEA after cardiac surgery is a mechanical problem until shown otherwise.</p>
+  <div class="scroll"><table>
+    <tr><th>Cause</th><th>What resolves it</th></tr>
+    <tr><td>Tamponade</td><td>Resternotomy and evacuation</td></tr>
+    <tr><td>Hemorrhage / hypovolemia</td><td>Volume, then surgical control</td></tr>
+    <tr><td>Tension pneumothorax</td><td>Decompression; check both pleural spaces</td></tr>
+    <tr><td>Airway catastrophe</td><td>ETT position and patency, ventilator check, FiO₂ 1.0</td></tr>
+    <tr><td>Graft, valve, or other surgical failure</td><td>Resternotomy</td></tr>
+  </table></div>
+  <p class="note">Running the full Hs and Ts list has a cost here. Five mechanical causes, checked in seconds, cover most of what kills these patients.</p>
+</section>
+
+<section id="cpr">
+  <div class="sec-head"><span class="sec-num">03</span><h2>CPR's job</h2></div>
+  <p class="body">The protocol does not forbid compressions on a fresh sternotomy. It defers them for up to one minute while the faster definitive therapies are tried, then starts them. External compressions can crack a fresh repair or tear a graft, which is why the minute matters, but cerebral perfusion matters more once that minute has passed.</p>
+  <ul class="xlist">
+    <li>Compressions cannot empty a pericardium filled with clot.</li>
+    <li>Compressions cannot fill a heart that has bled out.</li>
+    <li>Compressions cannot repair a graft or a valve.</li>
+  </ul>
+  <p class="body">The STS consensus starts from the position that external massage is ineffective in tamponade and hypovolemia. That is the reason for the five-minute resternotomy target, and for preferring internal massage once the chest is open.</p>
+</section>
+
+<section id="epi">
+  <div class="sec-head c-red"><span class="sec-num">04</span><h2>Epinephrine</h2></div>
+  <div class="alert flag"><b>No routine 1 mg epinephrine.</b> The STS consensus recommends against routine full-dose epinephrine in arrest after cardiac surgery.</div>
+  <p class="body">The reasoning is mechanical. If the arrest is from tamponade and the chest is opened two minutes after a 1 mg bolus, the drug is still in the circulation when the heart starts filling again. The result is extreme hypertension across fresh anastomoses and suture lines.</p>
+  <p class="body">This is a restriction, not a ban. Smaller titrated doses remain available on a senior decision. Amiodarone 300 mg follows the third failed shock in VF.</p>
+</section>
+
+<section id="roles">
+  <div class="sec-head c-purple"><span class="sec-num">05</span><h2>Six roles</h2></div>
+  <p class="tagline">Assigned before the arrest, rehearsed as a team.</p>
+  <div class="roles">
+    <div class="role"><h3>External massage</h3><p>Compressions once the first minute has passed.</p></div>
+    <div class="role"><h3>Airway and breathing</h3><p>Tube position, ventilator, both chest drains, pneumothorax.</p></div>
+    <div class="role"><h3>Defibrillation and pacing</h3><p>Shocks, wires, pacing box at maximum output.</p></div>
+    <div class="role"><h3>Team leader</h3><p>Runs the algorithm and calls resternotomy.</p></div>
+    <div class="role"><h3>Drugs and infusions</h3><p>Manages infusions, gives amiodarone, holds routine epinephrine.</p></div>
+    <div class="role"><h3>ICU coordinator</h3><p>Equipment, extra staff, keeps the room clear.</p></div>
+    <div class="role open"><h3>Resternotomy team</h3><p>Two or three trained people who gown, glove, and open the set at once. In practice they may be the clinicians already in the room, with the surgeon still on the way. Assign it on every shift.</p></div>
+  </div>
+</section>
+
+<section id="window">
+  <div class="sec-head c-blue"><span class="sec-num">06</span><h2>The POD-10 window</h2></div>
+  <p class="body">Emergency resternotomy remains part of the arrest protocol through the tenth postoperative day. After that, adhesions make reopening slower and more dangerous, and the balance shifts back toward standard ALS. Patients who had cardiac surgery without a sternotomy are covered by a separate STS pathway.</p>
+  <div class="box t-teal"><p><b>The equipment lives in the ICU.</b> Five minutes is not enough time to fetch a sternotomy set from the operating suite. The set, the wire cutters, and internal paddles belong at the bedside unit.</p></div>
+  <p class="body">The 2025 AHA guidelines include arrest after cardiac surgery as a special circumstance in Part 10. The STS document remains the most detailed protocol. Training is available as CSU-ALS (csu-als.org).</p>
+</section>
+
+<section id="sources">
+  <div class="sec-head"><span class="sec-num">07</span><h2>Sources</h2></div>
+  <ol class="sources">
+    <li>Society of Thoracic Surgeons Task Force on Resuscitation After Cardiac Surgery. The Society of Thoracic Surgeons expert consensus for the resuscitation of patients who arrest after cardiac surgery. <i>Ann Thorac Surg</i>. 2017;103(3):1005-1020. <a href="https://doi.org/10.1016/j.athoracsur.2016.10.033">doi:10.1016/j.athoracsur.2016.10.033</a></li>
+    <li>Cao D, Arens AM, Chow SL, et al. Part 10: Adult and pediatric special circumstances of resuscitation. 2025 American Heart Association guidelines for CPR and ECC. <i>Circulation</i>. 2025;152(16 suppl 2):S578-S672. <a href="https://doi.org/10.1161/CIR.0000000000001380">doi:10.1161/CIR.0000000000001380</a></li>
+    <li>Brand J, McDonald A, Dunning J. Management of cardiac arrest following cardiac surgery. <i>BJA Educ</i>. 2018;18(1):16-22. <a href="https://doi.org/10.1016/j.bjae.2017.11.002">doi:10.1016/j.bjae.2017.11.002</a></li>
+    <li>Russo AM, O'Connor WH, Waxman HL. Atypical presentations and echocardiographic findings in patients with cardiac tamponade occurring early and late after cardiac surgery. <i>Chest</i>. 1993;104(1):71-78. <a href="https://doi.org/10.1378/chest.104.1.71">doi:10.1378/chest.104.1.71</a></li>
+    <li>Ellenbroek DFJ, van Kessel L, Compagner W, et al. Diagnostic performance of echocardiography to predict cardiac tamponade after cardiac surgery. <i>Eur J Cardiothorac Surg</i>. 2022;62(1):ezab468. <a href="https://doi.org/10.1093/ejcts/ezab468">doi:10.1093/ejcts/ezab468</a></li>
+  </ol>
+</section>
+
+<footer>The Critical Vector · Direction and magnitude.</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Critical Vector — Emergency Drugs in Pregnancy</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0b0f; --bg-panel:#141419; --bg-panel-2:#1b1b22; --border:#2a2a33;
+    --text:#e8e8ec; --text-dim:#a8a8b3;
+    --teal:#00d4aa; --blue:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa;
+  }
+  *{box-sizing:border-box;}
+  body{background:var(--bg);color:var(--text);font-family:'Source Serif 4',Georgia,serif;margin:0;padding:0;line-height:1.6;}
+  h1,h2,h3,h4,.label,.nav a,.pill,.tag{font-family:'Syne',sans-serif;}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 24px 120px;}
+
+  .masthead{padding:60px 24px 36px;text-align:center;border-bottom:2px solid var(--border);
+    background:radial-gradient(ellipse at top, rgba(0,212,170,0.08), transparent 60%);}
+  .masthead .kicker{color:var(--teal);letter-spacing:.14em;text-transform:uppercase;font-size:13px;font-weight:700;margin-bottom:14px;}
+  .masthead h1{font-size:38px;font-weight:800;margin:0 0 12px;letter-spacing:-0.01em;}
+  .masthead h1 span{color:var(--amber);}
+  .masthead p.sub{color:var(--text-dim);font-size:16px;max-width:680px;margin:0 auto;font-style:italic;}
+  .meta-row{display:flex;justify-content:center;gap:24px;margin-top:20px;flex-wrap:wrap;}
+  .meta-row .chip{background:var(--bg-panel);border:1px solid var(--border);border-radius:20px;padding:6px 16px;font-family:'Syne',sans-serif;font-size:12px;color:var(--text-dim);}
+
+  .search-wrap{position:sticky;top:0;z-index:50;background:rgba(11,11,15,0.97);backdrop-filter:blur(6px);border-bottom:1px solid var(--border);padding:14px 24px;}
+  .search-inner{max-width:1000px;margin:0 auto;display:flex;flex-direction:column;gap:6px;}
+  #symptomSearch{width:100%;box-sizing:border-box;background:var(--bg-panel);border:1.5px solid var(--border);border-radius:10px;padding:12px 16px;color:var(--text);font-family:'Source Serif 4',serif;font-size:15px;outline:none;}
+  #symptomSearch:focus{border-color:var(--teal);}
+  #symptomSearch::placeholder{color:var(--text-dim);}
+  .search-meta{display:flex;justify-content:space-between;align-items:center;font-family:'Syne',sans-serif;font-size:11.5px;color:var(--text-dim);min-height:14px;}
+  #searchCount{color:var(--teal);font-weight:700;}
+  mark{background:var(--amber);color:#171208;padding:0 2px;border-radius:2px;}
+  .no-results-msg{text-align:center;color:var(--text-dim);padding:60px 20px;font-size:15px;display:none;}
+
+  .toc{background:var(--bg-panel);border:1px solid var(--border);border-radius:14px;margin:36px auto 0;padding:22px 26px;}
+  .toc h2{font-size:14px;text-transform:uppercase;letter-spacing:.12em;color:var(--purple);margin:0 0 14px;}
+  .toc ol{margin:0;padding-left:20px;columns:2;column-gap:32px;}
+  .toc li{margin-bottom:8px;}
+  .toc a{color:var(--text);text-decoration:none;font-size:15px;font-weight:600;}
+  .toc a:hover{color:var(--teal);}
+
+  .legend{display:flex;flex-wrap:wrap;gap:10px;margin:36px 0 8px;justify-content:center;}
+  .legend .item{display:flex;align-items:center;gap:7px;font-family:'Syne',sans-serif;font-size:12px;color:var(--text-dim);}
+  .legend .dot{width:12px;height:12px;border-radius:3px;display:inline-block;}
+  .dot.tier1{background:var(--teal);} .dot.tier2{background:var(--blue);} .dot.tier3{background:var(--amber);}
+  .dot.tier4{background:var(--red);} .dot.tier5{background:var(--purple);}
+
+  .scenario{margin:56px 0;border:1px solid var(--border);border-radius:16px;overflow:hidden;
+    background:linear-gradient(180deg, var(--bg-panel) 0%, var(--bg) 100%);scroll-margin-top:20px;}
+  .scenario-head{padding:26px 30px 18px;border-bottom:1px solid var(--border);}
+  .scenario-head .tag{display:inline-block;background:var(--amber);color:#171208;font-weight:800;font-size:12px;
+    letter-spacing:.1em;text-transform:uppercase;padding:5px 14px;border-radius:6px;transform:rotate(-1deg);}
+  .scenario-head h2{font-size:28px;font-weight:800;margin:14px 0 6px;}
+  .scenario-head p{color:var(--text-dim);font-size:15px;margin:0;max-width:760px;}
+
+  .tier-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;padding:22px 30px;}
+  .tier-card{border-radius:12px;padding:16px 18px;border:1.5px solid transparent;}
+  .tier-card h4{font-size:11px;text-transform:uppercase;letter-spacing:.08em;margin:0 0 10px;font-weight:800;}
+  .tier-card ul{margin:0;padding-left:18px;}
+  .tier-card li{font-size:14.5px;margin-bottom:5px;font-family:'Source Serif 4',serif;}
+  .tier1{background:rgba(0,212,170,0.08);border-color:rgba(0,212,170,0.35);} .tier1 h4{color:var(--teal);}
+  .tier2{background:rgba(96,165,250,0.08);border-color:rgba(96,165,250,0.35);} .tier2 h4{color:#7ea6ff;}
+  .tier3{background:rgba(245,158,11,0.08);border-color:rgba(245,158,11,0.35);} .tier3 h4{color:var(--amber);}
+  .tier4{background:rgba(232,76,76,0.08);border-color:rgba(232,76,76,0.35);} .tier4 h4{color:var(--red);}
+  .tier5{background:rgba(167,139,250,0.08);border-color:rgba(167,139,250,0.35);} .tier5 h4{color:var(--purple);}
+
+  .drug-notes{padding:6px 30px 26px;}
+  .drug-notes h3{font-size:13px;text-transform:uppercase;letter-spacing:.1em;color:var(--teal);margin:20px 0 12px;}
+  .drug{margin-bottom:16px;padding-bottom:16px;border-bottom:1px dashed var(--border);}
+  .drug:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+  .drug-name{font-family:'Syne',sans-serif;font-weight:800;font-size:16px;display:flex;align-items:center;gap:8px;margin-bottom:4px;}
+  .drug-name .swatch{width:10px;height:10px;border-radius:2px;flex-shrink:0;}
+  .drug p{margin:4px 0;font-size:15px;}
+  .drug .dose{color:var(--text);}
+  .drug .dose strong{color:var(--amber);}
+  .drug .note{color:var(--text-dim);font-size:14px;font-style:italic;}
+  .cat-badge{
+    display:inline-flex;align-items:center;justify-content:center;
+    min-width:22px;height:22px;padding:0 6px;border-radius:5px;
+    font-family:'Syne',sans-serif;font-weight:800;font-size:12px;
+    border:1.5px solid currentColor;margin-left:auto;
+  }
+  .cat-A{color:var(--teal);} .cat-B{color:#7ea6ff;} .cat-C{color:var(--amber);}
+  .cat-D{color:var(--red);} .cat-X{color:#c4a7ff;} .cat-NC{color:var(--text-dim);font-size:10px;letter-spacing:.02em;}
+
+  .pearl{margin:20px 30px 26px;border:1px solid var(--amber);border-radius:12px;padding:16px 20px;background:rgba(245,158,11,0.07);}
+  .pearl .pearl-label{font-family:'Syne',sans-serif;font-weight:800;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-bottom:6px;display:block;}
+  .pearl p{margin:0;font-size:15px;}
+
+  .citations{margin:0 30px 26px;padding-top:14px;border-top:1px dashed var(--border);font-size:12.5px;color:var(--text-dim);}
+  .citations .cite-label{font-family:'Syne',sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--text-dim);display:block;margin-bottom:6px;}
+  .citations ol{margin:0;padding-left:18px;}
+  .citations li{margin-bottom:3px;}
+
+  .closer{margin-top:60px;padding:30px;text-align:center;border:1px solid var(--border);border-radius:14px;background:var(--bg-panel);}
+  .closer h3{font-size:20px;margin:0 0 8px;}
+  .closer p{color:var(--text-dim);font-size:14px;margin:0;}
+  .footer-note{text-align:center;color:var(--text-dim);font-size:12px;margin-top:24px;}
+  a{color:var(--teal);}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style id="cv-retheme">
+/* CV re-theme v1.0 — maps this file onto _cv-schema.html tokens */
+:root{--bg:#0a0e14; --surface:#111720; --surface2:#182030; --border:rgba(255,255,255,0.08); --teal:#00d4aa; --blue:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa; --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670; --t-teal:rgba(0,212,170,0.10); --t-blue:rgba(96,165,250,0.10); --t-red:rgba(232,76,76,0.10); --t-amber:rgba(245,158,11,0.10); --t-purple:rgba(167,139,250,0.10);}
+:root{--bg-panel:var(--surface); --bg-panel-2:var(--surface2); --text-dim:var(--text2);}
+body{font-family:'Source Serif 4', Georgia, serif !important; background:var(--bg) !important; color:var(--text);}
+h1,h2,h3,h4,th,nav a,.label,.lbl,.badge,.pill{font-family:'Syne', sans-serif !important;}
+h1{font-weight:800 !important; letter-spacing:.005em;}
+h2,h3{font-weight:700;}
+.kicker, header .kicker{font-family:'IBM Plex Mono', monospace !important; color:var(--teal) !important; letter-spacing:.12em; font-size:11px !important;}
+code, pre, .mono{font-family:'IBM Plex Mono', monospace;}
+@media print{
+  :root{--bg:#f4f5f7; --surface:#ffffff; --surface2:#eef1f4; --border:#d7dde3; --teal:#00a688; --blue:#1d4ed8; --red:#c53030; --amber:#b45309; --purple:#7c3aed; --text:#0f1923; --text2:#4a5670; --text3:#6b7688;
+    --t-teal:rgba(0,166,136,0.08); --t-blue:rgba(29,78,216,0.07); --t-red:rgba(197,48,48,0.07); --t-amber:rgba(180,83,9,0.08); --t-purple:rgba(124,58,237,0.07); --bg-panel:#ffffff; --bg-panel-2:#eef1f4; --text-dim:#4a5670;}
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  html, body{background:#f4f5f7 !important; color:#0f1923 !important;}
+  nav{display:none !important;}
+  td{color:#0f1923 !important;}
+  section, .box, table, .card{break-inside:avoid;}
+  h2{break-after:avoid;}
+  a{color:inherit; text-decoration:none;}
+}
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ a{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../workshop.html">The Workshop</a><span class="cv-sb-meta">Published 6 Oct 2026 · R. E. Suscitate &amp; A. Systole</span></nav>
+
+<div class="masthead">
+  <div class="kicker">The Critical Vector · Clinical Reference</div>
+  <h1>Emergency Drugs <span>in Pregnancy</span></h1>
+  <p class="sub">Organized by what you're treating, not what class the drug belongs to — safety tier at a glance, then the dosing and use-specifics that differ (or don't) from the non-pregnant patient.</p>
+  <div class="meta-row">
+    <span class="chip">10 clinical scenarios</span>
+    <span class="chip">v1.0</span>
+    <span class="chip">Symptom/drug-searchable</span>
+  </div>
+</div>
+
+<div class="search-wrap">
+  <div class="search-inner">
+    <input type="text" id="symptomSearch" placeholder="Search a drug, scenario, or dose — e.g. &quot;labetalol&quot;, &quot;eclampsia&quot;, &quot;fomepizole&quot;..." autocomplete="off" oninput="filterScenarios()" onkeydown="handleSearchKey(event)">
+    <div class="search-meta">
+      <span>Searches every field across all scenarios</span>
+      <span id="searchCount"></span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div id="noResultsMsg" class="no-results-msg">No matches. Try a broader term.</div>
+
+  <div class="toc">
+    <h2>Scenarios</h2>
+    <ol>
+      <li><a href="#arrhythmias">Arrhythmias</a></li>
+      <li><a href="#eclampsia">Seizure / Eclampsia</a></li>
+      <li><a href="#hypertension">Hypertensive Emergency</a></li>
+      <li><a href="#anaphylaxis">Anaphylaxis</a></li>
+      <li><a href="#hemorrhage">Postpartum Hemorrhage</a></li>
+      <li><a href="#rsi">RSI / Sedation / Analgesia</a></li>
+      <li><a href="#antiemetics">Antiemetics / Hyperemesis</a></li>
+      <li><a href="#anticoagulation">Anticoagulation (VTE/PE)</a></li>
+      <li><a href="#toxicology">Toxicology Antidotes</a></li>
+      <li><a href="#antibiotics">Antibiotics</a></li>
+    </ol>
+  </div>
+
+  <div class="toc" style="margin-top:36px;">
+    <h2>The FDA Pregnancy Category System</h2>
+    <div style="columns:1;font-size:15px;line-height:1.7;">
+    <p>From 1979 to 2015, the FDA assigned every prescription drug a letter — A, B, C, D, or X — summarizing fetal risk based on available human and animal data:</p>
+    <ul style="padding-left:20px;">
+      <li><strong style="color:var(--teal);">A</strong> — Adequate, well-controlled human studies show no risk to the fetus in the first trimester (and no evidence of risk later). In practice, almost nothing qualifies — the bar for human controlled data is high, and few drugs are ever tested this way in pregnant women.</li>
+      <li><strong style="color:#7ea6ff;">B</strong> — Either animal studies show no fetal risk with no adequate human studies, <em>or</em> animal studies showed a risk that well-controlled human studies did not confirm. "B" does not mean "more studied" or "safer" than C — it usually just means the animal data happened to be reassuring.</li>
+      <li><strong style="color:var(--amber);">C</strong> — Animal studies show an adverse effect and no adequate human studies exist, <em>or</em> no studies exist at all in either species. Use only if benefit justifies the risk. This is where the majority of all drugs — including most of cardiology and obstetric emergency pharmacology — land, simply because nobody runs controlled teratogenicity trials in pregnant women.</li>
+      <li><strong style="color:var(--red);">D</strong> — Positive evidence of human fetal risk exists, but the drug may still be justified in a serious or life-threatening situation where safer alternatives don't work.</li>
+      <li><strong style="color:#c4a7ff;">X</strong> — Positive evidence of fetal risk clearly outweighs any possible benefit. Contraindicated in pregnancy, full stop.</li>
+    </ul>
+    <p><strong>The system was officially retired on June 30, 2015</strong>, replaced by the Pregnancy and Lactation Labeling Rule (PLLR), which requires a narrative risk summary instead of a single letter — the FDA's own stated reason was that clinicians and patients were treating the letters as a linear safety grade (A better than B better than C…) when that was never how the categories were actually built; a "C" can reflect total absence of data just as easily as a worrying animal signal, and isn't necessarily riskier than a "B" that merely got lucky in animal testing. Drugs approved before June 2001 were allowed to keep their old letters on the label until June 2018, when the letters were required to be removed entirely. <strong>No new drug has received an FDA pregnancy letter since 2015</strong> — but because most of the agents in emergency and obstetric medicine are older, generic drugs, their legacy letters are still what you'll find in Micromedex, Epocrates, Lexicomp, and Briggs' <em>Drugs in Pregnancy and Lactation</em>, and are reproduced below for exactly that reason.</p>
+    <p style="color:var(--text-dim);font-style:italic;font-size:14px;">A handful of agents below were <strong>never assigned a letter</strong> at all — naturally occurring hormones used for their approved obstetric indication (oxytocin), non-absorbed adsorbents (activated charcoal), and IV electrolytes (calcium gluconate) don't fit the letter framework and are labeled "not classified" rather than guessed at.</p>
+    </div>
+  </div>
+
+  <div class="legend">
+    <span class="item"><span class="dot tier1"></span>Extensive Data / Safe</span>
+    <span class="item"><span class="dot tier2"></span>Moderately Safe / Extensive Experience</span>
+    <span class="item"><span class="dot tier3"></span>Use With Caution</span>
+    <span class="item"><span class="dot tier4"></span>Avoid / Do Not Use</span>
+    <span class="item"><span class="dot tier5"></span>Data Lacking</span>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- ARRHYTHMIAS -->
+  <!-- ============================================================ -->
+  <div class="scenario" id="arrhythmias">
+    <div class="scenario-head">
+      <span class="tag">Scenario</span>
+      <h2>Arrhythmias</h2>
+      <p>Tier assignments from Figure 2 of Tamirisa et al., JACC Clin Electrophysiol 2022 (checked drug by drug, 2026-10-13), cross-referenced and expanded with acute dosing.</p>
+    </div>
+    <div class="tier-grid">
+      <div class="tier-card tier1"><h4>Extensive Data / Safe</h4><ul><li>Adenosine</li><li>Digoxin</li><li>Lidocaine</li><li>Sotalol</li></ul></div>
+      <div class="tier-card tier2"><h4>Moderately Safe</h4><ul><li>Propranolol</li><li>Metoprolol</li><li>Labetalol</li><li>Verapamil</li><li>Quinidine</li><li>Flecainide</li><li>Procainamide</li></ul></div>
+      <div class="tier-card tier3"><h4>Use With Caution</h4><ul><li>Nadolol</li><li>Atenolol</li><li>Diltiazem</li><li>Disopyramide</li><li>Mexiletine</li><li>Ibutilide</li><li>Propafenone</li></ul></div>
+      <div class="tier-card tier4"><h4>Do Not Use</h4><ul><li>Amiodarone</li><li>Dronedarone</li><li>Dofetilide</li><li>Ivabradine</li></ul></div>
+      <div class="tier-card tier5"><h4>Data Lacking</h4><ul><li>Carvedilol</li><li>Atropine</li></ul></div>
+    </div>
+    <div class="drug-notes">
+      <h3>Dosing &amp; Use Notes</h3>
+      <div class="drug"><div class="drug-name"><span class="swatch" style="background:var(--teal)"></span>Adenosine <span class="cat-badge cat-C">C</span></div>
+        <p class="dose"><strong>6 mg rapid IV push</strong>, then 12 mg if needed — identical to non-pregnant dosing. First-line for SVT; extremely short half-life means negligible fetal exposure per dose.</p></div>
+      <div class="drug"><div class="drug-name"><span class="swatch" style="background:var(--teal)"></span>Digoxin <span class="cat-badge cat-C">C</span></div>
+        <p class="dose">Standard loading/maintenance dosing, but levels can run <strong>falsely elevated</strong> late in pregnancy due to a circulating digoxin-like immunoreactive substance — treat the rhythm and clinical picture, not the number alone.</p></div>
+      <div class="drug"><div class="drug-name"><span class="swatch" style="background:var(--blue)"></span>Labetalol <span class="cat-badge cat-C">C</span></div>
+        <p class="dose"><strong>Not a rate-control agent here:</strong> no arrhythmia dosing regimen is established for it. For IV beta-blocker rate control in pregnancy, use <strong>metoprolol or propranolol</strong>, the beta-blockers named for tachyarrhythmias in pregnancy. Labetalol's 20&ndash;40&ndash;80 mg escalation is the hypertensive-emergency regimen (below). With any beta-blocker near delivery, watch for neonatal bradycardia.</p></div>
+      <div class="drug"><div class="drug-name"><span class="swatch" style="background:var(--red)"></span>Amiodarone <span class="cat-badge cat-D">D</span></div>
+        <p class="dose"><strong>Avoid</strong> except for maternal life-threatening arrhythmia refractory to everything else — associated with fetal hypothyroidism, growth restriction, and prematurity. If truly life-saving, use it; don't let the avoidance tier become a reason to withhold it from a dying mother.</p></div>
+    </div>
+    <div class="pearl"><span class="pearl-label">Practice Shift</span><p>Maternal hemodynamic stability is fetal stability — don't undertreat a genuine maternal arrhythmia out of fetal-risk hesitancy. Every "avoid" tier here still has a "unless life-threatening" escape clause.</p></div>
+    <div class="citations"><span class="cite-label">Sources</span><ol><li>Tamirisa KP, et al. Arrhythmias in Pregnancy. JACC Clin Electrophysiol. 2022;8(1):120-135. doi:10.1016/j.jacep.2021.10.004 (Figure 2: source of the safety-tier chart; Table 2: fetal adverse effects and prior FDA categories; propranolol and metoprolol preferred among beta-blockers).</li><li>Tamirisa KP, Oliveros E, Paulraj S, Mares AC, Volgman AS. An Overview of Arrhythmias in Pregnancy. Methodist DeBakey Cardiovasc J. 2024;20(2):36-50. doi:10.14797/mdcvj.1325 (same tiers, with FDA category and lactation data, Table 2).</li><li>Enriquez AD, Economy KE, Tedrow UB. Contemporary management of arrhythmias during pregnancy. Circ Arrhythm Electrophysiol. 2014;7(5):961-967. doi:10.1161/CIRCEP.114.001517 (background review).</li></ol></div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- ECLAMPSIA -->
+  <!-- ============================================================ -->
+  <div class="scenario" id="eclampsia">
+    <div class="scenario-head">
+      <span class="tag">Scenario</span>
+      <h2>Seizure / Eclampsia</h2>
+      <p>Magnesium sulfate is a distinct pharmacologic category from every other anticonvulsant here — it isn't a benzodiazepine, isn't a GABA agent, and its dosing and toxicity monitoring don't map onto standard seizure protocols.</p>
+    </div>
+    <div class="tier-grid">
+      <div class="tier-card tier1"><h4>Extensive Data / First-Line</h4><ul><li>Magnesium Sulfate</li></ul></div>
+      <div class="tier-card tier2"><h4>Moderately Safe / Second-Line</h4><ul><li>Lorazepam</li><li>Diazepam</li><li>Levetiracetam</li></ul></div>
+      <div class="tier-card tier3"><h4>Use With Caution</h4><ul><li>Fosphenytoin</li><li>Midazolam (IM, no IV access)</li></ul></div>
+      <div class="tier-card tier4"><h4>Avoid as First-Line</h4><ul><li>Phenytoin infusion alone</li></ul></div>
+    </div>
+    <div class="drug-notes">
+      <h3>Dosing &amp; Use Notes</h3>
+      <div class="drug"><div class="drug-name"><span class="swatch" style="background:var(--teal)"></span>Magnesium Sulfate <span class="cat-badge cat-D">D</span></div>
+        <p class="dose"><strong>Loading 4–6 g IV over 15–20 min</strong>, then <strong>maintenance 1–2 g/hr</strong> continuous infusion. Superior to both phenytoin and benzodiazepines for preventing recurrent eclamptic seizures — this is a pregnancy-specific first-line agent with no equivalent role in non-obstetric seizure management.</p>
+        <p class="note">Monitor deep tendon reflexes, respiratory rate, and urine output for toxicity (loss of reflexes precedes respiratory depression) — calcium gluconate 1 g IV is the antidote for magnesium toxicity.</p></div>
+      <div class="drug"><div class="drug-name"><span class="swatch" style="background:var(--blue)"></span>Lorazepam / Diazepam <span class="cat-badge cat-D">D</span></div>
+        <p class="dose">Lorazepam <strong>4 mg IV over 3–5 min</strong>, or diazepam <strong>5–10 mg IV slowly</strong> — standard non-pregnant seizure dosing, used here as second-line if magnesium fails or is contraindicated (e.g., myasthenia gravis).</p></div>
+      <div class="drug"><div class="drug-name"><span class="swatch" style="background:var(--blue)"></span>Levetiracetam <span class="cat-badge cat-C">C</span></div>
+        <p class="dose"><strong>60 mg/kg IV, max 4,500 mg</strong> for persistent seizure after magnesium and a benzodiazepine — an emerging next step in eclampsia algorithms, and already established as safe in pregnant women with epilepsy.</p></div>
+      <div class="drug"><div class="drug-name"><span class="swatch" style="background:var(--amber)"></span>Fosphenytoin <span class="cat-badge cat-D">D</span></div>
+        <p class="dose"><strong>20 mg PE/kg IV at 150 mg PE/min</strong> for seizures persisting after magnesium and benzodiazepine — reserve for refractory cases; not a substitute for magnesium as first-line.</p></div>
+    </div>
+    <div class="pearl"><span class="pearl-label">Practice Shift</span><p>Reach for magnesium first even if your seizure instincts say benzodiazepine — this is the one scenario in emergency medicine where the "obvious" anticonvulsant is not the right first move.</p></div>
+    <div class="citations"><span class="cite-label">Sources</span><ol><li>Duley L, et al. Role of Magnesium Sulfate in Seizure Prevention in Eclampsia/Pre-Eclampsia. Drug Saf. 1996;15(3):176-187.</li><li>Presumed Eclamptic Seizure Algorithm. Kansas PQC, 2024.</li><li>Eclampsia Treatment &amp; Management. Medscape/emedicine, 2025.</li><li>Eclampsia and the Role of Magnesium Sulfate. The ObG Project, 2025.</li></ol></div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- HYPERTENSIVE EMERGENCY -->
+  <!-- ============================================================ -->
+  <div class="scenario" id="hypertension">
+    <div class="scenario-head">
+      <span class="tag">Scenario</span>
+      <h2>Hypertensive Emergency</h2>
+      <p>Severe hypertension in pregnancy/postpartum (SBP ≥160 or DBP ≥110) should be treated within 30–60 minutes. ACOG states any of the three first-line agents below is appropriate — the choice is about access and comorbidity, not superiority.</p>
+    </div>
+    <div class="tier-grid">
+      <div class="tier-card tier1"><h4>First-Line — Any Is Appropriate</h4><ul><li>IV Labetalol</li><li>IV Hydralazine</li><li>Oral Immediate-Release Nifedipine</li></ul></div>
+      <div class="tier-card tier2"><h4>Non-Acute / Maintenance</h4><ul><li>Oral Labetalol</li><li>Extended-Release Nifedipine</li><li>Methyldopa</li></ul></div>
+    </div>
+    <div class="drug-notes">
+      <h3>Dosing &amp; Use Notes</h3>
+      <div class="drug"><div class="drug-name"><span class="swatch" style="background:var(--teal)"></span>IV Labetalol <span class="cat-badge cat-C">C</span></div>
+        <p class="dose"><strong>20 mg IV</strong>; if BP still elevated at 10 min, give <strong>40 mg</strong>; if still elevated at 10 more min, give <strong>80 mg</strong> (max single dose); repeat at 10 min if needed to a cumulative <strong>300 mg</strong>. Avoid in asthma/heart failure/bradycardia.</p></div>
+      <div class="drug"><div class="drug-name"><span class="swatch" style="background:var(--teal)"></span>IV Hydralazine <span class="cat-badge cat-C">C</span></div>
+        <p class="dose"><strong>5–10 mg IV</strong>, repeat in 20 min if needed. Higher risk of maternal hypotension than labetalol or nifedipine — have fluids and fetal monitoring ready.</p></div>
+      <div class="drug"><div class="drug-name"><span class="swatch" style="background:var(--teal)"></span>Oral IR Nifedipine <span class="cat-badge cat-C">C</span></div>
+        <p class="dose"><strong>10 mg orally</strong>; repeat with <strong>20 mg</strong> at 20 min if still elevated. Preferred when IV access isn't available — some data suggest faster BP control and better urine output than IV agents. Extended-release only for maintenance, never for acute treatment.</p>
+        <p class="note">Concern about neuromuscular blockade/severe hypotension when combined with magnesium sulfate was not borne out in large reviews, but both are calcium antagonists — monitor.</p></div>
+      <div class="drug"><div class="drug-name"><span class="swatch" style="background:var(--blue)"></span>Methyldopa <span class="cat-badge cat-B">B</span></div>
+        <p class="dose">Long safety track record for chronic/maintenance BP control in pregnancy; not an acute agent — onset too slow for emergency use.</p></div>
+    </div>
+    <div class="pearl"><span class="pearl-label">Practice Shift</span><p>Don't over-lower BP aggressively — placental blood flow autoregulation in severe preeclampsia isn't well established, and dropping pressure too fast can cause fetal distress even while "fixing" the maternal number.</p></div>
+    <div class="citations"><span class="cite-label">Sources</span><ol><li>ACOG Committee Opinion No. 692. Emergent Therapy for Acute-Onset, Severe Hypertension During Pregnancy and the Postpartum Period. Obstet Gynecol. 2017;129:e90-95.</li><li>Sarker, et al. Immediate Release Oral Nifedipine for Severe Hypertension in Pregnancy. Pregnancy, 2025.</li><li>Hypertension and Pregnancy Treatment &amp; Management. Medscape/emedicine.</li></ol></div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- ANAPHYLAXIS -->
+  <!-- ============================================================ -->
+  <div class="scenario" id="anaphylaxis">
+    <div class="scenario-head">
+      <span class="tag">Scenario</span>
+      <h2>Anaphylaxis</h2>
+      <p>Management is essentially identical to the non-pregnant patient — the one meaningful addition is positioning, and the one meaningful pitfall is hesitating on epinephrine out of fetal-risk concern that the evidence doesn't support.</p>
+    </div>
+    <div class="tier-grid">
+      <div class="tier-card tier1"><h4>Extensive Data / Safe — First-Line</h4><ul><li>Epinephrine (IM)</li><li>IV Fluids</li><li>Supplemental Oxygen</li></ul></div>
+      <div class="tier-card tier2"><h4>Moderately Safe — Adjuncts</h4><ul><li>Diphenhydramine</li><li>Methylprednisolone</li><li>Albuterol (nebulized)</li></ul></div>
+    </div>
+    <div class="drug-notes">
+      <h3>Dosing &amp; Use Notes</h3>
+      <div class="drug"><div class="drug-name"><span class="swatch" style="background:var(--teal)"></span>Epinephrine <span class="cat-badge cat-C">C</span></div>
+        <p class="dose"><strong>0.3–0.5 mg IM (1 mg/mL) in the mid-outer thigh</strong>, repeatable every 5–15 min — identical dosing to the non-pregnant patient. Do not withhold or under-dose out of concern for uterine/placental vasoconstriction; untreated anaphylactic hypoxia and hypotension are a far greater fetal threat than the drug.</p>
+        <p class="note">Position the patient with manual left uterine displacement (or full left lateral tilt) once ≥20 weeks gestation to relieve aortocaval compression and improve venous return during resuscitation.</p></div>
+      <div class="drug"><div class="drug-name"><span class="swatch" style="background:var(--blue)"></span>Diphenhydramine / Methylprednisolone <span class="cat-badge cat-B">B</span><span class="cat-badge cat-C">C</span></div>
+        <p class="dose">Standard adjunctive dosing as in non-pregnant anaphylaxis — these treat the histamine/inflammatory tail of the reaction and are not a substitute for epinephrine.</p></div>
+    </div>
+    <div class="pearl"><span class="pearl-label">Practice Shift</span><p>The only pregnancy-specific move in anaphylaxis is uterine displacement/left lateral tilt — everything else, including epinephrine dosing, is unchanged from your standard protocol.</p></div>
+    <div class="citations"><span class="cite-label">Sources</span><ol><li>ASCIA Guidelines: Acute Management of Anaphylaxis in Pregnancy, endorsed by RANZCOG/ACEM/CICM.</li><li>Anaphylaxis and Epinephrine Use in Pregnancy. J Allergy Clin Immunol Pract, 2026.</li><li>Management of Maternal Anaphylaxis in Pregnancy: A Case Report. PMC, 2017.</li></ol></div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- POSTPARTUM HEMORRHAGE -->
+  <!-- ============================================================ -->
+  <div class="scenario" id="hemorrhage">
+    <div class="scenario-head">
+      <span class="tag">Scenario</span>
+      <h2>Postpartum Hemorrhage</h2>
+      <p>An escalating uterotonic ladder plus tranexamic acid — the two contraindications (asthma, hypertension) are the two things you must ask about before reaching for the second-line agents.</p>
+    </div>
+    <div class="tier-grid">
+      <div class="tier-card tier1"><h4>First-Line</h4><ul><li>Oxytocin</li><li>Tranexamic Acid</li></ul></div>
+      <div class="tier-card tier2"><h4>Second-Line — Check Contraindications</h4><ul><li>Methylergonovine (avoid in HTN)</li><li>Carboprost (avoid in asthma)</li></ul></div>
+      <div class="tier-card tier3"><h4>Use With Caution</h4><ul><li>Misoprostol</li></ul></div>
+    </div>
+    <div class="drug-notes">
+      <h3>Dosing &amp; Use Notes</h3>
+      <div class="drug"><div class="drug-name"><span class="swatch" style="background:var(--teal)"></span>Oxytocin <span class="cat-badge cat-NC">N/C</span></div>
+        <p class="dose">Continuous IV infusion, first-line uterotonic. Half-life &lt;10 minutes — requires continuous infusion, not a single bolus, to sustain effect; watch for water intoxication/hyponatremia with high-dose prolonged infusions given its antidiuretic activity.</p></div>
+      <div class="drug"><div class="drug-name"><span class="swatch" style="background:var(--teal)"></span>Tranexamic Acid <span class="cat-badge cat-B">B</span></div>
+        <p class="dose"><strong>1 g IV</strong> when blood loss exceeds 500 mL (vaginal) or 1000 mL (cesarean) and bleeding persists despite oxytocin. Reduces total blood loss and PPH-related mortality.</p></div>
+      <div class="drug"><div class="drug-name"><span class="swatch" style="background:var(--blue)"></span>Methylergonovine <span class="cat-badge cat-X">X</span></div>
+        <p class="dose"><strong>0.2 mg IM</strong> (standard route — avoid routine IV administration due to hypertensive/stroke risk; if IV is truly necessary, give over ≥60 seconds with continuous BP monitoring). <strong>Contraindicated in hypertension/preeclampsia.</strong></p></div>
+      <div class="drug"><div class="drug-name"><span class="swatch" style="background:var(--blue)"></span>Carboprost (15-methyl PGF2α) <span class="cat-badge cat-NC">N/C</span></div>
+        <p class="dose"><strong>0.25 mg IM</strong>, repeatable. <strong>Contraindicated in asthma</strong> — causes significant bronchospasm/bronchoconstriction; also causes vomiting more often than oxytocin alone.</p></div>
+    </div>
+    <div class="pearl"><span class="pearl-label">Practice Shift</span><p>Ask "asthma or hypertension?" before you reach for the second-line uterotonic, not after — the two agents you'd reach for are contraindicated in exactly the two conditions you haven't asked about yet.</p></div>
+    <div class="citations"><span class="cite-label">Sources</span><ol><li>Methylergometrine Dosing in PPH with Asthma. droracle.ai clinical reference, 2026.</li><li>Preventing and Treating Postpartum Haemorrhage: Uterotonics and Tranexamic Acid. WFSA Anaesthesia Tutorial 540, 2025.</li></ol></div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- RSI / SEDATION / ANALGESIA -->
+  <!-- ============================================================ -->
+  <div class="scenario" id="rsi">
+    <div class="scenario-head">
+      <span class="tag">Scenario</span>
+      <h2>RSI / Sedation / Analgesia</h2>
+      <p>Pregnancy's physiologic changes (increased plasma volume, decreased plasma cholinesterase, aortocaval compression) shift drug behavior even when the dose on the syringe looks identical to non-pregnant RSI.</p>
+    </div>
+    <div class="tier-grid">
+      <div class="tier-card tier2"><h4>Moderately Safe — Standard Choice</h4><ul><li>Succinylcholine</li><li>Rocuronium</li><li>Propofol</li><li>Fentanyl</li></ul></div>
+      <div class="tier-card tier3"><h4>Use With Caution / Case-by-Case</h4><ul><li>Ketamine</li><li>Morphine</li></ul></div>
+      <div class="tier-card tier5"><h4>Data Lacking</h4><ul><li>Sugammadex (reversal)</li></ul></div>
+    </div>
+    <div class="drug-notes">
+      <h3>Dosing &amp; Use Notes</h3>
+      <div class="drug"><div class="drug-name"><span class="swatch" style="background:var(--blue)"></span>Succinylcholine <span class="cat-badge cat-C">C</span></div>
+        <p class="dose">Standard <strong>1–1.5 mg/kg IV</strong> dosing — still the most-used agent for obstetric RSI (used in ~86-90% of cases per recent audits) given its fast onset/offset, though decreased plasma cholinesterase in pregnancy can prolong its effect somewhat.</p></div>
+      <div class="drug"><div class="drug-name"><span class="swatch" style="background:var(--blue)"></span>Rocuronium <span class="cat-badge cat-C">C</span></div>
+        <p class="dose">Standard <strong>0.6–1.2 mg/kg IV</strong> RSI dosing — 2015 guidelines favor rocuronium over succinylcholine for RSI generally, with sugammadex available for rapid reversal if the airway is lost. Comparable neonatal outcomes to succinylcholine in recent meta-analysis.</p></div>
+      <div class="drug"><div class="drug-name"><span class="swatch" style="background:var(--blue)"></span>Propofol <span class="cat-badge cat-C">C</span></div>
+        <p class="dose">Standard induction dosing (~1–2 mg/kg) — pharmacokinetics in pregnancy aren't fully characterized, but it remains the standard induction agent; titrate to effect given altered volume of distribution.</p></div>
+      <div class="drug"><div class="drug-name"><span class="swatch" style="background:var(--amber)"></span>Ketamine <span class="cat-badge cat-NC">N/C</span></div>
+        <p class="dose">Can increase uterine tone/contractility at higher doses — reasonable in hemodynamically unstable patients (hemorrhage, sepsis) where its sympathomimetic profile is an advantage, but discuss timing with obstetrics if delivery isn't imminent.</p></div>
+      <div class="drug"><div class="drug-name"><span class="swatch" style="background:var(--blue)"></span>Fentanyl <span class="cat-badge cat-C">C</span></div>
+        <p class="dose">Standard analgesic dosing; opioid clearance increases 60-70% in pregnancy versus postpartum, so effect may be shorter-lived than expected at a "normal" dose.</p></div>
+    </div>
+    <div class="pearl"><span class="pearl-label">Practice Shift</span><p>Position matters as much as drug choice here — left uterine displacement during and after induction prevents the aortocaval-compression hypotension that gets blamed on the drug.</p></div>
+    <div class="citations"><span class="cite-label">Sources</span><ol><li>Intubation Conditions and Neonatal Outcomes with Rocuronium vs Suxamethonium in Cesarean Sections. PMC, 2025.</li><li>Anesthetic Management of the Pregnant Patient Undergoing Non-Obstetric Surgery. PMC, 2025.</li></ol></div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- ANTIEMETICS -->
+  <!-- ============================================================ -->
+  <div class="scenario" id="antiemetics">
+    <div class="scenario-head">
+      <span class="tag">Scenario</span>
+      <h2>Antiemetics / Hyperemesis Gravidarum</h2>
+      <p>First-line is oral and low-tech; the IV escalation ladder is where ED visits actually happen.</p>
+    </div>
+    <div class="tier-grid">
+      <div class="tier-card tier1"><h4>First-Line (Oral)</h4><ul><li>Pyridoxine + Doxylamine</li></ul></div>
+      <div class="tier-card tier2"><h4>Moderately Safe (IV Escalation)</h4><ul><li>Diphenhydramine</li><li>Ondansetron</li><li>Metoclopramide</li></ul></div>
+      <div class="tier-card tier3"><h4>Use With Caution</h4><ul><li>Promethazine / Prochlorperazine</li></ul></div>
+    </div>
+    <div class="drug-notes">
+      <h3>Dosing &amp; Use Notes</h3>
+      <div class="drug"><div class="drug-name"><span class="swatch" style="background:var(--teal)"></span>Pyridoxine + Doxylamine <span class="cat-badge cat-A">A</span></div>
+        <p class="dose">First-line for standard nausea/vomiting of pregnancy — oral only, so not useful once vomiting prevents absorption (i.e., not an ED-tier rescue agent on its own).</p></div>
+      <div class="drug"><div class="drug-name"><span class="swatch" style="background:var(--blue)"></span>Ondansetron <span class="cat-badge cat-B">B</span></div>
+        <p class="dose">Standard <strong>4–8 mg IV</strong> dosing. Large Danish registry data (n=608,385) found no increased risk of major birth defect, stillbirth, or preterm labor; a smaller case-control study flagged a possible cleft-palate signal the authors themselves attributed to chance. Bottom line: reasonable first IV agent, with an honest, shared-decision conversation about the mixed data.</p></div>
+      <div class="drug"><div class="drug-name"><span class="swatch" style="background:var(--blue)"></span>Metoclopramide <span class="cat-badge cat-B">B</span></div>
+        <p class="dose">Standard <strong>10 mg IV</strong> dosing; effective and has less teratogenicity concern than ondansetron in some reviews, but the 2013 EMA warning limits duration of use to 5 days due to extrapyramidal/tardive risk — watch for acute dystonia.</p></div>
+      <div class="drug"><div class="drug-name"><span class="swatch" style="background:var(--amber)"></span>Promethazine / Prochlorperazine <span class="cat-badge cat-C">C</span></div>
+        <p class="dose">Effective but higher extrapyramidal/oculogyric-crisis risk than metoclopramide or ondansetron — reasonable second-line if first agents fail, stop immediately if dystonic reaction occurs.</p></div>
+    </div>
+    <div class="pearl"><span class="pearl-label">Practice Shift</span><p>Don't forget the adjuncts — thiamine repletion and fluid resuscitation matter as much as the antiemetic choice in true hyperemesis, and thiamine should be given before/with dextrose-containing fluids to avoid precipitating Wernicke's in a malnourished hyperemesis patient.</p></div>
+    <div class="citations"><span class="cite-label">Sources</span><ol><li>RCOG Green-top Guideline 69. The Management of Nausea and Vomiting of Pregnancy and Hyperemesis Gravidarum.</li><li>Clinical Conundrum: Pregnant and Puking — What's Safe and Effective in the ED? REBEL EM, 2025.</li><li>Nausea and Vomiting in Pregnancy: Therapeutics. Taming the SRU, 2021.</li></ol></div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- ANTICOAGULATION -->
+  <!-- ============================================================ -->
+  <div class="scenario" id="anticoagulation">
+    <div class="scenario-head">
+      <span class="tag">Scenario</span>
+      <h2>Anticoagulation (VTE / PE)</h2>
+      <p>The safest anticoagulants in pregnancy don't cross the placenta at all — that single fact drives almost every choice in this category.</p>
+    </div>
+    <div class="tier-grid">
+      <div class="tier-card tier1"><h4>Extensive Data / Safe</h4><ul><li>Low-Molecular-Weight Heparin</li><li>Unfractionated Heparin</li></ul></div>
+      <div class="tier-card tier3"><h4>Use With Caution — Specific Indication Only</h4><ul><li>Warfarin (mechanical valves)</li></ul></div>
+      <div class="tier-card tier4"><h4>Avoid</h4><ul><li>Warfarin (routine VTE/PE)</li></ul></div>
+      <div class="tier-card tier5"><h4>Data Lacking / Not Recommended</h4><ul><li>DOACs (apixaban, rivaroxaban, etc.)</li></ul></div>
+    </div>
+    <div class="drug-notes">
+      <h3>Dosing &amp; Use Notes</h3>
+      <div class="drug"><div class="drug-name"><span class="swatch" style="background:var(--teal)"></span>LMWH <span class="cat-badge cat-B">B</span></div>
+        <p class="dose">Weight-based therapeutic dosing as in non-pregnant patients; does not cross the placenta, making it first-line for VTE/PE treatment and prophylaxis throughout pregnancy.</p></div>
+      <div class="drug"><div class="drug-name"><span class="swatch" style="background:var(--teal)"></span>Unfractionated Heparin <span class="cat-badge cat-C">C</span></div>
+        <p class="dose">Preferred over LMWH when rapid reversibility matters (peripartum, planned delivery, or urgent procedure) given its short half-life; requires frequent aPTT monitoring to maintain therapeutic range.</p></div>
+      <div class="drug"><div class="drug-name"><span class="swatch" style="background:var(--red)"></span>Warfarin <span class="cat-badge cat-X">X</span></div>
+        <p class="dose">Crosses the placenta; associated with embryopathy, especially with first-trimester exposure — <strong>generally avoided for routine VTE/PE</strong>. Remains the preferred agent specifically for mechanical heart valves despite the fetal risk, since it carries the lowest maternal valve-thrombosis risk; some patients switch to LMWH for the first trimester and back to warfarin thereafter — an individualized risk/benefit decision, not a protocol.</p></div>
+      <div class="drug"><div class="drug-name"><span class="swatch" style="background:var(--purple)"></span>DOACs <span class="cat-badge cat-C">C</span></div>
+        <p class="dose">Limited human pregnancy safety data; <strong>generally not recommended</strong> in pregnancy or lactation given placental transfer concerns and insufficient safety/efficacy data.</p></div>
+    </div>
+    <div class="pearl"><span class="pearl-label">Practice Shift</span><p>If a patient on a DOAC turns out to be pregnant, that's a bridge-to-LMWH conversation, not a "continue and monitor" one — the data gap here is real, not just theoretical caution.</p></div>
+    <div class="citations"><span class="cite-label">Sources</span><ol><li>Anticoagulant Therapy in Pregnancy. StatPearls [Internet]. NCBI Bookshelf NBK606098, 2024.</li></ol></div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- TOXICOLOGY ANTIDOTES -->
+  <!-- ============================================================ -->
+  <div class="scenario" id="toxicology">
+    <div class="scenario-head">
+      <span class="tag">Scenario</span>
+      <h2>Toxicology Antidotes</h2>
+      <p>The governing principle across nearly every antidote: treat the mother as you would any patient. Maternal stabilization is fetal stabilization, and withholding a maternal antidote out of fetal-risk caution is very rarely the right call.</p>
+    </div>
+    <div class="tier-grid">
+      <div class="tier-card tier1"><h4>Extensive Data / Safe — Give Without Hesitation</h4><ul><li>Naloxone</li><li>N-Acetylcysteine (NAC)</li><li>Activated Charcoal</li><li>Oxygen (CO poisoning)</li></ul></div>
+      <div class="tier-card tier2"><h4>Moderately Safe</h4><ul><li>Fomepizole</li><li>Calcium Gluconate</li></ul></div>
+      <div class="tier-card tier3"><h4>Use With Caution</h4><ul><li>Physostigmine</li><li>Flumazenil</li></ul></div>
+      <div class="tier-card tier5"><h4>Data Lacking</h4><ul><li>Hydroxocobalamin</li><li>Deferoxamine</li></ul></div>
+    </div>
+    <div class="drug-notes">
+      <h3>Dosing &amp; Use Notes</h3>
+      <div class="drug"><div class="drug-name"><span class="swatch" style="background:var(--teal)"></span>Naloxone <span class="cat-badge cat-B">B</span></div>
+        <p class="dose">Standard <strong>0.04–0.4 mg IV/IM/IN</strong> dosing, titrated to respiration — do not withhold for a pregnant patient with opioid-induced respiratory depression. It can precipitate maternal (and, if near term, neonatal) withdrawal, but untreated maternal hypoxia is the greater fetal threat by far.</p></div>
+      <div class="drug"><div class="drug-name"><span class="swatch" style="background:var(--teal)"></span>N-Acetylcysteine <span class="cat-badge cat-B">B</span></div>
+        <p class="dose">Standard weight-based protocol via the Rumack-Matthew nomogram — NAC is <strong>protective for the fetus as well as the mother</strong> in acetaminophen overdose, since fetal hepatotoxicity mirrors maternal. Never withhold or delay for pregnancy.</p></div>
+      <div class="drug"><div class="drug-name"><span class="swatch" style="background:var(--blue)"></span>Fomepizole <span class="cat-badge cat-C">C</span></div>
+        <p class="dose">Standard loading/maintenance dosing for methanol/ethylene glycol poisoning — preferred over ethanol as the competitive-inhibitor bridge given ethanol's own CNS-depressant and hypoglycemic burden on top of pregnancy.</p></div>
+      <div class="drug"><div class="drug-name"><span class="swatch" style="background:var(--amber)"></span>Physostigmine <span class="cat-badge cat-C">C</span></div>
+        <p class="dose">Same contraindication logic as in the non-pregnant patient (avoid with sodium-channel-blocking co-ingestants/wide QRS) — pregnancy itself is not an additional contraindication, but the usual caution applies regardless.</p></div>
+    </div>
+    <div class="pearl"><span class="pearl-label">Practice Shift</span><p>Pregnancy is very rarely a reason to withhold or underdose a maternal antidote — treat the poisoning aggressively and correctly, and the fetus benefits from the same decision.</p></div>
+    <div class="citations"><span class="cite-label">Sources</span><ol><li>General toxicology principle of maternal-fetal antidote management, cross-referenced against StatPearls/Medscape entries for each agent (see companion Antidotes &amp; Reversal Agents reference for full dosing detail).</li></ol></div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- ANTIBIOTICS -->
+  <!-- ============================================================ -->
+  <div class="scenario" id="antibiotics">
+    <div class="scenario-head">
+      <span class="tag">Scenario</span>
+      <h2>Antibiotics</h2>
+      <p>Beta-lactams remain the reliable backbone; the "avoid" list is short but consequential, and several agents flip categories specifically near term.</p>
+    </div>
+    <div class="tier-grid">
+      <div class="tier-card tier1"><h4>Extensive Data / Safe</h4><ul><li>Penicillins</li><li>Cephalosporins</li><li>Clindamycin</li><li>Azithromycin</li></ul></div>
+      <div class="tier-card tier2"><h4>Moderately Safe</h4><ul><li>Metronidazole</li><li>Vancomycin (2nd/3rd trimester)</li><li>Erythromycin (not estolate)</li></ul></div>
+      <div class="tier-card tier3"><h4>Use With Caution / Trimester- or Term-Specific</h4><ul><li>Nitrofurantoin (avoid 1st tri &amp; at term)</li><li>Trimethoprim (avoid 1st tri)</li><li>Ceftriaxone (caution at term)</li></ul></div>
+      <div class="tier-card tier4"><h4>Avoid</h4><ul><li>Tetracyclines</li><li>Fluoroquinolones</li><li>Aminoglycosides (unless severe infection)</li><li>Sulfonamides (near delivery)</li></ul></div>
+    </div>
+    <div class="drug-notes">
+      <h3>Dosing &amp; Use Notes</h3>
+      <div class="drug"><div class="drug-name"><span class="swatch" style="background:var(--teal)"></span>Penicillins / Cephalosporins <span class="cat-badge cat-B">B</span></div>
+        <p class="dose">Standard non-pregnant dosing throughout pregnancy — the preferred first-line class for nearly any bacterial infection where they're appropriate coverage. <strong>Ceftriaxone caution at term</strong> only, given a theoretical kernicterus risk in the neonate from bilirubin displacement.</p></div>
+      <div class="drug"><div class="drug-name"><span class="swatch" style="background:var(--amber)"></span>Nitrofurantoin <span class="cat-badge cat-B">B</span></div>
+        <p class="dose">Safe in the second and third trimesters for uncomplicated UTI; <strong>avoid in the first trimester</strong> (cleft lip signal) and <strong>at term</strong> (neonatal hemolysis risk).</p></div>
+      <div class="drug"><div class="drug-name"><span class="swatch" style="background:var(--amber)"></span>Trimethoprim <span class="cat-badge cat-C">C</span></div>
+        <p class="dose">A folate antagonist — <strong>avoid in the first trimester</strong>; considered safe after.</p></div>
+      <div class="drug"><div class="drug-name"><span class="swatch" style="background:var(--red)"></span>Tetracyclines <span class="cat-badge cat-D">D</span></div>
+        <p class="dose"><strong>Avoid throughout pregnancy</strong> — stains developing fetal bone/teeth and carries rare maternal hepatotoxicity risk with IV use.</p></div>
+      <div class="drug"><div class="drug-name"><span class="swatch" style="background:var(--red)"></span>Fluoroquinolones <span class="cat-badge cat-C">C</span></div>
+        <p class="dose"><strong>Avoid</strong> — associated with fetal cartilage/bone concern in animal data (disputed in degree, not existence) plus suggested renal/cardiac/CNS toxicity signals; use only if no alternative exists for a serious infection.</p></div>
+    </div>
+    <div class="pearl"><span class="pearl-label">Practice Shift</span><p>Nitrofurantoin and trimethoprim aren't simply "safe" or "unsafe" — they flip category by trimester. Check gestational age before reflexively prescribing the standard UTI first-line.</p></div>
+    <div class="citations"><span class="cite-label">Sources</span><ol><li>Nguyen, et al. A Review of Antibiotic Safety in Pregnancy — 2025 Update. Pharmacotherapy, 2025.</li><li>Antibiotics in Pregnancy. GPNotebook/Primary Care Notebook, 2025.</li><li>Antibiotics and Pregnancy: What's Safe? Mayo Clinic.</li></ol></div>
+  </div>
+
+  <div class="closer">
+    <h3>10 Scenarios — Emergency Drugs in Pregnancy</h3>
+    <p>Standalone from the Antidotes &amp; Reversal Agents guide and the Intoxicating Substances reference — this document answers "what do I reach for and how do I dose it" for the pregnant patient specifically, organized by clinical scenario rather than drug class.</p>
+  </div>
+
+  <p class="footer-note">The Critical Vector — Clinical Reference Series. For educational use by clinicians and trainees. Not a substitute for institutional protocols, obstetric/MFM consultation, or primary literature review.</p>
+
+</div>
+
+<script>
+function filterScenarios() {
+  const raw = document.getElementById('symptomSearch').value.trim();
+  const q = raw.toLowerCase();
+  const cards = document.querySelectorAll('.scenario');
+  let matches = 0;
+  let firstMatch = null;
+  cards.forEach(card => {
+    const text = card.textContent.toLowerCase();
+    const isMatch = (q === '' || text.includes(q));
+    card.style.display = isMatch ? '' : 'none';
+    if (isMatch) { matches++; if (!firstMatch) firstMatch = card; }
+  });
+  const countEl = document.getElementById('searchCount');
+  const noResultsEl = document.getElementById('noResultsMsg');
+  if (q === '') { countEl.textContent = ''; noResultsEl.style.display = 'none'; }
+  else {
+    countEl.textContent = matches + ' match' + (matches !== 1 ? 'es' : '') + ' found';
+    noResultsEl.style.display = matches === 0 ? '' : 'none';
+  }
+  window._firstMatch = firstMatch;
+}
+function handleSearchKey(e) {
+  if (e.key === 'Enter' && window._firstMatch) {
+    window._firstMatch.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+</script>
+
+<footer style="max-width:900px;margin:24px auto 0;padding:24px 16px 32px;font-size:12.5px;color:var(--text3);font-family:'Source Serif 4',serif;font-style:italic;text-align:center">The Critical Vector · Direction and magnitude.</footer>
+</body>
+</html>

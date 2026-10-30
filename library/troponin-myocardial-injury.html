@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Troponin &amp; Myocardial Injury — The Critical Vector</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<style>
+:root{
+  --bg:#0a0e14; --surface:#111720; --surface2:#182030;
+  --border:rgba(255,255,255,0.08);
+  --teal:#00d4aa; --blue:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa;
+  --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  background:var(--bg); color:var(--text);
+  font-family:'Source Serif 4', Georgia, serif; font-size:16px; line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,.label,.kicker,.badge,nav a,th{font-family:'Syne', sans-serif;}
+.mono{font-family:'IBM Plex Mono', monospace;}
+.page{max-width:900px; margin:0 auto; padding:0 24px 60px;}
+header{padding:32px 0 20px; border-bottom:1px solid var(--border);}
+.kicker{
+  font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--teal); margin-bottom:10px;
+}
+h1{font-family:'Syne', sans-serif; font-weight:800; font-size:30px; line-height:1.15; margin:0 0 10px; letter-spacing:.005em;}
+header p{font-family:'Source Serif 4', serif; font-style:italic; color:var(--text2); font-size:15.5px; margin:0; max-width:700px;}
+.alert{
+  margin:18px 0; padding:13px 18px; border-radius:10px; font-size:14px;
+  background:rgba(0,212,170,0.10); border:1px solid rgba(0,212,170,0.28); color:#bdf5e8;
+}
+.alert.c-red{background:rgba(232,76,76,0.10); border-color:rgba(232,76,76,0.28); color:#ffd7d7;}
+.alert.c-amber{background:rgba(245,158,11,0.10); border-color:rgba(245,158,11,0.28); color:#ffe8bd;}
+.alert.c-blue{background:rgba(96,165,250,0.10); border-color:rgba(96,165,250,0.28); color:#cfe0ff;}
+nav{display:flex; flex-wrap:wrap; gap:7px; padding:18px 0; border-bottom:1px solid var(--border); margin-bottom:8px;}
+nav a{
+  font-size:12.5px; font-weight:600; color:var(--text2); background:var(--surface);
+  border:1px solid var(--border); padding:7px 12px; border-radius:20px;
+  text-decoration:none; white-space:nowrap; transition:all .15s;
+}
+nav a:hover{color:var(--text); border-color:var(--teal);}
+section{padding:30px 0; border-bottom:1px solid var(--border);}
+.sec-head{
+  display:flex; align-items:baseline; gap:10px; padding:11px 18px;
+  border-left:4px solid var(--teal);
+  background:linear-gradient(90deg, rgba(0,212,170,0.10), transparent);
+  border-radius:0 8px 8px 0; margin-bottom:16px;
+}
+.sec-head.c-blue{border-left-color:var(--blue); background:linear-gradient(90deg, rgba(96,165,250,0.10), transparent);}
+.sec-head.c-red{border-left-color:var(--red); background:linear-gradient(90deg, rgba(232,76,76,0.10), transparent);}
+.sec-head.c-amber{border-left-color:var(--amber); background:linear-gradient(90deg, rgba(245,158,11,0.10), transparent);}
+.sec-head.c-purple{border-left-color:var(--purple); background:linear-gradient(90deg, rgba(167,139,250,0.10), transparent);}
+.sec-num{font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--text3);}
+h2{font-family:'Syne', sans-serif; font-weight:700; font-size:20px; margin:0; color:var(--text);}
+p.body{font-size:15.5px; margin:12px 0;}
+p.note{font-size:13.5px; color:var(--text2); font-style:italic; margin:10px 0;}
+.box{
+  background:var(--surface2); border:1px solid var(--border); border-radius:10px;
+  padding:16px 18px; margin:14px 0; font-size:14.5px;
+}
+.box.t-teal{border-left:3px solid var(--teal);}
+.box.t-blue{border-left:3px solid var(--blue);}
+.box.t-red{border-left:3px solid var(--red); background:rgba(232,76,76,0.06);}
+.box.t-amber{border-left:3px solid var(--amber);}
+.box.t-purple{border-left:3px solid var(--purple);}
+.box b{color:var(--text); font-weight:700;}
+.box p{margin:7px 0;}
+table{width:100%; border-collapse:collapse; margin:14px 0; font-size:13.5px;}
+th{background:var(--surface2); color:var(--text); text-align:left; padding:9px 11px; font-weight:600; font-size:12px; letter-spacing:.02em; border-bottom:2px solid var(--border);}
+td{padding:9px 11px; border-bottom:1px solid var(--border); vertical-align:top; font-family:'Source Serif 4', serif;}
+tr:nth-child(even) td{background:rgba(255,255,255,0.02);}
+.checklist{list-style:none; padding-left:0; margin:10px 0;}
+.checklist li{padding:5px 0 5px 26px; position:relative; font-size:14.5px;}
+.checklist li:before{content:"\2713"; position:absolute; left:0; color:var(--teal); font-weight:700;}
+.sources{font-size:13px; color:var(--text2); padding-left:20px;}
+.sources li{margin-bottom:7px;}
+footer{padding:26px 0 0; margin-top:6px; font-size:12.5px; color:var(--text3); font-family:'Source Serif 4', serif; font-style:italic;}
+</style>
+<style id="cv-print">
+/* ===== CV PRINT v1.0 (per _cv-schema.html) ===== */
+@media print{
+  :root{
+    --bg:#f4f5f7; --surface:#ffffff; --surface2:#eef1f4; --border:#d7dde3;
+    --teal:#00a688; --blue:#1d4ed8; --accent:#00a688; --accent2:#1d4ed8;
+    --red:#c53030; --amber:#b45309; --purple:#7c3aed;
+    --text:#0f1923; --text2:#4a5670; --text3:#6b7688;
+  }
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  html, body{background:#f4f5f7 !important; color:#0f1923 !important;}
+  nav, .nav, .toc-pills{display:none !important;}
+  .alert{background:rgba(0,166,136,.08) !important; color:#0f1923 !important;}
+  td{color:#0f1923 !important;}
+  section, .box, table, .card, .stat-card, .statcard, .step-row, .step{break-inside:avoid;}
+  h2, .sec-head{break-after:avoid;}
+  a{color:inherit; text-decoration:none;}
+}
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ a{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../continuum.html">The Continuum</a><span class="cv-sb-meta">Published 6 Oct 2026 · R. E. Suscitate &amp; A. Systole</span></nav><div class="page">
+<header>
+<div class="kicker">The Critical Vector · Troponin &amp; Myocardial Injury</div>
+<h1>Troponin Is a Symptom, Not a Diagnosis</h1>
+<p>Cardiology / resuscitation. Verified against the Fourth and Fifth Universal Definitions of Myocardial Infarction. September 2026.</p>
+</header>
+<div class="alert">
+  VERIFIED: the core teaching of the source reel — troponin marks myocardial injury, not infarction, and injury requires evidence of ischemia to become MI — matches the Fourth Universal Definition of MI (Thygesen et al., Circulation 2018) exactly, and survives unchanged into the Fifth.
+</div>
+<div class="alert c-red">
+  ONE REAL GAP: the reel's closing "mechanism" slide teaches Type 1 / Type 2 MI and calls this "the 2026 update." That schema was retired on August 28, 2026. The actual 2026 update — the Fifth Universal Definition of MI (Mills et al., Eur Heart J 2026) — replaced it with a three-category primary/secondary/procedure-related classification. See Section 3.
+</div>
+<nav>
+<a href="#s1">1 · Injury vs. infarction</a>
+<a href="#s2">2 · Why the number lies alone</a>
+<a href="#s3">3 · What changed in 2026, corrected</a>
+<a href="#s4">4 · Working framework</a>
+<a href="#s5">5 · Quick card &amp; sources</a>
+</nav>
+<main>
+
+<section id="s1">
+<div class="sec-head c-blue"><span class="sec-num">01</span><h2>Injury vs. Infarction</h2></div>
+<div class="box t-blue">
+<p><b>Myocardial injury:</b> at least one cardiac troponin (cTn) value above the 99th-percentile upper reference limit (URL). Nothing else is required. Acute if rising/falling on serials; chronic if stable (≤20% variation).</p>
+</div>
+<p class="body"><b>Myocardial infarction</b> requires injury <i>plus</i> evidence of ischemia — at least one of:</p>
+<ul class="checklist">
+<li>Ischemic symptoms</li>
+<li>New ischemic ECG changes</li>
+<li>New pathological Q waves</li>
+<li>Imaging evidence of new loss of viable myocardium or new regional wall motion abnormality in an ischemic pattern</li>
+<li>Angiographic or autopsy-identified intracoronary thrombus</li>
+</ul>
+<p class="note">This two-part structure — injury as necessary but not sufficient — is the load-bearing concept of the Fourth UDMI and is unchanged in the Fifth.</p>
+</section>
+
+<section id="s2">
+<div class="sec-head"><span class="sec-num">02</span><h2>Why the Number Lies to You Alone</h2></div>
+<p class="body">An elevated troponin says the myocyte membrane failed somewhere. It doesn't say why. Table 1 of the Fourth UDMI lists the mechanism categories explicitly:</p>
+<table>
+<tr><th>Category</th><th>Examples</th></tr>
+<tr><td>Cardiac, non-ACS</td><td>Heart failure, myocarditis, tachy-/brady-arrhythmias, stress cardiomyopathy</td></tr>
+<tr><td>Critical illness</td><td>Sepsis, distributive/cardiogenic shock, multi-organ failure</td></tr>
+<tr><td>Pulmonary</td><td>PE, severe pneumonia, ARDS/respiratory failure</td></tr>
+<tr><td>Renal</td><td>CKD (reduced clearance), AKI</td></tr>
+<tr><td>Neurologic</td><td>Ischemic/hemorrhagic stroke, SAH, TBI (catecholamine-mediated)</td></tr>
+<tr><td>Procedural</td><td>Post-PCI, post-ablation, post-cardioversion, cardiac surgery</td></tr>
+<tr><td>Supply–demand mismatch</td><td>Severe anemia, hypotension, sustained tachyarrhythmia, hypertensive emergency</td></tr>
+<tr><td>Other</td><td>Strenuous exertion, infiltrative disease (amyloid, sarcoid), cardiotoxic chemo, burns</td></tr>
+</table>
+<p class="note">Not decorative — this is the differential you're running at the bedside every time a resus or ICU troponin comes back hot before you've called a STEMI/NSTEMI activation.</p>
+</section>
+
+<section id="s3">
+<div class="sec-head c-red"><span class="sec-num">03</span><h2>What Changed in 2026, Corrected</h2></div>
+<div class="box t-red">
+<p><b>Fifth Universal Definition of Myocardial Infarction</b> — Mills NL, Newby LK, Zaman S, et al.; ESC/ACC/AHA/WHF Universal Definition Document Advisory Group. Published August 28, 2026, <i>European Heart Journal</i>, jointly issued by ESC/ACC/AHA/WHF, endorsed by EACTS/STS, affirmed by SCAI.</p>
+<p>It retires the familiar Type 1 / 2 / 3 / 4a–c / 5 taxonomy and replaces it with three clinical categories:</p>
+</div>
+<table>
+<tr><th>New category</th><th>Replaces</th><th>Definition</th></tr>
+<tr><td>Primary MI</td><td>Type 1</td><td>Spontaneous, driven by acute coronary pathology — most commonly atherothrombotic plaque disruption, but the document explicitly allows non-atherothrombotic coronary pathologies identified by imaging/functional testing</td></tr>
+<tr><td>Secondary MI</td><td>Type 2</td><td>Driven by an acute non-coronary condition causing oxygen supply–demand mismatch</td></tr>
+<tr><td>Procedure-related MI</td><td>Type 4/5 family</td><td>Tied to PCI or cardiac surgery, with objective criteria for when peri-procedural troponin rise crosses into infarction territory</td></tr>
+</table>
+<p class="body">Two changes beyond the renaming have real bedside teeth:</p>
+<ul class="checklist">
+<li><b>Sex-specific troponin thresholds</b> are built into the definition itself, not left as an assay-dependent footnote</li>
+<li><b>Imaging is explicitly promoted</b> to establish MI <i>etiology</i> once injury + ischemia criteria are met — pushing practice further from ECG-and-troponin-only adjudication, especially in ambiguous or MINOCA-type presentations</li>
+</ul>
+<p class="note">Dedicated ICD-11 codes are also proposed to standardize downstream coding and research use of the new taxonomy.</p>
+</section>
+
+<section id="s4">
+<div class="sec-head c-blue"><span class="sec-num">04</span><h2>A Working Framework (Fifth UDMI–Aligned)</h2></div>
+<div class="box t-blue">
+<p>1. <b>Is there myocardial injury?</b> cTn above the sex-specific 99th-percentile URL.</p>
+<p>2. <b>Acute or chronic?</b> Look at the delta on serials, not the single number.</p>
+<p>3. <b>Is there evidence of ischemia?</b> Symptoms, ECG, imaging, angiographic/pathologic findings.</p>
+<p>4. <b>If MI is confirmed, which clinical category?</b> Primary, secondary, or procedure-related.</p>
+<p>5. <b>Do you need more information to establish etiology?</b> Echo, CCTA, CMR, or invasive angiography.</p>
+</div>
+</section>
+
+<section id="s5" style="border-bottom:none;">
+<div class="sec-head" style="border-left-color:var(--text3); background:none;"><span class="sec-num">05</span><h2>Quick Reference Card &amp; Primary Sources</h2></div>
+<table>
+<tr><th>Question</th><th>Answer</th></tr>
+<tr><td>Does an elevated troponin mean MI?</td><td>No — it means myocardial injury. MI needs injury + evidence of ischemia.</td></tr>
+<tr><td>Is "Type 1 / Type 2 MI" still current terminology?</td><td>No, as of Aug 28, 2026 — replaced by primary / secondary / procedure-related</td></tr>
+<tr><td>What's new and clinically actionable in the Fifth UDMI?</td><td>Sex-specific troponin thresholds; imaging pushed to define etiology</td></tr>
+<tr><td>Best single-sentence teaching point?</td><td>Injury is a lab value, infarction is a diagnosis, and the diagnosis still needs a second data point</td></tr>
+</table>
+<p class="body"><b>Primary sources checked for this guide:</b></p>
+<ul class="sources">
+<li>Thygesen K, Alpert JS, Jaffe AS, et al. Fourth Universal Definition of Myocardial Infarction (2018). Circulation. 2018;138(20):e618–e651.</li>
+<li>Mills NL, Newby LK, Zaman S, et al.; ESC/ACC/AHA/WHF Universal Definition Document Advisory Group. Fifth Universal Definition of Myocardial Infarction (2026). Eur Heart J. 2026;ehag101. doi:10.1093/eurheartj/ehag101</li>
+<li>European Society of Cardiology. Fifth Universal Definition of Myocardial Infarction (2026) — guideline summary. escardio.org, accessed Sept 2026.</li>
+<li>American College of Cardiology. Ten Points to Remember: Fourth Universal Definition of Myocardial Infarction. acc.org, 2018.</li>
+</ul>
+</section>
+
+</main>
+<footer>
+  This guide checks and updates a 7-slide troponin/MI post. The injury-vs-infarction distinction, the two-part MI criteria, and the non-MI troponin differential all matched the Fourth UDMI exactly. The post's "2026 update" framing was accurate in spirit but described the wrong document; the actual Fifth UDMI reclassification is provided in Section 3. Verified as of September 2026.
+<div class="cv-tagline" style="margin-top:8px">The Critical Vector · Direction and magnitude.</div></footer>
+</div></body>
+</html>

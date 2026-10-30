@@ -1,5 +1,293 @@
 [
   {
+    "file": "library/advanced-vent-terms-audit.html",
+    "section": "locker",
+    "type": "Content Audit",
+    "typeClass": "locker-type",
+    "title": "Advanced Ventilator Terms",
+    "meta": "Content Audit · Oct 2026",
+    "date": "2026-10-28"
+  },
+  {
+    "file": "library/ai-at-the-bedside-audit.html",
+    "section": "locker",
+    "type": "Content Audit",
+    "typeClass": "locker-type",
+    "title": "AI at the Bedside",
+    "meta": "Content Audit · Oct 2026",
+    "date": "2026-10-28"
+  },
+  {
+    "file": "library/cric-sitting-up-audit.html",
+    "section": "locker",
+    "type": "Content Audit",
+    "typeClass": "locker-type",
+    "title": "Cric Sitting Up",
+    "meta": "Content Audit · Oct 2026",
+    "date": "2026-10-28"
+  },
+  {
+    "file": "library/necrotizing-pancreatitis-continuum.html",
+    "section": "continuum",
+    "type": "Content Audit",
+    "typeClass": "continuum-type",
+    "title": "Necrotizing Pancreatitis Across the Continuum",
+    "meta": "Content Audit · Oct 2026",
+    "date": "2026-10-28"
+  },
+  {
+    "file": "library/txa-poise3-audit.html",
+    "section": "locker",
+    "type": "Content Audit",
+    "typeClass": "locker-type",
+    "title": "TXA and POISE-3",
+    "meta": "Content Audit · Oct 2026",
+    "date": "2026-10-28"
+  },
+  {
+    "file": "library/a2b-dexmedetomidine-clonidine-propofol.html",
+    "section": "locker",
+    "type": "Trial Breakdown",
+    "typeClass": "locker-type",
+    "title": "A2B: Alpha-2 Agonists vs Propofol for ICU Sedation",
+    "meta": "Trial Breakdown · Oct 2026",
+    "date": "2026-10-15"
+  },
+  {
+    "file": "library/pancreatitis-severity-ranson-bisap.html",
+    "section": "workshop",
+    "type": "Scoring Systems",
+    "typeClass": "workshop-type",
+    "title": "Pancreatitis Severity: Ranson vs BISAP",
+    "meta": "Scoring Systems · Oct 2026",
+    "date": "2026-10-15"
+  },
+  {
+    "file": "library/prehospital-ketamine-status-epilepticus.html",
+    "section": "flightdeck",
+    "type": "Field Read",
+    "typeClass": "flightdeck-type",
+    "title": "Prehospital Ketamine After Midazolam in Status Epilepticus",
+    "meta": "Field Read · Oct 2026",
+    "date": "2026-10-15"
+  },
+  {
+    "file": "library/vhd-bedside-signs-part-2.html",
+    "section": "continuum",
+    "type": "Bedside Signs",
+    "typeClass": "continuum-type",
+    "title": "Valvular Heart Disease: Bedside Signs, Part 2",
+    "meta": "Bedside Signs · Oct 2026",
+    "date": "2026-10-15"
+  },
+  {
+    "file": "library/waterfall-fluids-pancreatitis.html",
+    "section": "locker",
+    "type": "Trial Breakdown",
+    "typeClass": "locker-type",
+    "title": "WATERFALL: Fluids in Acute Pancreatitis",
+    "meta": "Trial Breakdown · Oct 2026",
+    "date": "2026-10-15"
+  },
+  {
+    "file": "library/human-factors-clinician-performance.html",
+    "section": "workshop",
+    "type": "Reference",
+    "typeClass": "workshop-type",
+    "title": "Human Factors: The Clinician as Part of the Treatment",
+    "meta": "Reference · Oct 2026",
+    "date": "2026-10-15"
+  },
+  {
+    "file": "library/thrombopoietin-critical-illness.html",
+    "section": "locker",
+    "type": "Evidence Review",
+    "typeClass": "locker-type",
+    "title": "Thrombopoietin in Critical Illness",
+    "meta": "Evidence Review · Oct 2026",
+    "date": "2026-10-15"
+  },
+  {
+    "file": "library/anesthesia-breathing-circuits.html",
+    "section": "workshop",
+    "type": "Reference",
+    "typeClass": "workshop-type",
+    "title": "Anesthesia Breathing Circuits",
+    "meta": "Reference · Oct 2026",
+    "date": "2026-10-14"
+  },
+  {
+    "file": "library/extubation-decision-protocol.html",
+    "section": "continuum",
+    "type": "Protocol",
+    "typeClass": "continuum-type",
+    "title": "Extubation Decision Protocol",
+    "meta": "Protocol · Oct 2026",
+    "date": "2026-10-14"
+  },
+  {
+    "file": "library/extubation-strategy.html",
+    "section": "continuum",
+    "type": "Clinical Reasoning",
+    "typeClass": "continuum-type",
+    "title": "Extubation Strategy",
+    "meta": "Clinical Reasoning · Oct 2026",
+    "date": "2026-10-14"
+  },
+  {
+    "file": "library/fio2-washout-atelectasis.html",
+    "section": "locker",
+    "type": "Study Breakdown",
+    "typeClass": "locker-type",
+    "title": "Washing Out With 70% vs 100% Oxygen",
+    "meta": "Study Breakdown · Oct 2026",
+    "date": "2026-10-14"
+  },
+  {
+    "file": "library/teg-interpretation-guide.html",
+    "section": "workshop",
+    "type": "Teaching Guide",
+    "typeClass": "workshop-type",
+    "title": "TEG Interpretation — A Complete Teaching Guide",
+    "meta": "Teaching Guide · Oct 2026",
+    "date": "2026-10-13"
+  },
+  {
+    "file": "library/blood-products-guide.html",
+    "section": "workshop",
+    "type": "Blood Products",
+    "typeClass": "workshop-type",
+    "title": "Blood Products",
+    "meta": "Blood Products · Oct 2026",
+    "date": "2026-10-07"
+  },
+  {
+    "file": "library/code-blue-guide.html",
+    "section": "continuum",
+    "type": "Resuscitation Leadership",
+    "typeClass": "continuum-type",
+    "title": "Code Blue",
+    "meta": "Resuscitation Leadership · Oct 2026",
+    "date": "2026-10-07"
+  },
+  {
+    "file": "library/hypertonic-saline-vs-mannitol.html",
+    "section": "workshop",
+    "type": "Pocket Reference",
+    "typeClass": "workshop-type",
+    "title": "Hypertonic Saline vs. Mannitol",
+    "meta": "Pocket Reference · Oct 2026",
+    "date": "2026-10-07"
+  },
+  {
+    "file": "library/intoxicating-substances-reference.html",
+    "section": "workshop",
+    "type": "Clinical Reference",
+    "typeClass": "workshop-type",
+    "title": "Intoxicating Substances Reference: Stimulants",
+    "meta": "Clinical Reference · Oct 2026",
+    "date": "2026-10-07"
+  },
+  {
+    "file": "library/refractory-vf-dsed.html",
+    "section": "workshop",
+    "type": "Pocket Reference",
+    "typeClass": "workshop-type",
+    "title": "Refractory VF: Vector Change &amp; DSED",
+    "meta": "Pocket Reference · Oct 2026",
+    "date": "2026-10-07"
+  },
+  {
+    "file": "library/remimazolam-guide.html",
+    "section": "workshop",
+    "type": "Pocket Reference",
+    "typeClass": "workshop-type",
+    "title": "Remimazolam",
+    "meta": "Pocket Reference · Oct 2026",
+    "date": "2026-10-07"
+  },
+  {
+    "file": "library/rocuronium-dosing.html",
+    "section": "workshop",
+    "type": "Pocket Reference",
+    "typeClass": "workshop-type",
+    "title": "High-Dose Rocuronium &amp; First-Pass Success",
+    "meta": "Pocket Reference · Oct 2026",
+    "date": "2026-10-07"
+  },
+  {
+    "file": "library/board-tested-infections.html",
+    "section": "workshop",
+    "type": "Empiric Therapy Guide, Part I",
+    "typeClass": "workshop-type",
+    "title": "Board-Tested Infections",
+    "meta": "Empiric Therapy Guide, Part I · Oct 2026",
+    "date": "2026-10-07"
+  },
+  {
+    "file": "library/capnography.html",
+    "section": "workshop",
+    "type": "Pocket Reference",
+    "typeClass": "workshop-type",
+    "title": "Capnography",
+    "meta": "Pocket Reference · Oct 2026",
+    "date": "2026-10-07"
+  },
+  {
+    "file": "library/difficult-airway.html",
+    "section": "continuum",
+    "type": "The Resuscitation Continuum",
+    "typeClass": "continuum-type",
+    "title": "The Difficult Airway",
+    "meta": "The Resuscitation Continuum · Oct 2026",
+    "date": "2026-10-07"
+  },
+  {
+    "file": "library/extreme-axis-deviation.html",
+    "section": "workshop",
+    "type": "Pocket Reference",
+    "typeClass": "workshop-type",
+    "title": "Extreme Axis Deviation (Northwest Axis)",
+    "meta": "Pocket Reference · Oct 2026",
+    "date": "2026-10-07"
+  },
+  {
+    "file": "library/iv-fluids-guide.html",
+    "section": "continuum",
+    "type": "Right Fluid, Wrong Patient?",
+    "typeClass": "continuum-type",
+    "title": "IV Fluids &amp; Volume Resuscitation",
+    "meta": "Right Fluid, Wrong Patient? · Oct 2026",
+    "date": "2026-10-07"
+  },
+  {
+    "file": "library/mechanical-ventilation-full.html",
+    "section": "workshop",
+    "type": "Comprehensive Reference",
+    "typeClass": "workshop-type",
+    "title": "Mechanical Ventilation",
+    "meta": "Comprehensive Reference · Oct 2026",
+    "date": "2026-10-07"
+  },
+  {
+    "file": "library/peds-drug-database-us-complete.html",
+    "section": "workshop",
+    "type": "Pediatric Reference",
+    "typeClass": "workshop-type",
+    "title": "Pediatric Drug Database v4 — US Edition, Fully Reviewed",
+    "meta": "Pediatric Reference · Oct 2026",
+    "date": "2026-10-07"
+  },
+  {
+    "file": "library/volemic-status-resuscitation.html",
+    "section": "workshop",
+    "type": "Pocket Reference",
+    "typeClass": "workshop-type",
+    "title": "Maintaining Volemic Status in Hemorrhagic Shock",
+    "meta": "Pocket Reference · Oct 2026",
+    "date": "2026-10-07"
+  },
+  {
     "file": "posts/flight-paramedicine-anesthesia.html",
     "section": "continuum",
     "type": "Prehospital",
@@ -7,6 +295,726 @@
     "title": "What Flight Paramedicine Actually Taught Me About Anesthesia",
     "meta": "Personal essay · The Continuum · Oct 2026",
     "date": "2026-10-06"
+  },
+  {
+    "file": "library/adapt-sepsis-trial.html",
+    "section": "locker",
+    "type": "Trial Breakdown",
+    "typeClass": "locker-type",
+    "title": "ADAPT-Sepsis Trial",
+    "meta": "Trial Breakdown · Oct 2026",
+    "date": "2026-10-06"
+  },
+  {
+    "file": "library/antidotes-reversal-agents.html",
+    "section": "workshop",
+    "type": "Pocket Reference",
+    "typeClass": "workshop-type",
+    "title": "Antidotes &amp; Reversal Agents",
+    "meta": "Pocket Reference · Oct 2026",
+    "date": "2026-10-06"
+  },
+  {
+    "file": "library/awake-intubation-guide.html",
+    "section": "workshop",
+    "type": "Intubation Series",
+    "typeClass": "workshop-type",
+    "title": "Awake Intubation in the ICU",
+    "meta": "Intubation Series · Oct 2026",
+    "date": "2026-10-06"
+  },
+  {
+    "file": "library/bis-monitoring.html",
+    "section": "workshop",
+    "type": "Pocket Reference",
+    "typeClass": "workshop-type",
+    "title": "BIS Monitoring",
+    "meta": "Pocket Reference · Oct 2026",
+    "date": "2026-10-06"
+  },
+  {
+    "file": "library/ci-aki-prevention-guide.html",
+    "section": "continuum",
+    "type": "Clinical Reasoning",
+    "typeClass": "continuum-type",
+    "title": "CI-AKI Prevention",
+    "meta": "Clinical Reasoning · Oct 2026",
+    "date": "2026-10-06"
+  },
+  {
+    "file": "library/colcot-guide.html",
+    "section": "locker",
+    "type": "Landmark Trial",
+    "typeClass": "locker-type",
+    "title": "COLCOT",
+    "meta": "Landmark Trial · Oct 2026",
+    "date": "2026-10-06"
+  },
+  {
+    "file": "library/cspine-rules-guide.html",
+    "section": "workshop",
+    "type": "Clinical Decision Rules",
+    "typeClass": "workshop-type",
+    "title": "NEXUS, Canadian C-Spine &amp; CT Head Rules",
+    "meta": "Clinical Decision Rules · Oct 2026",
+    "date": "2026-10-06"
+  },
+  {
+    "file": "library/ed-icu-and-critical-infections.html",
+    "section": "workshop",
+    "type": "Empiric Therapy Guide, Part II",
+    "typeClass": "workshop-type",
+    "title": "ED/ICU &amp; Critical Infections",
+    "meta": "Empiric Therapy Guide, Part II · Oct 2026",
+    "date": "2026-10-06"
+  },
+  {
+    "file": "library/hypoxemia-vs-hypoxia.html",
+    "section": "continuum",
+    "type": "Physiology",
+    "typeClass": "continuum-type",
+    "title": "Hypoxemia vs Hypoxia",
+    "meta": "Physiology · Oct 2026",
+    "date": "2026-10-06"
+  },
+  {
+    "file": "library/jw-blood-policy.html",
+    "section": "continuum",
+    "type": "Transfusion & Bioethics",
+    "typeClass": "continuum-type",
+    "title": "Jehovah's Witnesses &amp; Blood Products",
+    "meta": "Transfusion & Bioethics · Oct 2026",
+    "date": "2026-10-06"
+  },
+  {
+    "file": "library/pocus-guided-shock-resuscitation.html",
+    "section": "locker",
+    "type": "Evidence Review",
+    "typeClass": "locker-type",
+    "title": "POCUS-Guided Shock Resuscitation",
+    "meta": "Evidence Review · Oct 2026",
+    "date": "2026-10-06"
+  },
+  {
+    "file": "library/ecg-changes.html",
+    "section": "workshop",
+    "type": "Pocket Reference",
+    "typeClass": "workshop-type",
+    "title": "ECG Changes: Electrolytes &amp; Drug Effects",
+    "meta": "Pocket Reference · Oct 2026",
+    "date": "2026-10-06"
+  },
+  {
+    "file": "library/kalme-ketamine-trial.html",
+    "section": "locker",
+    "type": "Trial Breakdown",
+    "typeClass": "locker-type",
+    "title": "KALME: Ketamine in Mechanically Ventilated Adults",
+    "meta": "Trial Breakdown · Oct 2026",
+    "date": "2026-10-06"
+  },
+  {
+    "file": "library/magnesium-lactate-summary.html",
+    "section": "locker",
+    "type": "Trial Snapshot",
+    "typeClass": "locker-type",
+    "title": "Magnesium &amp; Lactate Clearance",
+    "meta": "Trial Snapshot · Oct 2026",
+    "date": "2026-10-06"
+  },
+  {
+    "file": "library/mnemonics-guide.html",
+    "section": "workshop",
+    "type": "Quick Reference",
+    "typeClass": "workshop-type",
+    "title": "Clinical Mnemonics",
+    "meta": "Quick Reference · Oct 2026",
+    "date": "2026-10-06"
+  },
+  {
+    "file": "library/pe-guideline-cheatsheet.html",
+    "section": "flightdeck",
+    "type": "Journal Club",
+    "typeClass": "flightdeck-type",
+    "title": "2026 Acute PE Guideline — Journal Club Cheat Sheet",
+    "meta": "Journal Club · Oct 2026",
+    "date": "2026-10-06"
+  },
+  {
+    "file": "library/snapp-trial-summary.html",
+    "section": "locker",
+    "type": "Trial Snapshot",
+    "typeClass": "locker-type",
+    "title": "SNaPP Trial",
+    "meta": "Trial Snapshot · Oct 2026",
+    "date": "2026-10-06"
+  },
+  {
+    "file": "library/troponin-myocardial-injury.html",
+    "section": "continuum",
+    "type": "Clinical Reasoning",
+    "typeClass": "continuum-type",
+    "title": "Troponin &amp; Myocardial Injury",
+    "meta": "Clinical Reasoning · Oct 2026",
+    "date": "2026-10-06"
+  },
+  {
+    "file": "library/uw-em-drug-guide.html",
+    "section": "workshop",
+    "type": "Pocket Reference",
+    "typeClass": "workshop-type",
+    "title": "Emergency Medicine Drug Guide: Peds &amp; Adult",
+    "meta": "Pocket Reference · Oct 2026",
+    "date": "2026-10-06"
+  },
+  {
+    "file": "library/ventilator-loops.html",
+    "section": "workshop",
+    "type": "Pocket Reference",
+    "typeClass": "workshop-type",
+    "title": "Ventilator Loops",
+    "meta": "Pocket Reference · Oct 2026",
+    "date": "2026-10-06"
+  },
+  {
+    "file": "library/vhd-bedside-signs.html",
+    "section": "continuum",
+    "type": "Bedside Signs",
+    "typeClass": "continuum-type",
+    "title": "Valvular Heart Disease: Bedside Signs",
+    "meta": "Bedside Signs · Oct 2026",
+    "date": "2026-10-06"
+  },
+  {
+    "file": "library/arrest-after-cardiac-surgery.html",
+    "section": "continuum",
+    "type": "Resuscitation",
+    "typeClass": "continuum-type",
+    "title": "Arrest After Cardiac Surgery",
+    "meta": "Resuscitation · Oct 2026",
+    "date": "2026-10-06"
+  },
+  {
+    "file": "library/ballistics-blast-manual.html",
+    "section": "flightdeck",
+    "type": "Field Manual",
+    "typeClass": "flightdeck-type",
+    "title": "Wound Ballistics &amp; Blast Injury Manual",
+    "meta": "Field Manual · Oct 2026",
+    "date": "2026-10-06"
+  },
+  {
+    "file": "library/continuous-suction-rsi.html",
+    "section": "locker",
+    "type": "Evidence Review",
+    "typeClass": "locker-type",
+    "title": "Continuous Suction During RSI",
+    "meta": "Evidence Review · Oct 2026",
+    "date": "2026-10-06"
+  },
+  {
+    "file": "library/dex-polyuria-guide.html",
+    "section": "workshop",
+    "type": "Spot It, Explain It, Fix It",
+    "typeClass": "workshop-type",
+    "title": "Dexmedetomidine &amp; Polyuria",
+    "meta": "Spot It, Explain It, Fix It · Oct 2026",
+    "date": "2026-10-06"
+  },
+  {
+    "file": "library/emergency-drugs-pregnancy.html",
+    "section": "workshop",
+    "type": "Clinical Reference",
+    "typeClass": "workshop-type",
+    "title": "Emergency Drugs in Pregnancy",
+    "meta": "Clinical Reference · Oct 2026",
+    "date": "2026-10-06"
+  },
+  {
+    "file": "library/invasive-waveform-diagnostics.html",
+    "section": "workshop",
+    "type": "Hemodynamic Monitoring",
+    "typeClass": "workshop-type",
+    "title": "Invasive Waveform Diagnostics — Arterial &amp; Right Heart",
+    "meta": "Hemodynamic Monitoring · Oct 2026",
+    "date": "2026-10-06"
+  },
+  {
+    "file": "library/macrolides-compared.html",
+    "section": "workshop",
+    "type": "Pharmacology",
+    "typeClass": "workshop-type",
+    "title": "Macrolides Compared",
+    "meta": "Pharmacology · Oct 2026",
+    "date": "2026-10-06"
+  },
+  {
+    "file": "library/perls-map.html",
+    "section": "workshop",
+    "type": "Protocol Map",
+    "typeClass": "workshop-type",
+    "title": "ASA PeRLS Protocol Map",
+    "meta": "Protocol Map · Oct 2026",
+    "date": "2026-10-06"
+  },
+  {
+    "file": "library/sutures-tying-guide.html",
+    "section": "workshop",
+    "type": "Clinical Reference",
+    "typeClass": "workshop-type",
+    "title": "Sutures &amp; Tying Techniques",
+    "meta": "Clinical Reference · Oct 2026",
+    "date": "2026-10-06"
+  },
+  {
+    "file": "library/asra-neuraxial-guide.html",
+    "section": "workshop",
+    "type": "Anesthesia Reference",
+    "typeClass": "workshop-type",
+    "title": "Neuraxial Blocks &amp; Blood Thinners",
+    "meta": "Anesthesia Reference · Oct 2026",
+    "date": "2026-10-06"
+  },
+  {
+    "file": "library/bleeding-reversal-guide.html",
+    "section": "workshop",
+    "type": "Pocket Reference",
+    "typeClass": "workshop-type",
+    "title": "Bleeding, Reversal &amp; Antiplatelet Decisions",
+    "meta": "Pocket Reference · Oct 2026",
+    "date": "2026-10-06"
+  },
+  {
+    "file": "library/pediatric-code-blue-guide.html",
+    "section": "workshop",
+    "type": "Numbers Worth Knowing",
+    "typeClass": "workshop-type",
+    "title": "Pediatric Code Blue",
+    "meta": "Numbers Worth Knowing · Oct 2026",
+    "date": "2026-10-06"
+  },
+  {
+    "file": "library/brain-death-bd-dnc-framework.html",
+    "section": "locker",
+    "type": "Guideline Verification",
+    "typeClass": "locker-type",
+    "title": "Brain Death / Death by Neurologic Criteria, Verified",
+    "meta": "Guideline Verification · Sep 2026",
+    "date": "2026-09-12"
+  },
+  {
+    "file": "library/primary-palliative-care-icu.html",
+    "section": "continuum",
+    "type": "Clinical Practice",
+    "typeClass": "continuum-type",
+    "title": "Primary Palliative Care in the ICU",
+    "meta": "Clinical Practice · Sep 2026",
+    "date": "2026-09-12"
+  },
+  {
+    "file": "library/copd-hypoxic-drive-myth.html",
+    "section": "continuum",
+    "type": "Physiology Deep Dive",
+    "typeClass": "continuum-type",
+    "title": "Oxygen in COPD: The Hypoxic Drive Myth",
+    "meta": "Physiology Deep Dive · Sep 2026",
+    "date": "2026-09-11"
+  },
+  {
+    "file": "library/ivermectin-icu-strongyloides.html",
+    "section": "continuum",
+    "type": "Clinical Reasoning",
+    "typeClass": "continuum-type",
+    "title": "Ivermectin in the ICU: The Real Indication",
+    "meta": "Clinical Reasoning · Sep 2026",
+    "date": "2026-09-11"
+  },
+  {
+    "file": "library/niv-chf-gradients.html",
+    "section": "continuum",
+    "type": "Physiology Deep Dive",
+    "typeClass": "continuum-type",
+    "title": "NIV in CHF: It's About the Gradients",
+    "meta": "Physiology Deep Dive · Sep 2026",
+    "date": "2026-09-11"
+  },
+  {
+    "file": "library/niv-copd-exacerbation.html",
+    "section": "locker",
+    "type": "Evidence Review",
+    "typeClass": "locker-type",
+    "title": "NIV in COPD Exacerbation: The Rescue",
+    "meta": "Evidence Review · Sep 2026",
+    "date": "2026-09-11"
+  },
+  {
+    "file": "library/rsi-trial-ketamine-etomidate.html",
+    "section": "locker",
+    "type": "Study Breakdown",
+    "typeClass": "locker-type",
+    "title": "The RSI Trial: Ketamine Isn't as Neutral as We Thought",
+    "meta": "Study Breakdown · Sep 2026",
+    "date": "2026-09-11"
+  },
+  {
+    "file": "library/code-blue-leadership.html",
+    "section": "continuum",
+    "type": "Clinical Reasoning",
+    "typeClass": "continuum-type",
+    "title": "Code Blue: Running the Room Like an Intensivist",
+    "meta": "Clinical Reasoning · Sep 2026",
+    "date": "2026-09-11"
+  },
+  {
+    "file": "library/comfort-focused-care-transition.html",
+    "section": "continuum",
+    "type": "Clinical Practice",
+    "typeClass": "continuum-type",
+    "title": "Transitioning to Comfort-Focused Care",
+    "meta": "Clinical Practice · Sep 2026",
+    "date": "2026-09-11"
+  },
+  {
+    "file": "library/fluid-responsiveness-vs-tolerance.html",
+    "section": "continuum",
+    "type": "Conceptual Framework",
+    "typeClass": "continuum-type",
+    "title": "Fluid Responsiveness vs. Fluid Tolerance",
+    "meta": "Conceptual Framework · Sep 2026",
+    "date": "2026-09-11"
+  },
+  {
+    "file": "library/hemorrhagic-shock-crystalloid.html",
+    "section": "continuum",
+    "type": "Clinical Reasoning",
+    "typeClass": "continuum-type",
+    "title": "Hemorrhagic Shock: Put Down the Crystalloid",
+    "meta": "Clinical Reasoning · Sep 2026",
+    "date": "2026-09-11"
+  },
+  {
+    "file": "library/traumatic-cardiac-arrest.html",
+    "section": "continuum",
+    "type": "Clinical Reasoning",
+    "typeClass": "continuum-type",
+    "title": "Traumatic Cardiac Arrest Isn't a Standard Code Blue",
+    "meta": "Clinical Reasoning · Sep 2026",
+    "date": "2026-09-11"
+  },
+  {
+    "file": "library/alcoholic-ketoacidosis-mechanism.html",
+    "section": "locker",
+    "type": "Content Audit",
+    "typeClass": "locker-type",
+    "title": "Alcoholic Ketoacidosis: It's Not Just Low Glucose",
+    "meta": "Content Audit · Sep 2026",
+    "date": "2026-09-08"
+  },
+  {
+    "file": "library/alkalinized-lidocaine-ett-cuff.html",
+    "section": "locker",
+    "type": "Content Audit",
+    "typeClass": "locker-type",
+    "title": "Alkalinized Lidocaine in the ETT Cuff",
+    "meta": "Content Audit · Sep 2026",
+    "date": "2026-09-08"
+  },
+  {
+    "file": "library/antidromic-mahaim-tachycardia.html",
+    "section": "locker",
+    "type": "Content Audit",
+    "typeClass": "locker-type",
+    "title": "Antidromic Mahaim Tachycardia: Confirmed, With the Named Criteria",
+    "meta": "Content Audit · Sep 2026",
+    "date": "2026-09-08"
+  },
+  {
+    "file": "library/etco2-vs-paco2-gradient.html",
+    "section": "locker",
+    "type": "Content Audit",
+    "typeClass": "locker-type",
+    "title": "EtCO2 vs. PaCO2: The Gradient That Matters",
+    "meta": "Content Audit · Sep 2026",
+    "date": "2026-09-08"
+  },
+  {
+    "file": "library/bone-cement-implantation-syndrome.html",
+    "section": "locker",
+    "type": "Content Audit",
+    "typeClass": "locker-type",
+    "title": "Bone Cement Implantation Syndrome, Audited",
+    "meta": "Content Audit · Sep 2026",
+    "date": "2026-09-08"
+  },
+  {
+    "file": "library/covalent-dl-vs-vl-trial.html",
+    "section": "locker",
+    "type": "Study Breakdown",
+    "typeClass": "locker-type",
+    "title": "COVALENT: DL vs. VL Mac vs. VL Hyperangulated",
+    "meta": "Study Breakdown · Sep 2026",
+    "date": "2026-09-08"
+  },
+  {
+    "file": "library/ha-study-haloperidol-headache.html",
+    "section": "locker",
+    "type": "Study Breakdown",
+    "typeClass": "locker-type",
+    "title": "The HA-Study: Haloperidol for Acute Benign Headache",
+    "meta": "Study Breakdown · Sep 2026",
+    "date": "2026-09-08"
+  },
+  {
+    "file": "library/pocus-antibiotic-decision-framework.html",
+    "section": "locker",
+    "type": "Framework Evaluation",
+    "typeClass": "locker-type",
+    "title": "Can POCUS Change the Antibiotic Decision?",
+    "meta": "Framework Evaluation · Sep 2026",
+    "date": "2026-09-08"
+  },
+  {
+    "file": "library/prehospital-bolus-vs-infusion.html",
+    "section": "locker",
+    "type": "Study Breakdown",
+    "typeClass": "locker-type",
+    "title": "Bolus-Only Prehospital Sedation: The Undersedation Problem",
+    "meta": "Study Breakdown · Sep 2026",
+    "date": "2026-09-08"
+  },
+  {
+    "file": "library/txa-angioedema-audit.html",
+    "section": "locker",
+    "type": "Content Audit",
+    "typeClass": "locker-type",
+    "title": "TXA in Angioedema: The Mechanism Holds, the Outcomes Data Doesn't",
+    "meta": "Content Audit · Sep 2026",
+    "date": "2026-09-07"
+  },
+  {
+    "file": "library/tbi-icu-2025.html",
+    "section": "locker",
+    "type": "Guideline Breakdown",
+    "typeClass": "locker-type",
+    "title": "Standard of Care Meets Standard of Doubt: TBI in the Modern ICU",
+    "meta": "Guideline Breakdown · Sep 2026",
+    "date": "2026-09-04"
+  },
+  {
+    "file": "library/benumof-graph-apneic-desaturation.html",
+    "section": "locker",
+    "type": "Study Breakdown",
+    "typeClass": "locker-type",
+    "title": "The Benumof Graph: Whose Curve Is It Really?",
+    "meta": "Study Breakdown · Sep 2026",
+    "date": "2026-09-02"
+  },
+  {
+    "file": "library/pediatric-appendicitis-three-scores.html",
+    "section": "locker",
+    "type": "Study Breakdown",
+    "typeClass": "locker-type",
+    "title": "Pediatric Appendicitis: Three Scores, One Diagnosis",
+    "meta": "Study Breakdown · Sep 2026",
+    "date": "2026-09-02"
+  },
+  {
+    "file": "library/peripheral-iv-vasopressor-adverse-events.html",
+    "section": "locker",
+    "type": "Study Breakdown",
+    "typeClass": "locker-type",
+    "title": "Peripheral IV Vasopressors: How Risky, Really?",
+    "meta": "Study Breakdown · Sep 2026",
+    "date": "2026-09-02"
+  },
+  {
+    "file": "library/25-years-septic-shock-resuscitation-trials.html",
+    "section": "locker",
+    "type": "Study Breakdown",
+    "typeClass": "locker-type",
+    "title": "25 Years of Septic Shock Resuscitation Trials",
+    "meta": "Study Breakdown · Sep 2026",
+    "date": "2026-09-02"
+  },
+  {
+    "file": "library/blood-gas-analysis-chart-audit.html",
+    "section": "locker",
+    "type": "Content Audit",
+    "typeClass": "locker-type",
+    "title": "Blood Gas Analysis Chart, Audited",
+    "meta": "Content Audit · Sep 2026",
+    "date": "2026-09-02"
+  },
+  {
+    "file": "library/erc-2025-pediatric-life-support.html",
+    "section": "locker",
+    "type": "Guideline Breakdown",
+    "typeClass": "locker-type",
+    "title": "2025 Pediatric Resuscitation: What Actually Changed",
+    "meta": "Guideline Breakdown · Sep 2026",
+    "date": "2026-09-02"
+  },
+  {
+    "file": "library/prehospital-airway-2026.html",
+    "section": "flightdeck",
+    "type": "Field Read",
+    "typeClass": "flightdeck-type",
+    "title": "The Airway Question Isn't \"Tube or No Tube\" Anymore",
+    "meta": "Field Read · Sep 2026",
+    "date": "2026-09-02"
+  },
+  {
+    "file": "library/fifth-universal-definition-mi.html",
+    "section": "locker",
+    "type": "Guideline Breakdown",
+    "typeClass": "locker-type",
+    "title": "Fifth Universal Definition of MI, Audited",
+    "meta": "Guideline Breakdown · Sep 2026",
+    "date": "2026-09-01"
+  },
+  {
+    "file": "library/aid-icu-haloperidol-delirium.html",
+    "section": "locker",
+    "type": "Study Breakdown",
+    "typeClass": "locker-type",
+    "title": "AID-ICU: Does Haloperidol Actually Help ICU Delirium?",
+    "meta": "Study Breakdown · Sep 2026",
+    "date": "2026-09-01"
+  },
+  {
+    "file": "library/beta-blocker-cheat-sheet-audit.html",
+    "section": "locker",
+    "type": "Content Audit",
+    "typeClass": "locker-type",
+    "title": "Beta Blocker Cheat Sheet, Audited",
+    "meta": "Content Audit · Sep 2026",
+    "date": "2026-09-01"
+  },
+  {
+    "file": "library/ct-first-trauma-resuscitation.html",
+    "section": "locker",
+    "type": "Study Breakdown",
+    "typeClass": "locker-type",
+    "title": "CT-First Trauma Resuscitation",
+    "meta": "Study Breakdown · Sep 2026",
+    "date": "2026-09-01"
+  },
+  {
+    "file": "library/hope-trial-late-window-alteplase.html",
+    "section": "locker",
+    "type": "Study Breakdown",
+    "typeClass": "locker-type",
+    "title": "The HOPE Trial: Late-Window Alteplase",
+    "meta": "Study Breakdown · Sep 2026",
+    "date": "2026-09-01"
+  },
+  {
+    "file": "library/ket-mid-pediatric-status-epilepticus.html",
+    "section": "locker",
+    "type": "Study Breakdown",
+    "typeClass": "locker-type",
+    "title": "Ket-Mid: Ketamine + Midazolam for Pediatric Status Epilepticus",
+    "meta": "Study Breakdown · Sep 2026",
+    "date": "2026-09-01"
+  },
+  {
+    "file": "library/methylene-blue-adult-shock.html",
+    "section": "locker",
+    "type": "Study Breakdown",
+    "typeClass": "locker-type",
+    "title": "Methylene Blue in Adult Shock, Audited",
+    "meta": "Study Breakdown · Sep 2026",
+    "date": "2026-09-01"
+  },
+  {
+    "file": "library/sep1-bundle-mortality.html",
+    "section": "locker",
+    "type": "Study Breakdown",
+    "typeClass": "locker-type",
+    "title": "Does SEP-1 Compliance Improve Mortality?",
+    "meta": "Study Breakdown · Sep 2026",
+    "date": "2026-09-01"
+  },
+  {
+    "file": "library/biostatistics-for-clinicians.html",
+    "section": "workshop",
+    "type": "Reference",
+    "typeClass": "workshop-type",
+    "title": "Biostatistics for Clinicians",
+    "meta": "Reference · Aug 2026",
+    "date": "2026-08-19"
+  },
+  {
+    "file": "library/early-calcium-minimal-transfusion.html",
+    "section": "locker",
+    "type": "Study Breakdown",
+    "typeClass": "locker-type",
+    "title": "Early Calcium After Minimal Transfusion",
+    "meta": "Study Breakdown · Aug 2026",
+    "date": "2026-08-19"
+  },
+  {
+    "file": "library/mitochondrial-va-hypersensitivity.html",
+    "section": "locker",
+    "type": "Evidence Review",
+    "typeClass": "locker-type",
+    "title": "Mitochondrial-Linked Volatile Anesthetic Hypersensitivity",
+    "meta": "Evidence Review · Aug 2026",
+    "date": "2026-08-19"
+  },
+  {
+    "file": "library/peep-sepsis-mortality.html",
+    "section": "locker",
+    "type": "Evidence Review",
+    "typeClass": "locker-type",
+    "title": "Higher vs. Lower PEEP in Sepsis",
+    "meta": "Evidence Review · Aug 2026",
+    "date": "2026-08-19"
+  },
+  {
+    "file": "library/push-pull-albumin-furosemide.html",
+    "section": "continuum",
+    "type": "Physiology Deep Dive",
+    "typeClass": "continuum-type",
+    "title": "Push/Pull: Albumin &amp; Furosemide",
+    "meta": "Physiology Deep Dive · Aug 2026",
+    "date": "2026-08-17"
+  },
+  {
+    "file": "library/spice-iii-dexmedetomidine.html",
+    "section": "locker",
+    "type": "Trial Breakdown",
+    "typeClass": "locker-type",
+    "title": "SPICE III: Dexmedetomidine in Critically Ill Patients",
+    "meta": "Trial Breakdown · Aug 2026",
+    "date": "2026-08-17"
+  },
+  {
+    "file": "library/heart-lung-interactions-ards.html",
+    "section": "continuum",
+    "type": "Physiology Deep Dive",
+    "typeClass": "continuum-type",
+    "title": "Heart-Lung Interactions in ARDS",
+    "meta": "Physiology Deep Dive · Aug 2026",
+    "date": "2026-08-13"
+  },
+  {
+    "file": "library/physiologically-difficult-airway.html",
+    "section": "continuum",
+    "type": "Physiology Deep Dive",
+    "typeClass": "continuum-type",
+    "title": "The Physiologically Difficult Airway",
+    "meta": "Physiology Deep Dive · Aug 2026",
+    "date": "2026-08-13"
+  },
+  {
+    "file": "library/strongyloides-hyperinfection-guide.html",
+    "section": "locker",
+    "type": "Fact Check",
+    "typeClass": "locker-type",
+    "title": "The Sleeper Agent: Strongyloides Hyperinfection Syndrome",
+    "meta": "Fact Check · Aug 2026",
+    "date": "2026-08-01"
   },
   {
     "file": "posts/who-makes-it-in-medicine.html",

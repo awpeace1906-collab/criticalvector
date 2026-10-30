@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Bleeding, Reversal &amp; Antiplatelet Decisions — The Critical Vector</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&amp;family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><style>
+:root{
+  --bg:#0a0e14; --surface:#111720; --surface2:#182030;
+  --border:rgba(255,255,255,0.08);
+  --teal:#00d4aa; --blue:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa;
+  --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  background:var(--bg); color:var(--text);
+  font-family:'Source Serif 4', Georgia, serif; font-size:16px; line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,.label,.kicker,.badge,nav a,th{font-family:'Syne', sans-serif;}
+.mono{font-family:'IBM Plex Mono', monospace;}
+.page{max-width:900px; margin:0 auto; padding:0 24px 60px;}
+
+header{padding:32px 0 20px; border-bottom:1px solid var(--border);}
+.kicker{
+  font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--teal); margin-bottom:10px;
+}
+h1{font-family:'Syne', sans-serif; font-weight:800; font-size:30px; line-height:1.15; margin:0 0 10px; letter-spacing:.005em;}
+header p{font-family:'Source Serif 4', serif; font-style:italic; color:var(--text2); font-size:15.5px; margin:0; max-width:700px;}
+
+.alert{
+  margin:18px 0; padding:13px 18px; border-radius:10px; font-size:14px;
+  background:rgba(0,212,170,0.10); border:1px solid rgba(0,212,170,0.28); color:#bdf5e8;
+}
+.alert.c-red{background:rgba(232,76,76,0.10); border-color:rgba(232,76,76,0.28); color:#ffd7d7;}
+.alert.c-amber{background:rgba(245,158,11,0.10); border-color:rgba(245,158,11,0.28); color:#ffe8bd;}
+.alert.c-blue{background:rgba(96,165,250,0.10); border-color:rgba(96,165,250,0.28); color:#cfe0ff;}
+
+nav{display:flex; flex-wrap:wrap; gap:7px; padding:18px 0; border-bottom:1px solid var(--border); margin-bottom:8px;}
+nav .navpart{
+  width:100%; font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--text3); margin:8px 0 2px 2px;
+}
+nav .navpart:first-child{margin-top:0;}
+nav a{
+  font-size:12.5px; font-weight:600; color:var(--text2); background:var(--surface);
+  border:1px solid var(--border); padding:7px 12px; border-radius:20px;
+  text-decoration:none; white-space:nowrap; transition:all .15s;
+}
+nav a:hover{color:var(--text); border-color:var(--teal);}
+
+section{padding:30px 0; border-bottom:1px solid var(--border);}
+.sec-head{
+  display:flex; align-items:baseline; gap:10px; padding:11px 18px;
+  border-left:4px solid var(--teal);
+  background:linear-gradient(90deg, rgba(0,212,170,0.10), transparent);
+  border-radius:0 8px 8px 0; margin-bottom:16px;
+}
+.sec-head.c-blue{border-left-color:var(--blue); background:linear-gradient(90deg, rgba(96,165,250,0.10), transparent);}
+.sec-head.c-red{border-left-color:var(--red); background:linear-gradient(90deg, rgba(232,76,76,0.10), transparent);}
+.sec-head.c-amber{border-left-color:var(--amber); background:linear-gradient(90deg, rgba(245,158,11,0.10), transparent);}
+.sec-head.c-purple{border-left-color:var(--purple); background:linear-gradient(90deg, rgba(167,139,250,0.10), transparent);}
+.sec-num{font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--text3);}
+h2{font-family:'Syne', sans-serif; font-weight:700; font-size:20px; margin:0; color:var(--text);}
+.tagline{font-family:'Source Serif 4', serif; font-style:italic; font-size:13.5px; color:var(--text2); margin:0 0 12px;}
+
+p.body{font-size:15.5px; margin:12px 0;}
+p.note{font-size:13.5px; color:var(--text2); font-style:italic; margin:10px 0;}
+
+.box{
+  background:var(--surface2); border:1px solid var(--border); border-radius:10px;
+  padding:16px 18px; margin:14px 0; font-size:14.5px;
+}
+.box.t-teal{border-left:3px solid var(--teal);}
+.box.t-blue{border-left:3px solid var(--blue);}
+.box.t-red{border-left:3px solid var(--red); background:rgba(232,76,76,0.06);}
+.box.t-amber{border-left:3px solid var(--amber);}
+.box.t-purple{border-left:3px solid var(--purple);}
+.box b{color:var(--text); font-weight:700;}
+.box p{margin:7px 0;}
+
+table{width:100%; border-collapse:collapse; margin:14px 0; font-size:13.5px;}
+th{background:var(--surface2); color:var(--text); text-align:left; padding:9px 11px; font-weight:600; font-size:12px; letter-spacing:.02em; border-bottom:2px solid var(--border);}
+td{padding:9px 11px; border-bottom:1px solid var(--border); vertical-align:top; font-family:'Source Serif 4', serif;}
+tr:nth-child(even) td{background:rgba(255,255,255,0.02);}
+
+.checklist, .xlist{list-style:none; padding-left:0; margin:10px 0;}
+.checklist li, .xlist li{padding:5px 0 5px 26px; position:relative; font-size:14.5px;}
+.checklist li:before{content:"\2713"; position:absolute; left:0; color:var(--teal); font-weight:700;}
+.xlist li:before{content:"\2715"; position:absolute; left:0; color:var(--red); font-weight:700;}
+
+.flow{display:flex; flex-direction:column; gap:9px; margin:14px 0;}
+.flow .step{
+  border:1px solid var(--border); border-left:3px solid var(--teal);
+  background:var(--surface); border-radius:8px; padding:11px 15px; font-size:14px;
+}
+.flow .step.t-blue{border-left-color:var(--blue);}
+.flow .step.t-red{border-left-color:var(--red);}
+.flow .step.t-amber{border-left-color:var(--amber);}
+.flow .step.t-purple{border-left-color:var(--purple);}
+
+.timeline-item{
+  padding:7px 0 7px 15px; border-left:2px solid var(--teal);
+  margin:5px 0 5px 4px; font-size:13.5px; color:var(--text2);
+}
+.timeline-item.t-blue{border-left-color:var(--blue);}
+.timeline-item.t-red{border-left-color:var(--red);}
+.timeline-item.t-amber{border-left-color:var(--amber);}
+.timeline-item.t-purple{border-left-color:var(--purple);}
+
+.xref{
+  margin:14px 0; padding:13px 17px; border-radius:10px;
+  background:var(--surface2); border:1px solid var(--border); border-left:3px solid var(--blue);
+  font-size:14px;
+}
+.xreflabel{
+  display:block; font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--blue); margin-bottom:6px; font-weight:600;
+}
+
+.peds{
+  margin:8px 0 16px 0; padding:11px 15px; border-radius:8px;
+  background:var(--surface2); border:1px solid var(--border); border-left:3px solid var(--purple);
+  font-size:13.5px;
+}
+.pedlabel{
+  display:inline-block; font-family:'Syne', sans-serif; font-size:10px; font-weight:700; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--purple); margin-right:7px;
+}
+
+.part-divider{padding:34px 0 8px;}
+.part-divider .plabel{
+  font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--teal); margin-bottom:6px; font-weight:600;
+}
+.part-divider h2{font-size:23px; margin:0 0 6px 0;}
+.part-divider p{font-family:'Source Serif 4', serif; font-size:14px; color:var(--text2); margin:0; max-width:600px;}
+
+.sources{font-size:13px; color:var(--text2); padding-left:20px;}
+.sources li{margin-bottom:7px;}
+
+footer{padding:26px 0 0; margin-top:6px; font-size:12.5px; color:var(--text3); font-family:'Source Serif 4', serif; font-style:italic;}
+</style>
+<style id="cv-print">
+/* ===== CV PRINT v1.0 (per _cv-schema.html) ===== */
+@media print{
+  :root{
+    --bg:#f4f5f7; --surface:#ffffff; --surface2:#eef1f4; --border:#d7dde3;
+    --teal:#00a688; --blue:#1d4ed8; --accent:#00a688; --accent2:#1d4ed8;
+    --red:#c53030; --amber:#b45309; --purple:#7c3aed;
+    --text:#0f1923; --text2:#4a5670; --text3:#6b7688;
+  }
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  html, body{background:#f4f5f7 !important; color:#0f1923 !important;}
+  nav, .nav, .toc-pills{display:none !important;}
+  .alert{background:rgba(0,166,136,.08) !important; color:#0f1923 !important;}
+  td{color:#0f1923 !important;}
+  section, .box, table, .card, .stat-card, .statcard, .step-row, .step{break-inside:avoid;}
+  h2, .sec-head{break-after:avoid;}
+  a{color:inherit; text-decoration:none;}
+}
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ a{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../workshop.html">The Workshop</a><span class="cv-sb-meta">Published 6 Oct 2026 · R. E. Suscitate &amp; A. Systole</span></nav><div class="page">
+<header>
+<div class="kicker">The Critical Vector · Pocket Reference</div>
+<h1>Bleeding, Reversal &amp; Antiplatelet Decisions</h1>
+<p>v3. Part I: reversal once bleeding starts. Part II: the upstream drug decisions that get a patient
+  there. Verified against FDA, NEJM, Lancet, JAMA, JACC, TCTMD, Healio. July 2026.</p>
+</header>
+<div class="alert c-red">
+  CORRECTED: Andexanet alfa (Andexxa) is no longer available in the US as of December 22, 2025.
+  4F-PCC/aPCC is now the only US reversal path for apixaban, rivaroxaban, and edoxaban. Full story in section 9.
+</div>
+<nav>
+<span class="navpart">Part I · Reversal</span>
+<a href="#s1">1 · Big picture</a>
+<a href="#s2">2 · Classify cause</a>
+<a href="#s3">3 · Cascade</a>
+<a href="#s4">4 · Warfarin</a>
+<a href="#s5">5 · DOACs</a>
+<a href="#s6">6 · Heparin/antiplatelet</a>
+<a href="#s7">7 · TEG/ROTEM</a>
+<a href="#s8">8 · Algorithm</a>
+<a href="#s9">9 · Andexxa withdrawal</a>
+<a href="#s10">10 · Pitfalls</a>
+<a href="#s11">11 · Quick card &amp; sources</a>
+<span class="navpart">Part II · Antiplatelet decisions</span>
+<a href="#s12">12 · STEMI + primary PCI</a>
+<a href="#s13">13 · NSTE-ACS loading</a>
+<a href="#s14">14 · Stroke/TIA DAPT</a>
+<a href="#s15">15 · Antiplatelet ICH detail</a>
+<a href="#s16">16 · Perioperative DAPT</a>
+<a href="#s17">17 · CYP2C19 genotyping</a>
+<a href="#s18">18 · Post-arrest TTM</a>
+<a href="#s19">19 · Quick card &amp; sources</a>
+</nav>
+<main>
+<section id="s1">
+<div class="sec-head c-red"><span class="sec-num">01</span><h2>The Big Picture</h2></div>
+<p class="body"><b>Major bleeding</b> means hemorrhage that is fatal, involves a critical site
+  (intracranial, intraspinal, pericardial, retroperitoneal), drops hemoglobin by 2 g/dL or more,
+  or requires transfusion of 2 units or more. This threshold, not the visible volume of blood,
+  is what triggers reversal protocols.</p>
+<div class="box t-red">
+<p><b>The core question every time:</b></p>
+<p>1. Is the patient hemodynamically unstable?</p>
+<p>2. What is the cause: drug, dilution, consumption, or structural?</p>
+<p>3. Is there a specific antidote, or only supportive and nonspecific reversal?</p>
+</div>
+</section>
+<section id="s2">
+<div class="sec-head c-blue"><span class="sec-num">02</span><h2>Classify the Cause</h2></div>
+<table>
+<tr><th>Category</th><th>Examples</th></tr>
+<tr><td><b>Anticoagulant</b></td><td>Warfarin, DOACs, heparin/LMWH</td></tr>
+<tr><td><b>Antiplatelet</b></td><td>Aspirin, P2Y12 inhibitors</td></tr>
+<tr><td><b>Consumptive</b></td><td>DIC, massive transfusion, sepsis</td></tr>
+<tr><td><b>Factor deficiency</b></td><td>Liver disease, hemophilia, vitamin K deficiency</td></tr>
+<tr><td><b>Structural</b></td><td>Trauma, ulcer, aneurysm, post-procedural bleed</td></tr>
+</table>
+<div class="box t-blue"><p><b>Key habit:</b> ask which drug, which dose, and when the last dose was
+  taken. As of December 2025, the answer also determines which drug class still has a specific
+  antidote on the US market.</p></div>
+</section>
+<section id="s3">
+<div class="sec-head"><span class="sec-num">03</span><h2>Where Drugs Hit the Cascade</h2></div>
+<div class="box t-teal">
+<p><b>Warfarin</b> blocks synthesis of factors II, VII, IX, X (vitamin K dependent)</p>
+<p><b>Dabigatran</b> is a direct thrombin (IIa) inhibitor</p>
+<p><b>Rivaroxaban, apixaban, edoxaban</b> are direct factor Xa inhibitors</p>
+<p><b>Heparin/LMWH</b> potentiate antithrombin, inhibiting IIa and Xa</p>
+<p><b>Aspirin</b> causes irreversible COX-1 inhibition in platelets</p>
+<p><b>P2Y12 inhibitors</b> block ADP-mediated platelet activation</p>
+</div>
+</section>
+<section id="s4">
+<div class="sec-head c-purple"><span class="sec-num">04</span><h2>Reversing Warfarin</h2></div>
+<div class="box t-purple">
+<p><b>Major bleeding or urgent surgery:</b></p>
+<p>4F-PCC, weight- and INR-based, 25 to 50 U/kg IV (fixed-dose protocols commonly use
+    about 1,500 IU)</p>
+<p>Plus vitamin K, 5 to 10 mg IV, slow infusion over about 30 minutes. Mandatory, not optional.</p>
+<p>Target INR under 1.5</p>
+</div>
+<p class="body"><b>Why both agents?</b> Factor VII in 4F-PCC has only a roughly 6-hour half-life.
+  Vitamin K sustains reversal as the PCC effect wears off. 4F-PCC is preferred over 3F-PCC and
+  over FFP: it corrects INR in minutes rather than hours, at lower volume.</p>
+<p class="note">Recheck INR every 6 to 8 hours for 24 to 48 hours. Some patients need a repeat vitamin K dose.</p>
+</section>
+<section id="s5">
+<div class="sec-head c-amber"><span class="sec-num">05</span><h2>Reversing DOACs, Updated for 2026</h2></div>
+<table>
+<tr><th>Drug</th><th>Current US Reversal</th></tr>
+<tr><td><b>Dabigatran</b></td><td>Idarucizumab (Praxbind) 5 g IV, two 2.5 g aliquots.
+      Unaffected by the Andexxa withdrawal.</td></tr>
+<tr><td><b>Apixaban / Rivaroxaban</b></td><td>4F-PCC or aPCC, 25 to 50 U/kg IV, now the
+      default. No FDA-approved specific antidote remains on the US market.</td></tr>
+<tr><td><b>Edoxaban</b></td><td>4F-PCC or aPCC, 25 to 50 U/kg IV, off-label, same as above.</td></tr>
+</table>
+<p class="note">Andexanet alfa remains available outside the US: conditionally approved in
+  the EU, marketed in the UK and Japan under the brand Ondexxya.</p>
+</section>
+<section id="s6">
+<div class="sec-head"><span class="sec-num">06</span><h2>Protamine, Platelets &amp; DDAVP</h2></div>
+<div class="box t-teal"><p><b>Unfractionated heparin:</b> protamine sulfate, 1 mg per 100 units of
+  heparin given in the last 2 to 3 hours (max about 50 mg, slow IV to avoid hypotension or an
+  anaphylactoid reaction).</p></div>
+<div class="box t-teal"><p><b>LMWH (e.g. enoxaparin):</b> protamine is only about 60 percent effective.
+  Use 1 mg per 1 mg of enoxaparin if within 8 hours.</p></div>
+<div class="box t-teal"><p><b>Antiplatelet bleeding:</b> platelet transfusion, 1 unit, if life-threatening
+  and a recent dose was taken. Desmopressin (DDAVP), 0.3 mcg/kg IV, improves platelet adhesion,
+  useful in uremia or aspirin-related bleeding.</p></div>
+<div class="box t-red">
+<p><b>Exception, spontaneous ICH:</b> the general rule above does not hold for intracerebral
+    hemorrhage. PATCH randomized 190 patients with antiplatelet-associated spontaneous ICH to
+    platelet transfusion versus standard care and found transfusion <b>inferior</b>, with higher
+    in-hospital mortality (24% vs 17%). Do not transfuse platelets for this indication outside a
+    surgical bleeding target. Full trial detail in Part II, section 15.</p>
+</div>
+</section>
+<section id="s7">
+<div class="sec-head c-blue"><span class="sec-num">07</span><h2>TEG / ROTEM: What Each Value Means</h2></div>
+<table>
+<tr><th>TEG</th><th>ROTEM</th><th>Reflects</th><th>If Abnormal, Give</th></tr>
+<tr><td><b>R</b></td><td>CT</td><td>Clotting factors</td><td>FFP</td></tr>
+<tr><td><b>K / Angle</b></td><td>CFT / Angle</td><td>Fibrinogen</td><td>Cryoprecipitate</td></tr>
+<tr><td><b>MA</b></td><td>MCF</td><td>Platelet function/strength</td><td>Platelets ± DDAVP</td></tr>
+<tr><td><b>LY30</b></td><td>LI30/ML</td><td>Fibrinolysis</td><td>TXA / aminocaproic acid</td></tr>
+</table>
+<p class="note">Typical adult TEG reference: R 5–10 min, K 1–3 min, angle 53–72°, MA 50–70 mm,
+  LY30 &lt;3%. Varies by lab; use your institution's range.</p>
+</section>
+<section id="s8">
+<div class="sec-head c-red"><span class="sec-num">08</span><h2>The Bedside Algorithm: One Look, One Plan</h2></div>
+<div class="box t-red"><p>1. Unstable? Activate massive transfusion, call for help.</p></div>
+<div class="box t-red"><p>2. Identify agent and last dose time. Choose a specific antidote if one is
+  still available.</p></div>
+<div class="box t-red"><p>3. Send TEG/ROTEM plus standard coags: PT/INR, aPTT, fibrinogen, platelets.</p></div>
+<div class="box t-red"><p>4. Treat the specific deficit the trace shows. Not a blind shotgun of products.</p></div>
+<div class="box t-red"><p>5. Reassess the trace and labs after each intervention.</p></div>
+</section>
+<section id="s9">
+<div class="sec-head c-red"><span class="sec-num">09</span><h2>New: The Andexxa Withdrawal, What Changed and Why</h2></div>
+<p class="body">Andexanet alfa (Andexxa) received FDA accelerated approval in 2018 as the
+  first reversal agent aimed specifically at apixaban and rivaroxaban, based on surrogate
+  anti-factor Xa activity in healthy volunteers rather than confirmed clinical outcomes. The
+  confirmatory trial required by that accelerated pathway, ANNEXA-I, was published in the New
+  England Journal of Medicine in 2024 and showed andexanet improved control of hematoma
+  expansion compared to usual care.</p>
+<p class="body">The same trial carried the safety signal. In ANNEXA-I, andexanet alfa was
+  associated with a higher rate of thrombosis (14.6% vs 6.9% with usual care, mostly 4F-PCC) and a
+  higher rate of thrombosis-related death (2.5% vs 0.9%) at 30 days. FDA weighed those results
+  alongside postmarketing reports of thromboembolic events, and on December 18, 2025 issued a
+  safety communication stating the risks, including serious and fatal thromboembolic events,
+  outweighed the benefits.</p>
+<div class="box t-red">
+<p><b>Timeline</b></p>
+<div class="timeline-item t-red">2018: FDA accelerated approval for apixaban/rivaroxaban reversal</div>
+<div class="timeline-item t-red">2024: ANNEXA-I confirmatory trial published (NEJM): better hematoma control, but thrombosis 14.6% vs 6.9%</div>
+<div class="timeline-item t-red">Dec 18, 2025: FDA safety communication, risks found to outweigh benefits</div>
+<div class="timeline-item t-red">Dec 22, 2025: AstraZeneca ends US manufacture and sale; BLA voluntarily withdrawn</div>
+</div>
+<p class="body">AstraZeneca said it remained confident in the drug's benefit-risk profile but
+  could not reach agreement with the FDA on a path from accelerated to traditional approval, and
+  withdrew for commercial reasons under that pressure. The practical result is the same either
+  way: as of December 22, 2025, Andexxa is gone from US hospitals.</p>
+<p class="body">Many institutions never formally adopted andexanet alfa, citing cost (tens of
+  thousands of dollars per dose) and the lack of a high-quality trial against 4F-PCC. For those
+  centers, the withdrawal changes nothing operationally. For centers that had it on formulary,
+  this means updating order sets now.</p>
+</section>
+<section id="s10">
+<div class="sec-head c-amber"><span class="sec-num">10</span><h2>Complications &amp; Pitfalls: Don't Get Burned</h2></div>
+<div class="box t-amber"><p><b>Thrombosis risk:</b> 4F-PCC carries a real prothrombotic signal. Restart
+  anticoagulation as soon as safely possible. This same signal, seen postmarketing, is what
+  pulled andexanet alfa from the US market entirely.</p></div>
+<div class="box t-amber"><p><b>Vitamin K overshoot:</b> exceeding 10 mg can make re-warfarinization
+  difficult for days.</p></div>
+<div class="box t-amber"><p><b>Protamine reactions:</b> hypotension, anaphylactoid response. Infuse
+  slowly, keep resuscitation ready.</p></div>
+<div class="box t-amber"><p><b>Retired pitfall:</b> the old andexanet alfa warning about interfering
+  with heparin-based anticoagulation monitoring no longer applies in the US. Do not leave it
+  in order sets.</p></div>
+<div class="box t-amber"><p><b>Reflex platelet transfusion:</b> reaching for platelets in antiplatelet-
+  associated ICH is the intuitive move and the wrong one. See section 15.</p></div>
+</section>
+<section id="s11" style="border-bottom:none;">
+<div class="sec-head" style="border-left-color:var(--text3); background:none;"><span class="sec-num">11</span><h2>Quick Reference Card &amp; Primary Sources</h2></div>
+<table>
+<tr><th>Agent</th><th>Reversal, US, July 2026</th></tr>
+<tr><td><b>Warfarin</b></td><td>4F-PCC 25–50 U/kg IV + vitamin K 5–10 mg IV</td></tr>
+<tr><td><b>Dabigatran</b></td><td>Idarucizumab 5 g IV</td></tr>
+<tr><td><b>Apixaban / Rivaroxaban / Edoxaban</b></td><td>4F-PCC or aPCC 25–50 U/kg IV (only option, US)</td></tr>
+<tr><td><b>Unfractionated heparin</b></td><td>Protamine 1 mg per 100 units</td></tr>
+<tr><td><b>LMWH</b></td><td>Protamine 1 mg per 1 mg (~60% effective)</td></tr>
+<tr><td><b>Antiplatelet agents</b></td><td>Platelets ± DDAVP 0.3 mcg/kg IV<br/><span style="color:#c77;">*Not for spontaneous ICH — see §15</span></td></tr>
+</table>
+<p class="body"><b>Primary sources checked for this revision:</b></p>
+<ul class="sources">
+<li>FDA. Update on the Safety of Andexxa. FDA Safety Communication, Dec 18, 2025.</li>
+<li>Connolly SJ, Sharma M, Cohen AT, et al. Andexanet for Factor Xa Inhibitor-Associated Acute Intracerebral Hemorrhage. N Engl J Med. 2024;390(19):1745–1755.</li>
+<li>Owens B. Anticoagulant Reversal Drug Andexxa Voluntarily Pulled From US Market. Medscape, Dec 22, 2025.</li>
+<li>Neale T. Andexanet Alfa Pulled From US Market. TCTMD, Dec 22, 2025.</li>
+<li>Andexanet alfa pulled from US market due to thromboembolic risk. Healio, Dec 23, 2025.</li>
+<li>Abuan I, Wong KH, Bolinske B, Hale KS. Andexanet Alfa. StatPearls (archived), NCBI Bookshelf.</li>
+<li>UMEM Educational Pearls. University of Maryland School of Medicine, Department of Emergency Medicine, Feb 2026.</li>
+</ul>
+</section>
+</main>
+<div class="part-divider">
+<div class="plabel">Part II</div>
+<h2>Antiplatelet Therapy Decisions</h2>
+<p>Part I covers what to do once a patient is already bleeding on these drugs. This part covers
+  the decisions further upstream: which antiplatelet, loaded when, for whom, and for how long —
+  the choices that determine whether Part I ever gets used.</p>
+</div>
+<main>
+<section id="s12">
+<div class="sec-head c-red"><span class="sec-num">12</span><h2>STEMI + Primary PCI: Load the Potent Agent</h2></div>
+<p class="body">Primary PCI intended: ticagrelor 180 mg or prasugrel 60 mg, loaded before or at
+  first PCI. Fibrinolysis planned instead: clopidogrel remains preferred — neither potent agent
+  has been tested safely alongside lytics.</p>
+<table>
+<tr><th>Trial</th><th>Finding</th></tr>
+<tr><td><b>PLATO</b></td><td>Ticagrelor vs clopidogrel, 18,624 ACS patients: composite
+    vascular death/MI/stroke 9.8% vs 11.7% at 12 months; overall major bleeding similar, but more non-CABG major bleeding with ticagrelor.</td></tr>
+<tr><td><b>TRITON-TIMI 38</b></td><td>Prasugrel vs clopidogrel, 3,534 STEMI patients undergoing
+    PCI: HR 0.79 for the ischemic composite, no significant rise in non-CABG major bleeding.</td></tr>
+</table>
+<p class="note">Benefit held regardless of primary vs delayed PCI timing in the TRITON STEMI
+  subgroup — the drug choice matters independent of door-to-balloon time.</p>
+</section>
+<section id="s13">
+<div class="sec-head c-amber"><span class="sec-num">13</span><h2>NSTE-ACS: Load Prasugrel After the Angiogram, Not Before</h2></div>
+<p class="body">The one head-to-head trial of the two potent P2Y12 agents found a real
+  difference, and it hinged on timing as much as drug.</p>
+<div class="box t-amber">
+<p><b>Ticagrelor:</b> 180 mg loaded upstream, as soon as possible — before angiography</p>
+<p><b>Prasugrel:</b> 60 mg loaded downstream, only after anatomy is known and PCI confirmed</p>
+</div>
+<table>
+<tr><th>Trial</th><th>Finding</th></tr>
+<tr><td><b>ISAR-REACT 5</b></td><td>4,018 ACS patients: death/MI/stroke at 1 year 9.3%
+    ticagrelor vs 6.9% prasugrel (p=0.006), no bleeding penalty for the downstream strategy.</td></tr>
+<tr><td><b>NSTE-ACS subgroup</b></td><td>Composite endpoint 8.7% ticagrelor vs 6.3% prasugrel
+    (HR 1.41) — the advantage held in the UA/NSTEMI-only analysis.</td></tr>
+</table>
+<p class="note">For STEMI, load upstream — the anatomy is already decided. For NSTE-ACS, hold
+  prasugrel until the angiogram confirms PCI rather than pretreating everyone at triage.</p>
+</section>
+<section id="s14">
+<div class="sec-head c-blue"><span class="sec-num">14</span><h2>Minor Stroke / High-Risk TIA: DAPT, Sequenced</h2></div>
+<div class="box t-blue">
+<p>1. Rule out reperfusion eligibility — thrombolysis or thrombectomy first.</p>
+<p>2. Assess bleeding risk (ABCD2, HAS-BLED) plus clinical judgment.</p>
+<p>3. Apply evidence-guided DAPT, duration tailored to ischemic vs bleeding risk.</p>
+</div>
+<table>
+<tr><th>Trial</th><th>Regimen</th><th>Finding</th></tr>
+<tr><td><b>CHANCE</b></td><td>Clopidogrel+ASA, 21d</td><td>Founding trial for DAPT in minor
+    stroke/high-risk TIA.</td></tr>
+<tr><td><b>POINT</b></td><td>Clopidogrel+ASA, 90d</td><td>Recurrence cut 26%, but major
+    hemorrhage rose 0.9% vs 0.4% — the tradeoff CHANCE didn't show.</td></tr>
+<tr><td><b>THALES</b></td><td>Ticagrelor+ASA, 30d</td><td>Reduced stroke/death vs aspirin
+    alone; editorial noted a smaller relative ischemic-stroke reduction and larger relative
+    bleeding rise than clopidogrel-based regimens.</td></tr>
+<tr><td><b>CHANCE-2</b></td><td>Ticagrelor vs clopidogrel in CYP2C19 LOF carriers</td>
+<td>Post hoc: ticagrelor beat clopidogrel without symptomatic carotid stenosis (5.5% vs 7.8% new
+    stroke at 90 days; HR 0.70); no difference with symptomatic carotid stenosis (12.2% vs 12.2%,
+    197 patients). The treatment-by-stenosis interaction was not significant (p = 0.405).</td></tr>
+</table>
+<p class="note">Default to clopidogrel-aspirin — deepest evidence base, best relative bleeding
+  profile. Reserve ticagrelor for known/suspected CYP2C19 LOF carriers (section 17).</p>
+</section>
+<section id="s15">
+<div class="sec-head c-red"><span class="sec-num">15</span><h2>Antiplatelet-Associated ICH: The Full PATCH Data</h2></div>
+<p class="body">Section 6 already flags this: don't transfuse platelets for antiplatelet-
+  associated spontaneous ICH. Here is the trial behind that rule.</p>
+<div class="box t-red">
+<p><b>PATCH:</b> 190 patients with spontaneous supratentorial ICH on ≥7 days of antiplatelet
+    therapy, randomized to platelet transfusion within 6 hours vs standard care.</p>
+<p>Result: transfusion was <b>inferior</b> on the primary functional outcome, with higher
+    in-hospital mortality (24% vs 17%).</p>
+</div>
+<p class="note">TICH-2's antiplatelet subgroup found no specific hemostatic therapy proven
+  beneficial for this population — platelet transfusion remains the one strategy shown to cause
+  harm in a randomized trial. Standard care (BP control, reversal of any concurrent
+  anticoagulant, rapid neurosurgical evaluation) outperforms the reflex to transfuse.</p>
+</section>
+<section id="s16">
+<div class="sec-head"><span class="sec-num">16</span><h2>Urgent Surgery on DAPT: Interrupt, Don't Reflexively Bridge</h2></div>
+<div class="box t-teal">
+<p><b>Stop DAPT:</b> lowers surgical bleeding, raises stent thrombosis risk — highest first
+    4–6 weeks post-PCI.</p>
+<p><b>Continue or bridge:</b> preserves platelet inhibition, but continuation raises surgical
+    bleeding; routine bridging lacks proven benefit for hard outcomes.</p>
+</div>
+<table>
+<tr><th>Source</th><th>Finding</th></tr>
+<tr><td><b>BRIDGE</b></td><td>Cangrelor vs placebo bridging in cardiac surgery patients on
+    oral P2Y12 inhibitors: maintained platelet inhibition without excess major bleeding — proof
+    of concept, not a mandate.</td></tr>
+<tr><td><b>Cangrelor bridging cohorts</b></td><td>Retrospective series (VA, single-center):
+    feasible alternative to holding oral P2Y12 inhibitors for urgent surgery; evidence remains
+    observational.</td></tr>
+<tr><td><b>2024 AHA/ACC guidance</b></td><td>Delay elective surgery ≥30 days post-BMS, ≥6
+    months post-DES for chronic disease, ≥12 months if DES was ACS-indicated. Routine IV bridging
+    not recommended.</td></tr>
+</table>
+<p class="note">Default: continue aspirin if possible, interrupt the P2Y12 inhibitor, restart
+  as soon as bleeding risk allows. Reserve cangrelor bridging for genuinely high thrombotic risk
+  (recent ACS-indicated DES) with surgery, cardiology, and anesthesiology in explicit agreement.</p>
+</section>
+<section id="s17">
+<div class="sec-head c-amber"><span class="sec-num">17</span><h2>Clopidogrel Resistance: Test the Genotype</h2></div>
+<p class="body">About 30% of people carry a CYP2C19 loss-of-function allele that keeps
+  clopidogrel from becoming its active metabolite. A stent thrombosis or recurrent MI on
+  appropriately dosed clopidogrel is a genotype question before it's an adherence question.</p>
+<table>
+<tr><th>Trial</th><th>Finding</th></tr>
+<tr><td><b>TAILOR-PCI</b></td><td>5,300 PCI patients, point-of-care CYP2C19 testing: a 34%
+    relative reduction in adverse events at 1 year that missed statistical significance (HR 0.66,
+    P = .06). The 79% reduction in the first 3 months came from a post hoc analysis.</td></tr>
+<tr><td><b>POPular Genetics</b></td><td>2,488 STEMI patients: genotype-guided care
+    noninferior on net adverse events (5.1% vs 5.9%) with significantly less bleeding.</td></tr>
+<tr><td><b>Pooled meta-analysis</b></td><td>7 RCTs, ~16,000 patients: 30% reduction in
+    ischemic events when LOF carriers were switched off clopidogrel; no benefit switching
+    non-carriers.</td></tr>
+</table>
+<p class="note">Point-of-care genotyping is fast enough to act on during the index admission.
+  Keep normal metabolizers (~70%) on clopidogrel; reserve ticagrelor/prasugrel for confirmed or
+  presumed LOF carriers.</p>
+</section>
+<section id="s18">
+<div class="sec-head"><span class="sec-num">18</span><h2>Post-Arrest TTM: Oral P2Y12 Absorption Fails Quietly</h2></div>
+<p class="body">Hypothermia slows gastric emptying and splanchnic flow, delaying absorption of
+  any oral drug — worsened by opioids, vasopressors, and gut edema in the post-arrest state.
+  Stent thrombosis after PCI in resuscitated arrest runs roughly 5-fold higher than standard
+  STEMI, largely from this absorption gap.</p>
+<table>
+<tr><th>Study</th><th>Finding</th></tr>
+<tr><td><b>Clopidogrel PK/PD under TTM</b></td><td>Decreased bioavailability, significantly
+    increased residual platelet reactivity at 33°C despite standard loading.</td></tr>
+<tr><td><b>Hypothermia vs normothermia, 164 ACS pts</b></td><td>Adequate antiplatelet effect
+    in 0% of hypothermic patients on day 1, only 31% by day 3.</td></tr>
+<tr><td><b>Enteral crushed ticagrelor via NG tube</b></td><td>Reliably inhibited platelet
+    function regardless of hypothermia, though delayed; reflux was a distinct failure mode.</td></tr>
+<tr><td><b>Cangrelor bridge pilot RCT under TTM</b></td><td>Bolus + 4h infusion achieved
+    immediate inhibition, bridging the gap until enteral crushed ticagrelor took effect; no
+    rebound reactivity after discontinuation.</td></tr>
+</table>
+<p class="note">Don't trust an intact oral tablet to be working on schedule in a hypothermic,
+  sedated post-arrest patient. Crush and give enterally, watch for reflux, and consider a
+  cangrelor bridge through the highest-risk early window if thrombotic risk is high.</p>
+</section>
+<section id="s19" style="border-bottom:none;">
+<div class="sec-head" style="border-left-color:var(--text3); background:none;"><span class="sec-num">19</span><h2>Quick Reference: Antiplatelet Decisions &amp; Sources</h2></div>
+<table>
+<tr><th>Scenario</th><th>Default</th></tr>
+<tr><td><b>STEMI, primary PCI</b></td><td>Ticagrelor or prasugrel</td></tr>
+<tr><td><b>STEMI, fibrinolysis planned</b></td><td>Clopidogrel</td></tr>
+<tr><td><b>NSTE-ACS, invasive strategy</b></td><td>Ticagrelor upstream, or prasugrel after
+    angiogram confirms PCI</td></tr>
+<tr><td><b>Minor stroke/high-risk TIA</b></td><td>Clopidogrel + ASA, duration by risk</td></tr>
+<tr><td><b>Antiplatelet-associated ICH</b></td><td>Standard care — no platelet transfusion</td></tr>
+<tr><td><b>Urgent surgery on DAPT</b></td><td>Continue ASA, interrupt P2Y12, restart ASAP</td></tr>
+<tr><td><b>Recurrent ischemia on clopidogrel</b></td><td>Check CYP2C19 genotype</td></tr>
+<tr><td><b>Post-arrest TTM, oral P2Y12</b></td><td>Crush enterally; consider cangrelor bridge</td></tr>
+</table>
+<p class="body"><b>Primary sources for Part II:</b></p>
+<ul class="sources">
+<li>Wallentin L, et al. Ticagrelor versus clopidogrel in ACS (PLATO). N Engl J Med. 2009;361(11):1045-1057.</li>
+<li>Montalescot G, et al. Prasugrel vs clopidogrel in STEMI PCI (TRITON-TIMI 38). Lancet. 2009;373(9665):723-731.</li>
+<li>Schüpke S, et al. Ticagrelor or prasugrel in ACS (ISAR-REACT 5). N Engl J Med. 2019;381(16):1524-1534.</li>
+<li>Valina C, et al. Ticagrelor or prasugrel in NSTE-ACS. J Am Coll Cardiol. 2020;76(21):2436-2446.</li>
+<li>Wang Y, et al. Clopidogrel with aspirin in minor stroke/TIA (CHANCE). N Engl J Med. 2013;369(1):11-19.</li>
+<li>Johnston SC, et al. Clopidogrel and aspirin in acute stroke/high-risk TIA (POINT). N Engl J Med. 2018;379(3):215-225.</li>
+<li>Johnston SC, et al. Ticagrelor and aspirin in acute stroke/TIA (THALES). N Engl J Med. 2020;383(3):207-217.</li>
+<li>Xie X, Jing J, Wang A, et al. Dual antiplatelet therapy with ticagrelor vs clopidogrel in patients with TIA or minor stroke with or without symptomatic carotid artery stenosis: a post hoc analysis of the CHANCE-2 trial. Stroke Vasc Neurol. 2025;10(5):551-559. doi:10.1136/svn-2024-003293 (NCT04078737).</li>
+<li>Baharoglu MI, et al. Platelet transfusion vs standard care in antiplatelet-associated ICH (PATCH). Lancet. 2016;387(10038):2605-2613.</li>
+<li>Outcomes in antiplatelet-associated ICH: TICH-2 exploratory analysis. J Am Heart Assoc. 2021.</li>
+<li>Angiolillo DJ, et al. Bridging antiplatelet therapy with cangrelor (BRIDGE). JAMA. 2012;307(3):265-274.</li>
+<li>2024 AHA/ACC perioperative guideline, coronary stents and noncardiac surgery. Summarized via OpenAnesthesia, 2026.</li>
+<li>Pereira NL, et al. Genotype-guided P2Y12 selection after PCI (TAILOR-PCI). JAMA. 2020;324(8):761-771.</li>
+<li>Claassens DMF, et al. Genotype-guided P2Y12 in primary PCI (POPular Genetics). N Engl J Med. 2019;381(17):1621-1631.</li>
+<li>Clopidogrel PK/PD in OHCA patients under target temperature management. Resuscitation. 2016.</li>
+<li>Antiplatelet effect of clopidogrel reduced by therapeutic hypothermia after arrest. Resuscitation. 2010.</li>
+<li>Efficacy of enteral ticagrelor in hypothermic post-arrest patients. Platelets. 2016.</li>
+<li>Cangrelor bridge pilot RCT, comatose OHCA survivors under TTM. NCT04005729.</li>
+</ul>
+</section>
+</main>
+<footer>
+  Part I corrects and condenses a 10-slide social post that listed andexanet alfa as first-line
+  for apixaban/rivaroxaban reversal, accurate before December 2025 and outdated after. Part II
+  was added in v3 to cover the upstream antiplatelet decisions — drug choice, timing, genotyping,
+  and the post-arrest absorption problem — that determine whether Part I ever gets used. Every
+  dose, threshold, and trial figure above was cross-checked against the sources listed in each
+  part's quick-reference section as of July 2026.
+<div class="cv-tagline" style="margin-top:8px">The Critical Vector · Direction and magnitude.</div></footer>
+</div></body>
+</html>

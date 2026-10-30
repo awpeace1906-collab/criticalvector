@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ventilator Loops — Critical Vector</title>
+<style>
+  :root { --bg:#121212; --card:#1a1a1a; --text:#e8e8e8; --muted:#9a9a9a; --line:#2c2c2c; }
+  * { box-sizing: border-box; }
+  body { background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif; margin:0; padding:0 0 60px 0; line-height:1.5; }
+  header { padding:28px 20px 18px 20px; border-bottom:1px solid var(--line); }
+  header .kicker { font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
+  header h1 { font-size:26px; margin:0 0 8px 0; }
+  header p { color:var(--muted); font-size:14px; margin:0; }
+  .alert { margin:16px 20px; background:#14202a; border:1px solid #24404f; color:#cfe3ee; padding:12px 16px; border-radius:8px; font-size:14px; }
+  nav { display:flex; flex-wrap:wrap; gap:6px; padding:16px 20px; border-bottom:1px solid var(--line); }
+  nav a { font-size:12px; color:var(--text); background:var(--card); border:1px solid var(--line); padding:6px 10px; border-radius:20px; text-decoration:none; white-space:nowrap; }
+  main { padding:0 20px; max-width:720px; margin:0 auto; }
+  section { padding:26px 0; border-bottom:1px solid var(--line); }
+  section h2 .secnum { color:var(--accent,#888); margin-right:4px; }
+  section h2 { font-size:20px; margin:0 0 12px 0; padding-bottom:10px; border-bottom:2px solid var(--accent,#888); }
+  .box { background:var(--tint,var(--card)); border:1px solid var(--accent,var(--line)); border-radius:8px; padding:14px 16px; margin:12px 0; color:#1a1a1a; font-size:14px; }
+  .box p { margin:6px 0; } .box b { color:#000; }
+  p.body { font-size:14.5px; margin:10px 0; }
+  p.note { font-size:12.5px; color:var(--muted); font-style:italic; margin:8px 0; }
+  table { width:100%; border-collapse:collapse; margin:12px 0; font-size:13.5px; }
+  th { background:var(--accent,#444); color:#fff; text-align:left; padding:8px 10px; }
+  td { padding:8px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  tr:nth-child(even) td { background:rgba(255,255,255,0.03); }
+  .sources { font-size:12.5px; color:var(--muted); padding-left:18px; }
+  .sources li { margin-bottom:6px; }
+  footer { padding:24px 20px 0 20px; max-width:720px; margin:0 auto; font-size:12px; color:var(--muted); }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style id="cv-retheme">
+/* CV re-theme v1.0 — maps this file onto _cv-schema.html tokens */
+:root{--bg:#0a0e14; --surface:#111720; --surface2:#182030; --border:rgba(255,255,255,0.08); --teal:#00d4aa; --blue:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa; --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670; --t-teal:rgba(0,212,170,0.10); --t-blue:rgba(96,165,250,0.10); --t-red:rgba(232,76,76,0.10); --t-amber:rgba(245,158,11,0.10); --t-purple:rgba(167,139,250,0.10);}
+:root{--card:var(--surface); --muted:var(--text2); --line:var(--border);}
+body{font-family:'Source Serif 4', Georgia, serif !important; background:var(--bg) !important; color:var(--text);}
+h1,h2,h3,h4,th,nav a,.label,.lbl,.badge,.pill{font-family:'Syne', sans-serif !important;}
+h1{font-weight:800 !important; letter-spacing:.005em;}
+h2,h3{font-weight:700;}
+.kicker, header .kicker{font-family:'IBM Plex Mono', monospace !important; color:var(--teal) !important; letter-spacing:.12em; font-size:11px !important;}
+code, pre, .mono{font-family:'IBM Plex Mono', monospace;}
+main{max-width:900px !important;}
+header{max-width:900px; margin:0 auto;}
+section h2{font-size:20px; border-bottom:2px solid var(--accent, var(--teal)) !important;}
+.box{background:var(--surface2) !important; color:var(--text) !important; border:1px solid var(--border) !important; border-left:3px solid var(--accent, var(--teal)) !important; border-radius:10px; font-size:14.5px;}
+.box b, .box strong{color:var(--text) !important;}
+th{background:var(--surface2) !important; color:var(--text) !important; border-bottom:2px solid var(--accent, var(--border));}
+nav a{background:var(--surface) !important; color:var(--text2) !important; border:1px solid var(--border) !important; font-weight:600;}
+nav a:hover{color:var(--text) !important; border-color:var(--teal) !important;}
+.alert{background:var(--t-amber) !important; border:1px solid rgba(245,158,11,0.35) !important; color:#fde6b8 !important;}
+.note-banner{background:var(--t-amber) !important; color:var(--text) !important; border-color:rgba(245,158,11,0.35) !important;}
+.pill-yes{background:var(--t-teal) !important; color:var(--teal) !important;}
+.pill-no{background:var(--t-red) !important; color:var(--red) !important;}
+.pill-offlabel{background:var(--t-amber) !important; color:var(--amber) !important;}
+.statgrid > div{background:var(--surface) !important; border:1px solid var(--border) !important; border-left:4px solid var(--accent, var(--teal)) !important; text-align:left !important; color:var(--text) !important;}
+.statgrid .num{font-family:'Syne', sans-serif; color:var(--accent, var(--teal)) !important;}
+.statgrid .lbl{color:var(--text2) !important;}
+.card{background:var(--surface) !important; border-color:var(--border) !important; color:var(--text) !important;}
+.word{font-family:'Syne', sans-serif; color:var(--teal) !important;}
+.fig{background:var(--surface) !important; border-color:var(--border) !important;}
+footer{font-style:italic; color:var(--text3) !important;}
+[style*="--accent:#7A1620"],[style*="--accent:#9C2B3B"],[style*="--accent:#8B2635"]{--accent:var(--red) !important; --tint:var(--t-red) !important;}
+[style*="--accent:#5B3A8E"]{--accent:var(--purple) !important; --tint:var(--t-purple) !important;}
+[style*="--accent:#1F6F5C"],[style*="--accent:#2E6B3E"]{--accent:var(--teal) !important; --tint:var(--t-teal) !important;}
+[style*="--accent:#1F3A5F"],[style*="--accent:#3A5A8C"]{--accent:var(--blue) !important; --tint:var(--t-blue) !important;}
+[style*="--accent:#B5591F"],[style*="--accent:#96700A"]{--accent:var(--amber) !important; --tint:var(--t-amber) !important;}
+[style*="--accent:#444444"]{--accent:var(--text3) !important; --tint:var(--surface2) !important;}
+@media print{
+  :root{--bg:#f4f5f7; --surface:#ffffff; --surface2:#eef1f4; --border:#d7dde3; --teal:#00a688; --blue:#1d4ed8; --red:#c53030; --amber:#b45309; --purple:#7c3aed; --text:#0f1923; --text2:#4a5670; --text3:#6b7688;
+    --t-teal:rgba(0,166,136,0.08); --t-blue:rgba(29,78,216,0.07); --t-red:rgba(197,48,48,0.07); --t-amber:rgba(180,83,9,0.08); --t-purple:rgba(124,58,237,0.07); --card:#ffffff; --muted:#4a5670; --line:#d7dde3;}
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  html, body{background:#f4f5f7 !important; color:#0f1923 !important;}
+  nav{display:none !important;}
+  td{color:#0f1923 !important;}
+  .box{background:#ffffff !important; color:#0f1923 !important;}
+  .alert, .note-banner{color:#0f1923 !important;}
+  .alert{background:rgba(180,83,9,0.08) !important;}
+  section, .box, table, .card, .step, .statgrid > div, .fig{break-inside:avoid;}
+  h2{break-after:avoid;}
+  a{color:inherit; text-decoration:none;}
+}
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ a{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../workshop.html">The Workshop</a><span class="cv-sb-meta">Published 6 Oct 2026 · R. E. Suscitate &amp; A. Systole</span></nav>
+
+<header>
+  <div class="kicker">Critical Vector · Pocket Reference</div>
+  <h1>Ventilator Loops</h1>
+  <p>v1. Pressure-volume and flow-volume loop morphology — what the shape tells you that the
+  pressure-time trace and numeric readouts don't. Verified against Deranged Physiology, Respir
+  Care, and primary ventilator-graphics literature. July 2026.</p>
+</header>
+
+<div class="alert">
+  This complements the existing pressure-<em>time</em> waveform reference (PIP, Pplat, driving
+  pressure, compliance math) rather than repeating it — this guide is specifically about loop
+  <em>shape</em>, a different diagnostic layer.
+</div>
+
+<nav>
+  <a href="#s1">1 · Why loops, not just numbers</a>
+  <a href="#s2">2 · Pressure-volume loop</a>
+  <a href="#s3">3 · Flow-volume loop</a>
+  <a href="#s4">4 · Clinical applications</a>
+  <a href="#s5">5 · Quick card &amp; sources</a>
+</nav>
+
+<main>
+
+<section id="s1" style="--accent:#1F3A5F; --tint:#E7EDF4;">
+  <h2><span class="secnum">1.</span> Why Loops, Not Just Numbers</h2>
+  <p class="body">A pressure-time or flow-time trace shows you one variable against the clock.
+  A loop plots two variables against each other for a complete breath, and the resulting shape —
+  its area, its width, where it bends — encodes information numbers alone don't: work of
+  breathing, hysteresis, the point where you're overdistending rather than recruiting.</p>
+  <div class="box">
+    <p><b>Pressure-volume (P-V) loop:</b> pressure on the x-axis, volume on the y-axis. Traces
+    counterclockwise — inspiration up, expiration down. Area inside the loop = work of breathing;
+    width of the loop = hysteresis; slope = compliance.</p>
+    <p><b>Flow-volume (F-V) loop:</b> flow on the y-axis, volume on the x-axis. Expiratory limb
+    typically drawn above baseline, inspiratory limb below — shape changes here identify airway
+    obstruction and restriction.</p>
+  </div>
+</section>
+
+<section id="s2" style="--accent:#5B3A8E; --tint:#EFE9F5;">
+  <h2><span class="secnum">2.</span> Pressure-Volume Loop</h2>
+  <table>
+    <tr><th>Pattern</th><th>Appearance</th><th>Interpretation</th></tr>
+    <tr><td><b>Normal</b></td><td>Smooth, open loop; minimal hysteresis</td><td>Normal compliance,
+    minimal work of breathing</td></tr>
+    <tr><td><b>Decreased compliance</b></td><td>Narrower, more upright loop</td><td>Stiffer lung —
+    ARDS, fibrosis, pulmonary edema</td></tr>
+    <tr><td><b>Overdistension ("beaking" / "duckbill")</b></td><td>Flattening and rightward hook
+    at the top of the inspiratory limb — pressure rises with no further volume gain</td>
+    <td>Volume delivered above the upper inflection point; reduce tidal volume or switch to
+    pressure-targeted ventilation</td></tr>
+    <tr><td><b>Increased compliance / overdistension of a different kind</b></td><td>Wider loop,
+    rightward shift</td><td>Emphysema, or excessive VT/PEEP producing true overdistension in an
+    otherwise compliant lung</td></tr>
+    <tr><td><b>Right shift after recruitment attempt</b></td><td>Loop shifts right, air
+    trapping-like appearance</td><td>Dynamic hyperinflation / auto-PEEP developing</td></tr>
+    <tr><td><b>Left shift after a recruitment maneuver</b></td><td>Loop shifts left compared to
+    pre-recruitment tracing</td><td>Improved compliance — recruitment was effective, atelectasis
+    reversed</td></tr>
+  </table>
+  <div class="box">
+    <p><b>The physiology behind "beaking":</b> once alveoli are near their elastic limit,
+    additional pressure buys essentially no additional volume — the loop's upper limb flattens
+    into a shape classically compared to a penguin's beak or a duck's bill. This is the direct
+    visual correlate of volutrauma/barotrauma risk building in real time.</p>
+  </div>
+  <p class="note">A P-V loop can also reveal patient effort: a clockwise deflection just before a
+  mechanical breath starts (rather than the expected counterclockwise trace) indicates the
+  patient is actively triggering, not just being passively ventilated — useful for spotting
+  dyssynchrony that a numeric readout won't show.</p>
+</section>
+
+<section id="s3" style="--accent:#1F6F5C; --tint:#E6F2EF;">
+  <h2><span class="secnum">3.</span> Flow-Volume Loop</h2>
+  <table>
+    <tr><th>Pattern</th><th>Appearance</th><th>Interpretation</th></tr>
+    <tr><td><b>Normal</b></td><td>Smooth expiratory curve, full return to baseline</td>
+    <td>Normal airway mechanics</td></tr>
+    <tr><td><b>Obstructive ("scooped")</b></td><td>Concave, scooped-out expiratory limb with
+    reduced peak expiratory flow</td><td>COPD, asthma, bronchospasm — decreased expiratory flow
+    from airway narrowing</td></tr>
+    <tr><td><b>Variable extrathoracic obstruction</b></td><td>Flattened inspiratory limb</td>
+    <td>e.g. vocal cord dysfunction — obstruction that worsens with inspiration (negative
+    intraluminal pressure pulls a floppy extrathoracic airway shut)</td></tr>
+    <tr><td><b>Variable intrathoracic obstruction</b></td><td>Flattened expiratory limb</td>
+    <td>e.g. tracheomalacia, bronchomalacia — obstruction that worsens with the positive pleural
+    pressure of expiration</td></tr>
+    <tr><td><b>Air trapping</b></td><td>Expiratory curve fails to return fully to baseline before
+    the next breath</td><td>Incomplete exhalation — auto-PEEP developing</td></tr>
+    <tr><td><b>Restrictive</b></td><td>Small, narrow loop overall</td><td>Reduced lung volumes —
+    fibrosis, chest wall restriction</td></tr>
+  </table>
+  <div class="box">
+    <p><b>Bronchodilator response, visualized:</b> in obstructive disease, the pre-bronchodilator
+    expiratory limb shows the classic scooped-out pattern. After an effective bronchodilator, that
+    scoop often straightens into a more linear line from peak expiratory flow down to end-exhalation
+    — a direct, waveform-level readout of treatment response, faster than waiting on a repeat
+    exam.</p>
+  </div>
+  <p class="note">Because it's the inspiratory limb of a volume-controlled breath that's fixed by
+  the ventilator, the F-V loop's diagnostic information for airway resistance lives almost
+  entirely in the expiratory limb — that's the side to watch.</p>
+</section>
+
+<section id="s4" style="--accent:#9C2B3B; --tint:#F6E9EA;">
+  <h2><span class="secnum">4.</span> Clinical Applications</h2>
+  <div class="box">
+    <p><b>Detecting overdistension before it's obvious elsewhere:</b> a beaking P-V loop can
+    flag volutrauma risk before plateau pressure alone tells the full story, especially in a
+    patient whose compliance is changing breath to breath.</p>
+  </div>
+  <div class="box">
+    <p><b>Titrating PEEP and recruitment maneuvers:</b> comparing pre- and post-recruitment P-V
+    loops — leftward shift with improved compliance is the visual confirmation a maneuver worked,
+    rather than inferring it from oxygenation alone.</p>
+  </div>
+  <div class="box">
+    <p><b>Catching auto-PEEP and air trapping:</b> an F-V loop that doesn't return to baseline, or
+    a P-V loop with a rightward creep breath over breath, both flag dynamic hyperinflation —
+    worth a direct look whenever a patient is tachypneic on the vent or hemodynamics are drifting
+    for no clear reason.</p>
+  </div>
+  <div class="box">
+    <p><b>Detecting circuit leaks:</b> a P-V loop that fails to close — a visible break rather
+    than a continuous trace — indicates a leak in the circuit or around the cuff, worth checking
+    before troubleshooting anything more complex.</p>
+  </div>
+  <p class="note">None of this replaces the numbers (Pplat, driving pressure, compliance) already
+  in the pressure-time reference — loops are the visual layer that makes those numbers easier to
+  trust or to catch drifting, especially breath to breath at the bedside rather than on a delayed
+  chart review.</p>
+</section>
+
+<section id="s5" style="--accent:#444444; --tint:#EFEFEF; border-bottom:none;">
+  <h2><span class="secnum">5.</span> Quick Reference Card &amp; Primary Sources</h2>
+  <table>
+    <tr><th>Loop finding</th><th>What to do</th></tr>
+    <tr><td><b>P-V loop beaking/duckbill</b></td><td>Reduce VT or switch to pressure-targeted mode</td></tr>
+    <tr><td><b>P-V loop narrowing, upright</b></td><td>Investigate falling compliance (ARDS, edema, pneumothorax)</td></tr>
+    <tr><td><b>P-V loop rightward creep</b></td><td>Suspect developing auto-PEEP/air trapping</td></tr>
+    <tr><td><b>P-V loop leftward shift post-recruitment</b></td><td>Recruitment maneuver was effective</td></tr>
+    <tr><td><b>F-V loop scooped expiratory limb</b></td><td>Bronchospasm/obstruction — bronchodilate, reassess shape</td></tr>
+    <tr><td><b>F-V loop flat inspiratory limb</b></td><td>Suspect variable extrathoracic obstruction</td></tr>
+    <tr><td><b>F-V loop flat expiratory limb</b></td><td>Suspect variable intrathoracic obstruction</td></tr>
+    <tr><td><b>F-V loop not returning to baseline</b></td><td>Air trapping — extend expiratory time, treat obstruction</td></tr>
+    <tr><td><b>Loop fails to close (visible break)</b></td><td>Circuit or cuff leak</td></tr>
+  </table>
+  <p class="body"><b>Primary sources checked for this guide:</b></p>
+  <ul class="sources">
+    <li>Interpreting the shape of the pressure-volume loop. Deranged Physiology, CICM primary exam resource, reviewed 2023.</li>
+    <li>Pressure-volume loops in the presence of lung pathology. Deranged Physiology, reviewed 2023.</li>
+    <li>Interpreting the shape of the flow-volume loop. Deranged Physiology, reviewed 2025.</li>
+    <li>Ventilator waveforms and graphics: interpretation guide. Respiratory Therapy Zone, reviewed 2026.</li>
+    <li>Ventilator graphics made easy. Respiratory Therapy, 2023.</li>
+    <li>Essentials of ventilator graphics. Indian Journal of Respiratory Care.</li>
+    <li>Patient-ventilator interaction and graphic representation of ventilation. Breathe Easy: RT Student Resource for Mechanical Ventilation, eCampusOntario, 2023.</li>
+    <li>Rittner F, Doring M. Curves and loops in mechanical ventilation. Drager (manufacturer clinical reference).</li>
+    <li>Harris RS. Pressure-volume curves of the respiratory system. Respir Care. 2005;50(1):78-98.</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  Loops are a visual layer on top of the numbers you already track — they don't replace Pplat,
+  driving pressure, or compliance calculations, but they catch drift and dyssynchrony a static
+  number can miss. Every pattern above was cross-checked against the sources listed here as of
+  July 2026.
+<div class="cv-tagline" style="margin-top:8px">The Critical Vector · Direction and magnitude.</div></footer>
+
+</body>
+</html>

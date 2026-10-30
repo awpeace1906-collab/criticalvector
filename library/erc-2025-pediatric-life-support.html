@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2025 Pediatric Resuscitation: What Actually Changed | The Critical Vector</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400;1,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#0a0e14; --surface:#111720; --surface2:#182030; --border:rgba(255,255,255,.08); --accent:#00d4aa; --accent2:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa; --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670;}
+  *{box-sizing:border-box;}
+  body{background:var(--bg); color:var(--text); margin:0; padding:2.5rem 1rem 5rem; font-family:'Source Serif 4', Georgia, serif; line-height:1.65;}
+  .page{max-width:920px; margin:0 auto;}
+  h1,h2,h3,.sec-num,.kicker,th,.label,.step-num{font-family:'Syne', sans-serif;}
+  code, .mono{font-family:'IBM Plex Mono', monospace;}
+  .kicker{color:var(--accent); font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; font-weight:600;}
+  h1{font-weight:800; font-size:1.7rem; margin:.4rem 0 .5rem; color:var(--text); line-height:1.3;}
+  header p{font-style:italic; color:var(--text2); font-size:1rem; margin:0 0 .4rem;}
+  .byline{color:var(--text3); font-size:.85rem; margin:0 0 1.5rem;}
+  .alert{background:rgba(0,212,170,.10); border:1px solid rgba(0,212,170,.28); color:#bdf5e8; border-radius:10px; padding:1rem 1.2rem; margin:1.2rem 0 2rem; font-size:.98rem;}
+  .alert strong{color:var(--accent);}
+  .sec-head{display:flex; align-items:baseline; gap:.7rem; padding:.6rem .9rem; border-left:4px solid var(--accent); background:linear-gradient(90deg, rgba(0,212,170,.10), transparent); border-radius:6px; margin-top:2.6rem;}
+  .sec-head.c-blue{border-left-color:var(--accent2); background:linear-gradient(90deg, rgba(96,165,250,.12), transparent);}
+  .sec-head.c-red{border-left-color:var(--red); background:linear-gradient(90deg, rgba(232,76,76,.12), transparent);}
+  .sec-head.c-amber{border-left-color:var(--amber); background:linear-gradient(90deg, rgba(245,158,11,.12), transparent);}
+  .sec-head.c-purple{border-left-color:var(--purple); background:linear-gradient(90deg, rgba(167,139,250,.12), transparent);}
+  .sec-num{color:var(--text3); font-size:.85rem; font-weight:600;}
+  .sec-head h2{margin:0; font-size:1.15rem; font-weight:700; color:var(--text);}
+  .tagline{font-style:italic; color:var(--text2); font-size:.92rem; margin:.4rem 0 1rem; padding-left:.9rem;}
+  p{margin:.8rem 0;}
+  .box{background:var(--surface2); border:1px solid var(--border); border-radius:10px; padding:1rem 1.2rem; margin:1.1rem 0;}
+  .box.t-teal{border-left:3px solid var(--accent);} .box.t-blue{border-left:3px solid var(--accent2);}
+  .box.t-amber{border-left:3px solid var(--amber);} .box.t-purple{border-left:3px solid var(--purple);}
+  .box.t-red{border-left:3px solid var(--red); background:rgba(232,76,76,.06);}
+  .box .label{display:block; font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; font-weight:700; margin-bottom:.4rem;}
+  .box.t-teal .label{color:var(--accent);} .box.t-blue .label{color:var(--accent2);}
+  .box.t-amber .label{color:var(--amber);} .box.t-purple .label{color:var(--purple);} .box.t-red .label{color:var(--red);}
+  table{width:100%; border-collapse:collapse; margin:1.1rem 0; font-size:.83rem;}
+  th{background:var(--surface2); color:var(--text); text-align:left; padding:.5rem .55rem; font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; font-weight:700; border-bottom:1px solid var(--border);}
+  td{padding:.5rem .55rem; border-bottom:1px solid var(--border); vertical-align:top; color:var(--text);}
+  tr:nth-child(even) td{background:rgba(255,255,255,.02);}
+  td.num{font-family:'IBM Plex Mono',monospace; font-size:.8rem;}
+  tr.sig td{background:rgba(232,76,76,.07);} tr.notsig td{color:var(--text2);}
+  ul.plain{margin:.6rem 0; padding-left:1.3rem;} ul.plain li{margin-bottom:.4rem;}
+  .sources{list-style:none; padding:0; margin:1rem 0; font-size:.85rem; color:var(--text2);}
+  .sources li{padding:.55rem 0; border-bottom:1px solid var(--border);} .sources a{color:var(--accent);}
+  footer{font-style:italic; color:var(--text3); font-size:.85rem; text-align:center; margin-top:3rem; padding-top:1.2rem; border-top:1px solid var(--border);}
+  @media print{
+    :root{--bg:#f4f5f7; --surface:#fff; --surface2:#eef1f4; --border:#d7dde3; --accent:#00a688; --accent2:#1d4ed8; --red:#c53030; --amber:#b45309; --purple:#7c3aed; --text:#0f1923; --text2:#4a5670; --text3:#6b7688;}
+    body{background:var(--bg) !important; color:var(--text) !important;}
+    .alert{background:rgba(0,166,136,.08) !important; color:#0f1923 !important;}
+    td{color:var(--text) !important;}
+  }
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ a{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../locker.html">The Evidence Locker</a><span class="cv-sb-meta">Published 2 Sep 2026 · R. E. Suscitate &amp; A. Systole</span></nav>
+<div class="page">
+
+<header>
+  <div class="kicker">The Critical Vector &middot; Guideline Breakdown &mdash; Verified</div>
+  <h1>2025 Pediatric Resuscitation: What Actually Changed</h1>
+  <p>European Resuscitation Council Guidelines 2025 Paediatric Life Support &mdash; the changes that matter at the bedside, not just the citation.</p>
+  <p class="byline">Djakow J, Turner NM, Skellett S, et al; ERC Paediatric Life Support Writing Group. <em>Resuscitation.</em> 2025;215(Suppl 1):110767. doi:10.1016/j.resuscitation.2025.110767 &middot; Original social summary: hagahmedmd, "5 high-yield updates emergency clinicians need to know"</p>
+</header>
+
+<div class="alert">
+<strong>Note on the source post:</strong> only the title card was available to audit against &mdash; the specific "5 updates" hagahmedmd picked weren't visible. Rather than guess at their five, this is a full breakdown of the guideline's actual highest-yield changes from the previous 2021 edition, organized by category, each checked directly against the primary document and independent summaries (Resuscitation Council UK, Don't Forget the Bubbles).
+</div>
+
+<div class="sec-head"><span class="sec-num">01</span><h2>The Headline: BLS Didn't Change</h2></div>
+<p class="tagline">If you do nothing else with this update, know this: basic life support technique is unchanged. The changes are almost entirely in advanced care.</p>
+<p>Paediatric Basic Life Support carries no technique changes from 2021 &mdash; compression rate, ratio, and rescue breathing recommendations are unchanged. The one clarification: use newborn life support (NLS) during neonatal/maternity unit stays and, out-of-hospital, up to 24 hours of life; after that, use paediatric BLS (PBLS).</p>
+
+<div class="sec-head c-blue"><span class="sec-num">02</span><h2>Airway: Hard Numbers Where There Used to Be Judgment Calls</h2></div>
+<table>
+<tr><th>Change</th><th>Detail</th></tr>
+<tr><td>Apnoeic oxygenation</td><td>Consider apnoeic oxygenation or high-flow nasal oxygen to avoid hypoxia during intubation</td></tr>
+<tr><td>Time limit per attempt</td><td>Limit each intubation attempt to 30&ndash;60 seconds; re-ventilate immediately if desaturation or bradycardia occurs</td></tr>
+<tr><td>Attempt ceiling</td><td>Maximum of 4 intubation attempts, then pivot to oxygenation (face mask or supraglottic airway) and call for anaesthetics/PICU support</td></tr>
+</table>
+<p>This is a genuine shift from "use clinical judgment" to explicit numeric limits &mdash; useful for exactly the moment judgment is hardest to exercise well.</p>
+
+<div class="sec-head c-red"><span class="sec-num">03</span><h2>Circulation: The Fluid Bolus Cap Just Changed for Teens</h2></div>
+<div class="box t-red">
+<span class="label">The number worth memorizing</span>
+<p>Fluid boluses at 10 mL/kg can now be given up to <b>500 mL in adolescents (14+)</b>, in line with adult practice &mdash; increased from the previous 250 mL cap. Ideally a balanced crystalloid (Plasma-Lyte 148 or Hartmann's/lactated Ringer's).</p>
+</div>
+<ul class="plain">
+<li><b>IV access time limit:</b> no more than 5 minutes attempting IV access before inserting an IO; provide effective analgesia for IO placement unless the child is comatose.</li>
+<li><b>POCUS for IV cannulation:</b> competent providers should use point-of-care ultrasound to guide difficult IV placement &mdash; a new explicit recommendation, not just a nice-to-have.</li>
+<li><b>Vasoactive drug first-line agents, now specified:</b> noradrenaline (norepinephrine) first-line vasopressor; adrenaline (epinephrine) first-line inotrope; milrinone first-line inodilator. The choice between vasopressor and inotrope is left to clinical judgment.</li>
+<li><b>TBI-specific target:</b> in traumatic brain injury, titrate fluids and vasoactives to a MAP at or above the 50th centile for age (to protect cerebral perfusion pressure); 0.9% saline may be preferred over balanced crystalloids here specifically, to drive mild hypernatremia for neuroprotection &mdash; a deliberate exception to the "balanced crystalloid by default" rule elsewhere in the guideline.</li>
+</ul>
+
+<div class="sec-head c-amber"><span class="sec-num">04</span><h2>Drugs: The Obesity-Dosing Fix</h2></div>
+<div class="box t-amber">
+<span class="label">Use ideal body weight, not actual body weight, in high-BMI patients</span>
+<p>Most resuscitation drugs are hydrophilic and don't distribute into fatty tissue &mdash; dosing off actual body weight in a high-BMI child risks overdosing, including exceeding adult maximum doses. This is a small line in the guideline with real overdose-prevention consequences.</p>
+</div>
+
+<div class="sec-head c-purple"><span class="sec-num">05</span><h2>Shockable Arrest: New Energy Ceiling and Pad Placement Logic</h2></div>
+<table>
+<tr><th>Parameter</th><th>2025 recommendation</th></tr>
+<tr><td>Initial shock energy</td><td>4 J/kg, not exceeding adult max (120&ndash;200 J, manufacturer dependent)</td></tr>
+<tr><td>Refractory VT/VF (&gt;5 shocks)</td><td>Escalate stepwise to a maximum of <b>8 J/kg</b></td></tr>
+<tr><td>Re-arrest after ROSC in VT/VF</td><td>Use the energy that previously achieved ROSC &mdash; don't reset to initial dose</td></tr>
+<tr><td>Pad placement, infants/children &lt;25 kg</td><td>Antero-posterior preferred (easier to achieve without pad-to-pad contact)</td></tr>
+<tr><td>Pad placement, larger children</td><td>Antero-lateral (less CPR interruption); avoid breast tissue in adolescents</td></tr>
+<tr><td>Monitored shockable arrest</td><td>Up to 3 stacked shocks at 4 J/kg with rhythm/pulse checks between; if refractory, give adrenaline + amiodarone after 5 shocks, further amiodarone after 7</td></tr>
+</table>
+<p class="note" style="color:var(--text2); font-style:italic; font-size:.85rem;">Note the drug-timing sequence differs from adult ALS, where amiodarone follows immediately after stacked shocks &mdash; don't cross-apply the adult sequence to a pediatric arrest.</p>
+<p>New invasive monitoring target: if an arterial line is in place during CPR, target diastolic pressure &gt;25 mmHg in infants or &gt;30 mmHg in children/adolescents &mdash; coronary filling happens in diastole, so this is a direct proxy for whether compressions are actually generating adequate coronary perfusion.</p>
+
+<div class="sec-head c-blue"><span class="sec-num">06</span><h2>Special Circumstances: Adult-Level Specificity, Now Explicit in Peds</h2></div>
+<p class="tagline">Little of this is conceptually new — the shift is from vague/implicit to explicitly stated, matching existing adult guidance.</p>
+<ul class="plain">
+<li><b>Septic shock:</b> blood cultures/PCR if feasible, broad-spectrum antibiotics within 1 hour; if refractory to fluids and first-line vasoactives (or in adrenal insufficiency), consider hydrocortisone 1&ndash;2 mg/kg IV (max 100 mg) &mdash; consistent with Surviving Sepsis Campaign, now explicit in the pediatric-specific document.</li>
+<li><b>Massive hemorrhage:</b> tranexamic acid ASAP, within 3 hours of injury &mdash; 15&ndash;20 mg/kg IV bolus (max 1 g), then infusion 2 mg/kg/hr for at least 8 hours (max 1 g in 8h). Limit crystalloid to 20 mL/kg max before moving to blood products. In TBI or refractory shock, target MAP &gt;50th centile for age.</li>
+<li><b>Traumatic cardiac arrest:</b> explicit HOTT principles (Hypovolemia, Oxygenation, Tension, Tamponade) take priority over AED/pad placement, run concurrently with compressions, unless a shockable rhythm is especially likely (electrocution, commotio cordis).</li>
+<li><b>Hyperkalemia:</b> confirmed severe (&gt;6.5 mmol/L, or &gt;7.0 in neonates &lt;4 days) &rarr; insulin 0.1 unit/kg (max 10 units) in 5 mL/kg 10% glucose (max 250 mL) over 30 min, glucose/K+ monitoring q15min &times; 4h. <b>Do not give calcium during cardiac arrest</b> for hyperkalemia &mdash; explicitly stated not to improve survival and possibly worse in some studies; focus on potassium-lowering agents instead.</li>
+<li><b>Obstructed cardiac shunt:</b> genuinely new content &mdash; specific guidance for ductus stents, post-Norwood/Glenn physiology; maximize oxygenation, fluids for preload, heparin anticoagulation (50&ndash;100 unit/kg bolus), early specialist involvement.</li>
+</ul>
+
+<div class="sec-head" style="border-left-color:var(--text3); background:none;"><span class="sec-num">07</span><h2>Bottom Line</h2></div>
+<p>The single most useful framing for this update: pediatric BLS is unchanged, so don't relearn anything there. Almost everything new sits in advanced care and special circumstances &mdash; numeric caps replacing judgment calls (intubation attempts/timing, defibrillation energy escalation, the adolescent 500 mL fluid bolus cap), first-line vasoactive agents now explicitly named, and adult-level specificity finally written into the pediatric document for septic shock, massive hemorrhage, and traumatic arrest. The genuinely new material, not just a restatement of adult practice, is the obstructed cardiac shunt section and the diastolic-pressure CPR-quality target.</p>
+
+<div class="sec-head" style="border-left-color:var(--text3); background:none;"><span class="sec-num">08</span><h2>Sources</h2></div>
+<ul class="sources">
+<li>Djakow J, Turner NM, Skellett S, et al; ERC Paediatric Life Support Writing Group Collaborators. European Resuscitation Council Guidelines 2025 Paediatric Life Support. <em>Resuscitation.</em> 2025;215(Suppl 1):110767. doi:10.1016/j.resuscitation.2025.110767.</li>
+<li>Resuscitation Council UK Guidelines 2025 &mdash; Paediatric Basic and Advanced Life Support, tailored to UK practice. Skellett S, et al. Oct 2025.</li>
+<li>Fotheringham D, Currie V. What's new Resus Council Guidance 2025 &ndash; Paediatric Life Support. Don't Forget the Bubbles. 2025. doi:10.31440/DFTB.67379.</li>
+<li>Van de Voorde P, Turner NM, Djakow J, et al. European Resuscitation Council Guidelines 2021: Paediatric Life Support. <em>Resuscitation.</em> 2021;161:327&ndash;387. (prior version, for comparison)</li>
+</ul>
+
+<footer>The Critical Vector &middot; Direction and magnitude.</footer>
+
+</div>
+</body>
+</html>

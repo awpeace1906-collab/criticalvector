@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Washing Out With 70% vs 100% Oxygen | The Critical Vector</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400;1,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#0a0e14; --surface:#111720; --surface2:#182030; --border:rgba(255,255,255,.08); --accent:#00d4aa; --accent2:#2563eb; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa; --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670;}
+  *{box-sizing:border-box;}
+  body{background:var(--bg); color:var(--text); margin:0; padding:2.5rem 1rem 5rem; font-family:'Source Serif 4', Georgia, serif; line-height:1.65;}
+  .page{max-width:920px; margin:0 auto;}
+  h1,h2,h3,.sec-num,.kicker,th,.label,.step-num{font-family:'Syne', sans-serif;}
+  code, .mono{font-family:'IBM Plex Mono', monospace;}
+  .kicker{color:var(--accent); font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; font-weight:600;}
+  h1{font-weight:800; font-size:1.7rem; margin:.4rem 0 .5rem; color:var(--text); line-height:1.3;}
+  header p{font-style:italic; color:var(--text2); font-size:1rem; margin:0 0 .4rem;}
+  .byline{color:var(--text3); font-size:.85rem; margin:0 0 1.5rem;}
+  .alert{background:rgba(0,212,170,.10); border:1px solid rgba(0,212,170,.28); color:#bdf5e8; border-radius:10px; padding:1rem 1.2rem; margin:1.2rem 0 2rem; font-size:.98rem;}
+  .alert strong{color:var(--accent);}
+  .sec-head{display:flex; align-items:baseline; gap:.7rem; padding:.6rem .9rem; border-left:4px solid var(--accent); background:linear-gradient(90deg, rgba(0,212,170,.10), transparent); border-radius:6px; margin-top:2.6rem;}
+  .sec-head.c-blue{border-left-color:var(--accent2); background:linear-gradient(90deg, rgba(37,99,235,.12), transparent);}
+  .sec-head.c-red{border-left-color:var(--red); background:linear-gradient(90deg, rgba(232,76,76,.12), transparent);}
+  .sec-head.c-amber{border-left-color:var(--amber); background:linear-gradient(90deg, rgba(245,158,11,.12), transparent);}
+  .sec-head.c-purple{border-left-color:var(--purple); background:linear-gradient(90deg, rgba(167,139,250,.12), transparent);}
+  .sec-num{color:var(--text3); font-size:.85rem; font-weight:600;}
+  .sec-head h2{margin:0; font-size:1.15rem; font-weight:700; color:var(--text);}
+  .tagline{font-style:italic; color:var(--text2); font-size:.92rem; margin:.4rem 0 1rem; padding-left:.9rem;}
+  p{margin:.8rem 0;}
+  .box{background:var(--surface2); border:1px solid var(--border); border-radius:10px; padding:1rem 1.2rem; margin:1.1rem 0;}
+  .box.t-teal{border-left:3px solid var(--accent);} .box.t-blue{border-left:3px solid var(--accent2);}
+  .box.t-amber{border-left:3px solid var(--amber);} .box.t-purple{border-left:3px solid var(--purple);}
+  .box.t-red{border-left:3px solid var(--red); background:rgba(232,76,76,.06);}
+  .box .label{display:block; font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; font-weight:700; margin-bottom:.4rem;}
+  .box.t-teal .label{color:var(--accent);} .box.t-blue .label{color:var(--accent2);}
+  .box.t-amber .label{color:var(--amber);} .box.t-purple .label{color:var(--purple);} .box.t-red .label{color:var(--red);}
+  table{width:100%; border-collapse:collapse; margin:1.1rem 0; font-size:.83rem;}
+  th{background:var(--surface2); color:var(--text); text-align:left; padding:.5rem .55rem; font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; font-weight:700; border-bottom:1px solid var(--border);}
+  td{padding:.5rem .55rem; border-bottom:1px solid var(--border); vertical-align:top; color:var(--text);}
+  tr:nth-child(even) td{background:rgba(255,255,255,.02);}
+  td.num{font-family:'IBM Plex Mono',monospace; font-size:.8rem;}
+  tr.sig td{background:rgba(232,76,76,.07);} tr.notsig td{color:var(--text2);}
+  ul.plain{margin:.6rem 0; padding-left:1.3rem;} ul.plain li{margin-bottom:.4rem;}
+  .sources{list-style:none; padding:0; margin:1rem 0; font-size:.85rem; color:var(--text2);}
+  .sources li{padding:.55rem 0; border-bottom:1px solid var(--border);} .sources a{color:var(--accent);}
+  footer{font-style:italic; color:var(--text3); font-size:.85rem; text-align:center; margin-top:3rem; padding-top:1.2rem; border-top:1px solid var(--border);}
+  @media print{
+    :root{--bg:#f4f5f7; --surface:#fff; --surface2:#eef1f4; --border:#d7dde3; --accent:#00a688; --accent2:#1d4ed8; --red:#c53030; --amber:#b45309; --purple:#7c3aed; --text:#0f1923; --text2:#4a5670; --text3:#6b7688;}
+    body{background:var(--bg) !important; color:var(--text) !important;}
+    .alert{background:rgba(0,166,136,.08) !important; color:#0f1923 !important;}
+    td{color:var(--text) !important;}
+  }
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ a{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../locker.html">The Evidence Locker</a><span class="cv-sb-meta">Published 14 Oct 2026 · R. E. Suscitate &amp; A. Systole</span></nav>
+<div class="page">
+
+<header>
+  <div class="kicker">The Critical Vector &middot; Study Breakdown &amp; Content Audit &mdash; Verified</div>
+  <h1>Washing Out With 70% Instead of 100% Oxygen at Extubation</h1>
+  <p>Paschold B-S, Braeuer BLP, Santer P, et al. Impact of high versus low fraction of inspired oxygen for anaesthetic washout and extubation on postoperative pulmonary atelectasis formation and oxygenation: a randomised controlled trial.</p>
+  <p class="byline"><em>Br J Anaesth.</em> 2026 Aug;137(2):591&ndash;600. doi:10.1016/j.bja.2026.04.056. NCT06538740 &middot; Single-center RCT, Beth Israel Deaconess Medical Center, Boston &middot; Original social summary: British Journal of Anaesthesia (Facebook)</p>
+</header>
+
+<div class="alert">
+<strong>Verdict on the source post:</strong> the clinical claim is accurate and matches the published trial. One small thing worth flagging if you're citing this: the Facebook caption spells the first author "Pashold" &mdash; the correct spelling in the published paper is <b>Paschold</b> (Béla-Simon Paschold).
+</div>
+
+<div class="sec-head"><span class="sec-num">01</span><h2>The Setup</h2></div>
+<p class="tagline">Giving 100% oxygen right before extubation feels like the safe move &mdash; maximize the margin against desaturation. This trial tests whether that habit is actually working against you.</p>
+<p>Clinicians commonly deliver FiO2=1.0 during anaesthetic washout and extubation specifically to optimize oxygen delivery and buy safety margin. But absorption atelectasis is a well-described phenomenon: pure oxygen in poorly-ventilated alveoli gets absorbed into the bloodstream faster than nitrogen would, causing those alveoli to collapse. This trial directly tests whether that theoretical risk translates into measurable lung volume loss and worse post-extubation oxygenation &mdash; and whether there's a "sweet spot" FiO2 that avoids both hyperoxia-driven atelectasis and hypoxia risk.</p>
+
+<div class="sec-head c-blue"><span class="sec-num">02</span><h2>Design</h2></div>
+<table>
+<tr><td><b>Design</b></td><td>Single-center RCT, three-arm (100% vs. 70% vs. 40% FiO2)</td></tr>
+<tr><td><b>Population</b></td><td>48 adults, elective surgery under general anesthesia with tracheal intubation, 1&ndash;5 hour anticipated duration</td></tr>
+<tr><td><b>Groups</b></td><td>24 received 100% FiO2 during washout/extubation; 24 received lower FiO2 (12 at 70%, 12 at 40%)</td></tr>
+<tr><td><b>Primary outcome</b></td><td>Atelectasis formation, measured 1 min after extubation via electrical impedance tomography (EIT): center-of-ventilation shift and change in end-expiratory lung volume (EELV)</td></tr>
+<tr><td><b>Secondary outcomes</b></td><td>SpO2 trajectory around extubation, lowest SpO2, hypoxemia (SpO2&lt;90%) incidence, PACU clinical outcomes</td></tr>
+</table>
+
+<div class="sec-head c-red"><span class="sec-num">03</span><h2>Results, Confirmed</h2></div>
+<table>
+<tr><th>Outcome</th><th>100% FiO2</th><th>Lower FiO2 (70%/40%)</th><th>P value</th></tr>
+<tr class="sig"><td>Center of ventilation shift (ventral = worse)</td><td class="num">&minus;0.3% (median)</td><td class="num">+1.3% (median)</td><td class="num">0.041</td></tr>
+<tr class="sig"><td>Reduction in end-expiratory lung volume</td><td class="num">&minus;1067 mL</td><td class="num">&minus;423 mL</td><td class="num">0.006</td></tr>
+<tr class="notsig"><td>EELV, 70% vs. 40% FiO2 specifically</td><td colspan="2" class="num">No significant difference</td><td class="num">0.39</td></tr>
+<tr class="sig"><td>SpO2 at 10 min post-extubation</td><td colspan="2" class="num">Higher with 70% FiO2 than either 100% or 40%</td><td class="num">0.028 (interaction)</td></tr>
+</table>
+<div class="box t-red">
+<span class="label">Reading the pattern correctly</span>
+<p>The atelectasis-prevention benefit of avoiding pure oxygen held whether patients got 70% or 40% &mdash; there was no significant difference between those two lower-FiO2 groups on lung volume. But 70% specifically produced the best <i>oxygenation</i> trajectory in the 10 minutes after extubation. Put together: 40% avoids atelectasis just as well as 70%, but 70% is the concentration that also keeps SpO2 highest and most stable &mdash; which is why the trial's own conclusion lands on 70% as the practical target, not the lowest FiO2 that still avoids atelectasis.</p>
+</div>
+
+<div class="sec-head c-amber"><span class="sec-num">04</span><h2>The Physiology, Confirmed</h2></div>
+<p class="tagline">This isn't a new mechanism &mdash; it's a well-established one getting its first dedicated washout/extubation-specific RCT.</p>
+<p>Absorption atelectasis from high FiO2 is established physiology, and prior trials have tested FiO2 during other phases of anesthesia (recruitment maneuvers, intraoperative maintenance, TAVI procedures) with generally consistent findings that lower FiO2 reduces atelectasis risk. What's genuinely new here is the specific focus on the washout-to-extubation window &mdash; the exact moment many clinicians default to 100% oxygen for a safety margin &mdash; and using EIT (bedside, continuous, radiation-free) rather than CT to quantify the atelectasis directly at the bedside.</p>
+
+<div class="sec-head c-purple"><span class="sec-num">05</span><h2>Limitations Worth Knowing</h2></div>
+<ul class="plain">
+<li><b>Small trial:</b> 48 patients total, 24 per high/low FiO2 arm, split further into 12 and 12 for the 70%/40% comparison &mdash; underpowered to detect anything but a fairly large effect, and not powered at all for clinical outcomes like pneumonia or reintubation.</li>
+<li><b>Single center:</b> one academic Boston hospital; local extubation practices, patient mix, and staffing may not generalize directly.</li>
+<li><b>Surrogate outcomes:</b> EIT-measured lung volume and center-of-ventilation shift are validated atelectasis surrogates, but this trial doesn't report postoperative pulmonary complications, length of stay, or other patient-centered endpoints &mdash; the case for changing practice rests on physiological plausibility plus this signal, not yet on outcome data.</li>
+<li><b>The effect was short-lived:</b> a second journal-club summary of the full paper reports that the between-group differences had disappeared by 1 hour in PACU, with no difference in PACU hypoxemia, Air-Test results, or reintubation. These details are not in the abstract; confirm them against the full text.</li>
+<li><b>Who wasn't studied:</b> the same summary lists exclusions of BMI above 40, compromised airways, and thoracic or cardiac surgery. Those are the patients whose apnea reserve makes 100% oxygen at extubation most defensible.</li>
+</ul>
+
+<div class="sec-head" style="border-left-color:var(--text3); background:none;"><span class="sec-num">06</span><h2>Bottom Line</h2></div>
+<p>The trial supports its own conclusion: avoiding pure oxygen during washout preserved end-expiratory lung volume, and post-extubation SpO₂ was steadiest with 70%. Those are EIT surrogates measured in the first minutes after extubation, in 48 low-risk elective patients, and the reported differences faded within an hour without a difference in clinical outcomes. Reasonable to adopt 70% for routine low-risk extubations; not a reason to withhold 100% oxygen from the obese, the difficult airway, or anyone with little apnea reserve.</p>
+
+<div class="sec-head" style="border-left-color:var(--text3); background:none;"><span class="sec-num">07</span><h2>Sources</h2></div>
+<ul class="sources">
+<li><b>British Journal of Anaesthesia.</b> Original Facebook post on this trial. &mdash; read the original post and full article before relying on this summary.</li>
+<li>Paschold B-S, Braeuer BLP, Santer P, et al. Impact of high versus low fraction of inspired oxygen for anaesthetic washout and extubation on postoperative pulmonary atelectasis formation and oxygenation: a randomised controlled trial. <em>Br J Anaesth.</em> 2026;137(2):591&ndash;600. doi:10.1016/j.bja.2026.04.056.</li>
+<li>Edmark L, Kostova-Aherdan K, Enlund M, Hedenstierna G. Optimal oxygen concentration during induction of general anesthesia. <em>Anesthesiology.</em> 2003;98(1):28&ndash;33.</li>
+<li>Jiang Z, Liu S, Wang L, et al. Effects of 30% vs. 60% inspired oxygen fraction during mechanical ventilation on postoperative atelectasis: a randomised controlled trial. <em>BMC Anesthesiol.</em> 2023.</li>
+<li>Klinefelter J. Journal club: "Extubate from 70% O₂ instead of 100%?" Destination CME, 2026. Secondary summary; source of the PACU-resolution and exclusion details pending full-text confirmation.</li>
+</ul>
+
+<footer>The Critical Vector &middot; Direction and magnitude.</footer>
+
+</div>
+</body>
+</html>

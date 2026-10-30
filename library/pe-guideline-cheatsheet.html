@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 Acute PE Guideline — Journal Club Cheat Sheet | The Critical Vector</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400..800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0e14; --surface:#111720; --surface2:#182030; --border:rgba(255,255,255,.08);
+    --teal:#00d4aa; --blue:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa;
+    --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670;
+    --radius:10px; --radius-sm:6px;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg); color:var(--text);
+    font-family:'Source Serif 4', Georgia, serif;
+    font-size:16px; line-height:1.65;
+    padding:0 0 60px 0;
+  }
+  h1,h2,h3,h4,.mono-label,.badge,nav,.stat-num,.step-num{
+    font-family:'Syne', sans-serif;
+  }
+  a{color:var(--teal);}
+
+  /* ── Header / masthead ─────────────────────────────────────── */
+  header.masthead{
+    background:var(--surface); border-bottom:1px solid var(--border);
+    padding:28px 40px 24px 40px;
+  }
+  .brand-row{display:flex; align-items:center;}
+  .brand-row .logo-mark{margin-right:14px;}
+  .brand-row .brand-text{margin-right:auto;}
+  .logo-mark{
+    width:44px; height:44px; border-radius:12px; background:#111720;
+    border:1px solid var(--border); display:flex; align-items:center; justify-content:center;
+    flex-shrink:0;
+  }
+  .brand-name{font-weight:800; font-size:20px; letter-spacing:.2px; color:var(--text);}
+  .brand-name em{color:var(--teal); font-style:italic; font-weight:800;}
+  .tagline{font-family:'Source Serif 4',serif; font-style:italic; color:var(--text2); font-size:13px; margin-top:2px;}
+  .doc-kicker{
+    display:inline-block; font-family:'Syne',sans-serif; font-weight:700; font-size:11px;
+    letter-spacing:1.5px; text-transform:uppercase; color:var(--teal);
+    background:rgba(0,212,170,0.1); border:1px solid rgba(0,212,170,0.25);
+    padding:4px 10px; border-radius:20px; margin-bottom:14px;
+  }
+  h1.doc-title{
+    font-size:30px; font-weight:800; line-height:1.25; margin:0 0 8px 0; color:var(--text);
+    max-width:900px;
+  }
+  .doc-sub{color:var(--text2); font-size:14.5px; max-width:800px; margin:0;}
+  .doc-sub .src{color:var(--text3); font-size:12.5px; display:block; margin-top:8px;}
+
+  main{max-width:900px; margin:0 auto; padding:0 40px;}
+
+  /* ── Section headers ───────────────────────────────────────── */
+  .section{margin-top:44px;}
+  .section-head{
+    display:flex; align-items:baseline; margin-bottom:4px; padding-bottom:10px;
+    border-bottom:2px solid var(--border);
+  }
+  .section-head .section-num{
+    font-weight:800; font-size:13px; color:var(--text3); margin-right:12px;
+  }
+  .section-head h2{
+    font-size:20px; font-weight:800; margin:0; color:var(--text); flex:1;
+  }
+  .section-intro{color:var(--text2); font-size:14.5px; margin:10px 0 18px 0;}
+
+  /* ── Badges ─────────────────────────────────────────────────── */
+  .badge{
+    display:inline-block; font-size:11px; font-weight:700; letter-spacing:.5px;
+    text-transform:uppercase; padding:3px 9px; border-radius:20px; margin-right:6px;
+  }
+  .badge-teal{background:rgba(0,212,170,0.1); border:1px solid rgba(0,212,170,0.25); color:var(--teal);}
+  .badge-blue{background:rgba(96,165,250,0.12); border:1px solid rgba(96,165,250,0.3); color:#7ba3f5;}
+  .badge-amber{background:rgba(245,158,11,0.1); border:1px solid rgba(245,158,11,0.28); color:var(--amber);}
+  .badge-purple{background:rgba(167,139,250,0.1); border:1px solid rgba(167,139,250,0.28); color:var(--purple);}
+  .badge-red{background:rgba(232,76,76,0.1); border:1px solid rgba(232,76,76,0.28); color:#f08080;}
+
+  /* ── Stat card grid (PE categories A-E) ────────────────────── */
+  .stat-grid{
+    display:grid; grid-template-columns:repeat(5,1fr); margin:18px 0;
+  }
+  .stat-grid > *{margin-right:10px;}
+  .stat-grid > *:last-child{margin-right:0;}
+  @media (max-width:760px){
+    .stat-grid{grid-template-columns:1fr 1fr;}
+    .stat-grid > *{margin-right:10px; margin-bottom:10px;}
+  }
+  .stat-card{
+    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+    padding:16px 14px; border-left:4px solid var(--teal);
+  }
+  .stat-card.c-a{border-left-color:var(--teal);}
+  .stat-card.c-b{border-left-color:var(--blue);}
+  .stat-card.c-c{border-left-color:var(--amber);}
+  .stat-card.c-d{border-left-color:var(--purple);}
+  .stat-card.c-e{border-left-color:var(--red);}
+  .stat-num{font-size:28px; font-weight:800; line-height:1; margin-bottom:6px;}
+  .c-a .stat-num{color:var(--teal);}
+  .c-b .stat-num{color:var(--blue);}
+  .c-c .stat-num{color:var(--amber);}
+  .c-d .stat-num{color:var(--purple);}
+  .c-e .stat-num{color:var(--red);}
+  .stat-label{font-family:'Syne',sans-serif; font-weight:700; font-size:12.5px; color:var(--text); margin-bottom:6px;}
+  .stat-detail{font-size:12px; color:var(--text2); line-height:1.5;}
+
+  /* ── Step cards (sequential / management flow) ─────────────── */
+  .step-card{
+    display:flex; background:var(--surface); border:1px solid var(--border);
+    border-radius:var(--radius); padding:16px 18px; margin-bottom:12px;
+  }
+  .step-card .step-num{
+    width:34px; height:34px; border-radius:50%; flex-shrink:0; margin-right:16px;
+    display:flex; align-items:center; justify-content:center; font-weight:800; font-size:14px;
+  }
+  .step-card.s-ab .step-num{background:rgba(0,212,170,0.12); color:var(--teal); border:1px solid rgba(0,212,170,0.3);}
+  .step-card.s-c .step-num{background:rgba(245,158,11,0.12); color:var(--amber); border:1px solid rgba(245,158,11,0.3);}
+  .step-card.s-d .step-num{background:rgba(167,139,250,0.12); color:var(--purple); border:1px solid rgba(167,139,250,0.3);}
+  .step-card.s-e .step-num{background:rgba(232,76,76,0.12); color:var(--red); border:1px solid rgba(232,76,76,0.3);}
+  .step-body h4{margin:0 0 4px 0; font-size:14.5px; color:var(--text);}
+  .step-body p{margin:0; font-size:13.5px; color:var(--text2); line-height:1.55;}
+
+  /* ── Callout boxes: pearl (teal) + axiom (purple) + caution (red)  */
+  .callout{
+    border-radius:var(--radius); padding:16px 18px; margin:16px 0;
+    border:1px solid; font-size:13.8px; line-height:1.6;
+  }
+  .callout .callout-label{
+    font-family:'Syne',sans-serif; font-weight:800; font-size:11px; letter-spacing:1px;
+    text-transform:uppercase; margin-bottom:8px; display:block;
+  }
+  .callout-pearl{background:rgba(0,212,170,0.06); border-color:rgba(0,212,170,0.25);}
+  .callout-pearl .callout-label{color:var(--teal);}
+  .callout-axiom{background:rgba(167,139,250,0.06); border-color:rgba(167,139,250,0.25);}
+  .callout-axiom .callout-label{color:var(--purple);}
+  .callout-caution{background:rgba(232,76,76,0.06); border-color:rgba(232,76,76,0.25);}
+  .callout-caution .callout-label{color:#f08080;}
+  .callout p{margin:0 0 8px 0; color:var(--text);}
+  .callout p:last-child{margin-bottom:0;}
+  .callout ul{margin:0; padding-left:18px;}
+  .callout li{margin-bottom:5px; color:var(--text);}
+
+  /* ── Tables ─────────────────────────────────────────────────── */
+  table{width:100%; border-collapse:collapse; margin:16px 0; font-size:13px;}
+  th{
+    font-family:'Syne',sans-serif; font-weight:700; font-size:11px; letter-spacing:.4px;
+    text-transform:uppercase; text-align:left; color:var(--text);
+    background:var(--surface2); padding:9px 10px; border:1px solid var(--border);
+  }
+  td{padding:9px 10px; border:1px solid var(--border); color:var(--text2); vertical-align:top;}
+  tr:nth-child(even) td{background:rgba(255,255,255,0.02);}
+  td strong{color:var(--text);}
+
+  /* ── Lists ──────────────────────────────────────────────────── */
+  ul.bullets{padding-left:20px; margin:12px 0;}
+  ul.bullets li{margin-bottom:9px; color:var(--text2); font-size:14.5px; line-height:1.6;}
+  ul.bullets li strong{color:var(--text);}
+  ul.bullets li::marker{color:var(--teal);}
+
+  /* ── Talking points list (numbered) ─────────────────────────── */
+  ol.talk-points{padding-left:22px; margin:0;}
+  ol.talk-points li{margin-bottom:10px; color:var(--text); font-size:14px; line-height:1.6;}
+  ol.talk-points li::marker{font-family:'Syne',sans-serif; font-weight:800; color:var(--teal);}
+
+  footer{
+    max-width:900px; margin:50px auto 0 auto; padding:20px 40px 0 40px;
+    border-top:1px solid var(--border); color:var(--text3); font-size:12px;
+  }
+  footer .wordmark{font-family:'Syne',sans-serif; font-weight:700; color:var(--text2);}
+
+  /* ── Print ──────────────────────────────────────────────────── */
+  @media print{
+    @page{margin:0.55in;}
+    body{background:#fff; color:#111; font-size:12px;}
+    header.masthead{background:#fff; border-bottom:1px solid #ccc; padding:10px 0 14px 0;}
+    main, footer{padding:0;}
+    .section{page-break-inside:auto; margin-top:24px;}
+    .stat-card, .step-card, .callout, table{page-break-inside:avoid; box-shadow:none;}
+    .section-head{page-break-after:avoid;}
+    h1.doc-title{font-size:20px;}
+    .doc-sub, .section-intro, td, .stat-detail, .step-body p{color:#333 !important;}
+    .stat-card{background:#f7f7f9;}
+    a{color:#00795f;}
+  }
+</style>
+<style id="cv-print">
+/* ===== CV PRINT v1.0 (per _cv-schema.html) ===== */
+@media print{
+  :root{
+    --bg:#f4f5f7; --surface:#ffffff; --surface2:#eef1f4; --border:#d7dde3;
+    --teal:#00a688; --blue:#1d4ed8; --accent:#00a688; --accent2:#1d4ed8;
+    --red:#c53030; --amber:#b45309; --purple:#7c3aed;
+    --text:#0f1923; --text2:#4a5670; --text3:#6b7688;
+  }
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  html, body{background:#f4f5f7 !important; color:#0f1923 !important;}
+  nav, .nav, .toc-pills{display:none !important;}
+  .alert{background:rgba(0,166,136,.08) !important; color:#0f1923 !important;}
+  td{color:#0f1923 !important;}
+  section, .box, table, .card, .stat-card, .statcard, .step-row, .step{break-inside:avoid;}
+  h2, .sec-head{break-after:avoid;}
+  a{color:inherit; text-decoration:none;}
+}
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ a{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../flightdeck.html">From the Flight Deck</a><span class="cv-sb-meta">Published 6 Oct 2026 · R. E. Suscitate &amp; A. Systole</span></nav>
+
+<header class="masthead">
+  <div class="brand-row">
+    <div class="logo-mark">
+      <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polyline points="1,16 6,16 8,8 11,20 14,6 16,16 25,16" stroke="#00d4aa" stroke-width="1.6" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+        <circle cx="21" cy="6" r="1.6" fill="#00d4aa"/>
+        <line x1="21" y1="7.5" x2="21" y2="11" stroke="#00d4aa" stroke-width="1" opacity="0.6"/>
+        <line x1="19.5" y1="6.5" x2="16.5" y2="9.5" stroke="#00d4aa" stroke-width="1" opacity="0.6"/>
+      </svg>
+    </div>
+    <div class="brand-text">
+      <div class="brand-name">The Critical<em>Vector</em></div>
+      <div class="tagline">Direction and magnitude.</div>
+    </div>
+  </div>
+
+  <div style="margin-top:26px;">
+    <span class="doc-kicker">From the Flight Deck &middot; Journal Club Notes</span>
+    <h1 class="doc-title">2026 AHA/ACC Acute Pulmonary Embolism Guideline — Cheat Sheet</h1>
+    <p class="doc-sub">
+      The new severity taxonomy, what changed, and the talking points that'll make you sound like
+      you read all 75 pages.
+      <span class="src">Source: Creager MA, Barnes GD, Giri J, et al. 2026 AHA/ACC/ACCP/ACEP/CHEST/SCAI/SHM/SIR/SVM/SVN
+      Guideline for the Evaluation and Management of Acute Pulmonary Embolism in Adults.
+      <em>Circulation.</em> 2026;153:e977&ndash;e1051. DOI: 10.1161/CIR.0000000000001415.</span>
+    </p>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============================================================ -->
+  <section class="section">
+    <div class="section-head">
+      <span class="section-num">01</span>
+      <h2>The headline: a whole new severity taxonomy</h2>
+    </div>
+    <p class="section-intro">
+      This is the first joint de novo PE guideline from basically every society that touches a
+      clot &mdash; AHA, ACC, ACCP, ACEP, CHEST, SCAI, SHM, SIR, SVM, and SVN all signed off. The
+      centerpiece is that they scrapped "massive / submassive / low risk" and the ESC four-tier
+      scheme in favor of the <strong>AHA/ACC Acute PE Clinical Categories</strong>, A through E,
+      each with subcategories, plus an optional R modifier for respiratory failure.
+    </p>
+
+    <div class="stat-grid">
+      <div class="stat-card c-a">
+        <div class="stat-num">A</div>
+        <div class="stat-label">Subclinical</div>
+        <div class="stat-detail">Incidental, asymptomatic. Found on a CT ordered for something else &mdash; think cancer staging scan.</div>
+      </div>
+      <div class="stat-card c-b">
+        <div class="stat-num">B</div>
+        <div class="stat-label">Low severity</div>
+        <div class="stat-detail">Symptomatic but PESI &le;85 / sPESI 0 / Hestia negative. B1 = subsegmental clot, B2 = more proximal.</div>
+      </div>
+      <div class="stat-card c-c">
+        <div class="stat-num">C</div>
+        <div class="stat-label">Elevated severity</div>
+        <div class="stat-detail">C1 normal RV + biomarkers, C2 one abnormal, C3 both abnormal.</div>
+      </div>
+      <div class="stat-card c-d">
+        <div class="stat-num">D</div>
+        <div class="stat-label">Incipient failure</div>
+        <div class="stat-detail">D1 transient hypotension. D2 = "normotensive shock" &mdash; hypoperfusing quietly with a normal BP.</div>
+      </div>
+      <div class="stat-card c-e">
+        <div class="stat-num">E</div>
+        <div class="stat-label">Cardiopulmonary failure</div>
+        <div class="stat-detail">E1 shock with a pulse on the pressors. E2 refractory shock or arrest.</div>
+      </div>
+    </div>
+
+    <p class="section-intro" style="margin-top:0;">
+      Add "R" if there's hypoxemia, tachypnea, or an oxygen requirement (e.g., C3R, D2R). This
+      maps cleanly onto a treatment algorithm in their Figure 3, which is genuinely the single
+      most useful chart in the document.
+    </p>
+  </section>
+
+  <!-- ============================================================ -->
+  <section class="section">
+    <div class="section-head">
+      <span class="section-num">02</span>
+      <h2>Diagnosis: nothing revolutionary</h2>
+    </div>
+    <ul class="bullets">
+      <li>Wells / Geneva / PERC plus age-adjusted D-dimer and the YEARS algorithm still drive
+        imaging decisions &mdash; no change there.</li>
+      <li>CTPA still beats V/Q for confirming the diagnosis.</li>
+      <li>The one real upgrade: reporting a <strong>numerical RV/LV ratio</strong> off CTPA is now
+        Class 1, ditching the old subjective eyeball assessment.</li>
+      <li>Echo still can't diagnose PE &mdash; it's strictly for risk stratification once PE is
+        already confirmed.</li>
+    </ul>
+  </section>
+
+  <!-- ============================================================ -->
+  <section class="section">
+    <div class="section-head">
+      <span class="section-num">03</span>
+      <h2>Risk stratification</h2>
+    </div>
+    <ul class="bullets">
+      <li><strong>PESI / Hestia / sPESI</strong> are good at finding who's safe to send home
+        (Class 1 for Category A/B).</li>
+      <li>Nobody's score reliably predicts who's about to crash &mdash; that limitation is stated
+        plainly in the guideline itself.</li>
+      <li><strong>Troponin/BNP plus lactate</strong> are now Class 1 for anyone Category C or
+        higher.</li>
+      <li><strong>RV imaging</strong> is Class 1 for Categories C&ndash;D.</li>
+    </ul>
+  </section>
+
+  <!-- ============================================================ -->
+  <section class="section">
+    <div class="section-head">
+      <span class="section-num">04</span>
+      <h2>Management by category</h2>
+    </div>
+
+    <div class="step-card s-ab">
+      <div class="step-num">A/B</div>
+      <div class="step-body">
+        <h4>Outpatient territory</h4>
+        <p>Send them home. Initiate a DOAC, done.</p>
+      </div>
+    </div>
+    <div class="step-card s-c">
+      <div class="step-num">C</div>
+      <div class="step-body">
+        <h4>Admit and work up</h4>
+        <p>LMWH initiation, biomarkers plus RV imaging. PERT consult is reasonable here.</p>
+      </div>
+    </div>
+    <div class="step-card s-d">
+      <div class="step-num">D</div>
+      <div class="step-body">
+        <h4>This is where advanced therapy enters the conversation</h4>
+        <p>Vasopressors (norepinephrine first line) for D2. Evaluate for the "normotensive shock" pattern before it declares itself.</p>
+      </div>
+    </div>
+    <div class="step-card s-e">
+      <div class="step-num">E</div>
+      <div class="step-body">
+        <h4>Full advanced-therapy conversation</h4>
+        <p>PERT is Class 1. VA-ECMO for E2. Systemic lysis, CDL, MT, or surgical embolectomy all reasonable at E1.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <section class="section">
+    <div class="section-head">
+      <span class="section-num">05</span>
+      <h2>Advanced therapy: memorize this table, skip the rest</h2>
+    </div>
+    <p class="section-intro">
+      Their own summary table (Table 7) is the single thing worth internalizing. Basically
+      nothing for A&ndash;C1. Everything is a shaky <span class="badge badge-amber">2b &mdash; unclear</span>
+      in the C2&ndash;D2 zone &mdash; this is the exact population enrolled in PEERLESS, which found no
+      mortality or bleeding difference between catheter-directed lysis and mechanical thrombectomy.
+      Things firm up to <span class="badge badge-teal">2a</span> at E1, where lysis, CDL, MT, and
+      surgery are all reasonable. At E2, it's VA-ECMO plus maybe lysis, and surgery without
+      mechanical support is now <span class="badge badge-red">Class 3 &mdash; no benefit</span>.
+    </p>
+
+    <table>
+      <thead>
+        <tr><th>PE Category</th><th>Systemic Lysis</th><th>Catheter Lysis (CDL)</th><th>Mech. Thrombectomy (MT)</th><th>Surgical Embolectomy</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>A&ndash;C1</strong></td><td>3&ndash;Harm</td><td>3&ndash;No Benefit</td><td>3&ndash;No Benefit</td><td>3&ndash;No Benefit</td></tr>
+        <tr><td><strong>C2</strong></td><td>3&ndash;Harm</td><td>2b &mdash; unclear</td><td>2b &mdash; unclear</td><td>3&ndash;No Benefit</td></tr>
+        <tr><td><strong>C3</strong></td><td>2b &mdash; unclear</td><td>2b &mdash; unclear</td><td>2b &mdash; unclear</td><td>3&ndash;No Benefit</td></tr>
+        <tr><td><strong>D1&ndash;D2</strong></td><td>2b &mdash; may consider</td><td>2b &mdash; may consider</td><td>2b &mdash; may consider</td><td>2b &mdash; unclear</td></tr>
+        <tr><td><strong>E1</strong></td><td>2a</td><td>2a</td><td>2a</td><td>2a</td></tr>
+        <tr><td><strong>E2</strong></td><td>2a</td><td>N/A</td><td>N/A</td><td>3&ndash;No Benefit</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ============================================================ -->
+  <section class="section">
+    <div class="section-head">
+      <span class="section-num">06</span>
+      <h2>Anticoagulation highlights</h2>
+    </div>
+    <ul class="bullets">
+      <li><strong>LMWH over UFH</strong> for initial parenteral therapy (Class 1).</li>
+      <li><strong>DOAC over VKA</strong> for most people (Class 1) &mdash; except antiphospholipid
+        syndrome, where VKA is preferred due to arterial thrombosis risk with DOACs.</li>
+      <li><strong>Brain tumors:</strong> DOAC is now preferred over LMWH to reduce ICH risk &mdash;
+        a real flip from older teaching.</li>
+      <li><strong>Pregnancy:</strong> LMWH/UFH only. DOACs and warfarin are Class 3 harm.</li>
+      <li><strong>Extended-phase anticoagulation</strong> for unprovoked PE: continue indefinitely.
+        New this cycle &mdash; <strong>half-dose DOAC</strong> (apixaban 2.5&nbsp;mg BID or rivaroxaban
+        10&nbsp;mg daily) is now Class 1 for the extended phase, cutting bleeding without losing
+        efficacy (RENOVE, API-CAT data).</li>
+    </ul>
+  </section>
+
+  <!-- ============================================================ -->
+  <section class="section">
+    <div class="section-head">
+      <span class="section-num">07</span>
+      <h2>IVC filters</h2>
+    </div>
+    <p class="section-intro">
+      Retrievable over permanent. Pull them as soon as it's safe. Placing one in a patient who's
+      already therapeutically anticoagulated is Class 3 harm.
+    </p>
+  </section>
+
+  <!-- ============================================================ -->
+  <section class="section">
+    <div class="section-head">
+      <span class="section-num">08</span>
+      <h2>Anesthesia-relevant callout</h2>
+    </div>
+    <div class="callout callout-caution">
+      <span class="callout-label">Caution &mdash; RV Failure + Sedation</span>
+      <p>
+        There's a dedicated section on sedation and intubation in RV failure. Anything that blunts
+        sympathetic tone &mdash; induction agents, positive pressure ventilation &mdash; can trigger arrest
+        in a compensated PE patient. Deep sedation and mechanical ventilation are Class 3 harm
+        unless clinically necessary, and if you have to do it, pressors, inotropes, and/or ECMO need
+        to be ready at the bedside first.
+      </p>
+      <p style="margin-bottom:0; font-style:italic; color:var(--text2);">Good one to drop at journal club.</p>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <section class="section">
+    <div class="section-head">
+      <span class="section-num">09</span>
+      <h2>CTEPD follow-up</h2>
+    </div>
+    <ul class="bullets">
+      <li>Ask about dyspnea at every visit for a year.</li>
+      <li>Diagnostic workup now requires <strong>TTE + a perfusion scan + CPET</strong> &mdash; no
+        single test rules it out reliably.</li>
+      <li>Routine repeat CTPA to check clot resolution is explicitly called out as not useful.</li>
+    </ul>
+  </section>
+
+  <!-- ============================================================ -->
+  <section class="section">
+    <div class="section-head">
+      <span class="section-num">10</span>
+      <h2>Talking points to sound sharp in the room</h2>
+    </div>
+    <div class="callout callout-pearl">
+      <span class="callout-label">Pearls</span>
+      <ol class="talk-points">
+        <li>The new A&ndash;E taxonomy hasn't been prospectively validated yet &mdash; that's listed as
+          the writing committee's own top evidence gap.</li>
+        <li>A lot of the advanced-therapy recommendations are still C-LD or B-NR, meaning
+          "reasonable" is doing a lot of work on thin evidence.</li>
+        <li><strong>PEERLESS</strong> is the trial everyone will bring up &mdash; CDL vs. MT, no
+          mortality/bleeding difference, more bailout to alternate therapy in the CDL arm.</li>
+        <li>The "normotensive shock" concept (Category D2) is the most clinically interesting new
+          idea &mdash; it's trying to catch the patient who looks fine on vitals but is quietly
+          hypoperfusing.</li>
+      </ol>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span class="wordmark">TheCriticalVector</span> &middot; Journal club notes, not a substitute
+  for reading the full guideline. Verify class/level ratings against the source text before
+  clinical application.
+</footer>
+
+</body>
+</html>

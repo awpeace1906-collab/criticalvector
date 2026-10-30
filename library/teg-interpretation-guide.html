@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>TEG Interpretation — A Complete Teaching Guide | Critical Vector</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+
+  :root{
+    --bg: #0a0e14;
+    --surface: #111720;
+    --line: #232b38;
+    --text: #e6e9ef;
+    --muted: #8b95a5;
+    --teal: #00d4aa;
+    --blue: #60a5fa;
+    --red: #e84c4c;
+    --purple: #a78bfa;
+    --amber: #e8a94c;
+    --accent: var(--red);
+  }
+
+  *{ box-sizing: border-box; }
+
+  html, body{
+    margin:0; padding:0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Source Serif 4", Georgia, serif;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .page{
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 48px 32px 80px;
+  }
+
+  h1, h2, h3, .badge, .cellHead, th, .banner, .cv-tag{
+    font-family: "Syne", "Helvetica Neue", Arial, sans-serif;
+  }
+
+  /* ---------- header / title block ---------- */
+  .cv-tag{
+    display:inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  h1{
+    font-size: 2.4rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin: 0 0 8px;
+    color: #fff;
+  }
+
+  .subtitle{
+    font-family: "Source Serif 4", serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--muted);
+    margin: 0 0 22px;
+  }
+
+  /* waveform divider (SVG, TEG-tracing motif) */
+  .waveform{
+    width: 100%;
+    height: 30px;
+    margin: 4px 0 28px;
+    display: block;
+  }
+  .waveform path{
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 1.6;
+  }
+
+  /* ---------- section headers ---------- */
+  section{ margin-bottom: 34px; }
+
+  .section-header{
+    display:flex;
+    align-items: baseline;
+    gap: 14px;
+    border-bottom: 2px solid var(--section-accent, var(--accent));
+    padding-bottom: 8px;
+    margin-bottom: 4px;
+  }
+
+  .section-header h2{
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--section-accent, var(--accent));
+    margin: 0;
+  }
+
+  .section-sub{
+    font-family: "Source Serif 4", serif;
+    font-style: italic;
+    font-size: 0.86rem;
+    color: var(--muted);
+    margin: 6px 0 16px;
+  }
+
+  p{ margin: 0 0 14px; font-size: 0.98rem; }
+
+  sup{ color: var(--accent); font-weight: 600; }
+
+  /* ---------- badges ---------- */
+  .badge{
+    display:inline-block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 6px;
+    letter-spacing: 0.03em;
+    border: 1px solid currentColor;
+  }
+  .badge.teal{ color: var(--teal); background: rgba(0,212,170,0.12); }
+  .badge.blue{ color: var(--blue); background: rgba(96,165,250,0.14); }
+  .badge.red{ color: var(--red); background: rgba(232,76,76,0.14); }
+  .badge.purple{ color: var(--purple); background: rgba(167,139,250,0.14); }
+  .badge.amber{ color: var(--amber); background: rgba(232,169,76,0.14); }
+
+  /* ---------- tables ---------- */
+  .table-wrap{ overflow-x: auto; margin-bottom: 14px; border-radius: 8px; }
+
+  table{
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--surface);
+    font-size: 0.88rem;
+  }
+
+  thead th{
+    text-align: left;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #fff;
+    padding: 10px 12px;
+    background: var(--table-accent, var(--accent));
+  }
+
+  tbody td{
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+
+  tbody tr:nth-child(odd){ background: var(--surface); }
+  tbody tr:nth-child(even){ background: var(--bg); }
+  tbody tr:last-child td{ border-bottom: none; }
+
+  td.param, td strong.param{ font-family: "Syne", sans-serif; font-weight: 700; color: #fff; font-size: 0.86rem; }
+
+  /* ---------- quote / callout box ---------- */
+  .callout{
+    background: var(--surface);
+    border-left: 3px solid var(--red);
+    padding: 16px 20px;
+    margin: 10px 0 22px;
+    font-style: italic;
+    font-size: 0.94rem;
+    color: var(--text);
+    border-radius: 0 8px 8px 0;
+  }
+  .callout b{ font-style: normal; font-family: "Syne", sans-serif; color: var(--red); font-size: 0.78rem; letter-spacing: 0.04em; text-transform: uppercase; display:block; margin-bottom:6px; font-weight:700; }
+
+  /* ---------- banner ---------- */
+  .banner{
+    background: var(--red);
+    color: #fff;
+    text-align: center;
+    font-weight: 700;
+    font-size: 0.96rem;
+    padding: 18px 24px;
+    border-radius: 8px;
+    margin: 8px 0 6px;
+    line-height: 1.5;
+  }
+
+  /* ---------- references ---------- */
+  .refs ol{ padding-left: 1.3em; margin: 0; }
+  .refs li{ font-size: 0.85rem; color: var(--muted); margin-bottom: 10px; line-height: 1.5; }
+  .refs li::marker{ color: var(--accent); font-weight: 700; }
+
+  /* ---------- footer ---------- */
+  footer{
+    text-align:center;
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 0.02em;
+    margin-top: 50px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+  }
+
+  /* ---------- print / light-mode token swap ---------- */
+  @media print{
+    :root{
+      --bg: #ffffff;
+      --surface: #f4f5f7;
+      --line: #d9dce2;
+      --text: #14181f;
+      --muted: #565f6d;
+    }
+    body{ font-size: 12px; }
+    .page{ max-width: 100%; padding: 0 12px; }
+    h1{ color: #0a0e14; }
+    thead th{ color: #fff; }
+    .banner{ color: #fff; }
+    a{ color: inherit; text-decoration: none; }
+  }
+</style>
+<style id="cv-fixes">
+.table-wrap{display:block; max-width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch;}
+@media (max-width:640px){ h1{font-size:26px !important; overflow-wrap:anywhere; hyphens:auto;} }
+@media print{ td.param{color:#0f1923 !important;} }
+</style>
+<style id="cv-print">
+/* ===== CV PRINT v1.0 (per _cv-schema.html) ===== */
+@media print{
+  :root{
+    --bg:#f4f5f7; --surface:#ffffff; --surface2:#eef1f4; --border:#d7dde3;
+    --teal:#00a688; --blue:#1d4ed8; --accent:#00a688; --accent2:#1d4ed8;
+    --red:#c53030; --amber:#b45309; --purple:#7c3aed;
+    --text:#0f1923; --text2:#4a5670; --text3:#6b7688;
+  }
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  html, body{background:#f4f5f7 !important; color:#0f1923 !important;}
+  nav, .nav, .toc-pills{display:none !important;}
+  .alert{background:rgba(0,166,136,.08) !important; color:#0f1923 !important;}
+  td{color:#0f1923 !important;}
+  section, .box, table, .card, .stat-card, .statcard, .step-row, .step{break-inside:avoid;}
+  h2, .sec-head{break-after:avoid;}
+  a{color:inherit; text-decoration:none;}
+}
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ a{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../workshop.html">The Workshop</a><span class="cv-sb-meta">Published 13 Oct 2026 · R. E. Suscitate &amp; A. Systole</span></nav>
+<div class="page">
+
+  <span class="cv-tag">Critical Vector &middot; Teaching Guide</span>
+  <h1>TEG Interpretation</h1>
+  <p class="subtitle">A complete teaching guide — the classic TEG 5000 result model and the newer cartridge-based TEG 6s result model, side by side.</p>
+
+  <svg class="waveform" viewBox="0 0 860 30" preserveAspectRatio="none">
+    <path d="M0,15 L60,15 L75,8 L90,22 L105,4 L120,26 L140,15 L180,15 L200,10 L215,20 L230,6 L245,24 L260,12 L280,18 L300,15 L340,15 L360,9 L378,21 L396,5 L414,25 L432,13 L450,17 L470,15 L510,15 L530,11 L548,19 L566,7 L584,23 L602,14 L620,16 L640,15 L680,15 L700,10 L718,20 L736,6 L754,24 L772,12 L790,18 L810,15 L860,15" />
+  </svg>
+
+  <section>
+    <div class="section-header" style="--section-accent: var(--red);">
+      <h2>What TEG Actually Measures</h2>
+    </div>
+    <p>Thromboelastography (TEG) is a viscoelastic test: it measures the physical strength of a clot as it forms, matures, and breaks down in whole blood, rather than isolating a single factor the way PT/INR or PTT do. A pin (TEG 5000) or an oscillating fluid meniscus (TEG 6s) tracks resistance over time as fibrin strands form and platelets cross-link them, producing the characteristic spindle-shaped tracing.<sup>1</sup> Because it evaluates the whole clotting cascade — factors, fibrinogen, platelets, and fibrinolysis — in one test, TEG enables goal-directed, product-specific transfusion rather than empiric ratio-based resuscitation.<sup>2</sup></p>
+    <p>Two generations of hardware exist side by side in most systems today: the older TEG 5000 (a single kaolin-activated cup-and-pin channel per run) and the newer TEG 6s (a disposable four-channel microfluidic cartridge). They report overlapping but not identical parameter sets — this guide covers both, and how to translate between them.</p>
+  </section>
+
+  <section>
+    <div class="section-header" style="--section-accent: var(--red);">
+      <h2>Reading the Raw Tracing</h2>
+    </div>
+    <p class="section-sub">The five classic parameters, mapped onto the actual spindle shape</p>
+    <p>Every downstream parameter is really just a labeled point on this one curve — worth anchoring visually before the tables below turn it into numbers.</p>
+    <div class="tracing-diagram">
+      <svg viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; display:block; margin: 8px 0 4px; background:#0d1219; border-radius:8px;">
+        <defs>
+          <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="#8b95a5"/>
+          </marker>
+        </defs>
+        <line x1="20" y1="150" x2="650" y2="150" stroke="#232b38" stroke-width="1" stroke-dasharray="4,3"/>
+        <line x1="130" y1="40" x2="130" y2="260" stroke="#1a212c" stroke-width="1" stroke-dasharray="3,3"/>
+        <line x1="200" y1="40" x2="200" y2="260" stroke="#1a212c" stroke-width="1" stroke-dasharray="3,3"/>
+        <line x1="360" y1="40" x2="360" y2="260" stroke="#1a212c" stroke-width="1" stroke-dasharray="3,3"/>
+        <line x1="500" y1="40" x2="500" y2="260" stroke="#1a212c" stroke-width="1" stroke-dasharray="3,3"/>
+        <path d="M40,148 C 75,148 95,147 130,147 C 155,147 175,135 200,128 C 225,120 255,105 280,95 C 305,85 335,72 360,65 C 380,66 405,68 430,70 C 450,73 480,78 500,82 C 540,88 580,92 620,95 L620,205 C 580,208 540,212 500,218 C 480,222 450,227 430,230 C 405,232 380,234 360,235 C 335,228 305,215 280,205 C 255,195 225,180 200,172 C 175,165 155,153 130,153 C 95,153 75,152 40,152 Z"
+          fill="#e84c4c" fill-opacity="0.16" stroke="#e84c4c" stroke-width="1.6"/>
+        <line x1="130" y1="147" x2="188" y2="118" stroke="#e8a94c" stroke-width="1.6"/>
+        <path d="M 163 147 A 33 33 0 0 0 177 128" fill="none" stroke="#e8a94c" stroke-width="1.2"/>
+        <text x="172" y="146" font-family="Syne, sans-serif" font-size="13" fill="#e8a94c" font-weight="700">&#945;</text>
+        <line x1="42" y1="270" x2="128" y2="270" stroke="#8b95a5" stroke-width="1" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+        <text x="85" y="286" font-family="Syne, sans-serif" font-size="12" fill="#e6e9ef" text-anchor="middle" font-weight="700">R</text>
+        <line x1="132" y1="270" x2="198" y2="270" stroke="#8b95a5" stroke-width="1" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+        <text x="165" y="286" font-family="Syne, sans-serif" font-size="12" fill="#e6e9ef" text-anchor="middle" font-weight="700">K</text>
+        <line x1="362" y1="270" x2="498" y2="270" stroke="#8b95a5" stroke-width="1" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+        <text x="430" y="286" font-family="Source Serif 4, serif" font-size="11" fill="#8b95a5" text-anchor="middle">30 min</text>
+        <line x1="378" y1="65" x2="378" y2="235" stroke="#00d4aa" stroke-width="1" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+        <text x="392" y="153" font-family="Syne, sans-serif" font-size="12" fill="#00d4aa" font-weight="700">MA</text>
+        <text x="500" y="28" font-family="Syne, sans-serif" font-size="12" fill="#a78bfa" font-weight="700" text-anchor="middle">LY30</text>
+        <line x1="500" y1="34" x2="500" y2="80" stroke="#a78bfa" stroke-width="1" marker-end="url(#arrow)"/>
+        <text x="40" y="26" font-family="Source Serif 4, serif" font-size="11" fill="#8b95a5">amplitude (mm)</text>
+        <text x="620" y="290" font-family="Source Serif 4, serif" font-size="11" fill="#8b95a5" text-anchor="end">time &#8594;</text>
+      </svg>
+      <p class="section-sub" style="margin-top:2px;">Schematic, not to scale. R = time to initial clot formation &middot; K = time to a fixed early amplitude &middot; &alpha; = slope of the widening curve &middot; MA = peak width, i.e. clot strength &middot; LY30 = amplitude lost 30 minutes after MA.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header" style="--section-accent: var(--blue);">
+      <h2>The Classic Model: TEG 5000</h2>
+    </div>
+    <p class="section-sub">Single kaolin-activated channel &middot; cup-and-pin mechanical detection &middot; the five parameters most clinicians learned first</p>
+    <p>The TEG 5000 reports five core parameters from a single kaolin-activated trace. Each maps to a specific deficiency and a specific blood product, which is what makes TEG useful as a bedside, goal-directed tool rather than a lab curiosity.</p>
+    <div class="table-wrap">
+      <table style="--table-accent: var(--blue);">
+        <thead>
+          <tr><th>Parameter</th><th>Definition</th><th>Normal Range</th><th>Reflects / Problem With</th><th>Treatment</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="param">R Time</td><td>Time from sample run to initial fibrin formation (1–2&nbsp;mm amplitude)</td><td>5–10 min</td><td>Coagulation factor activity</td><td>FFP; PCC if severe/urgent</td></tr>
+          <tr><td class="param">K Time</td><td>Time from end of R to a fixed clot strength (20&nbsp;mm amplitude)</td><td>1–3 min</td><td>Fibrinogen (thrombin burst / early cross-linking)</td><td>Cryoprecipitate</td></tr>
+          <tr><td class="param">Alpha Angle</td><td>Slope of the tracing as it widens — speed of fibrin accumulation</td><td>53–72°</td><td>Fibrinogen <em>and</em> platelet contribution together (see Pitfalls)</td><td>Cryoprecipitate ± platelets</td></tr>
+          <tr><td class="param">MA (Max Amplitude)</td><td>Widest point of the tracing — ultimate clot strength</td><td>50–70 mm</td><td>Platelet number and function (the dominant driver)</td><td>Platelets; DDAVP for qualitative dysfunction</td></tr>
+          <tr><td class="param">LY30</td><td>% reduction in amplitude 30 minutes after MA</td><td>0–8%</td><td>Excess fibrinolysis (breakdown outpacing formation)</td><td>TXA or aminocaproic acid</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Trauma-specific thresholds refine these ranges: an R time beyond roughly twice normal predicts massive transfusion need, and an LY30 above 3% in the injured patient (a lower bar than the general reference range) identifies clinically significant hyperfibrinolysis warranting antifibrinolytic therapy.<sup>3</sup></p>
+  </section>
+
+  <div class="callout">
+    <b>Common Myth</b>
+    The alpha angle is often taught as a pure fibrinogen measurement. It isn't — alpha angle reflects the combined contribution of fibrinogen <i>and</i> platelet function, since both accelerate the rate of clot strengthening. On the TEG 5000 alone, isolated fibrinogen deficiency cannot be cleanly separated from platelet dysfunction using alpha angle. This is precisely the gap the newer TEG 6s functional fibrinogen channel was built to close.
+  </div>
+
+  <section>
+    <div class="section-header" style="--section-accent: var(--teal);">
+      <h2>The New Model: TEG 6s</h2>
+    </div>
+    <p class="section-sub">Disposable four-channel cartridge &middot; optical detection &middot; runs multiple activators in parallel from one draw</p>
+    <p>The TEG 6s replaces the mechanical cup-and-pin with a microfluidic cartridge and optical detection of clot-driven resonance, requiring a single ~400&nbsp;µL citrated blood transfer instead of manual pipetting across separate cups.<sup>4</sup> Because the cartridge runs four channels in parallel from one sample, it reports a fuller hemostatic picture per draw than a single TEG 5000 run — most notably, a dedicated functional fibrinogen channel that the classic model lacks.</p>
+    <div class="table-wrap">
+      <table style="--table-accent: var(--teal);">
+        <thead>
+          <tr><th>Channel</th><th>Activator</th><th>Primary Parameter(s)</th><th>Example Normal Range*</th><th>What It Isolates</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="param">CK <span style="color:var(--muted); font-weight:400;">(Citrated Kaolin)</span></td><td>Kaolin — the direct TEG 5000 analog</td><td>R, LY30</td><td>R: 4.6–9.1 min &middot; LY30: 0–3.2%</td><td>Global factor activity; baseline hyperfibrinolysis screen</td></tr>
+          <tr><td class="param">CRT / CRTH <span style="color:var(--muted); font-weight:400;">(Citrated RapidTEG ± heparinase)</span></td><td>Kaolin + tissue factor</td><td>MA, faster R</td><td>MA: ~52–69 mm</td><td>Rapid overall clot strength when time is critical (e.g. massive transfusion)</td></tr>
+          <tr><td class="param">CKH <span style="color:var(--muted); font-weight:400;">(Citrated Kaolin + Heparinase)</span></td><td>Kaolin + heparinase (neutralizes heparin)</td><td>R</td><td>R: 4.3–8.3 min</td><td>True factor status once heparin effect is removed</td></tr>
+          <tr><td class="param">CFF / CFFH <span style="color:var(--muted); font-weight:400;">(Citrated Functional Fibrinogen ± heparinase)</span></td><td>Kaolin + tissue factor + a GPIIb/IIIa platelet inhibitor</td><td>MA (fibrinogen-only)</td><td>MA: 15–34 mm</td><td>Isolated fibrinogen contribution to clot strength, with platelets pharmacologically silenced</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>The CFF channel is the key structural advance: by pharmacologically blocking platelet contribution with a GPIIb/IIIa antagonist, its MA correlates directly with Clauss fibrinogen concentration, giving a true isolated fibrinogen readout that the TEG 5000's alpha angle could only approximate.<sup>5</sup> The CK/CKH pairing similarly enables direct heparin detection: comparing CK-R to CKH-R (kaolin alone versus kaolin plus heparin-neutralizing heparinase) isolates a heparin effect that a single TEG 5000 trace cannot resolve on its own.</p>
+    <p class="section-sub">*Ranges as printed on the manufacturer's 07-604-US (Global Hemostasis-HN) result display. Ranges differ by cartridge and by each lab's validation; use the ranges your lab reports.<sup>10</sup></p>
+  </section>
+
+  <section>
+    <div class="section-header" style="--section-accent: var(--blue);">
+      <h2>Which Cartridge You're Running</h2>
+    </div>
+    <p class="section-sub">Not every TEG 6s run reports every channel &middot; the cartridge decides what you can and can't see</p>
+    <div class="table-wrap">
+      <table style="--table-accent: var(--blue);">
+        <thead>
+          <tr><th>Cartridge</th><th>Indicated Setting</th><th>Channels</th><th>Blind Spot</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="param">07-601-US<br><span style="color:var(--muted); font-weight:400;">Global Hemostasis</span></td><td>CV surgery, cardiology procedures</td><td>CK, CKH, CRT, CFF</td><td><b>No LY30.</b> Cannot flag hyperfibrinolysis.</td></tr>
+          <tr><td class="param">07-604-US<br><span style="color:var(--muted); font-weight:400;">Global Hemostasis-HN</span></td><td>CV surgery, liver transplant</td><td>CK, CKH, CRTH, CFFH</td><td>Heparinase versions of CRT and CFF, so MA reads true clot strength even with heparin on board.</td></tr>
+          <tr><td class="param">07-605-US<br><span style="color:var(--muted); font-weight:400;">Global Hemostasis with Lysis</span></td><td>Trauma</td><td>CK, CRT, CFF, with LY30</td><td><b>No CKH.</b> Cannot separate heparin effect from factor deficiency.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout">
+      <b>Reading order: Rate &rarr; Strength &rarr; Strength &rarr; Stability</b>
+      R is the <i>rate</i> of clot initiation (factors, heparin). CFF MA is <i>strength</i> from fibrinogen alone. CRT MA is <i>strength</i> from platelets and fibrinogen together. LY30 is <i>stability</i>, the clot's resistance to lysis. Read a result left to right in that order.
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header" style="--section-accent: var(--purple);">
+      <h2>Platelet Mapping: Detecting Antiplatelet Drug Effect</h2>
+    </div>
+    <p class="section-sub">A specialized add-on assay, ordered separately from the standard panel</p>
+    <p>Standard TEG channels fully activate platelets with kaolin or tissue factor, so a maximal thrombin-driven clot forms regardless of whether the patient is taking aspirin or a P2Y12 inhibitor — routine MA cannot see antiplatelet drug effect. Platelet Mapping (TEG-PM) resolves this with two additional heparinized channels that isolate platelet contribution by agonist.</p>
+    <div class="table-wrap">
+      <table style="--table-accent: var(--purple);">
+        <thead>
+          <tr><th>Channel</th><th>What It Isolates</th><th>MA Represents</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="param">MA<sub>Thrombin</sub></td><td>Standard kaolin-activated channel — full, unblocked platelet activation</td><td>100% baseline platelet contribution</td></tr>
+          <tr><td class="param">MA<sub>Fibrin</sub></td><td>Heparinized blood + Activator F (reptilase) — platelets chemically silenced</td><td>0% platelet contribution; fibrin-only clot</td></tr>
+          <tr><td class="param">MA<sub>AA</sub></td><td>Heparinized blood + Activator F + arachidonic acid</td><td>Platelet response via the COX-1/thromboxane pathway — reflects aspirin effect</td></tr>
+          <tr><td class="param">MA<sub>ADP</sub></td><td>Heparinized blood + Activator F + ADP</td><td>Platelet response via the P2Y12 receptor — reflects clopidogrel/prasugrel/ticagrelor effect</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Percent platelet inhibition is calculated as: <em>100 &minus; [(MA<sub>agonist</sub> &minus; MA<sub>Fibrin</sub>) &divide; (MA<sub>Thrombin</sub> &minus; MA<sub>Fibrin</sub>) &times; 100]</em>.<sup>6</sup></p>
+    <div class="callout">
+      <b>Clinical Use</b>
+      Perioperative antiplatelet management before neuraxial anesthesia or urgent surgery, identifying clopidogrel non-responders after PCI/stenting, and guiding platelet transfusion when reversing dual antiplatelet therapy for an urgent bleed or intracranial hemorrhage.
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header" style="--section-accent: var(--purple);">
+      <h2>Translating Between Models</h2>
+    </div>
+    <p class="section-sub">Which TEG 6s channel replaces which TEG 5000 parameter</p>
+    <div class="table-wrap">
+      <table style="--table-accent: var(--purple);">
+        <thead>
+          <tr><th>Clinical Question</th><th>TEG 5000 (Classic)</th><th>TEG 6s (Cartridge)</th><th>Notes</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Are clotting factors adequate?</td><td>R Time (single kaolin trace)</td><td>CK-R</td><td>Same activator, same physiology; ranges are assay-specific and not interchangeable numerically</td></tr>
+          <tr><td>Is heparin present / is it the cause of a prolonged R?</td><td>Not directly resolvable — requires a separate heparinase-spiked sample</td><td>Compare CK-R vs. CKH-R</td><td>TEG 6s runs both in parallel from one draw; TEG 5000 requires ordering a second heparinase channel</td></tr>
+          <tr><td>Is fibrinogen low?</td><td>K Time / Alpha Angle (confounded by platelets)</td><td>CFF-MA</td><td>CFF is the more specific test; treat by CFF-MA when both are run</td></tr>
+          <tr><td>Is clot strength adequate overall?</td><td>MA</td><td>CRT-MA (fastest) or CK-based MA</td><td>CRT reaches a usable MA fastest, useful in massive transfusion protocols</td></tr>
+          <tr><td>Is there hyperfibrinolysis?</td><td>LY30</td><td>CK-LY30</td><td>Reference ranges differ slightly by platform; use the local lab's validated cutoff, not a borrowed one</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Numerical values are not directly interchangeable between platforms: head-to-head comparison during liver transplantation found considerable inter-device variability despite both systems measuring the same underlying physiology, so trend a patient on one platform rather than converting a TEG 5000 result to a TEG 6s threshold or vice versa.<sup>4</sup></p>
+  </section>
+
+  <section>
+    <div class="section-header" style="--section-accent: var(--teal);">
+      <h2>Crossing Over to ROTEM</h2>
+    </div>
+    <p class="section-sub">Same physiology, different vendor, different assay names — common outside North American trauma centers</p>
+    <p>Rotational thromboelastometry (ROTEM) assesses the same underlying clot physiology as TEG using a rotating-pin rather than cup-and-pin or optical mechanism, with its own reagent-named assays and parameter labels.<sup>1</sup></p>
+    <div class="table-wrap">
+      <table style="--table-accent: var(--teal);">
+        <thead>
+          <tr><th>Function</th><th>TEG Analog</th><th>ROTEM Assay</th><th>ROTEM Parameter(s)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Intrinsic pathway / global factor activity</td><td>R / CK-R</td><td>INTEM</td><td>CT (clotting time), CFT (clot formation time)</td></tr>
+          <tr><td>Extrinsic pathway, rapid readout</td><td>CRT</td><td>EXTEM</td><td>CT, CFT, A10 (amplitude at 10 min &mdash; an early surrogate for MCF)</td></tr>
+          <tr><td>Heparin effect isolation</td><td>CKH vs. CK</td><td>HEPTEM vs. INTEM</td><td>Compare CT between the two assays</td></tr>
+          <tr><td>Isolated fibrinogen contribution</td><td>CFF</td><td>FIBTEM</td><td>MCF or A10 (platelets blocked with cytochalasin D instead of a GPIIb/IIIa antagonist)</td></tr>
+          <tr><td>Overall clot strength</td><td>MA</td><td>EXTEM / INTEM</td><td>MCF (maximum clot firmness), or A10 as an early surrogate</td></tr>
+          <tr><td>Hyperfibrinolysis</td><td>LY30</td><td>EXTEM &plusmn; APTEM</td><td>ML / LI30 (lysis index); APTEM adds aprotinin to confirm true hyperfibrinolysis</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>APTEM is the one assay with no direct TEG analog: it re-runs EXTEM with an antifibrinolytic added to the sample. If APTEM normalizes an abnormal EXTEM tracing, that confirms the abnormality was hyperfibrinolysis rather than a factor or platelet defect, supporting a decision to give TXA.</p>
+  </section>
+
+  <section>
+    <div class="section-header" style="--section-accent: var(--red);">
+      <h2>Goal-Directed Transfusion Framework</h2>
+    </div>
+    <p class="section-sub">Applies to either result model — treat the deficiency the abnormal parameter names</p>
+    <div class="table-wrap">
+      <table style="--table-accent: var(--red);">
+        <thead>
+          <tr><th>If This Parameter Is Abnormal...</th><th>...The Deficiency Is...</th><th>...Treat With</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>R / CK-R prolonged (heparin excluded)</td><td>Coagulation factors</td><td>FFP, or PCC if rapid correction is needed</td></tr>
+          <tr><td>CK-R prolonged but CKH-R normal</td><td>Heparin effect, not factor deficiency</td><td>Protamine (patient-specific decision) rather than more factor product</td></tr>
+          <tr><td>K prolonged / Alpha angle low / CFF-MA low</td><td>Fibrinogen</td><td>Cryoprecipitate, or fibrinogen concentrate where available</td></tr>
+          <tr><td>MA / CRT-MA / CK-based MA low (fibrinogen adequate)</td><td>Platelet number or function</td><td>Platelet transfusion; DDAVP for qualitative defects</td></tr>
+          <tr><td>LY30 / CK-LY30 elevated</td><td>Hyperfibrinolysis</td><td>TXA or aminocaproic acid — not more factor or platelet product</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="banner">Treat the parameter that is actually abnormal. TEG's entire value is replacing empiric 1:1:1 resuscitation with a product chosen to match the specific defect on the tracing.</div>
+    <div class="callout">
+      <b>Platelets or fibrinogen? Read the two MAs together</b>
+      CRT MA measures platelets and fibrinogen combined; CFF MA measures fibrinogen alone. <b>Low CRT MA with a normal CFF MA</b>: fibrinogen is adequate, so the weak clot is a platelet problem. <b>Low CRT MA with a low CFF MA</b>: fibrinogen is contributing; replace fibrinogen first, then reassess before adding platelets.<sup>10</sup>
+    </div>
+    <div class="callout">
+      <b>Worked example (07-604-US)</b>
+      CK R 14.2 min (normal 4.6–9.1) &middot; CKH R 13.4 min &middot; CK MA, CRTH MA, CFFH MA and LY30 all normal. R is prolonged on both channels, and adding heparinase barely shortens it. This is not heparin. It is a coagulation factor deficiency: plasma, or PCC if rapid correction is needed. Normal MAs mean platelets and fibrinogen don't need replacing.<sup>10</sup>
+    </div>
+    <div class="callout">
+      <b>The other direction: hypercoagulability</b>
+      A short R and a high CFF or CRT MA suggest a hypercoagulable state. The device chart lists LY30 as not applicable here, but trauma literature describes a separate low-LY30 phenotype, <i>fibrinolysis shutdown</i> (LY30 below about 0.9%), associated with worse outcomes after injury. It is a research-defined category, not a device alert.<sup>11</sup>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header" style="--section-accent: var(--amber);">
+      <h2>Reading the Tracing by Shape</h2>
+    </div>
+    <div class="table-wrap">
+      <table style="--table-accent: var(--amber);">
+        <thead>
+          <tr><th>Tracing Appearance</th><th>Likely Interpretation</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Long flat line before any widening</td><td>Prolonged R — factor deficiency or heparin effect</td></tr>
+          <tr><td>Narrow, slow-widening spindle</td><td>Low alpha angle / prolonged K — fibrinogen deficiency (confirm with CFF if available)</td></tr>
+          <tr><td>Short, narrow spindle overall (low peak width)</td><td>Low MA — thrombocytopenia or platelet dysfunction</td></tr>
+          <tr><td>Wide spindle that narrows sharply after peak</td><td>Elevated LY30 — hyperfibrinolysis</td></tr>
+          <tr><td>Wide spindle, slow to narrow, persists over time</td><td>Hypercoagulable state — consider VTE prophylaxis escalation</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header" style="--section-accent: var(--blue);">
+      <h2>Pitfalls &amp; Pre-Analytical Limitations</h2>
+    </div>
+    <p class="section-sub">The numbers are only as good as the sample and the technique behind them</p>
+    <div class="table-wrap">
+      <table style="--table-accent: var(--blue);">
+        <thead>
+          <tr><th>Pitfall</th><th>Effect</th><th>Practical Fix</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Line/catheter contamination</td><td>A heparin flush contaminating the draw falsely prolongs R</td><td>Discard the first several mL when drawing through an indwelling line, or obtain a discrete venipuncture</td></tr>
+          <tr><td>Sample run outside the validated time window</td><td>Citrate rest-time drift changes R and K</td><td>Follow the lab's rest-then-run protocol (commonly a ~30 min citrate rest before activation)</td></tr>
+          <tr><td>Testing at 37&deg;C in a hypothermic patient</td><td>Standard warming to 37&deg;C can mask coagulopathy that is actually present at the patient's real temperature</td><td>Consider running at patient temperature in significant hypothermia where the platform supports it</td></tr>
+          <tr><td>Anemia / low hematocrit</td><td>Paradoxically inflates MA and steepens the alpha angle, making the tracing look hypercoagulable independent of true platelet or fibrinogen status<sup>7</sup></td><td>Interpret MA in the context of the concurrent hematocrit, especially in massively transfused or hemodiluted patients</td></tr>
+          <tr><td>Thrombocytopenia and platelet dysfunction coexisting</td><td>Standard MA cannot distinguish "too few platelets" from "platelets present but not working"</td><td>Correlate with the platelet count directly, or add Platelet Mapping when qualitative dysfunction is suspected</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Because pre-analytical variables move the numbers as much as real pathology does, trend the tracing against the clinical picture rather than treating an isolated abnormal value in a vacuum.<sup>2</sup></p>
+  </section>
+
+  <section>
+    <div class="section-header" style="--section-accent: var(--amber);">
+      <h2>Special Populations</h2>
+    </div>
+    <p class="section-sub">Non-pregnant, non-cirrhotic reference ranges do not always apply</p>
+    <p><strong>Pregnancy.</strong> Normal pregnancy is a physiologic hypercoagulable state — a shorter R, steeper alpha angle, and higher MA than non-pregnant reference ranges, driven by rising factor and fibrinogen levels and reduced fibrinolytic activity. In postpartum hemorrhage, fibrinogen is the first factor to fall to a critical level and the strongest single predictor of progression to severe hemorrhage, which is why obstetric protocols increasingly trend fibrinogen (via CFF-MA or FIBTEM) rather than waiting on standard coags.<sup>9</sup></p>
+    <p><strong>Cirrhosis / chronic liver disease.</strong> Conventional coagulation tests (INR, platelet count) overstate bleeding risk in cirrhosis because they only capture the loss of pro-coagulant factors, ignoring the parallel loss of anticoagulant proteins (protein C, protein S) and elevated von Willebrand factor that "rebalance" hemostasis at a lower overall set point.<sup>8</sup> TEG/ROTEM better reflect this rebalanced state and have been used to reduce unnecessary pre-procedure FFP transfusion in cirrhotic patients — but neither test reliably captures the qualitative platelet defects or portal-hypertension-driven hyperfibrinolysis also common in advanced liver disease, so clinical correlation still matters.</p>
+    <p><strong>Pediatric and neonatal.</strong> Developmental hemostasis means normal ranges shift meaningfully with age. Apply age-specific pediatric reference ranges rather than the adult cutoffs presented in this guide.</p>
+  </section>
+
+  <section class="refs">
+    <div class="section-header" style="--section-accent: var(--red);">
+      <h2>References</h2>
+    </div>
+    <ol>
+      <li>Whiting D, DiNardo JA. TEG and ROTEM: technology and clinical applications. <em>Am J Hematol.</em> 2014;89(2):228-232.</li>
+      <li>da Luz LT, Nascimento B, Rizoli S. Thrombelastography (TEG): practical considerations on its clinical use in trauma resuscitation. <em>Scand J Trauma Resusc Emerg Med.</em> 2013;21:29.</li>
+      <li>Einersen PM, Moore EE, Chapman MP, et al. Rapid thrombelastography thresholds for goal-directed resuscitation of patients at risk for massive transfusion. <em>J Trauma Acute Care Surg.</em> 2017;82(1):114-119.</li>
+      <li>Robson JL, Watts ADJ, McCulloch TJ, et al. Correlation and agreement between the TEG 5000 and the TEG 6s during liver transplant surgery. <em>Anaesth Intensive Care.</em> 2019;47(2):124-131.</li>
+      <li>Gurbel PA, Bliden KP, Tantry US, et al. First report of the point-of-care TEG 6s system demonstrating the ability to detect clot formation with acceleration reflective of physiology in healthy subjects. <em>Thromb Res.</em> 2016;139:8-13.</li>
+      <li>Bochsen L, Wiinberg B, Kjelgaard-Hansen M, Steinbr&uuml;chel DA, Johansson PI. Evaluation of the TEG platelet mapping assay in blood donors. <em>Thromb J.</em> 2007;5:3.</li>
+      <li>Hess AS. The thromboelastogram is confounded by hematocrit in clinical samples tested on both mechanical and acoustic platforms. <em>Front Med (Lausanne).</em> 2024;11:1421727.</li>
+      <li>Tripodi A, Mannucci PM. The coagulopathy of chronic liver disease. <em>N Engl J Med.</em> 2011;365(2):147-156.</li>
+      <li>Charbit B, Mandelbrot L, Samain E, et al. The decrease of fibrinogen is an early predictor of the severity of postpartum hemorrhage. <em>J Thromb Haemost.</em> 2007;5(2):266-273.</li>
+      <li>Haemonetics Corporation. TEG 6s Global Hemostasis cartridges (07-601-US, 07-604-US, 07-605-US): interpretation reference card. 2024.</li>
+      <li>Moore HB, Moore EE, Gonzalez E, et al. Hyperfibrinolysis, physiologic fibrinolysis, and fibrinolysis shutdown: the spectrum of postinjury fibrinolysis and relevance to antifibrinolytic therapy. <em>J Trauma Acute Care Surg.</em> 2014;77(6):811-817.</li>
+    </ol>
+  </section>
+
+  <footer> &nbsp;|&nbsp; Numbered citations correspond to References, above.<div class="cv-tagline" style="margin-top:8px">The Critical Vector · Direction and magnitude.</div></footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>25 Years of Septic Shock Resuscitation Trials | The Critical Vector</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400;1,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#0a0e14; --surface:#111720; --surface2:#182030; --border:rgba(255,255,255,.08); --accent:#00d4aa; --accent2:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa; --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670;}
+  *{box-sizing:border-box;}
+  body{background:var(--bg); color:var(--text); margin:0; padding:2.5rem 1rem 5rem; font-family:'Source Serif 4', Georgia, serif; line-height:1.65;}
+  .page{max-width:920px; margin:0 auto;}
+  h1,h2,h3,.sec-num,.kicker,th,.label,.step-num{font-family:'Syne', sans-serif;}
+  code, .mono{font-family:'IBM Plex Mono', monospace;}
+  .kicker{color:var(--accent); font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; font-weight:600;}
+  h1{font-weight:800; font-size:1.7rem; margin:.4rem 0 .5rem; color:var(--text); line-height:1.3;}
+  header p{font-style:italic; color:var(--text2); font-size:1rem; margin:0 0 .4rem;}
+  .byline{color:var(--text3); font-size:.85rem; margin:0 0 1.5rem;}
+  .alert{background:rgba(0,212,170,.10); border:1px solid rgba(0,212,170,.28); color:#bdf5e8; border-radius:10px; padding:1rem 1.2rem; margin:1.2rem 0 2rem; font-size:.98rem;}
+  .alert strong{color:var(--accent);}
+  .sec-head{display:flex; align-items:baseline; gap:.7rem; padding:.6rem .9rem; border-left:4px solid var(--accent); background:linear-gradient(90deg, rgba(0,212,170,.10), transparent); border-radius:6px; margin-top:2.6rem;}
+  .sec-head.c-blue{border-left-color:var(--accent2); background:linear-gradient(90deg, rgba(96,165,250,.12), transparent);}
+  .sec-head.c-red{border-left-color:var(--red); background:linear-gradient(90deg, rgba(232,76,76,.12), transparent);}
+  .sec-head.c-amber{border-left-color:var(--amber); background:linear-gradient(90deg, rgba(245,158,11,.12), transparent);}
+  .sec-head.c-purple{border-left-color:var(--purple); background:linear-gradient(90deg, rgba(167,139,250,.12), transparent);}
+  .sec-num{color:var(--text3); font-size:.85rem; font-weight:600;}
+  .sec-head h2{margin:0; font-size:1.15rem; font-weight:700; color:var(--text);}
+  .tagline{font-style:italic; color:var(--text2); font-size:.92rem; margin:.4rem 0 1rem; padding-left:.9rem;}
+  p{margin:.8rem 0;}
+  .box{background:var(--surface2); border:1px solid var(--border); border-radius:10px; padding:1rem 1.2rem; margin:1.1rem 0;}
+  .box.t-teal{border-left:3px solid var(--accent);} .box.t-blue{border-left:3px solid var(--accent2);}
+  .box.t-amber{border-left:3px solid var(--amber);} .box.t-purple{border-left:3px solid var(--purple);}
+  .box.t-red{border-left:3px solid var(--red); background:rgba(232,76,76,.06);}
+  .box .label{display:block; font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; font-weight:700; margin-bottom:.4rem;}
+  .box.t-teal .label{color:var(--accent);} .box.t-blue .label{color:var(--accent2);}
+  .box.t-amber .label{color:var(--amber);} .box.t-purple .label{color:var(--purple);} .box.t-red .label{color:var(--red);}
+  table{width:100%; border-collapse:collapse; margin:1.1rem 0; font-size:.83rem;}
+  th{background:var(--surface2); color:var(--text); text-align:left; padding:.5rem .55rem; font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; font-weight:700; border-bottom:1px solid var(--border);}
+  td{padding:.5rem .55rem; border-bottom:1px solid var(--border); vertical-align:top; color:var(--text);}
+  tr:nth-child(even) td{background:rgba(255,255,255,.02);}
+  td.num{font-family:'IBM Plex Mono',monospace; font-size:.8rem;}
+  tr.sig td{background:rgba(232,76,76,.07);} tr.notsig td{color:var(--text2);}
+  ul.plain{margin:.6rem 0; padding-left:1.3rem;} ul.plain li{margin-bottom:.4rem;}
+  .sources{list-style:none; padding:0; margin:1rem 0; font-size:.85rem; color:var(--text2);}
+  .sources li{padding:.55rem 0; border-bottom:1px solid var(--border);} .sources a{color:var(--accent);}
+  footer{font-style:italic; color:var(--text3); font-size:.85rem; text-align:center; margin-top:3rem; padding-top:1.2rem; border-top:1px solid var(--border);}
+  @media print{
+    :root{--bg:#f4f5f7; --surface:#fff; --surface2:#eef1f4; --border:#d7dde3; --accent:#00a688; --accent2:#1d4ed8; --red:#c53030; --amber:#b45309; --purple:#7c3aed; --text:#0f1923; --text2:#4a5670; --text3:#6b7688;}
+    body{background:var(--bg) !important; color:var(--text) !important;}
+    .alert{background:rgba(0,166,136,.08) !important; color:#0f1923 !important;}
+    td{color:var(--text) !important;}
+  }
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ a{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../locker.html">The Evidence Locker</a><span class="cv-sb-meta">Published 2 Sep 2026 · R. E. Suscitate &amp; A. Systole</span></nav>
+<div class="page">
+
+<header>
+  <div class="kicker">The Critical Vector &middot; Study Breakdown &amp; Content Audit &mdash; Verified</div>
+  <h1>25 Years of Septic Shock Resuscitation Trials: The Real Argument</h1>
+  <p>Hernandez G, Hunsicker O, de Backer D, et al. Twenty-five years of septic shock hemodynamic resuscitation trials: a conceptual perspective.</p>
+  <p class="byline"><em>Crit Care.</em> 2026;30:400. doi:10.1186/s13054-026-06201-8. Open access &middot; Original social summary: eddyjoemd</p>
+</header>
+
+<div class="alert">
+<strong>Verdict on the source post:</strong> eddyjoemd's caption frames this as "should we abandon lactate, and is capillary refill the way to go?" &mdash; a reasonable shorthand, but narrower than what the paper actually argues. The real thesis isn't "CRT beats lactate." It's that <i>every</i> fixed, isolated physiologic target &mdash; ScvO2, lactate, MAP, and even CRT alone &mdash; has failed to reproducibly move outcomes, and the field's real 25-year arc is toward personalized, phenotype-driven, iteratively reassessed resuscitation. Lactate isn't abandoned in this paper; it's recontextualized.
+</div>
+
+<div class="sec-head"><span class="sec-num">01</span><h2>The Setup</h2></div>
+<p class="tagline">Six landmark trials, 25 years, one throughline: single fixed targets keep failing to reproduce, and the field keeps learning why.</p>
+<p>This is a perspective piece, not a new trial &mdash; 21 co-authors, including several of the actual ANDROMEDA-SHOCK and CLASSIC trial investigators, tracing the conceptual arc from Rivers' 2001 EGDT trial through the just-published ANDROMEDA-SHOCK-2 (2025/2026). Its organizing claim: progress in septic shock resuscitation over 25 years came less from new drugs or devices, and more from a deepening understanding of how to use the tools already available &mdash; fluids, vasopressors, inotropes &mdash; more intelligently.</p>
+
+<div class="sec-head c-blue"><span class="sec-num">02</span><h2>EGDT (2001): The Trial That Started It, and the Reproducibility Problem That Ended It</h2></div>
+<p class="tagline">A single-center success that three later multicenter trials couldn't reproduce &mdash; and the paper is specific about why.</p>
+<p>Rivers' EGDT trial targeted ScvO2 via a protocolized bundle and showed a significant survival benefit in a single-center ED, largely in patients with protracted shock or profound hypovolemia. It got folded into early Surviving Sepsis Campaign guidelines. Then three larger multicenter RCTs &mdash; ProCESS, ARISE, and ProMISe &mdash; all found neutral results. The paper attributes the failure to reproduce to three specific, verifiable factors: later cohorts never showed the very low ScvO2 values Rivers reported; ScvO2 turned out to be non-dichotomous (both low <i>and</i> supranormal values associate with worse mortality); and the algorithm itself rested on questionable physiology &mdash; an abnormally elevated CVP target and liberal transfusion/fluid thresholds that later fluid-overload research would directly contradict. ScvO2 was formally dropped as a resuscitation target in current SSC guidance, though it's retained as one input among several in multimodal perfusion monitoring.</p>
+
+<div class="sec-head c-red"><span class="sec-num">03</span><h2>LACTATE (2010): The Trial the eddyjoemd Caption Doesn't Fully Explain</h2></div>
+<p class="tagline">This is the nuance most summaries skip &mdash; and it's the strongest evidence in the whole paper against treating lactate as a direct treatment target.</p>
+<p>The LACTATE trial targeted a &ge;20% lactate decrease every 2 hours over an 8-hour window and did show lower hospital mortality and earlier SOFA improvement as secondary outcomes. But the paper flags a specific internal contradiction: the intervention arm received <i>more</i> fluids and vasodilator support, yet lactate kinetics were essentially unchanged between arms, and the prespecified lactate-reduction target was achieved <b>equally often in both groups</b>. In other words, the protocol didn't actually "treat" lactate any more effectively than usual care &mdash; the benefit, if real, came from somewhere else in the bundle.</p>
+<div class="box t-red">
+<span class="label">The "lactate paradox," explained</span>
+<p>The paper's deeper point: lactate has been misread as a direct measure of oxygen debt. Its kinetics are <b>biphasic</b> &mdash; flow-dependent and genuinely informative in the first 6&ndash;12 hours, but increasingly driven by heterogeneous, non-hypoperfusion mechanisms afterward: adrenergic-driven aerobic glycolysis, impaired hepatic clearance, inflammatory metabolic reprogramming, mitochondrial dysfunction. Persistent hyperlactatemia beyond the early window shouldn't be assumed to mean ongoing tissue hypoxia, especially once other perfusion markers have normalized. This is why the paper doesn't call for abandoning lactate &mdash; it still flags high-risk trajectories and now anchors part of the SCCM/ESICM refractory-shock definition &mdash; but argues against using it as a late-phase resuscitation dial to keep turning.</p>
+</div>
+
+<div class="sec-head c-amber"><span class="sec-num">04</span><h2>SEPSISPAM (2014): The MAP Target Trial With an Asterisk</h2></div>
+<p class="tagline">A detail worth knowing before you cite this trial: the "standard" arm didn't actually run at the target it was supposed to.</p>
+<p>SEPSISPAM compared a higher MAP target (80&ndash;85 mmHg) against standard (65&ndash;70 mmHg). The paper notes the standard-target group's actual achieved MAP was 75 mmHg &mdash; well above its intended 65 mmHg ceiling &mdash; which complicates any clean reading of "65 vs. 85." No overall mortality or renal-function difference, but significantly more new-onset atrial fibrillation across the whole population at the higher target. The one subgroup signal: chronic hypertensive patients assigned to the higher target needed less renal replacement therapy, without the added AF risk seen in the general population &mdash; an early hint that a single MAP number was never going to fit every patient.</p>
+
+<div class="sec-head c-purple"><span class="sec-num">05</span><h2>ANDROMEDA-SHOCK (2019) and CLASSIC (2022): Perfusion Targets and Fluid Restriction, With Caveats</h2></div>
+<table>
+<tr><th>Trial</th><th>What it actually tested</th><th>Key caveat the paper flags</th></tr>
+<tr><td><b>ANDROMEDA-SHOCK</b></td><td>CRT-targeted vs. lactate-targeted resuscitation, 8h window</td><td>Strong trend toward lower 28-day mortality and significant organ-dysfunction benefit with CRT; a later Bayesian reanalysis supported CRT's superiority more definitively than the frequentist primary analysis did. Systematic fluid-responsiveness testing before any bolus avoided fluids entirely in 25% of patients &mdash; a process benefit easy to overlook.</td></tr>
+<tr><td><b>CLASSIC</b></td><td>Restrictive vs. "usual" IV fluid strategy</td><td>By the time this trial ran, usual care had already drifted restrictive &mdash; so CLASSIC is best read as testing <i>extra</i> restriction on top of already-conservative practice, not classic liberal-vs-restrictive. Fluid responsiveness wasn't systematically assessed in the trial itself, and venous congestion/fluid tolerance weren't incorporated into treatment decisions &mdash; both now considered important omissions.</td></tr>
+</table>
+
+<div class="sec-head c-blue"><span class="sec-num">06</span><h2>ANDROMEDA-SHOCK-2: Where the Paper Actually Lands</h2></div>
+<p class="tagline">Not "CRT wins." A multi-component, phenotype-driven bundle wins &mdash; and the paper is explicit that no single ingredient can be credited.</p>
+<p>The newest trial (JAMA 2025/2026) tested CRT-targeted <i>personalized</i> hemodynamic resuscitation (CRT-PHR): a sequential bedside assessment combining CRT, pulse pressure, diastolic arterial pressure, fluid-responsiveness testing, and early echocardiography to sort patients into hypovolemic, vasoplegic, or cardiac-dysfunction phenotypes, each triggering a different intervention.</p>
+<div class="box t-blue">
+<span class="label">The actual result, precisely stated</span>
+<p>86% of the intervention arm achieved CRT normalization vs. 62% with usual care. The trial hit its hierarchical composite primary outcome with a stratified win ratio of 1.16 (95% CI 1.02&ndash;1.33, P=.04) &mdash; statistically significant, but driven mainly by <b>shorter duration of vital support</b>, not by a 28-day mortality difference (mortality was similar between arms, and lower than expected in both, around 26.6%). Because the intervention was a bundled, multi-component protocol, the trial <b>cannot isolate</b> which specific piece &mdash; CRT targeting itself, the fluid-responsiveness gating, the DAP-triggered norepinephrine titration, the MAP/dobutamine tests, or the stopping rule &mdash; actually produced the benefit.</p>
+</div>
+<p>The authors are explicit that this trial is "the beginning of this process rather than its endpoint" &mdash; not a final answer that CRT-guided personalized resuscitation is proven, but the most complete operationalization of the idea tested so far.</p>
+
+<div class="sec-head" style="border-left-color:var(--text3); background:none;"><span class="sec-num">07</span><h2>Bottom Line</h2></div>
+<p>The caption's question &mdash; lactate or capillary refill? &mdash; is a fair entry point, but the paper's actual argument is bigger: no single fixed physiologic target, tested in isolation, has reproducibly improved patient-centered outcomes across 25 years of trying, from ScvO2 to lactate to MAP to CRT alone. What has started to work, in ANDROMEDA-SHOCK-2, is treating resuscitation as short, reversible tests within iterative reassessment cycles, guided by whichever rapidly-responsive signal fits the patient's phenotype at that moment &mdash; not a permanent switch from one number to another. Lactate remains genuinely useful as an early-window signal and a refractory-shock criterion; it was never actually "abandoned" in this paper, just correctly resized.</p>
+
+<div class="sec-head" style="border-left-color:var(--text3); background:none;"><span class="sec-num">08</span><h2>Sources</h2></div>
+<ul class="sources">
+<li>Hernandez G, Hunsicker O, de Backer D, et al. Twenty-five years of septic shock hemodynamic resuscitation trials: a conceptual perspective. <em>Crit Care.</em> 2026;30:400. doi:10.1186/s13054-026-06201-8.</li>
+<li>Rivers E, Nguyen B, Havstad S, et al. Early goal-directed therapy in the treatment of severe sepsis and septic shock. <em>N Engl J Med.</em> 2001;345:1368&ndash;1377.</li>
+<li>Jansen TC, van Bommel J, Schoonderbeek FJ, et al. Early lactate-guided therapy in intensive care unit patients. <em>Am J Respir Crit Care Med.</em> 2010;182:752&ndash;761.</li>
+<li>Asfar P, Meziani F, Hamel J-F, et al. High versus low blood-pressure target in patients with septic shock (SEPSISPAM). <em>N Engl J Med.</em> 2014;370:1583&ndash;1593.</li>
+<li>Hernández G, Ospina-Tascón GA, Damiani LP, et al. Effect of a resuscitation strategy targeting peripheral perfusion status vs serum lactate levels on 28-day mortality (ANDROMEDA-SHOCK). <em>JAMA.</em> 2019;321:654.</li>
+<li>Meyhoff TS, Hjortrup PB, Wetterslev J, et al. Restriction of intravenous fluid in ICU patients with septic shock (CLASSIC). <em>N Engl J Med.</em> 2022;386:2459&ndash;2470.</li>
+<li>Hernandez G, Ospina-Tascón GA, Kattan E, et al. Personalized hemodynamic resuscitation targeting capillary refill time in early septic shock (ANDROMEDA-SHOCK-2). <em>JAMA.</em> 2025;334:1988.</li>
+</ul>
+
+<footer>The Critical Vector &middot; Direction and magnitude.</footer>
+
+</div>
+</body>
+</html>

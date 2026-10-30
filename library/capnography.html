@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Capnography — The Critical Vector</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&amp;family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><style>
+:root{
+  --bg:#0a0e14; --surface:#111720; --surface2:#182030;
+  --border:rgba(255,255,255,0.08);
+  --teal:#00d4aa; --blue:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa;
+  --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  background:var(--bg); color:var(--text);
+  font-family:'Source Serif 4', Georgia, serif; font-size:16px; line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,.label,.kicker,.badge,nav a,th{font-family:'Syne', sans-serif;}
+.mono{font-family:'IBM Plex Mono', monospace;}
+.page{max-width:900px; margin:0 auto; padding:0 24px 60px;}
+
+header{padding:32px 0 20px; border-bottom:1px solid var(--border);}
+.kicker{
+  font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--teal); margin-bottom:10px;
+}
+h1{font-family:'Syne', sans-serif; font-weight:800; font-size:30px; line-height:1.15; margin:0 0 10px; letter-spacing:.005em;}
+header p{font-family:'Source Serif 4', serif; font-style:italic; color:var(--text2); font-size:15.5px; margin:0; max-width:700px;}
+
+.alert{
+  margin:18px 0; padding:13px 18px; border-radius:10px; font-size:14px;
+  background:rgba(0,212,170,0.10); border:1px solid rgba(0,212,170,0.28); color:#bdf5e8;
+}
+.alert.c-red{background:rgba(232,76,76,0.10); border-color:rgba(232,76,76,0.28); color:#ffd7d7;}
+.alert.c-amber{background:rgba(245,158,11,0.10); border-color:rgba(245,158,11,0.28); color:#ffe8bd;}
+.alert.c-blue{background:rgba(96,165,250,0.10); border-color:rgba(96,165,250,0.28); color:#cfe0ff;}
+
+nav{display:flex; flex-wrap:wrap; gap:7px; padding:18px 0; border-bottom:1px solid var(--border); margin-bottom:8px;}
+nav .navpart{
+  width:100%; font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--text3); margin:8px 0 2px 2px;
+}
+nav .navpart:first-child{margin-top:0;}
+nav a{
+  font-size:12.5px; font-weight:600; color:var(--text2); background:var(--surface);
+  border:1px solid var(--border); padding:7px 12px; border-radius:20px;
+  text-decoration:none; white-space:nowrap; transition:all .15s;
+}
+nav a:hover{color:var(--text); border-color:var(--teal);}
+
+section{padding:30px 0; border-bottom:1px solid var(--border);}
+.sec-head{
+  display:flex; align-items:baseline; gap:10px; padding:11px 18px;
+  border-left:4px solid var(--teal);
+  background:linear-gradient(90deg, rgba(0,212,170,0.10), transparent);
+  border-radius:0 8px 8px 0; margin-bottom:16px;
+}
+.sec-head.c-blue{border-left-color:var(--blue); background:linear-gradient(90deg, rgba(96,165,250,0.10), transparent);}
+.sec-head.c-red{border-left-color:var(--red); background:linear-gradient(90deg, rgba(232,76,76,0.10), transparent);}
+.sec-head.c-amber{border-left-color:var(--amber); background:linear-gradient(90deg, rgba(245,158,11,0.10), transparent);}
+.sec-head.c-purple{border-left-color:var(--purple); background:linear-gradient(90deg, rgba(167,139,250,0.10), transparent);}
+.sec-num{font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--text3);}
+h2{font-family:'Syne', sans-serif; font-weight:700; font-size:20px; margin:0; color:var(--text);}
+.tagline{font-family:'Source Serif 4', serif; font-style:italic; font-size:13.5px; color:var(--text2); margin:0 0 12px;}
+
+p.body{font-size:15.5px; margin:12px 0;}
+p.note{font-size:13.5px; color:var(--text2); font-style:italic; margin:10px 0;}
+
+.box{
+  background:var(--surface2); border:1px solid var(--border); border-radius:10px;
+  padding:16px 18px; margin:14px 0; font-size:14.5px;
+}
+.box.t-teal{border-left:3px solid var(--teal);}
+.box.t-blue{border-left:3px solid var(--blue);}
+.box.t-red{border-left:3px solid var(--red); background:rgba(232,76,76,0.06);}
+.box.t-amber{border-left:3px solid var(--amber);}
+.box.t-purple{border-left:3px solid var(--purple);}
+.box b{color:var(--text); font-weight:700;}
+.box p{margin:7px 0;}
+
+table{width:100%; border-collapse:collapse; margin:14px 0; font-size:13.5px;}
+th{background:var(--surface2); color:var(--text); text-align:left; padding:9px 11px; font-weight:600; font-size:12px; letter-spacing:.02em; border-bottom:2px solid var(--border);}
+td{padding:9px 11px; border-bottom:1px solid var(--border); vertical-align:top; font-family:'Source Serif 4', serif;}
+tr:nth-child(even) td{background:rgba(255,255,255,0.02);}
+
+.checklist, .xlist{list-style:none; padding-left:0; margin:10px 0;}
+.checklist li, .xlist li{padding:5px 0 5px 26px; position:relative; font-size:14.5px;}
+.checklist li:before{content:"\2713"; position:absolute; left:0; color:var(--teal); font-weight:700;}
+.xlist li:before{content:"\2715"; position:absolute; left:0; color:var(--red); font-weight:700;}
+
+.flow{display:flex; flex-direction:column; gap:9px; margin:14px 0;}
+.flow .step{
+  border:1px solid var(--border); border-left:3px solid var(--teal);
+  background:var(--surface); border-radius:8px; padding:11px 15px; font-size:14px;
+}
+.flow .step.t-blue{border-left-color:var(--blue);}
+.flow .step.t-red{border-left-color:var(--red);}
+.flow .step.t-amber{border-left-color:var(--amber);}
+.flow .step.t-purple{border-left-color:var(--purple);}
+
+.timeline-item{
+  padding:7px 0 7px 15px; border-left:2px solid var(--teal);
+  margin:5px 0 5px 4px; font-size:13.5px; color:var(--text2);
+}
+.timeline-item.t-blue{border-left-color:var(--blue);}
+.timeline-item.t-red{border-left-color:var(--red);}
+.timeline-item.t-amber{border-left-color:var(--amber);}
+.timeline-item.t-purple{border-left-color:var(--purple);}
+
+.xref{
+  margin:14px 0; padding:13px 17px; border-radius:10px;
+  background:var(--surface2); border:1px solid var(--border); border-left:3px solid var(--blue);
+  font-size:14px;
+}
+.xreflabel{
+  display:block; font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--blue); margin-bottom:6px; font-weight:600;
+}
+
+.peds{
+  margin:8px 0 16px 0; padding:11px 15px; border-radius:8px;
+  background:var(--surface2); border:1px solid var(--border); border-left:3px solid var(--purple);
+  font-size:13.5px;
+}
+.pedlabel{
+  display:inline-block; font-family:'Syne', sans-serif; font-size:10px; font-weight:700; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--purple); margin-right:7px;
+}
+
+.part-divider{padding:34px 0 8px;}
+.part-divider .plabel{
+  font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--teal); margin-bottom:6px; font-weight:600;
+}
+.part-divider h2{font-size:23px; margin:0 0 6px 0;}
+.part-divider p{font-family:'Source Serif 4', serif; font-size:14px; color:var(--text2); margin:0; max-width:600px;}
+
+.sources{font-size:13px; color:var(--text2); padding-left:20px;}
+.sources li{margin-bottom:7px;}
+
+.caveat{
+  margin:14px 0; padding:13px 17px; border-radius:10px; font-size:13.5px;
+  background:rgba(245,158,11,0.08); border:1px solid rgba(245,158,11,0.24); color:var(--text2);
+}
+.caveat b{color:var(--amber); font-weight:700;}
+
+.statgrid{display:grid; grid-template-columns:repeat(4, 1fr); gap:10px; margin:16px 0;}
+.statgrid div{text-align:center;}
+.statgrid .num{font-family:'Syne', sans-serif; font-size:22px; font-weight:700;}
+.statgrid .lbl{font-family:'Syne', sans-serif; font-size:10.5px; color:var(--text2); text-transform:uppercase; letter-spacing:.05em; margin-top:3px;}
+
+.arrow{text-align:center; color:var(--text3); font-size:12px;}
+
+footer{padding:26px 0 0; margin-top:6px; font-size:12.5px; color:var(--text3); font-family:'Source Serif 4', serif; font-style:italic;}
+</style>
+<style id="cv-print">
+/* ===== CV PRINT v1.0 (per _cv-schema.html) ===== */
+@media print{
+  :root{
+    --bg:#f4f5f7; --surface:#ffffff; --surface2:#eef1f4; --border:#d7dde3;
+    --teal:#00a688; --blue:#1d4ed8; --accent:#00a688; --accent2:#1d4ed8;
+    --red:#c53030; --amber:#b45309; --purple:#7c3aed;
+    --text:#0f1923; --text2:#4a5670; --text3:#6b7688;
+  }
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  html, body{background:#f4f5f7 !important; color:#0f1923 !important;}
+  nav, .nav, .toc-pills{display:none !important;}
+  .alert{background:rgba(0,166,136,.08) !important; color:#0f1923 !important;}
+  td{color:#0f1923 !important;}
+  section, .box, table, .card, .stat-card, .statcard, .step-row, .step{break-inside:avoid;}
+  h2, .sec-head{break-after:avoid;}
+  a{color:inherit; text-decoration:none;}
+}
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ a{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../workshop.html">The Workshop</a><span class="cv-sb-meta">Published 7 Oct 2026 · R. E. Suscitate &amp; A. Systole</span></nav><div class="page">
+<header>
+<div class="kicker">The Critical Vector · Pocket Reference</div>
+<h1>Capnography</h1>
+<p>v1. The waveform, not just the number — phase-by-phase interpretation, the abnormal patterns
+  that actually change management, and what the arrest literature really says about ETCO2 as a
+  prognostic tool. Verified against Resuscitation, ILCOR, and primary EM/critical care literature.
+  July 2026.</p>
+</header>
+<nav>
+<a href="#s1">1 · The normal waveform</a>
+<a href="#s2">2 · Abnormal patterns</a>
+<a href="#s3">3 · Capnography in cardiac arrest</a>
+<a href="#s4">4 · Clinical applications by setting</a>
+<a href="#s5">5 · Quick card &amp; sources</a>
+</nav>
+<main>
+<section id="s1">
+<div class="sec-head"><span class="sec-num">01</span><h2>The Normal Waveform</h2></div>
+<p class="body">Capnography measures CO2 partial pressure continuously through the respiratory
+  cycle, producing a waveform (capnogram) with four distinct phases per breath. EtCO2 — the value
+  most people quote — is just the number read at the end of the plateau, phase III.</p>
+<table>
+<tr><th>Phase</th><th>What's happening</th></tr>
+<tr><td><b>0 (baseline)</b></td><td>Inspiration — CO2 should read zero on a functioning
+    circuit.</td></tr>
+<tr><td><b>I (dead space)</b></td><td>Start of exhalation — CO2-free gas from the anatomic
+    dead space (conducting airways) is expelled first.</td></tr>
+<tr><td><b>II (alveolar upstroke)</b></td><td>CO2-rich alveolar gas begins mixing with the
+    dead-space gas; the steep rise.</td></tr>
+<tr><td><b>III (alveolar plateau)</b></td><td>Relatively uniform alveolar gas is exhaled;
+    EtCO2 is read at the very end of this phase, the point closest to alveolar (and by extension,
+    arterial) CO2.</td></tr>
+</table>
+<div class="box t-teal">
+<p><b>Normal values (adult):</b> EtCO2 35–45 mmHg. PaCO2 typically exceeds EtCO2 by 2–5 mmHg
+    (the a-ET gradient) due to dead-space ventilation — a gradient that widens meaningfully in
+    conditions that increase dead space, like PE or severe COPD.</p>
+</div>
+<p class="note">EtCO2 is a ventilation, perfusion, and metabolism monitor simultaneously — a
+  sudden change can mean any of the three shifted, which is exactly why the waveform shape
+  matters as much as the number.</p>
+</section>
+<section id="s2">
+<div class="sec-head c-purple"><span class="sec-num">02</span><h2>Abnormal Patterns</h2></div>
+<table>
+<tr><th>Pattern</th><th>Appearance</th><th>Cause</th></tr>
+<tr><td><b>Obstructive ("shark fin")</b></td><td>Upsloping phase II, no clean plateau,
+    "scooped" phase III</td><td>Bronchospasm — asthma, COPD, partial ETT obstruction/kink</td></tr>
+<tr><td><b>Hypoventilation</b></td><td>Elevated EtCO2 (&gt;45), normal shape</td><td>Sedation,
+    opioids, rebreathing, hyperthermia or malignant hyperthermia, deliberately permissive settings</td></tr>
+<tr><td><b>Hyperventilation</b></td><td>Decreased EtCO2 (&lt;30), normal shape</td><td>Pain,
+    anxiety, sepsis, pregnancy, compensatory response to metabolic acidosis; hypothermia lowers EtCO2 by reducing CO2 production</td></tr>
+<tr><td><b>Curare cleft</b></td><td>Small notch/dip mid-phase II</td><td>Spontaneous
+    respiratory effort breaking through incomplete paralysis — a real-time paralysis-depth
+    signal</td></tr>
+<tr><td><b>Cardiogenic oscillations</b></td><td>Regular small ripples on the plateau</td>
+<td>Mechanical transmission of cardiac contraction to the airway — usually a reassuring sign
+    of adequate cardiac output</td></tr>
+<tr><td><b>Rebreathing</b></td><td>Baseline doesn't return to zero</td><td>Exhausted CO2
+    absorber, absorber not properly attached, low fresh gas flow, circuit leak</td></tr>
+<tr><td><b>Sudden fall to near-zero</b></td><td>Abrupt loss of waveform</td><td>Esophageal
+    intubation, complete disconnection or extubation, or — the one to
+    never forget — cardiac arrest</td></tr>
+</table>
+<div class="box t-red">
+<p><b>The dangerous confusion:</b> a flat capnography line does not automatically mean
+    esophageal intubation. If the tube was confirmed correctly placed moments earlier, an
+    abrupt flatline is a circulatory arrest until proven otherwise — chest compressions restore
+    some waveform even in a correctly placed tube, so a flat line during ongoing CPR (rather than
+    at a pulse check) is a different problem than a flat line right after intubation.</p>
+</div>
+</section>
+<section id="s3">
+<div class="sec-head c-red"><span class="sec-num">03</span><h2>Capnography in Cardiac Arrest</h2></div>
+<p class="body">ETCO2 during CPR is primarily a marker of pulmonary blood flow, and therefore a
+  real-time, breath-by-breath readout of compression quality and cardiac output — arguably its
+  single highest-yield use in resuscitation.</p>
+<table>
+<tr><th>Finding</th><th>Evidence</th></tr>
+<tr><td><b>Low threshold, poor prognosis</b></td><td>EtCO2 &lt;10 mmHg after 20 minutes of
+    CPR has been associated with as low as a 0.5% likelihood of ROSC across pooled observational
+    data.</td></tr>
+<tr><td><b>ILCOR 2020 consensus</b></td><td>Suggests against using any EtCO2 cutoff value alone
+    to predict mortality or to decide to stop resuscitation (weak recommendation, low-certainty
+    evidence). Values above about 20 mmHg are associated with better odds, but no single number is decisive.</td></tr>
+<tr><td><b>Trend over threshold</b></td><td>Multiple reviews now emphasize that trending
+    EtCO2 (rising, falling, abrupt jump) carries more prognostic weight than any single static
+    value, given how many confounders (epinephrine dosing, airway type, compression quality
+    itself) affect the absolute number.</td></tr>
+<tr><td><b>Abrupt rise during CPR</b></td><td>A sudden jump in EtCO2 mid-resuscitation is one
+    of the most reliable non-invasive signals that ROSC has just occurred — often visible before
+    a pulse check confirms it.</td></tr>
+</table>
+<p class="note">Confirmed CO2 detection after intubation remains the single most specific
+  bedside method to confirm correct tracheal (versus esophageal) tube placement during CPR —
+  that role is settled; the prognostic-threshold role is genuinely still being refined.</p>
+</section>
+<section id="s4">
+<div class="sec-head c-blue"><span class="sec-num">04</span><h2>Clinical Applications by Setting</h2></div>
+<div class="box t-blue">
+<p><b>Traumatic brain injury:</b> target EtCO2 35–40 mmHg. Avoid hyperventilation outside of
+    brief, deliberate use for acute herniation with Cushing's reflex — cerebral vasoconstriction
+    from over-ventilation can worsen ischemia in an already injured brain.</p>
+</div>
+<div class="box t-blue">
+<p><b>Post-ROSC:</b> target EtCO2 35–45 mmHg — avoid both hyper- and hypoventilation in the
+    immediate post-arrest period, when cerebral autoregulation is impaired.</p>
+</div>
+<div class="box t-blue">
+<p><b>Sepsis / DKA / other compensatory tachypnea:</b> match the ventilator to what the
+    patient's own respiratory drive is already doing rather than "normalizing" a compensatory
+    hyperventilation — a metabolic acidosis being compensated by a low PaCO2 needs that low PaCO2
+    maintained, not corrected.</p>
+</div>
+<div class="box t-blue">
+<p><b>Procedural sedation:</b> capnography detects hypoventilation before it becomes
+    hypoxemia — often the earliest available warning sign, arriving before the pulse oximeter
+    changes at all, especially with supplemental oxygen running.</p>
+</div>
+<p class="note">If you're bagging a patient without capnography, you're ventilating blind — the
+  waveform (or its absence) is the fastest confirmation of both airway position and adequacy of
+  ventilation available at the bedside.</p>
+</section>
+<section id="s5" style="border-bottom:none;">
+<div class="sec-head" style="border-left-color:var(--text3); background:none;"><span class="sec-num">05</span><h2>Quick Reference Card &amp; Primary Sources</h2></div>
+<table>
+<tr><th>Pattern / value</th><th>Bedside meaning</th></tr>
+<tr><td><b>Normal EtCO2 35–45 mmHg</b></td><td>Adequate ventilation, perfusion, metabolism</td></tr>
+<tr><td><b>Shark fin</b></td><td>Bronchospasm / partial obstruction — bronchodilate, check tube</td></tr>
+<tr><td><b>Baseline not returning to zero</b></td><td>Rebreathing — check absorber, flow, circuit</td></tr>
+<tr><td><b>Sudden flatline, mid-CPR</b></td><td>Loss of compressions/output, not necessarily esophageal placement</td></tr>
+<tr><td><b>EtCO2 &lt;10 at 20 min CPR</b></td><td>Very poor prognosis (~0.5% ROSC in pooled data)</td></tr>
+<tr><td><b>EtCO2 ≥20 at 20 min CPR</b></td><td>Associated with better odds; ILCOR advises against any cutoff alone</td></tr>
+<tr><td><b>Abrupt EtCO2 rise mid-CPR</b></td><td>Suggests ROSC has just occurred</td></tr>
+</table>
+<p class="body"><b>Primary sources checked for this guide:</b></p>
+<ul class="sources">
+<li>Capnography during cardiac arrest. Resuscitation, reviewed 2018.</li>
+<li>The prognostic value of end-tidal carbon dioxide during cardiac arrest: a systematic review. Resuscitation, 2013.</li>
+<li>End-tidal CO2 trajectory-based prognostication of out-of-hospital cardiac arrest. Reviewed via PMC, 2024.</li>
+<li>2020 International Liaison Committee on Resuscitation (ILCOR) consensus on science and treatment recommendations, EtCO2 during CPR.</li>
+<li>Grmec S, Lah K, Tusek-Bunc K. Difference in end-tidal CO2 between asphyxial and VF/VT cardiac arrest in the prehospital setting. Crit Care. 2003;7:R139-44.</li>
+<li>Pantazopoulos C, et al. Capnography in emergency medicine. Eur J Emerg Med. 2018.</li>
+<li>Kodali BS. Capnography outside the operating rooms. Anesthesiology. 2013;118(1):192-201.</li>
+<li>Silvestri S, et al. The effectiveness of out-of-hospital continuous EtCO2 monitoring on the rate of unrecognized misplaced intubation. Ann Emerg Med. 2005;45(5):497-503.</li>
+<li>Link MS, et al. Part 7: Adult Advanced Cardiovascular Life Support. Circulation. 2015;132(18 Suppl 2):S444-64.</li>
+</ul>
+</section>
+</main>
+<footer>
+  Capnography's role in confirming tube placement is settled science; its role as a hard
+  cardiac-arrest prognostic threshold is still being actively refined, and the current guidance
+  is explicitly graded as weak/moderate-quality. Trend the number, don't anchor on a single
+  reading. Every figure above was cross-checked against the sources listed here as of July 2026.
+<div class="cv-tagline" style="margin-top:8px">The Critical Vector · Direction and magnitude.</div></footer>
+</div></body>
+</html>

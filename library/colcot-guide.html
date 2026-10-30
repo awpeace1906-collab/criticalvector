@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>COLCOT — The Critical Vector</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&amp;family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><style>
+:root{
+  --bg:#0a0e14; --surface:#111720; --surface2:#182030;
+  --border:rgba(255,255,255,0.08);
+  --teal:#00d4aa; --blue:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa;
+  --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  background:var(--bg); color:var(--text);
+  font-family:'Source Serif 4', Georgia, serif; font-size:16px; line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,.label,.kicker,.badge,nav a,th{font-family:'Syne', sans-serif;}
+.mono{font-family:'IBM Plex Mono', monospace;}
+.page{max-width:900px; margin:0 auto; padding:0 24px 60px;}
+
+header{padding:32px 0 20px; border-bottom:1px solid var(--border);}
+.kicker{
+  font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--teal); margin-bottom:10px;
+}
+h1{font-family:'Syne', sans-serif; font-weight:800; font-size:30px; line-height:1.15; margin:0 0 10px; letter-spacing:.005em;}
+header p{font-family:'Source Serif 4', serif; font-style:italic; color:var(--text2); font-size:15.5px; margin:0; max-width:700px;}
+
+.alert{
+  margin:18px 0; padding:13px 18px; border-radius:10px; font-size:14px;
+  background:rgba(0,212,170,0.10); border:1px solid rgba(0,212,170,0.28); color:#bdf5e8;
+}
+.alert.c-red{background:rgba(232,76,76,0.10); border-color:rgba(232,76,76,0.28); color:#ffd7d7;}
+.alert.c-amber{background:rgba(245,158,11,0.10); border-color:rgba(245,158,11,0.28); color:#ffe8bd;}
+.alert.c-blue{background:rgba(96,165,250,0.10); border-color:rgba(96,165,250,0.28); color:#cfe0ff;}
+
+nav{display:flex; flex-wrap:wrap; gap:7px; padding:18px 0; border-bottom:1px solid var(--border); margin-bottom:8px;}
+nav .navpart{
+  width:100%; font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--text3); margin:8px 0 2px 2px;
+}
+nav .navpart:first-child{margin-top:0;}
+nav a{
+  font-size:12.5px; font-weight:600; color:var(--text2); background:var(--surface);
+  border:1px solid var(--border); padding:7px 12px; border-radius:20px;
+  text-decoration:none; white-space:nowrap; transition:all .15s;
+}
+nav a:hover{color:var(--text); border-color:var(--teal);}
+
+section{padding:30px 0; border-bottom:1px solid var(--border);}
+.sec-head{
+  display:flex; align-items:baseline; gap:10px; padding:11px 18px;
+  border-left:4px solid var(--teal);
+  background:linear-gradient(90deg, rgba(0,212,170,0.10), transparent);
+  border-radius:0 8px 8px 0; margin-bottom:16px;
+}
+.sec-head.c-blue{border-left-color:var(--blue); background:linear-gradient(90deg, rgba(96,165,250,0.10), transparent);}
+.sec-head.c-red{border-left-color:var(--red); background:linear-gradient(90deg, rgba(232,76,76,0.10), transparent);}
+.sec-head.c-amber{border-left-color:var(--amber); background:linear-gradient(90deg, rgba(245,158,11,0.10), transparent);}
+.sec-head.c-purple{border-left-color:var(--purple); background:linear-gradient(90deg, rgba(167,139,250,0.10), transparent);}
+.sec-num{font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--text3);}
+h2{font-family:'Syne', sans-serif; font-weight:700; font-size:20px; margin:0; color:var(--text);}
+.tagline{font-family:'Source Serif 4', serif; font-style:italic; font-size:13.5px; color:var(--text2); margin:0 0 12px;}
+
+p.body{font-size:15.5px; margin:12px 0;}
+p.note{font-size:13.5px; color:var(--text2); font-style:italic; margin:10px 0;}
+
+.box{
+  background:var(--surface2); border:1px solid var(--border); border-radius:10px;
+  padding:16px 18px; margin:14px 0; font-size:14.5px;
+}
+.box.t-teal{border-left:3px solid var(--teal);}
+.box.t-blue{border-left:3px solid var(--blue);}
+.box.t-red{border-left:3px solid var(--red); background:rgba(232,76,76,0.06);}
+.box.t-amber{border-left:3px solid var(--amber);}
+.box.t-purple{border-left:3px solid var(--purple);}
+.box b{color:var(--text); font-weight:700;}
+.box p{margin:7px 0;}
+
+table{width:100%; border-collapse:collapse; margin:14px 0; font-size:13.5px;}
+th{background:var(--surface2); color:var(--text); text-align:left; padding:9px 11px; font-weight:600; font-size:12px; letter-spacing:.02em; border-bottom:2px solid var(--border);}
+td{padding:9px 11px; border-bottom:1px solid var(--border); vertical-align:top; font-family:'Source Serif 4', serif;}
+tr:nth-child(even) td{background:rgba(255,255,255,0.02);}
+
+.checklist, .xlist{list-style:none; padding-left:0; margin:10px 0;}
+.checklist li, .xlist li{padding:5px 0 5px 26px; position:relative; font-size:14.5px;}
+.checklist li:before{content:"\2713"; position:absolute; left:0; color:var(--teal); font-weight:700;}
+.xlist li:before{content:"\2715"; position:absolute; left:0; color:var(--red); font-weight:700;}
+
+.flow{display:flex; flex-direction:column; gap:9px; margin:14px 0;}
+.flow .step{
+  border:1px solid var(--border); border-left:3px solid var(--teal);
+  background:var(--surface); border-radius:8px; padding:11px 15px; font-size:14px;
+}
+.flow .step.t-blue{border-left-color:var(--blue);}
+.flow .step.t-red{border-left-color:var(--red);}
+.flow .step.t-amber{border-left-color:var(--amber);}
+.flow .step.t-purple{border-left-color:var(--purple);}
+
+.timeline-item{
+  padding:7px 0 7px 15px; border-left:2px solid var(--teal);
+  margin:5px 0 5px 4px; font-size:13.5px; color:var(--text2);
+}
+.timeline-item.t-blue{border-left-color:var(--blue);}
+.timeline-item.t-red{border-left-color:var(--red);}
+.timeline-item.t-amber{border-left-color:var(--amber);}
+.timeline-item.t-purple{border-left-color:var(--purple);}
+
+.xref{
+  margin:14px 0; padding:13px 17px; border-radius:10px;
+  background:var(--surface2); border:1px solid var(--border); border-left:3px solid var(--blue);
+  font-size:14px;
+}
+.xreflabel{
+  display:block; font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--blue); margin-bottom:6px; font-weight:600;
+}
+
+.peds{
+  margin:8px 0 16px 0; padding:11px 15px; border-radius:8px;
+  background:var(--surface2); border:1px solid var(--border); border-left:3px solid var(--purple);
+  font-size:13.5px;
+}
+.pedlabel{
+  display:inline-block; font-family:'Syne', sans-serif; font-size:10px; font-weight:700; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--purple); margin-right:7px;
+}
+
+.part-divider{padding:34px 0 8px;}
+.part-divider .plabel{
+  font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--teal); margin-bottom:6px; font-weight:600;
+}
+.part-divider h2{font-size:23px; margin:0 0 6px 0;}
+.part-divider p{font-family:'Source Serif 4', serif; font-size:14px; color:var(--text2); margin:0; max-width:600px;}
+
+.sources{font-size:13px; color:var(--text2); padding-left:20px;}
+.sources li{margin-bottom:7px;}
+
+.caveat{
+  margin:14px 0; padding:13px 17px; border-radius:10px; font-size:13.5px;
+  background:rgba(245,158,11,0.08); border:1px solid rgba(245,158,11,0.24); color:var(--text2);
+}
+.caveat b{color:var(--amber); font-weight:700;}
+
+.statgrid{display:grid; grid-template-columns:repeat(4, 1fr); gap:10px; margin:16px 0;}
+.statgrid div{text-align:center;}
+.statgrid .num{font-family:'Syne', sans-serif; font-size:22px; font-weight:700;}
+.statgrid .lbl{font-family:'Syne', sans-serif; font-size:10.5px; color:var(--text2); text-transform:uppercase; letter-spacing:.05em; margin-top:3px;}
+
+.arrow{text-align:center; color:var(--text3); font-size:12px;}
+
+footer{padding:26px 0 0; margin-top:6px; font-size:12.5px; color:var(--text3); font-family:'Source Serif 4', serif; font-style:italic;}
+</style>
+<style id="cv-print">
+/* ===== CV PRINT v1.0 (per _cv-schema.html) ===== */
+@media print{
+  :root{
+    --bg:#f4f5f7; --surface:#ffffff; --surface2:#eef1f4; --border:#d7dde3;
+    --teal:#00a688; --blue:#1d4ed8; --accent:#00a688; --accent2:#1d4ed8;
+    --red:#c53030; --amber:#b45309; --purple:#7c3aed;
+    --text:#0f1923; --text2:#4a5670; --text3:#6b7688;
+  }
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  html, body{background:#f4f5f7 !important; color:#0f1923 !important;}
+  nav, .nav, .toc-pills{display:none !important;}
+  .alert{background:rgba(0,166,136,.08) !important; color:#0f1923 !important;}
+  td{color:#0f1923 !important;}
+  section, .box, table, .card, .stat-card, .statcard, .step-row, .step{break-inside:avoid;}
+  h2, .sec-head{break-after:avoid;}
+  a{color:inherit; text-decoration:none;}
+}
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ a{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../locker.html">The Evidence Locker</a><span class="cv-sb-meta">Published 6 Oct 2026 · R. E. Suscitate &amp; A. Systole</span></nav><div class="page">
+<header>
+<div class="kicker">The Critical Vector · Landmark Trial Series</div>
+<h1>COLCOT</h1>
+<p>Colchicine Cardiovascular Outcomes Trial. Verified against the NEJM primary paper, the
+  EHJ timing substudy, and current ESC guidance. July 2026.</p>
+</header>
+<div class="alert">
+  VERIFIED: every number below matches the primary sources. No corrections needed this time,
+  this version expands on trial nuance, the timing effect, and where colchicine actually sits
+  in current guidelines.
+</div>
+<nav>
+<a href="#s1">1 · Trial snapshot</a>
+<a href="#s2">2 · Primary endpoint</a>
+<a href="#s3">3 · What moved, what didn't</a>
+<a href="#s4">4 · The stroke signal</a>
+<a href="#s5">5 · Timing matters</a>
+<a href="#s6">6 · Safety</a>
+<a href="#s7">7 · Mechanism</a>
+<a href="#s8">8 · Guideline status</a>
+<a href="#s9">9 · Related trials</a>
+<a href="#s10">10 · Quick card &amp; sources</a>
+</nav>
+<main>
+<section id="s1">
+<div class="sec-head c-amber"><span class="sec-num">01</span><h2>Trial Snapshot</h2></div>
+<p class="body">You just survived a heart attack. You're on aspirin, a statin, a P2Y12
+  inhibitor. Is that enough? COLCOT asked whether adding an anti-inflammatory on top of that
+  guideline therapy lowers recurrent risk.</p>
+<table>
+<tr><td><b>Published</b></td><td>2019, NEJM</td></tr>
+<tr><td><b>Patients</b></td><td>4,745</td></tr>
+<tr><td><b>Sites</b></td><td>167</td></tr>
+<tr><td><b>Follow-up</b></td><td>Median 22.6 months</td></tr>
+<tr><td><b>Design</b></td><td>Randomized, double-blind, placebo-controlled</td></tr>
+<tr><td><b>Population</b></td><td>MI within the prior 30 days, on guideline-directed medical therapy</td></tr>
+<tr><td><b>Intervention</b></td><td>Colchicine 0.5 mg once daily vs placebo</td></tr>
+</table>
+<div class="box t-amber">
+<p><b>The clinical question:</b> does colchicine 0.5 mg/day, started within 30 days of MI,
+    reduce recurrent cardiovascular events on top of standard post-MI therapy?</p>
+</div>
+</section>
+<section id="s2">
+<div class="sec-head c-blue"><span class="sec-num">02</span><h2>Primary Endpoint</h2></div>
+<p class="body">The primary endpoint was a composite: cardiovascular death, resuscitated
+  cardiac arrest, MI, stroke, or urgent hospitalization for angina leading to
+  revascularization.</p>
+<div class="statgrid">
+<div><div class="num" style="color:var(--teal);">5.5%</div><div class="lbl">Colchicine</div></div>
+<div><div class="num" style="color:var(--red);">7.1%</div><div class="lbl">Placebo</div></div>
+<div><div class="num" style="color:var(--amber);">23%</div><div class="lbl">Relative risk reduction</div></div>
+<div><div class="num" style="color:var(--text);">~63</div><div class="lbl">NNT</div></div>
+</div>
+<div class="box t-blue">
+<p>HR 0.77 (95% CI 0.61 to 0.96), P=0.02</p>
+<p>Absolute risk reduction: 1.6 percentage points</p>
+</div>
+<p class="note">NNT of about 63 comes directly from the 1.6% absolute risk reduction
+  (1 divided by 0.016).</p>
+</section>
+<section id="s3">
+<div class="sec-head"><span class="sec-num">03</span><h2>What Moved, What Didn't</h2></div>
+<p class="body">The benefit was not spread evenly across the five components of the
+  composite. Two endpoints carried the entire result.</p>
+<table>
+<tr><th>Component</th><th>Hazard ratio</th><th>Significant?</th></tr>
+<tr><td>Cardiovascular death</td><td>0.84 (0.46 to 1.52)</td><td>No</td></tr>
+<tr><td>Resuscitated cardiac arrest</td><td>0.83 (0.25 to 2.73)</td><td>No</td></tr>
+<tr><td>MI</td><td>0.91 (0.68 to 1.21)</td><td>No</td></tr>
+<tr><td>Stroke</td><td>0.26 (0.10 to 0.70)</td><td>Yes</td></tr>
+<tr><td>Urgent hospitalization for angina with revascularization</td><td>0.50 (0.31 to 0.81)</td><td>Yes</td></tr>
+</table>
+<p class="note">Stroke and urgent revascularization for angina were the only two components
+  that individually reached significance. CV death and MI, the outcomes clinicians usually
+  care about most, did not move on their own.</p>
+</section>
+<section id="s4">
+<div class="sec-head c-red"><span class="sec-num">04</span><h2>The Stroke Signal, Read Carefully</h2></div>
+<p class="body">A 74 percent relative risk reduction in stroke was COLCOT's most striking
+  individual finding. It is also the one that deserves the most caution.</p>
+<div class="box t-red">
+<p>Stroke occurred in roughly 0.2% of the colchicine group versus 0.8% of placebo,
+    HR 0.26 (95% CI 0.10 to 0.70).</p>
+<p>That confidence interval is wide because the absolute event count is small: on the
+    order of 25 to 30 total stroke events across all 4,745 patients over 22.6 months.</p>
+</div>
+<p class="body">A wide confidence interval built on a handful of events can reflect either
+  a real biological effect or the most dramatic-looking number a rare-event analysis can
+  produce. LoDoCo2, a larger and longer trial in stable coronary disease (Section 9), did not
+  specifically replicate a stroke signal of this size. Treat the point estimate as
+  hypothesis-generating rather than settled.</p>
+</section>
+<section id="s5">
+<div class="sec-head c-purple"><span class="sec-num">05</span><h2>Timing Matters</h2></div>
+<p class="body">A prespecified time-to-treatment-initiation analysis, published separately
+  in the European Heart Journal, split patients by how soon after MI they started colchicine:
+  under 3 days, 4 to 7 days, or 8 to 30 days.</p>
+<table>
+<tr><th>Start time after MI</th><th>Relative risk reduction</th><th>Significant?</th></tr>
+<tr><td>Within 3 days</td><td>48% (HR 0.52, 95% CI 0.32 to 0.84)</td><td>Yes</td></tr>
+<tr><td>4 to 7 days</td><td>4%</td><td>No</td></tr>
+<tr><td>8 to 30 days</td><td>23%</td><td>No</td></tr>
+</table>
+<p class="note">Earlier is better, and the effect does not fade gradually. It drops sharply
+  after day 3. Start it in-hospital or the benefit is far less certain.</p>
+</section>
+<section id="s6">
+<div class="sec-head c-amber"><span class="sec-num">06</span><h2>Safety</h2></div>
+<table>
+<tr><th>Event</th><th>Colchicine</th><th>Placebo</th><th>P value</th></tr>
+<tr><td>Diarrhea</td><td>9.7%</td><td>8.9%</td><td>0.35 (not significant)</td></tr>
+<tr><td>Nausea</td><td>1.8%</td><td>1.0%</td><td>Not reported as significant</td></tr>
+<tr><td>Infection (serious AE)</td><td>2.2%</td><td>1.6%</td><td>Not reported as significant</td></tr>
+<tr><td>Pneumonia (serious AE)</td><td>0.9%</td><td>0.4%</td><td>0.03, only significant safety signal</td></tr>
+</table>
+<p class="note">Cancer incidence (excluding nonmelanoma skin cancer) was essentially
+  identical between arms: 1.8% colchicine versus 1.9% placebo.</p>
+</section>
+<section id="s7">
+<div class="sec-head"><span class="sec-num">07</span><h2>Mechanism</h2></div>
+<div class="box t-teal">
+<p><b>Binds tubulin</b>, which blocks neutrophil migration to sites of vascular injury</p>
+<p><b>Inhibits the NLRP3 inflammasome</b>, reducing downstream IL-1β and IL-18 release</p>
+<p><b>Net effect:</b> dampened leukocyte-driven inflammation at the site of atherosclerotic
+    plaque, theorized to stabilize plaque and blunt the inflammatory cascade that follows MI</p>
+</div>
+<p class="note">Colchicine's anti-inflammatory action here is broad and non-selective,
+  unlike a targeted agent such as the IL-1β antibody canakinumab, which showed a related but
+  more expensive signal in CANTOS.</p>
+</section>
+<section id="s8">
+<div class="sec-head c-blue"><span class="sec-num">08</span><h2>Where This Sits in Guidelines</h2></div>
+<p class="body">The 2023 ESC guidelines for acute coronary syndromes give low-dose
+  colchicine (0.5 mg once daily) a Class IIb recommendation: it may be considered,
+  particularly when other risk factors are insufficiently controlled or events recur. That is
+  a genuine guideline foothold, not just a trial result sitting in a journal.</p>
+<div class="box t-blue">
+<p><b>Worth knowing:</b> in the 2024 ESC chronic coronary syndromes guideline, colchicine's
+    recommendation was actually downgraded from Class IIa to Class IIb, despite no new data
+    arguing against it. That downgrade reflects the field's caution around the LoDoCo2
+    mortality signal (Section 9) more than any new failure of efficacy.</p>
+</div>
+</section>
+<section id="s9">
+<div class="sec-head c-red"><span class="sec-num">09</span><h2>Related Trials, for Context</h2></div>
+<p class="body">COLCOT is one piece of a larger colchicine cardiology story. Reading it next
+  to LoDoCo2 changes how confidently you should hold the stroke and mortality claims.</p>
+<table>
+<tr><th>Trial</th><th>Population</th><th>N</th><th>Primary result</th></tr>
+<tr><td>COLCOT (2019)</td><td>Recent MI, within 30 days</td><td>4,745</td><td>5.5% vs 7.1%, HR 0.77</td></tr>
+<tr><td>LoDoCo2 (2020)</td><td>Chronic coronary disease</td><td>5,522</td><td>6.8% vs 9.6%, HR 0.69</td></tr>
+</table>
+<div class="box t-red">
+<p><b>The caveat LoDoCo2 adds:</b> despite the strong cardiovascular benefit, LoDoCo2
+    recorded a numerically higher noncardiovascular death rate with colchicine, HR 1.51
+    (95% CI 0.99 to 2.31), and a higher all-cause death rate, HR 1.21 (95% CI 0.86 to 1.71).
+    Neither reached statistical significance, but neither trial was individually powered to
+    rule the possibility out. Watch this space rather than treating colchicine as
+    risk-free.</p>
+</div>
+</section>
+<section id="s10" style="border-bottom:none;">
+<div class="sec-head" style="border-left-color:var(--text3); background:none;"><span class="sec-num">10</span><h2>Quick Reference Card &amp; Primary Sources</h2></div>
+<div class="box t-teal">
+<p><b>Clinical verdict:</b> colchicine 0.5 mg/day is guideline-endorsed (ESC Class IIb)
+    after MI. Start in-hospital, within 3 days if possible. An old gout drug that earned a
+    genuine, if modest, modern cardiology indication, at roughly $0.10/day generic.</p>
+</div>
+<table>
+<tr><th>Question</th><th>Answer</th></tr>
+<tr><td>Reduces the composite endpoint?</td><td>Yes, HR 0.77, driven by stroke and urgent revascularization</td></tr>
+<tr><td>Reduces CV death or MI alone?</td><td>No, neither reached significance individually</td></tr>
+<tr><td>Best time to start?</td><td>Within 3 days of MI, in-hospital</td></tr>
+<tr><td>Main safety signal?</td><td>Pneumonia, 0.9% vs 0.4%</td></tr>
+<tr><td>Guideline status?</td><td>ESC Class IIb, 2023 ACS guideline</td></tr>
+</table>
+<p class="body"><b>Primary sources checked for this guide:</b></p>
+<ul class="sources">
+<li>Tardif JC, Kouz S, Waters DD, et al. Efficacy and Safety of Low-Dose Colchicine after Myocardial Infarction. N Engl J Med. 2019;381(26):2497-2505.</li>
+<li>Bouabdallaoui N, et al. Time-to-treatment initiation of colchicine and cardiovascular outcomes after myocardial infarction in COLCOT. Eur Heart J. 2020;41(42):4092-4099.</li>
+<li>Byrne RA, et al. 2023 ESC Guidelines for the management of acute coronary syndromes. Eur Heart J. 2023.</li>
+<li>Key messages and critical approach of the 2024 ESC guidelines on chronic coronary syndromes. ScienceDirect, 2025 (documents the IIa to IIb downgrade).</li>
+<li>Nidorf SM, et al. Colchicine in Patients with Chronic Coronary Disease (LoDoCo2). N Engl J Med. 2020;383(19):1838-1847.</li>
+<li>Wiki Journal Club. COLCOT summary, accessed July 2026.</li>
+</ul>
+</section>
+</main>
+<footer>
+  This guide expands on a social post about COLCOT that checked out against every primary
+  source consulted. The expansion adds the timing substudy, the guideline downgrade context,
+  and the LoDoCo2 mortality caveat that the original post did not cover. All figures verified
+  as of July 2026.
+<div class="cv-tagline" style="margin-top:8px">The Critical Vector · Direction and magnitude.</div></footer>
+</div></body>
+</html>

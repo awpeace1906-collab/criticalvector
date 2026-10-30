@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Physiologically Difficult Airway | The Critical Vector</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400;1,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0e14; --surface:#111720; --surface2:#182030; --border:rgba(255,255,255,.08);
+    --accent:#00d4aa; --accent2:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa;
+    --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670;
+  }
+  *{box-sizing:border-box;}
+  body{
+    background:var(--bg); color:var(--text); margin:0; padding:2.5rem 1rem 5rem;
+    font-family:'Source Serif 4', Georgia, serif; line-height:1.65;
+  }
+  .page{max-width:900px; margin:0 auto;}
+  h1,h2,h3,.sec-num,.kicker,th,.label,.step-num{font-family:'Syne', sans-serif;}
+  code, .mono{font-family:'IBM Plex Mono', monospace;}
+
+  .kicker{color:var(--accent); font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; font-weight:600;}
+  h1{font-weight:800; font-size:1.9rem; margin:.4rem 0 .5rem; color:var(--text);}
+  header p{font-style:italic; color:var(--text2); font-size:1rem; margin:0 0 1.5rem;}
+
+  .alert{
+    background:rgba(0,212,170,.10); border:1px solid rgba(0,212,170,.28); color:#bdf5e8;
+    border-radius:10px; padding:1rem 1.2rem; margin:1.2rem 0 2rem; font-size:.98rem;
+  }
+  .alert strong{color:var(--accent);}
+
+  .sec-head{
+    display:flex; align-items:baseline; gap:.7rem; padding:.6rem .9rem;
+    border-left:4px solid var(--accent);
+    background:linear-gradient(90deg, rgba(0,212,170,.10), transparent);
+    border-radius:6px; margin-top:2.6rem;
+  }
+  .sec-head.c-blue{border-left-color:var(--accent2); background:linear-gradient(90deg, rgba(96,165,250,.12), transparent);}
+  .sec-head.c-red{border-left-color:var(--red); background:linear-gradient(90deg, rgba(232,76,76,.12), transparent);}
+  .sec-head.c-amber{border-left-color:var(--amber); background:linear-gradient(90deg, rgba(245,158,11,.12), transparent);}
+  .sec-head.c-purple{border-left-color:var(--purple); background:linear-gradient(90deg, rgba(167,139,250,.12), transparent);}
+  .sec-num{color:var(--text3); font-size:.85rem; font-weight:600;}
+  .sec-head h2{margin:0; font-size:1.15rem; font-weight:700; color:var(--text);}
+  .tagline{font-style:italic; color:var(--text2); font-size:.92rem; margin:.4rem 0 1rem; padding-left:.9rem;}
+
+  p{margin:.8rem 0;}
+
+  .box{background:var(--surface2); border:1px solid var(--border); border-radius:10px; padding:1rem 1.2rem; margin:1.1rem 0;}
+  .box.t-teal{border-left:3px solid var(--accent);}
+  .box.t-blue{border-left:3px solid var(--accent2);}
+  .box.t-amber{border-left:3px solid var(--amber);}
+  .box.t-purple{border-left:3px solid var(--purple);}
+  .box.t-red{border-left:3px solid var(--red); background:rgba(232,76,76,.06);}
+  .box .label{display:block; font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; font-weight:700; margin-bottom:.4rem;}
+  .box.t-teal .label{color:var(--accent);}
+  .box.t-blue .label{color:var(--accent2);}
+  .box.t-amber .label{color:var(--amber);}
+  .box.t-purple .label{color:var(--purple);}
+  .box.t-red .label{color:var(--red);}
+
+  table{width:100%; border-collapse:collapse; margin:1.1rem 0; font-size:.9rem;}
+  th{
+    background:var(--surface2); color:var(--text); text-align:left; padding:.55rem .65rem;
+    font-size:.74rem; text-transform:uppercase; letter-spacing:.05em; font-weight:700; border-bottom:1px solid var(--border);
+  }
+  td{padding:.6rem .65rem; border-bottom:1px solid var(--border); vertical-align:top; color:var(--text);}
+  tr:nth-child(even) td{background:rgba(255,255,255,.02);}
+
+  .step-row{display:flex; gap:.9rem; margin:1rem 0; align-items:flex-start;}
+  .step-num{
+    flex:none; width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    font-weight:800; font-size:1rem; color:#08110e;
+  }
+  .step-body h4{margin:.1rem 0 .25rem; font-family:'Syne',sans-serif; font-size:1rem; color:var(--text);}
+  .step-body p{margin:0; color:var(--text2); font-size:.93rem;}
+
+  .eq{
+    font-family:'IBM Plex Mono',monospace; background:#060a0f; border:1px solid var(--border);
+    border-radius:6px; padding:.6rem .8rem; display:block; margin:.7rem 0; color:var(--accent); font-size:.92rem;
+  }
+
+  .xref{border-left:3px solid var(--accent2); background:var(--surface2); border-radius:8px; padding:.8rem 1rem; margin:1rem 0; font-size:.92rem; color:var(--text2);}
+
+  .sources{list-style:none; padding:0; margin:1rem 0; font-size:.85rem; color:var(--text2);}
+  .sources li{padding:.55rem 0; border-bottom:1px solid var(--border);}
+  .sources a{color:var(--accent);}
+  .refnum{color:var(--amber); font-weight:600; font-family:'IBM Plex Mono',monospace; font-size:.85em;}
+
+  footer{font-style:italic; color:var(--text3); font-size:.85rem; text-align:center; margin-top:3rem; padding-top:1.2rem; border-top:1px solid var(--border);}
+
+  @media print{
+    :root{
+      --bg:#f4f5f7; --surface:#fff; --surface2:#eef1f4; --border:#d7dde3;
+      --accent:#00a688; --accent2:#1d4ed8; --red:#c53030; --amber:#b45309; --purple:#7c3aed;
+      --text:#0f1923; --text2:#4a5670; --text3:#6b7688;
+    }
+    body{background:var(--bg) !important; color:var(--text) !important;}
+    .alert{background:rgba(0,166,136,.08) !important; color:#0f1923 !important;}
+    td{color:var(--text) !important;}
+  }
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ a{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../continuum.html">The Continuum</a><span class="cv-sb-meta">Published 13 Aug 2026 · R. E. Suscitate &amp; A. Systole</span></nav>
+<div class="page">
+
+<header>
+  <div class="kicker">The Critical Vector &middot; Airway Physiology Deep Dive</div>
+  <h1>The Physiologically Difficult Airway</h1>
+  <p>A perfect Cormack-Lehane view does not save a patient whose physiology arrests during the pause</p>
+</header>
+
+<div class="alert">
+<strong>Source content:</strong> anesthesianotes / KarthikMD.com airway carousel ("The 4 Deadly Profiles," "The Acidotic Airway," "The RV-Failure Airway," "The Hypoxaemic Airway," "The Hypotensive Airway," "Induction Matrix"). This page checks each claim against the trial data behind it, corrects where the evidence is softer than the graphic implies, and rebuilds it for the bedside.
+</div>
+
+<div class="sec-head"><span class="sec-num">01</span><h2>Anatomy Gets You the View. Physiology Decides If They Live.</h2></div>
+<p class="tagline">The Mallampati score predicts a hard laryngoscopy. It says nothing about what happens in the sixty seconds after you push the drugs.</p>
+
+<p>Every difficult airway algorithm most of us trained on is built around anatomy: mouth opening, neck mobility, thyromental distance, Mallampati class. That framework answers one question: will I see the cords? It says nothing about a second, independent question: will this patient's circulation and gas exchange survive the apneic period and the drugs I'm about to give? Four physiologic states answer that second question badly, and they kill patients with grade 1 views just as reliably as a genuinely difficult anatomic airway kills patients with a hidden epiglottis.</p>
+
+<div class="sec-head c-red"><span class="sec-num">02</span><h2>The Hypoxaemic Airway</h2></div>
+<p class="tagline">Shunt physiology means there is no reserve left to spend during the apneic pause.</p>
+
+<p>Pneumonia, ARDS, and cardiogenic edema all produce true shunt: blood passing through unventilated lung. Shunt does not respond to supplemental oxygen the way dead space or V/Q mismatch does, which is why these patients can look stable on high-flow oxygen and then crater within seconds of losing their respiratory effort.</p>
+
+<div class="box t-red">
+<span class="label">Preoxygenation</span>
+<p>The PREOXI trial randomized 1,301 critically ill adults to noninvasive ventilation versus an oxygen mask for preoxygenation before intubation and found severe hypoxemia (SpO2 &lt;85%) in 9.1% of the NIV group versus 18.5% of the oxygen mask group.<span class="refnum">[1]</span> NIV or tight-fitting BVM with PEEP, not a nonrebreather alone, is the evidence-based default when SpO2 won't climb toward 95%.</p>
+</div>
+
+<div class="box t-amber">
+<span class="label">Apneic oxygenation: weaker than the slide implies</span>
+<p>Nasal cannula apneic oxygenation is low-risk and reasonable to leave running, but the FELLOW trial found no difference in lowest SpO2 with apneic oxygenation when preoxygenation was already adequate.<span class="refnum">[2]</span> The original benefit signal came from operating room and prehospital series, not from ICU patients preoxygenated with NIV or BVM. The graphic's own caveat, that ApOx may add little on top of good NIV preoxygenation, tracks the trial data more accurately than the framing above it in the same carousel.</p>
+</div>
+
+<div class="xref">
+<strong>Delayed sequence intubation.</strong> Weingart's original DSI series gave ketamine at a dissociative dose to allow effective preoxygenation in agitated or intolerant hypoxemic patients before paralysis, rather than forcing preoxygenation through combativeness.<span class="refnum">[3]</span> It is a preoxygenation strategy, not a separate induction technique.
+</div>
+
+<div class="sec-head c-amber"><span class="sec-num">03</span><h2>The Hypotensive Airway</h2></div>
+<p class="tagline">Positive pressure plus induction agents remove sympathetic drive and venous return at the same moment. An already-failing circulation has nothing left to compensate with.</p>
+
+<div class="box t-amber">
+<span class="label">Shock index: useful, but softer than a hard cutoff</span>
+<p>Shock index (HR/SBP) trends higher in patients who arrest peri-intubation, but the correlation is weaker than a single threshold suggests. In the NEAR registry case-control data, mean shock index was 0.97 in arrest cases versus 0.83 in matched controls, a real but modest separation, and other cohorts have called shock index in isolation a poor discriminator on its own.<span class="refnum">[4,5]</span> Modified shock index (HR / MAP) &ge;1.3 and reverse shock index &lt;1 have shown stronger associations with peri-intubation arrest in more recent case-control work.<span class="refnum">[6,7]</span> Treat &gt;0.8 as a flag to look harder at the patient, not as a validated decision threshold on its own.</p>
+</div>
+
+<div class="box t-red">
+<span class="label">Fluid does not fix this</span>
+<p>PrePARE (2019) and its confirmatory multicenter trial PREPARE II (2022, JAMA, 337 patients) both found that a routine 500 mL crystalloid bolus before intubation did not reduce the composite rate of cardiovascular collapse.<span class="refnum">[8,9]</span> Push-dose pressor on the pole and vasopressor readiness before induction, not a reflexive bolus, is what the trial data actually supports.</p>
+</div>
+
+<div class="box t-blue">
+<span class="label">Induction agent choice: the 2025 answer</span>
+<p>The RSI trial, published in the New England Journal of Medicine December 9, 2025, randomized 2,365 critically ill adults across 14 US EDs and ICUs to ketamine or etomidate for induction.<span class="refnum">[10]</span> Ketamine showed no mortality advantage over etomidate and was associated with more cardiovascular collapse during intubation. A companion 2025 meta-analysis of RCTs reached the same direction of effect (RR 1.29 for hemodynamic instability with ketamine vs etomidate).<span class="refnum">[11]</span> The carousel's framing, that neither agent is safe in shock and dose reduction plus pressor readiness matters more than the drug choice, holds up. The claim that ketamine is uniformly more "cardiostable" than etomidate does not, and the newest large trial argues the opposite direction for this specific outcome.</p>
+</div>
+
+<div class="sec-head c-blue"><span class="sec-num">04</span><h2>The Acidotic Airway</h2></div>
+<p class="tagline">A compensated acidosis is a patient breathing at a rate that keeps them alive. Take that rate away and the compensation goes with it.</p>
+
+<p>DKA, severe lactic acidosis, and salicylate toxicity share one mechanism: a falling pH held up entirely by a high minute ventilation blowing off CO2. The moment a paralytic stops that ventilation, CO2 rises uncontested, pH falls further on top of the metabolic acidosis already present, and the patient can arrest from acidemia alone, independent of oxygenation. Salicylate poisoning is the most dramatic version: apnea in a salicylate-toxic patient can precipitate cardiovascular collapse within minutes as unbound salicylate redistributes into the CNS with falling pH.<span class="refnum">[12]</span></p>
+
+<div class="box t-blue">
+<span class="label">The actionable move</span>
+<p>Match the ventilator to the patient's own pre-intubation minute ventilation and respiratory rate immediately after tube placement, not a default 12-16. Under-ventilating a compensating acidotic patient recreates the exact physiology that just killed the last one. Ketamine is favored here less for a proven mortality benefit and more because it preserves spontaneous respiratory drive and hemodynamics through the induction window better than propofol, buying time to correct pH before or during the apneic period where possible.<span class="refnum">[3]</span></p>
+</div>
+
+<div class="sec-head c-purple"><span class="sec-num">05</span><h2>The RV-Failure Airway</h2></div>
+<p class="tagline">A dilated, pressure-loaded right ventricle depends on coronary perfusion pressure and low pulmonary vascular resistance to keep beating. Both are targets you can protect or destroy with your choice of pressor.</p>
+
+<p>Pulmonary hypertension, massive PE, and RV infarct all produce a thin, pressure-sensitive RV living close to its afterload limit. Positive pressure ventilation drops preload and can raise PVR in the same breath (see our companion piece on heart-lung interactions in ARDS for the full mechanism), while hypoxia, hypercapnia, and acidosis each independently vasoconstrict the pulmonary bed and load the RV further.</p>
+
+<div class="box t-purple">
+<span class="label">Pressor selection is not interchangeable here</span>
+<p>Phenylephrine is a pure alpha-1 agonist: it raises systemic vascular resistance and MAP, but alpha-1 receptors are also present in the pulmonary vasculature, and phenylephrine raises PVR while doing it, worsening RV afterload at the exact moment the RV can least afford it.<span class="refnum">[13]</span> Norepinephrine raises MAP and RV coronary perfusion pressure with comparatively less pulmonary vasoconstrictive effect and is the more commonly favored first agent in acute cor pulmonale. Vasopressin at low dose raises systemic vascular resistance through V1 receptors while having a neutral to mildly favorable effect on the pulmonary circulation, making it a reasonable adjunct when norepinephrine alone isn't holding MAP.<span class="refnum">[14]</span></p>
+</div>
+
+<div class="box t-red">
+<span class="label">Why it kills</span>
+<p>The spiral is self-reinforcing: positive pressure and induction drop preload and MAP, hypotension drops RV coronary perfusion pressure below the elevated RV wall tension needed to perfuse it, RV ischemia drops contractility further, and any transient hypoxia or hypercapnia during the apneic window adds a PVR spike on top. Each piece of the spiral makes the next piece worse. Breaking it requires treating preload, contractility, and PVR simultaneously rather than sequentially.<span class="refnum">[15]</span></p>
+</div>
+
+<div class="sec-head" style="border-left-color:var(--text3); background:none;"><span class="sec-num">06</span><h2>Induction Matrix, Corrected</h2></div>
+
+<table>
+<tr><th>Profile</th><th>Induction approach</th><th>Key move</th><th>Evidence caveat</th></tr>
+<tr><td>Hypoxaemia</td><td>Ketamine (DSI when preoxygenation is limited by agitation/intolerance)</td><td>NIV or tight BVM+PEEP preoxygenation to SpO2 &ge;95% before pushing drugs</td><td>ApOx via nasal cannula is low-risk but adds little once NIV preoxygenation is adequate<span class="refnum">[2]</span></td></tr>
+<tr><td>Hypotension</td><td>Reduced-dose ketamine or etomidate</td><td>Pressor ready before induction; resuscitate with pressor, not reflex fluid</td><td>Routine fluid bolus does not reduce collapse<span class="refnum">[8,9]</span>; ketamine no longer the clearly "safer" agent<span class="refnum">[10]</span></td></tr>
+<tr><td>Metabolic acidosis</td><td>Ketamine</td><td>Set post-intubation ventilator rate to the patient's pre-intubation minute ventilation</td><td>Under-ventilation, not the drug choice, is the lethal error</td></tr>
+<tr><td>RV failure</td><td>Ketamine or etomidate, low airway pressure technique</td><td>Norepinephrine &plusmn; vasopressin before induction; avoid phenylephrine; avoid hypoxia/hypercapnia/acidosis</td><td>Phenylephrine's alpha-1 effect extends to the pulmonary bed and raises RV afterload<span class="refnum">[13]</span></td></tr>
+</table>
+
+<p>Rocuronium 1.2 mg/kg for first-pass success holds across all four profiles and is well supported independent of hemodynamic status.<span class="refnum">[16]</span> Dose reduction and pressor readiness belong to the induction agent regardless of which one is chosen; no agent is hemodynamically free in true shock.</p>
+
+<div class="sec-head" style="border-left-color:var(--text3); background:none;"><span class="sec-num">07</span><h2>Primary Sources</h2></div>
+<ul class="sources">
+<li><span class="refnum">[1]</span> Casey JD, Vonderhaar DJ, Semler MW, et al. Noninvasive ventilation for preoxygenation during emergency intubation (PREOXI). <em>N Engl J Med.</em> 2024;390(21):1949-1961.</li>
+<li><span class="refnum">[2]</span> Semler MW, Janz DR, Lentz RJ, et al. Randomized trial of apneic oxygenation during endotracheal intubation of the critically ill (FELLOW). <em>Am J Respir Crit Care Med.</em> 2016;193(3):273-280.</li>
+<li><span class="refnum">[3]</span> Weingart SD, Trueger NS, Wong N, et al. Delayed sequence intubation: a prospective observational study. <em>Ann Emerg Med.</em> 2015;65(4):349-355.</li>
+<li><span class="refnum">[4]</span> April MD, Arana A, Reynolds JC, et al. Peri-intubation cardiac arrest in the emergency department: a National Emergency Airway Registry (NEAR) study. <em>Resuscitation.</em> 2021;162:403-411.</li>
+<li><span class="refnum">[5]</span> Heffner AC, Swords D, Kline JA, Jones AE. The frequency and significance of postintubation hypotension during emergency airway management. <em>J Crit Care.</em> 2012;27(4):417.e9-13.</li>
+<li><span class="refnum">[6]</span> Torabi M, Mahani GS, Mirzaee M. Reverse shock index as a predictor of post-intubation cardiac arrest. <em>Int J Emerg Med.</em> 2023;16(1):88.</li>
+<li><span class="refnum">[7]</span> Waheed S, et al. Risk factors associated with peri-intubation cardiac arrest in the emergency department. <em>Resuscitation</em> case-control cohort, 2022.</li>
+<li><span class="refnum">[8]</span> Janz DR, Casey JD, Semler MW, et al. Fluid bolus and cardiovascular collapse (PrePARE). <em>Lancet Respir Med.</em> 2019;7(12):1039-1047.</li>
+<li><span class="refnum">[9]</span> Russell DW, Casey JD, Gibbs KW, et al. Effect of fluid bolus administration on cardiovascular collapse among critically ill patients undergoing tracheal intubation (PREPARE II). <em>JAMA.</em> 2022;328(3):270-279.</li>
+<li><span class="refnum">[10]</span> Casey JD, Semler MW, et al. Ketamine or etomidate for tracheal intubation of critically ill adults (RSI trial). <em>N Engl J Med.</em> Published Dec 9, 2025.</li>
+<li><span class="refnum">[11]</span> Ketamine versus etomidate for rapid sequence intubation: a systematic review and meta-analysis of randomized trials. <em>Crit Care Med.</em> 2025;53(2):e374-e383.</li>
+<li><span class="refnum">[12]</span> Stolbach A, Hoffman RS, Nelson LS. Mechanical ventilation was associated with acidemia in a case series of salicylate-poisoned patients. <em>Acad Emerg Med.</em> 2008;15(9):866-869.</li>
+<li><span class="refnum">[13]</span> Rich S, Gubin S, Hart K. The effects of phenylephrine on right ventricular performance in patients with pulmonary hypertension. <em>Chest.</em> 1990;98(5):1102-1106.</li>
+<li><span class="refnum">[14]</span> Currigan DA, Hughes RJ, Wright CE, et al. Vasoconstrictor responses to vasopressor agents in human pulmonary and radial arteries. <em>Anesthesiology.</em> 2014;121(5):930-936.</li>
+<li><span class="refnum">[15]</span> Vieillard-Baron A, Matthay M, Teboul JL, et al. Experts' opinion on management of hemodynamics in ARDS patients: focus on mechanical ventilation. <em>Intensive Care Med.</em> 2016;42(5):739-749.</li>
+<li><span class="refnum">[16]</span> Perry JJ, Lee JS, Sillberg VA, Wells GA. Rocuronium versus succinylcholine for rapid sequence induction intubation. <em>Cochrane Database Syst Rev.</em> 2008;(2):CD002788.</li>
+</ul>
+
+<div class="box t-teal" style="margin-top:1.5rem;">
+<span class="label">Sourcing note</span>
+<p style="color:var(--text2); font-size:.9rem;">Two claims in the original carousel were softened here against the primary data: the shock index &gt;0.8 threshold is a real association but a weak standalone predictor, and the framing of ketamine as the more "cardiostable" agent is now contradicted by the largest RCT on the question (RSI trial, NEJM 2025). The apneic oxygenation and RV pressor-selection points held up well against the trial and physiology literature.</p>
+</div>
+
+<footer>The Critical Vector &middot; Direction and magnitude.</footer>
+
+</div>
+</body>
+</html>

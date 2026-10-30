@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Extreme Axis Deviation (Northwest Axis) — Critical Vector</title>
+<style>
+  :root {
+    --bg: #121212;
+    --card: #1a1a1a;
+    --text: #e8e8e8;
+    --muted: #9a9a9a;
+    --line: #2c2c2c;
+  }
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0 0 60px 0;
+    line-height: 1.5;
+  }
+  header { padding: 28px 20px 18px 20px; border-bottom: 1px solid var(--line); }
+  header .kicker {
+    font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 6px;
+  }
+  header h1 { font-size: 26px; margin: 0 0 8px 0; }
+  header p { color: var(--muted); font-size: 14px; margin: 0; }
+  .alert {
+    margin: 16px 20px; background: #3a2c14; border: 1px solid #7a5c16;
+    color: #ffe8bd; padding: 12px 16px; border-radius: 8px;
+    font-size: 14px; font-weight: 600;
+  }
+  nav {
+    display: flex; flex-wrap: wrap; gap: 6px; padding: 16px 20px;
+    border-bottom: 1px solid var(--line);
+  }
+  nav a {
+    font-size: 12px; color: var(--text); background: var(--card);
+    border: 1px solid var(--line); padding: 6px 10px; border-radius: 20px;
+    text-decoration: none; white-space: nowrap;
+  }
+  main { padding: 0 20px; max-width: 720px; margin: 0 auto; }
+  section { padding: 26px 0; border-bottom: 1px solid var(--line); }
+  section h2 .secnum { color: var(--accent, #888); margin-right: 4px; }
+  section h2 {
+    font-size: 20px; margin: 0 0 12px 0; padding-bottom: 10px;
+    border-bottom: 2px solid var(--accent, #888);
+  }
+  .box {
+    background: var(--tint, var(--card)); border: 1px solid var(--accent, var(--line));
+    border-radius: 8px; padding: 14px 16px; margin: 12px 0; color: #1a1a1a; font-size: 14px;
+  }
+  .box p { margin: 6px 0; }
+  .box b { color: #000; }
+  p.body { font-size: 14.5px; margin: 10px 0; }
+  p.note { font-size: 12.5px; color: var(--muted); font-style: italic; margin: 8px 0; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13.5px; }
+  th { background: var(--accent, #444); color: #fff; text-align: left; padding: 8px 10px; }
+  td { padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  tr:nth-child(even) td { background: rgba(255,255,255,0.03); }
+  .sources { font-size: 12.5px; color: var(--muted); padding-left: 18px; }
+  .sources li { margin-bottom: 6px; }
+  footer {
+    padding: 24px 20px 0 20px; max-width: 720px; margin: 0 auto;
+    font-size: 12px; color: var(--muted);
+  }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style id="cv-retheme">
+/* CV re-theme v1.0 — maps this file onto _cv-schema.html tokens */
+:root{--bg:#0a0e14; --surface:#111720; --surface2:#182030; --border:rgba(255,255,255,0.08); --teal:#00d4aa; --blue:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa; --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670; --t-teal:rgba(0,212,170,0.10); --t-blue:rgba(96,165,250,0.10); --t-red:rgba(232,76,76,0.10); --t-amber:rgba(245,158,11,0.10); --t-purple:rgba(167,139,250,0.10);}
+:root{--card:var(--surface); --muted:var(--text2); --line:var(--border);}
+body{font-family:'Source Serif 4', Georgia, serif !important; background:var(--bg) !important; color:var(--text);}
+h1,h2,h3,h4,th,nav a,.label,.lbl,.badge,.pill{font-family:'Syne', sans-serif !important;}
+h1{font-weight:800 !important; letter-spacing:.005em;}
+h2,h3{font-weight:700;}
+.kicker, header .kicker{font-family:'IBM Plex Mono', monospace !important; color:var(--teal) !important; letter-spacing:.12em; font-size:11px !important;}
+code, pre, .mono{font-family:'IBM Plex Mono', monospace;}
+main{max-width:900px !important;}
+header{max-width:900px; margin:0 auto;}
+section h2{font-size:20px; border-bottom:2px solid var(--accent, var(--teal)) !important;}
+.box{background:var(--surface2) !important; color:var(--text) !important; border:1px solid var(--border) !important; border-left:3px solid var(--accent, var(--teal)) !important; border-radius:10px; font-size:14.5px;}
+.box b, .box strong{color:var(--text) !important;}
+th{background:var(--surface2) !important; color:var(--text) !important; border-bottom:2px solid var(--accent, var(--border));}
+nav a{background:var(--surface) !important; color:var(--text2) !important; border:1px solid var(--border) !important; font-weight:600;}
+nav a:hover{color:var(--text) !important; border-color:var(--teal) !important;}
+.alert{background:var(--t-amber) !important; border:1px solid rgba(245,158,11,0.35) !important; color:#fde6b8 !important;}
+.note-banner{background:var(--t-amber) !important; color:var(--text) !important; border-color:rgba(245,158,11,0.35) !important;}
+.pill-yes{background:var(--t-teal) !important; color:var(--teal) !important;}
+.pill-no{background:var(--t-red) !important; color:var(--red) !important;}
+.pill-offlabel{background:var(--t-amber) !important; color:var(--amber) !important;}
+.statgrid > div{background:var(--surface) !important; border:1px solid var(--border) !important; border-left:4px solid var(--accent, var(--teal)) !important; text-align:left !important; color:var(--text) !important;}
+.statgrid .num{font-family:'Syne', sans-serif; color:var(--accent, var(--teal)) !important;}
+.statgrid .lbl{color:var(--text2) !important;}
+.card{background:var(--surface) !important; border-color:var(--border) !important; color:var(--text) !important;}
+.word{font-family:'Syne', sans-serif; color:var(--teal) !important;}
+.fig{background:var(--surface) !important; border-color:var(--border) !important;}
+footer{font-style:italic; color:var(--text3) !important;}
+[style*="--accent:#7A1620"],[style*="--accent:#9C2B3B"],[style*="--accent:#8B2635"]{--accent:var(--red) !important; --tint:var(--t-red) !important;}
+[style*="--accent:#5B3A8E"]{--accent:var(--purple) !important; --tint:var(--t-purple) !important;}
+[style*="--accent:#1F6F5C"],[style*="--accent:#2E6B3E"]{--accent:var(--teal) !important; --tint:var(--t-teal) !important;}
+[style*="--accent:#1F3A5F"],[style*="--accent:#3A5A8C"]{--accent:var(--blue) !important; --tint:var(--t-blue) !important;}
+[style*="--accent:#B5591F"],[style*="--accent:#96700A"]{--accent:var(--amber) !important; --tint:var(--t-amber) !important;}
+[style*="--accent:#444444"]{--accent:var(--text3) !important; --tint:var(--surface2) !important;}
+@media print{
+  :root{--bg:#f4f5f7; --surface:#ffffff; --surface2:#eef1f4; --border:#d7dde3; --teal:#00a688; --blue:#1d4ed8; --red:#c53030; --amber:#b45309; --purple:#7c3aed; --text:#0f1923; --text2:#4a5670; --text3:#6b7688;
+    --t-teal:rgba(0,166,136,0.08); --t-blue:rgba(29,78,216,0.07); --t-red:rgba(197,48,48,0.07); --t-amber:rgba(180,83,9,0.08); --t-purple:rgba(124,58,237,0.07); --card:#ffffff; --muted:#4a5670; --line:#d7dde3;}
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  html, body{background:#f4f5f7 !important; color:#0f1923 !important;}
+  nav{display:none !important;}
+  td{color:#0f1923 !important;}
+  .box{background:#ffffff !important; color:#0f1923 !important;}
+  .alert, .note-banner{color:#0f1923 !important;}
+  .alert{background:rgba(180,83,9,0.08) !important;}
+  section, .box, table, .card, .step, .statgrid > div, .fig{break-inside:avoid;}
+  h2{break-after:avoid;}
+  a{color:inherit; text-decoration:none;}
+}
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ a{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../workshop.html">The Workshop</a><span class="cv-sb-meta">Published 7 Oct 2026 · R. E. Suscitate &amp; A. Systole</span></nav>
+
+<header>
+  <div class="kicker">Critical Vector · Pocket Reference</div>
+  <h1>Extreme Axis Deviation (Northwest Axis)</h1>
+  <p>v3, expanded. "No-man's land" on the hexaxial system — why it happens, what it means, and
+  which cause to rule out first. Verified against Ann Intern Med, Circulation, JAHA, LITFL,
+  StatPearls, and primary WCT-differentiation, congenital cardiology, and pacing literature. July
+  2026.</p>
+</header>
+
+<nav>
+  <a href="#s1">1 · The big picture</a>
+  <a href="#s2">2 · The 10-second calculation</a>
+  <a href="#s3">3 · Rule this out first: lead reversal</a>
+  <a href="#s4">4 · VT vs. SVT with aberrancy</a>
+  <a href="#s5">5 · The rest of the differential</a>
+  <a href="#s6">6 · Quick card &amp; sources</a>
+</nav>
+
+<main>
+
+<section id="s1" style="--accent:#5B3A8E; --tint:#EFE9F5;">
+  <h2><span class="secnum">1.</span> The Big Picture</h2>
+  <p class="body">Normal QRS axis runs roughly -30° to +90°. Right axis deviation is >+90°, left
+  axis deviation is <-30°. Extreme axis deviation — the "northwest axis," or less politely,
+  "no-man's land" — is the leftover quadrant: -90° to ±180°. It is rare enough that most
+  clinicians see it only a handful of times in training, and disproportionately important when
+  it shows up, because the differential is short and several entries on it are dangerous.</p>
+  <div class="box">
+    <p><b>The one-line summary:</b> both Lead I and aVF are negative. That's it — that's the
+    entire recognition pattern, before you even calculate a number.</p>
+  </div>
+  <p class="note">The most common cause of this finding is not cardiac at all — it's a cable
+  swap. Section 3 covers why that should be the first thing you check, not the last.</p>
+  <div class="box" style="--accent:#7A1620; --tint:#F5E4E5;">
+    <p><b>Terminology trap:</b> extreme axis deviation is often called an "indeterminate axis"
+    in casual use, but the two are not actually the same thing, and mixing them up matters.
+    Extreme axis deviation means Lead I and aVF are both clearly, discernibly negative — the
+    axis is known, it just falls in the -90° to ±180° range. A true indeterminate axis is
+    different: the QRS is isoelectric or equiphasic in <em>all six</em> limb leads, so the
+    polarity can't be read at all and no direction can be assigned. One is a specific finding
+    with a specific differential (this whole document); the other is a technical failure to
+    determine axis in the first place. Some sources use the terms interchangeably — this guide
+    doesn't.</p>
+  </div>
+</section>
+
+<section id="s2" style="--accent:#1F3A5F; --tint:#E7EDF4;">
+  <h2><span class="secnum">2.</span> The 10-Second Calculation</h2>
+  <p class="body">You don't need the hexaxial wheel to recognize this one — the quadrant method
+  gets you there before you've finished looking at the strip.</p>
+  <table>
+    <tr><th>Lead I</th><th>Lead aVF</th><th>Quadrant</th></tr>
+    <tr><td>Positive</td><td>Positive</td><td>Normal axis</td></tr>
+    <tr><td>Positive</td><td>Negative</td><td>Left axis deviation</td></tr>
+    <tr><td>Negative</td><td>Positive</td><td>Right axis deviation</td></tr>
+    <tr><td>Negative</td><td>Negative</td><td><b>Extreme axis deviation</b></td></tr>
+  </table>
+  <div class="box">
+    <p><b>Right axis deviation pattern:</b> Lead I negative, aVF positive, Lead II/III positive,
+    aVL negative — axis ≥ +120° at the extreme end.</p>
+    <p><b>Left axis deviation pattern:</b> Lead I positive, aVF negative, Lead II/III negative,
+    aVL positive — axis ≤ -30° at the extreme end.</p>
+  </div>
+  <p class="note">If you want the actual number rather than just the quadrant, the classic
+  shortcut still applies: the axis is roughly perpendicular to whichever limb lead is
+  isoelectric, oriented toward whichever nearby lead is most positive.</p>
+</section>
+
+<section id="s3" style="--accent:#B5591F; --tint:#F8ECE0;">
+  <h2><span class="secnum">3.</span> Rule This Out First: Lead Reversal</h2>
+  <p class="body">Limb lead reversal is common and should be excluded before any pathologic
+  explanation on this list. Right arm/left leg reversal in particular produces an apparent extreme
+  axis. It's also easy to miss, because the tracing doesn't look obviously wrong at a glance.</p>
+  <div class="box">
+    <p><b>What RA/LL reversal actually does to the tracing:</b> Lead I becomes an upside-down
+    Lead III. The limb leads effectively rotate, producing a pattern that reads as extreme axis
+    deviation even though the heart's true electrical axis is normal.</p>
+  </div>
+  <table>
+    <tr><th>Clue</th><th>What it tells you</th></tr>
+    <tr><td>P wave negative in Lead I</td><td>Strong signal for limb lead reversal — true extreme
+    axis deviation from cardiac pathology essentially never inverts the P wave in Lead I this
+    way</td></tr>
+    <tr><td>Precordial leads look normal</td><td>Reversal is a limb-lead-only problem; if V1-V6
+    are unremarkable and only the limb leads look bizarre, suspect cables before pathology</td></tr>
+    <tr><td>Clinically well patient</td><td>An asymptomatic, hemodynamically normal patient with
+    a dramatic-looking extreme axis is a reversed-cable tracing until proven otherwise</td></tr>
+  </table>
+  <p class="note">The fix is free and takes ten seconds: check the cables and repeat the ECG
+  before ordering an echo, consulting cardiology, or treating a patient for a rhythm they don't
+  have.</p>
+</section>
+
+<section id="s4" style="--accent:#9C2B3B; --tint:#F6E9EA;">
+  <h2><span class="secnum">4.</span> The Main Event: VT vs. SVT with Aberrancy</h2>
+  <p class="body">Once lead reversal is excluded, extreme axis deviation in the setting of a wide
+  complex tachycardia is one of the more heavily validated markers pointing toward ventricular
+  tachycardia rather than supraventricular tachycardia with aberrant conduction.</p>
+  <table>
+    <tr><th>Study</th><th>Finding</th></tr>
+    <tr><td><b>Akhtar et al., 1988</b></td><td>Landmark analysis of 150 consecutive wide-QRS
+    tachycardia patients (122 VT, 21 SVT with aberrancy, 7 accessory pathway) that verified a
+    rightward superior QRS axis (northwest axis, -90° to -180°) as highly predictive of VT.
+    Clinicians at initial presentation correctly diagnosed VT in only 32% of cases, despite VT
+    being the far more common mechanism — this study is as much about how often VT gets
+    mistaken for SVT as it is about the axis criterion itself.</td></tr>
+    <tr><td><b>SVT superior-axis rate</b></td><td>Roughly 23% of SVT with aberrancy can still
+    show a superior axis, which is why this is a criterion that raises suspicion rather than one
+    that clinches the diagnosis alone.</td></tr>
+    <tr><td><b>Vereckei aVR algorithm, 2008</b></td><td>A different route from axis-based reasoning: the
+    aVR algorithm looks at the initial R wave and the initial-versus-terminal activation velocity in
+    lead aVR. It is a morphologic criterion in a single lead, not a measurement of QRS axis.</td></tr>
+  </table>
+  <div class="box">
+    <p><b>Practical takeaway:</b> a wide complex tachycardia with a northwest axis should be
+    treated as ventricular tachycardia until proven otherwise — hemodynamic stability doesn't
+    change the underlying rhythm, and physicians are well documented to under-diagnose VT
+    specifically because a stable-looking patient feels reassuring.</p>
+  </div>
+  <p class="note">Axis alone is one data point, not a full algorithm. The two formal
+  algorithms that incorporate it are worth knowing in outline, since a northwest axis is exactly
+  the kind of finding that should push you to run one of them rather than eyeball the strip.</p>
+
+  <div class="box">
+    <p><b>Brugada algorithm (1991), four sequential steps — stop at the first positive:</b></p>
+    <p>1. Absence of an RS complex in <em>all</em> precordial leads (V1-V6) → VT.</p>
+    <p>2. Longest R-to-S nadir interval >100 ms in any precordial lead → VT.</p>
+    <p>3. AV dissociation → VT.</p>
+    <p>4. Morphology criteria for VT met in both V1-V2 and V6 (classic RBBB/LBBB
+    morphology rules, including the V1 "left rabbit ear taller than right" pattern) → VT.
+    None of the above → SVT with aberrancy.</p>
+  </div>
+  <div class="box">
+    <p><b>Vereckei aVR algorithm (2008) — lead aVR only, four sequential steps:</b></p>
+    <p>1. Initial R wave present in aVR → VT.</p>
+    <p>2. Initial r or q wave >40 ms in aVR → VT.</p>
+    <p>3. Notching on the initial downstroke of a predominantly negative QRS in aVR → VT.</p>
+    <p>4. Ventricular activation velocity ratio (Vi/Vt, comparing the initial 40 ms of activation
+    to the terminal 40 ms) ≤1 → VT. None of the above → SVT with aberrancy.</p>
+  </div>
+  <table>
+    <tr><th>Algorithm</th><th>Reported accuracy</th></tr>
+    <tr><td><b>Brugada, original derivation (1991)</b></td><td>98.7% sensitivity, 96.5%
+    specificity — but a later community revalidation by emergency physicians and cardiologists
+    found sensitivity as low as 79% and specificity as low as 43%, and inter-rater disagreement
+    in roughly 1 of 5 applications.</td></tr>
+    <tr><td><b>Vereckei aVR, independent validation</b></td><td>Independent comparisons report the aVR
+    algorithm as sensitive but with modest specificity, and no clearly better overall than
+    Brugada. Every algorithm loses accuracy outside its derivation cohort.</td></tr>
+    <tr><td><b>AV dissociation specifically</b></td><td>Despite being a classic teaching point,
+    visible AV dissociation appears on the surface ECG in only a minority of VT, commonly cited at
+    about 20 to 30 percent. It's highly specific when present but absent far more often than trainees expect.</td></tr>
+  </table>
+  <p class="note">The gap between the original 1991 derivation numbers and later real-world
+  revalidation is worth internalizing on its own: these algorithms are decision aids, not
+  infallible rules, and interobserver disagreement is common even among specialists. Treat any
+  positive VT criterion as reason enough to manage the rhythm as VT — the cost of mistakenly
+  treating SVT as VT is far lower than the reverse.</p>
+  <p class="note">One important exception worth knowing in the opposite direction: Belhassen
+  (idiopathic fascicular) VT classically shows a right bundle branch block pattern with
+  <em>left</em> axis deviation, not northwest axis — a reminder that axis criteria describe
+  probabilities, not certainties, and a relatively benign, ablatable VT can still look
+  electrically unusual.</p>
+</section>
+
+<section id="s5" style="--accent:#1F6F5C; --tint:#E6F2EF;">
+  <h2><span class="secnum">5.</span> The Rest of the Differential</h2>
+  <div class="box">
+    <p><b>Ventricular rhythms (non-tachycardic):</b> accelerated idioventricular rhythm and
+    ventricular escape rhythm can produce a northwest axis outside the tachycardia setting — same
+    mechanism as VT, just at a normal or slow rate.</p>
+  </div>
+  <div class="box">
+    <p><b>Ventricular pacing — the axis depends on where the lead actually sits.</b></p>
+    <p>Standard right ventricular apical pacing produces an LBBB-pattern QRS with a superior axis,
+    usually in left-axis territory (roughly −60° to −90°) and only sometimes extending into the
+    northwest quadrant. This is expected for that lead position, not pathology. Left ventricular epicardial pacing (via
+    coronary sinus, as in cardiac resynchronization therapy) produces the mirror image: an RBBB
+    pattern. Biventricular/CRT pacing from an RV apical lead plus a lateral coronary venous LV
+    lead characteristically shows a dominant R wave in V1, a Q or q wave in leads I and aVL, and
+    a right or left superior axis — recognizing this as the expected combined-pacing signature
+    avoids mistaking normal CRT function for lead malfunction.</p>
+  </div>
+  <p class="note">In a post-cardiac-surgery or device-clinic patient, an extreme axis on a paced
+  tracing is frequently just confirmation the RV lead is doing what an RV apical lead does —
+  correlate with the device interrogation and prior tracings before treating it as a new finding.</p>
+  <div class="box">
+    <p><b>Hyperkalemia:</b> severe hyperkalemia can shift the axis into the extreme range as part
+    of its broader conduction-slowing effects, alongside the more familiar peaked T waves and QRS
+    widening. An unexpected northwest axis with a wide, bizarre QRS is a reason to check a
+    potassium before assuming a primary rhythm problem.</p>
+  </div>
+  <div class="box">
+    <p><b>TCA or other sodium-channel blocker toxicity:</b> the classic axis finding is a rightward
+    shift of the terminal 40 ms of the QRS (terminal R in aVR, deep S in I), alongside QRS widening.
+    A whole-QRS extreme axis is less typical and should prompt a search for another cause.</p>
+  </div>
+  <div class="box" style="--accent:#5B3A8E; --tint:#EFE9F5;">
+    <p><b>AV canal defect (atrioventricular septal defect) and ostium primum ASD:</b> the
+    classic pediatric cause of a superior QRS axis, and one worth knowing cold — this is a
+    board-exam staple as much as a clinical one.</p>
+    <p>A superior axis, alongside RBBB-pattern conduction delay, RVH, LVH, and a prolonged PR
+    interval, is a hallmark ECG finding in complete and partial AV canal defects. The mechanism
+    is a displaced, malformed conduction system rather than a rhythm disturbance — the AV node
+    and proximal conduction tissue are shifted by the underlying septal defect itself.</p>
+  </div>
+  <p class="note">AV canal defects are strongly associated with Down syndrome (trisomy 21) and
+  are the most common congenital heart defect seen in that population — a superior axis on a
+  pediatric ECG, especially alongside a fixed split S2 or a holosystolic murmur, should raise
+  this diagnosis specifically rather than getting filed under the adult VT/hyperkalemia
+  differential above.</p>
+  <div class="box">
+    <p><b>Structural and other congenital causes:</b> tetralogy of Fallot (uncommonly — one
+    series found right axis deviation in 87% of TOF patients but extreme right axis deviation in
+    only about 3%), tricuspid atresia, single-ventricle physiology, right superior fascicular
+    block, severe combined right ventricular hypertrophy with left anterior fascicular block,
+    dextrocardia, and pulmonary emphysema round out the remaining structural causes.</p>
+  </div>
+  <div class="box">
+    <p><b>Brugada syndrome:</b> not a classic cause of extreme axis. The documented finding is a
+    left-axis shift during ajmaline provocation, thought to reflect conduction slowing through the
+    right ventricular outflow tract. Included only so it isn't mistaken for one.</p>
+  </div>
+  <p class="note">Notice the pattern across this whole differential: nearly every cause here is
+  either an artifact (lead reversal) or something that changes management immediately (VT,
+  hyperkalemia, TCA overdose). This is not a finding to sit on while waiting for a cardiology
+  read.</p>
+</section>
+
+<section id="s6" style="--accent:#444444; --tint:#EFEFEF; border-bottom:none;">
+  <h2><span class="secnum">6.</span> Quick Reference Card &amp; Primary Sources</h2>
+  <table>
+    <tr><th>Cause</th><th>Key distinguishing clue</th></tr>
+    <tr><td><b>Lead (RA/LL) reversal</b></td><td>Most common cause; negative P wave in Lead I;
+    patient looks clinically well</td></tr>
+    <tr><td><b>Ventricular tachycardia</b></td><td>Wide complex tachycardia + northwest axis =
+    treat as VT until proven otherwise</td></tr>
+    <tr><td><b>AIVR / ventricular escape</b></td><td>Same axis mechanism as VT, at a normal or
+    slow rate instead of tachycardic</td></tr>
+    <tr><td><b>RV apical / LV / biventricular pacing</b></td><td>Expected axis signature for
+    that lead position, not pathology — correlate with device interrogation</td></tr>
+    <tr><td><b>Hyperkalemia</b></td><td>Wide, bizarre QRS with peaked T waves; check potassium</td></tr>
+    <tr><td><b>TCA / Na-channel blocker toxicity</b></td><td>Terminal R wave in aVR, QRS widening,
+    known or suspected ingestion</td></tr>
+    <tr><td><b>Congenital heart disease (e.g., TOF)</b></td><td>Known structural diagnosis;
+    extreme RAD is uncommon even within this population (~3%)</td></tr>
+    <tr><td><b>AV canal defect / ostium primum ASD</b></td><td>Superior axis + RBBB pattern +
+    prolonged PR; think Down syndrome in pediatric ECGs</td></tr>
+    <tr><td><b>Brugada syndrome</b></td><td>Not a classic cause; left-axis shift on ajmaline only</td></tr>
+  </table>
+  <p class="body"><b>Primary sources checked for this guide:</b></p>
+  <ul class="sources">
+    <li>Akhtar M, Shenasa M, Jazayeri M, Caceres J, Tchou PJ. Wide QRS complex tachycardia. Reappraisal of a common clinical problem. Ann Intern Med. 1988;109(11):905-912.</li>
+    <li>Tchou P, Young P, Mahmud R, Denker S, Jazayeri M, Akhtar M. Useful clinical criteria for the diagnosis of ventricular tachycardia. Am J Med. 1988;84(1):53-56.</li>
+    <li>Vereckei A, Duray G, Szenasi G, Altemose GT, Miller JM. New algorithm using only lead aVR for differential diagnosis of wide QRS complex tachycardia. Heart Rhythm. 2008;5(1):89-98.</li>
+    <li>Kashou AH, et al. Wide complex tachycardia differentiation: a reappraisal of the state-of-the-art. J Am Heart Assoc. 2021;10(11):e016598.</li>
+    <li>Extreme axis deviation due to lead misplacement, ventricular rhythms, and hyperkalemia. Reviewed via en.my-EKG.com, citing Surawicz B, Deal BJ, et al. AHA/ACCF/HRS recommendations for standardization and interpretation of the electrocardiogram, part III. J Am Coll Cardiol. 2009;53(11):976-981.</li>
+    <li>RBBB tachycardia with north-west axis: mechanism and associated conditions. J Electrocardiol, ScienceDirect, 2017 — including the Brink et al. tetralogy of Fallot axis-deviation series.</li>
+    <li>ECG Axis Interpretation. Life in the Fast Lane (LITFL) ECG Library, reviewed 2024.</li>
+    <li>Left axis deviation in Brugada syndrome: vectorcardiographic evaluation during ajmaline provocation testing. Reviewed via PMC, 2021.</li>
+    <li>Belhassen ventricular tachycardia in a child: right bundle branch block pattern with left axis deviation as the exception to northwest-axis VT reasoning. Case report, PMC, 2021.</li>
+    <li>Brugada P, Brugada J, Mont L, Smeets J, Andries EW. A new approach to the differential diagnosis of a regular tachycardia with a wide QRS complex. Circulation. 1991;83(5):1649-1659.</li>
+    <li>Isenhour JL, Craig S, Gibbs M, et al. Wide-complex tachycardia: continued evaluation of diagnostic criteria. Acad Emerg Med. 2000;7(7):769-773.</li>
+    <li>Jastrzebski M, et al. Comparison of five electrocardiographic methods for differentiation of wide QRS-complex tachycardias. Europace. 2012;14(8):1165-1171.</li>
+    <li>Ostium primum atrial septal defect and atrioventricular septal defect: ECG findings including superior QRS axis. Medscape/StatPearls, reviewed 2025.</li>
+    <li>Echocardiographic evaluation of common atrioventricular canal defects. Congenital Cardiac Anesthesia Society, 2021.</li>
+    <li>Extreme right axis deviation vs. indeterminate axis: terminology distinction. ECG Guru, Instructor Resources, reviewed 2026.</li>
+    <li>Electrical right and left axis deviation, including the indeterminate axis definition. StatPearls, 2024.</li>
+    <li>Barold SS, et al. Electrocardiographic patterns in biventricular pacing delivered by second-generation cardiac resynchronization devices. Indian Pacing Electrophysiol J, ScienceDirect, 2017.</li>
+    <li>Extreme axis deviation due to ventricular pacing, lead-position-specific morphology. en.my-EKG.com, reviewed 2026.</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  Extreme axis deviation is a short differential with a long list of consequences if the wrong
+  branch is chosen — a reversed cable sent for an unnecessary workup, or a genuine VT dismissed
+  as SVT because the patient looked stable. v2 added the full Brugada and Vereckei aVR algorithm
+  steps behind the VT-vs-SVT reasoning in section 4, including the gap between original
+  derivation accuracy and real-world revalidation, plus AV canal defect and ostium primum ASD as
+  the classic pediatric cause of superior axis in section 5. v3 clarified the genuine terminology
+  confusion between extreme axis deviation and true indeterminate axis (not the same finding,
+  despite frequent interchangeable use in casual sources), and expanded the pacing entry with
+  lead-position-specific signatures (RV apical, LV epicardial, biventricular/CRT) so a paced
+  extreme axis isn't mistaken for new pathology. Every criterion and figure above was
+  cross-checked against the sources listed here as of July 2026.
+<div class="cv-tagline" style="margin-top:8px">The Critical Vector · Direction and magnitude.</div></footer>
+
+</body>
+</html>

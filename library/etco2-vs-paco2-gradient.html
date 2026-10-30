@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EtCO2 vs. PaCO2: The Gradient That Matters | The Critical Vector</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400;1,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#0a0e14; --surface:#111720; --surface2:#182030; --border:rgba(255,255,255,.08); --accent:#00d4aa; --accent2:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa; --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670;}
+  *{box-sizing:border-box;}
+  body{background:var(--bg); color:var(--text); margin:0; padding:2.5rem 1rem 5rem; font-family:'Source Serif 4', Georgia, serif; line-height:1.65;}
+  .page{max-width:920px; margin:0 auto;}
+  h1,h2,h3,.sec-num,.kicker,th,.label,.step-num{font-family:'Syne', sans-serif;}
+  code, .mono{font-family:'IBM Plex Mono', monospace;}
+  .kicker{color:var(--accent); font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; font-weight:600;}
+  h1{font-weight:800; font-size:1.7rem; margin:.4rem 0 .5rem; color:var(--text); line-height:1.3;}
+  header p{font-style:italic; color:var(--text2); font-size:1rem; margin:0 0 .4rem;}
+  .byline{color:var(--text3); font-size:.85rem; margin:0 0 1.5rem;}
+  .alert{background:rgba(0,212,170,.10); border:1px solid rgba(0,212,170,.28); color:#bdf5e8; border-radius:10px; padding:1rem 1.2rem; margin:1.2rem 0 2rem; font-size:.98rem;}
+  .alert strong{color:var(--accent);}
+  .sec-head{display:flex; align-items:baseline; gap:.7rem; padding:.6rem .9rem; border-left:4px solid var(--accent); background:linear-gradient(90deg, rgba(0,212,170,.10), transparent); border-radius:6px; margin-top:2.6rem;}
+  .sec-head.c-blue{border-left-color:var(--accent2); background:linear-gradient(90deg, rgba(96,165,250,.12), transparent);}
+  .sec-head.c-red{border-left-color:var(--red); background:linear-gradient(90deg, rgba(232,76,76,.12), transparent);}
+  .sec-head.c-amber{border-left-color:var(--amber); background:linear-gradient(90deg, rgba(245,158,11,.12), transparent);}
+  .sec-head.c-purple{border-left-color:var(--purple); background:linear-gradient(90deg, rgba(167,139,250,.12), transparent);}
+  .sec-num{color:var(--text3); font-size:.85rem; font-weight:600;}
+  .sec-head h2{margin:0; font-size:1.15rem; font-weight:700; color:var(--text);}
+  .tagline{font-style:italic; color:var(--text2); font-size:.92rem; margin:.4rem 0 1rem; padding-left:.9rem;}
+  p{margin:.8rem 0;}
+  .box{background:var(--surface2); border:1px solid var(--border); border-radius:10px; padding:1rem 1.2rem; margin:1.1rem 0;}
+  .box.t-teal{border-left:3px solid var(--accent);} .box.t-blue{border-left:3px solid var(--accent2);}
+  .box.t-amber{border-left:3px solid var(--amber);} .box.t-purple{border-left:3px solid var(--purple);}
+  .box.t-red{border-left:3px solid var(--red); background:rgba(232,76,76,.06);}
+  .box .label{display:block; font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; font-weight:700; margin-bottom:.4rem;}
+  .box.t-teal .label{color:var(--accent);} .box.t-blue .label{color:var(--accent2);}
+  .box.t-amber .label{color:var(--amber);} .box.t-purple .label{color:var(--purple);} .box.t-red .label{color:var(--red);}
+  table{width:100%; border-collapse:collapse; margin:1.1rem 0; font-size:.83rem;}
+  th{background:var(--surface2); color:var(--text); text-align:left; padding:.5rem .55rem; font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; font-weight:700; border-bottom:1px solid var(--border);}
+  td{padding:.5rem .55rem; border-bottom:1px solid var(--border); vertical-align:top; color:var(--text);}
+  tr:nth-child(even) td{background:rgba(255,255,255,.02);}
+  ul.plain{margin:.6rem 0; padding-left:1.3rem;} ul.plain li{margin-bottom:.4rem;}
+  .sources{list-style:none; padding:0; margin:1rem 0; font-size:.85rem; color:var(--text2);}
+  .sources li{padding:.55rem 0; border-bottom:1px solid var(--border);} .sources a{color:var(--accent);}
+  footer{font-style:italic; color:var(--text3); font-size:.85rem; text-align:center; margin-top:3rem; padding-top:1.2rem; border-top:1px solid var(--border);}
+  @media print{
+    :root{--bg:#f4f5f7; --surface:#fff; --surface2:#eef1f4; --border:#d7dde3; --accent:#00a688; --accent2:#1d4ed8; --red:#c53030; --amber:#b45309; --purple:#7c3aed; --text:#0f1923; --text2:#4a5670; --text3:#6b7688;}
+    body{background:var(--bg) !important; color:var(--text) !important;}
+    .alert{background:rgba(0,166,136,.08) !important; color:#0f1923 !important;}
+    td{color:var(--text) !important;}
+  }
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ a{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../locker.html">The Evidence Locker</a><span class="cv-sb-meta">Published 8 Sep 2026 · R. E. Suscitate &amp; A. Systole</span></nav>
+<div class="page">
+
+<header>
+  <div class="kicker">The Critical Vector &middot; Reference Audit &mdash; Verified</div>
+  <h1>EtCO2 vs. PaCO2: The Gradient That Tells You Something Is Wrong</h1>
+  <p>Why end-tidal CO2 usually runs a few points below arterial CO2 &mdash; and why that gap widening is one of the most useful early warnings in anaesthesia and critical care.</p>
+  <p class="byline">Original post: the_anaesthesialife. This page is an independent third-party evaluation, not affiliated with or endorsed by the account.</p>
+</header>
+
+<div class="alert">
+<strong>Verdict on the source post:</strong> accurate. The caption's core teaching point &mdash; "EtCO2 is a trend and screening tool, not a substitute for ABG when precise PaCO2 values are needed" &mdash; is exactly the correct clinical framing, and it's worth pairing with the specific physiology of why the gradient exists and what widens it.
+</div>
+
+<div class="sec-head"><span class="sec-num">01</span><h2>Why EtCO2 Runs Below PaCO2</h2></div>
+<p class="tagline">The gap is dead space, not measurement error.</p>
+<p>End-tidal CO2 is measured at the very end of exhalation, capturing gas that has come from well-perfused, well-ventilated alveoli where CO2 has fully equilibrated with pulmonary capillary blood. But every breath also contains gas from anatomic dead space (conducting airways, no gas exchange) and alveolar dead space (ventilated but poorly perfused alveoli), which dilutes the exhaled CO2 with lower-CO2 gas. The result: EtCO2 is normally slightly <i>lower</i> than PaCO2, by a normal gradient of roughly 2&ndash;5 mmHg in healthy lungs.</p>
+
+<div class="sec-head c-blue"><span class="sec-num">02</span><h2>What Widens the Gradient</h2></div>
+<table>
+<tr><th>Cause</th><th>Mechanism</th></tr>
+<tr><td>Pulmonary embolism</td><td>Ventilated but non-perfused alveoli (pure alveolar dead space) &mdash; a sudden EtCO2 drop is a classic early PE warning sign under anaesthesia</td></tr>
+<tr><td>Low cardiac output / cardiac arrest</td><td>Reduced pulmonary blood flow means less CO2 delivered to alveoli for exhalation, even with unchanged ventilation &mdash; EtCO2 falls disproportionately to actual PaCO2</td></tr>
+<tr><td>COPD / severe lung disease</td><td>V/Q mismatch and destroyed alveolar-capillary units increase effective dead space</td></tr>
+<tr><td>Hypovolemia / hemorrhage</td><td>Same low-perfusion mechanism as low cardiac output &mdash; EtCO2 can serve as an early hemodynamic warning independent of blood pressure</td></tr>
+<tr><td>High-frequency or high-dead-space ventilation strategies</td><td>Mechanically increases the dead-space fraction of each breath</td></tr>
+</table>
+
+<div class="sec-head c-amber"><span class="sec-num">03</span><h2>The Clinical Framing, Confirmed</h2></div>
+<p class="tagline">This is the exact right way to use EtCO2 at the bedside.</p>
+<ul class="plain">
+<li><b>As a trend tool:</b> EtCO2 is excellent for continuous, breath-by-breath monitoring of ventilation adequacy and for immediately flagging acute physiologic changes (embolism, arrest, disconnection, hypoperfusion) long before a blood gas could be drawn and resulted.</li>
+<li><b>As a screening tool:</b> a normal, stable EtCO2 in a patient with normal cardiopulmonary physiology is a reasonable proxy for adequate ventilation.</li>
+<li><b>Not a substitute for ABG when precision matters:</b> in severe lung disease, high dead-space states, or whenever the clinical picture doesn't match what EtCO2 suggests, the gradient itself becomes unpredictable and potentially large &mdash; at that point EtCO2 tells you <i>that</i> something is wrong faster than an ABG could, but only an actual PaCO2 measurement tells you precisely <i>how</i> deranged ventilation or perfusion has become.</li>
+</ul>
+
+<div class="sec-head" style="border-left-color:var(--text3); background:none;"><span class="sec-num">04</span><h2>Bottom Line</h2></div>
+<p>The post's framing is accurate and clinically well-calibrated: EtCO2 tracks PaCO2 closely enough in normal physiology to serve as a real-time trend and screening tool, but the gradient between them is entirely a function of dead space &mdash; and dead space is exactly what goes wrong first in some of anaesthesia's most dangerous acute events (PE, cardiac arrest, severe hypoperfusion). A widening EtCO2-PaCO2 gap, or a sudden unexplained EtCO2 drop, should prompt the same differential every time: is this a perfusion problem, not a ventilation problem.</p>
+
+<div class="sec-head" style="border-left-color:var(--text3); background:none;"><span class="sec-num">05</span><h2>Sources</h2></div>
+<ul class="sources">
+<li><b>the_anaesthesialife.</b> Original Instagram carousel, "EtCO2 vs PaCO2: Respiratory Physiology." &mdash; read the original post before relying on this summary.</li>
+<li>Bhavani-Shankar K, Moseley H, Kumar AY, Delph Y. Capnometry and anaesthesia. <em>Can J Anaesth.</em> 1992;39(6):617&ndash;632.</li>
+<li>Bossers SM, et al. Association between prehospital end-tidal carbon dioxide levels and mortality in patients with suspected severe traumatic brain injury. <em>Intensive Care Med.</em> 2023;49(5):491&ndash;504.</li>
+<li>West JB. <em>Respiratory Physiology: The Essentials</em>, 10th ed. &mdash; dead space and V/Q mismatch chapters.</li>
+</ul>
+
+<footer>The Critical Vector &middot; Direction and magnitude.</footer>
+
+</div>
+</body>
+</html>

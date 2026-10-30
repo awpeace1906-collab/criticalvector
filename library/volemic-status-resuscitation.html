@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maintaining Volemic Status in Hemorrhagic Shock — The Critical Vector</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0e14; --surface:#111720; --surface2:#182030;
+  --border:rgba(255,255,255,0.08);
+  --teal:#00d4aa; --blue:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa;
+  --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  background:var(--bg); color:var(--text);
+  font-family:'Source Serif 4', Georgia, serif; font-size:16px; line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,.label,.kicker,.badge,nav a,th{font-family:'Syne', sans-serif;}
+.mono{font-family:'IBM Plex Mono', monospace;}
+.page{max-width:900px; margin:0 auto; padding:0 24px 60px;}
+
+header{padding:32px 0 20px; border-bottom:1px solid var(--border);}
+.kicker{
+  font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--teal); margin-bottom:10px;
+}
+h1{font-family:'Syne', sans-serif; font-weight:800; font-size:30px; line-height:1.15; margin:0 0 10px; letter-spacing:.005em;}
+header p{font-family:'Source Serif 4', serif; font-style:italic; color:var(--text2); font-size:15.5px; margin:0; max-width:680px;}
+
+.alert{
+  margin:18px 0; padding:13px 18px; border-radius:10px; font-size:14px;
+  background:rgba(96,165,250,0.10); border:1px solid rgba(96,165,250,0.28); color:#bcd0fb;
+}
+
+nav{display:flex; flex-wrap:wrap; gap:7px; padding:18px 0; border-bottom:1px solid var(--border); margin-bottom:8px;}
+nav a{
+  font-size:12.5px; font-weight:600; color:var(--text2); background:var(--surface);
+  border:1px solid var(--border); padding:7px 12px; border-radius:20px;
+  text-decoration:none; white-space:nowrap; transition:all .15s;
+}
+nav a:hover{color:var(--text); border-color:var(--teal);}
+
+section{padding:30px 0; border-bottom:1px solid var(--border);}
+.sec-head{
+  display:flex; align-items:baseline; gap:10px; padding:11px 18px;
+  border-left:4px solid var(--teal);
+  background:linear-gradient(90deg, rgba(0,212,170,0.10), transparent);
+  border-radius:0 8px 8px 0; margin-bottom:16px;
+}
+.sec-head.c-blue{border-left-color:var(--blue); background:linear-gradient(90deg, rgba(96,165,250,0.10), transparent);}
+.sec-head.c-red{border-left-color:var(--red); background:linear-gradient(90deg, rgba(232,76,76,0.10), transparent);}
+.sec-head.c-amber{border-left-color:var(--amber); background:linear-gradient(90deg, rgba(245,158,11,0.10), transparent);}
+.sec-head.c-purple{border-left-color:var(--purple); background:linear-gradient(90deg, rgba(167,139,250,0.10), transparent);}
+.sec-num{font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--text3);}
+h2{font-family:'Syne', sans-serif; font-weight:700; font-size:20px; margin:0; color:var(--text);}
+
+p.body{font-size:15.5px; margin:12px 0;}
+p.note{font-size:13.5px; color:var(--text2); font-style:italic; margin:10px 0;}
+
+.box{
+  background:var(--surface2); border:1px solid var(--border); border-radius:10px;
+  padding:16px 18px; margin:14px 0; font-size:14.5px;
+}
+.box.t-teal{border-left:3px solid var(--teal);}
+.box.t-blue{border-left:3px solid var(--blue);}
+.box.t-red{border-left:3px solid var(--red); background:rgba(232,76,76,0.06);}
+.box.t-amber{border-left:3px solid var(--amber);}
+.box.t-purple{border-left:3px solid var(--purple);}
+.box b{color:var(--text); font-weight:700;}
+.box p{margin:7px 0;}
+
+table{width:100%; border-collapse:collapse; margin:14px 0; font-size:14px;}
+th{background:var(--surface2); color:var(--text); text-align:left; padding:9px 12px; font-weight:600; font-size:12.5px; letter-spacing:.02em; border-bottom:2px solid var(--border);}
+td{padding:10px 12px; border-bottom:1px solid var(--border); vertical-align:top; font-family:'Source Serif 4', serif;}
+tr:nth-child(even) td{background:rgba(255,255,255,0.02);}
+
+.sources{font-size:13px; color:var(--text2); padding-left:20px;}
+.sources li{margin-bottom:7px;}
+
+footer{padding:26px 0 0; margin-top:6px; font-size:12.5px; color:var(--text3); font-family:'Source Serif 4', serif; font-style:italic;}
+</style>
+<style id="cv-print">
+/* ===== CV PRINT v1.0 (per _cv-schema.html) ===== */
+@media print{
+  :root{
+    --bg:#f4f5f7; --surface:#ffffff; --surface2:#eef1f4; --border:#d7dde3;
+    --teal:#00a688; --blue:#1d4ed8; --accent:#00a688; --accent2:#1d4ed8;
+    --red:#c53030; --amber:#b45309; --purple:#7c3aed;
+    --text:#0f1923; --text2:#4a5670; --text3:#6b7688;
+  }
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  html, body{background:#f4f5f7 !important; color:#0f1923 !important;}
+  nav, .nav, .toc-pills{display:none !important;}
+  .alert{background:rgba(0,166,136,.08) !important; color:#0f1923 !important;}
+  td{color:#0f1923 !important;}
+  section, .box, table, .card, .stat-card, .statcard, .step-row, .step{break-inside:avoid;}
+  h2, .sec-head{break-after:avoid;}
+  a{color:inherit; text-decoration:none;}
+}
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ a{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../workshop.html">The Workshop</a><span class="cv-sb-meta">Published 7 Oct 2026 · R. E. Suscitate &amp; A. Systole</span></nav>
+<div class="page">
+
+<header>
+  <div class="kicker">The Critical Vector &middot; Pocket Reference</div>
+  <h1>Maintaining Volemic Status in Hemorrhagic Shock</h1>
+  <p>Anchored on the first FDA-licensed freeze-dried plasma product, expanded to the full
+  evidence base: permissive hypotension, blood product ratios, prehospital plasma's genuinely
+  contradictory trial record, and why fluid choice itself is context-dependent. Verified against
+  FDA.gov, NEJM, Lancet Haematology, JAMA Surgery, and primary damage-control-resuscitation
+  literature. July 2026.</p>
+</header>
+
+<div class="alert">
+  TCCC-specific MARCH sequencing and junctional hemorrhage technique already live in the
+  ballistics/TCCC manual. This document covers the broader fluid/blood-product strategy question
+  — what to give, in what ratio, and why the evidence is more contested than it looks — not
+  battlefield care technique.
+</div>
+
+<nav>
+  <a href="#s1">1 &middot; The news: EZPLAZ</a>
+  <a href="#s2">2 &middot; The bigger question</a>
+  <a href="#s3">3 &middot; Permissive hypotension</a>
+  <a href="#s4">4 &middot; Blood product ratios</a>
+  <a href="#s5">5 &middot; Prehospital plasma: contradictory record</a>
+  <a href="#s6">6 &middot; Crystalloid choice is context-dependent</a>
+  <a href="#s7">7 &middot; Freeze-dried plasma in context</a>
+  <a href="#s8">8 &middot; Practical synthesis</a>
+  <a href="#s9">9 &middot; Quick card &amp; sources</a>
+</nav>
+
+<section id="s1">
+  <div class="sec-head c-blue"><span class="sec-num">01</span><h2>The News: EZPLAZ</h2></div>
+  <p class="body">On July 29, 2026, the FDA licensed Ezplaz Freeze Dried Plasma (Vascular
+  Solutions, LLC, a Teleflex subsidiary) — the first freeze-dried plasma product licensed for use
+  in the United States.</p>
+  <table>
+    <tr><th>Feature</th><th>Detail</th></tr>
+    <tr><td>Composition</td><td>Lyophilized (freeze-dried) plasma derived from a single unit of
+    fresh frozen plasma, FDA-licensed blood establishments</td></tr>
+    <tr><td>Storage</td><td>Room-temperature stable, tolerates temperature fluctuation — no cold
+    chain or thaw cycle required</td></tr>
+    <tr><td>Reconstitution</td><td>Rapid, roughly one minute, using included sterile water</td></tr>
+    <tr><td>Blood types available</td><td>Group AB and Group A with low-titer anti-B — chosen
+    specifically to reduce risk when transfused before the recipient's blood type is known</td></tr>
+    <tr><td>Packaging</td><td>Plastic bag rather than glass bottle, reducing breakage risk in
+    transport</td></tr>
+    <tr><td>Licensed indication</td><td>Adults who require plasma when other plasma products are
+    not available — active bleeding, massive transfusion, certain bleeding patients on
+    warfarin</td></tr>
+  </table>
+  <p class="note">One correction to the common framing: the AB/A-low-titer-anti-B selection is
+  about donor-to-recipient compatibility without knowing the recipient's type — it doesn't mean
+  the product is given without any regard to ABO status, it means it's selected to be safe
+  across the recipient types most likely to be encountered emergently.</p>
+</section>
+
+<section id="s2">
+  <div class="sec-head"><span class="sec-num">02</span><h2>The Bigger Question</h2></div>
+  <p class="body">A room-temperature plasma product is a genuine logistics advance. But
+  "maintaining volemic status" in hemorrhagic shock is a much larger question than which plasma
+  product to stock — it spans whether to give fluid at all before bleeding is controlled, what
+  ratio of blood components to use, whether prehospital blood products actually improve
+  survival, and even which crystalloid to reach for when blood products aren't available. Each
+  of those has genuine, sometimes contradictory, randomized trial evidence behind it.</p>
+</section>
+
+<section id="s3">
+  <div class="sec-head c-red"><span class="sec-num">03</span><h2>Permissive Hypotension</h2></div>
+  <div class="box t-red">
+    <p><b>Bickell et al., NEJM 1994 — the foundational trial:</b> 598 adults with penetrating
+    torso trauma and prehospital SBP ≤90 mmHg, randomized to immediate prehospital/ED fluid
+    resuscitation vs. delayed resuscitation withheld until operative control. Survival to
+    discharge was significantly higher in the delayed group (70% vs. 62%, p=0.04).</p>
+  </div>
+  <p class="note">The theory: aggressive crystalloid before hemorrhage control raises blood
+  pressure enough to dislodge a forming clot ("popping the clot"), while also driving dilutional
+  coagulopathy, dilutional anemia, and hypothermia — the same lethal triad damage control
+  resuscitation is built to avoid.</p>
+  <table>
+    <tr><th>Real limitations of the founding trial</th><th>Why it matters</th></tr>
+    <tr><td>Single center, single EMS system, penetrating torso trauma only</td><td>Limited
+    external validity to blunt trauma or systems with different transport times</td></tr>
+    <tr><td>Used crystalloid, not modern hemostatic/blood-component resuscitation</td><td>The
+    comparison being tested has moved on since 1994 — the trial predates the blood-ratio
+    evidence in section 4</td></tr>
+    <tr><td>Blood pressure was actually similar between groups regardless of allocation</td><td>
+    A frequently overlooked methodologic detail — raises the question of what, mechanistically,
+    actually drove the mortality difference</td></tr>
+  </table>
+  <p class="note">Current practice generally applies permissive hypotension (targeting SBP
+  ~80–90 mmHg or MAP ~50 in pure hemorrhagic shock per EAST guidance) until hemorrhage is
+  controlled — with an important carve-out for concurrent traumatic brain injury, where SBP <90
+  is independently associated with worse outcomes and small aliquots (100–200 mL) to maintain SBP
+  above 90 are favored instead.</p>
+</section>
+
+<section id="s4">
+  <div class="sec-head c-purple"><span class="sec-num">04</span><h2>Blood Product Ratios</h2></div>
+  <div class="box t-purple">
+    <p><b>PROPPR (Holcomb et al., JAMA 2015):</b> in-hospital massive transfusion trial comparing
+    plasma:platelets:RBC ratios of 1:1:1 vs. 1:1:2. No statistically significant difference in
+    24-hour or 30-day mortality between ratios, though more patients in the 1:1:1 group achieved
+    hemostasis and fewer died from exsanguination in the first 24 hours.</p>
+  </div>
+  <p class="note">Despite PROPPR not reaching significance on its primary mortality endpoint,
+  balanced-ratio transfusion (approximating whole blood composition) has been widely adopted as
+  practice — built substantially on observational data with real survivorship-bias risk (patients
+  have to survive long enough to receive the later components of a ratio). A smaller earlier RCT
+  (Nascimento 2013) comparing a 1:1:1 target to standard care actually found higher, though not
+  statistically significant, mortality in the balanced-ratio group — a reminder that the
+  observational enthusiasm for balanced ratios outran the randomized evidence for some time.</p>
+</section>
+
+<section id="s5">
+  <div class="sec-head c-red"><span class="sec-num">05</span><h2>Prehospital Plasma: A Genuinely Contradictory Record</h2></div>
+  <p class="body">This is the section most relevant to evaluating EZPLAZ's real-world promise,
+  and it's considerably messier than "prehospital plasma saves lives."</p>
+  <table>
+    <tr><th>Trial</th><th>Design</th><th>Result</th></tr>
+    <tr><td>PAMPer (NEJM 2018)</td><td>Cluster-randomized, air-medical transport, 2 units
+    thawed plasma vs. standard care</td><td><b>Positive</b> — reduced 30-day mortality with
+    prehospital plasma</td></tr>
+    <tr><td>COMBAT (2018)</td><td>2 units thawed AB plasma prehospital vs. standard
+    crystalloid care, ground EMS</td><td><b>Negative</b> — stopped early for futility; no
+    outcome difference; groups imbalanced at baseline (plasma arm sicker)</td></tr>
+    <tr><td>RePHILL (Lancet Haematology 2022)</td><td>UK phase 3 RCT, PRBC + lyophilized
+    plasma vs. saline, prehospital</td><td><b>Negative</b> — did not demonstrate improved
+    survival or lactate clearance; stopped early (COVID-19 disruption)</td></tr>
+  </table>
+  <div class="box t-red">
+    <p><b>Worth sitting with:</b> RePHILL is the trial that actually tested lyophilized plasma —
+    the same category of product EZPLAZ belongs to — in the prehospital setting, and it was
+    negative on both primary outcomes. This doesn't mean EZPLAZ won't help; RePHILL tested a
+    different lyophilized product (Lyoplas) in a different health system with its own transport
+    times, and was underpowered by early stopping. But it's a directly relevant data point that
+    a clean "freeze-dried plasma saves lives" framing skips entirely.</p>
+  </div>
+  <p class="note">A post hoc analysis pooling PAMPer and COMBAT found the prehospital plasma
+  survival benefit was concentrated in patients with transport times longer than 20 minutes —
+  suggesting the effect, where real, may be distance/time-dependent rather than universal. That's
+  directly relevant to EZPLAZ's marketed use case (rural, combat, disaster settings with
+  inherently longer transport times) — plausibly the population most likely to benefit, though
+  not yet tested with this specific product. PREHO-PLYO (France, 2022, 134 patients) tested
+  lyophilized plasma against saline and found no difference in admission INR (1.21 vs 1.20).</p>
+</section>
+
+<section id="s6">
+  <div class="sec-head c-amber"><span class="sec-num">06</span><h2>Crystalloid Choice Is Context-Dependent</h2></div>
+  <p class="body">When blood products aren't available or aren't yet indicated, the choice of
+  crystalloid itself isn't a one-size-fits-all answer — a network meta-analysis across sepsis,
+  surgical, and trauma populations found the "best" fluid actually flips depending on the
+  clinical context.</p>
+  <table>
+    <tr><th>Population</th><th>Finding</th></tr>
+    <tr><td>Sepsis</td><td>Balanced crystalloids reduced mortality more than saline (OR
+    0.84) and more than hydroxyethyl starch (OR 0.81), and reduced AKI more than starch — though
+    balanced crystalloids required the largest resuscitation volume of any fluid type.</td></tr>
+    <tr><td>Traumatic brain injury specifically</td><td>Saline and hydroxyethyl starch
+    achieved <b>lower</b> mortality than albumin and balanced crystalloids — saline was
+    significantly superior to albumin (OR 0.55). The opposite direction from the sepsis
+    finding.</td></tr>
+  </table>
+  <p class="note">The practical implication: "always use balanced crystalloid" is a reasonable
+  sepsis-driven default that doesn't automatically transfer to trauma, and specifically doesn't
+  transfer to TBI, where the osmotic properties of saline may matter more than the
+  acid-base-friendly profile of a balanced solution. Fluid choice, like blood product ratio, is a
+  population-specific question, not a universal one.</p>
+</section>
+
+<section id="s7">
+  <div class="sec-head"><span class="sec-num">07</span><h2>Freeze-Dried Plasma in Context</h2></div>
+  <div class="box t-teal">
+    <p><b>This isn't a new concept globally — the US is late to it.</b> Lyophilized plasma has
+    been used by the French military since the 1990s and has been part of NATO-allied combat
+    casualty care doctrine for years; EZPLAZ is the first product to carry a US biologics license
+    for this category, not the first freeze-dried plasma product to exist or see operational use
+    anywhere.</p>
+  </div>
+  <table>
+    <tr><th>Advantage over frozen plasma</th><th>Advantage over whole blood</th></tr>
+    <tr><td>No cold chain, no thaw cycle, longer effective shelf stability</td><td>No refrigeration
+    requirement at all; lower risk of a hemolytic transfusion reaction from ABO mismatch since
+    it's plasma-only, not whole blood</td></tr>
+    <tr><td>Plastic packaging reduces breakage in transport/combat/disaster movement</td><td>
+    Doesn't require the donor screening/logistics infrastructure of a walking blood bank or
+    prehospital whole blood program</td></tr>
+  </table>
+  <p class="note">What freeze-dried plasma doesn't solve: it's still plasma alone, not a
+  red-cell-carrying product — it doesn't restore oxygen-carrying capacity the way PRBCs or whole
+  blood do. In a patient who needs volume <em>and</em> oxygen-carrying capacity, freeze-dried
+  plasma is one component of resuscitation, not a complete substitute for red cells when they're
+  available.</p>
+</section>
+
+<section id="s8">
+  <div class="sec-head c-blue"><span class="sec-num">08</span><h2>Practical Synthesis</h2></div>
+  <div class="box t-blue">
+    <p><b>What's well-supported:</b> permissive hypotension until hemorrhage control (outside
+    TBI), balanced blood-component resuscitation over crystalloid-heavy strategies once blood
+    products are available, and matching crystalloid choice to the clinical context rather than
+    defaulting to one fluid for every population.</p>
+  </div>
+  <div class="box t-red">
+    <p><b>What's still genuinely unsettled:</b> whether prehospital plasma of any kind
+    (frozen or freeze-dried) reliably improves survival across all transport-time and injury
+    profiles — PAMPer says yes, COMBAT and RePHILL say no, and the honest read is that the
+    benefit may be real but concentrated in longer-transport, resource-limited settings exactly
+    like the ones EZPLAZ is marketed toward. That's a plausible hypothesis, not yet a
+    demonstrated result for this specific product.</p>
+  </div>
+  <p class="note">EZPLAZ is a genuine logistics advance for austere and prolonged-field-care
+  settings — the room-temperature stability and reduced breakage risk solve real, practical
+  problems frozen plasma has always had. Whether it moves a survival needle in the field is a
+  question the existing lyophilized-plasma trial evidence (RePHILL, negative) hasn't yet answered
+  in this product's favor, and the ongoing trials mentioned in section 5 are the ones actually
+  positioned to answer it.</p>
+</section>
+
+<section id="s9" style="border-bottom:none;">
+  <div class="sec-head" style="border-left-color:var(--text3); background:none;"><span class="sec-num">09</span><h2>Quick Reference Card &amp; Primary Sources</h2></div>
+  <table>
+    <tr><th>Question</th><th>Current answer</th></tr>
+    <tr><td>Fluid before hemorrhage control?</td><td>Permissive hypotension (SBP ~80–90)
+    outside TBI; small aliquots to SBP >90 if TBI present</td></tr>
+    <tr><td>Blood component ratio once available?</td><td>Balanced (~1:1:1) widely
+    adopted; PROPPR itself didn't reach significance on mortality</td></tr>
+    <tr><td>Does prehospital plasma improve survival?</td><td>Contradictory — positive
+    (PAMPer), negative (COMBAT), negative for lyophilized specifically (RePHILL); likely
+    concentrated in long-transport settings</td></tr>
+    <tr><td>Which crystalloid, if no blood available?</td><td>Balanced solutions favored
+    in sepsis; saline/starch outperform balanced solutions and albumin in TBI specifically</td></tr>
+    <tr><td>Does EZPLAZ solve the oxygen-carrying problem too?</td><td>No — it's plasma
+    only; doesn't replace PRBCs or whole blood when red-cell capacity is needed</td></tr>
+  </table>
+  <p class="body"><b>Primary sources checked for this guide:</b></p>
+  <ul class="sources">
+    <li>FDA. FDA Licenses First-Ever Freeze-Dried Plasma Product in the U.S. fda.gov/news-events/press-announcements, July 29, 2026.</li>
+    <li>AABB Regulatory Update: FDA Licenses First Freeze-Dried Plasma Product. aabb.org, July 29, 2026.</li>
+    <li>Bickell WH, Wall MJ Jr, Pepe PE, et al. Immediate versus delayed fluid resuscitation for hypotensive patients with penetrating torso injuries. N Engl J Med. 1994;331(17):1105-1109.</li>
+    <li>Morrison CA, Carrick MM, Norman MA, et al. Hypotensive resuscitation strategy reduces transfusion requirements and severe postoperative coagulopathy. J Trauma. 2011;70(3):652-663.</li>
+    <li>Holcomb JB, Tilley BC, Baraniuk S, et al. Transfusion of plasma, platelets, and red blood cells in a 1:1:1 vs. a 1:1:2 ratio (PROPPR). JAMA. 2015;313(5):471-482.</li>
+    <li>Nascimento B, et al. Effect of a fixed-ratio (1:1:1) transfusion protocol versus laboratory-guided transfusion in patients with severe trauma: a randomized feasibility trial. CMAJ. 2013.</li>
+    <li>Sperry JL, Guyette FX, Brown JB, et al. Prehospital plasma during air medical transport in trauma patients at risk for hemorrhagic shock (PAMPer). N Engl J Med. 2018;379(4):315-326.</li>
+    <li>Moore HB, Moore EE, Chapman MP, et al. Plasma-first resuscitation to treat haemorrhagic shock during emergency ground transportation (COMBAT). Lancet. 2018.</li>
+    <li>Crombie N, Doughty HA, Bishop JRB, et al. Resuscitation with blood products in patients with trauma-related haemorrhagic shock receiving prehospital care (RePHILL). Lancet Haematol. 2022;9(4):e250-e261.</li>
+    <li>Guyette FX, et al. Association of prehospital plasma transfusion with survival in trauma patients when transport times are longer than 20 minutes: post hoc analysis of PAMPer and COMBAT. JAMA Surg. 2020;155:e195085.</li>
+    <li>Guyette FX, et al. Prehospital blood product and crystalloid resuscitation in the severely injured patient: secondary analysis of PAMPer. J Trauma Acute Care Surg, 2021.</li>
+    <li>Resuscitation fluid types in sepsis, surgical, and trauma patients: a systematic review and sequential network meta-analyses. Crit Care. 2020.</li>
+    <li>Pre-hospital Administration of Lyophilized Plasma for Post-traumatic Coagulopathy Treatment (PREHO-PLYO). ClinicalTrials.gov NCT02736812.</li>
+    <li>Prehospital Plasma or Red Blood Cell Transfusion Strategy in Major Bleeding (PRIEST). ClinicalTrials.gov NCT04879485.</li>
+  </ul>
+</section>
+
+<footer>
+  A room-temperature plasma product is a genuine logistics win for austere care — it doesn't
+  automatically settle the harder, still-contested question of whether prehospital plasma of any
+  kind reliably improves survival across every transport-time and injury profile. Every claim
+  above was cross-checked against the primary trials and the FDA's own announcement as of July
+  2026.
+<div class="cv-tagline" style="margin-top:8px">The Critical Vector · Direction and magnitude.</div></footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="cv:schema" content="1.0">
+<meta name="cv:verified" content="2026-10-05">
+<title>Human Factors: The Clinician as Part of the Treatment — The Critical Vector</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style id="cv-base">
+/* ===== CV BASE v1.0 — copy this block verbatim into every guide ===== */
+:root{
+  --bg:#0a0e14; --surface:#111720; --surface2:#182030;
+  --border:rgba(255,255,255,0.08);
+  --teal:#00d4aa; --blue:#2563eb; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa;
+  --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670;
+  --t-teal:rgba(0,212,170,0.10); --t-blue:rgba(37,99,235,0.10); --t-red:rgba(232,76,76,0.10);
+  --t-amber:rgba(245,158,11,0.10); --t-purple:rgba(167,139,250,0.10);
+  /* legacy aliases: older guides use these names; same values */
+  --accent:var(--teal); --accent2:var(--blue);
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{background:var(--bg); color:var(--text); font-family:'Source Serif 4', Georgia, serif; font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased;}
+h1,h2,h3,.label,.kicker,.badge,nav a,th,.step-num,.stat-num{font-family:'Syne', sans-serif;}
+.mono, code{font-family:'IBM Plex Mono', monospace;}
+.page{max-width:900px; margin:0 auto; padding:0 24px 60px;}
+header{padding:32px 0 20px; border-bottom:1px solid var(--border);}
+.kicker{font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--teal); margin-bottom:10px;}
+h1{font-weight:800; font-size:30px; line-height:1.15; margin:0 0 10px; letter-spacing:.005em;}
+header p{font-style:italic; color:var(--text2); font-size:15.5px; margin:0; max-width:700px;}
+.byline{font-size:13px; color:var(--text3); margin-top:8px;}
+.badges{display:flex; flex-wrap:wrap; gap:6px; margin-top:16px;}
+.badge{font-size:11px; font-weight:700; letter-spacing:.04em; padding:4px 10px; border-radius:20px; border:1px solid var(--border); color:var(--text2); background:var(--surface);}
+.badge.ok{color:var(--teal); border-color:rgba(0,212,170,0.35); background:var(--t-teal);}
+.badge.flag{color:var(--red); border-color:rgba(232,76,76,0.40); background:var(--t-red);}
+.alert{margin:18px 0; padding:13px 18px; border-radius:10px; font-size:14px; background:var(--t-teal); border:1px solid rgba(0,212,170,0.28); color:#bdf5e8;}
+.alert.flag{background:rgba(232,76,76,0.08); border-color:rgba(232,76,76,0.35); color:#ffd2d2;}
+nav{display:flex; flex-wrap:wrap; gap:7px; padding:18px 0; border-bottom:1px solid var(--border); margin-bottom:8px;}
+nav a{font-size:12.5px; font-weight:600; color:var(--text2); background:var(--surface); border:1px solid var(--border); padding:7px 12px; border-radius:20px; text-decoration:none; white-space:nowrap; transition:all .15s;}
+nav a:hover, nav a:focus-visible{color:var(--text); border-color:var(--teal); outline:none;}
+section{padding:30px 0; border-bottom:1px solid var(--border);}
+.sec-head{display:flex; align-items:baseline; gap:10px; padding:11px 18px; border-left:4px solid var(--teal); background:linear-gradient(90deg, var(--t-teal), transparent); border-radius:0 8px 8px 0; margin-bottom:16px;}
+.sec-head.c-blue{border-left-color:var(--blue); background:linear-gradient(90deg, var(--t-blue), transparent);}
+.sec-head.c-red{border-left-color:var(--red); background:linear-gradient(90deg, var(--t-red), transparent);}
+.sec-head.c-amber{border-left-color:var(--amber); background:linear-gradient(90deg, var(--t-amber), transparent);}
+.sec-head.c-purple{border-left-color:var(--purple); background:linear-gradient(90deg, var(--t-purple), transparent);}
+.sec-num{font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--text3);}
+h2{font-weight:700; font-size:20px; margin:0; color:var(--text);}
+h3{font-weight:700; font-size:16px; margin:0 0 6px;}
+.tagline{font-style:italic; font-size:13.5px; color:var(--text2); margin:0 0 12px;}
+p.body{font-size:15.5px; margin:12px 0; max-width:72ch;}
+p.note{font-size:13.5px; color:var(--text2); font-style:italic; margin:10px 0;}
+.box{background:var(--surface2); border:1px solid var(--border); border-radius:10px; padding:16px 18px; margin:14px 0; font-size:14.5px;}
+.box.t-teal{border-left:3px solid var(--teal);} .box.t-blue{border-left:3px solid var(--blue);}
+.box.t-red{border-left:3px solid var(--red); background:rgba(232,76,76,0.06);}
+.box.t-amber{border-left:3px solid var(--amber);} .box.t-purple{border-left:3px solid var(--purple);}
+.box b{color:var(--text); font-weight:700;} .box p{margin:7px 0;}
+.stat-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:10px; margin:16px 0;}
+.stat-card{background:var(--surface); border:1px solid var(--border); border-left:4px solid var(--c,var(--teal)); border-radius:6px; padding:14px 16px 14px 18px; text-align:left;}
+.stat-num{font-weight:800; font-size:26px; line-height:1.1; color:var(--c,var(--teal));}
+.stat-label{font-size:13px; color:var(--text2); margin-top:4px;}
+.steps{display:flex; flex-direction:column; gap:10px; margin:16px 0;}
+.step-row{display:flex; gap:14px; align-items:flex-start; background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:12px 16px;}
+.step-num{flex-shrink:0; width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:13px; color:#0a0e14; background:var(--c,var(--teal));}
+.step-body{font-size:14.5px;} .step-body b{color:var(--text);}
+.scroll{overflow-x:auto; -webkit-overflow-scrolling:touch;}
+table{width:100%; border-collapse:collapse; margin:14px 0; font-size:13.5px;}
+th{background:var(--surface2); color:var(--text); text-align:left; padding:9px 11px; font-weight:600; font-size:12px; letter-spacing:.02em; border-bottom:2px solid var(--border);}
+td{padding:9px 11px; border-bottom:1px solid var(--border); vertical-align:top;}
+tr:nth-child(even) td{background:rgba(255,255,255,0.02);}
+.xlist,.clist{list-style:none; padding-left:0; margin:10px 0;}
+.xlist li,.clist li{padding:5px 0 5px 26px; position:relative; font-size:14.5px;}
+.xlist li:before{content:"✗"; position:absolute; left:0; color:var(--red); font-weight:700;}
+.clist li:before{content:"✓"; position:absolute; left:0; color:var(--teal); font-weight:700;}
+.sources{font-size:13px; color:var(--text2); padding-left:20px;}
+.sources li{margin-bottom:7px;} .sources a{color:var(--text2);}
+footer{padding:26px 0 0; margin-top:6px; font-size:12.5px; color:var(--text3); font-style:italic;}
+@media (max-width:640px){ h1{font-size:25px;} .page{padding:0 16px 48px;} }
+@media (prefers-reduced-motion:reduce){ *{transition:none !important;} }
+
+/* ===== PRINT: light-mode token swap (mandatory, non-optional) ===== */
+@media print{
+  :root{
+    --bg:#f4f5f7; --surface:#ffffff; --surface2:#eef1f4; --border:#d7dde3;
+    --teal:#00a688; --blue:#1d4ed8; --red:#c53030; --amber:#b45309; --purple:#7c3aed;
+    --text:#0f1923; --text2:#4a5670; --text3:#6b7688;
+    --t-teal:rgba(0,166,136,0.08); --t-blue:rgba(29,78,216,0.07); --t-red:rgba(197,48,48,0.07);
+    --t-amber:rgba(180,83,9,0.08); --t-purple:rgba(124,58,237,0.07);
+  }
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  body{background:var(--bg) !important; color:var(--text) !important; font-size:11pt;}
+  nav{display:none;}
+  .page{max-width:none; padding:0;}
+  .alert{background:var(--t-teal) !important; border-color:var(--teal); color:var(--text) !important;}
+  .alert.flag{background:var(--t-red) !important; border-color:var(--red);}
+  .box.t-red{background:var(--t-red);}
+  td{color:var(--text) !important;}
+  .step-num{color:#ffffff;}
+  section, .box, table, .stat-card, .step-row{break-inside:avoid;}
+  h2, .sec-head{break-after:avoid;}
+  a{color:inherit; text-decoration:none;}
+  @page{margin:14mm 14mm 16mm;}
+}
+/* ===== END CV BASE ===== */
+</style>
+<style>
+/* page layout */
+
+.kicker{color:var(--teal);}
+.lenses{display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin:22px 0 8px;}
+.lens{display:block; text-decoration:none; color:var(--text); background:var(--surface); border:1px solid var(--border); border-top:4px solid var(--c); border-radius:0 0 10px 10px; padding:12px 14px;}
+.lens b{display:block; font-family:'Syne',sans-serif; font-size:15px; color:var(--c); margin-bottom:4px;}
+.lens span{font-size:13px; color:var(--text2);}
+.verdict{display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:11px; padding:1px 7px; border-radius:4px; border:1px solid var(--c); color:var(--c); white-space:nowrap;}
+@media (max-width:720px){ .lenses{grid-template-columns:1fr 1fr;} table{display:block; overflow-x:auto;} h1{overflow-wrap:anywhere;} }
+
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ a{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../workshop.html">The Workshop</a><span class="cv-sb-meta">Published 15 Oct 2026 · R. E. Suscitate &amp; A. Systole</span></nav>
+<div class="page">
+
+<header>
+  <div class="kicker">The Critical Vector · Workshop</div>
+  <h1>Human Factors: The Clinician as Part of the Treatment</h1>
+  <p class="byline">R. E. Suscitate &amp; A. Systole</p>
+  <p>Four ideas that circulate as self-help (checklists, presence, shift habits, and carrying the hard cases) each have a clinical evidence base. This guide keeps the parts that hold up and ties each one to the bedside.</p>
+  <div class="badges"><span class="badge ok">VERIFIED</span><span class="badge">12 primary sources, PubMed-verified</span></div>
+</header>
+
+<div class="lenses">
+  <a class="lens" href="#checklists" style="--c:var(--teal)"><b>Checklists</b><span>Pause points that prevent harm</span></a>
+  <a class="lens" href="#presence" style="--c:var(--blue)"><b>Presence</b><span>Communication patients and teams can feel</span></a>
+  <a class="lens" href="#shift" style="--c:var(--amber)"><b>Shift performance</b><span>Fatigue, fuel, and sleep</span></a>
+  <a class="lens" href="#weight" style="--c:var(--purple)"><b>Carrying the weight</b><span>Moral injury and peer support</span></a>
+</div>
+
+<nav><a href="#checklists">Checklists</a><a href="#presence">Presence</a><a href="#shift">Shift performance</a><a href="#weight">Carrying the weight</a><a href="#sources">Sources</a></nav>
+
+<section id="checklists">
+  <div class="sec-head"><span class="sec-num">01</span><h2>Checklists</h2></div>
+  <div class="stat-grid">
+    <div class="stat-card" style="--c:var(--teal)"><div class="stat-num">1.5% → 0.8%</div><div class="stat-label">Inpatient deaths after the 19-item WHO Surgical Safety Checklist, 8 hospitals (Haynes 2009)</div></div>
+    <div class="stat-card" style="--c:var(--teal)"><div class="stat-num">11% → 7%</div><div class="stat-label">Major complications, same study</div></div>
+  </div>
+  <div class="scroll"><table>
+    <tr><th>Study</th><th>Checklist</th><th>Result</th></tr>
+    <tr><td>Haynes 2009, 8 hospitals</td><td>WHO Surgical Safety Checklist</td><td>Deaths 1.5% → 0.8%; complications 11.0% → 7.0%</td></tr>
+    <tr><td>Pronovost 2006, 103 Michigan ICUs</td><td>Central line insertion bundle</td><td>Catheter bloodstream infections down by up to 66%, sustained to 18 months</td></tr>
+    <tr><td>Arriaga 2013, 17 OR teams (simulation)</td><td>Crisis checklists (arrest, hemorrhage)</td><td>Missed critical steps 23% → 6%; every team did better with the checklist</td></tr>
+    <tr><td>Urbach 2014, 101 Ontario hospitals</td><td>Mandated WHO checklist</td><td>No significant change: mortality 0.71% → 0.65% (OR 0.91, 0.80–1.03)</td></tr>
+  </table></div>
+  <div class="box t-amber"><p><b>The counterweight.</b> When Ontario mandated the same checklist province-wide, operative mortality and complications did not fall significantly (Urbach 2014). The successes share a pattern: teams that trained on the list, owned it, and used it at a real pause point. A checklist works when the team uses it, not when it exists. Design and buy-in are the intervention.</p></div>
+  <p class="body"><b>Building one that gets used</b> (adapted from Gawande):</p>
+  <div class="steps">
+    <div class="step-row"><div class="step-num">1</div><div class="step-body"><b>Pick the pause point:</b> the moment a mistake becomes expensive or impossible to undo (before induction, before incision, before the tube comes out).</div></div>
+    <div class="step-row"><div class="step-num">2</div><div class="step-body"><b>Choose the type.</b> DO-CONFIRM: work from memory, then stop and verify. READ-DO: read each step and do it, for rare or high-stakes tasks.</div></div>
+    <div class="step-row"><div class="step-num">3</div><div class="step-body"><b>Killer items only:</b> the steps most often skipped and most harmful when they are. Five to nine items.</div></div>
+    <div class="step-row"><div class="step-num">4</div><div class="step-body"><b>One line each, answerable yes or no,</b> readable in under a minute. Replace "check" and "ensure" with a concrete action.</div></div>
+    <div class="step-row"><div class="step-num">5</div><div class="step-body"><b>Force one conversation:</b> what gets said aloud, by whom, before what.</div></div>
+    <div class="step-row"><div class="step-num">6</div><div class="step-body"><b>Run it, then revise.</b> A checklist that survives its first real use unchanged wasn't tested.</div></div>
+  </div>
+  <p class="note">The extubation rescue plan in <i>extubation-decision-protocol</i> is a four-item READ-DO checklist at a pause point.</p>
+</section>
+
+<section id="presence">
+  <div class="sec-head c-blue"><span class="sec-num">02</span><h2>Presence</h2></div>
+  <p class="tagline">The "confident person" behaviors, translated to the bedside and the resuscitation bay.</p>
+  <div class="scroll"><table>
+    <tr><th>Behavior</th><th>Clinical version</th><th>Evidence</th></tr>
+    <tr><td>Greet first</td><td>Introduce yourself by name and role, every patient, every time</td><td><span class="verdict" style="--c:var(--teal)">HOLDS</span> Basic courtesy; patients often can't name who treated them</td></tr>
+    <tr><td>Sit down</td><td>Sit at the bedside for the conversation</td><td><span class="verdict" style="--c:var(--teal)">HOLDS</span> In a randomized pilot, patients perceived a seated physician as staying longer, though actual time didn’t change, and reported better understanding</td></tr>
+    <tr><td>Listen without interrupting</td><td>Ask “what else?” and let the opening statement finish</td><td><span class="verdict" style="--c:var(--teal)">HOLDS</span> Clinicians asked for the patient’s agenda in only 36% of recorded visits; when they did, two-thirds interrupted, at a median of 11 seconds. Uninterrupted patients needed a median of 6 seconds.</td></tr>
+    <tr><td>Pause before answering</td><td>Silence after bad news; let the family speak first</td><td><span class="verdict" style="--c:var(--teal)">HOLDS</span> A core step in structured serious-illness communication</td></tr>
+    <tr><td>Speak slower, steady pace</td><td>Calm, audible commands in a code; closed-loop communication</td><td><span class="verdict" style="--c:var(--teal)">HOLDS</span> Closed-loop communication is a core element of crisis resource management</td></tr>
+    <tr><td>Phone out of sight</td><td>Device down during family meetings and handoffs; use a structured handoff</td><td><span class="verdict" style="--c:var(--teal)">HOLDS</span> The I-PASS structured handoff cut medical errors 23% and preventable adverse events 30% across 9 hospitals, without lengthening handoffs (2.4 vs 2.5 min per patient)</td></tr>
+  </table></div>
+</section>
+
+<section id="shift">
+  <div class="sec-head c-amber"><span class="sec-num">03</span><h2>Shift performance</h2></div>
+  <p class="tagline">The "75-day non-negotiables," graded against the evidence.</p>
+  <div class="scroll"><table>
+    <tr><th>Rule</th><th>Verdict</th><th>What the evidence supports</th></tr>
+    <tr><td>10,000 steps a day</td><td><span class="verdict" style="--c:var(--amber)">ADJUST</span></td><td>Mortality benefit rises with steps and levels off around 6,000–8,000 a day in people over 60, and 8,000–10,000 in younger adults. More is fine; 10,000 isn't a threshold.</td></tr>
+    <tr><td>Lift 3 times a week</td><td><span class="verdict" style="--c:var(--teal)">HOLDS</span></td><td>Resistance training twice or more a week is the standard recommendation. Scheduling it next to a shift is a reasonable adherence tactic.</td></tr>
+    <tr><td>Protein 0.6 g/lb (about 1.3 g/kg)</td><td><span class="verdict" style="--c:var(--teal)">HOLDS</span></td><td>Above the 0.8 g/kg RDA and within the range used to support resistance training.</td></tr>
+    <tr><td>Bring real food</td><td><span class="verdict" style="--c:var(--teal)">HOLDS</span></td><td>Planned meals beat vending-machine decisions made while fatigued.</td></tr>
+    <tr><td>Thirst is mistaken for hunger</td><td><span class="verdict" style="--c:var(--red)">WEAK</span></td><td>Little direct evidence. Drink to thirst and urine color; don't use water to suppress hunger.</td></tr>
+    <tr><td>No caffeine after noon</td><td><span class="verdict" style="--c:var(--amber)">ADJUST</span></td><td>400 mg of caffeine taken even 6 hours before bed significantly disrupted sleep (Drake 2013). The rule is "none within about 6 hours of planned sleep," which on nights means none in the last third of the shift, not "after noon."</td></tr>
+    <tr><td>2-minute reset</td><td><span class="verdict" style="--c:var(--teal)">HOLDS</span></td><td>Brief breaks and breathing exercises are low-cost and reasonable; the clinical version is a deliberate pause before a high-stakes procedure.</td></tr>
+    <tr><td>Phone out of the bedroom</td><td><span class="verdict" style="--c:var(--teal)">HOLDS</span></td><td>Pre-sleep screen use is linked to later sleep onset and poorer sleep.</td></tr>
+  </table></div>
+  <div class="box t-red"><p><b>Missing from the list: fatigue itself, the habit with the strongest evidence.</b></p>
+    <p>Interns working traditional 24-hour shifts made 35.9% more serious medical errors and 5.6 times as many serious diagnostic errors than on a schedule without extended shifts (Landrigan 2004).</p>
+    <p>After an extended shift, the odds of a motor vehicle crash were 2.3 times higher and of a near miss 5.9 times higher; each extended shift in a month raised the risk of a crash on the commute home by 16% (Barger 2005).</p>
+    <p>Protect dark, quiet sleep after nights, nap where allowed, and treat the drive home as the riskiest part of the shift.</p></div>
+</section>
+
+<section id="weight">
+  <div class="sec-head c-purple"><span class="sec-num">04</span><h2>Carrying the weight</h2></div>
+  <p class="body"><b>Moral injury</b> is the distress of being part of, or unable to prevent, outcomes that violate one's sense of what's right: rationed care, families saying goodbye by video, patients dying alone. The pandemic produced it at scale. The <b>second victim</b> effect is the related distress after an adverse event or error.</p>
+  <ul class="clist">
+    <li>Peer support works best when it's structured and available within hours, not weeks. RISE (Resilience In Stressful Events), the Johns Hopkins peer responder program, is a widely copied model.</li>
+    <li>A short team debrief after a death or a bad resuscitation normalizes the reaction and catches system problems.</li>
+    <li>Know your institution's peer support line before you need it.</li>
+  </ul>
+  <p class="note">Acknowledging the people who worked through the pandemic is not political. Public health decisions will keep being debated; the clinicians who carried those years still need support.</p>
+</section>
+
+<section id="sources">
+  <div class="sec-head"><span class="sec-num">05</span><h2>Sources</h2></div>
+  <ol class="sources">
+    <li>Haynes AB, Weiser TG, Berry WR, et al. A surgical safety checklist to reduce morbidity and mortality in a global population. <i>N Engl J Med</i>. 2009;360(5):491-499. doi:10.1056/NEJMsa0810119</li>
+    <li>Urbach DR, Govindarajan A, Saskin R, et al. Introduction of surgical safety checklists in Ontario, Canada. <i>N Engl J Med</i>. 2014;370(11):1029-1038. doi:10.1056/NEJMsa1308261</li>
+    <li>Gawande A. <i>The Checklist Manifesto</i>. Metropolitan Books; 2009.</li>
+    <li>Singh Ospina N, Phillips KA, Rodriguez-Gutierrez R, et al. Eliciting the patient's agenda: secondary analysis of recorded clinical encounters. <i>J Gen Intern Med</i>. 2019;34(1):36-40. doi:10.1007/s11606-018-4540-5</li>
+    <li>Swayden KJ, Anderson KK, Connelly LM, et al. Effect of sitting vs. standing on perception of provider time at bedside: a pilot study. <i>Patient Educ Couns</i>. 2011;86(2):166-171. doi:10.1016/j.pec.2011.05.024</li>
+    <li>Pronovost P, Needham D, Berenholtz S, et al. An intervention to decrease catheter-related bloodstream infections in the ICU. <i>N Engl J Med</i>. 2006;355(26):2725-2732. doi:10.1056/NEJMoa061115</li>
+    <li>Arriaga AF, Bader AM, Wong JM, et al. Simulation-based trial of surgical-crisis checklists. <i>N Engl J Med</i>. 2013;368(3):246-253. doi:10.1056/NEJMsa1204720</li>
+    <li>Starmer AJ, Spector ND, Srivastava R, et al. Changes in medical errors after implementation of a handoff program. <i>N Engl J Med</i>. 2014;371(19):1803-1812. doi:10.1056/NEJMsa1405556</li>
+    <li>Landrigan CP, Rothschild JM, Cronin JW, et al. Effect of reducing interns’ work hours on serious medical errors in intensive care units. <i>N Engl J Med</i>. 2004;351(18):1838-1848. doi:10.1056/NEJMoa041406</li>
+    <li>Barger LK, Cade BE, Ayas NT, et al. Extended work shifts and the risk of motor vehicle crashes among interns. <i>N Engl J Med</i>. 2005;352(2):125-134. doi:10.1056/NEJMoa041401</li>
+    <li>Edrees H, et al. Implementing the RISE second victim support programme at the Johns Hopkins Hospital: a case study. <i>BMJ Open</i>. 2016. PMID 27694486.</li>
+    <li>Paluch AE, Bajpai S, Bassett DR, et al. Daily steps and all-cause mortality: a meta-analysis of 15 international cohorts. <i>Lancet Public Health</i>. 2022;7(3):e219-e228. doi:10.1016/S2468-2667(21)00302-9</li>
+    <li>Drake C, Roehrs T, Shambroom J, Roth T. Caffeine effects on sleep taken 0, 3, or 6 hours before going to bed. <i>J Clin Sleep Med</i>. 2013;9(11):1195-1200. doi:10.5664/jcsm.3170</li>
+  </ol>
+</section>
+
+<footer>The Critical Vector · Direction and magnitude.</footer>
+</div>
+</body>
+</html>

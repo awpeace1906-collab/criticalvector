@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dexmedetomidine &amp; Polyuria — Critical Vector</title>
+<style>
+  :root {
+    --bg: #121212;
+    --card: #1a1a1a;
+    --text: #e8e8e8;
+    --muted: #9a9a9a;
+    --line: #2c2c2c;
+  }
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0 0 60px 0;
+    line-height: 1.5;
+  }
+  header { padding: 28px 20px 18px 20px; border-bottom: 1px solid var(--line); }
+  header .kicker {
+    font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 6px;
+  }
+  header h1 { font-size: 24px; margin: 0 0 8px 0; }
+  header p { color: var(--muted); font-size: 14px; margin: 0; }
+  .note-banner {
+    margin: 16px 20px;
+    background: #142a1e;
+    border: 1px solid #1f6f3e;
+    color: #c9f0d6;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 13.5px;
+    font-weight: 600;
+  }
+  nav {
+    display: flex; flex-wrap: wrap; gap: 6px;
+    padding: 16px 20px; border-bottom: 1px solid var(--line);
+  }
+  nav a {
+    font-size: 12px; color: var(--text); background: var(--card);
+    border: 1px solid var(--line); padding: 6px 10px; border-radius: 20px;
+    text-decoration: none; white-space: nowrap;
+  }
+  main { padding: 0 20px; max-width: 720px; margin: 0 auto; }
+  section { padding: 24px 0; border-bottom: 1px solid var(--line); }
+  section h2 {
+    font-size: 19px; margin: 0 0 12px 0; padding-bottom: 10px;
+    border-bottom: 2px solid var(--accent, #888);
+  }
+  section h2 .secnum { color: var(--accent, #888); margin-right: 6px; }
+  .box {
+    background: var(--tint, var(--card));
+    border: 1px solid var(--accent, var(--line));
+    border-radius: 8px; padding: 14px 16px; margin: 12px 0;
+    color: #1a1a1a; font-size: 14px;
+  }
+  .box p { margin: 6px 0; }
+  .box b { color: #000; }
+  p.body { font-size: 14.5px; margin: 10px 0; }
+  p.note { font-size: 12.5px; color: var(--muted); font-style: italic; margin: 8px 0; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13.5px; }
+  th { background: var(--accent, #444); color: #fff; text-align: left; padding: 8px 10px; }
+  td { padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  tr:nth-child(even) td { background: rgba(255,255,255,0.03); }
+  .flow { display: flex; flex-direction: column; gap: 8px; margin: 12px 0; }
+  .flow .step {
+    border: 1px solid var(--accent, var(--line));
+    background: var(--tint, var(--card));
+    color: #1a1a1a; border-radius: 8px; padding: 10px 14px; font-size: 13.5px;
+  }
+  .arrow { text-align: center; color: var(--muted); font-size: 12px; }
+  .checklist { list-style: none; padding-left: 0; margin: 10px 0; }
+  .checklist li { padding: 4px 0 4px 26px; position: relative; font-size: 14px; }
+  .checklist li:before { content: "✓"; position: absolute; left: 0; color: #4ade80; font-weight: 700; }
+  .sources { font-size: 12.5px; color: var(--muted); padding-left: 18px; }
+  .sources li { margin-bottom: 6px; }
+  footer {
+    padding: 24px 20px 0 20px; max-width: 720px; margin: 0 auto;
+    font-size: 12px; color: var(--muted);
+  }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style id="cv-retheme">
+/* CV re-theme v1.0 — maps this file onto _cv-schema.html tokens */
+:root{--bg:#0a0e14; --surface:#111720; --surface2:#182030; --border:rgba(255,255,255,0.08); --teal:#00d4aa; --blue:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa; --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670; --t-teal:rgba(0,212,170,0.10); --t-blue:rgba(96,165,250,0.10); --t-red:rgba(232,76,76,0.10); --t-amber:rgba(245,158,11,0.10); --t-purple:rgba(167,139,250,0.10);}
+:root{--card:var(--surface); --muted:var(--text2); --line:var(--border);}
+body{font-family:'Source Serif 4', Georgia, serif !important; background:var(--bg) !important; color:var(--text);}
+h1,h2,h3,h4,th,nav a,.label,.lbl,.badge,.pill{font-family:'Syne', sans-serif !important;}
+h1{font-weight:800 !important; letter-spacing:.005em;}
+h2,h3{font-weight:700;}
+.kicker, header .kicker{font-family:'IBM Plex Mono', monospace !important; color:var(--teal) !important; letter-spacing:.12em; font-size:11px !important;}
+code, pre, .mono{font-family:'IBM Plex Mono', monospace;}
+main{max-width:900px !important;}
+header{max-width:900px; margin:0 auto;}
+section h2{font-size:20px; border-bottom:2px solid var(--accent, var(--teal)) !important;}
+.box{background:var(--surface2) !important; color:var(--text) !important; border:1px solid var(--border) !important; border-left:3px solid var(--accent, var(--teal)) !important; border-radius:10px; font-size:14.5px;}
+.box b, .box strong{color:var(--text) !important;}
+th{background:var(--surface2) !important; color:var(--text) !important; border-bottom:2px solid var(--accent, var(--border));}
+nav a{background:var(--surface) !important; color:var(--text2) !important; border:1px solid var(--border) !important; font-weight:600;}
+nav a:hover{color:var(--text) !important; border-color:var(--teal) !important;}
+.alert{background:var(--t-amber) !important; border:1px solid rgba(245,158,11,0.35) !important; color:#fde6b8 !important;}
+.note-banner{background:var(--t-amber) !important; color:var(--text) !important; border-color:rgba(245,158,11,0.35) !important;}
+.statgrid > div{background:var(--surface) !important; border:1px solid var(--border) !important; border-left:4px solid var(--accent, var(--teal)) !important; text-align:left !important; color:var(--text) !important;}
+.statgrid .num{font-family:'Syne', sans-serif; color:var(--accent, var(--teal)) !important;}
+.statgrid .lbl{color:var(--text2) !important;}
+.card{background:var(--surface) !important; border-color:var(--border) !important; color:var(--text) !important;}
+.fig{background:var(--surface) !important; border-color:var(--border) !important;}
+footer{font-style:italic; color:var(--text3) !important;}
+.step, .step *, .checklist li, .checklist li *, .flow *{color:var(--text) !important;}
+[style*="--accent:#7A1620"],[style*="--accent:#9C2B3B"],[style*="--accent:#8B2635"]{--accent:var(--red) !important; --tint:var(--t-red) !important;}
+[style*="--accent:#5B3A8E"]{--accent:var(--purple) !important; --tint:var(--t-purple) !important;}
+[style*="--accent:#1F6F5C"],[style*="--accent:#2E6B3E"]{--accent:var(--teal) !important; --tint:var(--t-teal) !important;}
+[style*="--accent:#1F3A5F"],[style*="--accent:#3A5A8C"]{--accent:var(--blue) !important; --tint:var(--t-blue) !important;}
+[style*="--accent:#B5591F"],[style*="--accent:#96700A"]{--accent:var(--amber) !important; --tint:var(--t-amber) !important;}
+[style*="--accent:#444444"]{--accent:var(--text3) !important; --tint:var(--surface2) !important;}
+@media print{
+  :root{--bg:#f4f5f7; --surface:#ffffff; --surface2:#eef1f4; --border:#d7dde3; --teal:#00a688; --blue:#1d4ed8; --red:#c53030; --amber:#b45309; --purple:#7c3aed; --text:#0f1923; --text2:#4a5670; --text3:#6b7688;
+    --t-teal:rgba(0,166,136,0.08); --t-blue:rgba(29,78,216,0.07); --t-red:rgba(197,48,48,0.07); --t-amber:rgba(180,83,9,0.08); --t-purple:rgba(124,58,237,0.07); --card:#ffffff; --muted:#4a5670; --line:#d7dde3;}
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  html, body{background:#f4f5f7 !important; color:#0f1923 !important;}
+  nav{display:none !important;}
+  td{color:#0f1923 !important;}
+  .box{background:#ffffff !important; color:#0f1923 !important;}
+  .alert, .note-banner{color:#0f1923 !important;}
+  .alert{background:rgba(180,83,9,0.08) !important;}
+  .step, .step *, .checklist li, .flow *{color:#0f1923 !important;}
+  section, .box, table, .card, .step, .statgrid > div, .fig{break-inside:avoid;}
+  h2{break-after:avoid;}
+  a{color:inherit; text-decoration:none;}
+}
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ a{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../workshop.html">The Workshop</a><span class="cv-sb-meta">Published 6 Oct 2026 · R. E. Suscitate &amp; A. Systole</span></nav>
+
+<header>
+  <div class="kicker">Critical Vector · Spot It, Explain It, Fix It</div>
+  <h1>Dexmedetomidine &amp; Polyuria</h1>
+  <p>The diabetes-insipidus mimic hiding on your sedation drip. Verified against the
+  published case literature. July 2026.</p>
+</header>
+
+<div class="note-banner">
+  VERIFIED: the sentinel case (sodium 156, potassium under 1.8, Torsades de Pointes in a
+  burn patient) is a real, citable case report, not a dramatized hypothetical. Mechanism,
+  recognition criteria, and management all check out against the published literature.
+</div>
+
+<nav>
+  <a href="#s1">1 · The scenario</a>
+  <a href="#s2">2 · How urine is normally concentrated</a>
+  <a href="#s3">3 · How dex opens the floodgates</a>
+  <a href="#s4">4 · How to recognize it</a>
+  <a href="#s5">5 · What the evidence actually says</a>
+  <a href="#s6">6 · Don't get fooled</a>
+  <a href="#s7">7 · What to do</a>
+  <a href="#s8">8 · The sentinel case</a>
+  <a href="#s9">9 · Quick card &amp; sources</a>
+</nav>
+
+<main>
+
+<section id="s1" style="--accent:#1F6F5C; --tint:#E6F2EF;">
+  <h2><span class="secnum">1.</span>The Scenario</h2>
+  <p class="body">You start a dexmedetomidine infusion. The urine bag keeps filling. It
+  mimics diabetes insipidus: a lot of dilute urine, and if you miss it, sodium climbs fast
+  while nobody's watching. Suspect the drug before you go chasing a diabetes insipidus
+  workup.</p>
+  <p class="note">This is not a rare curiosity. It shows up across ICU, cardiac, and
+  neuro populations, and in children, wherever dexmedetomidine infusions run.</p>
+</section>
+
+<section id="s2" style="--accent:#5B3A8E; --tint:#EFE9F5;">
+  <h2><span class="secnum">2.</span>How Urine Is Normally Concentrated</h2>
+  <div class="flow">
+    <div class="step"><b>AVP (ADH)</b> is released from the posterior pituitary in
+    response to rising plasma osmolality.</div>
+    <div class="arrow">↓</div>
+    <div class="step">AVP binds the <b>V2 receptor</b> on the basolateral membrane of the
+    renal collecting duct cell.</div>
+    <div class="arrow">↓</div>
+    <div class="step"><b>cAMP</b> signaling drives insertion of <b>AQP2 water
+    channels</b> into the apical membrane.</div>
+    <div class="arrow">↓</div>
+    <div class="step"><b>Water is reabsorbed</b>, and urine is concentrated.</div>
+  </div>
+  <p class="note">Hold this chain in mind: dexmedetomidine interrupts it at more than one
+  point.</p>
+</section>
+
+<section id="s3" style="--accent:#B5591F; --tint:#F8ECE0;">
+  <h2><span class="secnum">3.</span>How Dex Opens the Floodgates</h2>
+  <p class="body">Dexmedetomidine is a highly selective alpha-2 agonist. The proposed
+  mechanism hits the AVP-AQP2 axis at three separate levels, which is part of why the
+  effect is more pronounced than a single-pathway drug interaction would predict.</p>
+  <div class="box">
+    <p><b>Brain:</b> dexmedetomidine inhibits AVP release from the hypothalamic
+    paraventricular nucleus and magnocellular neurons, a central effect.</p>
+    <p><b>Kidney:</b> a peripheral effect weakens the AVP-to-AQP2 signal directly at the
+    renal tubule, independent of how much AVP is actually circulating.</p>
+    <p><b>Imidazoline receptors:</b> a third, non-AVP-dependent pathway drives salt and
+    free water loss on its own.</p>
+  </div>
+  <p class="note">Net result: a lot of dilute urine, through at least three redundant
+  routes. That redundancy is why stopping the drug, rather than chasing any single
+  pathway, is the fix.</p>
+</section>
+
+<section id="s4" style="--accent:#2E6B3E; --tint:#E9F3EA;">
+  <h2><span class="secnum">4.</span>How to Recognize It</h2>
+  <div class="box">
+    <ul class="checklist" style="color:#1a1a1a;">
+      <li>Urine output over 3 mL/kg/hr</li>
+      <li>Very dilute: urine osmolality under 250 to 300 mOsm/kg</li>
+      <li>Sodium normal at first, then climbing</li>
+      <li>Timing is the tell: starts on dex, stops when dex stops</li>
+    </ul>
+  </div>
+  <p class="note">That last line is doing most of the diagnostic work. A temporal
+  relationship this clean, onset with the infusion and resolution after it stops, is what
+  separates this from a true, unrelated diabetes insipidus.</p>
+</section>
+
+<section id="s5" style="--accent:#7A1620; --tint:#F5E4E5;">
+  <h2><span class="secnum">5.</span>What the Evidence Actually Says</h2>
+  <p class="body">This is genuinely a case-report-level literature, not a large-trial one,
+  and it's worth being upfront about that rather than overselling the evidence base.</p>
+  <div class="box">
+    <p>A 2020 case series review found roughly eight published reports of probable
+    dexmedetomidine-induced polyuria, most in the perioperative setting; notably, four of
+    those eight occurred during spinal fusion surgery specifically, an association that is
+    interesting but not yet explained.</p>
+    <p>ICU reports exist too, though they're rarer than perioperative ones: at least two
+    published ICU cases, one following prolonged infusion during alcohol withdrawal
+    management, another attributed to a locus coeruleus-mediated central mechanism.</p>
+    <p>The effect has been reported after a single loading dose and at infusion rates as
+    low as 0.2 mcg/kg/hr, so this isn't purely a high-dose or long-duration phenomenon.</p>
+  </div>
+  <p class="note">No large prospective trial has quantified true incidence. What exists is
+  a consistent pattern across a couple dozen individually published cases, which is real
+  evidence, just a different tier of evidence than an RCT.</p>
+</section>
+
+<section id="s6" style="--accent:#3A5A8C; --tint:#E8ECF5;">
+  <h2><span class="secnum">6.</span>Don't Get Fooled</h2>
+  <p class="body">This is a diagnosis of exclusion. Before pinning polyuria on
+  dexmedetomidine, rule out the other things that produce the same urine bag:</p>
+  <table>
+    <tr><th>Category</th><th>Look for</th></tr>
+    <tr><td>Osmotic diuresis</td><td>Glucose, mannitol, IV contrast load</td></tr>
+    <tr><td>Diuretics / SGLT2 inhibitors</td><td>Recent dosing, home medication list</td></tr>
+    <tr><td>True central DI</td><td>Brain injury, pituitary surgery, trauma</td></tr>
+    <tr><td>Nephrogenic DI</td><td>Lithium, hypercalcemia, hypokalemia</td></tr>
+    <tr><td>Post-obstructive diuresis</td><td>Recent Foley placement, recovering AKI</td></tr>
+    <tr><td>Cerebral salt wasting</td><td>Sodium goes low here, not high, the key
+    differentiator</td></tr>
+  </table>
+  <p class="note">Dilute urine, plus a timeline that tracks the dex infusion, plus
+  resolution when it's stopped, is the combination that points to the drug rather than one
+  of these alternatives.</p>
+</section>
+
+<section id="s7" style="--accent:#1F3A5F; --tint:#E7EDF4;">
+  <h2><span class="secnum">7.</span>What to Do</h2>
+  <div class="flow">
+    <div class="step"><b>1. Confirm:</b> urine output, sodium, osmolality, glucose.</div>
+    <div class="step"><b>2. Stop or cut the dex:</b> usually settles within hours.</div>
+    <div class="step"><b>3. Replace water and electrolytes:</b> correct sodium gently,
+    not aggressively.</div>
+    <div class="step"><b>4. DDAVP is rarely needed:</b> stopping dex is the actual cure in
+    most reported cases.</div>
+    <div class="step"><b>5. Don't over-investigate</b> once the temporal link to the
+    infusion is clear. An extensive DI workup is reasonable exactly once, not repeatedly,
+    once the pattern is established.</div>
+  </div>
+</section>
+
+<section id="s8" style="--accent:#96700A; --tint:#F7EFDD;">
+  <h2><span class="secnum">8.</span>The Sentinel Case</h2>
+  <p class="body">The specific numbers in the warning box (sodium 156, potassium under
+  1.8, then Torsades) come from a real published case, not a composite or a dramatized
+  worst case.</p>
+  <div class="box">
+    <p><b>Probable Dexmedetomidine Induced Diabetes Insipidus: A Case Review</b> (2021).
+    A 32-year-old male with a 50% total body surface area burn, admitted to the surgical
+    ICU. Shortly after starting dexmedetomidine at 0.2 mcg/kg/hr and up-titrating to
+    0.8 mcg/kg/hr, he developed polyuria exceeding 3 liters over 6 hours. The resulting
+    electrolyte shifts, sodium 156 mmol/L and potassium under 1.8 mmol/L, precipitated
+    Torsades de Pointes.</p>
+  </div>
+  <p class="note">Severe hypokalemia this profound, under 1.8 mmol/L, is itself a
+  medical emergency independent of the sodium derangement. This case is a reminder that
+  the electrolyte free-fall, not the urine volume itself, is what actually kills a patient
+  here.</p>
+</section>
+
+<section id="s9" style="--accent:#444444; --tint:#EFEFEF; border-bottom:none;">
+  <h2><span class="secnum">9.</span>Quick Reference Card &amp; Primary Sources</h2>
+  <table>
+    <tr><th>Question</th><th>Answer</th></tr>
+    <tr><td>What triggers suspicion?</td><td>Urine output &gt;3 mL/kg/hr, dilute (osmolality &lt;250-300 mOsm/kg), starting after dex begins</td></tr>
+    <tr><td>What confirms it over true DI?</td><td>Resolution within hours of stopping the infusion</td></tr>
+    <tr><td>What's the fix?</td><td>Stop or reduce the dex; replace fluids and electrolytes gently</td></tr>
+    <tr><td>When is DDAVP needed?</td><td>Rarely; stopping dex is usually sufficient</td></tr>
+    <tr><td>What's the worst-case outcome if missed?</td><td>Severe hypernatremia plus profound hypokalemia, arrhythmia risk including Torsades de Pointes</td></tr>
+  </table>
+  <p class="body"><b>Primary sources checked for this guide:</b></p>
+  <ul class="sources">
+    <li>Probable Dexmedetomidine Induced Diabetes Insipidus: A Case Review. Case report, 2021. PubMed ID 34670426 (sodium 156, potassium &lt;1.8, Torsades de Pointes, 50% TBSA burn patient).</li>
+    <li>Uddin S, et al. Dexmedetomidine Induced Polyuria in the Intensive Care Unit. Case Reports in Critical Care. 2021. doi:10.1155/2021/8850116.</li>
+    <li>Intraoperative dexmedetomidine-induced polyuria from a loading dose: a case report. PMC7132803 (literature review identifying 8 prior cases, 4 during spinal fusion surgery).</li>
+    <li>A nephrogenic mechanism underlies dexmedetomidine-induced polyuria: a case report. ScienceDirect, 2023 (three-mechanism model: central, peripheral renal, imidazoline receptor).</li>
+    <li>Intraoperative hypernatremia and polyuric syndrome induced by dexmedetomidine. PubMed ID 23377505.</li>
+    <li>Dexmedetomidine-Associated Polyuria Mimicking Diabetes Insipidus. PubMed ID 41809951, 2026 (5-day ICU infusion for alcohol withdrawal, urine output to 6.75 L/day).</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  This guide checks and expands a 9-slide post on dexmedetomidine-associated polyuria. The
+  headline case is real and correctly cited; the broader claim that this is a
+  case-report-level phenomenon rather than an RCT-confirmed one is accurate and worth
+  keeping in view when deciding how much workup a given patient needs. Verified as of July
+  2026.
+<div class="cv-tagline" style="margin-top:8px">The Critical Vector · Direction and magnitude.</div></footer>
+
+</body>
+</html>
