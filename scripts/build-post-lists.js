@@ -32,7 +32,7 @@ const SENTINEL_END   = '<!-- CV:POST-LIST-END -->';
 function buildRows(section) {
   return posts
     .filter(p => p.section === section)
-    .map(p => `      <a href="${p.file}" class="post-row">
+    .map(p => `      <a href="${p.file}" class="post-row ${p.section}-row">
         <div class="post-info">
           <div class="post-type ${p.typeClass}">${p.type}</div>
           <div class="post-title">${p.title}</div>
@@ -107,7 +107,7 @@ ${badges}
       .map(section => posts.find(p => p.section === section))
       .filter(Boolean)
       .sort((a, b) => new Date(b.date) - new Date(a.date));
-    const recentRows = recent.map(p => `        <a href="${p.file}" class="post-row">
+    const recentRows = recent.map(p => `        <a href="${p.file}" class="post-row ${p.section}-row">
           <div class="post-info">
             <div class="post-type ${p.section}-type">${SECTION_NAMES[p.section]} · ${p.type}</div>
             <div class="post-title">${p.title}</div>

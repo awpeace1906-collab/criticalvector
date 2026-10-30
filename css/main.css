@@ -965,6 +965,11 @@ img { max-width: 100%; display: block; }
   line-height: 1.4;
   margin-bottom: 3px;
 }
+.continuum-row  .post-title { color: var(--blue); }
+.workshop-row   .post-title { color: var(--teal); }
+.locker-row     .post-title { color: var(--amber); }
+.flightdeck-row .post-title { color: var(--red-tag); }
+[data-stack] .rname         { color: var(--purple); }
 .post-meta {
   font-family: var(--font-sans);
   font-size: 11px;
