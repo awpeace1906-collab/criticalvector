@@ -1,10 +1,8 @@
 // ── THEME ──
 const html = document.documentElement;
 const saved = localStorage.getItem('cv-theme');
-if (saved) {
-  html.setAttribute('data-theme', saved);
-  updateToggleLabel(saved);
-}
+if (saved) html.setAttribute('data-theme', saved);
+updateToggleLabel(html.getAttribute('data-theme') || 'dark');
 
 function toggleTheme() {
   const current = html.getAttribute('data-theme') || 'dark';
@@ -14,24 +12,43 @@ function toggleTheme() {
   updateToggleLabel(next);
 }
 
+// The button offers the mode you would switch to
 function updateToggleLabel(theme) {
   const label = document.querySelector('.mode-label');
-  if (label) label.textContent = theme === 'dark' ? 'Dark' : 'Light';
+  const icon = document.querySelector('.mode-icon');
+  if (label) label.textContent = theme === 'dark' ? 'Light' : 'Dark';
+  if (icon) icon.textContent = theme === 'dark' ? '☀' : '☾';
 }
+
+const modeToggle = document.getElementById('modeToggle');
+if (modeToggle) modeToggle.addEventListener('click', toggleTheme);
 
 // ── MOBILE MENU ──
-function toggleMobileMenu() {
-  const menu = document.getElementById('mobileMenu');
-  if (menu) menu.classList.toggle('open');
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.getElementById('navLinks');
+
+function setMenu(open) {
+  navLinks.classList.toggle('open', open);
+  navToggle.setAttribute('aria-expanded', String(open));
 }
 
-// Close menu on outside click
-document.addEventListener('click', function(e) {
-  const menu = document.getElementById('mobileMenu');
-  const hamburger = document.querySelector('.cv-hamburger');
-  if (menu && menu.classList.contains('open')) {
-    if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
-      menu.classList.remove('open');
-    }
-  }
-});
+if (navToggle && navLinks) {
+  navToggle.addEventListener('click', function(e) {
+    e.stopPropagation();
+    setMenu(!navLinks.classList.contains('open'));
+  });
+
+  // Close on outside click, link tap or Escape
+  document.addEventListener('click', function(e) {
+    if (navLinks.classList.contains('open') && !navLinks.contains(e.target)) setMenu(false);
+  });
+  navLinks.addEventListener('click', function(e) {
+    if (e.target.closest('a')) setMenu(false);
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') setMenu(false);
+  });
+  window.addEventListener('resize', function() {
+    if (window.innerWidth > 860) setMenu(false);
+  });
+}
