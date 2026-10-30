@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Push/Pull: Albumin &amp; Furosemide | The Critical Vector</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400;1,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0e14; --surface:#111720; --surface2:#182030; --border:rgba(255,255,255,.08);
+    --accent:#00d4aa; --accent2:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa;
+    --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670;
+  }
+  *{box-sizing:border-box;}
+  body{
+    background:var(--bg); color:var(--text); margin:0; padding:2.5rem 1rem 5rem;
+    font-family:'Source Serif 4', Georgia, serif; line-height:1.65;
+  }
+  .page{max-width:900px; margin:0 auto;}
+  h1,h2,h3,.sec-num,.kicker,th,.label,.step-num{font-family:'Syne', sans-serif;}
+  code, .mono{font-family:'IBM Plex Mono', monospace;}
+
+  .kicker{color:var(--accent); font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; font-weight:600;}
+  h1{font-weight:800; font-size:1.9rem; margin:.4rem 0 .5rem; color:var(--text);}
+  header p{font-style:italic; color:var(--text2); font-size:1rem; margin:0 0 1.5rem;}
+
+  .alert{
+    background:rgba(0,212,170,.10); border:1px solid rgba(0,212,170,.28); color:#bdf5e8;
+    border-radius:10px; padding:1rem 1.2rem; margin:1.2rem 0 2rem; font-size:.98rem;
+  }
+  .alert strong{color:var(--accent);}
+
+  .sec-head{
+    display:flex; align-items:baseline; gap:.7rem; padding:.6rem .9rem;
+    border-left:4px solid var(--accent);
+    background:linear-gradient(90deg, rgba(0,212,170,.10), transparent);
+    border-radius:6px; margin-top:2.6rem;
+  }
+  .sec-head.c-blue{border-left-color:var(--accent2); background:linear-gradient(90deg, rgba(96,165,250,.12), transparent);}
+  .sec-head.c-red{border-left-color:var(--red); background:linear-gradient(90deg, rgba(232,76,76,.12), transparent);}
+  .sec-head.c-amber{border-left-color:var(--amber); background:linear-gradient(90deg, rgba(245,158,11,.12), transparent);}
+  .sec-head.c-purple{border-left-color:var(--purple); background:linear-gradient(90deg, rgba(167,139,250,.12), transparent);}
+  .sec-num{color:var(--text3); font-size:.85rem; font-weight:600;}
+  .sec-head h2{margin:0; font-size:1.15rem; font-weight:700; color:var(--text);}
+  .tagline{font-style:italic; color:var(--text2); font-size:.92rem; margin:.4rem 0 1rem; padding-left:.9rem;}
+
+  p{margin:.8rem 0;}
+
+  .box{background:var(--surface2); border:1px solid var(--border); border-radius:10px; padding:1rem 1.2rem; margin:1.1rem 0;}
+  .box.t-teal{border-left:3px solid var(--accent);}
+  .box.t-blue{border-left:3px solid var(--accent2);}
+  .box.t-amber{border-left:3px solid var(--amber);}
+  .box.t-purple{border-left:3px solid var(--purple);}
+  .box.t-red{border-left:3px solid var(--red); background:rgba(232,76,76,.06);}
+  .box.t-green{border-left:3px solid var(--accent); background:rgba(0,212,170,.06);}
+  .box .label{display:block; font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; font-weight:700; margin-bottom:.4rem;}
+  .box.t-teal .label, .box.t-green .label{color:var(--accent);}
+  .box.t-blue .label{color:var(--accent2);}
+  .box.t-amber .label{color:var(--amber);}
+  .box.t-purple .label{color:var(--purple);}
+  .box.t-red .label{color:var(--red);}
+
+  table{width:100%; border-collapse:collapse; margin:1.1rem 0; font-size:.88rem;}
+  th{
+    background:var(--surface2); color:var(--text); text-align:left; padding:.55rem .65rem;
+    font-size:.74rem; text-transform:uppercase; letter-spacing:.05em; font-weight:700; border-bottom:1px solid var(--border);
+  }
+  td{padding:.6rem .65rem; border-bottom:1px solid var(--border); vertical-align:top; color:var(--text);}
+  tr:nth-child(even) td{background:rgba(255,255,255,.02);}
+
+  .step-row{display:flex; gap:.9rem; margin:1rem 0; align-items:flex-start;}
+  .step-num{
+    flex:none; width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    font-weight:800; font-size:1rem; color:#08110e;
+  }
+  .step-body h4{margin:.1rem 0 .25rem; font-family:'Syne',sans-serif; font-size:1rem; color:var(--text);}
+  .step-body p{margin:0; color:var(--text2); font-size:.93rem;}
+
+  .eq{
+    font-family:'IBM Plex Mono',monospace; background:#060a0f; border:1px solid var(--border);
+    border-radius:6px; padding:.6rem .8rem; display:block; margin:.7rem 0; color:var(--accent); font-size:.92rem;
+  }
+
+  .xref{border-left:3px solid var(--accent2); background:var(--surface2); border-radius:8px; padding:.8rem 1rem; margin:1rem 0; font-size:.92rem; color:var(--text2);}
+
+  ul.plain{margin:.6rem 0; padding-left:1.3rem;}
+  ul.plain li{margin-bottom:.4rem;}
+  ul.check li{list-style:none; margin-left:-1.3rem; padding-left:1.6rem; position:relative; margin-bottom:.5rem;}
+  ul.check.good li::before{content:"✓"; position:absolute; left:0; color:var(--accent); font-weight:700;}
+  ul.check.bad li::before{content:"✗"; position:absolute; left:0; color:var(--red); font-weight:700;}
+
+  .sources{list-style:none; padding:0; margin:1rem 0; font-size:.85rem; color:var(--text2);}
+  .sources li{padding:.55rem 0; border-bottom:1px solid var(--border);}
+  .sources a{color:var(--accent);}
+  .refnum{color:var(--amber); font-weight:600; font-family:'IBM Plex Mono',monospace; font-size:.85em;}
+
+  footer{font-style:italic; color:var(--text3); font-size:.85rem; text-align:center; margin-top:3rem; padding-top:1.2rem; border-top:1px solid var(--border);}
+
+  @media print{
+    :root{
+      --bg:#f4f5f7; --surface:#fff; --surface2:#eef1f4; --border:#d7dde3;
+      --accent:#00a688; --accent2:#1d4ed8; --red:#c53030; --amber:#b45309; --purple:#7c3aed;
+      --text:#0f1923; --text2:#4a5670; --text3:#6b7688;
+    }
+    body{background:var(--bg) !important; color:var(--text) !important;}
+    .alert{background:rgba(0,166,136,.08) !important; color:#0f1923 !important;}
+    td{color:var(--text) !important;}
+  }
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../continuum.html">The Continuum</a><span class="cv-sb-meta">Published 17 Aug 2026 · R. E. Suscitate &amp; A. Systole</span></nav>
+<div class="page">
+
+<header>
+  <div class="kicker">The Critical Vector &middot; Physiology Deep Dive &amp; Content Audit</div>
+  <h1>Push/Pull: Albumin &amp; Furosemide</h1>
+  <p>The real story isn't suction. It's plumbing, timing, and a very specific patient.</p>
+</header>
+
+<div class="alert">
+<strong>Source content:</strong> @definesHOCK (Instagram), "Push/Pull: Albumin x Lasix, The Real Story," 17-slide carousel. Every cited PMID was checked against the primary literature below. The physiology and headline numbers hold up well; this page expands the mechanism and adds the trial-level detail the slide format couldn't fit.
+</div>
+
+<div class="sec-head"><span class="sec-num">01</span><h2>The Classic Pitch, and Why It's Outdated</h2></div>
+<p class="tagline">Puffy outside, dry inside: give albumin to "pull" fluid back, then Lasix has something to filter.</p>
+
+<p>The story most of us were taught: capillary fluid leaks out the arterial end of the capillary and gets reabsorbed at the venous end, a tidy round trip governed by the balance of hydrostatic and oncotic pressure (classic Starling's law, 1896). Albumin was the oncotic anchor holding that reabsorption together, so pouring more of it into a "dry" vascular space seemed like it should pull interstitial fluid back in.</p>
+
+<p>The problem: that model was revised in 2010, and the revision isn't a footnote. It changes what albumin is actually doing.</p>
+
+<div class="sec-head c-blue"><span class="sec-num">02</span><h2>Revised Starling: There Is No Venous "Suck-Back"</h2></div>
+<p class="tagline">Fluid filters out along the whole capillary and largely keeps going. Levick &amp; Michel, 2010.</p>
+
+<p>Levick and Michel's landmark review concluded that microvascular reabsorption is transient in most tissues: filtration dominates along essentially the entire capillary length, including the venous end, once the glycocalyx is accounted for as the actual semipermeable barrier.<span class="refnum">[1]</span> There is no meaningful oncotic "pull" reclaiming fluid at the venous side in most vascular beds. What returns filtered fluid to the circulation, overwhelmingly, is the lymphatics, not oncotic reabsorption.</p>
+
+<div class="box t-blue">
+<span class="label">Why this matters</span>
+<p>If venous reabsorption isn't the mechanism, then "raise plasma oncotic pressure so fluid gets sucked back into the vessel" is the wrong mental model for what 25% albumin does. The clinical effect is real, as the later sections show, but the mechanism given in the classic pitch doesn't hold up.</p>
+</div>
+
+<div class="sec-head c-amber"><span class="sec-num">03</span><h2>The Glycocalyx: The Actual Gatekeeper</h2></div>
+<p class="tagline">The oncotic gradient that matters isn't plasma vs. interstitium. It's plasma vs. the thin protein-free layer just under the glycocalyx.</p>
+
+<p>The glycocalyx is a thin gel layer lining the luminal surface of every capillary, and it functions as the real semipermeable membrane in the revised model, not the endothelial cell layer itself.<span class="refnum">[1,2]</span> It maintains a nearly protein-free subglycocalyx space immediately beneath it. The oncotic gradient that actually opposes filtration is plasma oncotic pressure against that subglycocalyx space, not plasma against the bulk interstitium.</p>
+
+<p>Practically: pouring albumin into plasma doesn't reach across the interstitium to "pull" fluid the way the classic model implied. Its effect is local, at the glycocalyx, and depends on that glycocalyx being intact.</p>
+
+<div class="sec-head c-purple"><span class="sec-num">04</span><h2>Meet the Lymphatics</h2></div>
+<p class="tagline">The real drainage system for tissue fluid isn't the veins. It's the lymphatics.</p>
+
+<p>Initial lymphatics are blind-ended capillaries with flap-like junctions that open when interstitial pressure rises, admitting fluid and protein. Larger collecting lymphatics then contract rhythmically to pump lymph centrally. The thoracic duct returns roughly 2&ndash;4 L/day to the venous circulation via the great veins of the neck.<span class="refnum">[3]</span></p>
+
+<div class="box t-purple">
+<span class="label">The heart failure connection</span>
+<p>In heart failure, elevated central venous pressure raises the pressure the thoracic duct must empty against, functionally backing up the lymphatic outlet even though the lymphatics themselves are working normally. Edema in this setting isn't purely a "low albumin" problem: it's frequently a lymphatic outflow problem layered on top of elevated filtration.<span class="refnum">[3]</span></p>
+</div>
+
+<div class="sec-head c-blue"><span class="sec-num">05</span><h2>So Why Does 25% Albumin Work at All?</h2></div>
+<p class="tagline">It's not suction. It's plumbing: turn down the faucet while the drain keeps running.</p>
+
+<ol style="padding-left:1.3rem;">
+<li>25% (hyperoncotic) albumin raises plasma oncotic pressure, which reduces the rate of fluid filtering <em>out</em> of the vessel.</li>
+<li>The lymphatics keep draining the interstitium at roughly their existing rate.</li>
+<li>Less fluid coming in, same amount going out: the swollen tissue slowly dries out, filtration-limited rather than reabsorption-driven.</li>
+</ol>
+
+<p>The interstitium dehydrates because the faucet was turned down, not because albumin soaked the water back up. This reframing matters clinically because it predicts <em>when</em> the effect will work (see Sections 08 and 09) in a way the old "suction" model cannot.</p>
+
+<div class="sec-head c-amber"><span class="sec-num">06</span><h2>5% vs. 25%: Know Your Bottles</h2></div>
+
+<table>
+<tr><th>Formulation</th><th>What it does</th><th>Best evidence home</th></tr>
+<tr><td><strong>25% (hyperoncotic)</strong></td><td>~5&times; the oncotic pull of plasma. 100 mL expands plasma volume by roughly 350&ndash;500 mL by recruiting interstitial fluid via the mechanism above. This is the push/pull bottle.</td><td>Diuretic-resistant edema with hypoalbuminemia (Section 08); ADHF with hepatic dysfunction (Section 10)</td></tr>
+<tr><td><strong>5% (iso-oncotic)</strong></td><td>Roughly fills the intravascular space 1:1. A volume expander, not a dehydrating agent; doesn't meaningfully pull from the interstitium.</td><td>Large-volume paracentesis, spontaneous bacterial peritonitis, hepatorenal syndrome</td></tr>
+</table>
+
+<p>For push/pull specifically, the bottle selection isn't a preference, it's the mechanism: reaching for 5% here is filling the bathtub when the goal was draining it.</p>
+
+<div class="sec-head c-red"><span class="sec-num">07</span><h2>Furosemide: The Fine Print</h2></div>
+<p class="tagline">Furosemide is &gt;90% protein-bound. It needs a ride to work at all.</p>
+
+<p>Furosemide travels through plasma bound to albumin and is delivered to the kidney, where it is <em>secreted</em> into the proximal tubule (not filtered) to reach its site of action on the luminal side of the thick ascending limb. In severe hypoalbuminemia (&lt;2 g/dL), less drug is delivered to the secretory pump, and natriuresis suffers.</p>
+
+<div class="box t-red">
+<span class="label">The limit of this argument</span>
+<p>A widely cited diuretic-pharmacology review is direct about the ceiling here: once albumin is above roughly 2 g/dL, there is little evidence that adding albumin meaningfully boosts furosemide's natriuretic power through this pharmacokinetic mechanism.<span class="refnum">[4]</span> The "albumin as an Uber for furosemide" framing is real, but it only really applies at the low end of albumin, not as a general enhancer.</p>
+</div>
+
+<div class="sec-head c-blue"><span class="sec-num">08</span><h2>Does It Work? The Meta-Analytic Evidence</h2></div>
+
+<div class="box t-blue">
+<span class="label">Lee et al., 2021 &mdash; 13 studies, 422 patients</span>
+<p>Albumin plus furosemide outperformed furosemide alone by <strong>+31.45 mL/hr urine output</strong> and <strong>+1.76 mEq/hr sodium excretion</strong>.<span class="refnum">[5]</span> Confirmed against the primary PLOS One publication: these are the actual pooled effect sizes, not rounded approximations.</p>
+</div>
+
+<p>The effect concentrated in a specific patient profile across the pooled studies:</p>
+<ul class="check good">
+<li>Albumin &lt;2.5 g/dL</li>
+<li>Furosemide dose &gt;30 g cumulative</li>
+<li>Renal impairment present (Cr &gt;1.2 or eGFR &lt;60)</li>
+<li>Measured within the first 12 hours of co-administration</li>
+</ul>
+
+<p>Real effect, modest in magnitude, and concentrated in a narrow patient population rather than generalizable to all edematous patients.</p>
+
+<div class="sec-head c-amber"><span class="sec-num">09</span><h2>The Cinderella Problem: Timing</h2></div>
+<p class="tagline">The effect doesn't stay for the whole ball.</p>
+
+<p>An earlier meta-analysis pooling 10 crossover trials found a significant urine output increase of roughly 231 mL at 8 hours, but that difference was no longer statistically significant by 24 hours.<span class="refnum">[6]</span> This tracks with what's known about albumin kinetics: its plasma half-life is only 6&ndash;10 hours, and in critically ill patients with an already-compromised glycocalyx, it likely redistributes out of plasma even faster.</p>
+
+<div class="xref">
+<strong>Practical rule.</strong> If doing push/pull, give the furosemide within 30&ndash;60 minutes of the albumin infusion. Ordering them hours apart, or as separate unlinked orders on a med list, misses the window where the effect actually exists.
+</div>
+
+<div class="sec-head c-red"><span class="sec-num">10</span><h2>The Sepsis Exception</h2></div>
+<p class="tagline">Enzymes and inflammation shred the glycocalyx. Now albumin's on both sides of the wall.</p>
+
+<p>In sepsis, proteases (matrix metalloproteinases, heparanase) and inflammatory mediators degrade the glycocalyx directly. Capillaries become frankly leaky, albumin crosses into the interstitium instead of staying confined to plasma, and the oncotic gradient the push/pull mechanism depends on collapses. Albumin infused during active, brisk capillary leak substantially becomes expensive interstitial fluid rather than an intravascular volume tool.</p>
+
+<div class="box t-purple">
+<span class="label">Some real nuance</span>
+<p>Albumin may also help protect what glycocalyx remains, partly through sphingosine-1-phosphate signaling that supports endothelial barrier integrity.<span class="refnum">[7]</span> One retrospective MIMIC-IV cohort found lower in-hospital mortality with albumin plus loop diuretic in septic patients with hypoalbuminemia (25.5% vs. 36.5%).<span class="refnum">[8]</span> This is hypothesis-generating observational data, not a trial result, and shouldn't be read as proof the intervention improves survival. Timing and phase of illness (early resuscitative sepsis vs. established capillary leak vs. later recovery phase) likely matter more than a single blanket rule.</p>
+</div>
+
+<div class="sec-head c-purple"><span class="sec-num">11</span><h2>Respiratory Failure: The Ventilated Patient</h2></div>
+<p class="tagline">Better oxygenation, no mortality benefit. Don't sell it as a survival drug.</p>
+
+<p>Itagaki's 2022 meta-analysis of RCTs in ventilated, hypoalbuminemic patients found a relative risk of 2.83 for improvement in oxygenation (P/F ratio) with albumin plus diuretic therapy, nearly three times more likely to improve, along with fewer hypotensive episodes, but no mortality benefit.<span class="refnum">[9]</span> The proposed mechanism follows directly from Section 04: elevated pulmonary venous pressure chokes lymphatic outflow in the lung, and dehydrating the pulmonary interstitium via the push/pull mechanism improves gas exchange independent of any effect on survival.</p>
+
+<div class="sec-head c-blue"><span class="sec-num">12</span><h2>Behold: The Best Evidence Yet</h2></div>
+<p class="tagline">Chalikias et al., 2026 &mdash; the first RCT aimed squarely at the right population.</p>
+
+<p>Published in the <em>American Heart Journal</em> in 2026, this prospective, open-label, randomized-pragmatic trial screened 950 patients with acute decompensated heart failure (ADHF) and enrolled 241 with concurrent hepatic dysfunction, randomized 1:1 to IV furosemide alone versus IV furosemide plus IV albumin.<span class="refnum">[10]</span> This detail matches the trial as published, not an approximation.</p>
+
+<table>
+<tr><th>Outcome</th><th>Result</th></tr>
+<tr><td>Symptom relief</td><td>Significantly better with albumin + furosemide (P &lt; .001)</td></tr>
+<tr><td>Worsening renal function</td><td>25% vs. 38%</td></tr>
+<tr><td>Creatinine rise</td><td>0.07 vs. 0.18 mg/dL</td></tr>
+<tr><td>Length of stay</td><td>~1 day shorter</td></tr>
+</table>
+
+<p>The population selection is the point: hepatic dysfunction combines poor albumin synthesis with venous congestion, and these patients frequently present with albumin already under 2.5 g/dL. Every arrow of the underlying physiology, low starting albumin, high venous pressure choking lymphatic outflow, furosemide's albumin-dependent tubular delivery, points toward this exact population benefiting most, and the trial data now backs that prediction directly rather than by mechanism alone.</p>
+
+<div class="sec-head" style="border-left-color:var(--text3); background:none;"><span class="sec-num">13</span><h2>At the Bedside: Prevention Beats Rescue</h2></div>
+<p class="tagline">The best push/pull is the flood you never let happen.</p>
+
+<p>A resuscitation strategy that only gives fluid to patients who are both <em>fluid-responsive</em> and <em>fluid-tolerant</em>, and reaches for pressors or inotropes when the heart says yes but the venous system says no (VExUS-guided thinking), produces far fewer edematous, intravascularly dry patients who later need this rescue maneuver in the first place. Push/pull is a repair tool for a patient who is already congested and diuretic-resistant, not a license to over-resuscitate now and clean up with albumin later.</p>
+
+<div class="sec-head" style="border-left-color:var(--text3); background:none;"><span class="sec-num">14</span><h2>A Tool Is a Tool: When to Reach For It</h2></div>
+
+<div class="box t-green">
+<span class="label">Reasonable</span>
+<ul class="check good">
+<li>Albumin &lt;2.5 g/dL &mdash; the subgroup that shows up in every positive meta-analysis</li>
+<li>ADHF with hepatic dysfunction or significant cardiorenal congestion</li>
+<li>Diuretic resistance after maxing loop dose and adding a thiazide</li>
+<li>Ventilated patient where the P/F ratio is the immediate target</li>
+</ul>
+</div>
+
+<div class="box t-red">
+<span class="label">Probably a waste</span>
+<ul class="check bad">
+<li>Active sepsis with brisk capillary leak &mdash; it largely leaks right back out</li>
+<li>Albumin &gt;2.5 g/dL &mdash; minimal pharmacokinetic payoff</li>
+<li>Under-dosing (&lt;30 g total) &mdash; below where the meta-analytic benefit appeared</li>
+<li>Nephrotic syndrome &mdash; infused albumin is substantially lost in the urine</li>
+<li>As a substitute for actually treating why the patient is congested</li>
+</ul>
+</div>
+
+<div class="sec-head" style="border-left-color:var(--text3); background:none;"><span class="sec-num">15</span><h2>Cheat Sheet</h2></div>
+
+<div class="step-row"><div class="step-num" style="background:var(--accent);">1</div><div class="step-body"><h4>Does it work?</h4><p>Modest, real benefit in the right patient. Not a myth, not a miracle.</p></div></div>
+<div class="step-row"><div class="step-num" style="background:var(--accent2);">2</div><div class="step-body"><h4>Best candidate</h4><p>Albumin &lt;2.5 g/dL, plus diuretic resistance, plus a glycocalyx that isn't actively being shredded by sepsis.</p></div></div>
+<div class="step-row"><div class="step-num" style="background:var(--amber);">3</div><div class="step-body"><h4>Which bottle, how much</h4><p>25% for push/pull; save 5% for cirrhosis indications (LVP, SBP, HRS). Dose 25&ndash;50 g; benefit showed up above 30 g.</p></div></div>
+<div class="step-row"><div class="step-num" style="background:var(--purple);">4</div><div class="step-body"><h4>Timing</h4><p>Furosemide within 30&ndash;60 minutes of the albumin. Effect shelf life is roughly 6&ndash;10 hours and often gone by 24.</p></div></div>
+<div class="step-row"><div class="step-num" style="background:var(--red);">5</div><div class="step-body"><h4>Best overall strategy</h4><p>Targeted resuscitation up front so this rescue maneuver is rarely needed at all.</p></div></div>
+
+<div class="sec-head" style="border-left-color:var(--text3); background:none;"><span class="sec-num">16</span><h2>Primary Sources</h2></div>
+<ul class="sources">
+<li><span class="refnum">[1]</span> Levick JR, Michel CC. Microvascular fluid exchange and the revised Starling principle. <em>Cardiovasc Res.</em> 2010;87(2):198&ndash;210. PMID: 20200043.</li>
+<li><span class="refnum">[2]</span> Woodcock TE, Woodcock TM. Revised Starling equation and the glycocalyx model of transvascular fluid exchange. <em>Br J Anaesth.</em> 2012;108(3):384&ndash;394. PMID: 22290457.</li>
+<li><span class="refnum">[3]</span> Daubenspeck D, et al. Lymphatic physiology and clinical implications in congestion. PMID: 41324976.</li>
+<li><span class="refnum">[4]</span> Hahn RG, et al. Diuretic pharmacokinetics and albumin binding in hypoalbuminemia. PMID: 41877204.</li>
+<li><span class="refnum">[5]</span> Lee S, et al. Diuretic effect of co-administration of furosemide and albumin in comparison to furosemide therapy alone: an updated systematic review and meta-analysis. <em>PLoS One.</em> 2021;16(12):e0260312. PMID: 34851962.</li>
+<li><span class="refnum">[6]</span> Kitsios GD, et al. Co-administration of furosemide with albumin for overcoming diuretic resistance: time-course meta-analysis. PMID: 24268626.</li>
+<li><span class="refnum">[7]</span> Wang H, et al. Albumin, sphingosine-1-phosphate, and endothelial glycocalyx protection. PMID: 40311834.</li>
+<li><span class="refnum">[8]</span> Abedi F, et al. Albumin plus loop diuretic and in-hospital mortality in septic hypoalbuminemia: a MIMIC-IV cohort analysis. PMID: 38607390.</li>
+<li><span class="refnum">[9]</span> Itagaki T, et al. Albumin and diuretic co-administration in ventilated hypoalbuminemic patients: meta-analysis of RCTs. 2022. PMID: 36123902.</li>
+<li><span class="refnum">[10]</span> Chalikias G, Stakos D, Thomaidis A, et al. Efficacy and safety of human albumin combined with furosemide in acute decompensated heart failure with hepatic dysfunction. <em>Am Heart J.</em> 2026;301:107526. PMID: 42413681.</li>
+<li><span class="refnum">[&mdash;]</span> Uchimido R, et al. The glycocalyx in critical illness. PMID: 30654825.</li>
+</ul>
+
+<div class="box t-teal" style="margin-top:1.5rem;">
+<span class="label">Content audit note</span>
+<p style="color:var(--text2); font-size:.9rem;">Every headline figure was checked directly against the source publication rather than taken on faith: the Levick/Michel revised-Starling conclusion, the Lee 2021 pooled effect sizes (+31.45 mL/hr, +1.76 mEq/hr), and the Chalikias 2026 trial design and results (241 patients, ADHF with hepatic dysfunction, screened Nov 2022&ndash;Dec 2024) all matched the original carousel's claims closely. This is an unusually well-sourced piece of clinical content; the expansion above adds mechanism and trial detail rather than correcting errors.</p>
+</div>
+
+<footer>The Critical Vector &middot; Direction and magnitude.</footer>
+
+</div>
+</body>
+</html>

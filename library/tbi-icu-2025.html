@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Standard of Care Meets Standard of Doubt: TBI in the Modern ICU | The Critical Vector</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400;1,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#0a0e14; --surface:#111720; --surface2:#182030; --border:rgba(255,255,255,.08); --accent:#00d4aa; --accent2:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa; --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670;}
+  *{box-sizing:border-box;}
+  body{background:var(--bg); color:var(--text); margin:0; padding:2.5rem 1rem 5rem; font-family:'Source Serif 4', Georgia, serif; line-height:1.65;}
+  .page{max-width:920px; margin:0 auto;}
+  h1,h2,h3,.sec-num,.kicker,th,.label,.step-num{font-family:'Syne', sans-serif;}
+  code, .mono{font-family:'IBM Plex Mono', monospace;}
+  .kicker{color:var(--accent); font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; font-weight:600;}
+  h1{font-weight:800; font-size:1.7rem; margin:.4rem 0 .5rem; color:var(--text); line-height:1.3;}
+  header p{font-style:italic; color:var(--text2); font-size:1rem; margin:0 0 .4rem;}
+  .byline{color:var(--text3); font-size:.85rem; margin:0 0 1.5rem;}
+  .alert{background:rgba(0,212,170,.10); border:1px solid rgba(0,212,170,.28); color:#bdf5e8; border-radius:10px; padding:1rem 1.2rem; margin:1.2rem 0 2rem; font-size:.98rem;}
+  .alert strong{color:var(--accent);}
+  .sec-head{display:flex; align-items:baseline; gap:.7rem; padding:.6rem .9rem; border-left:4px solid var(--accent); background:linear-gradient(90deg, rgba(0,212,170,.10), transparent); border-radius:6px; margin-top:2.6rem;}
+  .sec-head.c-blue{border-left-color:var(--accent2); background:linear-gradient(90deg, rgba(96,165,250,.12), transparent);}
+  .sec-head.c-red{border-left-color:var(--red); background:linear-gradient(90deg, rgba(232,76,76,.12), transparent);}
+  .sec-head.c-amber{border-left-color:var(--amber); background:linear-gradient(90deg, rgba(245,158,11,.12), transparent);}
+  .sec-head.c-purple{border-left-color:var(--purple); background:linear-gradient(90deg, rgba(167,139,250,.12), transparent);}
+  .sec-num{color:var(--text3); font-size:.85rem; font-weight:600;}
+  .sec-head h2{margin:0; font-size:1.15rem; font-weight:700; color:var(--text);}
+  .tagline{font-style:italic; color:var(--text2); font-size:.92rem; margin:.4rem 0 1rem; padding-left:.9rem;}
+  p{margin:.8rem 0;}
+  .box{background:var(--surface2); border:1px solid var(--border); border-radius:10px; padding:1rem 1.2rem; margin:1.1rem 0;}
+  .box.t-teal{border-left:3px solid var(--accent);} .box.t-blue{border-left:3px solid var(--accent2);}
+  .box.t-amber{border-left:3px solid var(--amber);} .box.t-purple{border-left:3px solid var(--purple);}
+  .box.t-red{border-left:3px solid var(--red); background:rgba(232,76,76,.06);}
+  .box .label{display:block; font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; font-weight:700; margin-bottom:.4rem;}
+  .box.t-teal .label{color:var(--accent);} .box.t-blue .label{color:var(--accent2);}
+  .box.t-amber .label{color:var(--amber);} .box.t-purple .label{color:var(--purple);} .box.t-red .label{color:var(--red);}
+  table{width:100%; border-collapse:collapse; margin:1.1rem 0; font-size:.83rem;}
+  th{background:var(--surface2); color:var(--text); text-align:left; padding:.5rem .55rem; font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; font-weight:700; border-bottom:1px solid var(--border);}
+  td{padding:.5rem .55rem; border-bottom:1px solid var(--border); vertical-align:top; color:var(--text);}
+  tr:nth-child(even) td{background:rgba(255,255,255,.02);}
+  ul.plain{margin:.6rem 0; padding-left:1.3rem;} ul.plain li{margin-bottom:.4rem;}
+  .sources{list-style:none; padding:0; margin:1rem 0; font-size:.85rem; color:var(--text2);}
+  .sources li{padding:.55rem 0; border-bottom:1px solid var(--border);} .sources a{color:var(--accent);}
+  footer{font-style:italic; color:var(--text3); font-size:.85rem; text-align:center; margin-top:3rem; padding-top:1.2rem; border-top:1px solid var(--border);}
+  @media print{
+    :root{--bg:#f4f5f7; --surface:#fff; --surface2:#eef1f4; --border:#d7dde3; --accent:#00a688; --accent2:#1d4ed8; --red:#c53030; --amber:#b45309; --purple:#7c3aed; --text:#0f1923; --text2:#4a5670; --text3:#6b7688;}
+    body{background:var(--bg) !important; color:var(--text) !important;}
+    .alert{background:rgba(0,166,136,.08) !important; color:#0f1923 !important;}
+    td{color:var(--text) !important;}
+  }
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../locker.html">The Evidence Locker</a><span class="cv-sb-meta">Published 4 Sep 2026 · R. E. Suscitate &amp; A. Systole</span></nav>
+<div class="page">
+
+<header>
+  <div class="kicker">The Critical Vector &middot; Guideline Breakdown &mdash; Neurocritical Care</div>
+  <h1>Standard of Care Meets Standard of Doubt: TBI in the Modern ICU</h1>
+  <p>A field read on the 2025 <em>Intensive Care Medicine</em> narrative review of traumatic brain injury management &mdash; where the evidence is thin, the practice is protocolized anyway, and both facts matter.</p>
+  <p class="byline">By R. E. Suscitate &amp; A. Systole &middot; Source: Robba C, McCredie V, Chesnut RM, Citerio G, et al. <em>Intensive Care Med.</em> 2025;51(6):1112&ndash;1127. doi:10.1007/s00134-025-07967-1</p>
+</header>
+
+<div class="sec-head"><span class="sec-num">01</span><h2>The Honest Headline</h2></div>
+<p class="tagline">ICP monitoring is standard of care. The evidence that it changes outcomes is, by the authors' own admission, not there.</p>
+<p>This review, from a bench that includes Robba, Citerio, Chesnut, and Meyfroidt, opens with an unusually candid admission for a standard-of-care document: most TBI recommendations rest on low-quality evidence, and that's produced real heterogeneity in how neuro-ICUs actually practice. Intracranial pressure monitoring is the clearest example. It's required for American College of Surgeons trauma center accreditation, and it's treated as fundamental to modern brain injury care &mdash; yet the authors state plainly that evidence proving ICP-guided therapy improves outcomes doesn't exist. What ICP monitoring gives you instead is a way to detect expanding mass lesions and inform a broader physiologic picture &mdash; CPP, autoregulatory status, compensatory reserve &mdash; not a validated treatment target on its own.</p>
+<p>Three groups have staked out different positions on when to monitor. The Brain Trauma Foundation wants it for comatose patients with abnormal CT, or normal CT plus two of: age over 40, hypotension, or posturing. A 2013 Milan consensus pushed more conservative &mdash; monitor only when sedation interruption for a neuro check is genuinely risky, or after decompressive craniectomy to gauge whether it worked. The Seattle SIBICC group, using a formal Delphi process, landed more liberal than either, arguing ICP data has value beyond simply flagging severe hypertension. Three groups, three thresholds, no consensus &mdash; a fair summary of where this field actually stands.</p>
+
+<div class="sec-head c-blue"><span class="sec-num">02</span><h2>The Numbers Worth Carrying</h2></div>
+<table>
+<tr><th>Parameter</th><th>Target</th></tr>
+<tr><td>PaO&#8322;</td><td>80&ndash;120 mmHg (SpO&#8322; &gt;94%) &mdash; hyperoxemia increasingly viewed as harmful, not just wasteful</td></tr>
+<tr><td>PaCO&#8322;</td><td>35&ndash;45 mmHg; profound hyperventilation reserved strictly for acute herniation</td></tr>
+<tr><td>CPP</td><td>60&ndash;70 mmHg per BTF; individualized CPPopt of growing interest, evidence still catching up</td></tr>
+<tr><td>Systolic BP</td><td>&ge;100 mmHg (age-based) or MAP &gt;80; &ge;110 may specifically benefit elderly patients</td></tr>
+<tr><td>Fluid choice</td><td>Isotonic crystalloids first-line &mdash; hypertonic saline hasn't shown outcome benefit, hypo-osmolar fluids risk worsening oedema</td></tr>
+</table>
+<p>None of this is exotic. What's notable is what didn't make the cut: tranexamic acid, given reflexively in so much of trauma care, shows no outcome benefit in isolated TBI. And despite the absence of RCT evidence for the resuscitation bundle as a whole, protocolized control of these variables in the early phase is consistently tied to better survival &mdash; a case where the aggregate habit outperforms any single proven component.</p>
+
+<div class="sec-head c-red"><span class="sec-num">03</span><h2>PbtO2 and the Trials That Keep Disagreeing With Each Other</h2></div>
+<p>Brain tissue oxygen monitoring is the review's best illustration of how murky "advanced" neuromonitoring still is. BOOST II, a Phase II trial, found that adding PbtO2 guidance to ICP monitoring meaningfully cut the duration and severity of brain hypoxia, with a trend toward better 6-month outcomes it wasn't powered to confirm. Oxy-TC, a more recent RCT, found no significant functional-outcome benefit for the combined approach overall &mdash; except in the subgroup with elevated ICP, where a signal reappeared.</p>
+<div class="box t-red">
+<span class="label">Read this as: unresolved, not disproven</span>
+<p>Two Phase III trials &mdash; BONANZA and BOOST III &mdash; are running now specifically to settle whether ICP+PbtO2 guidance beats ICP alone. Until they report, the honest clinical position is that this is a plausible, unproven upgrade, not an established standard.</p>
+</div>
+<p>Non-invasive tools fare a bit better on practicality if not certainty. Pupillometry, transcranial Doppler, and optic nerve sheath diameter all have real bedside utility, and the B-ICONIC consensus guidelines package them into a framework specifically built for settings where invasive ICP monitoring isn't available or is contraindicated. None of them replace invasive monitoring outright, but as a package they're a legitimate answer to the question of what to do when you don't have a bolt.</p>
+
+<div class="sec-head c-amber"><span class="sec-num">04</span><h2>The Lung-Brain Argument Nobody Wins Outright</h2></div>
+<p>Brain-injured patients have been chronically underrepresented in mechanical ventilation trials, largely out of fear that lung-protective settings &mdash; low tidal volumes, higher PEEP, prone positioning &mdash; will raise ICP. The recent PROLABI-RCT tested a lung-protective strategy against conventional ventilation in non-ARDS acute brain injury and found no difference in mortality, ventilator dependence, or ARDS incidence. But the trial was underpowered, stopped early, and didn't control for sedation or neuromuscular blockade needed to actually hold low tidal volumes &mdash; so treat the null result as inconclusive, not exonerating either strategy.</p>
+<p>More useful is what VENTIBRAIN found observationally: lung-protective strategies are already common practice in this population, and they're associated with improved mortality. Mechanical power, driving pressure, peak pressure, and plateau pressure all now show outcome associations in large multicenter data &mdash; which argues for watching the whole ventilator mechanics picture, not just tidal volume in isolation.</p>
+
+<div class="sec-head c-purple"><span class="sec-num">05</span><h2>Two Trials, One Clear Signal on Transfusion</h2></div>
+<p>Hemoglobin transfusion thresholds in TBI got a real answer this cycle. Two RCTs compared liberal (&lt;9&ndash;10 g/dL) against restrictive (&lt;7 g/dL) strategies. One found a 6% absolute reduction in unfavorable 6-month outcomes with liberal transfusion that didn't reach significance. The other, in a mixed acute-brain-injury population, found a significant 10% absolute reduction &mdash; with the benefit holding up specifically in the TBI subgroup. Put together, the review reads this as real support for higher hemoglobin thresholds in TBI patients, not just background noise.</p>
+<p>Fluid balance gets a more contested treatment: more positive balance correlates with worse outcomes, but whether actively chasing neutral balance helps &mdash; versus just being a marker of sicker patients who need more fluid &mdash; remains genuinely unsettled. The review doesn't pretend otherwise.</p>
+
+<div class="sec-head c-blue"><span class="sec-num">06</span><h2>Same Disease, Different Planet</h2></div>
+<p>The section on TBI in low-resource settings is the review's sharpest departure from the usual standard-of-care format, and worth sitting with. High-income-country data dominates the literature despite low- and middle-income countries carrying the larger burden of disease &mdash; and the authors are explicit that this makes HIC-derived standards deceptively non-generalizable, not universally applicable with minor adjustment.</p>
+<div class="box t-blue">
+<span class="label">What actually works without ICP monitoring</span>
+<p>The CREVICE protocol &mdash; a consensus-based approach driven by clinical exam and imaging, with no ICP monitoring requirement &mdash; has been shown safe and effective, and recent data show LMIC 6-month outcomes comparable to HICs when care is protocolized despite resource limits. The proposed answer isn't importing HIC infrastructure; it's a "TBI-management-algorithm toolbox" adaptable to local reality.</p>
+</div>
+<p>The pre- and post-hospital gaps are described bluntly: transportation and distance barriers shape who even survives to reach care, and post-discharge rehabilitation is largely absent in availability and affordability. The examples of adaptation are genuinely creative &mdash; taxi drivers pressed into service as first responders, hierarchical resuscitation networks built around what's actually available. The authors close this section with a pointed methodological critique: lumping every resource-limited setting under one "LMIC" label obscures more than it reveals, and situationally specific approaches are what the evidence actually supports.</p>
+
+<div class="sec-head c-purple"><span class="sec-num">07</span><h2>Where This Is Headed</h2></div>
+<p>For decades, severe TBI has been managed as a single acute event with uniform ICP/CPP thresholds and essentially no accepted treatment once the acute window closes. The review's forward-looking section argues that framing is already outdated. Biomarkers &mdash; GFAP, UCH-L1, S100B &mdash; can rule out the need for CT scanning in mild TBI (GCS 13&ndash;15) and estimate structural injury severity from day-of-injury blood levels, with time-dependent utility: those three dominate the acute window, NfL joins them subacutely, and NfL/GFAP/p-tau show early promise as chronic markers of ongoing neurodegeneration, though that evidence is still thin.</p>
+<p>Neuroinflammation persisting for months to years post-injury is the rationale behind emerging recovery-phase interventions &mdash; mesenchymal stromal cell therapy and select neuromodulatory approaches both show early signals for cognitive and sensorimotor recovery. And AI, for now, stays in an assistive lane: neuroimaging and EEG interpretation, workflow efficiency, real-time seizure detection &mdash; useful, but explicitly not a replacement for clinical judgment, with most applications still at low technology-readiness levels.</p>
+
+<div class="sec-head" style="border-left-color:var(--text3); background:none;"><span class="sec-num">08</span><h2>Bottom Line</h2></div>
+<p>The take-home the authors themselves lead with is worth repeating plainly: aggressive detection and treatment of secondary brain insults likely improves outcomes, but the guidelines telling clinicians how to do that are mostly built on low-quality evidence, which is exactly why practice varies as much as it does. That's not a knock on the field &mdash; it's an honest map of where the certainty actually ends and the protocol begins. Knowing that boundary is arguably more useful at the bedside than pretending it doesn't exist.</p>
+
+<div class="sec-head" style="border-left-color:var(--text3); background:none;"><span class="sec-num">09</span><h2>Sources</h2></div>
+<ul class="sources">
+<li>Robba C, McCredie V, Chesnut RM, Citerio G, Gauss T, Hawryluk GWJ, Helbok R, Meyfroidt G, Newcombe V, Sarwal A, Taccone FS, van der Jagt M, Wahlster S, Zanier ER, Bouzat P. Traumatic brain injury management in the intensive care unit: standard of care and knowledge gaps. <em>Intensive Care Med.</em> 2025;51(6):1112&ndash;1127. doi: <a href="https://doi.org/10.1007/s00134-025-07967-1" target="_blank" rel="noopener">10.1007/s00134-025-07967-1</a></li>
+</ul>
+
+<footer>The Critical Vector &middot; Direction and magnitude.</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beta Blocker Cheat Sheet, Audited | The Critical Vector</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400;1,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#0a0e14; --surface:#111720; --surface2:#182030; --border:rgba(255,255,255,.08); --accent:#00d4aa; --accent2:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa; --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670;}
+  *{box-sizing:border-box;}
+  body{background:var(--bg); color:var(--text); margin:0; padding:2.5rem 1rem 5rem; font-family:'Source Serif 4', Georgia, serif; line-height:1.65;}
+  .page{max-width:920px; margin:0 auto;}
+  h1,h2,h3,.sec-num,.kicker,th,.label,.step-num{font-family:'Syne', sans-serif;}
+  code, .mono{font-family:'IBM Plex Mono', monospace;}
+  .kicker{color:var(--accent); font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; font-weight:600;}
+  h1{font-weight:800; font-size:1.7rem; margin:.4rem 0 .5rem; color:var(--text); line-height:1.3;}
+  header p{font-style:italic; color:var(--text2); font-size:1rem; margin:0 0 .4rem;}
+  .byline{color:var(--text3); font-size:.85rem; margin:0 0 1.5rem;}
+  .alert{background:rgba(0,212,170,.10); border:1px solid rgba(0,212,170,.28); color:#bdf5e8; border-radius:10px; padding:1rem 1.2rem; margin:1.2rem 0 2rem; font-size:.98rem;}
+  .alert strong{color:var(--accent);}
+  .sec-head{display:flex; align-items:baseline; gap:.7rem; padding:.6rem .9rem; border-left:4px solid var(--accent); background:linear-gradient(90deg, rgba(0,212,170,.10), transparent); border-radius:6px; margin-top:2.6rem;}
+  .sec-head.c-blue{border-left-color:var(--accent2); background:linear-gradient(90deg, rgba(96,165,250,.12), transparent);}
+  .sec-head.c-red{border-left-color:var(--red); background:linear-gradient(90deg, rgba(232,76,76,.12), transparent);}
+  .sec-head.c-amber{border-left-color:var(--amber); background:linear-gradient(90deg, rgba(245,158,11,.12), transparent);}
+  .sec-head.c-purple{border-left-color:var(--purple); background:linear-gradient(90deg, rgba(167,139,250,.12), transparent);}
+  .sec-num{color:var(--text3); font-size:.85rem; font-weight:600;}
+  .sec-head h2{margin:0; font-size:1.15rem; font-weight:700; color:var(--text);}
+  .tagline{font-style:italic; color:var(--text2); font-size:.92rem; margin:.4rem 0 1rem; padding-left:.9rem;}
+  p{margin:.8rem 0;}
+  .box{background:var(--surface2); border:1px solid var(--border); border-radius:10px; padding:1rem 1.2rem; margin:1.1rem 0;}
+  .box.t-teal{border-left:3px solid var(--accent);} .box.t-blue{border-left:3px solid var(--accent2);}
+  .box.t-amber{border-left:3px solid var(--amber);} .box.t-purple{border-left:3px solid var(--purple);}
+  .box.t-red{border-left:3px solid var(--red); background:rgba(232,76,76,.06);}
+  .box .label{display:block; font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; font-weight:700; margin-bottom:.4rem;}
+  .box.t-teal .label{color:var(--accent);} .box.t-blue .label{color:var(--accent2);}
+  .box.t-amber .label{color:var(--amber);} .box.t-purple .label{color:var(--purple);} .box.t-red .label{color:var(--red);}
+  table{width:100%; border-collapse:collapse; margin:1.1rem 0; font-size:.83rem;}
+  th{background:var(--surface2); color:var(--text); text-align:left; padding:.5rem .55rem; font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; font-weight:700; border-bottom:1px solid var(--border);}
+  td{padding:.5rem .55rem; border-bottom:1px solid var(--border); vertical-align:top; color:var(--text);}
+  tr:nth-child(even) td{background:rgba(255,255,255,.02);}
+  td.num{font-family:'IBM Plex Mono',monospace; font-size:.8rem;}
+  tr.sig td{background:rgba(232,76,76,.07);} tr.notsig td{color:var(--text2);}
+  ul.plain{margin:.6rem 0; padding-left:1.3rem;} ul.plain li{margin-bottom:.4rem;}
+  .sources{list-style:none; padding:0; margin:1rem 0; font-size:.85rem; color:var(--text2);}
+  .sources li{padding:.55rem 0; border-bottom:1px solid var(--border);} .sources a{color:var(--accent);}
+  footer{font-style:italic; color:var(--text3); font-size:.85rem; text-align:center; margin-top:3rem; padding-top:1.2rem; border-top:1px solid var(--border);}
+  @media print{
+    :root{--bg:#f4f5f7; --surface:#fff; --surface2:#eef1f4; --border:#d7dde3; --accent:#00a688; --accent2:#1d4ed8; --red:#c53030; --amber:#b45309; --purple:#7c3aed; --text:#0f1923; --text2:#4a5670; --text3:#6b7688;}
+    body{background:var(--bg) !important; color:var(--text) !important;}
+    .alert{background:rgba(0,166,136,.08) !important; color:#0f1923 !important;}
+    td{color:var(--text) !important;}
+  }
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../locker.html">The Evidence Locker</a><span class="cv-sb-meta">Published 1 Sep 2026 · R. E. Suscitate &amp; A. Systole</span></nav>
+<div class="page">
+
+<header>
+  <div class="kicker">The Critical Vector &middot; Reference Audit &mdash; Verified</div>
+  <h1>Beta Blocker Receptor-Selectivity Cheat Sheet, Checked Against Pharmacology</h1>
+  <p>Not a single trial &mdash; a mechanistic reference chart. This audit checks each cell against standard pharmacology sources and flags where the one-page version oversimplifies.</p>
+  <p class="byline">Original social summary: foamfrat</p>
+</header>
+
+<div class="alert">
+<strong>Verdict on the source post:</strong> the chart is accurate on every drug-receptor pairing shown. Nothing is wrong. Three cells are simplifications worth expanding for boards or bedside dosing decisions, flagged in Section 03.
+</div>
+
+<div class="sec-head"><span class="sec-num">01</span><h2>The Core Table, Confirmed</h2></div>
+<p class="tagline">Every X in the original grid checks out against standard pharmacology references.</p>
+<table>
+<tr><th>Agent</th><th>B1</th><th>B2</th><th>A1</th><th>Na+</th><th>K+</th><th>NO&uarr;</th></tr>
+<tr><td>Metoprolol</td><td class="num">&#10003;</td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Atenolol</td><td class="num">&#10003;</td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Bisoprolol</td><td class="num">&#10003;</td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Propranolol</td><td class="num">&#10003;</td><td class="num">&#10003;</td><td></td><td class="num">&#10003;</td><td></td><td></td></tr>
+<tr><td>Nadolol</td><td class="num">&#10003;</td><td class="num">&#10003;</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Sotalol</td><td class="num">&#10003;</td><td class="num">&#10003;</td><td></td><td></td><td class="num">&#10003;</td><td></td></tr>
+<tr><td>Carvedilol</td><td class="num">&#10003;</td><td class="num">&#10003;</td><td class="num">&#10003;</td><td>mild</td><td></td><td></td></tr>
+<tr><td>Labetalol</td><td class="num">&#10003;</td><td class="num">&#10003;</td><td class="num">&#10003;</td><td>mild</td><td></td><td></td></tr>
+<tr><td>Nebivolol</td><td class="num">&#10003;</td><td></td><td></td><td></td><td></td><td class="num">&#10003;&uarr;</td></tr>
+</table>
+
+<div class="sec-head c-blue"><span class="sec-num">02</span><h2>Why Each Blockade Does What It Does</h2></div>
+<p class="tagline">The mechanism column in the original post is correct; here's the physiologic reasoning underneath it.</p>
+<table>
+<tr><th>Blocked</th><th>Why it produces that effect</th></tr>
+<tr><td><b>B1</b></td><td>B1 receptors are the dominant cardiac subtype; blocking them reduces cAMP-driven calcium influx in the SA node, AV node, and myocardium &mdash; slower rate, weaker contraction, slower conduction.</td></tr>
+<tr><td><b>B2</b></td><td>B2 receptors mediate smooth-muscle relaxation in bronchi and skeletal-muscle vasculature; blocking them removes that relaxation, which is why non-selective agents carry bronchospasm risk in reactive airway disease and can blunt the adrenergic warning signs of hypoglycemia.</td></tr>
+<tr><td><b>A1</b></td><td>Alpha-1 blockade removes peripheral arterial and venous vasoconstriction, dropping afterload directly &mdash; this is the mechanism that gives carvedilol and labetalol an added BP-lowering effect beyond what B1 blockade alone provides.</td></tr>
+<tr><td><b>Na+</b></td><td>Also called membrane-stabilizing activity (MSA): high-dose blockade of fast sodium channels slows phase-0 depolarization, widening the QRS. Clinically most relevant in beta-blocker overdose, where propranolol's combined B1/Na+ blockade makes it disproportionately dangerous compared with cardioselective agents.</td></tr>
+<tr><td><b>K+</b></td><td>Sotalol's potassium-channel blockade is its defining class III antiarrhythmic property (this is why it's dosed and monitored differently from other beta blockers) &mdash; it prolongs the QT interval, which is therapeutic for reentrant arrhythmias but is also the mechanism behind sotalol's dose-dependent torsades risk.</td></tr>
+<tr><td><b>NO&uarr;</b></td><td>Nebivolol stimulates endothelial nitric oxide release, producing vasodilation independent of beta blockade &mdash; the mechanism behind its comparatively neutral hemodynamic and metabolic profile relative to older agents.</td></tr>
+</table>
+
+<div class="sec-head c-amber"><span class="sec-num">03</span><h2>Where the One-Page Version Simplifies</h2></div>
+<p class="tagline">Nothing here is wrong. These are the dose- and context-dependencies a single grid can't show.</p>
+<div class="box t-amber">
+<span class="label">"Cardioselective" is dose-dependent, not absolute</span>
+<p>Metoprolol, atenolol, and bisoprolol are B1-selective at typical therapeutic doses, but that selectivity narrows and eventually disappears at higher doses &mdash; a "cardioselective" agent can still provoke bronchospasm in a severe asthmatic at high enough dosing. The chart's clean X-in-a-box format necessarily can't carry a dose-response curve.</p>
+</div>
+<div class="box t-amber">
+<span class="label">Nebivolol's NO release is also dose- and selectivity-dependent</span>
+<p>The vasodilatory, NO-mediated benefit is most prominent at the doses where B1 selectivity holds; at higher doses nebivolol loses selectivity and the NO-release advantage is correspondingly less clinically distinct from other agents.</p>
+</div>
+<div class="box t-amber">
+<span class="label">Carvedilol and labetalol's alpha blockade is genuinely mild, but clinically relevant</span>
+<p>The chart correctly labels their A1 effect "mild" rather than a full checkmark &mdash; worth noting for bedside use: this is exactly why both are reasonable choices when you want beta blockade plus some afterload reduction without the more pronounced orthostatic hypotension risk of a dedicated alpha blocker.</p>
+</div>
+
+<div class="sec-head" style="border-left-color:var(--text3); background:none;"><span class="sec-num">04</span><h2>Bottom Line</h2></div>
+<p>This is an accurate, well-constructed reference chart. Every receptor assignment matches standard pharmacology teaching, and the two-column format (blocked receptor / mechanism when blocked) is a genuinely efficient way to hold this much information on one page. The additions above are context a static grid structurally can't carry &mdash; dose-dependence of selectivity, and the clinical stakes of the Na+ and K+ columns specifically in overdose and arrhythmia management, respectively.</p>
+
+<div class="sec-head" style="border-left-color:var(--text3); background:none;"><span class="sec-num">05</span><h2>Sources</h2></div>
+<ul class="sources">
+<li>Goodman &amp; Gilman's The Pharmacological Basis of Therapeutics, 14th ed. &mdash; adrenergic receptor pharmacology chapters.</li>
+<li>Frishman WH. Beta-adrenergic blockers: a 50-year historical perspective. <em>Am J Ther.</em> 2008.</li>
+<li>Toxicologic principles of beta-blocker overdose and membrane-stabilizing activity &mdash; standard toxicology reference teaching (Goldfrank's Toxicologic Emergencies).</li>
+<li>Sotalol prescribing information &mdash; class III antiarrhythmic mechanism and QT-monitoring requirements, FDA label.</li>
+</ul>
+
+<footer>The Critical Vector &middot; Direction and magnitude.</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fifth Universal Definition of MI, Audited | The Critical Vector</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400;1,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#0a0e14; --surface:#111720; --surface2:#182030; --border:rgba(255,255,255,.08); --accent:#00d4aa; --accent2:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa; --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670;}
+  *{box-sizing:border-box;}
+  body{background:var(--bg); color:var(--text); margin:0; padding:2.5rem 1rem 5rem; font-family:'Source Serif 4', Georgia, serif; line-height:1.65;}
+  .page{max-width:920px; margin:0 auto;}
+  h1,h2,h3,.sec-num,.kicker,th,.label,.step-num{font-family:'Syne', sans-serif;}
+  code, .mono{font-family:'IBM Plex Mono', monospace;}
+  .kicker{color:var(--accent); font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; font-weight:600;}
+  h1{font-weight:800; font-size:1.7rem; margin:.4rem 0 .5rem; color:var(--text); line-height:1.3;}
+  header p{font-style:italic; color:var(--text2); font-size:1rem; margin:0 0 .4rem;}
+  .byline{color:var(--text3); font-size:.85rem; margin:0 0 1.5rem;}
+  .alert{background:rgba(0,212,170,.10); border:1px solid rgba(0,212,170,.28); color:#bdf5e8; border-radius:10px; padding:1rem 1.2rem; margin:1.2rem 0 2rem; font-size:.98rem;}
+  .alert strong{color:var(--accent);}
+  .sec-head{display:flex; align-items:baseline; gap:.7rem; padding:.6rem .9rem; border-left:4px solid var(--accent); background:linear-gradient(90deg, rgba(0,212,170,.10), transparent); border-radius:6px; margin-top:2.6rem;}
+  .sec-head.c-blue{border-left-color:var(--accent2); background:linear-gradient(90deg, rgba(96,165,250,.12), transparent);}
+  .sec-head.c-red{border-left-color:var(--red); background:linear-gradient(90deg, rgba(232,76,76,.12), transparent);}
+  .sec-head.c-amber{border-left-color:var(--amber); background:linear-gradient(90deg, rgba(245,158,11,.12), transparent);}
+  .sec-head.c-purple{border-left-color:var(--purple); background:linear-gradient(90deg, rgba(167,139,250,.12), transparent);}
+  .sec-num{color:var(--text3); font-size:.85rem; font-weight:600;}
+  .sec-head h2{margin:0; font-size:1.15rem; font-weight:700; color:var(--text);}
+  .tagline{font-style:italic; color:var(--text2); font-size:.92rem; margin:.4rem 0 1rem; padding-left:.9rem;}
+  p{margin:.8rem 0;}
+  .box{background:var(--surface2); border:1px solid var(--border); border-radius:10px; padding:1rem 1.2rem; margin:1.1rem 0;}
+  .box.t-teal{border-left:3px solid var(--accent);} .box.t-blue{border-left:3px solid var(--accent2);}
+  .box.t-amber{border-left:3px solid var(--amber);} .box.t-purple{border-left:3px solid var(--purple);}
+  .box.t-red{border-left:3px solid var(--red); background:rgba(232,76,76,.06);}
+  .box .label{display:block; font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; font-weight:700; margin-bottom:.4rem;}
+  .box.t-teal .label{color:var(--accent);} .box.t-blue .label{color:var(--accent2);}
+  .box.t-amber .label{color:var(--amber);} .box.t-purple .label{color:var(--purple);} .box.t-red .label{color:var(--red);}
+  table{width:100%; border-collapse:collapse; margin:1.1rem 0; font-size:.83rem;}
+  th{background:var(--surface2); color:var(--text); text-align:left; padding:.5rem .55rem; font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; font-weight:700; border-bottom:1px solid var(--border);}
+  td{padding:.5rem .55rem; border-bottom:1px solid var(--border); vertical-align:top; color:var(--text);}
+  tr:nth-child(even) td{background:rgba(255,255,255,.02);}
+  td.num{font-family:'IBM Plex Mono',monospace; font-size:.8rem;}
+  tr.sig td{background:rgba(232,76,76,.07);} tr.notsig td{color:var(--text2);}
+  ul.plain{margin:.6rem 0; padding-left:1.3rem;} ul.plain li{margin-bottom:.4rem;}
+  .sources{list-style:none; padding:0; margin:1rem 0; font-size:.85rem; color:var(--text2);}
+  .sources li{padding:.55rem 0; border-bottom:1px solid var(--border);} .sources a{color:var(--accent);}
+  footer{font-style:italic; color:var(--text3); font-size:.85rem; text-align:center; margin-top:3rem; padding-top:1.2rem; border-top:1px solid var(--border);}
+  @media print{
+    :root{--bg:#f4f5f7; --surface:#fff; --surface2:#eef1f4; --border:#d7dde3; --accent:#00a688; --accent2:#1d4ed8; --red:#c53030; --amber:#b45309; --purple:#7c3aed; --text:#0f1923; --text2:#4a5670; --text3:#6b7688;}
+    body{background:var(--bg) !important; color:var(--text) !important;}
+    .alert{background:rgba(0,166,136,.08) !important; color:#0f1923 !important;}
+    td{color:var(--text) !important;}
+  }
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../locker.html">The Evidence Locker</a><span class="cv-sb-meta">Published 1 Sep 2026 · R. E. Suscitate &amp; A. Systole</span></nav>
+<div class="page">
+
+<header>
+  <div class="kicker">The Critical Vector &middot; Guideline Breakdown &amp; Content Audit &mdash; Verified</div>
+  <h1>The Fifth Universal Definition of MI (2026): What Actually Changed, and One Correction</h1>
+  <p>Mills NL, Newby LK, Zaman S, et al; ESC/ACC/AHA/WHF Universal Definition Document Advisory Group. Fifth Universal Definition of Myocardial Infarction (2026).</p>
+  <p class="byline"><em>Eur Heart J.</em> 2026; ehag101. doi:10.1093/eurheartj/ehag101 &middot; Concurrent <em>JACC</em> publication, doi:10.1016/j.jacc.2026.07.025 &middot; Presented ESC Congress, Munich, Aug 30, 2026 &middot; Original social summary: dr_balajibalagani</p>
+</header>
+
+<div class="alert">
+<strong>Verdict on the source post:</strong> this is brand-new &mdash; presented two days before this audit, published just days ago &mdash; and most of the carousel is an accurate plain-language rendering of a genuinely dense consensus document. One slide (Procedure-related MI) states something the actual guideline explicitly reverses, and two of the document's headline changes are missing from the carousel entirely. Both are corrected below.
+</div>
+
+<div class="sec-head"><span class="sec-num">01</span><h2>The Setup: Why This Replaced the Fourth Definition</h2></div>
+<p class="tagline">The old Type 1&ndash;5 numbering was accurate but not usable at the bedside. The new document replaces it with three categories tied directly to pathophysiology.</p>
+<p>The Fourth Universal Definition (2018) classified MI into five numbered types based on underlying mechanism. As ACC/AHA co-chair Kristin Newby put it in the ESC's own release, clinicians in practice rarely used terms like "type 2" or "type 4c" in conversations with patients &mdash; the numbering was precise for research and coding but opaque at the bedside. The Fifth UDMI, jointly authored by ESC/ACC/AHA/WHF and endorsed by EACTS and STS, collapses this into three categories &mdash; <b>primary</b>, <b>secondary</b>, and <b>procedure-related</b> &mdash; mapped to new ICD-11 codes. This is genuinely new: it was first presented at ESC Congress 2026 on August 30, and the post being audited went up almost immediately after.</p>
+
+<div class="sec-head c-blue"><span class="sec-num">02</span><h2>Primary and Secondary MI: The Post Gets This Right</h2></div>
+<p class="tagline">Slides 2, 3, 5, and 6 of the carousel accurately reflect the published document.</p>
+<table>
+<tr><th>Category</th><th>Definition</th><th>Roughly maps to</th></tr>
+<tr><td><b>Primary MI</b></td><td>Spontaneous presentation due to a primary acute coronary pathology &mdash; typically plaque rupture/erosion with thrombosis</td><td>Former Type 1</td></tr>
+<tr><td><b>Secondary MI</b></td><td>Results from myocardial oxygen supply&ndash;demand imbalance due to another acute condition (anemia, hypoxemia, shock, arrhythmia, vasospasm, embolism)</td><td>Former Type 2</td></tr>
+</table>
+<p>The fundamental diagnostic requirement the carousel states on slide 5 &mdash; acute myocardial injury (troponin rise/fall with at least one value above the 99th-percentile URL) <i>plus</i> objective evidence of acute ischemia &mdash; is stated correctly, and the injury-vs-infarction distinction on slide 6 (elevated troponin alone = injury; injury + ischemia evidence = infarction) matches the document's own framing precisely.</p>
+
+<div class="sec-head c-red"><span class="sec-num">03</span><h2>The Correction: Procedure-Related MI No Longer Uses Biomarker Thresholds</h2></div>
+<p class="tagline">Slide 4 says the opposite of what the new guideline actually did.</p>
+<div class="box t-red">
+<span class="label">What the carousel says (slide 4)</span>
+<p>"Procedure-related MI occurs in association with a coronary revascularization procedure or its complications and <b>requires specific biomarker thresholds</b> together with appropriate clinical, ECG, imaging or angiographic evidence."</p>
+</div>
+<div class="box t-teal">
+<span class="label">What the actual document says</span>
+<p>Multiple independent summaries of the same guideline (JACC full text, HCPLive's coverage of the ESC presentation) state this plainly: <b>"It no longer relies on a cardiac biomarker threshold."</b> The diagnosis is now based on a suspected coronary complication within 30 days of a cardiac procedure, plus acute myocardial injury on troponin measurement, plus at least one clinical or ECG feature (ischemic symptoms, new ischemic ECG changes, or unexplained sudden deterioration under sedation) &mdash; not a specific fold-elevation cutoff.</p>
+</div>
+<p>This is a deliberate, explained change, not an oversight in the new document. The old Fourth-Definition thresholds (troponin &gt;5&times; URL for type 4a, &gt;10&times; URL for type 5) were, in the task force's own words, arbitrary. A large prospective international study cited in the new document found that <b>97.5% of patients undergoing cardiac surgery</b> already exceed 10&times; the URL &mdash; meaning the old "type 5" threshold flagged almost everyone. The same study found you'd need a threshold over <b>218&times; the URL</b> (95% CI 40&ndash;318) to actually identify patients at meaningfully increased risk of peri-procedural mortality. That's the evidence base behind dropping the fixed-multiple biomarker threshold entirely in favor of the injury-plus-clinical-feature approach.</p>
+
+<div class="sec-head c-amber"><span class="sec-num">04</span><h2>Two Headline Changes the Carousel Doesn't Mention</h2></div>
+<div class="box t-amber">
+<span class="label">Sex-specific troponin thresholds</span>
+<p>Slide 5 describes the 99th-percentile URL generically. The actual document specifies <b>sex-specific</b> 99th-percentile upper reference limits for cardiac troponin, explicitly to correct systematic under-recognition of myocardial injury in female patients under a single uniform threshold. This is one of the document's more consequential practical changes and isn't in the carousel at all.</p>
+</div>
+<div class="box t-amber">
+<span class="label">MINOCA redefinition</span>
+<p>Not mentioned anywhere in the eight slides: the term MINOCA is updated from "myocardial <b>infarction</b> with non-obstructive coronary arteries" to "myocardial <b>injury</b> with non-obstructive coronary arteries" &mdash; recognizing it as a working diagnosis rather than a final one. Any patient subsequently confirmed to have a true infarction should be reclassified into primary, secondary, or procedure-related based on the underlying cause.</p>
+</div>
+
+<div class="sec-head c-purple"><span class="sec-num">05</span><h2>Old vs. New, at a Glance &mdash; Confirmed</h2></div>
+<p class="tagline">The carousel's closing summary slide is accurate and worth keeping as the quick-reference version.</p>
+<table>
+<tr><th>4th UDMI (2018)</th><th>5th UDMI (2026)</th></tr>
+<tr><td>Type 1 &mdash; Atherothrombosis</td><td rowspan="1">Primary MI &mdash; acute coronary pathology</td></tr>
+<tr><td>Type 2 &mdash; Supply&ndash;demand imbalance</td><td>Secondary MI &mdash; supply&ndash;demand imbalance</td></tr>
+<tr><td>Type 3 &mdash; Sudden cardiac death</td><td>Reclassified as primary, secondary, or procedure-related once evaluated, per Section 7</td></tr>
+<tr><td>Type 4 (4a/4b/4c) &mdash; PCI-related MI</td><td rowspan="2">Procedure-related MI &mdash; same criteria regardless of percutaneous vs. surgical approach, no fixed biomarker multiple (see Section 03 above)</td></tr>
+<tr><td>Type 5 &mdash; CABG-related MI</td></tr>
+</table>
+<p>The one addition worth making to this summary slide: Type 3 (sudden cardiac death) doesn't map to a single new category the way Types 1, 2, 4, and 5 do. The new document handles it by defining objective criteria for diagnosing MI after sudden death, then reclassifying the case as primary, secondary, or procedure-related based on the underlying circumstances once that evaluation is complete &mdash; it's a diagnostic pathway, not a fourth category sitting alongside the other three.</p>
+
+<div class="sec-head c-blue"><span class="sec-num">06</span><h2>Table 2 &mdash; Mechanisms of Acute Myocardial Injury</h2></div>
+<p class="tagline">Reproduced in full from the carousel; this table is a direct, accurate lift from the guideline's own Table 2 and is worth keeping as a standalone reference.</p>
+<table>
+<tr><th>Mechanism</th><th>Condition</th></tr>
+<tr><td>Ischaemia</td><td>Myocardial infarction</td></tr>
+<tr><td rowspan="3">Inflammation</td><td>Myocarditis (autoimmune, infectious, toxic)</td></tr>
+<tr><td>Heart transplant rejection</td></tr>
+<tr><td>Cytokine mediated in sepsis</td></tr>
+<tr><td rowspan="5">Haemodynamic stress</td><td>Supply&ndash;demand imbalance<sup>a</sup></td></tr>
+<tr><td>Tachy- or brady-arrhythmia</td></tr>
+<tr><td>Acute heart failure</td></tr>
+<tr><td>Acute pulmonary embolism</td></tr>
+<tr><td>Malignant hypertension</td></tr>
+<tr><td>Physiological stress</td><td>Strenuous exercise</td></tr>
+<tr><td rowspan="5">Catecholamine stress</td><td>Takotsubo syndrome</td></tr>
+<tr><td>Subarachnoid haemorrhage</td></tr>
+<tr><td>Stroke</td></tr>
+<tr><td>Epileptic seizures</td></tr>
+<tr><td>Phaeochromocytoma</td></tr>
+<tr><td rowspan="5">Toxicity</td><td>Anthracyclines</td></tr>
+<tr><td>ErbB (erythroblastic oncogene B)-targeted therapies</td></tr>
+<tr><td>Tyrosine kinase inhibitors</td></tr>
+<tr><td>Immune checkpoint inhibitors</td></tr>
+<tr><td>Radiation induced</td></tr>
+<tr><td rowspan="5">Trauma</td><td>Electrical cardioversion</td></tr>
+<tr><td>Percutaneous coronary or structural intervention</td></tr>
+<tr><td>Catheter ablation or device implantation</td></tr>
+<tr><td>Cardiac surgery</td></tr>
+<tr><td>Cardiac contusion</td></tr>
+</table>
+<div class="box t-blue">
+<span class="label">Why this table matters more than it looks</span>
+<p>This is the practical payoff of the whole reclassification: "myocardial injury" is the umbrella, and ischaemia (i.e., actual infarction) is only one of six listed mechanisms that can elevate troponin. The other five &mdash; inflammation, haemodynamic stress, physiological/catecholamine stress, toxicity, and trauma &mdash; can all produce a positive troponin without any infarction at all. Reading this table alongside Section 02 above is the fastest way to internalize why the document repeatedly warns against diagnosing MI from a troponin value in isolation.</p>
+</div>
+
+<div class="sec-head" style="border-left-color:var(--text3); background:none;"><span class="sec-num">07</span><h2>Bottom Line</h2></div>
+<p>This is a fast, largely accurate summary of a document that was published days before it. The structural framing &mdash; primary/secondary/procedure-related replacing the numbered types, the injury-vs-infarction distinction, the two-step diagnostic logic, and the closing old-vs-new summary slide &mdash; all hold up against the actual Eur Heart J/JACC text. The one correction worth remembering is the opposite of what slide 4 states: procedure-related MI in the Fifth Definition explicitly moved <i>away</i> from fixed biomarker-multiple thresholds, for evidence-based reasons the old thresholds couldn't support. If you're updating personal notes or a teaching slide from this carousel, that's the line to fix first, and the sex-specific troponin threshold, the MINOCA redefinition, and the Type 3 reclassification pathway are worth adding.</p>
+
+<div class="sec-head" style="border-left-color:var(--text3); background:none;"><span class="sec-num">08</span><h2>Sources</h2></div>
+<ul class="sources">
+<li>Mills NL, Newby LK, Zaman S, et al; ESC/ACC/AHA/WHF Universal Definition Document Advisory Group. Fifth Universal Definition of Myocardial Infarction (2026). <em>Eur Heart J.</em> 2026;ehag101. doi:10.1093/eurheartj/ehag101.</li>
+<li>Fifth Universal Definition of Myocardial Infarction (2026). <em>J Am Coll Cardiol.</em> 2026. doi:10.1016/j.jacc.2026.07.025.</li>
+<li>New global definition of myocardial infarction aims to improve diagnosis, treatment and patient understanding. ESC Press Release, Munich, Aug 28, 2026.</li>
+<li>Fifth Universal Definition of Myocardial Infarction Replaces Numerical MI Type System. HCPLive, Aug 2026.</li>
+<li>Thygesen K, Alpert JS, Jaffe AS, et al. Fourth Universal Definition of Myocardial Infarction (2018). <em>J Am Coll Cardiol.</em> 2018;72(18):2231&ndash;2264. (prior version, for comparison)</li>
+</ul>
+
+<footer>The Critical Vector &middot; Direction and magnitude.</footer>
+
+</div>
+</body>
+</html>

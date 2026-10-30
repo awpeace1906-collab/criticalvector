@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blood Gas Analysis Chart, Audited | The Critical Vector</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400;1,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#0a0e14; --surface:#111720; --surface2:#182030; --border:rgba(255,255,255,.08); --accent:#00d4aa; --accent2:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa; --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670;}
+  *{box-sizing:border-box;}
+  body{background:var(--bg); color:var(--text); margin:0; padding:2.5rem 1rem 5rem; font-family:'Source Serif 4', Georgia, serif; line-height:1.65;}
+  .page{max-width:920px; margin:0 auto;}
+  h1,h2,h3,.sec-num,.kicker,th,.label,.step-num{font-family:'Syne', sans-serif;}
+  code, .mono{font-family:'IBM Plex Mono', monospace;}
+  .kicker{color:var(--accent); font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; font-weight:600;}
+  h1{font-weight:800; font-size:1.7rem; margin:.4rem 0 .5rem; color:var(--text); line-height:1.3;}
+  header p{font-style:italic; color:var(--text2); font-size:1rem; margin:0 0 .4rem;}
+  .byline{color:var(--text3); font-size:.85rem; margin:0 0 1.5rem;}
+  .alert{background:rgba(0,212,170,.10); border:1px solid rgba(0,212,170,.28); color:#bdf5e8; border-radius:10px; padding:1rem 1.2rem; margin:1.2rem 0 2rem; font-size:.98rem;}
+  .alert strong{color:var(--accent);}
+  .sec-head{display:flex; align-items:baseline; gap:.7rem; padding:.6rem .9rem; border-left:4px solid var(--accent); background:linear-gradient(90deg, rgba(0,212,170,.10), transparent); border-radius:6px; margin-top:2.6rem;}
+  .sec-head.c-blue{border-left-color:var(--accent2); background:linear-gradient(90deg, rgba(96,165,250,.12), transparent);}
+  .sec-head.c-red{border-left-color:var(--red); background:linear-gradient(90deg, rgba(232,76,76,.12), transparent);}
+  .sec-head.c-amber{border-left-color:var(--amber); background:linear-gradient(90deg, rgba(245,158,11,.12), transparent);}
+  .sec-head.c-purple{border-left-color:var(--purple); background:linear-gradient(90deg, rgba(167,139,250,.12), transparent);}
+  .sec-num{color:var(--text3); font-size:.85rem; font-weight:600;}
+  .sec-head h2{margin:0; font-size:1.15rem; font-weight:700; color:var(--text);}
+  .tagline{font-style:italic; color:var(--text2); font-size:.92rem; margin:.4rem 0 1rem; padding-left:.9rem;}
+  p{margin:.8rem 0;}
+  .box{background:var(--surface2); border:1px solid var(--border); border-radius:10px; padding:1rem 1.2rem; margin:1.1rem 0;}
+  .box.t-teal{border-left:3px solid var(--accent);} .box.t-blue{border-left:3px solid var(--accent2);}
+  .box.t-amber{border-left:3px solid var(--amber);} .box.t-purple{border-left:3px solid var(--purple);}
+  .box.t-red{border-left:3px solid var(--red); background:rgba(232,76,76,.06);}
+  .box .label{display:block; font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; font-weight:700; margin-bottom:.4rem;}
+  .box.t-teal .label{color:var(--accent);} .box.t-blue .label{color:var(--accent2);}
+  .box.t-amber .label{color:var(--amber);} .box.t-purple .label{color:var(--purple);} .box.t-red .label{color:var(--red);}
+  table{width:100%; border-collapse:collapse; margin:1.1rem 0; font-size:.83rem;}
+  th{background:var(--surface2); color:var(--text); text-align:left; padding:.5rem .55rem; font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; font-weight:700; border-bottom:1px solid var(--border);}
+  td{padding:.5rem .55rem; border-bottom:1px solid var(--border); vertical-align:top; color:var(--text);}
+  tr:nth-child(even) td{background:rgba(255,255,255,.02);}
+  td.num{font-family:'IBM Plex Mono',monospace; font-size:.8rem;}
+  tr.sig td{background:rgba(232,76,76,.07);} tr.notsig td{color:var(--text2);}
+  ul.plain{margin:.6rem 0; padding-left:1.3rem;} ul.plain li{margin-bottom:.4rem;}
+  .sources{list-style:none; padding:0; margin:1rem 0; font-size:.85rem; color:var(--text2);}
+  .sources li{padding:.55rem 0; border-bottom:1px solid var(--border);} .sources a{color:var(--accent);}
+  footer{font-style:italic; color:var(--text3); font-size:.85rem; text-align:center; margin-top:3rem; padding-top:1.2rem; border-top:1px solid var(--border);}
+  @media print{
+    :root{--bg:#f4f5f7; --surface:#fff; --surface2:#eef1f4; --border:#d7dde3; --accent:#00a688; --accent2:#1d4ed8; --red:#c53030; --amber:#b45309; --purple:#7c3aed; --text:#0f1923; --text2:#4a5670; --text3:#6b7688;}
+    body{background:var(--bg) !important; color:var(--text) !important;}
+    .alert{background:rgba(0,166,136,.08) !important; color:#0f1923 !important;}
+    td{color:var(--text) !important;}
+  }
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../locker.html">The Evidence Locker</a><span class="cv-sb-meta">Published 2 Sep 2026 · R. E. Suscitate &amp; A. Systole</span></nav>
+<div class="page">
+
+<header>
+  <div class="kicker">The Critical Vector &middot; Reference Audit &mdash; Verified</div>
+  <h1>The Blood Gas Analysis Chart: Mostly Right, One Real Mislabel</h1>
+  <p>A classic four-quadrant ABG teaching chart &mdash; anion gap, A-a gradient, and the oxyhemoglobin dissociation curve, checked line by line.</p>
+  <p class="byline">Original source: <em>Adult Emergency Medicine at a Glance</em>, 1st ed. Thomas Hughes &amp; Jaycen Cruickshank. Blackwell Publishing, 2011.</p>
+</header>
+
+<div class="alert">
+<strong>Verdict on the source chart:</strong> the four-quadrant pH/PCO2 framework, the anion gap formula, and the A-a gradient formula are all standard and correctly stated. One label is genuinely wrong and worth fixing if you're using this chart to teach: the point marked "P50" on the oxyhemoglobin dissociation curve is not P50.
+</div>
+
+<div class="sec-head"><span class="sec-num">01</span><h2>The Four-Quadrant Framework, Confirmed</h2></div>
+<p class="tagline">pH on the vertical axis, PCO2 on the horizontal &mdash; the standard first-pass ABG orientation, and it's drawn correctly.</p>
+<p>The chart's core logic holds: low pH + high PCO2 = respiratory acidosis (hypoventilation); low pH + low HCO3 = metabolic acidosis; high pH + low PCO2 = respiratory alkalosis (hyperventilation); high pH + high HCO3 = metabolic alkalosis. The listed causes for each quadrant &mdash; asthma/PE/hypoxia/aspirin overdose/anxiety for respiratory alkalosis; vomiting/potassium depletion/volume depletion for metabolic alkalosis &mdash; are standard teaching examples and accurate.</p>
+
+<div class="sec-head c-blue"><span class="sec-num">02</span><h2>Anion Gap, Confirmed With a Modern Caveat</h2></div>
+<table>
+<tr><td><b>Chart's formula</b></td><td>Anion gap = (Na&#8314; + K&#8314;) &minus; (HCO3&#8315; + Cl&#8315;), normally about 8 mmol/L</td></tr>
+<tr><td><b>Standard teaching</b></td><td>Correct formula. Normal range is more commonly cited as 8&ndash;12 mEq/L with modern ion-selective electrode analyzers (older methods gave higher baseline values, up to ~16) &mdash; the chart's "about 8" sits at the lower end of the accepted range, not wrong, just worth knowing your own lab's reference range can run a few points higher.</td></tr>
+<tr><td><b>Causes listed</b></td><td>Raised gap: DKA, lactic acidosis, renal failure &mdash; all correct, standard "MUDPILES"-type causes. Normal gap: GI bicarb loss (diarrhea, fistula) &mdash; correct; renal tubular acidosis is the other classic normal-gap cause, not listed here but not wrong to omit from a compact chart.</td></tr>
+</table>
+
+<div class="sec-head c-amber"><span class="sec-num">03</span><h2>The A-a Gradient, Confirmed</h2></div>
+<p class="tagline">Both the derivation and the bedside rule-of-thumb check out.</p>
+<p>The alveolar gas equation as drawn &mdash; P<sub>A</sub>O2 = P<sub>I</sub>O2 &minus; P<sub>A</sub>CO2/R &mdash; and the worked example (21% oxygen, sea level, PCO2 40 mmHg &rarr; expected alveolar O2 &asymp;100 mmHg/13.3 kPa) are both correct, standard respiratory physiology. The simplified bedside approximation, P<sub>A</sub>O2 &asymp; 150 &minus; (5/4)&times;P<sub>a</sub>CO2, is a widely taught shortcut and matches the full equation closely at sea level. The "normal A-a gradient &lt; Age/4 + 4 mmHg" rule is a standard, commonly cited clinical estimate for the upper limit of normal by age &mdash; accurately stated.</p>
+
+<div class="sec-head c-red"><span class="sec-num">04</span><h2>The Actual Error: the "P50" Label</h2></div>
+<p class="tagline">This is the one correction worth making before you use this chart to teach.</p>
+<div class="box t-red">
+<span class="label">What the chart shows</span>
+<p>The dashed lines on the oxyhemoglobin dissociation curve appear to mark the point where saturation is <b>90%</b>, at a PO2 around 50 mmHg &mdash; and label that intersection "P50."</p>
+</div>
+<div class="box t-teal">
+<span class="label">What P50 actually means</span>
+<p>P50 is, by definition, the PO2 at which hemoglobin is <b>50% saturated</b> with oxygen &mdash; not 90%. The normal adult P50 is <b>26.6&ndash;26.8 mmHg</b> at 37&deg;C and pH 7.4 (Kerry Brandis's widely cited reference value is 26.6 mmHg). It's the standard single-number way to describe where the whole curve sits: a lower P50 means a left-shifted, higher-affinity curve (fetal hemoglobin, P50 &asymp;18&ndash;19 mmHg); a higher P50 means a right-shifted, lower-affinity curve that favors oxygen unloading at the tissues.</p>
+</div>
+<p>The chart's underlying clinical point &mdash; that saturation holds up reasonably well until PO2 drops into the 50&ndash;60 mmHg range, then falls off a cliff &mdash; is itself correct and clinically important (it's the same physiology behind the "SpO2 88% means you've already lost half your oxygen tension reserve" warning box elsewhere on the same chart). The dashed line is marking a real, useful point on the curve. It's just not P50 &mdash; if anything, it's closer to marking where saturation crosses roughly 90%, which happens around a PO2 of 55&ndash;60 mmHg on a normal curve. If you're adapting this chart, either relabel that point (e.g. "critical desaturation threshold") or redraw the dashed lines to actually cross at 50% saturation / ~27 mmHg if you want to keep the P50 label.</p>
+
+<div class="sec-head" style="border-left-color:var(--text3); background:none;"><span class="sec-num">05</span><h2>Bottom Line</h2></div>
+<p>This is a solid, standard teaching chart &mdash; the four-quadrant acid-base framework, anion gap formula, and A-a gradient math are all correctly presented and safe to use as-is. The one fix worth making: whatever point the dashed lines mark on the oxyhemoglobin curve, it isn't P50 unless it's drawn at 50% saturation (&asymp;27 mmHg). Everything else on the chart, including the genuinely important "small SpO2 drop = large PaO2 drop" warning box, holds up.</p>
+
+<div class="sec-head" style="border-left-color:var(--text3); background:none;"><span class="sec-num">06</span><h2>Sources</h2></div>
+<ul class="sources">
+<li>Hughes T, Cruickshank J. <em>Adult Emergency Medicine at a Glance</em>, 1st ed. Blackwell Publishing, 2011.</li>
+<li>Brandis K. P50 of hemoglobin. Acid-Base Physiology / Deranged Physiology reference. Normal adult P50 = 26.6 mmHg.</li>
+<li>OpenAnesthesia. Oxygen Physiology &mdash; P50 and factors influencing hemoglobin-oxygen affinity.</li>
+<li>Medmastery. What factors affect hemoglobin's oxygen affinity? Normal P50 = 26.6 mmHg at 37&deg;C, pH 7.40.</li>
+</ul>
+
+<footer>The Critical Vector &middot; Direction and magnitude.</footer>
+
+</div>
+</body>
+</html>

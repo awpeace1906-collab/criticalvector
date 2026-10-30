@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biostatistics for Clinicians | The Critical Vector</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400;1,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0e14; --surface:#111720; --surface2:#182030; --border:rgba(255,255,255,.08);
+    --accent:#00d4aa; --accent2:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa;
+    --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670;
+  }
+  *{box-sizing:border-box;}
+  body{
+    background:var(--bg); color:var(--text); margin:0; padding:2.5rem 1rem 5rem;
+    font-family:'Source Serif 4', Georgia, serif; line-height:1.65;
+  }
+  .page{max-width:920px; margin:0 auto;}
+  h1,h2,h3,.sec-num,.kicker,th,.label,.step-num{font-family:'Syne', sans-serif;}
+  code, .mono{font-family:'IBM Plex Mono', monospace;}
+
+  .kicker{color:var(--accent); font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; font-weight:600;}
+  h1{font-weight:800; font-size:1.9rem; margin:.4rem 0 .5rem; color:var(--text);}
+  header p{font-style:italic; color:var(--text2); font-size:1rem; margin:0 0 1.5rem;}
+
+  .alert{
+    background:rgba(0,212,170,.10); border:1px solid rgba(0,212,170,.28); color:#bdf5e8;
+    border-radius:10px; padding:1rem 1.2rem; margin:1.2rem 0 2rem; font-size:.98rem;
+  }
+  .alert strong{color:var(--accent);}
+
+  .sec-head{
+    display:flex; align-items:baseline; gap:.7rem; padding:.6rem .9rem;
+    border-left:4px solid var(--accent);
+    background:linear-gradient(90deg, rgba(0,212,170,.10), transparent);
+    border-radius:6px; margin-top:2.6rem;
+  }
+  .sec-head.c-blue{border-left-color:var(--accent2); background:linear-gradient(90deg, rgba(96,165,250,.12), transparent);}
+  .sec-head.c-red{border-left-color:var(--red); background:linear-gradient(90deg, rgba(232,76,76,.12), transparent);}
+  .sec-head.c-amber{border-left-color:var(--amber); background:linear-gradient(90deg, rgba(245,158,11,.12), transparent);}
+  .sec-head.c-purple{border-left-color:var(--purple); background:linear-gradient(90deg, rgba(167,139,250,.12), transparent);}
+  .sec-num{color:var(--text3); font-size:.85rem; font-weight:600;}
+  .sec-head h2{margin:0; font-size:1.15rem; font-weight:700; color:var(--text);}
+  .tagline{font-style:italic; color:var(--text2); font-size:.92rem; margin:.4rem 0 1rem; padding-left:.9rem;}
+
+  p{margin:.8rem 0;}
+
+  .box{background:var(--surface2); border:1px solid var(--border); border-radius:10px; padding:1rem 1.2rem; margin:1.1rem 0;}
+  .box.t-teal{border-left:3px solid var(--accent);}
+  .box.t-blue{border-left:3px solid var(--accent2);}
+  .box.t-amber{border-left:3px solid var(--amber);}
+  .box.t-purple{border-left:3px solid var(--purple);}
+  .box.t-red{border-left:3px solid var(--red); background:rgba(232,76,76,.06);}
+  .box .label{display:block; font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; font-weight:700; margin-bottom:.4rem;}
+  .box.t-teal .label{color:var(--accent);}
+  .box.t-blue .label{color:var(--accent2);}
+  .box.t-amber .label{color:var(--amber);}
+  .box.t-purple .label{color:var(--purple);}
+  .box.t-red .label{color:var(--red);}
+
+  .figure{background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:1rem; margin:1.1rem 0; text-align:center;}
+  .figure svg{max-width:100%; height:auto;}
+  .figure figcaption{font-size:.78rem; color:var(--text2); margin-top:.6rem; font-style:italic;}
+
+  table{width:100%; border-collapse:collapse; margin:1.1rem 0; font-size:.86rem;}
+  th{
+    background:var(--surface2); color:var(--text); text-align:left; padding:.5rem .6rem;
+    font-size:.72rem; text-transform:uppercase; letter-spacing:.05em; font-weight:700; border-bottom:1px solid var(--border);
+  }
+  td{padding:.55rem .6rem; border-bottom:1px solid var(--border); vertical-align:top; color:var(--text);}
+  tr:nth-child(even) td{background:rgba(255,255,255,.02);}
+  td.formula{font-family:'IBM Plex Mono',monospace; font-size:.82rem; color:var(--accent);}
+
+  .step-row{display:flex; gap:.9rem; margin:1rem 0; align-items:flex-start;}
+  .step-num{
+    flex:none; width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    font-weight:800; font-size:1rem; color:#08110e;
+  }
+  .step-body h4{margin:.1rem 0 .25rem; font-family:'Syne',sans-serif; font-size:1rem; color:var(--text);}
+  .step-body p{margin:0; color:var(--text2); font-size:.93rem;}
+
+  .xref{border-left:3px solid var(--accent2); background:var(--surface2); border-radius:8px; padding:.8rem 1rem; margin:1rem 0; font-size:.92rem; color:var(--text2);}
+
+  .sources{list-style:none; padding:0; margin:1rem 0; font-size:.85rem; color:var(--text2);}
+  .sources li{padding:.55rem 0; border-bottom:1px solid var(--border);}
+  .refnum{color:var(--amber); font-weight:600; font-family:'IBM Plex Mono',monospace; font-size:.85em;}
+
+  footer{font-style:italic; color:var(--text3); font-size:.85rem; text-align:center; margin-top:3rem; padding-top:1.2rem; border-top:1px solid var(--border);}
+
+  @media print{
+    :root{
+      --bg:#f4f5f7; --surface:#fff; --surface2:#eef1f4; --border:#d7dde3;
+      --accent:#00a688; --accent2:#1d4ed8; --red:#c53030; --amber:#b45309; --purple:#7c3aed;
+      --text:#0f1923; --text2:#4a5670; --text3:#6b7688;
+    }
+    body{background:var(--bg) !important; color:var(--text) !important;}
+    .alert{background:rgba(0,166,136,.08) !important; color:#0f1923 !important;}
+    td{color:var(--text) !important;}
+  }
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../workshop.html">The Workshop</a><span class="cv-sb-meta">Published 19 Aug 2026 · R. E. Suscitate &amp; A. Systole</span></nav>
+<div class="page">
+
+<header>
+  <div class="kicker">The Critical Vector &middot; Biostatistics Reference &amp; Content Audit</div>
+  <h1>Biostatistics for Clinicians</h1>
+  <p>Every number in every paper you'll ever read, decoded with the actual diagrams, not just the vocabulary</p>
+</header>
+
+<div class="alert">
+<strong>Source content:</strong> @anesthesianotes/KarthikMD.com, "Biostatistics for Anaesthesia / Clinicians" carousel. All formulas, rules of thumb, and thresholds checked against standard biostatistics references (Jaeschke et al. on likelihood ratio interpretation, standard definitions of Type I/II error and confidence intervals). Everything held up; this page adds worked diagrams for every concept so the shapes, not just the labels, stick.
+</div>
+
+<div class="sec-head"><span class="sec-num">01</span><h2>Know Your Data</h2></div>
+<p class="tagline">The data type decides which test you're allowed to use. Get this step wrong and nothing downstream is valid.</p>
+
+<div class="figure">
+<svg viewBox="0 0 720 260" xmlns="http://www.w3.org/2000/svg">
+  <text x="360" y="24" text-anchor="middle" fill="#e8edf5" font-family="Syne" font-weight="700" font-size="16">Data</text>
+  <line x1="360" y1="32" x2="200" y2="70" stroke="#00d4aa" stroke-width="2"/>
+  <line x1="360" y1="32" x2="520" y2="70" stroke="#60a5fa" stroke-width="2"/>
+  <rect x="90" y="72" width="220" height="34" rx="6" fill="#182030" stroke="#00d4aa"/>
+  <text x="200" y="94" text-anchor="middle" fill="#00d4aa" font-family="Syne" font-weight="700" font-size="13">Qualitative</text>
+  <rect x="410" y="72" width="220" height="34" rx="6" fill="#182030" stroke="#60a5fa"/>
+  <text x="520" y="94" text-anchor="middle" fill="#7fa8f5" font-family="Syne" font-weight="700" font-size="13">Quantitative</text>
+
+  <line x1="150" y1="106" x2="97" y2="140" stroke="#00d4aa" stroke-width="1.5"/>
+  <line x1="250" y1="106" x2="272" y2="140" stroke="#00d4aa" stroke-width="1.5"/>
+  <rect x="20" y="142" width="155" height="52" rx="6" fill="#0e1a17" stroke="#00d4aa" stroke-opacity=".5"/>
+  <text x="97" y="164" text-anchor="middle" fill="#e8edf5" font-family="Syne" font-size="12" font-weight="700">Nominal</text>
+  <text x="97" y="182" text-anchor="middle" fill="#8a9ab5" font-size="10">blood group, sex, ASA</text>
+  <rect x="195" y="142" width="155" height="52" rx="6" fill="#0e1a17" stroke="#00d4aa" stroke-opacity=".5"/>
+  <text x="272" y="164" text-anchor="middle" fill="#e8edf5" font-family="Syne" font-size="12" font-weight="700">Ordinal</text>
+  <text x="272" y="182" text-anchor="middle" fill="#8a9ab5" font-size="10">pain score, ASA I&ndash;IV order</text>
+
+  <line x1="470" y1="106" x2="447" y2="140" stroke="#60a5fa" stroke-width="1.5"/>
+  <line x1="570" y1="106" x2="623" y2="140" stroke="#60a5fa" stroke-width="1.5"/>
+  <rect x="370" y="142" width="155" height="52" rx="6" fill="#0e1522" stroke="#60a5fa" stroke-opacity=".5"/>
+  <text x="447" y="164" text-anchor="middle" fill="#e8edf5" font-family="Syne" font-size="12" font-weight="700">Discrete</text>
+  <text x="447" y="182" text-anchor="middle" fill="#8a9ab5" font-size="10">number of PONV episodes</text>
+  <rect x="545" y="142" width="155" height="52" rx="6" fill="#0e1522" stroke="#60a5fa" stroke-opacity=".5"/>
+  <text x="623" y="164" text-anchor="middle" fill="#e8edf5" font-family="Syne" font-size="12" font-weight="700">Continuous</text>
+  <text x="623" y="182" text-anchor="middle" fill="#8a9ab5" font-size="10">MAP, weight, pH</text>
+
+  <text x="360" y="230" text-anchor="middle" fill="#f59e0b" font-size="11" font-style="italic">ASA is ordinal: ranked categories, but the gap between them isn't equal.</text>
+</svg>
+<figcaption>Fig 1. The data-type tree. Every test downstream branches from this decision.</figcaption>
+</div>
+
+<table>
+<tr><th>Type</th><th>Sub-type</th><th>Example</th><th>Summarize with</th></tr>
+<tr><td>Qualitative</td><td>Nominal (no order)</td><td>Blood group, sex, ASA class</td><td>Counts, proportions, mode</td></tr>
+<tr><td>Qualitative</td><td>Ordinal (ranked)</td><td>Pain score, ASA I&ndash;IV order</td><td>Median, mode</td></tr>
+<tr><td>Quantitative</td><td>Discrete (whole)</td><td>Number of PONV episodes</td><td>Mean/median</td></tr>
+<tr><td>Quantitative</td><td>Continuous</td><td>MAP, weight, pH</td><td>Mean &plusmn; SD (or median)</td></tr>
+</table>
+
+<div class="sec-head c-blue"><span class="sec-num">02</span><h2>Centre &amp; Spread</h2></div>
+<p class="tagline">Which average, and how scattered around it?</p>
+
+<div class="figure">
+<svg viewBox="0 0 720 200" xmlns="http://www.w3.org/2000/svg">
+  <text x="120" y="20" text-anchor="middle" fill="#7fa8f5" font-family="Syne" font-size="12" font-weight="700">SYMMETRIC (mean)</text>
+  <path d="M20,120 Q120,15 220,120" fill="none" stroke="#60a5fa" stroke-width="2.5"/>
+  <line x1="120" y1="120" x2="120" y2="40" stroke="#e8edf5" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="20" y1="120" x2="220" y2="120" stroke="#4a5670" stroke-width="1"/>
+
+  <text x="380" y="20" text-anchor="middle" fill="#f59e0b" font-family="Syne" font-size="12" font-weight="700">SKEWED (median &ne; mean)</text>
+  <path d="M280,120 Q300,25 340,60 Q370,90 480,115" fill="none" stroke="#f59e0b" stroke-width="2.5"/>
+  <line x1="330" y1="120" x2="330" y2="55" stroke="#e8edf5" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="360" y1="120" x2="360" y2="80" stroke="#f59e0b" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="330" y="135" text-anchor="middle" fill="#8a9ab5" font-size="9">median</text>
+  <text x="360" y="150" text-anchor="middle" fill="#f59e0b" font-size="9">mean</text>
+  <line x1="280" y1="120" x2="480" y2="120" stroke="#4a5670" stroke-width="1"/>
+
+  <text x="600" y="20" text-anchor="middle" fill="#00d4aa" font-family="Syne" font-size="12" font-weight="700">SPREAD (IQR box)</text>
+  <line x1="540" y1="90" x2="660" y2="90" stroke="#4a5670" stroke-width="1.5"/>
+  <rect x="570" y="75" width="60" height="30" fill="none" stroke="#00d4aa" stroke-width="2"/>
+  <line x1="595" y1="75" x2="595" y2="105" stroke="#00d4aa" stroke-width="2"/>
+  <line x1="540" y1="80" x2="540" y2="100" stroke="#4a5670" stroke-width="1.5"/>
+  <line x1="660" y1="80" x2="660" y2="100" stroke="#4a5670" stroke-width="1.5"/>
+  <text x="600" y="125" text-anchor="middle" fill="#8a9ab5" font-size="9">IQR</text>
+</svg>
+<figcaption>Fig 2. Symmetric data: mean sits at the peak. Skewed data: mean gets pulled toward the tail, away from the median. IQR captures spread without being distorted by outliers the way SD is.</figcaption>
+</div>
+
+<table>
+<tr><th>Measure</th><th>Use when</th></tr>
+<tr><td>Mean</td><td>Symmetric, continuous, no outliers</td></tr>
+<tr><td>Median</td><td>Skewed data or outliers (robust to both)</td></tr>
+<tr><td>Mode</td><td>Most frequent value; the only option for nominal data</td></tr>
+<tr><td>SD</td><td>Spread of the raw data around the mean</td></tr>
+<tr><td class="formula">SEM = SD / &radic;n</td><td>Precision of the mean estimate; shrinks as sample size grows</td></tr>
+<tr><td>IQR</td><td>Spread for skewed data, reported alongside the median</td></tr>
+</table>
+
+<div class="box t-red">
+<span class="label">Watch for this</span>
+<p>SEM is always smaller than SD, sometimes dramatically so with a large n. Authors occasionally report SEM instead of SD because the error bars look tighter and the result looks more precise than it is. Always check which one a figure is actually showing before you interpret the spread.</p>
+</div>
+
+<div class="sec-head c-amber"><span class="sec-num">03</span><h2>The Bell Curve</h2></div>
+<p class="tagline">Mean = median = mode, and the 68-95-99.7 rule.</p>
+
+<div class="figure">
+<svg viewBox="0 0 720 260" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="band1"><rect x="300" y="0" width="120" height="200"/></clipPath>
+    <clipPath id="band2a"><rect x="240" y="0" width="60" height="200"/></clipPath>
+    <clipPath id="band2b"><rect x="420" y="0" width="60" height="200"/></clipPath>
+    <clipPath id="band3a"><rect x="180" y="0" width="60" height="200"/></clipPath>
+    <clipPath id="band3b"><rect x="480" y="0" width="60" height="200"/></clipPath>
+  </defs>
+  <path id="curve" d="M60,190 C140,190 160,30 360,30 C560,30 580,190 660,190" fill="none" stroke="#f59e0b" stroke-width="2.5"/>
+  <path d="M60,190 C140,190 160,30 360,30 C560,30 580,190 660,190 L660,190 L60,190 Z" fill="#f59e0b" fill-opacity=".55" clip-path="url(#band1)"/>
+  <path d="M60,190 C140,190 160,30 360,30 C560,30 580,190 660,190 L660,190 L60,190 Z" fill="#f59e0b" fill-opacity=".3" clip-path="url(#band2a)"/>
+  <path d="M60,190 C140,190 160,30 360,30 C560,30 580,190 660,190 L660,190 L60,190 Z" fill="#f59e0b" fill-opacity=".3" clip-path="url(#band2b)"/>
+  <path d="M60,190 C140,190 160,30 360,30 C560,30 580,190 660,190 L660,190 L60,190 Z" fill="#f59e0b" fill-opacity=".15" clip-path="url(#band3a)"/>
+  <path d="M60,190 C140,190 160,30 360,30 C560,30 580,190 660,190 L660,190 L60,190 Z" fill="#f59e0b" fill-opacity=".15" clip-path="url(#band3b)"/>
+
+  <line x1="60" y1="190" x2="660" y2="190" stroke="#4a5670" stroke-width="1"/>
+  <g stroke="#4a5670" stroke-width="1" stroke-dasharray="2,3">
+    <line x1="120" y1="190" x2="120" y2="40"/>
+    <line x1="180" y1="190" x2="180" y2="40"/>
+    <line x1="240" y1="190" x2="240" y2="40"/>
+    <line x1="360" y1="190" x2="360" y2="25"/>
+    <line x1="480" y1="190" x2="480" y2="40"/>
+    <line x1="540" y1="190" x2="540" y2="40"/>
+    <line x1="600" y1="190" x2="600" y2="40"/>
+  </g>
+  <g fill="#8a9ab5" font-size="10.5" text-anchor="middle">
+    <text x="120" y="205">-3SD</text><text x="180" y="205">-2SD</text><text x="240" y="205">-1SD</text>
+    <text x="360" y="205">Mean</text>
+    <text x="480" y="205">+1SD</text><text x="540" y="205">+2SD</text><text x="600" y="205">+3SD</text>
+  </g>
+  <g fill="#e8edf5" font-size="11" text-anchor="middle" font-family="IBM Plex Mono">
+    <text x="150" y="60">2.35%</text><text x="210" y="60">13.5%</text><text x="360" y="60">68%</text>
+    <text x="510" y="60">13.5%</text><text x="570" y="60">2.35%</text>
+  </g>
+  <g stroke="#00d4aa" stroke-width="1.2" fill="none">
+    <path d="M240,225 L240,220 L480,220 L480,225"/>
+  </g>
+  <text x="360" y="238" text-anchor="middle" fill="#00d4aa" font-size="10.5">95% within &plusmn;2 SD</text>
+</svg>
+<figcaption>Fig 3. Roughly 68% of data sits within &plusmn;1 SD, 95% within &plusmn;2 SD (1.96 exactly), and 99.7% within &plusmn;3 SD of the mean.</figcaption>
+</div>
+
+<div class="box t-amber">
+<span class="label">Skewed data changes the plan</span>
+<p>If the data isn't shaped like this, don't force it: use the median plus a non-parametric test instead. As a quick tell, right-skew (a long tail to the right) pulls the mean above the median; left-skew pulls the mean below it.</p>
+</div>
+
+<div class="sec-head c-red"><span class="sec-num">04</span><h2>P-value &amp; Confidence Interval</h2></div>
+<p class="tagline">The two most misquoted numbers in medicine.</p>
+
+<table>
+<tr><th>Term</th><th>What it actually means</th></tr>
+<tr><td>P-value</td><td><em>If</em> the null hypothesis were true, the probability of seeing a result this extreme or more. It is NOT the probability that the null hypothesis is true.</td></tr>
+<tr><td>&alpha; (0.05)</td><td>The pre-set threshold. p &lt; 0.05 &rarr; reject the null.</td></tr>
+<tr><td>95% CI</td><td>A range that, if the study were repeated many times, would contain the true population value 95% of the time.</td></tr>
+</table>
+
+<div class="figure">
+<svg viewBox="0 0 720 180" xmlns="http://www.w3.org/2000/svg">
+  <line x1="360" y1="20" x2="360" y2="160" stroke="#4a5670" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="360" y="14" text-anchor="middle" fill="#8a9ab5" font-size="10.5">0 (no difference)</text>
+
+  <line x1="410" y1="55" x2="560" y2="55" stroke="#00d4aa" stroke-width="3"/>
+  <circle cx="485" cy="55" r="5" fill="#00d4aa"/>
+  <line x1="410" y1="48" x2="410" y2="62" stroke="#00d4aa" stroke-width="2"/>
+  <line x1="560" y1="48" x2="560" y2="62" stroke="#00d4aa" stroke-width="2"/>
+  <text x="700" y="59" text-anchor="end" fill="#00d4aa" font-size="11" font-weight="700">significant</text>
+
+  <line x1="270" y1="110" x2="440" y2="110" stroke="#e84c4c" stroke-width="3"/>
+  <circle cx="330" cy="110" r="5" fill="#e84c4c"/>
+  <line x1="270" y1="103" x2="270" y2="117" stroke="#e84c4c" stroke-width="2"/>
+  <line x1="440" y1="103" x2="440" y2="117" stroke="#e84c4c" stroke-width="2"/>
+  <text x="700" y="114" text-anchor="end" fill="#e84c4c" font-size="11" font-weight="700">not significant</text>
+</svg>
+<figcaption>Fig 4. A CI for a difference that entirely avoids zero (top) is significant. One that crosses zero (bottom) is not, regardless of how the point estimate looks. Same logic applies to a ratio (RR, OR, HR) crossing 1.</figcaption>
+</div>
+
+<div class="box t-red">
+<span class="label">The most common misread</span>
+<p>A tiny p-value can still describe a clinically trivial effect, especially in a huge trial. Always read the effect size and its confidence interval, not just whether "p &lt; 0.05" is printed at the bottom of a table.</p>
+</div>
+
+<div class="sec-head c-amber"><span class="sec-num">05</span><h2>Errors &amp; Power</h2></div>
+<p class="tagline">The 2&times;2 that every trial's design rests on, before a single patient is enrolled.</p>
+
+<div class="figure">
+<svg viewBox="0 0 640 260" xmlns="http://www.w3.org/2000/svg">
+  <rect x="180" y="10" width="200" height="40" fill="#182030" stroke="#4a5670"/>
+  <text x="280" y="35" text-anchor="middle" fill="#e8edf5" font-family="Syne" font-size="12" font-weight="700">Reject null</text>
+  <rect x="380" y="10" width="200" height="40" fill="#182030" stroke="#4a5670"/>
+  <text x="480" y="35" text-anchor="middle" fill="#e8edf5" font-family="Syne" font-size="12" font-weight="700">Don't reject</text>
+
+  <rect x="20" y="50" width="160" height="90" fill="#182030" stroke="#4a5670"/>
+  <text x="100" y="100" text-anchor="middle" fill="#e8edf5" font-family="Syne" font-size="12" font-weight="700">Null truly true</text>
+  <rect x="20" y="140" width="160" height="90" fill="#182030" stroke="#4a5670"/>
+  <text x="100" y="190" text-anchor="middle" fill="#e8edf5" font-family="Syne" font-size="12" font-weight="700">Null truly false</text>
+
+  <rect x="180" y="50" width="200" height="90" fill="#3a1414" stroke="#e84c4c"/>
+  <text x="280" y="88" text-anchor="middle" fill="#ff8a8a" font-family="Syne" font-size="13" font-weight="700">Type I error (&alpha;)</text>
+  <text x="280" y="108" text-anchor="middle" fill="#e8edf5" font-size="10.5">false positive</text>
+
+  <rect x="380" y="50" width="200" height="90" fill="#0e2018" stroke="#00d4aa"/>
+  <text x="480" y="88" text-anchor="middle" fill="#5cf0cf" font-family="Syne" font-size="13" font-weight="700">Correct</text>
+  <text x="480" y="108" text-anchor="middle" fill="#e8edf5" font-size="10.5">true negative</text>
+
+  <rect x="180" y="140" width="200" height="90" fill="#0e2018" stroke="#00d4aa"/>
+  <text x="280" y="175" text-anchor="middle" fill="#5cf0cf" font-family="Syne" font-size="13" font-weight="700">Correct</text>
+  <text x="280" y="195" text-anchor="middle" fill="#e8edf5" font-size="10.5">Power (1&minus;&beta;)</text>
+
+  <rect x="380" y="140" width="200" height="90" fill="#2e2005" stroke="#f59e0b"/>
+  <text x="480" y="175" text-anchor="middle" fill="#ffcf7a" font-family="Syne" font-size="13" font-weight="700">Type II error (&beta;)</text>
+  <text x="480" y="195" text-anchor="middle" fill="#e8edf5" font-size="10.5">false negative</text>
+</svg>
+<figcaption>Fig 5. Power = 1 &minus; &beta;, usually targeted &ge; 80%. &alpha; = 0.05 and &beta; = 0.20 are the conventional defaults; more power requires a bigger sample.</figcaption>
+</div>
+
+<div class="sec-head c-purple"><span class="sec-num">06</span><h2>Which Test?</h2></div>
+<p class="tagline">Match the test to the data. This is the table examiners love most.</p>
+
+<table>
+<tr><th>Comparison</th><th>Parametric (normal)</th><th>Non-parametric (skewed/ordinal)</th></tr>
+<tr><td>2 independent groups</td><td>Unpaired t-test</td><td>Mann-Whitney U</td></tr>
+<tr><td>2 paired / before-after</td><td>Paired t-test</td><td>Wilcoxon signed-rank</td></tr>
+<tr><td>3+ independent groups</td><td>One-way ANOVA</td><td>Kruskal-Wallis</td></tr>
+<tr><td>Correlation</td><td>Pearson r</td><td>Spearman rho</td></tr>
+<tr><td>2 categorical variables</td><td>&mdash;</td><td>Chi-square (Fisher's if any expected cell &lt; 5)</td></tr>
+</table>
+
+<div class="box t-purple">
+<span class="label">The trap examiners are actually testing</span>
+<p>With 3 or more groups, run one ANOVA (or Kruskal-Wallis), not a series of pairwise t-tests. Running multiple t-tests inflates the overall false-positive rate: each individual test carries its own 5% risk, and those risks compound across comparisons.</p>
+</div>
+
+<div class="sec-head c-red"><span class="sec-num">07</span><h2>The 2&times;2 Diagnostic Table</h2></div>
+<p class="tagline">Sensitivity, specificity, and the prevalence trap.</p>
+
+<div class="figure">
+<svg viewBox="0 0 520 260" xmlns="http://www.w3.org/2000/svg">
+  <rect x="140" y="10" width="180" height="34" fill="#182030" stroke="#4a5670"/>
+  <text x="230" y="32" text-anchor="middle" fill="#e8edf5" font-family="Syne" font-size="12" font-weight="700">Disease +</text>
+  <rect x="320" y="10" width="180" height="34" fill="#182030" stroke="#4a5670"/>
+  <text x="410" y="32" text-anchor="middle" fill="#e8edf5" font-family="Syne" font-size="12" font-weight="700">Disease &minus;</text>
+  <rect x="0" y="44" width="140" height="90" fill="#182030" stroke="#4a5670"/>
+  <text x="70" y="95" text-anchor="middle" fill="#e8edf5" font-family="Syne" font-size="12" font-weight="700">Test +</text>
+  <rect x="0" y="134" width="140" height="90" fill="#182030" stroke="#4a5670"/>
+  <text x="70" y="185" text-anchor="middle" fill="#e8edf5" font-family="Syne" font-size="12" font-weight="700">Test &minus;</text>
+
+  <rect x="140" y="44" width="180" height="90" fill="#0e2018" stroke="#00d4aa"/>
+  <text x="230" y="95" text-anchor="middle" fill="#5cf0cf" font-family="Syne" font-size="14" font-weight="700">TP</text>
+  <rect x="320" y="44" width="180" height="90" fill="#3a1414" stroke="#e84c4c"/>
+  <text x="410" y="95" text-anchor="middle" fill="#ff8a8a" font-family="Syne" font-size="14" font-weight="700">FP</text>
+  <rect x="140" y="134" width="180" height="90" fill="#3a1414" stroke="#e84c4c"/>
+  <text x="230" y="185" text-anchor="middle" fill="#ff8a8a" font-family="Syne" font-size="14" font-weight="700">FN</text>
+  <rect x="320" y="134" width="180" height="90" fill="#0e2018" stroke="#00d4aa"/>
+  <text x="410" y="185" text-anchor="middle" fill="#5cf0cf" font-family="Syne" font-size="14" font-weight="700">TN</text>
+</svg>
+<figcaption>Fig 6. TP/FP/FN/TN, the raw material every diagnostic-test statistic is built from.</figcaption>
+</div>
+
+<table>
+<tr><th>Measure</th><th>Formula</th><th>What it means</th></tr>
+<tr><td>Sensitivity</td><td class="formula">TP / (TP+FN)</td><td>Detects disease. <strong>SnNOUT</strong>: high Sn, negative result rules OUT.</td></tr>
+<tr><td>Specificity</td><td class="formula">TN / (TN+FP)</td><td>Excludes disease. <strong>SpPIN</strong>: high Sp, positive result rules IN.</td></tr>
+<tr><td>PPV</td><td class="formula">TP / (TP+FP)</td><td>Positive test &rarr; truly diseased</td></tr>
+<tr><td>NPV</td><td class="formula">TN / (TN+FN)</td><td>Negative test &rarr; truly well</td></tr>
+</table>
+
+<div class="box t-red">
+<span class="label">The prevalence trap</span>
+<p>Sensitivity and specificity are properties of the test itself and don't change with prevalence. PPV and NPV do: as prevalence rises, PPV rises and NPV falls, even with the exact same test performance. The same troponin assay means something different in a chest-pain unit than it does in a low-risk outpatient screen.</p>
+</div>
+
+<div class="sec-head" style="border-left-color:var(--text3); background:none;"><span class="sec-num">08</span><h2>Likelihood Ratios, ROC, and Sample Size</h2></div>
+<p class="tagline">The high-value extras that separate reading a paper from actually understanding it.</p>
+
+<div class="figure">
+<svg viewBox="0 0 380 340" xmlns="http://www.w3.org/2000/svg">
+  <line x1="50" y1="290" x2="330" y2="290" stroke="#4a5670" stroke-width="1.5"/>
+  <line x1="50" y1="290" x2="50" y2="30" stroke="#4a5670" stroke-width="1.5"/>
+  <text x="190" y="315" text-anchor="middle" fill="#8a9ab5" font-size="11">1 &minus; Specificity</text>
+  <text x="20" y="160" text-anchor="middle" fill="#8a9ab5" font-size="11" transform="rotate(-90 20 160)">Sensitivity</text>
+
+  <line x1="50" y1="290" x2="330" y2="30" stroke="#4a5670" stroke-width="1.5" stroke-dasharray="4,4"/>
+  <text x="250" y="130" fill="#4a5670" font-size="10" font-style="italic">AUC = 0.5 (useless)</text>
+
+  <path d="M50,290 C100,180 130,80 330,30" fill="none" stroke="#00d4aa" stroke-width="2.5"/>
+  <path d="M50,290 C100,180 130,80 330,30 L330,290 Z" fill="#00d4aa" fill-opacity=".12"/>
+  <text x="130" y="90" fill="#00d4aa" font-size="10.5" font-weight="700">Good test</text>
+
+  <text x="190" y="20" text-anchor="middle" fill="#e8edf5" font-family="Syne" font-size="12" font-weight="700">ROC Curve</text>
+</svg>
+<figcaption>Fig 7. ROC plots sensitivity against 1&minus;specificity across every possible cutoff. AUC 0.5 = no better than a coin flip; AUC 1.0 = perfect discrimination.</figcaption>
+</div>
+
+<table>
+<tr><th>Concept</th><th>Key point</th></tr>
+<tr><td class="formula">LR+ = Sn / (1&minus;Sp)</td><td>&gt;10 large/conclusive rule-in; 5&ndash;10 moderate</td></tr>
+<tr><td class="formula">LR&minus; = (1&minus;Sn) / Sp</td><td>&lt;0.1 large/conclusive rule-out; 0.1&ndash;0.2 moderate</td></tr>
+<tr><td>Sample size &uarr; when</td><td>Smaller expected effect, more variability (SD), higher desired power, smaller &alpha;</td></tr>
+<tr><td>Kappa (&kappa;)</td><td>Inter-rater agreement beyond chance: 1 = perfect, 0 = chance-level</td></tr>
+</table>
+
+<div class="box t-teal">
+<span class="label">Why LRs beat PPV/NPV</span>
+<p>Likelihood ratios are prevalence-independent, which is exactly what PPV and NPV are not. That makes LRs the right tool for moving from a pre-test probability (your clinical suspicion before the test) to a post-test probability (your suspicion after), regardless of how common the disease is in the population you're standing in.</p>
+</div>
+
+<div class="sec-head" style="border-left-color:var(--text3); background:none;"><span class="sec-num">09</span><h2>Sources &amp; Conventions</h2></div>
+<ul class="sources">
+<li><span class="refnum">[1]</span> Jaeschke R, Guyatt GH, Sackett DL. Users' guides to the medical literature III: how to use an article about a diagnostic test. B. What are the results and will they help me in caring for my patients? <em>JAMA.</em> 1994;271(9):703&ndash;707. (Source of the LR interpretation bands used above.)</li>
+<li><span class="refnum">[2]</span> Altman DG. <em>Practical Statistics for Medical Research.</em> Chapman &amp; Hall/CRC. (Standard reference for data types, centre/spread measures, and test selection.)</li>
+<li><span class="refnum">[3]</span> Landis JR, Koch GG. The measurement of observer agreement for categorical data. <em>Biometrics.</em> 1977;33(1):159&ndash;174. (Kappa interpretation.)</li>
+<li><span class="refnum">[4]</span> Greenhalgh T. <em>How to Read a Paper: The Basics of Evidence-Based Medicine.</em> BMJ Books. (P-value/CI interpretation conventions.)</li>
+</ul>
+
+<div class="box t-teal" style="margin-top:1.5rem;">
+<span class="label">Content audit note</span>
+<p style="color:var(--text2); font-size:.9rem;">This carousel is textbook biostatistics rather than a single study's findings, so the audit here is against standard conventions rather than a primary trial. Every formula, threshold, and rule of thumb (SEM, 68-95-99.7, the LR bands, Type I/II error definitions, PPV/NPV prevalence dependence) matches standard biostatistics teaching exactly. Nothing needed correcting; the additions here are the worked diagrams, since a table of definitions alone doesn't build the same intuition as seeing the shapes.</p>
+</div>
+
+<footer>The Critical Vector &middot; Direction and magnitude.</footer>
+
+</div>
+</body>
+</html>

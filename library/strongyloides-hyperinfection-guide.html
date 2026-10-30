@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Sleeper Agent: Strongyloides Hyperinfection Syndrome | The Critical Vector</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400;1,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0e14; --surface:#111720; --surface2:#182030; --border:rgba(255,255,255,.08);
+    --accent:#00d4aa; --accent2:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa;
+    --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--bg); color:var(--text); font-family:'Source Serif 4',serif; line-height:1.6;}
+  .page{max-width:900px; margin:0 auto; padding:48px 28px 64px;}
+
+  .kicker{font-family:'IBM Plex Mono',monospace; font-size:12.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-bottom:10px;}
+  h1{font-family:'Syne',sans-serif; font-weight:800; font-size:30px; margin:0 0 10px; line-height:1.15;}
+  header p.sub{font-family:'Source Serif 4',serif; font-style:italic; color:var(--text2); font-size:16px; margin:0 0 28px; max-width:640px;}
+
+  .alert{border-radius:10px; padding:16px 18px; margin:18px 0 28px; background:rgba(0,212,170,.10); border:1px solid rgba(0,212,170,.28); color:var(--text);}
+  .alert strong{color:var(--accent);}
+  .alert.c-amber{background:rgba(245,158,11,.10); border-color:rgba(245,158,11,.28);}
+  .alert.c-amber strong{color:var(--amber);}
+
+  .sec-head{display:flex; align-items:center; gap:10px; padding:10px 14px; border-radius:6px; border-left:4px solid var(--accent);
+    background:linear-gradient(90deg, rgba(0,212,170,.10), rgba(0,212,170,0)); margin:40px 0 6px;}
+  .sec-head.c-blue{border-left-color:var(--accent2); background:linear-gradient(90deg, rgba(96,165,250,.10), rgba(96,165,250,0));}
+  .sec-head.c-red{border-left-color:var(--red); background:linear-gradient(90deg, rgba(232,76,76,.10), rgba(232,76,76,0));}
+  .sec-head.c-amber{border-left-color:var(--amber); background:linear-gradient(90deg, rgba(245,158,11,.10), rgba(245,158,11,0));}
+  .sec-head.c-purple{border-left-color:var(--purple); background:linear-gradient(90deg, rgba(167,139,250,.10), rgba(167,139,250,0));}
+  .sec-num{font-family:'IBM Plex Mono',monospace; font-size:13px; color:var(--text2); font-weight:500;}
+  .sec-head h2{font-family:'Syne',sans-serif; font-weight:700; font-size:19px; margin:0; color:var(--text);}
+  .tagline{font-style:italic; color:var(--text2); font-size:14.5px; margin:6px 2px 18px;}
+
+  .box{background:var(--surface2); border:1px solid var(--border); border-radius:10px; padding:16px 18px; margin:14px 0;}
+  .box.t-teal{border-left:3px solid var(--accent);}
+  .box.t-blue{border-left:3px solid var(--accent2);}
+  .box.t-red{border-left:3px solid var(--red); background:rgba(232,76,76,.06);}
+  .box.t-amber{border-left:3px solid var(--amber);}
+  .box.t-purple{border-left:3px solid var(--purple);}
+  .box h3{font-family:'Syne',sans-serif; font-size:15.5px; margin:0 0 8px; color:var(--text);}
+  .box p{margin:6px 0;}
+
+  table{width:100%; border-collapse:collapse; margin:16px 0; font-size:15px;}
+  th{background:var(--surface2); font-family:'Syne',sans-serif; font-weight:600; text-align:left; padding:10px 12px; border-bottom:1px solid var(--border); font-size:13.5px;}
+  td{padding:10px 12px; border-bottom:1px solid var(--border); vertical-align:top;}
+  tr:last-child td{border-bottom:none;}
+
+  .stat-row{display:flex; flex-wrap:wrap; margin:18px 0;}
+  .stat-card{flex:1; min-width:150px; min-height:100px; padding:22px; border-left:4px solid var(--accent); margin-right:14px; margin-bottom:14px; background:var(--surface);}
+  .stat-card.s-red{border-left-color:var(--red);}
+  .stat-card.s-amber{border-left-color:var(--amber);}
+  .stat-card.s-blue{border-left-color:var(--accent2);}
+  .stat-num{font-family:'Syne',sans-serif; font-weight:800; font-size:28pt; display:block; line-height:1;}
+  .stat-label{font-family:'Source Serif 4',serif; font-size:9.5pt; color:var(--text2); display:block; margin-top:6px;}
+
+  .step-row{display:flex; align-items:flex-start; margin:14px 0;}
+  .step-num{flex-shrink:0; width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    font-family:'Syne',sans-serif; font-weight:800; font-size:15px; color:#0a0e14; margin-right:14px;}
+  .step-body h4{margin:2px 0 4px; font-family:'Syne',sans-serif; font-size:15px; color:var(--text);}
+  .step-body p{margin:0; color:var(--text2); font-size:15px;}
+
+  .xref{border-left:3px solid var(--accent2); background:rgba(96,165,250,.08); border-radius:6px; padding:12px 16px; margin:14px 0; font-size:14.5px;}
+  .peds{border-left:3px solid var(--purple); background:rgba(167,139,250,.08); border-radius:6px; padding:12px 16px; margin:14px 0; font-size:14.5px;}
+
+  .badge{display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:11px; padding:3px 9px; border-radius:5px; margin:2px 4px 2px 0;}
+  .badge.b-teal{background:rgba(0,212,170,.12); border:1px solid rgba(0,212,170,.25); color:var(--accent);}
+  .badge.b-red{background:rgba(232,76,76,.12); border:1px solid rgba(232,76,76,.25); color:var(--red);}
+  .badge.b-blue{background:rgba(96,165,250,.12); border:1px solid rgba(96,165,250,.25); color:#60a5fa;}
+  .badge.b-amber{background:rgba(245,158,11,.12); border:1px solid rgba(245,158,11,.25); color:var(--amber);}
+
+  .pro-con{display:flex; gap:16px; flex-wrap:wrap; margin:16px 0;}
+  .pro-con .box{flex:1; min-width:260px; margin:0;}
+
+  ul{padding-left:22px;} li{margin:5px 0;}
+  .sources{font-size:13.5px; color:var(--text2); line-height:1.8;}
+  .sources .tier{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--text3);}
+
+  footer{font-style:italic; color:var(--text3); font-size:13px; margin-top:56px; padding-top:20px; border-top:1px solid var(--border);}
+
+  @media print{
+    :root{
+      --bg:#f4f5f7; --surface:#fff; --surface2:#eef0f3; --border:rgba(15,25,35,.12);
+      --accent:#00a688; --accent2:#1d4ed8; --red:#c53030; --amber:#b45309; --purple:#7c3aed;
+      --text:#0f1923; --text2:#4a5670; --text3:#6b7688;
+    }
+  }
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../locker.html">The Evidence Locker</a><span class="cv-sb-meta">Published 1 Aug 2026 · R. E. Suscitate &amp; A. Systole</span></nav>
+<div class="page">
+
+  <div class="kicker">The Critical Vector · Direction and magnitude</div>
+  <h1>The Sleeper Agent: Strongyloides Hyperinfection Syndrome</h1>
+  <p class="sub">A steroid dose can wake up a worm that's been quietly cycling in a patient's gut for forty years. This is the fact-check and full work-up behind the "evidence-based ivermectin" carousel — mechanism, who to screen, why stool testing fails, and the empiric-treatment argument on both sides.</p>
+
+  <div class="alert">
+    <strong>Sourcing note:</strong> This reference expands and independently verifies a clinical-education social carousel (@definesHOCK × @drvirenkaul). The core clinical claims — autoinfection biology, corticosteroid-triggered hyperinfection, mortality range, screening indications, diagnostic test performance, and ivermectin dosing — were checked against primary literature and standing guidance (CDC, WHO/World Gastroenterology Organisation, IDSA-aligned transplant guidelines, and peer-reviewed case series/reviews). Tier is flagged per section below.
+  </div>
+
+  <!-- 01 -->
+  <div class="sec-head"><span class="sec-num">01</span><h2>The Biology: Why This Worm Is Different</h2></div>
+  <p class="tagline">Every other intestinal helminth needs to leave the host and come back. This one doesn't.</p>
+
+  <p><em>Strongyloides stercoralis</em> is a soil-transmitted nematode that infects roughly 600 million people worldwide, mostly in the tropics and subtropics — but also in pockets of the historically endemic American South and Appalachia, where autochthonous (locally acquired) transmission has been documented for over a century.<span class="badge b-teal">primary source checked</span></p>
+
+  <div class="box t-teal">
+    <h3>The autoinfection cycle</h3>
+    <p>Free-living filariform larvae penetrate intact skin (classically bare feet on contaminated soil), migrate through the bloodstream to the lungs, are coughed up and swallowed, and mature into adult females in the small intestine. So far, this looks like any other soil-transmitted helminth.</p>
+    <p>The difference: some larvae produced in the gut molt into the infective filariform stage <em>before</em> they're passed in stool. Instead of leaving the host, they re-penetrate the intestinal mucosa or perianal skin and re-enter circulation — restarting the cycle entirely inside the same person. This is why <em>Strongyloides</em> can persist for <strong>decades</strong> after the last soil exposure, often with no symptoms beyond intermittent GI upset, a recurring pruritic serpiginous rash (larva currens), or unexplained eosinophilia.</p>
+  </div>
+
+  <!-- 02 -->
+  <div class="sec-head c-red"><span class="sec-num">02</span><h2>The Trigger: What Steroids Actually Do</h2></div>
+  <p class="tagline">Corticosteroids don't cause the infection — they remove the ceiling on it.</p>
+
+  <p>Chronic autoinfection stays low-grade because host immunity (particularly eosinophils, IgE, and Th2-mediated responses) keeps the larval cycling in check. Corticosteroids blunt exactly that arm of immunity. The mechanism proposed in the literature is not purely immunologic: glucocorticoids also appear to act directly on the parasite, accelerating the molt from the rhabditiform to the infective filariform larval stage — effectively giving the worm a hormonal green light to accelerate its own life cycle independent of the immune suppression.<span class="badge b-teal">primary source checked</span></p>
+
+  <p>Once that ceiling is gone, <strong>hyperinfection syndrome</strong> follows: larval burden increases by orders of magnitude, migration extends beyond the normal gut-lung circuit into the CNS, liver, and elsewhere (frank <strong>dissemination</strong>), and the migrating larvae drag enteric gram-negative organisms across a mechanically disrupted gut wall into the bloodstream — meaning the fatal event is often gram-negative sepsis or meningitis, not the parasite itself.</p>
+
+  <div class="stat-row">
+    <div class="stat-card s-red"><span class="stat-num">70–100%</span><span class="stat-label">mortality in disseminated strongyloidiasis, per case-series data</span></div>
+    <div class="stat-card s-amber"><span class="stat-num">~90%</span><span class="stat-label">mortality if hyperinfection is untreated, cited across multiple reviews</span></div>
+    <div class="stat-card"><span class="stat-num">A single dose</span><span class="stat-label">of corticosteroid has triggered fatal hyperinfection in reported cases</span></div>
+  </div>
+
+  <p style="font-size:14px; color:var(--text2);"><strong>On the numbers:</strong> the original carousel's "up to 60%+" is a defensible conservative floor. Case-series data more commonly cite 70–100% mortality for frank dissemination, and ~90% for untreated hyperinfection broadly — both figures independently corroborated across a 2022 neurosurgical case report, a 2023 obstetric case report, and a 2022 review in <em>Lung</em>. One recent systematic review of hyperinfection with thrombotic complications specifically found 31.3% mortality — lower, but drawn from a narrower and more heavily treated cohort, not evidence the disease is generally survivable without recognition.<span class="badge b-teal">primary source checked</span></p>
+
+  <div class="xref"><strong>Cross-reference:</strong> this is the mechanistic mirror image of the Steroids-in-ARDS discussion — the same drug class that reduces mortality in one pathway (ARDS) can be the proximate trigger for a fatal one in a patient carrying an unrecognized parasite.</div>
+
+  <!-- 03 -->
+  <div class="sec-head c-blue"><span class="sec-num">03</span><h2>Who to Screen — Not Just "International" Patients</h2></div>
+  <p class="tagline">The carousel's hint was right: geography of birth is only one risk flag among several.</p>
+
+  <p>Guidance-level consensus (IDSA-aligned transplant guidelines, ASBMT, World Gastroenterology Organisation) recommends screening before any planned immunosuppression — transplant candidacy, prolonged corticosteroids, biologics, chemotherapy — in anyone with a plausible exposure history.<span class="badge b-teal">primary source checked</span> That history is broader than "born or lived abroad":</p>
+
+  <table>
+    <tr><th>Risk group</th><th>Why they're missed</th></tr>
+    <tr><td>Residents of the historically endemic <strong>Southeastern U.S. and Appalachia</strong></td><td>Domestic transmission is under-recognized; a 2025 South Carolina serosurvey found 5.0% seropositivity in banked serum, and a Kentucky transplant-center cohort found 9.5% seropositive among evaluees, highest among rural Appalachian residents (14%+)</td></tr>
+    <tr><td>Military veterans, especially Vietnam/SE Asia-era service</td><td>Exposure decades in the past; the autoinfection cycle means the worm outlives the memory of the exposure</td></tr>
+    <tr><td>Immigrants/refugees from endemic regions, regardless of years in the U.S.</td><td>Chronic asymptomatic carriage; screening at entry historically inconsistent outside formal refugee resettlement pathways</td></tr>
+    <tr><td>Anyone with unexplained peripheral eosinophilia</td><td>Eosinophilia is a clue, not a rule-out — it is frequently absent, especially once immunosuppression has already begun</td></tr>
+  </table>
+
+  <p style="font-size:14px; color:var(--text2);">Practically: any patient about to receive prolonged corticosteroids, biologic immunosuppression, or transplant conditioning who has <em>any</em> plausible soil exposure history — domestic or international, recent or decades old — is a screening candidate.</p>
+
+  <!-- 04 -->
+  <div class="sec-head c-amber"><span class="sec-num">04</span><h2>Why Stool O&amp;P Is Basically Useless — and What Isn't</h2></div>
+  <p class="tagline">A negative stool exam has never ruled this out. That's not a hedge — it's the published sensitivity.</p>
+
+  <table>
+    <tr><th>Test</th><th>Sensitivity</th><th>Note</th></tr>
+    <tr><td>Single stool O&amp;P (direct/concentration)</td><td>~30–48%</td><td>Larval shedding is intermittent and low-volume even in true infection</td></tr>
+    <tr><td>Three serial stool exams</td><td>~50%</td><td>Better, still misses roughly half of true infections</td></tr>
+    <tr><td>Agar plate culture / Baermann technique</td><td>72–89%</td><td>Best of the fecal methods, but not widely available outside reference labs</td></tr>
+    <tr><td>Serum IgG serology (ELISA)</td><td>~90–100% in immunocompetent hosts</td><td>Test of choice; one head-to-head study found 100% sensitivity vs. 45% for stool microscopy in travelers/migrants</td></tr>
+  </table>
+
+  <p>The catch: serology sensitivity <strong>drops in the exact patients you're most worried about</strong> — those already immunosuppressed, and those with acute/early infection — because the assay depends on the host still mounting an antibody response. False negatives are described specifically in immunosuppressed patients and false positives can occur from cross-reactivity with other helminths.<span class="badge b-teal">primary source checked</span> This is why serology plus stool exam (not either alone) is the recommended combined screening approach where time allows, and why eosinophilia is a supportive clue but never a rule-out on its own.</p>
+
+  <!-- 05 -->
+  <div class="sec-head c-purple"><span class="sec-num">05</span><h2>Empiric Treatment: When You Can't Wait for the Result</h2></div>
+  <p class="tagline">Same-day serology exists in very few hospitals. Emergencies don't wait for send-out labs.</p>
+
+  <div class="step-row"><div class="step-num" style="background:var(--accent);">1</div><div class="step-body"><h4>Identify the at-risk patient</h4><p>Any plausible exposure history (Section 03) plus an indication for urgent, unavoidable immunosuppression — emergent transplant, status asthmaticus, antenatal steroids for imminent delivery, severe COVID-19 pneumonia on high-dose steroids.</p></div></div>
+  <div class="step-row"><div class="step-num" style="background:var(--accent2);">2</div><div class="step-body"><h4>Send serology and stool O&amp;P — but don't wait if the clock won't allow it</h4><p>If same-day testing isn't available and immunosuppression can't be safely delayed, guidance supports empiric treatment rather than withholding it pending results.</p></div></div>
+  <div class="step-row"><div class="step-num" style="background:var(--amber);">3</div><div class="step-body"><h4>Rule out Loa loa exposure first, if relevant</h4><p>In patients with Central/West African residence history, screen for concurrent <em>Loa loa</em> microfilaremia (daytime blood smear) before ivermectin — high-burden loiasis plus ivermectin carries a risk of severe encephalopathy. This is the one hard contraindication-adjacent caveat to empiric dosing.</p></div></div>
+  <div class="step-row"><div class="step-num" style="background:var(--red);">4</div><div class="step-body"><h4>Dose: ivermectin 200 mcg/kg PO</h4><p>Single dose or two consecutive daily doses — CDC and most current protocols now favor the single-dose regimen (efficacy comparable, ~95%+ effectiveness in recent series). Relative contraindications: weight &lt;15 kg, pregnancy/breastfeeding (weigh risk of untreated hyperinfection against treatment risk case-by-case), Loa loa co-infection per Step 3.</p></div></div>
+  <div class="step-row"><div class="step-num" style="background:var(--purple);">5</div><div class="step-body"><h4>Confirm eradication</h4><p>Falling eosinophil count and declining serology titer over follow-up support cure; repeat stool/serology at 1–2 years is the guideline-level recommendation given how easily low-level persistence hides.</p></div></div>
+
+  <div class="peds"><strong>Pediatric/perinatal note:</strong> antenatal corticosteroids given for fetal lung maturity before preterm delivery have themselves triggered fatal hyperinfection in a mother with unrecognized chronic infection — including after a <em>single</em> dose. Obstetric teams managing preterm labor in a patient with any endemic-area history should have as low a threshold to consider this as any ICU team starting pulse steroids.</div>
+
+  <!-- 06 -->
+  <div class="sec-head c-red"><span class="sec-num">06</span><h2>The Irony Slide</h2></div>
+  <p class="tagline">You know the one.</p>
+
+  <p>Ivermectin spent 2020–2022 as a flashpoint: promoted online as a COVID-19 treatment despite no credible evidence of benefit against the virus itself, then formally recommended against for that indication by the FDA, CDC, and WHO. That controversy did real damage to the drug's reputation among both clinicians and the public — to the point that some hospital pharmacies reported supply pressure from inappropriate outpatient demand during the same period a legitimate, high-value use was quietly expanding.</p>
+
+  <p>During that same window, several hospitals implemented protocols to <strong>empirically dose ivermectin in COVID-19 patients about to receive high-dose corticosteroids</strong> — not to treat COVID, but to prevent exactly the hyperinfection syndrome described above in patients with unrecognized strongyloidiasis. That is the actual evidence-based use: a decades-old, WHO-essential-medicine-listed antiparasitic, dosed for a well-characterized parasitic disease, with a strong mechanistic and observational rationale. The drug never stopped being reasonable; the discourse just made it hard to say so out loud.<span class="badge b-teal">primary source checked</span></p>
+
+  <!-- 07 -->
+  <div class="sec-head c-blue"><span class="sec-num">07</span><h2>Where This Is Genuinely Debated</h2></div>
+  <p class="tagline">The mechanism isn't controversial. The operational policy around it still is.</p>
+
+  <div class="pro-con">
+    <div class="box t-blue">
+      <h3>Case for universal/broad screening</h3>
+      <ul>
+        <li>Disease is silent for decades and catastrophic once triggered — a 30-second question and a screening test are cheap against a mortality measured in the tens of percent.</li>
+        <li>Domestic seroprevalence data (SC, KY cohorts above) suggests exposure history alone under-captures real risk even within the U.S.</li>
+        <li>Falling threshold for immunosuppressive therapy across specialties (biologics, transplant, oncology) increases the population exposed to the trigger.</li>
+      </ul>
+    </div>
+    <div class="box t-red">
+      <h3>Case against reflexive universal screening</h3>
+      <ul>
+        <li>Serology has real false-positive potential (cross-reactivity with other helminths); a positive-predictive-value of ~67% in one traveler/migrant cohort means confirmatory workup is still needed, not automatic treatment.</li>
+        <li>Cost-effectiveness of universal (vs. risk-stratified) screening is not established outside high-prevalence or transplant-referral populations — most guidance still targets it to specific exposure or immunosuppression pathways rather than every patient.</li>
+        <li>Empiric ivermectin is not risk-free: the Loa loa encephalopathy risk is real (if geographically narrow), and blanket empiric dosing in a low-pretest-probability population trades a rare parasitic catastrophe for routine unnecessary drug exposure at scale.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="pro-con">
+    <div class="box t-teal">
+      <h3>Case for empiric treatment when testing is delayed</h3>
+      <ul>
+        <li>Same-day serology is unavailable at most hospitals; the disease's fatality curve does not wait for a send-out lab result.</li>
+        <li>Ivermectin's safety profile in the correct population (no Loa loa risk, not &lt;15 kg, not pregnant) is favorable and well-established — the asymmetry favors treating.</li>
+        <li>This is already standard practice for U.S.-bound refugees from endemic regions (presumptive dosing before travel), so precedent for empiric use exists at a policy level.</li>
+      </ul>
+    </div>
+    <div class="box t-amber">
+      <h3>Case for holding treatment pending confirmation</h3>
+      <ul>
+        <li>Treating empirically can mask or delay definitive diagnosis and confirmatory follow-up serology, complicating the "is this cured" question later.</li>
+        <li>In truly low-probability patients (no plausible exposure history at all), empiric dosing has no clear evidence base and exposes the patient to treatment for a disease they likely don't have.</li>
+        <li>A negative trial in ivermectin given empirically to unselected COVID-19 pneumonia patients (not risk-stratified for Strongyloides exposure) showed no mortality or respiratory-support benefit — a reminder that the intervention's value lives specifically in the at-risk subgroup, not as a blanket ICU protocol.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec-head" style="border-left-color:var(--text3); background:none;"><span class="sec-num">08</span><h2>The One-Line Takeaway</h2></div>
+  <p>Ask the exposure question before you push the steroid dose. It costs thirty seconds. The alternative costs a patient a disease you had every chance to prevent.</p>
+
+  <div class="sec-head" style="border-left-color:var(--text3); background:none; margin-top:48px;"><span class="sec-num">§</span><h2>Sources &amp; Sourcing Tiers</h2></div>
+  <p class="sources">
+    <span class="tier">[PRIMARY — CHECKED]</span> Czeresnia JM, Weiss LM. <em>Strongyloides stercoralis</em>. Lung. 2022;200(2):141–148. PMID 35396957 — review confirming autoinfection biology, screening/empiric-treatment guidance, ivermectin dosing (200 mcg/kg × 1–2 days).<br>
+    <span class="tier">[PRIMARY — CHECKED]</span> Strongyloides hyperinfection syndrome due to corticosteroid therapy after resection of meningioma. J Neurosurg Case Lessons. 2022. PMC9274291 — 70–100% mortality range, screening recommendation for endemic-exposure patients before immunosuppression.<br>
+    <span class="tier">[PRIMARY — CHECKED]</span> Strongyloides Hyperinfection Syndrome Triggered by a Single Dose of Dexamethasone. Cureus/PMC10607639, and PMC10503402 (obstetric case) — single-dose corticosteroid trigger, ~90% untreated mortality.<br>
+    <span class="tier">[PRIMARY — CHECKED]</span> Evidence-Based Guidelines for Screening and Management of Strongyloidiasis in Non-Endemic Countries. PMC5590585 — stool method sensitivities (21–89% by technique), serology as most sensitive modality, false-negative risk in immunosuppressed hosts.<br>
+    <span class="tier">[PRIMARY — CHECKED]</span> Clinical value of serology for diagnosis of strongyloidiasis in travelers/migrants (Bordier IVD ELISA study). PMC8647686 — serology 100% sensitivity vs. 45% stool microscopy; PPV 67%.<br>
+    <span class="tier">[PRIMARY — CHECKED]</span> Modeling strongyloidiasis risk in the United States. Int J Infect Dis, 2020 — Appalachia/Southeastern U.S. endemicity, historical 3.8–20% prevalence data.<br>
+    <span class="tier">[PRIMARY — CHECKED]</span> Evidence of Autochthonous Human <em>S. stercoralis</em> in South Carolina. Am J Trop Med Hyg, 2025 — 5.0% serosurvey seropositivity.<br>
+    <span class="tier">[PRIMARY — CHECKED]</span> Strongyloides screening for heart transplant candidates in an endemic region (Kentucky). 2026 — 9.5% seropositivity, Appalachian residence association.<br>
+    <span class="tier">[PRIMARY — CHECKED]</span> CDC. Presumptive Treatment and Screening for Strongyloidiasis (Refugee Health guidance); CDC Overseas Presumptive Treatment guidance — 200 mcg/kg ivermectin dosing, test-and-treat framework.<br>
+    <span class="tier">[PRIMARY — CHECKED]</span> Implementation and Outcomes of an Empiric Ivermectin Strongyloides Treatment Protocol for High-Dose Corticosteroids in Severe COVID-19. Am J Trop Med Hyg, 2023 — empiric protocol rationale and precedent.<br>
+    <span class="tier">[PRIMARY — CHECKED]</span> Ivermectin Effect on In-Hospital Mortality... Propensity-Matched Study. PMC10222278 — negative result for unselected empiric dosing, supporting risk-stratification argument.<br>
+    <span class="tier">[STANDARD TEACHING]</span> WHO/World Gastroenterology Organisation strongyloidiasis management guidance — presumptive treatment framework, follow-up serology interval.<br>
+    <span class="tier">[UNVERIFIED IN TIME AVAILABLE]</span> The remaining PMIDs listed in the original carousel's source comment (Buonfrate, Keiser, Inagaki, Kalantari, Sears, Swart, Barrett) were not individually re-pulled and checked against this document's specific claims; one (Czeresnia, 35396957) was independently confirmed above. Treat the others as the original author's citation list, not independently re-verified here.
+  </p>
+
+  <footer>The Critical Vector — Direction and magnitude.</footer>
+</div>
+</body>
+</html>

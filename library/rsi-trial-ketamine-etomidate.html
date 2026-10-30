@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The RSI Trial: Ketamine Isn't as Neutral as We Thought | The Critical Vector</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400;1,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#0a0e14; --surface:#111720; --surface2:#182030; --border:rgba(255,255,255,.08); --accent:#00d4aa; --accent2:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa; --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670;}
+  *{box-sizing:border-box;}
+  body{background:var(--bg); color:var(--text); margin:0; padding:2.5rem 1rem 5rem; font-family:'Source Serif 4', Georgia, serif; line-height:1.65;}
+  .page{max-width:920px; margin:0 auto;}
+  h1,h2,h3,.sec-num,.kicker,th,.label,.step-num{font-family:'Syne', sans-serif;}
+  code, .mono{font-family:'IBM Plex Mono', monospace;}
+  .kicker{color:var(--accent); font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; font-weight:600;}
+  h1{font-weight:800; font-size:1.7rem; margin:.4rem 0 .5rem; color:var(--text); line-height:1.3;}
+  header p{font-style:italic; color:var(--text2); font-size:1rem; margin:0 0 .4rem;}
+  .byline{color:var(--text3); font-size:.85rem; margin:0 0 1.5rem;}
+  .alert{background:rgba(0,212,170,.10); border:1px solid rgba(0,212,170,.28); color:#bdf5e8; border-radius:10px; padding:1rem 1.2rem; margin:1.2rem 0 2rem; font-size:.98rem;}
+  .alert strong{color:var(--accent);}
+  .sec-head{display:flex; align-items:baseline; gap:.7rem; padding:.6rem .9rem; border-left:4px solid var(--accent); background:linear-gradient(90deg, rgba(0,212,170,.10), transparent); border-radius:6px; margin-top:2.6rem;}
+  .sec-head.c-blue{border-left-color:var(--accent2); background:linear-gradient(90deg, rgba(96,165,250,.12), transparent);}
+  .sec-head.c-red{border-left-color:var(--red); background:linear-gradient(90deg, rgba(232,76,76,.12), transparent);}
+  .sec-head.c-amber{border-left-color:var(--amber); background:linear-gradient(90deg, rgba(245,158,11,.12), transparent);}
+  .sec-head.c-purple{border-left-color:var(--purple); background:linear-gradient(90deg, rgba(167,139,250,.12), transparent);}
+  .sec-num{color:var(--text3); font-size:.85rem; font-weight:600;}
+  .sec-head h2{margin:0; font-size:1.15rem; font-weight:700; color:var(--text);}
+  .tagline{font-style:italic; color:var(--text2); font-size:.92rem; margin:.4rem 0 1rem; padding-left:.9rem;}
+  p{margin:.8rem 0;}
+  .box{background:var(--surface2); border:1px solid var(--border); border-radius:10px; padding:1rem 1.2rem; margin:1.1rem 0;}
+  .box.t-teal{border-left:3px solid var(--accent);} .box.t-blue{border-left:3px solid var(--accent2);}
+  .box.t-amber{border-left:3px solid var(--amber);} .box.t-purple{border-left:3px solid var(--purple);}
+  .box.t-red{border-left:3px solid var(--red); background:rgba(232,76,76,.06);}
+  .box .label{display:block; font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; font-weight:700; margin-bottom:.4rem;}
+  .box.t-teal .label{color:var(--accent);} .box.t-blue .label{color:var(--accent2);}
+  .box.t-amber .label{color:var(--amber);} .box.t-purple .label{color:var(--purple);} .box.t-red .label{color:var(--red);}
+  table{width:100%; border-collapse:collapse; margin:1.1rem 0; font-size:.83rem;}
+  th{background:var(--surface2); color:var(--text); text-align:left; padding:.5rem .55rem; font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; font-weight:700; border-bottom:1px solid var(--border);}
+  td{padding:.5rem .55rem; border-bottom:1px solid var(--border); vertical-align:top; color:var(--text);}
+  tr:nth-child(even) td{background:rgba(255,255,255,.02);}
+  td.num{font-family:'IBM Plex Mono',monospace; font-size:.8rem;}
+  tr.sig td{background:rgba(232,76,76,.07);} tr.notsig td{color:var(--text2);}
+  ul.plain{margin:.6rem 0; padding-left:1.3rem;} ul.plain li{margin-bottom:.4rem;}
+  .sources{list-style:none; padding:0; margin:1rem 0; font-size:.85rem; color:var(--text2);}
+  .sources li{padding:.55rem 0; border-bottom:1px solid var(--border);} .sources a{color:var(--accent);}
+  footer{font-style:italic; color:var(--text3); font-size:.85rem; text-align:center; margin-top:3rem; padding-top:1.2rem; border-top:1px solid var(--border);}
+  @media print{
+    :root{--bg:#f4f5f7; --surface:#fff; --surface2:#eef1f4; --border:#d7dde3; --accent:#00a688; --accent2:#1d4ed8; --red:#c53030; --amber:#b45309; --purple:#7c3aed; --text:#0f1923; --text2:#4a5670; --text3:#6b7688;}
+    body{background:var(--bg) !important; color:var(--text) !important;}
+    .alert{background:rgba(0,166,136,.08) !important; color:#0f1923 !important;}
+    td{color:var(--text) !important;}
+  }
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../locker.html">The Evidence Locker</a><span class="cv-sb-meta">Published 11 Sep 2026 · R. E. Suscitate &amp; A. Systole</span></nav>
+<div class="page">
+
+<header>
+  <div class="kicker">The Critical Vector &middot; Study Breakdown &amp; Content Audit &mdash; Verified</div>
+  <h1>The RSI Trial: Ketamine Isn't as Hemodynamically Neutral as We Thought</h1>
+  <p>Casey JD, Seitz KP, Driver BE, et al; RSI Investigators and the Pragmatic Critical Care Research Group. Ketamine or Etomidate for Tracheal Intubation of Critically Ill Adults.</p>
+  <p class="byline"><em>N Engl J Med.</em> 2025. doi:10.1056/NEJMoa2511420. PMID: 41369227 &middot; 14 US hospitals (ED + ICU) &middot; Original social summary: definshock. This page is an independent third-party evaluation, not affiliated with or endorsed by the account.</p>
+</header>
+
+<div class="alert">
+<strong>Verdict on the source post:</strong> the cover slide's framing ("if you said ketamine because it's hemodynamically neutral, we need to talk") is exactly right and matches the trial's actual headline finding. This is the largest, most pragmatic RCT yet on this question, and it directly overturns a widely-taught assumption.
+</div>
+
+<div class="sec-head"><span class="sec-num">01</span><h2>The Setup</h2></div>
+<p class="tagline">Etomidate's adrenal suppression concern pushed a generation of clinicians toward ketamine as the "safer" induction agent for hemodynamically fragile patients. This trial tested whether that switch actually helps.</p>
+<p>Peri-intubation cardiovascular instability is common and dangerous: the INTUBE study found it in 43.4% of critically ill intubations, with an adjusted OR of 2.47 for ICU mortality when it occurred. Etomidate causes transient adrenal suppression via 11-beta-hydroxylase inhibition, which pushed many clinicians toward ketamine as the reflexive "hemodynamically neutral" alternative for sick patients &mdash; a belief based largely on smaller trials and physiologic reasoning rather than a large, pragmatic head-to-head test in the sickest population.</p>
+
+<div class="sec-head c-blue"><span class="sec-num">02</span><h2>Design</h2></div>
+<table>
+<tr><td><b>Design</b></td><td>Multicenter, pragmatic, randomized, open-label trial, intention-to-treat analysis</td></tr>
+<tr><td><b>Population</b></td><td>2,365 critically ill adults undergoing tracheal intubation in an ED or ICU at 14 US hospitals; excluded trauma, pregnancy, prisoners</td></tr>
+<tr><td><b>Groups</b></td><td>1,176 ketamine (1&ndash;2 mg/kg IV, actual body weight) vs. 1,189 etomidate (0.2&ndash;0.3 mg/kg IV, actual body weight)</td></tr>
+<tr><td><b>Case mix</b></td><td>~Half with sepsis/septic shock; ~20% already on vasopressors at time of intubation; average age ~60; &gt;99% received their randomized drug</td></tr>
+<tr><td><b>Primary outcome</b></td><td>In-hospital death by day 28</td></tr>
+<tr><td><b>Cardiovascular collapse defined as</b></td><td>SBP &lt;65 mmHg, new or increased vasopressor dose, or cardiac arrest during intubation</td></tr>
+</table>
+
+<div class="sec-head c-red"><span class="sec-num">03</span><h2>Results</h2></div>
+<table>
+<tr><th>Outcome</th><th>Ketamine</th><th>Etomidate</th><th>Result</th></tr>
+<tr class="notsig"><td>In-hospital death by day 28</td><td class="num">330/1,173 (28.1%)</td><td class="num">345/1,186 (29.1%)</td><td class="num">Adjusted risk diff &minus;0.8 pts (95% CI &minus;4.5 to 2.9), P=.65</td></tr>
+<tr class="sig"><td>Cardiovascular collapse during intubation</td><td class="num">260/1,176 (22.1%)</td><td class="num">202/1,189 (17.0%)</td><td class="num">Risk diff +5.1 pts (95% CI 1.9 to 8.3) &mdash; more common with ketamine</td></tr>
+</table>
+<p>No mortality benefit for ketamine over etomidate &mdash; the drugs performed essentially identically on the outcome that mattered most. But ketamine produced <i>more</i> cardiovascular collapse, not less, driven mainly by new or increased vasopressor requirements rather than cardiac arrest itself. This directly inverts the assumption that drove many departments to switch away from etomidate in unstable patients.</p>
+
+<div class="sec-head c-amber"><span class="sec-num">04</span><h2>What This Doesn't Mean</h2></div>
+<ul class="plain">
+<li><b>Not an argument to abandon ketamine.</b> Independent reviews (EMCrit, St Emlyn's, NAEMSP) are consistent: ketamine remains a reasonable, often preferred choice &mdash; particularly in severe asthma/COPD where preserving respiratory drive matters, and in most routine intubations with mild-to-moderate shock. The trial corrects overconfidence in ketamine's hemodynamic "safety margin," it doesn't demonstrate etomidate superiority.</li>
+<li><b>Open-label design caveat.</b> Clinicians knew the assigned drug, which could theoretically influence how quickly they escalated vasopressors. But supplemental analyses found no significant between-group differences in pre-intubation, within-1-hour, or prophylactic vasopressor use, and &lt;1% of patients received the non-assigned drug &mdash; both arguing against meaningful behavioral bias explaining the result.</li>
+<li><b>The 1-point mortality gap isn't a signal either direction.</b> A numerically-lower ketamine mortality (28.1% vs 29.1%) is not statistically significant and, given the trial's size, shouldn't be read as a near-miss trend in either direction.</li>
+</ul>
+
+<div class="sec-head c-purple"><span class="sec-num">05</span><h2>The Practical Takeaway</h2></div>
+<p class="tagline">Not "which drug is safer" &mdash; "prepare for instability regardless of which drug you pick."</p>
+<p>The consistent message across independent commentary on this trial: the actual lesson isn't a verdict on ketamine vs. etomidate, it's that <i>neither</i> agent is a hemodynamic free pass in critically ill patients. Whichever induction agent is chosen, have vasopressors drawn up and ready, anticipate peri-intubation hypotension as the default expectation rather than the exception, and treat the induction-agent choice as one input among several (respiratory status, adrenal concerns, familiarity) rather than the primary lever for preventing collapse.</p>
+
+<div class="sec-head" style="border-left-color:var(--text3); background:none;"><span class="sec-num">06</span><h2>Bottom Line</h2></div>
+<p>The source post's framing holds up precisely: "ketamine because it's hemodynamically neutral" is a belief this trial directly tests and doesn't support. No mortality difference between ketamine and etomidate, but significantly more cardiovascular collapse with ketamine (22.1% vs 17.0%), driven by vasopressor escalation. This is the largest, most pragmatic head-to-head trial on this question to date, and its message is preparation over drug selection: assume peri-intubation instability is coming, regardless of which agent you reach for.</p>
+
+<div class="sec-head" style="border-left-color:var(--text3); background:none;"><span class="sec-num">07</span><h2>Sources</h2></div>
+<ul class="sources">
+<li><b>definshock.</b> Original Instagram post, "How to RSI Like an Intensivist." &mdash; read the original post before relying on this summary.</li>
+<li>Casey JD, Seitz KP, Driver BE, et al; RSI Investigators and the Pragmatic Critical Care Research Group. Ketamine or Etomidate for Tracheal Intubation of Critically Ill Adults. <em>N Engl J Med.</em> 2025. doi:10.1056/NEJMoa2511420. PMID: 41369227.</li>
+<li>Russotto V, Myatra SN, Laffey JG, et al. Intubation Practices and Adverse Peri-intubation Events in Critically Ill Patients From 29 Countries (INTUBE). <em>JAMA.</em> 2021;325(12):1164&ndash;1172.</li>
+<li>Matchett G, Gasanova I, Riccio CA, et al. Etomidate versus ketamine for emergency endotracheal intubation: a randomized clinical trial (EvK). <em>Intensive Care Med.</em> 2022.</li>
+<li>Swaminathan A. The RSI Trial: Ketamine vs Etomidate in Rapid Sequence Intubation. REBEL EM, Jan 2026.</li>
+</ul>
+
+<footer>The Critical Vector &middot; Direction and magnitude.</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Mitochondrial-Linked Volatile Anesthetic Hypersensitivity — The Critical Vector</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400;1,600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0e14; --surface:#111720; --surface2:#182030; --border:rgba(255,255,255,.08);
+    --teal:#00d4aa; --blue:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa;
+    --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670;
+  }
+  @media print{
+    :root{
+      --bg:#f4f5f7; --surface:#fff; --surface2:#eef0f3; --border:rgba(15,25,35,.12);
+      --teal:#00a688; --blue:#1d4ed8; --red:#c53030; --amber:#b45309; --purple:#7c3aed;
+      --text:#0f1923; --text2:#4a5670; --text3:#6b7688;
+    }
+    body{background:var(--bg);}
+    .page{box-shadow:none; margin:0; max-width:100%;}
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:'Source Serif 4', Georgia, serif; font-size:16px; line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.kicker,.badge,.sec-num,.stat-num,.step-badge{font-family:'Syne',sans-serif;}
+  mono, .mono{font-family:'IBM Plex Mono',monospace;}
+  .page{max-width:900px; margin:0 auto; padding:48px 56px 40px;}
+
+  /* header */
+  .kicker{color:var(--teal); font-weight:700; font-size:12px; letter-spacing:.14em; text-transform:uppercase; margin-bottom:10px;}
+  h1{font-weight:800; font-size:30px; line-height:1.2; margin:0 0 10px; color:var(--text);}
+  .subtitle{font-family:'Source Serif 4',serif; font-style:italic; color:var(--text2); font-size:16px; margin:0 0 22px; max-width:70ch;}
+  .header-meta{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:8px;}
+
+  /* badges */
+  .badge{display:inline-block; font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:4px 10px; border-radius:20px; margin-right:6px;}
+  .badge.b-red{background:rgba(232,76,76,.12); border:1px solid rgba(232,76,76,.28); color:var(--red);}
+  .badge.b-amber{background:rgba(245,158,11,.12); border:1px solid rgba(245,158,11,.28); color:var(--amber);}
+  .badge.b-teal{background:rgba(0,212,170,.12); border:1px solid rgba(0,212,170,.28); color:var(--teal);}
+  .badge.b-blue{background:rgba(96,165,250,.12); border:1px solid rgba(96,165,250,.28); color:var(--blue);}
+  .badge.b-purple{background:rgba(167,139,250,.12); border:1px solid rgba(167,139,250,.28); color:var(--purple);}
+
+  /* section headers */
+  .sec-head{display:flex; align-items:center; gap:12px; margin:40px 0 16px; padding:10px 16px; border-radius:6px; border-left:4px solid; }
+  .sec-head.c-teal{border-color:var(--teal); background:linear-gradient(90deg, rgba(0,212,170,.10), transparent 70%);}
+  .sec-head.c-blue{border-color:var(--blue); background:linear-gradient(90deg, rgba(96,165,250,.10), transparent 70%);}
+  .sec-head.c-red{border-color:var(--red); background:linear-gradient(90deg, rgba(232,76,76,.10), transparent 70%);}
+  .sec-head.c-amber{border-color:var(--amber); background:linear-gradient(90deg, rgba(245,158,11,.10), transparent 70%);}
+  .sec-head.c-purple{border-color:var(--purple); background:linear-gradient(90deg, rgba(167,139,250,.10), transparent 70%);}
+  .sec-num{font-weight:800; font-size:13px; color:var(--text3); min-width:24px;}
+  .sec-head h2{margin:0; font-size:19px; font-weight:700; color:var(--text);}
+
+  p{margin:0 0 14px; color:var(--text);}
+  ul,ol{margin:0 0 14px; padding-left:22px;}
+  li{margin-bottom:6px;}
+  strong{color:var(--text); font-weight:600;}
+  a{color:var(--teal); text-decoration:none; border-bottom:1px solid rgba(0,212,170,.3);}
+
+  /* boxes */
+  .box{border:3px solid; border-radius:8px; padding:16px 18px; margin:16px 0; background:var(--surface);}
+  .box h3{margin:0 0 8px; font-size:14px; font-weight:700; text-transform:uppercase; letter-spacing:.04em;}
+  .box p:last-child, .box ul:last-child{margin-bottom:0;}
+  .box.t-teal{border-color:var(--teal);} .box.t-teal h3{color:var(--teal);}
+  .box.t-blue{border-color:var(--blue);} .box.t-blue h3{color:var(--blue);}
+  .box.t-red{border-color:var(--red);} .box.t-red h3{color:var(--red);}
+  .box.t-amber{border-color:var(--amber);} .box.t-amber h3{color:var(--amber);}
+  .box.t-purple{border-color:var(--purple);} .box.t-purple h3{color:var(--purple);}
+
+  /* alert banners — tinted by accent */
+  .alert{border-radius:6px; padding:14px 18px; margin:18px 0; font-size:15px; border:1px solid;}
+  .alert.a-red{background:rgba(232,76,76,.08); border-color:rgba(232,76,76,.3); color:var(--text);}
+  .alert.a-amber{background:rgba(245,158,11,.08); border-color:rgba(245,158,11,.3); color:var(--text);}
+  .alert.a-teal{background:rgba(0,212,170,.08); border-color:rgba(0,212,170,.3); color:var(--text);}
+  .alert strong{display:block; margin-bottom:4px; font-family:'Syne',sans-serif; font-size:12px; text-transform:uppercase; letter-spacing:.06em;}
+  .alert.a-red strong{color:var(--red);} .alert.a-amber strong{color:var(--amber);} .alert.a-teal strong{color:var(--teal);}
+
+  /* caveat */
+  .caveat{border-radius:6px; padding:12px 16px; margin:16px 0; background:rgba(245,158,11,.07); border:1px dashed rgba(245,158,11,.35); font-size:14px; color:var(--text2);}
+  .caveat strong{color:var(--amber); font-family:'Syne',sans-serif; font-size:11px; text-transform:uppercase; letter-spacing:.06em;}
+
+  /* tables */
+  table{width:100%; border-collapse:collapse; margin:16px 0; font-size:14.5px;}
+  th{background:var(--surface2); color:var(--text); font-family:'Syne',sans-serif; font-weight:700; font-size:12px; text-transform:uppercase; letter-spacing:.04em; text-align:left; padding:10px 12px; border-bottom:2px solid var(--border);}
+  td{padding:10px 12px; border-bottom:1px solid var(--border); vertical-align:top; color:var(--text2);}
+  tr:last-child td{border-bottom:none;}
+  td strong{color:var(--text);}
+
+  /* stat grid */
+  .statgrid{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:18px 0;}
+  .statcard{background:var(--surface); border:1px solid var(--border); border-left:4px solid; border-radius:6px; padding:14px 16px;}
+  .statcard.s-teal{border-left-color:var(--teal);} .statcard.s-blue{border-left-color:var(--blue);}
+  .statcard.s-red{border-left-color:var(--red);} .statcard.s-amber{border-left-color:var(--amber);}
+  .statcard.s-purple{border-left-color:var(--purple);}
+  .stat-num{font-size:24px; font-weight:800; color:var(--text); display:block; line-height:1.1;}
+  .stat-label{font-size:12px; color:var(--text2); margin-top:4px;}
+
+  /* step cards (recognition timeline) */
+  .steps{display:flex; flex-direction:column; gap:10px; margin:18px 0;}
+  .step{display:flex; gap:14px; align-items:flex-start; background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:12px 16px;}
+  .step-badge{flex-shrink:0; width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:12px; color:#0a0e14;}
+  .step-body .step-date{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--text2); margin-bottom:2px;}
+  .step-body .step-title{font-weight:600; color:var(--text); font-size:14.5px;}
+
+  /* citation block */
+  .cite-list{list-style:none; padding:0; margin:16px 0;}
+  .cite-list li{padding:10px 0; border-bottom:1px solid var(--border); font-size:14px; color:var(--text2);}
+  .cite-list li:last-child{border-bottom:none;}
+  .cite-list .cite-src{color:var(--teal); font-weight:600; font-size:12px; text-transform:uppercase; letter-spacing:.03em; display:block; margin-bottom:2px;}
+
+  footer{margin-top:44px; padding-top:20px; border-top:1px solid var(--border); font-family:'Source Serif 4',serif; font-style:italic; color:var(--text3); font-size:13px;}
+
+  @media (max-width:700px){
+    .page{padding:28px 20px;}
+    .statgrid{grid-template-columns:1fr;}
+  }
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../locker.html">The Evidence Locker</a><span class="cv-sb-meta">Published 19 Aug 2026 · R. E. Suscitate &amp; A. Systole</span></nav>
+<div class="page">
+
+  <div class="kicker">The Critical Vector — Evidence Locker</div>
+  <h1>Mitochondrial-Linked Hypersensitivity to Volatile Anesthetics</h1>
+  <p class="subtitle">A newly characterized pharmacogenetic syndrome, distinct from malignant hyperthermia, tied to a maternally inherited complex I variant and a specific population lineage — and a live-fire example of how quickly an anesthesia safety signal can move from case report to society guidance.</p>
+  <div class="header-meta">
+    <span class="badge b-red">Newly Described</span>
+    <span class="badge b-amber">Rare / Emerging Evidence</span>
+    <span class="badge b-teal">Pharmacogenetic</span>
+    <span class="badge b-blue">Not Malignant Hyperthermia</span>
+    <span class="badge b-blue">EM Relevant</span>
+  </div>
+
+  <div class="alert a-amber">
+    <strong>Where the evidence stands</strong>
+    This entity is being characterized in real time. The mechanistic data below rest on a single published cohort of seven patients and supporting in-vitro/cybrid work. Society guidance (ASA/SPA, WFSA, ERN Euro-NMD) is consensus-based and explicitly provisional. Numbers and recommendations here reflect publications through mid-2026 and should be expected to move.
+  </div>
+
+  <!-- 01 -->
+  <div class="sec-head c-teal"><span class="sec-num">01</span><h2>What This Is</h2></div>
+  <p>Between 2003 and 2022, seven previously healthy patients — children and adults, in Venezuela, the United States, and Germany — developed severe, acute neurologic deterioration after otherwise routine general anesthesia: basal ganglia infarction, acute encephalopathy, and in the worst cases, death. The pattern didn't register as a syndrome until Chilean and Venezuelan anesthesiology societies started comparing notes on clusters of unexplained pediatric neurologic catastrophes in mid-2025.</p>
+  <p>Genetic workup on the affected patients found no consistent nuclear mutation, but all seven shared the same mitochondrial haplogroup (D1b) and an identical mitochondrial DNA variant: <strong>m.11232T&gt;C</strong> in <strong>MT-ND4</strong>, the gene encoding a subunit of Complex I of the electron transport chain. The variant produces an L158P substitution in the ND4 protein. Because mitochondrial DNA is maternally inherited, the trait tracks entirely through the maternal line — and traces, in this cohort, to a specific regional lineage in Carabobo State, Venezuela.</p>
+  <p>Almost every affected patient had received <strong>sevoflurane</strong>. In vitro work in patient-derived cybrid cells confirmed a mechanism: sevoflurane exposure in cells carrying the variant produced a pronounced, complex I–dependent suppression of mitochondrial oxygen consumption. Propofol did not show the same differential effect in these assays — though the authors flag that they tested pure propofol, not the clinical lipid emulsion, so that reassurance is narrower than it sounds.</p>
+
+  <div class="statgrid">
+    <div class="statcard s-red"><span class="stat-num">7</span><span class="stat-label">index patients in the founding cohort, 2003–2022, spanning Venezuela, the U.S., and Germany</span></div>
+    <div class="statcard s-amber"><span class="stat-num">~90%</span><span class="stat-label">suppression of mitochondrial O₂ consumption in variant-carrying cells exposed to sevoflurane</span></div>
+    <div class="statcard s-blue"><span class="stat-num">~10</span><span class="stat-label">additional cases reported in the U.S. as of the April 2026 ASA update</span></div>
+  </div>
+
+  <!-- 02 -->
+  <div class="sec-head c-blue"><span class="sec-num">02</span><h2>Mechanism: Why Complex I Matters Here</h2></div>
+  <p>This isn't a novel concept bolted onto anesthesia pharmacology — it's the sharpest clinical expression yet of a mechanism that's been building in the literature for over a decade. Volatile anesthetics are known Complex I inhibitors at clinically relevant concentrations, and patients with pre-existing Complex I dysfunction from mitochondrial disease (Leigh syndrome, MELAS, and related electron transport chain defects) have long been recognized as behaviorally hypersensitive to volatile agents — lower MAC requirements, exaggerated hemodynamic depression, occasional catastrophic decompensation under otherwise unremarkable anesthetics.</p>
+  <p>The <em>Ndufs4</em> knockout mouse — a model of Leigh syndrome missing a Complex I subunit — displays the most severe volatile anesthetic hypersensitivity yet documented in a mammal, and isoflurane exposure in that model is independently toxic: hyperlactatemia, weight loss, and dose-dependent mortality even at sub-anesthetic concentrations. <em>Drosophila</em> Complex I mutants show the same pattern. The mechanistic thread across all of it is that Complex I sits at a genuine intersection: it's a molecular target of volatile anesthetics' primary effect <em>and</em> the rate-limiting step of oxidative phosphorylation. Knock down its function pharmacologically (via a volatile agent) on top of a genetic head start already at reduced reserve, and the margin between anesthetic effect and energy failure collapses.</p>
+  <p>The m.11232T&gt;C variant is the first time that general mechanism has been resolved down to a single, well-defined mtDNA point mutation in an otherwise phenotypically silent, non-syndromic population — patients with no antecedent diagnosis of mitochondrial disease, no myopathy, no prior red flags. That's what makes it a distinct pharmacogenetic entity rather than just "another mitochondrial disease caveat."</p>
+
+  <div class="box t-blue">
+    <h3>The Mechanistic Chain</h3>
+    <ol>
+      <li><strong>m.11232T&gt;C</strong> → L158P substitution in the MT-ND4 subunit of Complex I</li>
+      <li>Baseline Complex I reserve is reduced but clinically silent — carriers are phenotypically normal</li>
+      <li>Sevoflurane exposure adds pharmacologic Complex I inhibition on top of the genetic deficit</li>
+      <li>Combined inhibition drops mitochondrial O₂ consumption by ~90% in vitro in affected cells</li>
+      <li>In the CNS — high metabolic demand, low glycolytic reserve — this manifests as acute energy failure: basal ganglia infarction, encephalopathy, and in severe cases, death</li>
+    </ol>
+  </div>
+
+  <!-- 03 -->
+  <div class="sec-head c-purple"><span class="sec-num">03</span><h2>This Is Not Malignant Hyperthermia</h2></div>
+  <p>The clinical instinct on hearing "genetic hypersensitivity to volatile anesthetics" is to reach for the MH framework. Resist it — the mechanism, the target organ, the clinical picture, and the treatment are all different, and treating this as an MH variant will send you down the wrong resuscitation pathway.</p>
+
+  <table>
+    <tr><th>Feature</th><th>Malignant Hyperthermia</th><th>MT-ND4 m.11232T&gt;C Hypersensitivity</th></tr>
+    <tr><td><strong>Genetic target</strong></td><td>Nuclear — <em>RYR1</em>, <em>CACNA1S</em>, <em>STAC3</em> (calcium-release channel)</td><td>Mitochondrial — <em>MT-ND4</em> (Complex I subunit)</td></tr>
+    <tr><td><strong>Inheritance</strong></td><td>Autosomal dominant</td><td>Maternal (mtDNA)</td></tr>
+    <tr><td><strong>Primary tissue</strong></td><td>Skeletal muscle</td><td>Central nervous system</td></tr>
+    <tr><td><strong>Core physiology</strong></td><td>Uncontrolled sarcoplasmic calcium release → hypermetabolic state</td><td>Complex I inhibition → failure of oxidative phosphorylation, energy deficit</td></tr>
+    <tr><td><strong>Classic presentation</strong></td><td>Hyperthermia, rigidity, hypercarbia, tachycardia, rhabdomyolysis</td><td>Acute encephalopathy, basal ganglia infarction, neurologic deterioration — no muscle rigidity or hyperthermia</td></tr>
+    <tr><td><strong>Trigger agents</strong></td><td>All volatile agents, succinylcholine</td><td>Sevoflurane implicated most strongly; other volatiles not cleared</td></tr>
+    <tr><td><strong>Definitive treatment</strong></td><td>Dantrolene</td><td>No specific antidote — supportive care, stop the trigger</td></tr>
+    <tr><td><strong>Screening test</strong></td><td>Caffeine-halothane contracture test, NGS panel</td><td>No point-of-care test; targeted mtDNA sequencing only</td></tr>
+  </table>
+
+  <div class="caveat"><strong>Note</strong> Some case reports show family members with adverse outcomes across generations of the same maternal line — a pattern that should raise suspicion independent of any single index event, since mtDNA disorders don't skip generations the way autosomal dominant conditions can appear to.</div>
+
+  <!-- 04 -->
+  <div class="sec-head c-red"><span class="sec-num">04</span><h2>Population & Screening Considerations</h2></div>
+  <p>Every confirmed case to date traces maternal lineage to Venezuela, with a disproportionate concentration in families with roots in Carabobo State. This is a genuinely sensitive area to communicate to patients and to teach — the risk factor is ancestry-linked, not skin color or nationality, and the entire point of asking is patient safety, not profiling. ASA and SPA guidance frames it explicitly as a maternal lineage question, not a broader demographic one.</p>
+
+  <div class="box t-red">
+    <h3>ASA / SPA Joint Guidance (Updated January 2026)</h3>
+    <ul>
+      <li>Ask patients about potential <strong>maternal</strong> Venezuelan lineage during preoperative history — paternal lineage is not relevant, since mtDNA is maternally transmitted</li>
+      <li>Any patient with direct maternal Venezuelan lineage should be considered at risk</li>
+      <li>Consider genetic testing for the m.11232T&gt;C variant when time and resources allow — <strong>no point-of-care screening test currently exists</strong></li>
+      <li>Consider avoiding all volatile anesthetics in at-risk patients until more information is available, weighed against case urgency</li>
+      <li>Favor total intravenous anesthesia with processed EEG (depth-of-anesthesia) monitoring in at-risk patients</li>
+      <li>Report suspected cases to the Anesthesia Incident Reporting System (AIRS) via the Anesthesia Quality Institute</li>
+    </ul>
+  </div>
+
+  <p>The European Reference Network (ERN Euro-NMD), ESAIC, ESPA, and the European Mitochondrial Society issued a parallel consensus statement in March 2026 reaching the same practical conclusion: avoid sevoflurane where risk is suspected, and favor cautious titration with EEG monitoring where volatile exposure can't be avoided. Whether TIVA agents — propofol, ketamine, dexmedetomidine, remimazolam — carry meaningfully different risk in this population is explicitly unresolved; the in-vitro propofol reassurance doesn't extend cleanly to clinical formulations or to the other agents at all.</p>
+
+  <!-- 05 -->
+  <div class="sec-head c-amber"><span class="sec-num">05</span><h2>Recognition Timeline</h2></div>
+  <p>Worth internalizing as a case study on its own: this went from a handful of unexplained pediatric deaths to a defined molecular mechanism and multi-society clinical guidance in under a year.</p>
+
+  <div class="steps">
+    <div class="step"><div class="step-badge" style="background:var(--red);">1</div><div class="step-body"><div class="step-date">JUL 2025</div><div class="step-title">Chilean Society of Anesthesiology reports a cluster of catastrophic pediatric outcomes in previously healthy children of Venezuelan ancestry; SEDAR and SPA/ASA issue initial alerts</div></div></div>
+    <div class="step"><div class="step-badge" style="background:var(--amber);">2</div><div class="step-body"><div class="step-date">JAN 2026</div><div class="step-title">Chilean Ministry of Health report published in <em>Anesthesiology</em>; ASA/SPA issue updated joint communication with formal screening guidance</div></div></div>
+    <div class="step"><div class="step-badge" style="background:var(--teal);">3</div><div class="step-body"><div class="step-date">MAR 2026</div><div class="step-title">Sanz-Pons et al. publish the mechanistic cohort study in <em>Anesthesiology</em>, identifying m.11232T&gt;C and the Complex I mechanism; ERN Euro-NMD issues joint European statement</div></div></div>
+    <div class="step"><div class="step-badge" style="background:var(--blue);">4</div><div class="step-body"><div class="step-date">APR 2026</div><div class="step-title">Levy & Morgan editorial ("Ancient Mitochondrial Genetic Variant, Modern-day Pandora's Box") contextualizes the finding within the broader mitochondrial-anesthesia literature</div></div></div>
+    <div class="step"><div class="step-badge" style="background:var(--purple);">5</div><div class="step-body"><div class="step-date">MAY–JUL 2026</div><div class="step-title">WFSA issues global statement; FDA alerts U.S. providers; mseqdr.org launches a dedicated knowledge portal and testing-guideline hub</div></div></div>
+  </div>
+
+  <!-- 06 -->
+  <div class="sec-head c-teal"><span class="sec-num">06</span><h2>Clinical Takeaways</h2></div>
+  <div class="box t-teal">
+    <h3>For the OR / Preop Clinic</h3>
+    <ul>
+      <li>Add maternal Venezuelan ancestry to your preoperative mitochondrial/anesthetic-risk screen — it belongs in the same mental bucket as an MH family history question, asked routinely and without alarm</li>
+      <li>A positive answer doesn't mean cancel the case — it means: consider TIVA, add processed EEG monitoring, and document the shared decision with the patient or family</li>
+      <li>Don't reach for dantrolene if this is what you're worried about — the physiology is energy failure, not hypermetabolic crisis; management is supportive</li>
+      <li>This sits alongside, not inside, your existing mitochondrial disease anesthetic precautions (avoid prolonged fasting, protect against hypothermia and acidosis, have glucose-containing fluids running) — those general precautions still apply broadly to any patient with known or suspected mitochondrial disease</li>
+      <li>Report suspected cases — the evidence base here is still small, and every AIRS submission sharpens the guidance for the next patient</li>
+    </ul>
+  </div>
+
+  <!-- 08 -->
+  <div class="sec-head c-blue"><span class="sec-num">08</span><h2>Emergency Medicine Relevance</h2></div>
+  <p>EM providers don't push sevoflurane, but they're the ones most likely to see this variant's downstream failure walk through the door. Two distinct EM exposure points are worth building into your differential and your protocols.</p>
+
+  <div class="box t-blue">
+    <h3>The Post-Anesthetic Return Visit</h3>
+    <p>A previously healthy patient — often pediatric, often after a brief, unremarkable outpatient procedure done under general anesthesia days earlier — presents to the ED with new focal neurologic deficits, altered mental status, or seizure. The default differential runs toward stroke, toxic-metabolic encephalopathy, non-accidental trauma (if pediatric), or an unrelated ingestion. This entity belongs on that list, specifically when:</p>
+    <ul>
+      <li>Onset is temporally linked to a recent general anesthetic (same day to several days out)</li>
+      <li>Imaging shows <strong>basal ganglia involvement</strong> without a clear vascular occlusion pattern on CTA/MRA — a stroke mimic that won't fit a clean vascular territory</li>
+      <li>The patient has no prior neurologic history and no antecedent diagnosis of mitochondrial disease — carriers are phenotypically silent until an anesthetic exposure triggers decompensation</li>
+      <li>Maternal ancestry traces to Venezuela, particularly Carabobo State</li>
+    </ul>
+    <p>Practical takeaway: for a "stroke code" that doesn't behave like a stroke — no large-vessel occlusion, basal ganglia pattern, recent anesthesia exposure — ask about the anesthetic record and maternal lineage before anchoring on a purely vascular workup. Early neurology/genetics involvement and mitochondrial-directed supportive care (avoid hypoglycemia, hypoxia, hyperthermia, and further Complex I stressors) matters more here than thrombolytic-pathway thinking.</p>
+  </div>
+
+  <div class="box t-blue">
+    <h3>ED Procedural Sedation</h3>
+    <p>EM's own sedation formulary — ketamine, propofol, etomidate, dexmedetomidine — sits outside the volatile-agent mechanism this entity is built on, and none of it has been specifically studied in variant carriers. Ketamine's primary action is NMDA antagonism rather than Complex I inhibition, which is mechanistically reassuring but not proven safe. The honest position: there's no evidence these agents are dangerous in this population, and no evidence they're cleared either. The ED can't screen for a variant it has no test for and often no history for, so this stays a background-awareness issue rather than a workflow change — know the entity exists, don't reflexively rule it out when a sedation goes sideways in a way standard causes don't explain, especially in a patient with unexplained prior "bad reaction" to anesthesia in the chart or reported by family.</p>
+  </div>
+
+  <div class="box t-blue">
+    <h3>Prehospital / Critical Care Transport</h3>
+    <p>Relevant if you're the one moving a patient with this presentation between facilities — pediatric post-anesthetic encephalopathy often triggers a transfer to a tertiary center with genetics/mitochondrial medicine support. Treat it as an unexplained acute encephalopathy transport: protect against hypoglycemia, hyperthermia, hypoxia, and acidosis en route (the same general precautions that apply to any suspected mitochondrial decompensation), avoid volatile-based sedation if airway management is needed in transit, and make sure the anesthetic record and any family history of "anesthesia reactions" travels with the patient to the receiving team — that detail is easy to lose in a transfer packet and is exactly what closes the diagnostic loop downstream.</p>
+  </div>
+
+  <!-- 09 -->
+  <div class="sec-head c-purple"><span class="sec-num">09</span><h2>Primary Sources</h2></div>
+  <ul class="cite-list">
+    <li><span class="cite-src">Anesthesiology, Mar 2026</span>Sanz-Pons J, Aladren-Herrer C, Ortigoza-Escobar JD, et al. Effects of a mitochondrial genetic variant on sevoflurane hypersensitivity. <em>Anesthesiology</em>. Published online ahead of print.</li>
+    <li><span class="cite-src">Anesthesiology, Apr 2026</span>Levy RJ, Morgan PG. Ancient mitochondrial genetic variant, modern-day Pandora's box. <em>Anesthesiology</em> [editorial].</li>
+    <li><span class="cite-src">Anesthesiology, Jan 2026</span>Potential mitochondrial pharmacogenetic susceptibility to severe neurologic events after general anesthesia: report from the Chilean Ministry of Health. <em>Anesthesiology</em>. doi: 10.1097/ALN.0000000000005935</li>
+    <li><span class="cite-src">ASA / SPA, Jan 2026</span>Updated Joint Communication from the American Society of Anesthesiologists and the Society for Pediatric Anesthesia — screening and clinical management guidance.</li>
+    <li><span class="cite-src">ASA Advocacy Hub, updated Apr 2026</span>Severe Neurologic Complications and Death After General Anesthesia Linked to Newly Described Rare Genetic Disorder — curated resource hub, ASA Ad Hoc Committee on Mitochondrial-Associated Sensitivity to Halogenated Agents.</li>
+    <li><span class="cite-src">ERN Euro-NMD, Mar 2026</span>Joint Statement on Anaesthesia-Related Mitochondrial Pharmacogenetic Risk in Individuals with Venezuelan Maternal Ancestry — ESAIC, ESPA, ERN Euro-NMD Mitochondrial Working Group, European Mitochondrial Society.</li>
+    <li><span class="cite-src">FDA, Jul 2026</span>FDA Alerts Health Care Providers to Cases of Neurologic Complications from General Anesthesia Linked to Genetic Variant in Patients of Maternal Venezuelan Ancestry.</li>
+    <li><span class="cite-src">mseqdr.org, Jul 2026</span>Knowledge Portal for Severe Anesthetic Hypersensitivity Associated with Mitochondrial Variant m.11232T&gt;C (T11232C).</li>
+    <li><span class="cite-src">British Journal of Anaesthesia, 2023</span>Spencer KA, Mulholland M, Snell J, et al. Volatile anaesthetic toxicity in the genetic mitochondrial disease Leigh syndrome. doi: 10.1016/j.bja.2023.08.009 — mechanistic background, <em>Ndufs4</em>(−/−) mouse model.</li>
+    <li><span class="cite-src">PLOS ONE, 2012</span>Altered anesthetic sensitivity of mice lacking Ndufs4, a subunit of mitochondrial Complex I — foundational proof-of-concept for the Complex I / volatile anesthetic hypersensitivity link.</li>
+    <li><span class="cite-src">Pediatric Anesthesia, 2024</span>Scharenbrock AR, et al. Links between mutations in functionally separate arms of mitochondrial complex I and responses to volatile anesthetics. doi: 10.1111/pan.14999.</li>
+  </ul>
+
+  <footer>The Critical Vector — Evidence Locker · compiled from primary literature and society guidance current through mid-2026 · this is an actively evolving safety signal; recheck the ASA advocacy hub and mseqdr.org knowledge portal before relying on specifics for clinical decision-making.<div class="cv-tagline" style="margin-top:8px">The Critical Vector · Direction and magnitude.</div></footer>
+
+</div>
+</body>
+</html>
