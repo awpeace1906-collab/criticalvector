@@ -19,13 +19,20 @@ const SECTIONS = {
   flightdeck: 'flightdeck.html',
 };
 
+const SECTION_NAMES = {
+  continuum:  'The Continuum',
+  workshop:   'The Workshop',
+  locker:     'The Evidence Locker',
+  flightdeck: 'From the Flight Deck',
+};
+
 const SENTINEL_START = '<!-- CV:POST-LIST-START -->';
 const SENTINEL_END   = '<!-- CV:POST-LIST-END -->';
 
 function buildRows(section) {
   return posts
     .filter(p => p.section === section)
-    .map(p => `      <a href="${p.file}" class="post-row">
+    .map(p => `      <a href="${p.file}" class="post-row ${p.section}-row">
         <div class="post-info">
           <div class="post-type ${p.typeClass}">${p.type}</div>
           <div class="post-title">${p.title}</div>
@@ -81,7 +88,7 @@ ${badges}
         <div class="feat-body">
           <h2>${featured.title}</h2>
           <p>${featured.featuredBlurb || ''}</p>
-          <a href="${featured.file}" class="read-more">Read the breakdown →</a>
+          <a href="${featured.file}" class="read-more">${featured.featuredCta || 'Read the breakdown'} →</a>
         </div>
       </article>`;
 
@@ -91,15 +98,18 @@ ${badges}
     console.log(`Updated index.html featured card: "${featured.title}"`);
   }
 
-  // ── Recent posts list (all sections, newest 5) ──
+  // ── Latest from each section, newest first ──
   const RECENT_START = '<!-- CV:RECENT-START -->';
   const RECENT_END   = '<!-- CV:RECENT-END -->';
 
   if (index.includes(RECENT_START) && index.includes(RECENT_END)) {
-    const recent = posts.slice(0, 5);
-    const recentRows = recent.map(p => `        <a href="${p.file}" class="post-row">
+    const recent = Object.keys(SECTIONS)
+      .map(section => posts.find(p => p.section === section))
+      .filter(Boolean)
+      .sort((a, b) => new Date(b.date) - new Date(a.date));
+    const recentRows = recent.map(p => `        <a href="${p.file}" class="post-row ${p.section}-row">
           <div class="post-info">
-            <div class="post-type ${p.typeClass}">${p.type}</div>
+            <div class="post-type ${p.section}-type">${SECTION_NAMES[p.section]} · ${p.type}</div>
             <div class="post-title">${p.title}</div>
             <div class="post-meta">${p.meta}</div>
           </div>
@@ -109,7 +119,16 @@ ${badges}
     const rb = index.indexOf(RECENT_START) + RECENT_START.length;
     const re = index.indexOf(RECENT_END);
     index = index.slice(0, rb) + '\n' + recentRows + '\n      ' + index.slice(re);
-    console.log(`Updated index.html recent posts (${recent.length} posts)`);
+    console.log(`Updated index.html latest posts (${recent.length} posts)`);
+  }
+
+  // ── Section counts in the sidebar (entries listed on each page) ──
+  for (const section of Object.keys(SECTIONS)) {
+    const page = fs.readFileSync(path.join(ROOT, SECTIONS[section]), 'utf8');
+    const n = (page.match(/class="post-row"/g) || []).length;
+    index = index.replace(
+      new RegExp(`(<span class="sec-count" data-section="${section}">)[^<]*(</span>)`),
+      `$1${n}$2`);
   }
 
   fs.writeFileSync(indexPath, index, 'utf8');

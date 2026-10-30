@@ -158,8 +158,8 @@
     "type": "Blood Products",
     "typeClass": "workshop-type",
     "title": "Blood Products",
-    "meta": "Blood Products · Oct 2026",
-    "date": "2026-10-07"
+    "meta": "Blood Products · Jul 2026",
+    "date": "2026-07-31"
   },
   {
     "file": "library/code-blue-guide.html",
@@ -167,8 +167,8 @@
     "type": "Resuscitation Leadership",
     "typeClass": "continuum-type",
     "title": "Code Blue",
-    "meta": "Resuscitation Leadership · Oct 2026",
-    "date": "2026-10-07"
+    "meta": "Resuscitation Leadership · Jul 2026",
+    "date": "2026-07-31"
   },
   {
     "file": "library/hypertonic-saline-vs-mannitol.html",
@@ -176,8 +176,8 @@
     "type": "Pocket Reference",
     "typeClass": "workshop-type",
     "title": "Hypertonic Saline vs. Mannitol",
-    "meta": "Pocket Reference · Oct 2026",
-    "date": "2026-10-07"
+    "meta": "Pocket Reference · Jul 2026",
+    "date": "2026-07-31"
   },
   {
     "file": "library/intoxicating-substances-reference.html",
@@ -194,8 +194,8 @@
     "type": "Pocket Reference",
     "typeClass": "workshop-type",
     "title": "Refractory VF: Vector Change &amp; DSED",
-    "meta": "Pocket Reference · Oct 2026",
-    "date": "2026-10-07"
+    "meta": "Pocket Reference · Jul 2026",
+    "date": "2026-07-31"
   },
   {
     "file": "library/remimazolam-guide.html",
@@ -203,8 +203,8 @@
     "type": "Pocket Reference",
     "typeClass": "workshop-type",
     "title": "Remimazolam",
-    "meta": "Pocket Reference · Oct 2026",
-    "date": "2026-10-07"
+    "meta": "Pocket Reference · Jul 2026",
+    "date": "2026-07-31"
   },
   {
     "file": "library/rocuronium-dosing.html",
@@ -212,8 +212,8 @@
     "type": "Pocket Reference",
     "typeClass": "workshop-type",
     "title": "High-Dose Rocuronium &amp; First-Pass Success",
-    "meta": "Pocket Reference · Oct 2026",
-    "date": "2026-10-07"
+    "meta": "Pocket Reference · Jul 2026",
+    "date": "2026-07-31"
   },
   {
     "file": "library/board-tested-infections.html",
@@ -221,8 +221,8 @@
     "type": "Empiric Therapy Guide, Part I",
     "typeClass": "workshop-type",
     "title": "Board-Tested Infections",
-    "meta": "Empiric Therapy Guide, Part I · Oct 2026",
-    "date": "2026-10-07"
+    "meta": "Empiric Therapy Guide, Part I · Aug 2026",
+    "date": "2026-08-31"
   },
   {
     "file": "library/capnography.html",
@@ -230,8 +230,8 @@
     "type": "Pocket Reference",
     "typeClass": "workshop-type",
     "title": "Capnography",
-    "meta": "Pocket Reference · Oct 2026",
-    "date": "2026-10-07"
+    "meta": "Pocket Reference · Jul 2026",
+    "date": "2026-07-31"
   },
   {
     "file": "library/difficult-airway.html",
@@ -248,8 +248,8 @@
     "type": "Pocket Reference",
     "typeClass": "workshop-type",
     "title": "Extreme Axis Deviation (Northwest Axis)",
-    "meta": "Pocket Reference · Oct 2026",
-    "date": "2026-10-07"
+    "meta": "Pocket Reference · Jul 2026",
+    "date": "2026-07-31"
   },
   {
     "file": "library/iv-fluids-guide.html",
@@ -257,8 +257,8 @@
     "type": "Right Fluid, Wrong Patient?",
     "typeClass": "continuum-type",
     "title": "IV Fluids &amp; Volume Resuscitation",
-    "meta": "Right Fluid, Wrong Patient? · Oct 2026",
-    "date": "2026-10-07"
+    "meta": "Right Fluid, Wrong Patient? · Jul 2026",
+    "date": "2026-07-31"
   },
   {
     "file": "library/mechanical-ventilation-full.html",
@@ -266,8 +266,8 @@
     "type": "Comprehensive Reference",
     "typeClass": "workshop-type",
     "title": "Mechanical Ventilation",
-    "meta": "Comprehensive Reference · Oct 2026",
-    "date": "2026-10-07"
+    "meta": "Comprehensive Reference · Jul 2026",
+    "date": "2026-07-31"
   },
   {
     "file": "library/peds-drug-database-us-complete.html",
@@ -284,8 +284,8 @@
     "type": "Pocket Reference",
     "typeClass": "workshop-type",
     "title": "Maintaining Volemic Status in Hemorrhagic Shock",
-    "meta": "Pocket Reference · Oct 2026",
-    "date": "2026-10-07"
+    "meta": "Pocket Reference · Jul 2026",
+    "date": "2026-07-31"
   },
   {
     "file": "posts/flight-paramedicine-anesthesia.html",
@@ -294,7 +294,25 @@
     "typeClass": "prehospital-type",
     "title": "What Flight Paramedicine Actually Taught Me About Anesthesia",
     "meta": "Personal essay · The Continuum · Oct 2026",
-    "date": "2026-10-06"
+    "date": "2026-10-06",
+    "featured": true,
+    "featuredBadges": [
+      {
+        "text": "Prehospital",
+        "class": "pre"
+      },
+      {
+        "text": "The Continuum",
+        "class": "cont"
+      },
+      {
+        "text": "Anesthesia",
+        "class": "amb"
+      }
+    ],
+    "featuredMeta": "Personal essay · Oct 2026",
+    "featuredBlurb": "Fifteen years of flight and critical care transport, then the operating room as a medical student. The tube is the easy part: what the job really teaches is that induction drugs and positive pressure can undo a patient who was barely compensating, and that the physiology has to be fixed before the procedure.",
+    "featuredCta": "Read the essay"
   },
   {
     "file": "library/adapt-sepsis-trial.html",
@@ -311,8 +329,8 @@
     "type": "Pocket Reference",
     "typeClass": "workshop-type",
     "title": "Antidotes &amp; Reversal Agents",
-    "meta": "Pocket Reference · Oct 2026",
-    "date": "2026-10-06"
+    "meta": "Pocket Reference · Jul 2026",
+    "date": "2026-07-31"
   },
   {
     "file": "library/awake-intubation-guide.html",
@@ -320,8 +338,8 @@
     "type": "Intubation Series",
     "typeClass": "workshop-type",
     "title": "Awake Intubation in the ICU",
-    "meta": "Intubation Series · Oct 2026",
-    "date": "2026-10-06"
+    "meta": "Intubation Series · Jul 2026",
+    "date": "2026-07-31"
   },
   {
     "file": "library/bis-monitoring.html",
@@ -329,8 +347,8 @@
     "type": "Pocket Reference",
     "typeClass": "workshop-type",
     "title": "BIS Monitoring",
-    "meta": "Pocket Reference · Oct 2026",
-    "date": "2026-10-06"
+    "meta": "Pocket Reference · Jul 2026",
+    "date": "2026-07-31"
   },
   {
     "file": "library/ci-aki-prevention-guide.html",
@@ -338,8 +356,8 @@
     "type": "Clinical Reasoning",
     "typeClass": "continuum-type",
     "title": "CI-AKI Prevention",
-    "meta": "Clinical Reasoning · Oct 2026",
-    "date": "2026-10-06"
+    "meta": "Clinical Reasoning · Jul 2026",
+    "date": "2026-07-31"
   },
   {
     "file": "library/colcot-guide.html",
@@ -347,8 +365,8 @@
     "type": "Landmark Trial",
     "typeClass": "locker-type",
     "title": "COLCOT",
-    "meta": "Landmark Trial · Oct 2026",
-    "date": "2026-10-06"
+    "meta": "Landmark Trial · Jul 2026",
+    "date": "2026-07-31"
   },
   {
     "file": "library/cspine-rules-guide.html",
@@ -356,8 +374,8 @@
     "type": "Clinical Decision Rules",
     "typeClass": "workshop-type",
     "title": "NEXUS, Canadian C-Spine &amp; CT Head Rules",
-    "meta": "Clinical Decision Rules · Oct 2026",
-    "date": "2026-10-06"
+    "meta": "Clinical Decision Rules · Jul 2026",
+    "date": "2026-07-31"
   },
   {
     "file": "library/ed-icu-and-critical-infections.html",
@@ -365,8 +383,8 @@
     "type": "Empiric Therapy Guide, Part II",
     "typeClass": "workshop-type",
     "title": "ED/ICU &amp; Critical Infections",
-    "meta": "Empiric Therapy Guide, Part II · Oct 2026",
-    "date": "2026-10-06"
+    "meta": "Empiric Therapy Guide, Part II · Aug 2026",
+    "date": "2026-08-31"
   },
   {
     "file": "library/hypoxemia-vs-hypoxia.html",
@@ -383,8 +401,8 @@
     "type": "Transfusion & Bioethics",
     "typeClass": "continuum-type",
     "title": "Jehovah's Witnesses &amp; Blood Products",
-    "meta": "Transfusion & Bioethics · Oct 2026",
-    "date": "2026-10-06"
+    "meta": "Transfusion & Bioethics · Sep 2026",
+    "date": "2026-09-30"
   },
   {
     "file": "library/pocus-guided-shock-resuscitation.html",
@@ -401,8 +419,8 @@
     "type": "Pocket Reference",
     "typeClass": "workshop-type",
     "title": "ECG Changes: Electrolytes &amp; Drug Effects",
-    "meta": "Pocket Reference · Oct 2026",
-    "date": "2026-10-06"
+    "meta": "Pocket Reference · Jul 2026",
+    "date": "2026-07-31"
   },
   {
     "file": "library/kalme-ketamine-trial.html",
@@ -410,8 +428,8 @@
     "type": "Trial Breakdown",
     "typeClass": "locker-type",
     "title": "KALME: Ketamine in Mechanically Ventilated Adults",
-    "meta": "Trial Breakdown · Oct 2026",
-    "date": "2026-10-06"
+    "meta": "Trial Breakdown · Sep 2026",
+    "date": "2026-09-30"
   },
   {
     "file": "library/magnesium-lactate-summary.html",
@@ -419,8 +437,8 @@
     "type": "Trial Snapshot",
     "typeClass": "locker-type",
     "title": "Magnesium &amp; Lactate Clearance",
-    "meta": "Trial Snapshot · Oct 2026",
-    "date": "2026-10-06"
+    "meta": "Trial Snapshot · Jul 2026",
+    "date": "2026-07-31"
   },
   {
     "file": "library/mnemonics-guide.html",
@@ -428,8 +446,8 @@
     "type": "Quick Reference",
     "typeClass": "workshop-type",
     "title": "Clinical Mnemonics",
-    "meta": "Quick Reference · Oct 2026",
-    "date": "2026-10-06"
+    "meta": "Quick Reference · Jul 2026",
+    "date": "2026-07-31"
   },
   {
     "file": "library/pe-guideline-cheatsheet.html",
@@ -437,8 +455,8 @@
     "type": "Journal Club",
     "typeClass": "flightdeck-type",
     "title": "2026 Acute PE Guideline — Journal Club Cheat Sheet",
-    "meta": "Journal Club · Oct 2026",
-    "date": "2026-10-06"
+    "meta": "Journal Club · Jul 2026",
+    "date": "2026-07-31"
   },
   {
     "file": "library/snapp-trial-summary.html",
@@ -455,8 +473,8 @@
     "type": "Clinical Reasoning",
     "typeClass": "continuum-type",
     "title": "Troponin &amp; Myocardial Injury",
-    "meta": "Clinical Reasoning · Oct 2026",
-    "date": "2026-10-06"
+    "meta": "Clinical Reasoning · Sep 2026",
+    "date": "2026-09-30"
   },
   {
     "file": "library/uw-em-drug-guide.html",
@@ -464,8 +482,8 @@
     "type": "Pocket Reference",
     "typeClass": "workshop-type",
     "title": "Emergency Medicine Drug Guide: Peds &amp; Adult",
-    "meta": "Pocket Reference · Oct 2026",
-    "date": "2026-10-06"
+    "meta": "Pocket Reference · Jul 2026",
+    "date": "2026-07-31"
   },
   {
     "file": "library/ventilator-loops.html",
@@ -473,8 +491,8 @@
     "type": "Pocket Reference",
     "typeClass": "workshop-type",
     "title": "Ventilator Loops",
-    "meta": "Pocket Reference · Oct 2026",
-    "date": "2026-10-06"
+    "meta": "Pocket Reference · Jul 2026",
+    "date": "2026-07-31"
   },
   {
     "file": "library/vhd-bedside-signs.html",
@@ -482,8 +500,8 @@
     "type": "Bedside Signs",
     "typeClass": "continuum-type",
     "title": "Valvular Heart Disease: Bedside Signs",
-    "meta": "Bedside Signs · Oct 2026",
-    "date": "2026-10-06"
+    "meta": "Bedside Signs · Sep 2026",
+    "date": "2026-09-30"
   },
   {
     "file": "library/arrest-after-cardiac-surgery.html",
@@ -518,8 +536,8 @@
     "type": "Spot It, Explain It, Fix It",
     "typeClass": "workshop-type",
     "title": "Dexmedetomidine &amp; Polyuria",
-    "meta": "Spot It, Explain It, Fix It · Oct 2026",
-    "date": "2026-10-06"
+    "meta": "Spot It, Explain It, Fix It · Jul 2026",
+    "date": "2026-07-31"
   },
   {
     "file": "library/emergency-drugs-pregnancy.html",
@@ -536,8 +554,8 @@
     "type": "Hemodynamic Monitoring",
     "typeClass": "workshop-type",
     "title": "Invasive Waveform Diagnostics — Arterial &amp; Right Heart",
-    "meta": "Hemodynamic Monitoring · Oct 2026",
-    "date": "2026-10-06"
+    "meta": "Hemodynamic Monitoring · Jun 2026",
+    "date": "2026-06-30"
   },
   {
     "file": "library/macrolides-compared.html",
@@ -572,8 +590,8 @@
     "type": "Anesthesia Reference",
     "typeClass": "workshop-type",
     "title": "Neuraxial Blocks &amp; Blood Thinners",
-    "meta": "Anesthesia Reference · Oct 2026",
-    "date": "2026-10-06"
+    "meta": "Anesthesia Reference · Jul 2026",
+    "date": "2026-07-31"
   },
   {
     "file": "library/bleeding-reversal-guide.html",
@@ -581,8 +599,8 @@
     "type": "Pocket Reference",
     "typeClass": "workshop-type",
     "title": "Bleeding, Reversal &amp; Antiplatelet Decisions",
-    "meta": "Pocket Reference · Oct 2026",
-    "date": "2026-10-06"
+    "meta": "Pocket Reference · Jul 2026",
+    "date": "2026-07-31"
   },
   {
     "file": "library/pediatric-code-blue-guide.html",
@@ -590,8 +608,8 @@
     "type": "Numbers Worth Knowing",
     "typeClass": "workshop-type",
     "title": "Pediatric Code Blue",
-    "meta": "Numbers Worth Knowing · Oct 2026",
-    "date": "2026-10-06"
+    "meta": "Numbers Worth Knowing · Jul 2026",
+    "date": "2026-07-31"
   },
   {
     "file": "library/brain-death-bd-dnc-framework.html",
@@ -1032,26 +1050,7 @@
     "typeClass": "prehospital-type",
     "title": "Whole Blood at the Front Door",
     "meta": "Prehospital · Transfusion · NAEMSP · May 2026",
-    "date": "2026-05-29",
-    "featured": true,
-    "featuredLabel": "The Continuum — Featured",
-    "featuredSectionClass": "continuum-label",
-    "featuredBadges": [
-      {
-        "text": "Prehospital",
-        "class": "pre"
-      },
-      {
-        "text": "The Continuum",
-        "class": "cont"
-      },
-      {
-        "text": "Transfusion",
-        "class": "amb"
-      }
-    ],
-    "featuredMeta": "NAEMSP · Prehosp Emerg Care · 2025",
-    "featuredBlurb": "NAEMSP's 2025 position statement makes the case for low titer group O whole blood as the first-choice prehospital product — and backs it with 66 articles, three PICO questions, and the clearest guidance EMS medicine has issued on prehospital transfusion yet. The crystalloid era is over. The question now is whether your system is built to replace it."
+    "date": "2026-05-29"
   },
   {
     "file": "posts/mountainair-parafluorofentanyl.html",

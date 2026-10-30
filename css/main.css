@@ -965,6 +965,11 @@ img { max-width: 100%; display: block; }
   line-height: 1.4;
   margin-bottom: 3px;
 }
+.continuum-row  .post-title { color: var(--blue); }
+.workshop-row   .post-title { color: var(--teal); }
+.locker-row     .post-title { color: var(--amber); }
+.flightdeck-row .post-title { color: var(--red-tag); }
+[data-stack] .rname         { color: var(--purple); }
 .post-meta {
   font-family: var(--font-sans);
   font-size: 11px;
@@ -1083,6 +1088,13 @@ img { max-width: 100%; display: block; }
 .sec-name.locker-name     { color: var(--amber); }
 .sec-name.flightdeck-name { color: #f87171; }
 .sec-name.stack-name      { color: #a78bfa; }
+.sec-count {
+  margin-left: 8px;
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--text3);
+}
+.sec-count:empty { display: none; }
 .sec-sub {
   font-family: var(--font-sans);
   font-size: 11px;
