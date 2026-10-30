@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI at the Bedside — The Critical Vector</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0e14; --surface:#111720; --surface2:#182030;
+  --border:rgba(255,255,255,0.08);
+  --teal:#00d4aa; --blue:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa;
+  --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670;
+  --hl:var(--teal);
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{background:var(--bg); color:var(--text); font-family:'Source Serif 4', Georgia, serif; font-size:16px; line-height:1.62; -webkit-font-smoothing:antialiased;}
+h1,h2,h3,.label,nav a,th,.tag,.verdict{font-family:'Syne', sans-serif;}
+.mono,.num{font-family:'IBM Plex Mono', monospace;}
+.page{max-width:900px; margin:0 auto; padding:0 24px 60px;}
+header{padding:34px 0 20px; border-bottom:1px solid var(--border);}
+.kicker{font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--hl); margin-bottom:10px;}
+h1{font-weight:800; font-size:30px; line-height:1.15; margin:0 0 10px;}
+header p.sub{font-style:italic; color:var(--text2); font-size:15.5px; margin:0 0 12px;}
+.byline{font-size:13px; color:var(--text3); margin:0;}
+.byline a, .sources a, footer a, p a, td a{color:var(--teal);}
+.alert{margin:20px 0; padding:14px 18px; border-radius:10px; font-size:14.5px;}
+.alert.ok{background:rgba(0,212,170,.10); border:1px solid rgba(0,212,170,.28); color:#bdf5e8;}
+.alert.warn{background:rgba(245,158,11,.10); border:1px solid rgba(245,158,11,.28); color:#fbdca0;}
+nav{display:flex; flex-wrap:wrap; gap:7px; padding:16px 0; border-bottom:1px solid var(--border);}
+nav a{font-size:12.5px; font-weight:600; color:var(--text2); background:var(--surface); border:1px solid var(--border); padding:7px 12px; border-radius:20px; text-decoration:none; white-space:nowrap;}
+nav a:hover, nav a:focus-visible{color:var(--text); border-color:var(--hl); outline:none;}
+section{padding:28px 0; border-bottom:1px solid var(--border);}
+.sec-head{display:flex; align-items:baseline; gap:10px; padding:11px 18px; border-left:4px solid var(--teal); background:linear-gradient(90deg, rgba(0,212,170,0.10), transparent); border-radius:0 8px 8px 0; margin-bottom:14px;}
+.sec-head.c-blue{border-left-color:var(--blue); background:linear-gradient(90deg, rgba(96,165,250,0.10), transparent);}
+.sec-head.c-red{border-left-color:var(--red); background:linear-gradient(90deg, rgba(232,76,76,0.10), transparent);}
+.sec-head.c-amber{border-left-color:var(--amber); background:linear-gradient(90deg, rgba(245,158,11,0.10), transparent);}
+.sec-head.c-purple{border-left-color:var(--purple); background:linear-gradient(90deg, rgba(167,139,250,0.10), transparent);}
+.sec-head.c-grey{border-left-color:var(--text3); background:none;}
+.sec-num{font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--text3);}
+h2{font-weight:700; font-size:20px; margin:0;}
+h3{font-size:15px; font-weight:700; margin:18px 0 6px;}
+.tagline{font-style:italic; font-size:14px; color:var(--text2); margin:0 0 12px;}
+p{margin:.75rem 0;}
+.box{background:var(--surface2); border:1px solid var(--border); border-radius:10px; padding:14px 18px; margin:14px 0;}
+.box.t-teal{border-left:3px solid var(--teal);} .box.t-blue{border-left:3px solid var(--blue);}
+.box.t-amber{border-left:3px solid var(--amber);} .box.t-red{border-left:3px solid var(--red);} .box.t-purple{border-left:3px solid var(--purple);}
+.box .label{display:block; font-size:12.5px; font-weight:700; margin-bottom:4px;}
+.box.t-teal .label{color:var(--teal);} .box.t-blue .label{color:var(--blue);} .box.t-amber .label{color:var(--amber);} .box.t-red .label{color:var(--red);} .box.t-purple .label{color:var(--purple);}
+.box p{margin:.4rem 0;}
+.tbl{overflow-x:auto; margin:14px 0;}
+table{width:100%; border-collapse:collapse; font-size:13.6px;}
+th{background:var(--surface2); color:var(--text); text-align:left; padding:9px 11px; font-weight:600; font-size:12px; border-bottom:2px solid var(--border);}
+td{padding:9px 11px; border-bottom:1px solid var(--border); vertical-align:top; line-height:1.45;}
+tr:nth-child(even) td{background:rgba(255,255,255,0.02);}
+td.k{font-family:'Syne',sans-serif; font-weight:700; color:var(--text);}
+.tag{display:inline-block; font-size:10.5px; font-weight:700; padding:2px 9px; border-radius:20px; white-space:nowrap; margin-bottom:3px;}
+.tag.v{background:rgba(0,212,170,.12); color:var(--teal); border:1px solid rgba(0,212,170,.3);}
+.tag.c{background:rgba(245,158,11,.12); color:var(--amber); border:1px solid rgba(245,158,11,.3);}
+.tag.x{background:rgba(232,76,76,.12); color:#ff9e9e; border:1px solid rgba(232,76,76,.3);}
+.tag.u{background:rgba(167,139,250,.12); color:var(--purple); border:1px solid rgba(167,139,250,.3);}
+.tag.l{background:rgba(96,165,250,.12); color:var(--blue); border:1px solid rgba(96,165,250,.3);}
+ol.steps, ul.plain{padding-left:1.3rem; margin:.6rem 0;} ol.steps li, ul.plain li{margin-bottom:.45rem;}
+.figure{margin:18px 0; background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:16px;}
+.figure svg{width:100%; height:auto; display:block;}
+.figcap{font-size:12.5px; color:var(--text2); font-style:italic; margin-top:8px;}
+.sources{list-style:none; padding:0; margin:0; font-size:13px; color:var(--text2);}
+.sources li{padding:8px 0; border-bottom:1px solid var(--border);}
+.sources li:last-child{border-bottom:none;}
+footer{padding:26px 0 0; font-size:12.5px; color:var(--text3); font-style:italic;}
+@media (max-width:600px){ h1{font-size:24px;} .page{padding:0 16px 48px;} table{font-size:12.8px;} }
+@media (prefers-reduced-motion:reduce){*{transition:none !important;}}
+
+:root{--hl:#00d4aa;}
+.jobs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0;}
+.job{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px;border-top:4px solid var(--c);}
+.job .k1{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--c);}
+.job .t{font-family:'Syne',sans-serif;font-weight:700;font-size:16px;margin:4px 0 6px;}
+.job p{font-size:13.3px;color:var(--text2);margin:.3rem 0;line-height:1.45;} .job p b{color:var(--text);}
+@media(max-width:720px){.jobs{grid-template-columns:1fr;}}
+</style>
+<style id="cv-print">
+/* ===== CV PRINT v1.0 (per _cv-schema.html) ===== */
+@media print{
+  :root{
+    --bg:#f4f5f7; --surface:#ffffff; --surface2:#eef1f4; --border:#d7dde3;
+    --teal:#00a688; --blue:#1d4ed8; --accent:#00a688; --accent2:#1d4ed8;
+    --red:#c53030; --amber:#b45309; --purple:#7c3aed;
+    --text:#0f1923; --text2:#4a5670; --text3:#6b7688;
+  }
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  html, body{background:#f4f5f7 !important; color:#0f1923 !important;}
+  nav, .nav, .toc-pills{display:none !important;}
+  .alert{background:rgba(0,166,136,.08) !important; color:#0f1923 !important;}
+  td{color:#0f1923 !important;}
+  section, .box, table, .card, .figure{break-inside:avoid;}
+  h2, .sec-head{break-after:avoid;}
+  a{color:inherit; text-decoration:none;}
+  .tag.x{color:#c53030 !important;}
+}
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ a{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../locker.html">The Evidence Locker</a><span class="cv-sb-meta">Published 28 Oct 2026 · R. E. Suscitate &amp; A. Systole</span></nav>
+<div class="page">
+<header><div class="kicker">The Critical Vector &middot; Content Audit &middot; Verified</div>
+<h1>AI at the Bedside: Three Jobs, Three Evidence Bars</h1>
+<p class="sub">A CHEST 2026 recap argues that "it uses AI" says nothing until you know whether the tool drafts, predicts or recommends. Every number checks out, and one omitted finding makes the post's point stronger.</p>
+<p class="byline">R. E. Suscitate &amp; A. Systole &middot; October 2026. Original post: <a href="https://www.instagram.com/defineshock">@defineshock</a>, "CHEST2026 in review: AI at the bedside" (10 slides; slide 9 not captured in the screenshots reviewed). This page is an independent third-party evaluation, not affiliated with or endorsed by the original creator.</p></header>
+<div class="alert ok"><strong>Verdict:</strong> all three cited studies say what the post says, and each limitation is stated honestly. The AI-scribe figure (13.4 fewer EHR minutes per 8 patient-hours) is the published difference-in-differences estimate. The GPT-4 trial numbers (76% vs 74%) are exact. The VentPilot figure (3.1 more ventilator-free days) is the more conservative of the paper's two validation cohorts. The one addition worth making: in the GPT-4 trial, the model alone outscored the physicians who had it.</div>
+<nav><a href="#jobs">Three jobs</a><a href="#ledger">Claim ledger</a><a href="#llm">The missing result</a><a href="#vent">Reading VentPilot</a><a href="#cv">For CV's own tools</a><a href="#sources">Sources</a></nav><section id="jobs">
+<div class="sec-head "><span class="sec-num">01</span><h2>Three jobs</h2></div>
+<p class="tagline">The post's central frame, laid out with the error each job makes.</p>
+<div class="jobs">
+<div class="job" style="--c:var(--teal)"><div class="k1">Generates</div><div class="t">Drafts a summary or note</div><p><b>Error mode:</b> omission, invented detail, wrong timeline.</p><p><b>Safeguard:</b> the clinician who signs it reads it.</p><p><b>Evidence so far:</b> observational time savings in ambulatory care.</p></div>
+<div class="job" style="--c:var(--amber)"><div class="k1">Predicts</div><div class="t">Estimates deterioration risk</div><p><b>Error mode:</b> false alarms, silence when it matters, alerts nobody acts on.</p><p><b>Safeguard:</b> a defined responder and action.</p><p><b>Evidence needed:</b> improved outcomes after deployment, not just discrimination.</p></div>
+<div class="job" style="--c:var(--red)"><div class="k1">Recommends</div><div class="t">Proposes a treatment change</div><p><b>Error mode:</b> a confident wrong setting acted on.</p><p><b>Safeguard:</b> expertise, time and authority to override.</p><p><b>Evidence needed:</b> prospective, ideally randomized testing.</p></div></div><p>The higher the autonomy, the higher the evidence bar. A draft you review fails safely when the reviewer has time to read it. A recommendation that changes treatment fails in the patient.</p>
+</section><section id="ledger">
+<div class="sec-head c-blue"><span class="sec-num">02</span><h2>Claim ledger</h2></div>
+<p class="tagline">Each numeric claim checked against the cited PMID.</p>
+<div class="tbl"><table><tr><th style="width:38%">Post says</th><th style="width:16%">Verdict</th><th>Note</th></tr><tr><td>AI-scribe adoption across 8,581 ambulatory clinicians: 13.4 fewer EHR minutes per 8 scheduled patient-hours (PMID 41920565)</td><td><span class="tag v">Verified</span></td><td>Rotenstein et al., <em>JAMA</em> 2026; 5 academic systems, 1,809 adopters. Also 16.0 fewer documentation minutes and 0.49 more weekly visits; after-hours EHR time did not change. Adoption was opt-in at 4 of 5 sites, so adopters may differ from non-adopters.</td></tr><tr><td>Observational; doesn't establish the same benefit in the ICU</td><td><span class="tag v">Verified</span></td><td>Ambulatory clinicians only. No inpatient or ICU data in this study.</td></tr><tr><td>Randomized diagnostic-vignette trial: physicians with GPT-4 76% vs conventional resources 74%, not significant (PMID 39466245)</td><td><span class="tag v">Verified</span></td><td>Goh et al., <em>JAMA Netw Open</em> 2024; 50 physicians; adjusted difference 2 points (95% CI &minus;4 to 8).</td></tr><tr><td>VentPilot: closer concordance associated with 3.1 more ventilator-free days by day 28 (95% CI 1.7&ndash;4.6), weighted analysis (PMID 42816865)</td><td><span class="tag v">Verified</span></td><td>Lee et al., <em>J Intensive Care</em> 2026. That is the Mayo external cohort; the internal cohort estimate was 5.0 days (2.4&ndash;7.6). Choosing the smaller number is the conservative read.</td></tr><tr><td>Nobody was randomized to receive its recommendations</td><td><span class="tag v">Verified</span></td><td>Retrospective offline reinforcement learning; outcomes compared by concordance with what clinicians already did.</td></tr><tr><td>Think, challenge, verify, reconcile is a proposed workflow, not a trial-proven intervention</td><td><span class="tag v">Verified</span></td><td>Stated as opinion, labeled as such.</td></tr></table></div>
+</section><section id="llm">
+<div class="sec-head c-amber"><span class="sec-num">03</span><h2>The result the post left out</h2></div>
+<p class="tagline">It supports the argument.</p>
+<p>In the Goh trial the language model working alone scored 16 percentage points higher than the conventional-resources group (95% CI 2 to 30). Physicians who had the model available did no better than those who didn't. The tool was more capable than the way it was used. That is the post's "the clinician using the tool is part of what needs evaluating" point, with a number attached.</p>
+<p>Two cautions keep this from becoming "the AI beats doctors." These were written vignettes (up to six per physician in 60 minutes), not live patients, and the trial ran in late 2023 with a model that has since been superseded. The finding is about how clinicians used the tool in that setup, not a ceiling on what the tool can do.</p>
+</section><section id="vent">
+<div class="sec-head c-red"><span class="sec-num">04</span><h2>Reading VentPilot carefully</h2></div>
+<p class="tagline">Why a concordance analysis can flatter a recommender.</p>
+<p>Comparing outcomes by how closely clinicians' choices matched the model is vulnerable to confounding by indication. Patients who are improving are easy to manage by the book, so their settings will tend to match a model trained to favor ventilator-free days. Patients who are deteriorating get unusual settings because they are deteriorating. Inverse probability weighting adjusts for measured differences, not for the bedside judgment of how the patient is trending. The authors call for further clinical evaluation, which is the right conclusion: a prospective trial where some patients' clinicians receive the recommendations and others don't.</p>
+</section><section id="cv">
+<div class="sec-head c-purple"><span class="sec-num">05</span><h2>For CV's own tools</h2></div>
+<p class="tagline">The same rules apply to us.</p>
+<p>CV pages are drafted with an AI co-author and checked against primary sources. By the post's own frame, that is a Generates job: useful, fast, and only as reliable as the verification step. Every audit on this site lists its PMIDs so a reader can do the same check, and errors found in our own archive get flagged in the open.</p>
+</section><section id="sources">
+<div class="sec-head c-grey"><span class="sec-num">06</span><h2>Sources</h2></div>
+
+<ul class="sources"><li><b>@defineshock.</b> "CHEST2026 in review: AI at the bedside." Instagram carousel. Read the original before relying on this summary.</li>
+<li>Rotenstein LS, Holmgren AJ, Thombley R, et al. Changes in clinician time expenditure and visit quantity with adoption of artificial intelligence-powered scribes: a multisite study. <em>JAMA.</em> 2026;335(16):1408&ndash;1417. <a href="https://doi.org/10.1001/jama.2026.2253">doi:10.1001/jama.2026.2253</a></li>
+<li>Goh E, Gallo R, Hom J, et al. Large language model influence on diagnostic reasoning: a randomized clinical trial. <em>JAMA Netw Open.</em> 2024;7(10):e2440969. <a href="https://doi.org/10.1001/jamanetworkopen.2024.40969">doi:10.1001/jamanetworkopen.2024.40969</a></li>
+<li>Lee HY, An G, Jeong Y, et al. Development and validation of VentPilot: an AI-based recommendation system for mechanical ventilation. <em>J Intensive Care.</em> 2026;14(1). <a href="https://doi.org/10.1186/s40560-026-00947-7">doi:10.1186/s40560-026-00947-7</a></li>
+<li>Metadata and abstracts retrieved via PubMed.</li></ul>
+</section><footer>The Critical Vector &middot; Direction and magnitude. Educational reference; verify against current guidelines and local protocol before applying to a patient.</footer>
+</div>
+</body>
+</html>

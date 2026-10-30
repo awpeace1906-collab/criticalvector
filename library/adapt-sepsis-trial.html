@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="cv:schema" content="1.0">
+<meta name="cv:verified" content="2026-10-05">
+<title>ADAPT-Sepsis Trial — The Critical Vector</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style id="cv-base">
+/* ===== CV BASE v1.0 — copy this block verbatim into every guide ===== */
+:root{
+  --bg:#0a0e14; --surface:#111720; --surface2:#182030;
+  --border:rgba(255,255,255,0.08);
+  --teal:#00d4aa; --blue:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa;
+  --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670;
+  --t-teal:rgba(0,212,170,0.10); --t-blue:rgba(96,165,250,0.10); --t-red:rgba(232,76,76,0.10);
+  --t-amber:rgba(245,158,11,0.10); --t-purple:rgba(167,139,250,0.10);
+  /* legacy aliases: older guides use these names; same values */
+  --accent:var(--teal); --accent2:var(--blue);
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{background:var(--bg); color:var(--text); font-family:'Source Serif 4', Georgia, serif; font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased;}
+h1,h2,h3,.label,.kicker,.badge,nav a,th,.step-num,.stat-num{font-family:'Syne', sans-serif;}
+.mono, code{font-family:'IBM Plex Mono', monospace;}
+.page{max-width:900px; margin:0 auto; padding:0 24px 60px;}
+header{padding:32px 0 20px; border-bottom:1px solid var(--border);}
+.kicker{font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--teal); margin-bottom:10px;}
+h1{font-weight:800; font-size:30px; line-height:1.15; margin:0 0 10px; letter-spacing:.005em;}
+header p{font-style:italic; color:var(--text2); font-size:15.5px; margin:0; max-width:700px;}
+.byline{font-size:13px; color:var(--text3); margin-top:8px;}
+.badges{display:flex; flex-wrap:wrap; gap:6px; margin-top:16px;}
+.badge{font-size:11px; font-weight:700; letter-spacing:.04em; padding:4px 10px; border-radius:20px; border:1px solid var(--border); color:var(--text2); background:var(--surface);}
+.badge.ok{color:var(--teal); border-color:rgba(0,212,170,0.35); background:var(--t-teal);}
+.badge.flag{color:var(--red); border-color:rgba(232,76,76,0.40); background:var(--t-red);}
+.alert{margin:18px 0; padding:13px 18px; border-radius:10px; font-size:14px; background:var(--t-teal); border:1px solid rgba(0,212,170,0.28); color:#bdf5e8;}
+.alert.flag{background:rgba(232,76,76,0.08); border-color:rgba(232,76,76,0.35); color:#ffd2d2;}
+nav{display:flex; flex-wrap:wrap; gap:7px; padding:18px 0; border-bottom:1px solid var(--border); margin-bottom:8px;}
+nav a{font-size:12.5px; font-weight:600; color:var(--text2); background:var(--surface); border:1px solid var(--border); padding:7px 12px; border-radius:20px; text-decoration:none; white-space:nowrap; transition:all .15s;}
+nav a:hover, nav a:focus-visible{color:var(--text); border-color:var(--teal); outline:none;}
+section{padding:30px 0; border-bottom:1px solid var(--border);}
+.sec-head{display:flex; align-items:baseline; gap:10px; padding:11px 18px; border-left:4px solid var(--teal); background:linear-gradient(90deg, var(--t-teal), transparent); border-radius:0 8px 8px 0; margin-bottom:16px;}
+.sec-head.c-blue{border-left-color:var(--blue); background:linear-gradient(90deg, var(--t-blue), transparent);}
+.sec-head.c-red{border-left-color:var(--red); background:linear-gradient(90deg, var(--t-red), transparent);}
+.sec-head.c-amber{border-left-color:var(--amber); background:linear-gradient(90deg, var(--t-amber), transparent);}
+.sec-head.c-purple{border-left-color:var(--purple); background:linear-gradient(90deg, var(--t-purple), transparent);}
+.sec-num{font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--text3);}
+h2{font-weight:700; font-size:20px; margin:0; color:var(--text);}
+h3{font-weight:700; font-size:16px; margin:0 0 6px;}
+.tagline{font-style:italic; font-size:13.5px; color:var(--text2); margin:0 0 12px;}
+p.body{font-size:15.5px; margin:12px 0; max-width:72ch;}
+p.note{font-size:13.5px; color:var(--text2); font-style:italic; margin:10px 0;}
+.box{background:var(--surface2); border:1px solid var(--border); border-radius:10px; padding:16px 18px; margin:14px 0; font-size:14.5px;}
+.box.t-teal{border-left:3px solid var(--teal);} .box.t-blue{border-left:3px solid var(--blue);}
+.box.t-red{border-left:3px solid var(--red); background:rgba(232,76,76,0.06);}
+.box.t-amber{border-left:3px solid var(--amber);} .box.t-purple{border-left:3px solid var(--purple);}
+.box b{color:var(--text); font-weight:700;} .box p{margin:7px 0;}
+.stat-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:10px; margin:16px 0;}
+.stat-card{background:var(--surface); border:1px solid var(--border); border-left:4px solid var(--c,var(--teal)); border-radius:6px; padding:14px 16px 14px 18px; text-align:left;}
+.stat-num{font-weight:800; font-size:26px; line-height:1.1; color:var(--c,var(--teal));}
+.stat-label{font-size:13px; color:var(--text2); margin-top:4px;}
+.steps{display:flex; flex-direction:column; gap:10px; margin:16px 0;}
+.step-row{display:flex; gap:14px; align-items:flex-start; background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:12px 16px;}
+.step-num{flex-shrink:0; width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:13px; color:#0a0e14; background:var(--c,var(--teal));}
+.step-body{font-size:14.5px;} .step-body b{color:var(--text);}
+.scroll{overflow-x:auto; -webkit-overflow-scrolling:touch;}
+table{width:100%; border-collapse:collapse; margin:14px 0; font-size:13.5px;}
+th{background:var(--surface2); color:var(--text); text-align:left; padding:9px 11px; font-weight:600; font-size:12px; letter-spacing:.02em; border-bottom:2px solid var(--border);}
+td{padding:9px 11px; border-bottom:1px solid var(--border); vertical-align:top;}
+tr:nth-child(even) td{background:rgba(255,255,255,0.02);}
+.xlist,.clist{list-style:none; padding-left:0; margin:10px 0;}
+.xlist li,.clist li{padding:5px 0 5px 26px; position:relative; font-size:14.5px;}
+.xlist li:before{content:"✗"; position:absolute; left:0; color:var(--red); font-weight:700;}
+.clist li:before{content:"✓"; position:absolute; left:0; color:var(--teal); font-weight:700;}
+.sources{font-size:13px; color:var(--text2); padding-left:20px;}
+.sources li{margin-bottom:7px;} .sources a{color:var(--text2);}
+footer{padding:26px 0 0; margin-top:6px; font-size:12.5px; color:var(--text3); font-style:italic;}
+@media (max-width:640px){ h1{font-size:25px;} .page{padding:0 16px 48px;} }
+@media (prefers-reduced-motion:reduce){ *{transition:none !important;} }
+
+/* ===== PRINT: light-mode token swap (mandatory, non-optional) ===== */
+@media print{
+  :root{
+    --bg:#f4f5f7; --surface:#ffffff; --surface2:#eef1f4; --border:#d7dde3;
+    --teal:#00a688; --blue:#1d4ed8; --red:#c53030; --amber:#b45309; --purple:#7c3aed;
+    --text:#0f1923; --text2:#4a5670; --text3:#6b7688;
+    --t-teal:rgba(0,166,136,0.08); --t-blue:rgba(29,78,216,0.07); --t-red:rgba(197,48,48,0.07);
+    --t-amber:rgba(180,83,9,0.08); --t-purple:rgba(124,58,237,0.07);
+  }
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  body{background:var(--bg) !important; color:var(--text) !important; font-size:11pt;}
+  nav{display:none;}
+  .page{max-width:none; padding:0;}
+  .alert{background:var(--t-teal) !important; border-color:var(--teal); color:var(--text) !important;}
+  .alert.flag{background:var(--t-red) !important; border-color:var(--red);}
+  .box.t-red{background:var(--t-red);}
+  td{color:var(--text) !important;}
+  .step-num{color:#ffffff;}
+  section, .box, table, .stat-card, .step-row{break-inside:avoid;}
+  h2, .sec-head{break-after:avoid;}
+  a{color:inherit; text-decoration:none;}
+  @page{margin:14mm 14mm 16mm;}
+}
+/* ===== END CV BASE ===== */
+</style>
+<style>
+/* page layout */
+
+.kicker{color:var(--amber);}
+.verdict-src{display:grid; grid-template-columns:auto 1fr; gap:16px; align-items:start; margin:22px 0 6px; padding:18px 20px; border:1px solid rgba(232,76,76,0.35); background:rgba(232,76,76,0.06); border-radius:12px;}
+.verdict-src .stamp{font-family:'Syne',sans-serif; font-weight:800; font-size:13px; letter-spacing:.06em; color:var(--red); border:2px solid var(--red); border-radius:8px; padding:6px 10px; transform:rotate(-3deg); white-space:nowrap;}
+.verdict-src p{margin:0; font-size:15px;}
+.ni{margin:18px 0 6px; padding:18px 18px 10px; background:var(--surface); border:1px solid var(--border); border-radius:12px;}
+.ni svg{width:100%; height:auto; display:block;}
+.ni text{font-family:'IBM Plex Mono',monospace; fill:var(--text2); font-size:11px;}
+.ni .lab{font-family:'Syne',sans-serif; fill:var(--text); font-size:13px; font-weight:700;}
+.ni-cap{font-size:13.5px; color:var(--text2); margin:8px 2px 4px;}
+.claims{display:flex; flex-direction:column; gap:10px; margin:14px 0;}
+.claim{display:grid; grid-template-columns:110px 1fr; border:1px solid var(--border); border-radius:10px; overflow:hidden;}
+.claim .tag{display:flex; align-items:center; justify-content:center; font-family:'Syne',sans-serif; font-weight:800; font-size:12px; letter-spacing:.05em; text-align:center; padding:10px;}
+.claim .tag.wrong{background:rgba(232,76,76,0.12); color:var(--red);}
+.claim .tag.over{background:rgba(245,158,11,0.12); color:var(--amber);}
+.claim .tag.right{background:rgba(0,212,170,0.12); color:var(--teal);}
+.claim .txt{padding:12px 16px; font-size:14.5px;}
+.claim .txt q{display:block; font-style:italic; color:var(--text2); margin-bottom:6px; quotes:none;}
+@media (max-width:640px){ .claim{grid-template-columns:1fr;} .verdict-src{grid-template-columns:1fr;} }
+@media print{ .verdict-src{background:var(--t-red);} .ni text{fill:#4a5670;} .ni .lab{fill:#0f1923;} }
+
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ a{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../locker.html">The Evidence Locker</a><span class="cv-sb-meta">Published 6 Oct 2026 · R. E. Suscitate &amp; A. Systole</span></nav>
+<div class="page">
+
+<header>
+  <div class="kicker">The Critical Vector · Evidence Locker</div>
+  <h1>ADAPT-Sepsis: What the Trial Actually Found</h1>
+  <p class="byline">R. E. Suscitate &amp; A. Systole</p>
+  <p>Procalcitonin-guided stopping cut antibiotic exposure by just under a day and met its prespecified safety margin. A widely shared summary graphic says the opposite. The real debate is about the margin, not the result.</p>
+  <div class="badges"><span class="badge ok">VERIFIED</span><span class="badge flag">Source graphic misreads the trial</span><span class="badge">Dark et al., JAMA 2025</span><span class="badge">RCT · n = 2,760 · 41 UK ICUs</span></div>
+</header>
+
+<div class="verdict-src">
+  <div class="stamp">MISREAD</div>
+  <p>The circulating graphic concludes that procalcitonin is "an unreliable indicator for antibiotic cessation" and that mortality "was higher" with PCT. The trial concluded the reverse: PCT-guided care reduced antibiotic duration <b>safely</b>, meeting non-inferiority for 28-day mortality. The numbers in the graphic's own table are correct. The bottom line drawn from them is not.</p>
+</div>
+
+<div class="ni" role="figure">
+  <svg viewBox="0 0 640 205" role="img" aria-label="Mortality difference versus standard care with 95% confidence intervals against the 5.4% non-inferiority margin">
+<rect x="543.1" y="18" width="66.9" height="132" fill="rgba(232,76,76,0.10)"/>
+<line x1="317.3" y1="18" x2="317.3" y2="150" stroke="var(--text3)" stroke-dasharray="3 4"/>
+<line x1="543.1" y1="18" x2="543.1" y2="150" stroke="var(--red)" stroke-width="2"/>
+<text x="548.1" y="32" style="fill:var(--red)">NI margin 5.4%</text>
+<text x="322.3" y="32">no difference</text>
+<text class="lab" x="10" y="74">PCT-guided</text><line x1="226.1" y1="70" x2="539.7" y2="70" stroke="var(--teal)" stroke-width="3"/><line x1="226.1" y1="63" x2="226.1" y2="77" stroke="var(--teal)" stroke-width="2"/><line x1="539.7" y1="63" x2="539.7" y2="77" stroke="var(--teal)" stroke-width="2"/><circle cx="382.9" cy="70" r="6" fill="var(--teal)"/><text x="10" y="92">+1.57 (-2.18 to +5.32)</text>
+<text class="lab" x="10" y="124">CRP-guided</text><line x1="230.7" y1="120" x2="545.2" y2="120" stroke="var(--amber)" stroke-width="3"/><line x1="230.7" y1="113" x2="230.7" y2="127" stroke="var(--amber)" stroke-width="2"/><line x1="545.2" y1="113" x2="545.2" y2="127" stroke="var(--amber)" stroke-width="2"/><circle cx="387.9" cy="120" r="6" fill="var(--amber)"/><text x="10" y="142">+1.69 (-2.07 to +5.45)</text>
+<line x1="150.0" y1="150" x2="610.0" y2="150" stroke="var(--text3)"/>
+<line x1="150.0" y1="150" x2="150.0" y2="155" stroke="var(--text3)"/><text x="144.0" y="170">-4</text><line x1="233.6" y1="150" x2="233.6" y2="155" stroke="var(--text3)"/><text x="227.6" y="170">-2</text><line x1="317.3" y1="150" x2="317.3" y2="155" stroke="var(--text3)"/><text x="311.3" y="170">0</text><line x1="400.9" y1="150" x2="400.9" y2="155" stroke="var(--text3)"/><text x="394.9" y="170">2</text><line x1="484.5" y1="150" x2="484.5" y2="155" stroke="var(--text3)"/><text x="478.5" y="170">4</text><line x1="568.2" y1="150" x2="568.2" y2="155" stroke="var(--text3)"/><text x="562.2" y="170">6</text>
+<text x="380.0" y="195" text-anchor="middle">28-day mortality difference vs standard care (points)</text>
+</svg>
+  <p class="ni-cap">Both strategies had point estimates slightly above zero. The PCT interval stays entirely left of the 5.4% margin, so non-inferiority was met. The CRP interval crosses it, so the CRP mortality result is inconclusive, not harmful.</p>
+</div>
+
+<nav>
+  <a href="#claims">Claim by claim</a><a href="#numbers">The numbers</a><a href="#margin">The real argument</a><a href="#bedside">At the bedside</a><a href="#sources">Sources</a>
+</nav>
+
+<section id="claims">
+  <div class="sec-head c-red"><span class="sec-num">01</span><h2>Claim by claim</h2></div>
+  <div class="claims">
+    <div class="claim"><div class="tag wrong">WRONG</div><div class="txt"><q>PCT remains an unreliable indicator for antibiotic cessation.</q>The trial's conclusion is that PCT-guided care reduces antibiotic duration safely compared with standard care. That is the finding the graphic was summarizing.</div></div>
+    <div class="claim"><div class="tag wrong">WRONG</div><div class="txt"><q>PCT stopped antibiotics one day earlier, but mortality was higher.</q>Mortality was 20.9% with PCT versus 19.4% with standard care, a difference of 1.57 points with a 95% CI of −2.18 to 5.32. A confidence interval spanning zero is not a mortality increase. The trial was built to test non-inferiority, and PCT passed.</div></div>
+    <div class="claim"><div class="tag over">OVERSTATED</div><div class="txt"><q>Strong antibiotic stop advice was given earlier in the PCT group.</q>Accurate as a description, but it is the mechanism of the intervention rather than a finding. Clinicians in the PCT arm received protocolized stop advice; that is what the trial randomized.</div></div>
+    <div class="claim"><div class="tag right">CORRECT</div><div class="txt"><q>CRP guidance did not meet non-inferiority.</q>Correct. CRP did not shorten antibiotic duration (10.6 vs 10.7 days, P = .79), and its mortality comparison was inconclusive.</div></div>
+    <div class="claim"><div class="tag right">CORRECT</div><div class="txt"><q>Look at the overall clinical picture.</q>Always true, and the protocol agrees: PCT advice was advisory, and the treating clinician made the final call.</div></div>
+  </div>
+</section>
+
+<section id="numbers">
+  <div class="sec-head c-amber"><span class="sec-num">02</span><h2>The numbers</h2></div>
+  <div class="stat-grid">
+    <div class="stat-card" style="--c:var(--teal)"><div class="stat-num">−0.88 d</div><div class="stat-label">Antibiotic duration, PCT vs standard (95% CI 0.19 to 1.58 fewer days; P = .01)</div></div>
+    <div class="stat-card" style="--c:var(--amber)"><div class="stat-num">−0.09 d</div><div class="stat-label">Antibiotic duration, CRP vs standard (CI −0.60 to 0.79; P = .79)</div></div>
+    <div class="stat-card" style="--c:var(--blue)"><div class="stat-num">19.4%</div><div class="stat-label">28-day mortality, standard care (170/878)</div></div>
+    <div class="stat-card" style="--c:var(--purple)"><div class="stat-num">20.9%</div><div class="stat-label">28-day mortality, PCT (184/879)</div></div>
+  </div>
+  <div class="scroll"><table>
+    <tr><th>Design element</th><th>ADAPT-Sepsis</th></tr>
+    <tr><td>Population</td><td>Adults in 41 NHS ICUs, within 24 h of IV antibiotics for suspected sepsis, expected to need ≥72 h of antibiotics</td></tr>
+    <tr><td>Arms</td><td>Daily PCT-guided advice, daily CRP-guided advice, or standard care; intervention-concealed</td></tr>
+    <tr><td>Co-primary outcomes</td><td>Total antibiotic duration to day 28 (effectiveness); 28-day all-cause mortality (safety, non-inferiority)</td></tr>
+    <tr><td>Non-inferiority margin</td><td>5.4 percentage points</td></tr>
+  </table></div>
+</section>
+
+<section id="margin">
+  <div class="sec-head c-purple"><span class="sec-num">03</span><h2>The real argument</h2></div>
+  <p class="body">There is a legitimate critique of ADAPT-Sepsis, and it is not the one in the graphic. A non-inferiority margin of 5.4 percentage points means the trial was designed to accept that PCT guidance might be up to about 5 points worse for mortality, in exchange for roughly one fewer day of antibiotics. The upper confidence bound landed at 5.32.</p>
+  <div class="box t-purple"><p><b>Put plainly:</b> the trial excludes a mortality harm larger than about 5 points. It does not exclude a smaller one. Whether a margin that wide is acceptable for a stewardship intervention is a values question, and critics have argued it is too generous.</p></div>
+  <p class="body">That critique cuts against the trial's design, not its reading. Within the margin it set, the result is clear.</p>
+</section>
+
+<section id="bedside">
+  <div class="sec-head"><span class="sec-num">04</span><h2>At the bedside</h2></div>
+  <ul class="clist">
+    <li>Daily PCT-guided stop advice can safely shorten antibiotic courses in ICU sepsis, by under a day on average.</li>
+    <li>CRP trending does not shorten courses and should not be used as a protocolized stopping rule.</li>
+  </ul>
+  <ul class="xlist">
+    <li>A low or falling PCT is advice, not an order. Source control, culture data, and the clinical course still decide.</li>
+    <li>The trial cannot rule out a small mortality cost; units adopting PCT protocols should audit their own outcomes.</li>
+  </ul>
+</section>
+
+<section id="sources">
+  <div class="sec-head"><span class="sec-num">05</span><h2>Sources</h2></div>
+  <ol class="sources">
+    <li>Dark P, et al. Biomarker-guided antibiotic duration for hospitalized patients with suspected sepsis: the ADAPT-Sepsis randomized clinical trial. <i>JAMA</i>. 2025;333(8). <a href="https://doi.org/10.1001/jama.2024.26458">doi:10.1001/jama.2024.26458</a></li>
+    <li>Morgenstern J. Killer antibiotic stewardship strategy? (The ADAPT-Sepsis trial). First10EM, December 16, 2024.</li>
+    <li>REBEL EM. The ADAPT-Sepsis trial: biomarker-guided antibiotic duration for hospitalized patients with suspected sepsis. rebelem.com.</li>
+  </ol>
+</section>
+
+<footer>The Critical Vector · Direction and magnitude.</footer>
+</div>
+</body>
+</html>

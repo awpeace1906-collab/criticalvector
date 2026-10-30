@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Antidotes &amp; Reversal Agents — The Critical Vector</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&amp;family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><style>
+:root{
+  --bg:#0a0e14; --surface:#111720; --surface2:#182030;
+  --border:rgba(255,255,255,0.08);
+  --teal:#00d4aa; --blue:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa;
+  --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  background:var(--bg); color:var(--text);
+  font-family:'Source Serif 4', Georgia, serif; font-size:16px; line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,.label,.kicker,.badge,nav a,th{font-family:'Syne', sans-serif;}
+.mono{font-family:'IBM Plex Mono', monospace;}
+.page{max-width:900px; margin:0 auto; padding:0 24px 60px;}
+
+header{padding:32px 0 20px; border-bottom:1px solid var(--border);}
+.kicker{
+  font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--teal); margin-bottom:10px;
+}
+h1{font-family:'Syne', sans-serif; font-weight:800; font-size:30px; line-height:1.15; margin:0 0 10px; letter-spacing:.005em;}
+header p{font-family:'Source Serif 4', serif; font-style:italic; color:var(--text2); font-size:15.5px; margin:0; max-width:700px;}
+
+.alert{
+  margin:18px 0; padding:13px 18px; border-radius:10px; font-size:14px;
+  background:rgba(0,212,170,0.10); border:1px solid rgba(0,212,170,0.28); color:#bdf5e8;
+}
+.alert.c-red{background:rgba(232,76,76,0.10); border-color:rgba(232,76,76,0.28); color:#ffd7d7;}
+.alert.c-amber{background:rgba(245,158,11,0.10); border-color:rgba(245,158,11,0.28); color:#ffe8bd;}
+.alert.c-blue{background:rgba(96,165,250,0.10); border-color:rgba(96,165,250,0.28); color:#cfe0ff;}
+
+nav{display:flex; flex-wrap:wrap; gap:7px; padding:18px 0; border-bottom:1px solid var(--border); margin-bottom:8px;}
+nav .navpart{
+  width:100%; font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--text3); margin:8px 0 2px 2px;
+}
+nav .navpart:first-child{margin-top:0;}
+nav a{
+  font-size:12.5px; font-weight:600; color:var(--text2); background:var(--surface);
+  border:1px solid var(--border); padding:7px 12px; border-radius:20px;
+  text-decoration:none; white-space:nowrap; transition:all .15s;
+}
+nav a:hover{color:var(--text); border-color:var(--teal);}
+
+section{padding:30px 0; border-bottom:1px solid var(--border);}
+.sec-head{
+  display:flex; align-items:baseline; gap:10px; padding:11px 18px;
+  border-left:4px solid var(--teal);
+  background:linear-gradient(90deg, rgba(0,212,170,0.10), transparent);
+  border-radius:0 8px 8px 0; margin-bottom:16px;
+}
+.sec-head.c-blue{border-left-color:var(--blue); background:linear-gradient(90deg, rgba(96,165,250,0.10), transparent);}
+.sec-head.c-red{border-left-color:var(--red); background:linear-gradient(90deg, rgba(232,76,76,0.10), transparent);}
+.sec-head.c-amber{border-left-color:var(--amber); background:linear-gradient(90deg, rgba(245,158,11,0.10), transparent);}
+.sec-head.c-purple{border-left-color:var(--purple); background:linear-gradient(90deg, rgba(167,139,250,0.10), transparent);}
+.sec-num{font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--text3);}
+h2{font-family:'Syne', sans-serif; font-weight:700; font-size:20px; margin:0; color:var(--text);}
+.tagline{font-family:'Source Serif 4', serif; font-style:italic; font-size:13.5px; color:var(--text2); margin:0 0 12px;}
+
+p.body{font-size:15.5px; margin:12px 0;}
+p.note{font-size:13.5px; color:var(--text2); font-style:italic; margin:10px 0;}
+
+.box{
+  background:var(--surface2); border:1px solid var(--border); border-radius:10px;
+  padding:16px 18px; margin:14px 0; font-size:14.5px;
+}
+.box.t-teal{border-left:3px solid var(--teal);}
+.box.t-blue{border-left:3px solid var(--blue);}
+.box.t-red{border-left:3px solid var(--red); background:rgba(232,76,76,0.06);}
+.box.t-amber{border-left:3px solid var(--amber);}
+.box.t-purple{border-left:3px solid var(--purple);}
+.box b{color:var(--text); font-weight:700;}
+.box p{margin:7px 0;}
+
+table{width:100%; border-collapse:collapse; margin:14px 0; font-size:13.5px;}
+th{background:var(--surface2); color:var(--text); text-align:left; padding:9px 11px; font-weight:600; font-size:12px; letter-spacing:.02em; border-bottom:2px solid var(--border);}
+td{padding:9px 11px; border-bottom:1px solid var(--border); vertical-align:top; font-family:'Source Serif 4', serif;}
+tr:nth-child(even) td{background:rgba(255,255,255,0.02);}
+
+.checklist, .xlist{list-style:none; padding-left:0; margin:10px 0;}
+.checklist li, .xlist li{padding:5px 0 5px 26px; position:relative; font-size:14.5px;}
+.checklist li:before{content:"\2713"; position:absolute; left:0; color:var(--teal); font-weight:700;}
+.xlist li:before{content:"\2715"; position:absolute; left:0; color:var(--red); font-weight:700;}
+
+.flow{display:flex; flex-direction:column; gap:9px; margin:14px 0;}
+.flow .step{
+  border:1px solid var(--border); border-left:3px solid var(--teal);
+  background:var(--surface); border-radius:8px; padding:11px 15px; font-size:14px;
+}
+.flow .step.t-blue{border-left-color:var(--blue);}
+.flow .step.t-red{border-left-color:var(--red);}
+.flow .step.t-amber{border-left-color:var(--amber);}
+.flow .step.t-purple{border-left-color:var(--purple);}
+
+.timeline-item{
+  padding:7px 0 7px 15px; border-left:2px solid var(--teal);
+  margin:5px 0 5px 4px; font-size:13.5px; color:var(--text2);
+}
+.timeline-item.t-blue{border-left-color:var(--blue);}
+.timeline-item.t-red{border-left-color:var(--red);}
+.timeline-item.t-amber{border-left-color:var(--amber);}
+.timeline-item.t-purple{border-left-color:var(--purple);}
+
+.xref{
+  margin:14px 0; padding:13px 17px; border-radius:10px;
+  background:var(--surface2); border:1px solid var(--border); border-left:3px solid var(--blue);
+  font-size:14px;
+}
+.xreflabel{
+  display:block; font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--blue); margin-bottom:6px; font-weight:600;
+}
+
+.peds{
+  margin:8px 0 16px 0; padding:11px 15px; border-radius:8px;
+  background:var(--surface2); border:1px solid var(--border); border-left:3px solid var(--purple);
+  font-size:13.5px;
+}
+.pedlabel{
+  display:inline-block; font-family:'Syne', sans-serif; font-size:10px; font-weight:700; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--purple); margin-right:7px;
+}
+
+.part-divider{padding:34px 0 8px;}
+.part-divider .plabel{
+  font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--teal); margin-bottom:6px; font-weight:600;
+}
+.part-divider h2{font-size:23px; margin:0 0 6px 0;}
+.part-divider p{font-family:'Source Serif 4', serif; font-size:14px; color:var(--text2); margin:0; max-width:600px;}
+
+.sources{font-size:13px; color:var(--text2); padding-left:20px;}
+.sources li{margin-bottom:7px;}
+
+footer{padding:26px 0 0; margin-top:6px; font-size:12.5px; color:var(--text3); font-family:'Source Serif 4', serif; font-style:italic;}
+</style>
+<style id="cv-print">
+/* ===== CV PRINT v1.0 (per _cv-schema.html) ===== */
+@media print{
+  :root{
+    --bg:#f4f5f7; --surface:#ffffff; --surface2:#eef1f4; --border:#d7dde3;
+    --teal:#00a688; --blue:#1d4ed8; --accent:#00a688; --accent2:#1d4ed8;
+    --red:#c53030; --amber:#b45309; --purple:#7c3aed;
+    --text:#0f1923; --text2:#4a5670; --text3:#6b7688;
+  }
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  html, body{background:#f4f5f7 !important; color:#0f1923 !important;}
+  nav, .nav, .toc-pills{display:none !important;}
+  .alert{background:rgba(0,166,136,.08) !important; color:#0f1923 !important;}
+  td{color:#0f1923 !important;}
+  section, .box, table, .card, .stat-card, .statcard, .step-row, .step{break-inside:avoid;}
+  h2, .sec-head{break-after:avoid;}
+  a{color:inherit; text-decoration:none;}
+}
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ a{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../workshop.html">The Workshop</a><span class="cv-sb-meta">Published 6 Oct 2026 · R. E. Suscitate &amp; A. Systole</span></nav><div class="page">
+<header>
+<div class="kicker">The Critical Vector · Pocket Reference</div>
+<h1>Antidotes &amp; Reversal Agents</h1>
+<p>v7, pediatric dosing added. OT, ICU, casualty — every antidote that saves a life: indication,
+  adult and pediatric dose, one pearl. Verified against FDA, NEJM, MHAUS, ASRA, ACEP, StatPearls,
+  AAP, poison center references. July 2026.</p>
+</header>
+<div class="alert c-amber">
+  Anticoagulant reversal (warfarin, DOACs, heparin) already lives in the Bleeding &amp; Reversal
+  Agents guide — including the December 2025 Andexxa withdrawal. Not rebuilt here. See section 8
+  below for the cross-reference.
+</div>
+<nav>
+<a href="#s1">1 · The big picture</a>
+<a href="#s2">2 · Anaphylaxis &amp; refractory shock</a>
+<a href="#s3">3 · Sedation &amp; opioid reversal</a>
+<a href="#s4">4 · Muscle relaxant reversal</a>
+<a href="#s5">5 · Poison-induced cardiogenic shock</a>
+<a href="#s6">6 · Toxidrome rescue agents</a>
+<a href="#s7">7 · Anesthesia-specific emergencies</a>
+<a href="#s8">8 · Anticoagulant reversal (see other guide)</a>
+<a href="#s9">9 · Toxicology I: antidote by substance</a>
+<a href="#s10">10 · Toxicology II: chelation &amp; metabolic rescue</a>
+<a href="#s11">11 · Toxicology III: the rest</a>
+<a href="#s12">12 · Envenomation &amp; biological toxins</a>
+<a href="#s13">13 · Quick card &amp; sources</a>
+</nav>
+<main>
+<section id="s1">
+<div class="sec-head c-red"><span class="sec-num">01</span><h2>The Big Picture</h2></div>
+<p class="body">An antidote reverses a mechanism, not a patient. Giving it doesn't end the job —
+  most require ongoing monitoring for recurrence, rebound, or a second wave of toxicity as the
+  antidote clears faster than the original drug.</p>
+<div class="box t-red">
+<p><b>Three questions before reaching for any antidote:</b></p>
+<p>1. Is this reversal actually indicated, or is supportive care enough?</p>
+<p>2. Does reversing this drug create a new problem — resedation, seizure, rebound toxicity,
+    loss of a needed therapeutic effect?</p>
+<p>3. How long does the antidote work compared to the drug it's reversing?</p>
+</div>
+<p class="note">That third question is the one most often skipped, and it's the one that causes
+  the bounce-back call at 3am.</p>
+</section>
+<section id="s2">
+<div class="sec-head c-red"><span class="sec-num">02</span><h2>Anaphylaxis &amp; Refractory Shock</h2></div>
+<div class="box t-red">
+<p><b>Epinephrine:</b> anaphylaxis. The reversal agent this guide had somehow gone this long
+    without.</p>
+<p>0.3–0.5 mg IM (1 mg/mL concentration), anterolateral thigh, repeated every 5–15 minutes as
+    needed. Start an IV infusion for refractory anaphylaxis or hemodynamic instability rather than
+    stacking repeated IM doses indefinitely.</p>
+</div>
+<p class="note">IM, not subcutaneous — subcutaneous absorption is slower and less reliable, and
+  the old teaching to prefer it is outdated. Don't let antihistamines or steroids delay
+  epinephrine; they treat the itching and the late-phase response, not the airway or the blood
+  pressure.</p>
+<div class="peds"><b>Pediatric:</b> 0.01 mg/kg IM (1 mg/mL concentration), same max single dose
+  range as adults (typically capped around 0.3–0.5 mg). Auto-injector tiers per the AAP 2017 clinical report: 0.15 mg for
+  about 10–25 kg, 0.3 mg from about 25 kg (earlier than the 30 kg label cutoff). A 0.1 mg
+  auto-injector (Auvi-Q) is approved for 7.5–15 kg, and 1 mg intranasal epinephrine (neffy) for
+  children 15–30 kg. Below 7.5 kg there is no device dose; draw up 0.01 mg/kg by hand.</div>
+</section>
+<section id="s3">
+<div class="sec-head"><span class="sec-num">03</span><h2>Sedation &amp; Opioid Reversal</h2></div>
+<div class="box t-teal">
+<p><b>Naloxone:</b> reverses opioid respiratory depression.</p>
+<p>0.04–0.4 mg IV, titrate to breathing, not full waking. Short half-life — watch for
+    re-narcotization as the opioid outlasts the antidote; a naloxone infusion may be needed for
+    long-acting opioids.</p>
+</div>
+<p class="note">In an opioid-dependent patient, full reversal is itself the adverse event —
+  precipitated withdrawal (vomiting, agitation, hypertension, occasionally violent combativeness)
+  can be worse for the patient and the room than the hypoventilation you were treating. Titrate
+  to adequate respiratory rate, not to a fully awake, fully oriented patient.</p>
+<div class="peds"><b>Pediatric:</b> 0.1 mg/kg per dose for infants and children up to 5 years or
+  20 kg (higher than the adult-derived 0.01 mg/kg, adopted because it more reliably reverses
+  opioid effect in small children); use adult-range dosing (up to 2 mg) above that age/weight.
+  Doses as high as 0.4 mg/kg have been given to newborns without apparent harm, so the higher
+  pediatric dose is not considered to carry excess risk.</div>
+<div class="box t-teal">
+<p><b>Flumazenil:</b> reverses benzodiazepine sedation.</p>
+<p>0.2 mg IV, repeat to a max of about 1 mg.</p>
+</div>
+<div class="peds"><b>Pediatric:</b> 0.01 mg/kg IV (max 0.2 mg per dose) over 15 seconds; if
+  inadequate after 45 seconds, repeat 0.01 mg/kg (max 0.2 mg) at 1-minute intervals to a maximum
+  cumulative dose of 1 mg. Pediatric evidence is even sparser than the adult literature — this is
+  built almost entirely from case reports, and the same tricyclic/proconvulsant contraindications
+  apply with, if anything, less margin for error.</div>
+<div class="box t-red">
+<p><b>Avoid in chronic benzodiazepine use, seizure history, or mixed/unknown overdose.</b>
+    Flumazenil antagonizes the anticonvulsant effect of the benzodiazepine itself, unmasking
+    seizures from co-ingested proconvulsants (classically tricyclics). A meta-analysis of RCTs and
+    a 43-patient case series of flumazenil-induced seizures found tricyclic co-ingestion in 42% of
+    cases, with fatalities among them. Chronic benzodiazepine use alone was not independently
+    associated with seizures in at least one large poison-center series — but risk stratification
+    before giving it is still the standard of care, since ingestant history is often unreliable
+    at presentation.</p>
+</div>
+<p class="note">Neither of these should be reached for reflexively in an undifferentiated
+  overdose — naloxone is low-risk and reasonable to trial; flumazenil is not.</p>
+</section>
+<section id="s4">
+<div class="sec-head c-blue"><span class="sec-num">04</span><h2>Muscle Relaxant Reversal</h2></div>
+<div class="box t-blue">
+<p><b>Sugammadex:</b> reverses rocuronium/vecuronium (aminosteroid blockers) only — does
+    NOT reverse atracurium or cisatracurium.</p>
+<p>2 mg/kg moderate block · 4 mg/kg deep block · 16 mg/kg for immediate reversal after
+    rocuronium-facilitated intubation.</p>
+</div>
+<div class="peds"><b>Pediatric:</b> same mg/kg dosing as adults (2–4 mg/kg); approved and
+  studied down to age 2, with trials extending coverage to birth–&lt;2 years showing comparable
+  drug exposure to older children and adults at the same weight-based doses. A case report
+  describes a temporary paradoxical decrease in twitch response after an initial small dose in a
+  pediatric patient — resolved with an additional weight-based dose, a reminder to keep
+  monitoring after redosing rather than assuming full reversal is linear.</div>
+<div class="box t-blue">
+<p><b>Neostigmine + glycopyrrolate:</b> reverses non-depolarizing blockers via
+    acetylcholinesterase inhibition.</p>
+<p>Neostigmine 50 mcg/kg (max 5 mg) + glycopyrrolate 10 mcg/kg. Only works once spontaneous
+    recovery has reached T2 — useless in deep block.</p>
+</div>
+<div class="peds"><b>Pediatric:</b> same mg/kg dosing as adults; the same T2-recovery
+  requirement and deep-block limitation apply, and are arguably easier to violate in small
+  children where quantitative TOF monitoring is less consistently used.</div>
+<table>
+<tr><th>Evidence</th><th>Finding</th></tr>
+<tr><td><b>17-RCT meta-analysis</b> (1,553 patients)</td><td>Sugammadex reduced all signs of
+    residual postoperative paralysis, RR 0.46 (0.29–0.71), plus fewer minor respiratory
+    events.</td></tr>
+<tr><td><b>Deep-block reversal comparison</b></td><td>Sugammadex predictably restored TOF
+    ratio ≥0.9 within 5 minutes in 98% of patients vs 11% with neostigmine.</td></tr>
+<tr><td><b>Rocuronium moderate-block RCT</b></td><td>Rescue reversal needed in 4.8% of
+    sugammadex patients vs 60.6% of neostigmine patients (p&lt;0.001).</td></tr>
+</table>
+<p class="note">Neostigmine given for deep or unmonitored block is the classic setup for
+  incomplete reversal — check TOF before choosing which agent, not after extubation.</p>
+</section>
+<section id="s5">
+<div class="sec-head c-red"><span class="sec-num">05</span><h2>Poison-Induced Cardiogenic Shock</h2></div>
+<p class="body">Beta-blocker, calcium channel blocker, and sodium-channel blocker (TCA and
+  related) overdoses converge on the same clinical picture — bradycardia, hypotension, a dying
+  myocardium — and share an escalating antidote ladder rather than one single fix.</p>
+<div class="box t-red">
+<p><b>Sodium bicarbonate:</b> QRS widening from sodium-channel blockade — classically TCAs,
+    also citalopram, cocaine, flecainide, diphenhydramine, and hydroxychloroquine.</p>
+<p>1 mEq/kg IV bolus (range 0.5–3 mEq/kg), then infusion titrated to a target pH of
+    7.50–7.55. Treat the QRS, not the acidosis — give it for QRS widening even without acidemia,
+    and stop chasing it once the QRS narrows.</p>
+</div>
+<p class="note">Evidence is uncertain for bupropion, propranolol, and taxine-containing plant
+  poisonings — bupropion's QRS widening comes from gap-junction inhibition, not sodium-channel
+  blockade, so bicarbonate often doesn't help. Give it anyway if the ingestant is unclear, since
+  history is often unreliable and other sodium-channel blockers may be on board.</p>
+<div class="peds"><b>Pediatric:</b> 1 mEq/kg IV, same pH target (7.50–7.55). In neonates and
+  children under 2, use the dilute 4.2% solution (0.5 mEq/mL) rather than the 8.4% hypertonic
+  solution to reduce the osmotic/sodium load — the target dose is the same, just delivered less
+  concentrated.</div>
+<div class="box t-red">
+<p><b>Calcium (gluconate or chloride):</b> CCB toxicity, hyperkalemia, magnesium toxicity.</p>
+<p>Chloride carries roughly 3x the elemental calcium of an equal volume of gluconate, but is
+    more caustic peripherally — give centrally when possible.</p>
+</div>
+<div class="peds"><b>Pediatric:</b> calcium gluconate 60–100 mg/kg/dose IV or IO, may repeat in
+  10 minutes if needed. Prefer gluconate over chloride in children given the greater peripheral
+  tissue injury risk with chloride in smaller veins.</div>
+<p class="note">For hyperkalemia specifically, calcium stabilizes the cardiac membrane but
+  doesn't shift potassium — nebulized or IV albuterol is a useful adjunct that does, alongside
+  insulin/dextrose, working through a different receptor pathway entirely.</p>
+<div class="box t-red">
+<p><b>Glucagon:</b> beta-blocker overdose (± CCB co-ingestion).</p>
+<p>50 mcg/kg IV (typically 3–5 mg) over 1–2 minutes, repeated up to about 10 mg total; then an infusion at the dose that produced a response, per hour (commonly 2–5 mg/h). Expect vomiting; protect the airway. Bypasses the blocked beta-receptor entirely by driving cAMP through a
+    separate G-protein pathway — works even with the receptor fully occupied. Often
+    under-dosed and under-lasting; don't expect it to carry a severe overdose alone.</p>
+</div>
+<div class="peds"><b>Pediatric:</b> 0.05–0.15 mg/kg IV over 1–2 minutes (not exceeding 1 mg/min),
+  may repeat once if inadequate response at 10 minutes. Reconstituted glucagon is a 1 mg/mL
+  solution regardless of age — don't confuse dose (mg/kg) with concentration when drawing it up
+  for a small child.</div>
+<p class="note">Same mechanism, different patient: glucagon is also the specific rescue for
+  anaphylaxis that isn't responding to epinephrine (section 2) in a patient on chronic
+  beta-blocker therapy, since the beta-blockade can blunt epinephrine's effect the same way it
+  does here.</p>
+<div class="box t-red">
+<p><b>High-dose insulin/euglycemia (HIE) therapy:</b> refractory beta-blocker or CCB shock,
+    when atropine, calcium, glucagon, and vasopressors aren't enough.</p>
+<p>Regular insulin bolus ~1 unit/kg, then infusion 0.5–1 unit/kg/h, titrated up as needed
+    (some refractory cases have used far higher rates). Requires a concentrated dextrose infusion
+    (≥20%) run alongside to maintain euglycemia, and frequent glucose/potassium checks.</p>
+</div>
+<div class="peds"><b>Pediatric:</b> same weight-based bolus/infusion approach used in adults,
+  supported mainly by case reports rather than large pediatric series. Central access and a
+  reliable concentrated-dextrose infusion matter even more in small children, who have less
+  glycogen reserve and tip into hypoglycemia faster and harder.</div>
+<table>
+<tr><th>Evidence</th><th>Finding</th></tr>
+<tr><td><b>HIE guideline implementation study</b></td><td>More aggressive initial insulin
+    dosing (~1 unit/kg/h) after a formal guideline reduced hypoglycemia (29% vs 80%) compared to
+    the pre-guideline lower-dose approach.</td></tr>
+<tr><td><b>HIE mechanism</b></td><td>Positive inotropy with vasodilation, enhanced myocardial
+    carbohydrate uptake, and improved lactate clearance — mechanisms distinct from and additive
+    to glucagon and calcium.</td></tr>
+</table>
+<p class="note">HIE is increasingly first-line for poison-induced cardiogenic shock at most
+  toxicology-experienced centers, not a last resort — the old sequence of "glucagon, then calcium,
+  then maybe insulin" undersells how early HIE should start once the patient is sick. Watch for
+  delayed hypoglycemia after the infusion is weaned; it can persist for hours.</p>
+</section>
+<section id="s6">
+<div class="sec-head c-purple"><span class="sec-num">06</span><h2>Toxidrome Rescue Agents</h2></div>
+<p class="body">Serotonin syndrome and neuroleptic malignant syndrome look alike at a glance —
+  altered mental status, autonomic instability, hyperthermia — and are told apart by tempo and
+  tone. Serotonin syndrome develops over hours with hyperreflexia, clonus, and tremor
+  (neuromuscular hyperactivity); NMS develops over days with rigidity and sluggish reflexes
+  (neuromuscular hypoactivity). Each has its own rescue agent.</p>
+<div class="box t-purple">
+<p><b>Cyproheptadine:</b> serotonin syndrome not controlled by stopping the drug, benzos, and
+    supportive care alone.</p>
+<p>12 mg oral/NG load, then 2 mg every 2 hours until response, up to roughly 32 mg/day.
+    Tablet-only — crush for NG/OG administration.</p>
+</div>
+<div class="peds"><b>Pediatric:</b> 0.25 mg/kg/day divided into doses, age-tiered in practice
+  (roughly up to 8 mg/day for ages 2–6, up to 16 mg/day for ages 7–14). Pediatric cyproheptadine
+  overdose itself produces anticholinergic toxicity (dry, flushed, tachycardic, delirious) —
+  worth remembering this drug can cause the very toxidrome-adjacent picture you might be treating
+  it for, at excessive doses.</div>
+<p class="note">Evidence is inconclusive; multiple reviews call it widely used but not
+  definitively proven. Give it in moderate-to-severe cases as an adjunct, not a substitute for
+  discontinuing the serotonergic agent(s) and benzodiazepine sedation.</p>
+<div class="box t-purple">
+<p><b>Bromocriptine:</b> neuroleptic malignant syndrome, typically alongside dantrolene in
+    moderate-to-severe cases.</p>
+<p>2.5 mg via NG tube or orally every 6–8 hours, uptitrated per response. Oral/enteral only —
+    no IV formulation.</p>
+</div>
+<div class="peds"><b>Pediatric:</b> genuinely limited data — NMS itself is rare in children,
+  and bromocriptine dosing here is extrapolated from adult case reports rather than established
+  in pediatric-specific series. Treat this as a last-resort adjunct with even more caution than
+  in adults, and lean on a toxicologist or pediatric critical care consult.</div>
+<table>
+<tr><th>Evidence</th><th>Finding</th></tr>
+<tr><td><b>Case-controlled analysis, NMS mortality</b></td><td>Untreated/supportive-only NMS
+    carried a 21% death rate; dantrolene alone reduced it to 8.6%, bromocriptine alone to
+    7.8%.</td></tr>
+<tr><td><b>271-case review</b></td><td>Combination therapy (dantrolene + bromocriptine)
+    trended toward lower mortality and faster complete remission than either agent alone.</td></tr>
+</table>
+<p class="note">Evidence for both agents is limited to case series and retrospective analyses —
+  no RCT exists for either toxidrome, for the obvious reason that withholding treatment in a
+  severe case would be difficult to justify. Bromocriptine promotes a prothrombotic state
+  (consider VTE prophylaxis) and suppresses lactation; both are oral/enteral-route drugs, a
+  meaningful limitation in an obtunded or intubated patient.</p>
+<div class="box t-purple">
+<p><b>Benztropine or diphenhydramine:</b> acute dystonic reaction from antipsychotics or
+    antiemetics (metoclopramide, prochlorperazine, haloperidol) — a distinct, much more common
+    entity than NMS, and one that resolves in minutes rather than days.</p>
+<p>Benztropine 1–2 mg IV/IM, or diphenhydramine 25–50 mg IV/IM.</p>
+</div>
+<div class="peds"><b>Pediatric:</b> diphenhydramine 1 mg/kg IV/IM (max 50 mg) is the usual
+  first choice in young children. Benztropine is generally avoided under age 3 and used
+  cautiously in older children given anticholinergic sensitivity at this age — diphenhydramine's
+  wider familiarity and dosing evidence make it the more practical default in pediatrics.</div>
+<p class="note">Both work by restoring the dopamine-acetylcholine balance disrupted by
+  dopamine-receptor blockade — this is the fast, satisfying antidote in a shift full of slower
+  ones. Don't confuse a dystonic reaction (bizarre posturing, torticollis, oculogyric crisis,
+  patient fully alert and often frightened) with NMS (days-long onset, fever, rigidity, altered
+  consciousness) — they share a drug class but nothing else about their management.</p>
+</section>
+<section id="s7">
+<div class="sec-head c-amber"><span class="sec-num">07</span><h2>Anesthesia-Specific Emergencies</h2></div>
+<div class="box t-amber">
+<p><b>Dantrolene:</b> malignant hyperthermia. Stop triggers, 100% O2, active cooling.</p>
+<p>2.5 mg/kg IV push, repeated every 5–10 minutes to a suggested ceiling of 10 mg/kg (some
+    patients need 20 mg/kg). Maintenance 1 mg/kg every 4–6 hours for at least 24 hours.</p>
+</div>
+<div class="peds"><b>Pediatric:</b> identical mg/kg dosing across all ages — MHAUS makes no
+  age-based distinction for dantrolene dosing, since MH itself is weight-driven pharmacology, not
+  age-driven. Pediatric MH is if anything more common relative to adult cases, so this is not a
+  rare-event calculation to fumble under pressure.</div>
+<p class="note">Recrudescence occurs in about 20% of cases, median onset 8.7 hours after the
+  initial event, in 80% by 16 hours — don't stop watching once the first crisis breaks. Call for
+  extra hands early: reconstitution is slow, and know where it's stocked before you need it.
+  Dantrolene is also used off-label in neuroleptic malignant syndrome — see section 6.</p>
+<div class="box t-amber">
+<p><b>Lipid emulsion 20% (Intralipid):</b> local anesthetic systemic toxicity (LAST).</p>
+<p>Under 70 kg: 1.5 mL/kg bolus over 2–3 min, then 0.25 mL/kg/min infusion. Over 70 kg: 100 mL
+    bolus over 2–3 min, then 250 mL over 15–20 min. Repeat bolus or double the infusion if
+    unstable. Upper limit ~12 mL/kg.</p>
+</div>
+<div class="peds"><b>Pediatric:</b> same weight-based bolus/infusion as adults (1.5 mL/kg,
+  then 0.25 mL/kg/min) — pediatric-specific outcome data is limited, but the dosing itself
+  doesn't change, since it's already calculated per kilogram rather than as a fixed adult
+  quantity.</div>
+<p class="note">Per the 2020 ASRA checklist: benzodiazepines are first-line for LAST seizures,
+  not propofol (myocardial depressant on top of an already-toxic heart). For arrest, reduce
+  epinephrine to under 1 mcg/kg boluses and avoid vasopressin, calcium channel blockers,
+  beta-blockers, or other local anesthetics. Off-label, the same lipid-sink mechanism has rescued
+  severe overdoses of other lipophilic drugs (bupropion, some calcium channel blockers) when
+  standard therapy has failed — extrapolated evidence, not a primary indication, but worth
+  knowing when nothing else is working.</p>
+</section>
+<section id="s8">
+<div class="sec-head c-purple"><span class="sec-num">08</span><h2>Anticoagulant Reversal</h2></div>
+<div class="xref">
+<p><b>See the Bleeding &amp; Reversal Agents guide, Part I.</b> That guide covers protamine
+    (heparin/LMWH), vitamin K + 4F-PCC (warfarin), idarucizumab (dabigatran), and the current
+    state of factor Xa inhibitor reversal following the December 2025 Andexxa withdrawal — plus
+    TEG/ROTEM interpretation and the bedside reversal algorithm. Not duplicated here to keep both
+    documents accurate as guidance changes.</p>
+</div>
+<p class="note">Antiplatelet-associated bleeding, including the PATCH trial data on why platelet
+  transfusion is the wrong reflex in spontaneous ICH, also lives in that guide's Part II.</p>
+<div class="peds"><b>Pediatric:</b> not covered in detail in either guide — pediatric
+  anticoagulant reversal (vitamin K, 4F-PCC dosing in children) is genuinely a separate lookup;
+  don't extrapolate the adult fixed-dose regimens in the other guide onto a child without
+  checking pediatric-specific references or pharmacy/toxicology.</div>
+</section>
+<section id="s9">
+<div class="sec-head c-blue"><span class="sec-num">09</span><h2>Toxicology I: Antidote by Substance</h2></div>
+<div class="box t-blue">
+<p><b>Atropine + pralidoxime:</b> organophosphate/carbamate poisoning.</p>
+<p>Atropine in doubling doses until secretions dry — atropinize to clear lungs, not to
+    dilated pupils. Pralidoxime per weight-based protocol, reactivates acetylcholinesterase before
+    it ages.</p>
+</div>
+<div class="peds"><b>Pediatric:</b> atropine 0.02–0.05 mg/kg IV, doubled every 5–10 minutes
+  until atropinization, same clinical endpoint as adults. Note this differs from the standard
+  pediatric bradycardia dose, which carries a 0.1 mg minimum to avoid paradoxical bradycardia —
+  that floor doesn't apply here, since cumulative organophosphate dosing is calculated purely by
+  weight and can run to grams over days in severe poisoning. Pralidoxime dosed by weight-based
+  protocol, same principle as adults.</div>
+<div class="box t-blue">
+<p><b>Physostigmine:</b> anticholinergic toxidrome (TCAs, antihistamines, jimsonweed and
+    other anticholinergic plants) — a cholinesterase inhibitor, functionally the mirror image of
+    the atropine/pralidoxime pair above.</p>
+<p>0.5–1 mg IV/IM over 5–10 minutes, may repeat.</p>
+</div>
+<div class="peds"><b>Pediatric:</b> 0.02 mg/kg slow IV (max 0.5 mg per dose), may repeat every
+  5–10 minutes to a cautious cumulative maximum. Same cardiac caution as adults applies with less
+  margin — avoid if TCA cardiotoxicity is present or suspected.</div>
+<p class="note">Use with caution and avoid if TCA cardiotoxicity (wide QRS) is present or
+  suspected — physostigmine can precipitate seizures or asystole in that setting. Reserve for
+  clear anticholinergic delirium without cardiac conduction abnormality.</p>
+<div class="box t-blue">
+<p><b>N-acetylcysteine (NAC):</b> acetaminophen overdose.</p>
+<p>IV or oral per weight-based protocol, guided by the Rumack-Matthew nomogram using a serum
+    level drawn ≥4 hours post-ingestion. Nearly 100% hepatoprotective if started within 8 hours;
+    still beneficial after 24 hours or in established liver failure. Start empirically if
+    ingestion time is unknown or exceeds 8 hours while awaiting labs — don't wait for the
+    nomogram to tell you to hurry.</p>
+</div>
+<div class="peds"><b>Pediatric:</b> same weight-based protocol as adults — 140 mg/kg oral
+  loading dose then 70 mg/kg every 4 hours for 17 more doses, or the equivalent 3-bag IV protocol
+  (150 mg/kg, then 50 mg/kg, then 100 mg/kg over the standard time windows). A modified two-stage
+  IV regimen has been studied specifically in children to reduce hyponatremia risk from the fluid
+  volume of the standard adult-derived infusion.</div>
+<div class="box t-blue">
+<p><b>Digoxin-specific Fab (DigiFab):</b> life-threatening digoxin toxicity.</p>
+<p>Dosed by ingested amount or steady-state level. FDA-cited thresholds: acute ingestion ≥10
+    mg (adult), or level ≥10 ng/mL soon after ingestion; chronic toxicity with hemodynamic
+    instability, refractory bradyarrhythmia, or potassium &gt;5.0–5.5 mEq/L.</p>
+</div>
+<div class="peds"><b>Pediatric:</b> lower acute-ingestion threshold than adults — roughly ≥4 mg
+  (or ≥0.1 mg/kg) triggers consideration, versus ≥10 mg in adults. Same chronic-toxicity clinical
+  triggers (dysrhythmia, hyperkalemia) apply regardless of age; dose by whichever calculation
+  (ingested amount or level) yields the larger number.</div>
+<p class="note">Treat the rhythm and the potassium, not the number on the digoxin level alone —
+  post-Fab levels are unreliable for days, since the assay can't distinguish bound from free
+  drug.</p>
+</section>
+<section id="s10">
+<div class="sec-head"><span class="sec-num">10</span><h2>Toxicology II: Chelation &amp; Metabolic Rescue</h2></div>
+<div class="box t-teal">
+<p><b>Deferoxamine:</b> iron toxicity.</p>
+<p>Chelates free and loosely bound iron; 100 mg binds roughly 10 mg of iron. Consider at
+    serum iron ≥350 mcg/dL with symptoms, or ≥500 mcg/dL regardless of symptoms.</p>
+</div>
+<div class="peds"><b>Pediatric:</b> same weight-based infusion approach as adults — commonly
+  started around 15 mg/kg/hr, adjusted to severity. Iron overdose is disproportionately a
+  pediatric exposure (single-adult-dose iron tablets are a classic toddler ingestion), so this is
+  one antidote where the pediatric case is the norm, not the exception.</div>
+<p class="note">Watch for hypotension with the infusion — free iron itself is a potent
+  vasodilator, so a patient already volume-down from GI losses can drop further. Vin-rosé urine
+  supports the diagnosis but its absence doesn't rule out significant iron burden.</p>
+<div class="box t-teal">
+<p><b>Lead chelation ladder — succimer, dimercaprol, calcium disodium EDTA.</b></p>
+<p><b>Succimer (DMSA), oral:</b> BLL &gt;45 mcg/dL (child) or &gt;80 mcg/dL (adult) without
+    encephalopathy. 10 mg/kg every 8 hours for 5 days, then every 12 hours for 14 more days.</p>
+<p><b>Severe poisoning or encephalopathy (BLL ≥70 mcg/dL):</b> dimercaprol (BAL) IM 3–4 mg/kg
+    every 4 hours, started first — followed 4 hours later by calcium disodium EDTA IV 25 mg/kg/day.
+    The delay matters: giving EDTA before dimercaprol can mobilize lead into the brain rather than
+    out of the body.</p>
+</div>
+<div class="peds"><b>Pediatric:</b> this entire ladder is already written pediatric-first —
+  lead poisoning is overwhelmingly a young-child exposure (paint chips, contaminated soil,
+  imported goods), and the mg/kg dosing above applies at all ages including infants. The BLL
+  thresholds themselves are lower for children than adults, reflecting children's greater
+  neurodevelopmental vulnerability at any given blood level.</div>
+<div class="box t-red">
+<p><b>Dimercaprol is no longer manufactured</b> — its sole US manufacturer closed in early
+    2023. For severe/encephalopathic lead poisoning, current practice is succimer or calcium
+    disodium EDTA monotherapy while awaiting supply, with immediate poison center or medical
+    toxicology consultation. Both agents have also faced intermittent shortages — confirm current
+    availability before counting on either.</p>
+</div>
+<div class="box t-teal">
+<p><b>Pyridoxine (vitamin B6):</b> isoniazid-induced seizures refractory to benzodiazepines.</p>
+<p>Gram-for-gram with the estimated INH ingestion if known; empiric dosing up to 5 g IV if
+    the amount is unknown.</p>
+</div>
+<div class="peds"><b>Pediatric:</b> same gram-for-gram principle when the ingested amount is
+  known; empiric dosing when unknown is typically 70 mg/kg IV, up to the same 5 g adult ceiling.</div>
+<p class="note">INH blocks the conversion of pyridoxine to its active cofactor form, starving
+  GABA synthesis — benzodiazepines need GABA receptors to work, so they underperform until
+  pyridoxine restores the substrate. This is the seizure that doesn't respond to your first two
+  doses of benzos for a reason.</p>
+<div class="box t-teal">
+<p><b>Leucovorin (folinic acid):</b> methotrexate toxicity, rescuing normal cells from folate
+    antagonism.</p>
+<p>15 mg (or 10 mg/m²) IV/PO every 6 hours, starting as soon as toxicity is recognized;
+    increase the dose if the methotrexate level remains elevated. Escalate to glucarpidase
+    (carboxypeptidase G2) for severe toxicity with renal dysfunction and delayed clearance.</p>
+</div>
+<div class="peds"><b>Pediatric:</b> already dosed here in mg/m² body surface area rather than a
+  fixed adult quantity, which is inherently the pediatric-appropriate unit — no separate
+  conversion needed, just calculate BSA and apply the same mg/m² figure.</div>
+<p class="note">The longer methotrexate sits in the cell, the more it polyglutamates and the
+  harder it becomes to rescue — dose and timing both matter more than either alone.</p>
+<div class="box t-teal">
+<p><b>L-carnitine:</b> valproate-induced hyperammonemia or hepatotoxicity.</p>
+<p>Loading dose followed by a continuing infusion or divided dosing; exact optimal dose and
+    route remain unsettled in the literature, though IV administration is generally preferred
+    over oral given limited (14–18%) oral bioavailability.</p>
+</div>
+<div class="peds"><b>Pediatric:</b> similar mg/kg loading approach reported in pediatric
+  valproate-hyperammonemia case series, including children under 16 with valproate-induced
+  encephalopathy — dosing is even less standardized in children than adults, so treat published
+  pediatric figures as a starting point for discussion with pharmacy/toxicology, not a fixed
+  protocol.</div>
+<p class="note">Valproate depletes carnitine, which is required for the mitochondrial fatty
+  acid metabolism that keeps ammonia detoxification running — replacing it treats the mechanism,
+  not just the ammonia level.</p>
+<div class="box t-teal">
+<p><b>Octreotide:</b> sulfonylurea overdose, to prevent rebound hypoglycemia.</p>
+<p>50–100 mcg SC or IV every 6–12 hours. Suppresses insulin secretion directly, added alongside dextrose rather than replacing it.</p>
+</div>
+<div class="peds"><b>Pediatric:</b> roughly 1 mcg/kg SC or IV, typically dosed every 6 hours
+  (total daily range around 1–10 mcg/kg/day) — pediatric sulfonylurea exposure is usually
+  accidental single-tablet ingestion by a toddler, so watch for delayed-onset hypoglycemia over
+  many hours even after an initially reassuring glucose.</div>
+<p class="note">Dextrose alone can drive a hyperglycemia-hypoglycemia cycle, since the glucose
+  bolus itself triggers more insulin release from a sulfonylurea-primed pancreas. Octreotide
+  breaks that cycle and cuts the need for repeated dextrose boluses.</p>
+<p class="note"><b>Not for exogenous insulin overdose</b> — octreotide only suppresses
+  endogenous insulin secretion from the pancreas, and does nothing to insulin that's already been
+  injected. For an insulin overdose (accidental or intentional), sustained dextrose infusion,
+  sometimes for many hours with depot/long-acting formulations, is the actual mainstay, not
+  octreotide.</p>
+</section>
+<section id="s11">
+<div class="sec-head"><span class="sec-num">11</span><h2>Toxicology III: The Rest</h2></div>
+<div class="box t-teal">
+<p><b>Methylene blue:</b> two distinct indications, two different roles.</p>
+<p><b>Methemoglobinemia:</b> 1–2 mg/kg IV over 5 minutes.</p>
+<p><b>Refractory vasoplegic shock</b> (post-cardiopulmonary bypass, septic, or drug-induced,
+    once septic/anaphylactic/adrenal causes are addressed): inhibits the nitric oxide–cGMP
+    pathway to reverse pathologic vasodilation — a distinct rationale from its
+    methemoglobinemia use, generally reserved for shock refractory to standard vasopressors.</p>
+</div>
+<div class="peds"><b>Pediatric:</b> same 1–2 mg/kg dosing for methemoglobinemia, may repeat in
+  1 hour if methemoglobin remains &gt;30%. A pediatric-specific safety signal worth knowing: Heinz
+  body hemolytic anemia has been reported in young infants who received methylene blue at doses
+  as low as 4 mg/kg even without G6PD deficiency — infants appear more vulnerable to this than
+  older children or adults at the same weight-based dose.</div>
+<div class="box t-red">
+<p><b>Avoid in G6PD deficiency</b> — methylene blue relies on G6PD-dependent NADPH to reduce
+    methemoglobin back to hemoglobin, so it fails and can worsen hemolysis in deficient patients.
+    Also risks precipitating serotonin syndrome in patients on SSRIs or other serotonergic agents,
+    since methylene blue is a potent MAO-A inhibitor.</p>
+</div>
+<div class="box t-teal">
+<p><b>Oxygen (100% normobaric) ± hyperbaric oxygen (HBOT):</b> carbon monoxide poisoning.</p>
+<p>100% oxygen via non-rebreather immediately — this alone cuts the CO half-life from
+    roughly 4–6 hours on room air to about 1 hour. Continue until COHb falls to ~3% and for at
+    least 6 hours regardless. In pregnancy, extend oxygen duration substantially (fetal
+    hemoglobin clears CO more slowly) and treat with HBOT if available regardless of maternal
+    COHb level.</p>
+</div>
+<div class="peds"><b>Pediatric:</b> same normobaric-oxygen approach and COHb-based reasoning as
+  adults. Pediatric-sized or multiplace chambers accommodating a parent are far less widely
+  available than adult monoplace chambers, so the practical decision to pursue HBOT in a child
+  often comes down to what's within transport distance — factor that into the risk/benefit
+  discussion rather than treating HBOT as equally accessible across ages.</div>
+<table>
+<tr><th>Evidence</th><th>Finding</th></tr>
+<tr><td><b>Weaver et al., NEJM 2002</b></td><td>RCT with sham-dive blinding: cognitive
+    sequelae at 6 weeks in 25% of the HBOT group vs 46% with normobaric oxygen — the trial most
+    often cited in favor of HBOT.</td></tr>
+<tr><td><b>Scheinkestel et al., 1999</b></td><td>Earlier RCT found no benefit to HBOT over
+    high-flow normobaric oxygen, and a subsequent critical appraisal (Juurlink, 2023) argued the
+    overall evidence for routine HBOT remains weaker than commonly believed.</td></tr>
+</table>
+<p class="note">This is a genuinely contested therapy, not a settled one — reasonable toxicologists
+  disagree on how aggressively to pursue HBOT. Most guidelines still favor considering it for
+  loss of consciousness, COHb &gt;25%, pregnancy, or significant neurologic/cardiac findings, ideally
+  within hours of exposure, but don't delay definitive care hunting for a chamber if the patient
+  is otherwise stabilizing on high-flow oxygen alone.</p>
+<div class="box t-teal">
+<p><b>Hydroxocobalamin:</b> cyanide poisoning.</p>
+<p>5 g IV. Think of it in enclosed-space smoke inhalation with an unexplained lactic acidosis,
+    not just industrial exposure.</p>
+</div>
+<div class="peds"><b>Pediatric:</b> 70 mg/kg IV over 15 minutes, not to exceed the adult 5 g
+  dose. Suitable across the full pediatric range from infants to adolescents; a second dose may
+  be given the same way as in adults if severity and response warrant it.</div>
+<p class="note">Sodium thiosulfate was the older third leg of the classic cyanide antidote kit
+  (with amyl/sodium nitrite) and is largely superseded by hydroxocobalamin, which doesn't induce
+  methemoglobinemia — a liability in smoke-inhalation patients who may already have carbon
+  monoxide on board. Thiosulfate can still be given alongside hydroxocobalamin for synergistic
+  effect if available, but is no longer the primary agent. The nitrites are the part of the old
+  kit to actively avoid in smoke-inhalation patients: deliberately inducing methemoglobinemia on
+  top of an already CO-loaded, oxygen-starved patient is the opposite of what you want, which is
+  precisely why hydroxocobalamin replaced the nitrite-based approach for this specific
+  population.</p>
+<div class="box t-teal">
+<p><b>Fomepizole:</b> methanol or ethylene glycol poisoning.</p>
+<p>Loading dose then maintenance IV, blocking alcohol dehydrogenase before the toxic
+    metabolites (formic acid, glycolic/oxalic acid) can form.</p>
+</div>
+<div class="peds"><b>Pediatric:</b> same protocol at all ages — 15 mg/kg loading dose, then 10
+  mg/kg every 12 hours for 4 doses, then 15 mg/kg every 12 hours until levels clear (adjust
+  timing/dose around dialysis if used). Toxic alcohol ingestion in young children is typically a
+  small accidental sip rather than a large deliberate ingestion, but the same treatment threshold
+  and dosing math apply regardless of the story behind the exposure.</div>
+<table>
+<tr><th>Evidence</th><th>Finding</th></tr>
+<tr><td><b>Adverse drug event cohort</b></td><td>Adverse events occurred in 57% of patients
+    treated with ethanol vs 12% with fomepizole for toxic alcohol poisoning.</td></tr>
+<tr><td><b>Medication error comparison</b></td><td>Harmful medication errors: 19% with
+    ethanol vs 7% with fomepizole.</td></tr>
+</table>
+<p class="note">Ethanol still works and remains an acceptable fallback where fomepizole isn't
+  stocked or is cost-prohibitive, but fomepizole's predictable kinetics are why it has replaced
+  ethanol as first-line almost everywhere it's available.</p>
+</section>
+<section id="s12">
+<div class="sec-head c-amber"><span class="sec-num">12</span><h2>Envenomation &amp; Biological Toxins</h2></div>
+<div class="box t-amber">
+<p><b>CroFab (Crotalidae Polyvalent Immune Fab):</b> North American pit viper envenomation
+    (rattlesnake, copperhead, cottonmouth).</p>
+<p>Initial dosing by severity and species: commonly 4 vials for copperhead, 6–12 for
+    rattlesnake, up to a 12-vial initial maximum — repeat to control per protocol, not a
+    one-and-done dose.</p>
+</div>
+<div class="peds"><b>Pediatric:</b> same vial-based dosing as adults, not weight-based —
+  antivenom is dosed to neutralize a given venom load, not scaled to patient size. This means a
+  small child receives the identical vial count as an adult with a comparable bite, which can
+  feel counterintuitive the first time you calculate it.</div>
+<table>
+<tr><th>Evidence</th><th>Finding</th></tr>
+<tr><td><b>Integrative review, severe envenomation</b></td><td>77% of reported severe venom
+    effects improved or resolved after FabAV therapy; initial control achieved in 50% of cases
+    overall, significantly more often in cohort studies than in case reports (100% vs 29%).</td></tr>
+</table>
+<p class="note">Recurrent or delayed-onset coagulopathy (defibrination syndrome) is common,
+  mostly in patients who didn't receive recommended maintenance dosing — this isn't a single-dose
+  antidote. Reassess coagulation status for days after apparent initial control, especially before
+  any invasive procedure or discharge.</p>
+<div class="box t-amber">
+<p><b>Latrodectus antivenom:</b> black widow spider envenomation, for severe systemic
+    symptoms (severe muscle rigidity, respiratory compromise, refractory hypertension) not
+    controlled by calcium, benzodiazepines, and opioids.</p>
+<p>Typically 1 vial, equine-derived.</p>
+</div>
+<div class="peds"><b>Pediatric:</b> same 1-vial dosing regardless of size, same vial-not-weight
+  logic as CroFab above. Children and small adults tend to have more severe systemic symptoms per
+  unit of venom than large adults, which can lower the practical threshold to treat rather than
+  observe.</div>
+<p class="note">Latrodectism is painful but rarely fatal, and equine-derived antivenom carries
+  real anaphylaxis and serum sickness risk — most cases are managed with calcium, benzodiazepines,
+  and opioids alone, reserving antivenom for severe or refractory presentations rather than
+  reaching for it reflexively.</p>
+<div class="box t-amber">
+<p><b>Anascorp (Centruroides Immune F(ab')2):</b> scorpion envenomation with clinically
+    significant signs — loss of muscle control, roving/abnormal eye movements, slurred speech,
+    respiratory distress, excessive salivation. Regionally relevant anywhere the Arizona bark
+    scorpion (Centruroides sculpturatus) is endemic.</p>
+<p>Initial dose: 3 vials IV over 10 minutes; additional vials 1 at a time at 30–60 minute
+    intervals if symptoms persist.</p>
+</div>
+<div class="peds"><b>Pediatric:</b> same 3-vial initial dosing regardless of weight — children
+  make up the majority of scorpion-antivenom recipients in practice (roughly two-thirds under age
+  10 in reported Arizona ED series) and generally resolve symptoms slightly faster than adults
+  after the same dose.</div>
+<table>
+<tr><th>Evidence</th><th>Finding</th></tr>
+<tr><td><b>Arizona ED experience, 5 years</b></td><td>Mean time from antivenom infusion to
+    symptom resolution was 1.42 hours across nearly 1,400 patients; children resolved slightly
+    faster than adults.</td></tr>
+<tr><td><b>Dosing controversy</b></td><td>The FDA label recommends 3 vials initial dosing,
+    but the antivenom's country of origin (Mexico, as Alacramyn) uses a more conservative 1-vial,
+    watchful-waiting approach with comparable reported outcomes at a fraction of the cost
+    (~$3,000–4,000 per vial in the US).</td></tr>
+</table>
+<p class="note">Equine-derived with a low serum sickness rate (~0.5%) and no reported true
+  anaphylaxis in the approval studies — safer than its reputation suggests. Reserve for grade
+  III–IV envenomation (cranial nerve and somatic neuromuscular dysfunction), not mild local
+  reactions, and don't be surprised if a toxicologist or poison center pushes back toward a
+  lower starting dose than the package insert.</p>
+<div class="box t-amber">
+<p><b>Botulinum antitoxin (heptavalent):</b> suspected foodborne, wound, or adult intestinal
+    botulism. BabyBIG (botulism immune globulin) is the pediatric/infant-specific equivalent.</p>
+<p>Obtained through the CDC or state health department, not routine hospital stock — start
+    the request the moment botulism is clinically suspected.</p>
+</div>
+<div class="peds"><b>Pediatric:</b> infant botulism (the classic honey-exposure or environmental
+  spore ingestion presentation under age 1) uses BabyBIG specifically rather than the heptavalent
+  antitoxin used in older children and adults — a single IV infusion dosed at 50 mg/kg
+  (human-derived rather than equine, starting at 0.5 mL/kg/hr and advancing to 1.0 mL/kg/hr if
+  tolerated), obtained through the California Department of Public Health's Infant Botulism
+  Treatment and Prevention Program regardless of what state the case is in. Don't request the
+  standard heptavalent product for a suspected infant case; the ordering pathway and the product
+  itself are both different, and BabyBIG only halts progression — it doesn't reverse paralysis
+  already present, same principle as the adult antitoxin above.</div>
+<p class="note">Antitoxin neutralizes only circulating, unbound toxin — it halts progression
+  but does not reverse paralysis already established at the neuromuscular junction. That's the
+  argument for treating on clinical suspicion rather than waiting for lab confirmation, which can
+  take days.</p>
+</section>
+<section id="s13" style="border-bottom:none;">
+<div class="sec-head" style="border-left-color:var(--text3); background:none;"><span class="sec-num">13</span><h2>Quick Reference Card &amp; Primary Sources</h2></div>
+<table>
+<tr><th>Agent</th><th>Reverses</th><th>Adult dose</th></tr>
+<tr><td><b>Sugammadex</b></td><td>Rocuronium/vecuronium</td><td>2–4 mg/kg (16 mg/kg immediate)</td></tr>
+<tr><td><b>Neostigmine + glycopyrrolate</b></td><td>Non-depolarizing NMB, T2+</td><td>50 mcg/kg (max 5mg) + 10 mcg/kg</td></tr>
+<tr><td><b>Naloxone</b></td><td>Opioid respiratory depression</td><td>0.04–0.4 mg IV, titrate (caution: precipitated withdrawal)</td></tr>
+<tr><td><b>Flumazenil</b></td><td>Benzodiazepine sedation</td><td>0.2 mg IV, max ~1 mg</td></tr>
+<tr><td><b>Epinephrine</b></td><td>Anaphylaxis</td><td>0.3–0.5 mg IM, q5–15min, infusion if refractory</td></tr>
+<tr><td><b>Dantrolene</b></td><td>Malignant hyperthermia, NMS (adjunct)</td><td>2.5 mg/kg, up to 10 mg/kg</td></tr>
+<tr><td><b>Lipid emulsion 20%</b></td><td>LAST</td><td>1.5 mL/kg bolus + 0.25 mL/kg/min</td></tr>
+<tr><td><b>Sodium bicarbonate</b></td><td>Na-channel blocker QRS widening</td><td>1 mEq/kg bolus, titrate to pH 7.5–7.55</td></tr>
+<tr><td><b>Calcium gluconate/chloride</b></td><td>CCB, hyperK, Mg toxicity</td><td>IV, chloride 3x gluconate strength</td></tr>
+<tr><td><b>Glucagon</b></td><td>Beta-blocker overdose</td><td>50 mcg/kg (3–5 mg) IV, then infusion</td></tr>
+<tr><td><b>High-dose insulin/euglycemia</b></td><td>Refractory BB/CCB shock</td><td>1 U/kg bolus, 0.5–1 U/kg/h infusion + dextrose</td></tr>
+<tr><td><b>Cyproheptadine</b></td><td>Serotonin syndrome</td><td>12 mg load, then 2 mg q2h</td></tr>
+<tr><td><b>Bromocriptine</b></td><td>Neuroleptic malignant syndrome</td><td>2.5 mg enteral q6–8h</td></tr>
+<tr><td><b>Benztropine / diphenhydramine</b></td><td>Acute dystonic reaction</td><td>1–2 mg IV/IM / 25–50 mg IV/IM</td></tr>
+<tr><td><b>Atropine + pralidoxime</b></td><td>Organophosphate/carbamate</td><td>Doubling doses to dry secretions</td></tr>
+<tr><td><b>Physostigmine</b></td><td>Anticholinergic toxidrome</td><td>0.5–1 mg IV/IM</td></tr>
+<tr><td><b>NAC</b></td><td>Acetaminophen overdose</td><td>Weight-based, per nomogram</td></tr>
+<tr><td><b>DigiFab</b></td><td>Digoxin toxicity</td><td>By ingested dose or level</td></tr>
+<tr><td><b>Deferoxamine</b></td><td>Iron toxicity</td><td>Infusion, by serum iron level</td></tr>
+<tr><td><b>Succimer / dimercaprol + CaEDTA</b></td><td>Lead poisoning</td><td>By BLL and encephalopathy status</td></tr>
+<tr><td><b>Pyridoxine</b></td><td>INH-induced refractory seizures</td><td>Gram-for-gram, up to 5 g empiric</td></tr>
+<tr><td><b>Leucovorin</b></td><td>Methotrexate toxicity</td><td>15 mg IV/PO q6h, per level</td></tr>
+<tr><td><b>L-carnitine</b></td><td>Valproate hyperammonemia/hepatotoxicity</td><td>IV load + infusion, dose unsettled</td></tr>
+<tr><td><b>Octreotide</b></td><td>Sulfonylurea overdose (not exogenous insulin)</td><td>50–100 mcg SC/IV q6–12h, with dextrose</td></tr>
+<tr><td><b>Methylene blue</b></td><td>Methemoglobinemia / vasoplegic shock</td><td>1–2 mg/kg IV</td></tr>
+<tr><td><b>100% oxygen ± HBOT</b></td><td>Carbon monoxide poisoning</td><td>Non-rebreather; HBOT contested, consider if severe</td></tr>
+<tr><td><b>Hydroxocobalamin</b></td><td>Cyanide poisoning</td><td>5 g IV</td></tr>
+<tr><td><b>Fomepizole</b></td><td>Methanol/ethylene glycol</td><td>Load then maintenance IV</td></tr>
+<tr><td><b>CroFab</b></td><td>Pit viper envenomation</td><td>4–12 vials initial, by species/severity</td></tr>
+<tr><td><b>Latrodectus antivenom</b></td><td>Black widow envenomation, severe</td><td>1 vial</td></tr>
+<tr><td><b>Anascorp</b></td><td>Scorpion envenomation (Centruroides)</td><td>3 vials initial, then 1 vial q30–60min</td></tr>
+<tr><td><b>Botulinum antitoxin / BabyBIG</b></td><td>Botulism</td><td>Via CDC/health department</td></tr>
+</table>
+<p class="body"><b>Primary sources checked for this guide:</b></p>
+<ul class="sources">
+<li>Abad-Gurumeta A, et al. Systematic review of sugammadex vs neostigmine for reversal of neuromuscular blockade. Anaesthesia. 2015.</li>
+<li>Low-dose sugammadex vs neostigmine for reversal of moderate rocuronium block, RCT. 2025.</li>
+<li>Penninga L, et al. Adverse events associated with flumazenil in benzodiazepine intoxication: systematic review with meta-analyses of RCTs. Basic Clin Pharmacol Toxicol. 2016.</li>
+<li>Fatal seizures after flumazenil in mixed overdose. Case report reviewed via PubMed.</li>
+<li>MHAUS. Dantrolene dosing, reconstitution, and recrudescence guidance.</li>
+<li>Burkman JM, Posner KL, Domino KB. Clinical variables associated with recrudescence after MH reactions. Anesthesiology. 2007;106:901-906.</li>
+<li>Neal JM, Neal EJ, Weinberg GL. ASRA checklist for treatment of local anesthetic systemic toxicity, 2020 update. Reg Anesth Pain Med. 2020.</li>
+<li>A literature review of sodium bicarbonate for QRS widening. J Med Toxicol, reviewed via PubMed.</li>
+<li>Pai V, et al. Optimising alkalinisation and its effect on QRS narrowing in TCA poisoning. Br J Clin Pharmacol. 2022.</li>
+<li>Woodward C, Pourmand A, Mazer-Amirshahi M. High dose insulin therapy: an evidence-based approach to beta-blocker/CCB toxicity. 2014.</li>
+<li>Schult RF, et al. Evaluation of HDIE therapy following guideline implementation. Am J Health Syst Pharm. 2022;79(7):547-555.</li>
+<li>Serotonin Syndrome. StatPearls, cyproheptadine dosing and Hunter criteria. 2024.</li>
+<li>Cyproheptadine in serotonin syndrome: a retrospective study. 2024.</li>
+<li>Sakkas P, Davis JM, Janicak PG, Wang ZY. Drug treatment of the neuroleptic malignant syndrome. Psychopharmacol Bull. 1991;27(3):381-384.</li>
+<li>An approach to the pharmacotherapy of neuroleptic malignant syndrome. 2019.</li>
+<li>ACEP policy on N-acetylcysteine for acetaminophen overdose, reviewed via AFP.</li>
+<li>Rumack-Matthew nomogram, original and revised treatment line. Pediatrics. 1975; subsequent revisions.</li>
+<li>DigiFab prescribing information. FDA, accessed 2026.</li>
+<li>Ekins BR, et al. Digoxin-specific antibody dosing strategy review. 2024.</li>
+<li>Deferoxamine (Desferal) prescribing information and dosing thresholds. Medscape/StatPearls.</li>
+<li>Succimer monograph and dosing. Drugs.com/LiverTox, 2020-2025.</li>
+<li>With dimercaprol no longer manufactured, how should we treat severe lead poisoning? Tennessee Poison Center, 2023.</li>
+<li>Bhargava M, et al. Comparison of two doses of leucovorin in severe low-dose methotrexate toxicity, RCT. 2023.</li>
+<li>Leucovorin. StatPearls, dosing and rescue timing. 2026.</li>
+<li>Gziut, et al. L-carnitine for valproic acid-induced toxicity. Br J Clin Pharmacol. 2025.</li>
+<li>Boyle PJ, et al.; Octreotide's role in sulfonylurea-induced hypoglycemia, evidence review. J Med Toxicol. 2010.</li>
+<li>Methylene blue for refractory vasoplegic shock, case reports and mechanism review. 2017, 2023.</li>
+<li>Brent J, et al. Fomepizole for the treatment of methanol poisoning. N Engl J Med. 2001;344(6):424-429.</li>
+<li>Adverse drug events with ethanol vs fomepizole for toxic alcohol poisoning, cohort study. 2009.</li>
+<li>Medication errors with ethanol vs fomepizole, poison center comparison, reviewed via University of Utah Poison Control.</li>
+<li>Crotaline Fab antivenom in severe North American pit viper envenomation: an integrative review. Clin Toxicol, reviewed via PMC.</li>
+<li>Missouri Poison Center and University of Utah Poison Control antidote charts, cross-referenced for Latrodectus, botulinum antitoxin, physostigmine, and lead chelation dosing.</li>
+<li>Weaver LK, et al. Hyperbaric oxygen for acute carbon monoxide poisoning. N Engl J Med. 2002;347(14):1057-1067.</li>
+<li>Scheinkestel CD, et al. Hyperbaric or normobaric oxygen for acute carbon monoxide poisoning: a randomised controlled clinical trial. Med J Aust. 1999;170(5):203-210.</li>
+<li>Juurlink DN. Hyperbaric oxygen should not be used routinely for carbon monoxide poisoning. Br J Clin Pharmacol. 2023.</li>
+<li>Hyperbaric treatment of carbon monoxide toxicity. StatPearls, 2023.</li>
+<li>Anascorp (Centruroides scorpion antivenom) prescribing information. FDA, accessed 2026.</li>
+<li>Curry SC, et al. Antivenom for severe scorpion envenomation in Arizona. N Engl J Med, correspondence, 2021.</li>
+<li>Bark scorpion sting: indications for Anascorp and dosing controversies. Reviewed via ALiEM, 2018.</li>
+<li>Anaphylaxis: acute management. World Allergy Organization / ACAAI joint guidance on IM epinephrine dosing and route, reviewed 2026.</li>
+<li>Epinephrine for first-aid management of anaphylaxis. American Academy of Pediatrics clinical report, Pediatrics. 2017;139(3):e20164006.</li>
+<li>AAP Committee on Drugs. Naloxone dosage and route of administration for infants and children. Pediatrics. 1990;86(3):484-485.</li>
+<li>Atropine, flumazenil, glucagon, hydroxocobalamin, methylene blue, naloxone pediatric monographs. Atlantic Canada Poison Centre, reviewed 2026.</li>
+<li>Calcium gluconate pediatric dosing. StatPearls / Drugs.com, reviewed 2025-2026.</li>
+<li>Sodium bicarbonate pediatric dosing in TCA overdose and toxin-induced dysrhythmia. Atlantic Canada Poison Centre; RxDx pediatric toxicology guide, 2026.</li>
+<li>Pediatric acetaminophen NAC dosing, including modified two-stage IV protocol. Reviewed via droracle.ai clinical reference, 2025.</li>
+<li>Deferoxamine, atropine/pralidoxime pediatric dosing. NJ Poison Information and Education System Antidote Use Guideline, 2023.</li>
+<li>Cyproheptadine pediatric dosing and overdose toxicity. Pediatric case report, 2018; pediatric dosing reference, 2025.</li>
+<li>Hydroxocobalamin (Cyanokit) prescribing information, pediatric dosing. FDA label; Atlantic Canada Poison Centre; Maryland Poison Center ToxTidbits.</li>
+<li>Sugammadex pediatric pharmacokinetic trials (birth to &lt;2 years, and older cohorts). ClinicalTrials.gov NCT03351608, NCT03909165.</li>
+<li>BabyBIG (botulism immune globulin) prescribing information and dosing. FDA; University of Utah Poison Control, 2026; California Department of Public Health Infant Botulism Treatment and Prevention Program.</li>
+<li>Glucagon pediatric dosing for beta-blocker overdose. Atlantic Canada Poison Centre, reviewed 2026.</li>
+</ul>
+</section>
+</main>
+<footer>
+  This guide covers the antidote landscape outside anticoagulant/antiplatelet reversal, which is
+  maintained separately in the Bleeding &amp; Reversal Agents guide to avoid two documents
+  drifting out of sync on a fast-changing topic. v2 added sodium bicarbonate, high-dose
+  insulin/euglycemia therapy, deferoxamine, pyridoxine, octreotide, physostigmine, and CroFab. v3
+  added cyproheptadine, leucovorin, L-carnitine, bromocriptine, the lead chelation ladder
+  (including the 2023 dimercaprol manufacturing discontinuation), and Latrodectus/botulinum
+  antitoxin. v4 added carbon monoxide (oxygen/HBOT, including the genuine controversy over HBOT's
+  evidence base), Centruroides scorpion antivenom, the amyl/sodium nitrite historical note under
+  cyanide, precipitated withdrawal under naloxone, albuterol as a hyperkalemia adjunct, and
+  benztropine/diphenhydramine for acute dystonic reactions. v5 closed the two remaining gaps found
+  on final review: epinephrine for anaphylaxis (with its cross-reference to glucagon for
+  beta-blocked refractory cases), and a clarification that octreotide treats sulfonylurea overdose
+  but not exogenous insulin overdose. v6 reordered the whole document by clinical universality
+  rather than build history: anaphylaxis moved up to section 2, muscle relaxant reversal moved
+  down from section 2 to section 4, anesthesia-only content (dantrolene/MH, lipid emulsion/LAST)
+  split out into its own later section, and the anticoagulant cross-reference moved past the
+  higher-yield content instead of interrupting it. v7 added pediatric dosing to every entry where
+  reliable pediatric-specific data exists, called out the handful of entries with genuinely
+  limited pediatric evidence (bromocriptine, L-carnitine) rather than presenting a false level of
+  confidence, and flagged where pediatric dosing differs meaningfully from a simple weight-scaled
+  adult dose (naloxone, DigiFab thresholds, atropine's organophosphate-specific dosing, BabyBIG as
+  a distinct product from adult botulinum antitoxin). Every dose and threshold above was
+  cross-checked against the sources listed here as of July 2026.
+<div class="cv-tagline" style="margin-top:8px">The Critical Vector · Direction and magnitude.</div></footer>
+</div></body>
+</html>

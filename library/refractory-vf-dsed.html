@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Refractory VF: Vector Change &amp; DSED — Critical Vector</title>
+<style>
+  :root { --bg:#121212; --card:#1a1a1a; --text:#e8e8e8; --muted:#9a9a9a; --line:#2c2c2c; }
+  * { box-sizing: border-box; }
+  body { background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif; margin:0; padding:0 0 60px 0; line-height:1.5; }
+  header { padding:28px 20px 18px 20px; border-bottom:1px solid var(--line); }
+  header .kicker { font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
+  header h1 { font-size:26px; margin:0 0 8px 0; }
+  header p { color:var(--muted); font-size:14px; margin:0; }
+  .alert { margin:16px 20px; background:#3a2c14; border:1px solid #7a5c16; color:#ffe8bd; padding:12px 16px; border-radius:8px; font-size:14px; font-weight:600; }
+  nav { display:flex; flex-wrap:wrap; gap:6px; padding:16px 20px; border-bottom:1px solid var(--line); }
+  nav a { font-size:12px; color:var(--text); background:var(--card); border:1px solid var(--line); padding:6px 10px; border-radius:20px; text-decoration:none; white-space:nowrap; }
+  main { padding:0 20px; max-width:760px; margin:0 auto; }
+  section { padding:26px 0; border-bottom:1px solid var(--line); }
+  section h2 .secnum { color:var(--accent,#888); margin-right:4px; }
+  section h2 { font-size:20px; margin:0 0 12px 0; padding-bottom:10px; border-bottom:2px solid var(--accent,#888); }
+  .box { background:var(--tint,var(--card)); border:1px solid var(--accent,var(--line)); border-radius:8px; padding:14px 16px; margin:12px 0; color:#1a1a1a; font-size:14px; }
+  .box p { margin:6px 0; } .box b { color:#000; }
+  p.body { font-size:14.5px; margin:10px 0; }
+  p.note { font-size:12.5px; color:var(--muted); font-style:italic; margin:8px 0; }
+  table { width:100%; border-collapse:collapse; margin:12px 0; font-size:13.5px; }
+  th { background:var(--accent,#444); color:#fff; text-align:left; padding:8px 10px; }
+  td { padding:8px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  tr:nth-child(even) td { background:rgba(255,255,255,0.03); }
+  .sources { font-size:12.5px; color:var(--muted); padding-left:18px; }
+  .sources li { margin-bottom:6px; }
+  footer { padding:24px 20px 0 20px; max-width:760px; margin:0 auto; font-size:12px; color:var(--muted); }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style id="cv-retheme">
+/* CV re-theme v1.0 — maps this file onto _cv-schema.html tokens */
+:root{--bg:#0a0e14; --surface:#111720; --surface2:#182030; --border:rgba(255,255,255,0.08); --teal:#00d4aa; --blue:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa; --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670; --t-teal:rgba(0,212,170,0.10); --t-blue:rgba(96,165,250,0.10); --t-red:rgba(232,76,76,0.10); --t-amber:rgba(245,158,11,0.10); --t-purple:rgba(167,139,250,0.10);}
+:root{--card:var(--surface); --muted:var(--text2); --line:var(--border);}
+body{font-family:'Source Serif 4', Georgia, serif !important; background:var(--bg) !important; color:var(--text);}
+h1,h2,h3,h4,th,nav a,.label,.lbl,.badge,.pill{font-family:'Syne', sans-serif !important;}
+h1{font-weight:800 !important; letter-spacing:.005em;}
+h2,h3{font-weight:700;}
+.kicker, header .kicker{font-family:'IBM Plex Mono', monospace !important; color:var(--teal) !important; letter-spacing:.12em; font-size:11px !important;}
+code, pre, .mono{font-family:'IBM Plex Mono', monospace;}
+main{max-width:900px !important;}
+header{max-width:900px; margin:0 auto;}
+section h2{font-size:20px; border-bottom:2px solid var(--accent, var(--teal)) !important;}
+.box{background:var(--surface2) !important; color:var(--text) !important; border:1px solid var(--border) !important; border-left:3px solid var(--accent, var(--teal)) !important; border-radius:10px; font-size:14.5px;}
+.box b, .box strong{color:var(--text) !important;}
+th{background:var(--surface2) !important; color:var(--text) !important; border-bottom:2px solid var(--accent, var(--border));}
+nav a{background:var(--surface) !important; color:var(--text2) !important; border:1px solid var(--border) !important; font-weight:600;}
+nav a:hover{color:var(--text) !important; border-color:var(--teal) !important;}
+.alert{background:var(--t-amber) !important; border:1px solid rgba(245,158,11,0.35) !important; color:#fde6b8 !important;}
+.note-banner{background:var(--t-amber) !important; color:var(--text) !important; border-color:rgba(245,158,11,0.35) !important;}
+.pill-yes{background:var(--t-teal) !important; color:var(--teal) !important;}
+.pill-no{background:var(--t-red) !important; color:var(--red) !important;}
+.pill-offlabel{background:var(--t-amber) !important; color:var(--amber) !important;}
+.statgrid > div{background:var(--surface) !important; border:1px solid var(--border) !important; border-left:4px solid var(--accent, var(--teal)) !important; text-align:left !important; color:var(--text) !important;}
+.statgrid .num{font-family:'Syne', sans-serif; color:var(--accent, var(--teal)) !important;}
+.statgrid .lbl{color:var(--text2) !important;}
+.card{background:var(--surface) !important; border-color:var(--border) !important; color:var(--text) !important;}
+.word{font-family:'Syne', sans-serif; color:var(--teal) !important;}
+.fig{background:var(--surface) !important; border-color:var(--border) !important;}
+footer{font-style:italic; color:var(--text3) !important;}
+[style*="--accent:#7A1620"],[style*="--accent:#9C2B3B"],[style*="--accent:#8B2635"]{--accent:var(--red) !important; --tint:var(--t-red) !important;}
+[style*="--accent:#5B3A8E"]{--accent:var(--purple) !important; --tint:var(--t-purple) !important;}
+[style*="--accent:#1F6F5C"],[style*="--accent:#2E6B3E"]{--accent:var(--teal) !important; --tint:var(--t-teal) !important;}
+[style*="--accent:#1F3A5F"],[style*="--accent:#3A5A8C"]{--accent:var(--blue) !important; --tint:var(--t-blue) !important;}
+[style*="--accent:#B5591F"],[style*="--accent:#96700A"]{--accent:var(--amber) !important; --tint:var(--t-amber) !important;}
+[style*="--accent:#444444"]{--accent:var(--text3) !important; --tint:var(--surface2) !important;}
+@media print{
+  :root{--bg:#f4f5f7; --surface:#ffffff; --surface2:#eef1f4; --border:#d7dde3; --teal:#00a688; --blue:#1d4ed8; --red:#c53030; --amber:#b45309; --purple:#7c3aed; --text:#0f1923; --text2:#4a5670; --text3:#6b7688;
+    --t-teal:rgba(0,166,136,0.08); --t-blue:rgba(29,78,216,0.07); --t-red:rgba(197,48,48,0.07); --t-amber:rgba(180,83,9,0.08); --t-purple:rgba(124,58,237,0.07); --card:#ffffff; --muted:#4a5670; --line:#d7dde3;}
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  html, body{background:#f4f5f7 !important; color:#0f1923 !important;}
+  nav{display:none !important;}
+  td{color:#0f1923 !important;}
+  .box{background:#ffffff !important; color:#0f1923 !important;}
+  .alert, .note-banner{color:#0f1923 !important;}
+  .alert{background:rgba(180,83,9,0.08) !important;}
+  section, .box, table, .card, .step, .statgrid > div, .fig{break-inside:avoid;}
+  h2{break-after:avoid;}
+  a{color:inherit; text-decoration:none;}
+}
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ a{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../workshop.html">The Workshop</a><span class="cv-sb-meta">Published 7 Oct 2026 · R. E. Suscitate &amp; A. Systole</span></nav>
+
+<header>
+  <div class="kicker">Critical Vector · Pocket Reference</div>
+  <h1>Refractory VF: Vector Change &amp; DSED</h1>
+  <p>v2, dug deeper. What DOSE-VF actually found, what it didn't, what a 2024 pooled
+  meta-analysis found when the single trial is averaged against the rest of the evidence, the
+  technique details (timing, sequential-not-simultaneous delivery) the carousel skipped
+  entirely, and the four-plus confirmatory trials now underway precisely because the field
+  doesn't consider this settled. Every claim below was checked against the trial itself, its
+  secondary analyses, a published critical editorial, and the actual ILCOR/AHA guideline
+  language — not just the trial's own abstract. Verified against N Engl J Med, Resuscitation,
+  JAHA, Cureus, and the ILCOR CoSTR. July 2026.</p>
+</header>
+
+<div class="alert">
+  This is a single, early-stopped trial with a fragile secondary finding and a per-protocol
+  analysis that lost significance — the confident "this works" framing common in social-media
+  summaries outruns what the evidence actually supports. Section 4 covers this directly.
+</div>
+
+<nav>
+  <a href="#s1">1 · The problem &amp; the proposed fix</a>
+  <a href="#s2">2 · DOSE-VF: the actual results</a>
+  <a href="#s3">3 · The mechanism claim, questioned</a>
+  <a href="#s4">4 · What the confident version leaves out</a>
+  <a href="#s5">5 · What the guidelines actually say</a>
+  <a href="#s6">6 · Technique specifics, skipped</a>
+  <a href="#s7">7 · Safety: the claim I couldn't verify</a>
+  <a href="#s8">8 · Practical bottom line</a>
+  <a href="#s9">9 · Quick card &amp; sources</a>
+</nav>
+
+<main>
+
+<section id="s1" style="--accent:#9C2B3B; --tint:#F6E9EA;">
+  <h2><span class="secnum">1.</span> The Problem &amp; the Proposed Fix</h2>
+  <p class="body">Roughly a quarter of patients in ventricular fibrillation are still fibrillating
+  after three standard defibrillation attempts — refractory VF. These patients have
+  substantially worse survival than those who convert early: prior registry data estimated 30-day
+  survival of 28.7% among patients converted in 1–3 shocks, falling to 12.4% at 4–10 shocks and
+  4.9% beyond 10 shocks. Two alternative strategies have been proposed:</p>
+  <div class="box">
+    <p><b>Vector change (VC):</b> reposition pads from anterior-lateral to anterior-posterior,
+    changing the current pathway through the myocardium.</p>
+    <p><b>Double sequential external defibrillation (DSED):</b> two defibrillators, two different
+    pad vectors, rapid sequential shocks.</p>
+  </div>
+  <p class="note">Both are physiologically plausible ideas. Plausibility is not the same as
+  proof — that distinction is the entire subject of this document.</p>
+</section>
+
+<section id="s2" style="--accent:#5B3A8E; --tint:#EFE9F5;">
+  <h2><span class="secnum">2.</span> DOSE-VF: The Actual Results</h2>
+  <p class="body">DOSE-VF (Cheskes et al., NEJM 2022) is the first and, as of this writing, only
+  randomized controlled trial directly comparing DSED and VC against standard defibrillation for
+  refractory VF. Cluster-randomized crossover design, six paramedic services in Ontario, Canada.</p>
+  <table>
+    <tr><th>Outcome</th><th>Standard</th><th>Vector Change</th><th>DSED</th></tr>
+    <tr><td><b>Survival to discharge</b></td><td>13.3%</td><td>21.7% (RR 1.71, 95% CI
+    1.01–2.88)</td><td>30.4% (RR 2.21, 95% CI 1.33–3.67)</td></tr>
+    <tr><td><b>VF termination</b></td><td>67.6%</td><td>79.9%</td><td>84.0%</td></tr>
+    <tr><td><b>ROSC</b></td><td>26.5%</td><td>&mdash;</td><td>46.4%</td></tr>
+    <tr><td><b>Good neurologic outcome (mRS ≤2)</b></td><td>11.2%</td><td>16.2%, RR 1.48 (95% CI
+    0.81–2.71) — <b>not significant</b></td><td>27.4%, RR 2.21 (95% CI 1.26–3.88) —
+    <b>significant</b></td></tr>
+  </table>
+  <div class="box">
+    <p><b>What's actually well-supported by this trial:</b> DSED improved survival to discharge
+    and was the only strategy of the two to also show a statistically significant improvement in
+    good neurologic outcome. That specific claim — DSED, not VC, drove the neurologic outcome
+    signal — checks out against the primary source.</p>
+  </div>
+</section>
+
+<section id="s3" style="--accent:#1F6F5C; --tint:#E6F2EF;">
+  <h2><span class="secnum">3.</span> The Mechanism Claim, Questioned</h2>
+  <p class="body">The carousel's mechanistic story — inadequate current delivery to fibrillating
+  myocardium, the same shock vector repeatedly missing more myocardium, and electrical remodeling
+  making VF progressively harder to terminate — is a reasonable physiologic narrative. It is
+  also, largely, a narrative rather than a demonstrated mechanism in this trial.</p>
+  <div class="box" style="--accent:#7A1620; --tint:#F5E4E5;">
+    <p><b>A finding that complicates the story:</b> a 2025 multistakeholder AHA/ILCOR thinktank
+    report noted that among patients meeting a pragmatic definition of "refractory VF," the VF
+    being treated is most likely <em>recurrent</em> rather than truly continuously refractory —
+    meaning many of these patients are re-fibrillating after transient termination, not failing
+    to respond to current at all. If that's the dominant mechanism in practice, "electrical
+    remodeling" and "the same vector missing more myocardium" may not be the operative
+    explanation for why DSED and VC appear to help.</p>
+  </div>
+  <p class="note">A separate DOSE-VF secondary analysis found DSED's survival benefit held both
+  in genuinely shock-refractory VF (continuous VF through the first three shocks) and in
+  recurrent VF, but the shock-refractory subgroup was small (60 patients) and showed 0% survival
+  in the standard-defibrillation arm — a dramatic number built on a very small denominator.</p>
+</section>
+
+<section id="s4" style="--accent:#7A1620; --tint:#F5E4E5;">
+  <h2><span class="secnum">4.</span> What the Confident Version Leaves Out</h2>
+  <p class="body">This is the section a clean carousel summary has no room for, and it's the
+  section that most changes how much weight this evidence should carry.</p>
+  <table>
+    <tr><th>Issue</th><th>What it means</th></tr>
+    <tr><td><b>Stopped early</b></td><td>405 of a planned 930 patients enrolled, halted during
+    COVID-19. Trials stopped early systematically tend to overestimate effect size — this is a
+    well-documented statistical phenomenon, not a mark against this trial specifically, but it
+    applies here directly.</td></tr>
+    <tr><td><b>Fragility</b></td><td>The VC survival finding has been described as having a
+    fragility index of 1 — meaning a single additional non-survivor in the VC arm would have been
+    enough to erase statistical significance. This is about as fragile as a "significant" finding
+    can be while still being called significant.</td></tr>
+    <tr><td><b>Per-protocol vs. as-randomized</b></td><td>The as-treated (per-protocol) analysis
+    — looking only at patients who actually received their assigned strategy — reportedly found
+    no significant difference in the primary outcome. The headline result depends on which
+    analysis population you're looking at.</td></tr>
+    <tr><td><b>An unusual statistical pattern</b></td><td>ILCOR's own evidence reviewers flagged
+    it as atypical for an intra-arrest intervention to show a larger, more statistically
+    significant effect on survival and neurologic outcome than on the more proximate outcomes of
+    ROSC and VF termination — usually the effect should be at least as strong on the more
+    immediate physiologic outcome. That pattern doesn't necessarily mean the result is wrong, but
+    it's the kind of internal inconsistency that invites a second RCT before treating the finding
+    as settled.</td></tr>
+    <tr><td><b>Single trial</b></td><td>Every guideline body reviewing this evidence — ILCOR, AHA,
+    ANZCOR — explicitly grades it as low or very-low certainty, for the straightforward reason
+    that it's one trial. No replication yet exists.</td></tr>
+    <tr><td><b>Pooled meta-analysis disagrees</b></td><td>A 2024 meta-analysis (Ali et al.),
+    pooling DOSE-VF with other available studies, found <b>no significant difference</b> between
+    strategies — likely reflecting the mixed quality and heterogeneity of the smaller
+    observational studies pulled in alongside DOSE-VF, but a real reminder that DOSE-VF in
+    isolation is the single most favorable data point in the literature, not the average of it.</td></tr>
+  </table>
+  <div class="box" style="--accent:#7A1620; --tint:#F5E4E5;">
+    <p><b>A published critical appraisal worth reading directly, not just citing:</b> a 2025
+    Cureus editorial reviewing this same trial concluded plainly: "Since DSED did not show a
+    statistically significant improvement in the actual treatment received, the findings are more
+    likely to be by chance. We should not make guideline-based decisions based on a single
+    trial." This isn't a fringe objection — it's a peer-reviewed restatement of exactly the
+    per-protocol concern in the table above, independent of this document's own analysis.</p>
+  </div>
+  <p class="note">None of this means DSED and VC don't work — it means the evidence for "they
+  work" is considerably shakier than a confident 5-slide summary can convey, and every guideline
+  body that has reviewed the same data has landed on hedged, weak-recommendation language rather
+  than an endorsement.</p>
+</section>
+
+<section id="s5" style="--accent:#5B3A8E; --tint:#EFE9F5;">
+  <h2><span class="secnum">5.</span> What the Guidelines Actually Say</h2>
+  <table>
+    <tr><th>Body</th><th>Actual language</th></tr>
+    <tr><td><b>ILCOR, November 2023 CoSTR</b></td><td>"We suggest that a [DSED] strategy (weak
+    recommendation, low-certainty evidence) or a VC defibrillation strategy (weak recommendation,
+    very low-certainty evidence) may be considered for adults with cardiac arrest who remain in
+    VF or pulseless VT after 3 or more consecutive shocks."</td></tr>
+    <tr><td><b>AHA, 2025 guideline (Part 9, Adult ALS)</b></td><td>The usefulness of vector change and of double sequential defibrillation for
+    VF/pVT persisting after 3 or more shocks "has not been established" (Class 2b). AHA reviewed DOSE-VF and landed more cautious than ILCOR's "may be considered."</td></tr>
+    <tr><td><b>ANZCOR (2023 CoSTR-aligned)</b></td><td>Suggests VC "may be considered," explicitly
+    notes "there is no agreed standard approach to DSED and there is concern for possible
+    defibrillator damage with simultaneous shock delivery."</td></tr>
+    <tr><td><b>American Red Cross, 2023</b></td><td>Does <b>not</b> recommend routine use of DSED;
+    acknowledges individual clinicians may consider it case-by-case "when no further treatment
+    options exist," contingent on operational feasibility and local policy.</td></tr>
+  </table>
+  <div class="box" style="--accent:#7A1620; --tint:#F5E4E5;">
+    <p><b>A regulatory gap worth knowing:</b> as of the most recent guideline commentary
+    reviewed for this document, no manual or automated external defibrillator is manufacturer-
+    approved for DSED use. Two devices delivering near-simultaneous shocks through a shared
+    patient circuit is, strictly speaking, off-label use of both devices — a fact absent from the
+    carousel entirely and relevant to any institution considering a protocol.</p>
+  </div>
+  <p class="note">"May be considered" is genuinely weaker language than the carousel's framing
+  implies. ILCOR's own hedging, the AHA's 2025 "not established" language even after DOSE-VF, and the Red Cross's
+  explicit non-recommendation for routine use are all consistent with a technique still under
+  real evidentiary scrutiny, not an established rescue algorithm.</p>
+</section>
+
+<section id="s6" style="--accent:#1F3A5F; --tint:#E7EDF4;">
+  <h2><span class="secnum">6.</span> Technique Specifics the Carousel Skipped</h2>
+  <div class="box">
+    <p><b>When to start:</b> per the DOSE-VF investigators' own recommendation, DSED or VC should
+    be initiated right after the third failed standard shock — not saved as a late rescue
+    maneuver after many more failed attempts. Standard defibrillation still terminates VF in more
+    than half of cases; the recommendation is to prioritize prompt standard defibrillation first,
+    then escalate at shock 4, not to reach for DSED reflexively at the first sign of difficulty.</p>
+  </div>
+  <div class="box" style="--accent:#7A1620; --tint:#F5E4E5;">
+    <p><b>The safety detail that actually matters:</b> genuinely <em>simultaneous</em> shocks from
+    two defibrillators carry a real, if low, theoretical risk of equipment damage. The mitigation
+    used in DOSE-VF and recommended by the investigators is to ensure shocks are delivered
+    <em>sequentially</em> — one immediately after the other, not truly overlapping — specifically
+    to avoid that risk. "Double sequential" is doing real safety work in that name; a protocol
+    that delivers genuinely simultaneous shocks is not the technique the trial evidence supports.</p>
+  </div>
+  <p class="note">Implementation in the hospital setting requires cardiac arrest response team
+  training, a second defibrillator, and additional pads stocked on the arrest cart — none of
+  which most institutions currently have standardized. Device-specific technical data (shock
+  energy, impedance, and current delivery through anterior-posterior pads) has been published
+  separately for at least two manufacturers' equipment, suggesting the engineering side of this
+  question is being actively worked out in parallel with the clinical question.</p>
+</section>
+
+<section id="s7" style="--accent:#B5591F; --tint:#F8ECE0;">
+  <h2><span class="secnum">7.</span> Safety: The Claim I Couldn't Verify</h2>
+  <div class="box" style="--accent:#7A1620; --tint:#F5E4E5;">
+    <p><b>The carousel states defibrillator damage occurs in "~0.4%, rare and manageable" of
+    DSED cases.</b> I was not able to locate this specific figure in the DOSE-VF trial
+    publication, its secondary analyses, or the ILCOR/AHA/ANZCOR guideline documents reviewed for
+    this reference. What the guideline literature does say is qualitative, not quantitative:
+    ANZCOR explicitly flags "concern for possible defibrillator damage with simultaneous shock
+    delivery" as an open, unresolved issue — not a rare-and-quantified risk with a settled
+    incidence rate.</p>
+  </div>
+  <p class="note">This doesn't mean the 0.4% figure is fabricated — it may come from a specific
+  device-manufacturer report, a conference abstract, or a source not surfaced in this search. But
+  presenting an unsourced-to-me number as a settled safety statistic, in a technique that every
+  major resuscitation body still describes as having genuine equipment-damage concerns and zero
+  manufacturer approval, is exactly the kind of claim worth pressure-testing before repeating it
+  to a resident. Flagging it here rather than silently reproducing it.</p>
+  <div class="box">
+    <p><b>Where FDA approval actually stands:</b> no manual or automated defibrillator currently
+    carries FDA approval for DSED use. The multistakeholder thinktank reviewing this technology
+    explicitly frames at least one confirmatory randomized trial as a likely prerequisite before
+    that approval pathway could even be pursued — meaning the regulatory gap isn't a minor
+    paperwork issue, it's downstream of the same single-trial evidence problem raised throughout
+    this document.</p>
+  </div>
+</section>
+
+<section id="s8" style="--accent:#1F6F5C; --tint:#E6F2EF;">
+  <h2><span class="secnum">8.</span> Practical Bottom Line</h2>
+  <div class="box">
+    <p><b>What's reasonably defensible:</b> after 3 failed standard shocks in refractory VF/pVT,
+    considering vector change (simple pad reposition, no extra equipment, ILCOR-endorsed as a
+    weak-recommendation option) is low-cost and physiologically sensible. DSED is a further
+    escalation option some services have protocolized, with the strongest single-trial signal of
+    the two — but it requires a second defibrillator, an off-label equipment use, and
+    institutional buy-in that most systems don't yet have in place.</p>
+  </div>
+  <div class="box" style="--accent:#7A1620; --tint:#F5E4E5;">
+    <p><b>What's not yet established, regardless of how it's presented on social media:</b> that
+    DSED is a proven, guideline-mandated "fix," that its mechanism is confirmed, that its safety
+    profile is quantified and settled, or that it belongs in a fixed stepwise algorithm before
+    ECPR. The actual guidance is "may be considered," built on one early-stopped trial with a
+    fragile secondary finding — a real signal worth taking seriously, not yet a standard of care.</p>
+  </div>
+  <p class="note">The honest framing for teaching this to a resident: "there's one good trial
+  suggesting this helps, here's exactly how fragile that evidence is, and here's what every
+  major guideline body has and hasn't said about it" — not "this is the fix nobody told you
+  about."</p>
+  <div class="box">
+    <p><b>The field itself doesn't consider this settled — that's the real tell.</b> As of late
+    2024, confirmatory randomized trials of DSED were being planned or launched in Denmark,
+    Norway, Sweden, and Germany. A separate trial (Dual Defib, NCT06672159) is testing something
+    the original trial didn't: giving DSED as the <em>initial</em> shock strategy rather than
+    only after three failed standard shocks — a genuinely different clinical question, not yet
+    answered by DOSE-VF. When four or more independent confirmatory trials are actively enrolling
+    for a technique, that's a reliable signal the evidence base is still being built, not a
+    technicality standing between clinicians and a proven intervention.</p>
+  </div>
+</section>
+
+<section id="s9" style="--accent:#444444; --tint:#EFEFEF; border-bottom:none;">
+  <h2><span class="secnum">9.</span> Quick Reference Card &amp; Primary Sources</h2>
+  <table>
+    <tr><th>Claim (as commonly presented)</th><th>What the primary sources actually support</th></tr>
+    <tr><td>DSED improves survival and neuro outcome</td><td>&#10003; Accurate per DOSE-VF, but
+    single trial, stopped early, low/very-low certainty per every guideline body</td></tr>
+    <tr><td>VC improves survival</td><td>&#9888; Statistically positive in DOSE-VF but fragility
+    index of 1; not significant for neurologic outcome</td></tr>
+    <tr><td>"Electrical remodeling" explains why VF gets harder to terminate</td><td>&#9888;
+    Plausible narrative; a 2025 thinktank analysis suggests most "refractory" VF is actually
+    recurrent VF, complicating this mechanism</td></tr>
+    <tr><td>ILCOR endorses both strategies</td><td>&#10003; Accurate but overstated — "may be
+    considered," weak recommendation, low/very-low certainty, not an endorsement</td></tr>
+    <tr><td>Defibrillator damage ~0.4%, rare and manageable</td><td>&#10007; Not verified in
+    sources reviewed; guidelines describe this as an open safety concern, not a quantified rare
+    risk</td></tr>
+    <tr><td>DSED is the first rescue step before ECPR</td><td>&#10007; Not found in any reviewed
+    guideline as a formal stepwise algorithm; ECPR is addressed separately and independently in
+    the literature</td></tr>
+    <tr><td>Should be tried after any number of failed shocks, whenever convenient</td><td>&#9888;
+    Investigators specifically recommend initiating at shock 4, not as a late rescue after many
+    more failed attempts — standard defibrillation still works more than half the time and
+    shouldn't be abandoned early</td></tr>
+    <tr><td>Meta-analysis confirms DOSE-VF's findings</td><td>&#10007; A 2024 pooled
+    meta-analysis (Ali et al.) found no significant difference between strategies — DOSE-VF in
+    isolation is the most favorable single data point, not the average of the evidence</td></tr>
+    <tr><td>This is settled science at this point</td><td>&#10007; Four or more confirmatory
+    RCTs are actively enrolling (Denmark, Norway, Sweden, Germany, plus the Dual Defib initial-
+    shock trial) specifically because it isn't</td></tr>
+  </table>
+  <p class="body"><b>Primary sources checked for this guide:</b></p>
+  <ul class="sources">
+    <li>Cheskes S, Verbeek PR, Drennan IR, et al. Defibrillation strategies for refractory ventricular fibrillation (DOSE-VF). N Engl J Med. 2022;387(21):1947-1956.</li>
+    <li>DOSE-VF study protocol. Trials. 2020;21:967 (NCT04080986).</li>
+    <li>Cheskes S, et al. Double sequential external defibrillation for refractory ventricular fibrillation: the DOSE-VF pilot randomized controlled trial. Resuscitation/J Emerg Med, 2020.</li>
+    <li>Secondary analysis: the impact of alternate defibrillation strategies on shock-refractory and recurrent ventricular fibrillation. Resuscitation. 2024.</li>
+    <li>International Liaison Committee on Resuscitation. Double sequential defibrillation strategy for cardiac arrest with refractory shockable rhythm: ALS Task Force CoSTR. costr.ilcor.org, November 2023.</li>
+    <li>Scientific priorities related to the use of double sequential external defibrillation in patients with refractory cardiac arrest: report from a multistakeholder thinktank. J Am Heart Assoc. 2025.</li>
+    <li>ANZCOR Guideline 11.4: Electrical therapy for adult advanced life support, 2023 CoSTR-aligned update.</li>
+    <li>American Red Cross Scientific Advisory Council. Double sequence external defibrillation for refractory shockable rhythm, guidelines database, 2023.</li>
+    <li>Enhancing patient safety in refractory ventricular fibrillation: a systematic review of double sequential and vector change defibrillation barriers. 2025-2026.</li>
+    <li>EMCrit 412: 2025 AHA ACLS Guidelines with Shel Cheskes. emcrit.org, 2025.</li>
+    <li>Double sequential external defibrillation for refractory ventricular fibrillation: the science, the controversies and the future. Resuscitation, 2025.</li>
+    <li>Ali H, et al. Double sequential external defibrillation versus standard defibrillation for refractory ventricular fibrillation: a systematic review and meta-analysis. 2024 (pooled null finding across available studies).</li>
+    <li>Double sequential defibrillation: an update of contemporary defibrillation strategies for pulseless ventricular tachycardia and fibrillation. Cureus. 2025 (critical editorial on per-protocol analysis and single-trial guideline risk).</li>
+    <li>Rahimi M, Drennan IR, Turner L, Dorian P, Cheskes S. The impact of double sequential shock timing on outcomes during refractory out-of-hospital cardiac arrest. Resuscitation. 2024;194:110082.</li>
+    <li>Cheskes S, Drennan IR, Turner L, Pandit SV, Walker RG, Dorian P. The impact of alternate defibrillation strategies on time in ventricular fibrillation. Resuscitation. 2025;209:110549.</li>
+    <li>Liu S, Garrison SR. Overestimation of benefit when clinical trials stop early: a simulation study. Trials. 2022;23:747.</li>
+    <li>Scientific priorities related to the use of double sequential external defibrillation in patients with refractory cardiac arrest: report from a multistakeholder thinktank. J Am Heart Assoc. 2025 (confirmatory trials in Denmark, Norway, Sweden, Germany; FDA approval pathway discussion).</li>
+    <li>Initial Double Sequential External Defibrillation in Out of Hospital Cardiac Arrest (Dual Defib trial). ClinicalTrials.gov NCT06672159.</li>
+    <li>Initial double sequential external defibrillation for refractory ventricular fibrillation in cardiac sarcoidosis. JACC Case Rep. 2025 (single case report, hypothesis-generating only).</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  This is deliberately a more skeptical document than most in this reference set — the request
+  was to question the claims, not just reproduce them with citations attached. v2 dug further:
+  the 2024 pooled meta-analysis that found no significant difference when DOSE-VF is averaged
+  against the rest of the literature, a peer-reviewed critical editorial reaching the same
+  per-protocol concern independently, the technique specifics (initiate at shock 4, sequential
+  not simultaneous delivery) the source carousel never mentioned, and the four-plus confirmatory
+  trials now enrolling specifically because this isn't settled science yet. DSED and VC remain
+  reasonable options to know and consider; they are not yet the settled, quantified, guideline-
+  mandated fixes a clean summary makes them sound like. Every claim above was cross-checked
+  against the primary trial, its secondary analyses, and actual guideline text as of July 2026.
+<div class="cv-tagline" style="margin-top:8px">The Critical Vector · Direction and magnitude.</div></footer>
+
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cric Sitting Up — The Critical Vector</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0e14; --surface:#111720; --surface2:#182030;
+  --border:rgba(255,255,255,0.08);
+  --teal:#00d4aa; --blue:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa;
+  --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670;
+  --hl:var(--teal);
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{background:var(--bg); color:var(--text); font-family:'Source Serif 4', Georgia, serif; font-size:16px; line-height:1.62; -webkit-font-smoothing:antialiased;}
+h1,h2,h3,.label,nav a,th,.tag,.verdict{font-family:'Syne', sans-serif;}
+.mono,.num{font-family:'IBM Plex Mono', monospace;}
+.page{max-width:900px; margin:0 auto; padding:0 24px 60px;}
+header{padding:34px 0 20px; border-bottom:1px solid var(--border);}
+.kicker{font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--hl); margin-bottom:10px;}
+h1{font-weight:800; font-size:30px; line-height:1.15; margin:0 0 10px;}
+header p.sub{font-style:italic; color:var(--text2); font-size:15.5px; margin:0 0 12px;}
+.byline{font-size:13px; color:var(--text3); margin:0;}
+.byline a, .sources a, footer a, p a, td a{color:var(--teal);}
+.alert{margin:20px 0; padding:14px 18px; border-radius:10px; font-size:14.5px;}
+.alert.ok{background:rgba(0,212,170,.10); border:1px solid rgba(0,212,170,.28); color:#bdf5e8;}
+.alert.warn{background:rgba(245,158,11,.10); border:1px solid rgba(245,158,11,.28); color:#fbdca0;}
+nav{display:flex; flex-wrap:wrap; gap:7px; padding:16px 0; border-bottom:1px solid var(--border);}
+nav a{font-size:12.5px; font-weight:600; color:var(--text2); background:var(--surface); border:1px solid var(--border); padding:7px 12px; border-radius:20px; text-decoration:none; white-space:nowrap;}
+nav a:hover, nav a:focus-visible{color:var(--text); border-color:var(--hl); outline:none;}
+section{padding:28px 0; border-bottom:1px solid var(--border);}
+.sec-head{display:flex; align-items:baseline; gap:10px; padding:11px 18px; border-left:4px solid var(--teal); background:linear-gradient(90deg, rgba(0,212,170,0.10), transparent); border-radius:0 8px 8px 0; margin-bottom:14px;}
+.sec-head.c-blue{border-left-color:var(--blue); background:linear-gradient(90deg, rgba(96,165,250,0.10), transparent);}
+.sec-head.c-red{border-left-color:var(--red); background:linear-gradient(90deg, rgba(232,76,76,0.10), transparent);}
+.sec-head.c-amber{border-left-color:var(--amber); background:linear-gradient(90deg, rgba(245,158,11,0.10), transparent);}
+.sec-head.c-purple{border-left-color:var(--purple); background:linear-gradient(90deg, rgba(167,139,250,0.10), transparent);}
+.sec-head.c-grey{border-left-color:var(--text3); background:none;}
+.sec-num{font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--text3);}
+h2{font-weight:700; font-size:20px; margin:0;}
+h3{font-size:15px; font-weight:700; margin:18px 0 6px;}
+.tagline{font-style:italic; font-size:14px; color:var(--text2); margin:0 0 12px;}
+p{margin:.75rem 0;}
+.box{background:var(--surface2); border:1px solid var(--border); border-radius:10px; padding:14px 18px; margin:14px 0;}
+.box.t-teal{border-left:3px solid var(--teal);} .box.t-blue{border-left:3px solid var(--blue);}
+.box.t-amber{border-left:3px solid var(--amber);} .box.t-red{border-left:3px solid var(--red);} .box.t-purple{border-left:3px solid var(--purple);}
+.box .label{display:block; font-size:12.5px; font-weight:700; margin-bottom:4px;}
+.box.t-teal .label{color:var(--teal);} .box.t-blue .label{color:var(--blue);} .box.t-amber .label{color:var(--amber);} .box.t-red .label{color:var(--red);} .box.t-purple .label{color:var(--purple);}
+.box p{margin:.4rem 0;}
+.tbl{overflow-x:auto; margin:14px 0;}
+table{width:100%; border-collapse:collapse; font-size:13.6px;}
+th{background:var(--surface2); color:var(--text); text-align:left; padding:9px 11px; font-weight:600; font-size:12px; border-bottom:2px solid var(--border);}
+td{padding:9px 11px; border-bottom:1px solid var(--border); vertical-align:top; line-height:1.45;}
+tr:nth-child(even) td{background:rgba(255,255,255,0.02);}
+td.k{font-family:'Syne',sans-serif; font-weight:700; color:var(--text);}
+.tag{display:inline-block; font-size:10.5px; font-weight:700; padding:2px 9px; border-radius:20px; white-space:nowrap; margin-bottom:3px;}
+.tag.v{background:rgba(0,212,170,.12); color:var(--teal); border:1px solid rgba(0,212,170,.3);}
+.tag.c{background:rgba(245,158,11,.12); color:var(--amber); border:1px solid rgba(245,158,11,.3);}
+.tag.x{background:rgba(232,76,76,.12); color:#ff9e9e; border:1px solid rgba(232,76,76,.3);}
+.tag.u{background:rgba(167,139,250,.12); color:var(--purple); border:1px solid rgba(167,139,250,.3);}
+.tag.l{background:rgba(96,165,250,.12); color:var(--blue); border:1px solid rgba(96,165,250,.3);}
+ol.steps, ul.plain{padding-left:1.3rem; margin:.6rem 0;} ol.steps li, ul.plain li{margin-bottom:.45rem;}
+.figure{margin:18px 0; background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:16px;}
+.figure svg{width:100%; height:auto; display:block;}
+.figcap{font-size:12.5px; color:var(--text2); font-style:italic; margin-top:8px;}
+.sources{list-style:none; padding:0; margin:0; font-size:13px; color:var(--text2);}
+.sources li{padding:8px 0; border-bottom:1px solid var(--border);}
+.sources li:last-child{border-bottom:none;}
+footer{padding:26px 0 0; font-size:12.5px; color:var(--text3); font-style:italic;}
+@media (max-width:600px){ h1{font-size:24px;} .page{padding:0 16px 48px;} table{font-size:12.8px;} }
+@media (prefers-reduced-motion:reduce){*{transition:none !important;}}
+
+:root{--hl:#00d4aa;}
+
+</style>
+<style id="cv-print">
+/* ===== CV PRINT v1.0 (per _cv-schema.html) ===== */
+@media print{
+  :root{
+    --bg:#f4f5f7; --surface:#ffffff; --surface2:#eef1f4; --border:#d7dde3;
+    --teal:#00a688; --blue:#1d4ed8; --accent:#00a688; --accent2:#1d4ed8;
+    --red:#c53030; --amber:#b45309; --purple:#7c3aed;
+    --text:#0f1923; --text2:#4a5670; --text3:#6b7688;
+  }
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  html, body{background:#f4f5f7 !important; color:#0f1923 !important;}
+  nav, .nav, .toc-pills{display:none !important;}
+  .alert{background:rgba(0,166,136,.08) !important; color:#0f1923 !important;}
+  td{color:#0f1923 !important;}
+  section, .box, table, .card, .figure{break-inside:avoid;}
+  h2, .sec-head{break-after:avoid;}
+  a{color:inherit; text-decoration:none;}
+  .tag.x{color:#c53030 !important;}
+}
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ a{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../locker.html">The Evidence Locker</a><span class="cv-sb-meta">Published 28 Oct 2026 · R. E. Suscitate &amp; A. Systole</span></nav>
+<div class="page">
+<header><div class="kicker">The Critical Vector &middot; Content Audit &middot; Argument supported by the data</div>
+<h1>Can We Cric a Patient Sitting Up? The Numbers Behind "Train What You'll Do"</h1>
+<p class="sub">A combat medic educator asks whether to cric in the position of comfort or lay the patient flat. His success rates are hypothetical, as he says. The real ones make his argument for him.</p>
+<p class="byline">R. E. Suscitate &amp; A. Systole &middot; October 2026. Original post: <a href="https://www.instagram.com/nextgenerationcombatmedic">@nextgenerationcombatmedic</a> (video and caption). This page is an independent third-party evaluation, not affiliated with or endorsed by the original creator.</p></header>
+<div class="alert ok"><strong>Verdict:</strong> sound. The 80% and 60% figures in the caption are explicitly illustrative, not data. Published combat data back the core claim that real-world crics fail far more often than simulation suggests: 26% failed to reach the trachea in one review of Iraq and Afghanistan casualties, with medic failure rates around 33%. We found no outcome data comparing upright and supine cricothyrotomy, so the position question is a matter of judgment and training, not evidence.</div>
+<nav><a href="#data">Success rates</a><a href="#position">The position question</a><a href="#training">What to train</a><a href="#sources">Sources</a></nav><section id="data">
+<div class="sec-head "><span class="sec-num">01</span><h2>What the success rates actually are</h2></div>
+<p class="tagline">Civilian pooled estimates vs. the battlefield.</p>
+<div class="tbl"><table><tr><th style="width:34%">Source</th><th>Setting</th><th>Success</th></tr>
+<tr><td class="k">Hubble et al. 2010 (meta-analysis)</td><td>Civilian prehospital, 21 studies, 512 patients</td><td class="mono">Surgical cric 90.5% (needle cric 65.8%)</td></tr>
+<tr><td class="k">Brown et al. 2011 (meta-analysis)</td><td>Air medical</td><td class="mono">Surgical cric 90.8%</td></tr>
+<tr><td class="k">Mabry &amp; Frankfurt 2012</td><td>Iraq and Afghanistan, 22 months, retrospective</td><td class="mono">68% functional on arrival; 26% failed to cannulate; medics 33% failure vs 15% for physicians/PAs</td></tr>
+<tr><td class="k">Barnard et al. 2014</td><td>Combat, prospective, 34 crics, mostly by evacuation helicopter medics</td><td class="mono">82%</td></tr></table></div>
+<p>Mabry and Frankfurt reported that the military medic failure rate was three to five times higher than comparable civilian studies. Most patients in both combat series had major head, face or neck injuries, which is exactly the anatomy that makes positioning a live question. Survival was low in both, about one-third and one-half respectively, reflecting injury severity more than the airway alone.</p>
+</section><section id="position">
+<div class="sec-head c-amber"><span class="sec-num">02</span><h2>The position question</h2></div>
+<p class="tagline">No trial answers it; here's what does inform it.</p>
+<p>The patient who needs a cric while sitting up is usually the one with massive maxillofacial trauma who can only keep an airway by leaning forward and letting blood drain. Current TCCC guidelines tell providers to allow a conscious casualty to assume any position that best protects the airway, including sitting up and/or leaning forward. The same guidelines direct lidocaine for surgical cricothyroidotomy in a conscious casualty, so a cric on an awake patient who has been holding their own airway upright is a scenario the doctrine anticipates. Laying that patient flat may make the anatomy easier to find while making the airway worse.</p>
+<p>So the trade-off is real on both sides. Supine with suction gives the most familiar landmarks and hand position, but risks aspiration and loss of a self-maintained airway. Upright preserves drainage and airway, but changes neck angle, operator position and the feel of the landmarks, which is the post's point if the operator has never trained it. We found no published comparison of upright and supine cricothyrotomy success in live patients.</p>
+</section><section id="training">
+<div class="sec-head c-blue"><span class="sec-num">03</span><h2>What to train</h2></div>
+<p class="tagline">The post's recommendation, made concrete.</p>
+<ol class="steps"><li><b>Volume first, supine.</b> The post's observation that many medics don't grip the larynx or handle equipment correctly matches the failure modes in the combat series: wrong anatomic placement, subcutaneous passage, main-stem tube.</li>
+<li><b>Higher-fidelity reps.</b> Tissue-based or high-fidelity models over plastic necks, so landmarks and bleeding feel real.</li>
+<li><b>Then add position and stress.</b> Seated, leaning forward, low light, blood in the field, once supine performance is reliable.</li>
+<li><b>Decision training, not just technique.</b> Barnard et al. explicitly called for training in when to cric, not only how.</li></ol>
+<p>Laryngeal handshake, scalpel&ndash;bougie&ndash;tube with a vertical incision when landmarks aren't palpable (the Difficult Airway Society 2015 technique, which names scalpel cricothyroidotomy the preferred rescue and calls for regular practice), and confirming placement with end-tidal CO<sub>2</sub> are the elements most transferable between positions.</p>
+</section><section id="sources">
+<div class="sec-head c-grey"><span class="sec-num">04</span><h2>Sources</h2></div>
+
+<ul class="sources"><li><b>@nextgenerationcombatmedic.</b> "Can we cric a patient sitting up? Should we?" Instagram video and caption. Watch the original before relying on this summary.</li>
+<li>Mabry RL, Frankfurt A. An analysis of battlefield cricothyrotomy in Iraq and Afghanistan. <em>J Spec Oper Med.</em> 2012;12(1):17&ndash;23. <a href="https://doi.org/10.55460/FYQG-8E49">doi:10.55460/FYQG-8E49</a></li>
+<li>Barnard EBG, Ervin AT, Mabry RL, Bebarta VS. Prehospital and en route cricothyrotomy performed in the combat setting: a prospective, multicenter, observational study. <em>J Spec Oper Med.</em> 2014;14(4):35&ndash;39. <a href="https://doi.org/10.55460/62V1-UIZC">doi:10.55460/62V1-UIZC</a></li>
+<li>Hubble MW, Wilfong DA, Brown LH, Hertelendy A, Benner RW. A meta-analysis of prehospital airway control techniques part II: alternative airway devices and cricothyrotomy success rates. <em>Prehosp Emerg Care.</em> 2010;14(4):515&ndash;530. <a href="https://doi.org/10.3109/10903127.2010.497903">doi:10.3109/10903127.2010.497903</a></li>
+<li>Brown LH, Hubble MW, Wilfong DA, Hertelendy A, Benner RW. Airway management in the air medical setting. <em>Air Med J.</em> 2011;30(3):140&ndash;148. <a href="https://doi.org/10.1016/j.amj.2010.11.010">doi:10.1016/j.amj.2010.11.010</a></li>
+<li>Committee on Tactical Combat Casualty Care. TCCC Guidelines, Tactical Field Care: Airway Management (2024 update; unchanged in current edition). Deployed Medicine / J Spec Oper Med.</li>
+<li>Frerk C, Mitchell VS, McNarry AF, et al. Difficult Airway Society 2015 guidelines for management of unanticipated difficult intubation in adults. <em>Br J Anaesth.</em> 2015;115(6):827&ndash;848. <a href="https://doi.org/10.1093/bja/aev371">doi:10.1093/bja/aev371</a></li>
+<li>Metadata and abstracts retrieved via PubMed.</li></ul>
+</section><footer>The Critical Vector &middot; Direction and magnitude. Educational reference; verify against current guidelines and local protocol before applying to a patient.</footer>
+</div>
+</body>
+</html>

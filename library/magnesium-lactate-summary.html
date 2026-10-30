@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Magnesium &amp; Lactate Clearance — Critical Vector</title>
+<style>
+  :root {
+    --bg: #121212;
+    --card: #1a1a1a;
+    --text: #e8e8e8;
+    --muted: #9a9a9a;
+    --line: #2c2c2c;
+  }
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0 0 60px 0;
+    line-height: 1.5;
+  }
+  header { padding: 28px 20px 18px 20px; border-bottom: 1px solid var(--line); }
+  header .kicker {
+    font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 6px;
+  }
+  header h1 { font-size: 24px; margin: 0 0 8px 0; }
+  header p { color: var(--muted); font-size: 14px; margin: 0; }
+  nav {
+    display: flex; flex-wrap: wrap; gap: 6px;
+    padding: 16px 20px; border-bottom: 1px solid var(--line);
+  }
+  nav a {
+    font-size: 12px; color: var(--text); background: var(--card);
+    border: 1px solid var(--line); padding: 6px 10px; border-radius: 20px;
+    text-decoration: none; white-space: nowrap;
+  }
+  main { padding: 0 20px; max-width: 720px; margin: 0 auto; }
+  section { padding: 24px 0; border-bottom: 1px solid var(--line); }
+  section h2 {
+    font-size: 19px; margin: 0 0 12px 0; padding-bottom: 10px;
+    border-bottom: 2px solid var(--accent, #888);
+  }
+  section h2 .secnum { color: var(--accent, #888); margin-right: 6px; }
+  .box {
+    background: var(--tint, var(--card));
+    border: 1px solid var(--accent, var(--line));
+    border-radius: 8px; padding: 14px 16px; margin: 12px 0;
+    color: #1a1a1a; font-size: 14px;
+  }
+  .box p { margin: 6px 0; }
+  .box b { color: #000; }
+  p.body { font-size: 14.5px; margin: 10px 0; }
+  p.note { font-size: 12.5px; color: var(--muted); font-style: italic; margin: 8px 0; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13.5px; }
+  th { background: var(--accent, #444); color: #fff; text-align: left; padding: 8px 10px; }
+  td { padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  tr:nth-child(even) td { background: rgba(255,255,255,0.03); }
+  .statgrid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 14px 0;
+  }
+  .statgrid div { text-align: center; }
+  .statgrid .num { font-size: 20px; font-weight: 700; }
+  .statgrid .lbl { font-size: 10.5px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+  .sources { font-size: 12.5px; color: var(--muted); padding-left: 18px; }
+  .sources li { margin-bottom: 6px; }
+  footer {
+    padding: 24px 20px 0 20px; max-width: 720px; margin: 0 auto;
+    font-size: 12px; color: var(--muted);
+  }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style id="cv-retheme">
+/* CV re-theme v1.0 — maps this file onto _cv-schema.html tokens */
+:root{--bg:#0a0e14; --surface:#111720; --surface2:#182030; --border:rgba(255,255,255,0.08); --teal:#00d4aa; --blue:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa; --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670; --t-teal:rgba(0,212,170,0.10); --t-blue:rgba(96,165,250,0.10); --t-red:rgba(232,76,76,0.10); --t-amber:rgba(245,158,11,0.10); --t-purple:rgba(167,139,250,0.10);}
+:root{--card:var(--surface); --muted:var(--text2); --line:var(--border);}
+body{font-family:'Source Serif 4', Georgia, serif !important; background:var(--bg) !important; color:var(--text);}
+h1,h2,h3,h4,th,nav a,.label,.lbl,.badge,.pill{font-family:'Syne', sans-serif !important;}
+h1{font-weight:800 !important; letter-spacing:.005em;}
+h2,h3{font-weight:700;}
+.kicker, header .kicker{font-family:'IBM Plex Mono', monospace !important; color:var(--teal) !important; letter-spacing:.12em; font-size:11px !important;}
+code, pre, .mono{font-family:'IBM Plex Mono', monospace;}
+main{max-width:900px !important;}
+header{max-width:900px; margin:0 auto;}
+section h2{font-size:20px; border-bottom:2px solid var(--accent, var(--teal)) !important;}
+.box{background:var(--surface2) !important; color:var(--text) !important; border:1px solid var(--border) !important; border-left:3px solid var(--accent, var(--teal)) !important; border-radius:10px; font-size:14.5px;}
+.box b, .box strong{color:var(--text) !important;}
+th{background:var(--surface2) !important; color:var(--text) !important; border-bottom:2px solid var(--accent, var(--border));}
+nav a{background:var(--surface) !important; color:var(--text2) !important; border:1px solid var(--border) !important; font-weight:600;}
+nav a:hover{color:var(--text) !important; border-color:var(--teal) !important;}
+.alert{background:var(--t-amber) !important; border:1px solid rgba(245,158,11,0.35) !important; color:#fde6b8 !important;}
+.note-banner{background:var(--t-amber) !important; color:var(--text) !important; border-color:rgba(245,158,11,0.35) !important;}
+.pill-yes{background:var(--t-teal) !important; color:var(--teal) !important;}
+.pill-no{background:var(--t-red) !important; color:var(--red) !important;}
+.pill-offlabel{background:var(--t-amber) !important; color:var(--amber) !important;}
+.statgrid > div{background:var(--surface) !important; border:1px solid var(--border) !important; border-left:4px solid var(--accent, var(--teal)) !important; text-align:left !important; color:var(--text) !important;}
+.statgrid .num{font-family:'Syne', sans-serif; color:var(--accent, var(--teal)) !important;}
+.statgrid .lbl{color:var(--text2) !important;}
+.card{background:var(--surface) !important; border-color:var(--border) !important; color:var(--text) !important;}
+.word{font-family:'Syne', sans-serif; color:var(--teal) !important;}
+.fig{background:var(--surface) !important; border-color:var(--border) !important;}
+footer{font-style:italic; color:var(--text3) !important;}
+[style*="--accent:#7A1620"],[style*="--accent:#9C2B3B"],[style*="--accent:#8B2635"]{--accent:var(--red) !important; --tint:var(--t-red) !important;}
+[style*="--accent:#5B3A8E"]{--accent:var(--purple) !important; --tint:var(--t-purple) !important;}
+[style*="--accent:#1F6F5C"],[style*="--accent:#2E6B3E"]{--accent:var(--teal) !important; --tint:var(--t-teal) !important;}
+[style*="--accent:#1F3A5F"],[style*="--accent:#3A5A8C"]{--accent:var(--blue) !important; --tint:var(--t-blue) !important;}
+[style*="--accent:#B5591F"],[style*="--accent:#96700A"]{--accent:var(--amber) !important; --tint:var(--t-amber) !important;}
+[style*="--accent:#444444"]{--accent:var(--text3) !important; --tint:var(--surface2) !important;}
+@media print{
+  :root{--bg:#f4f5f7; --surface:#ffffff; --surface2:#eef1f4; --border:#d7dde3; --teal:#00a688; --blue:#1d4ed8; --red:#c53030; --amber:#b45309; --purple:#7c3aed; --text:#0f1923; --text2:#4a5670; --text3:#6b7688;
+    --t-teal:rgba(0,166,136,0.08); --t-blue:rgba(29,78,216,0.07); --t-red:rgba(197,48,48,0.07); --t-amber:rgba(180,83,9,0.08); --t-purple:rgba(124,58,237,0.07); --card:#ffffff; --muted:#4a5670; --line:#d7dde3;}
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  html, body{background:#f4f5f7 !important; color:#0f1923 !important;}
+  nav{display:none !important;}
+  td{color:#0f1923 !important;}
+  .box{background:#ffffff !important; color:#0f1923 !important;}
+  .alert, .note-banner{color:#0f1923 !important;}
+  .alert{background:rgba(180,83,9,0.08) !important;}
+  section, .box, table, .card, .step, .statgrid > div, .fig{break-inside:avoid;}
+  h2{break-after:avoid;}
+  a{color:inherit; text-decoration:none;}
+}
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ a{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../locker.html">The Evidence Locker</a><span class="cv-sb-meta">Published 6 Oct 2026 · R. E. Suscitate &amp; A. Systole</span></nav>
+
+<header>
+  <div class="kicker">Critical Vector · Trial Snapshot</div>
+  <h1>Magnesium &amp; Lactate Clearance in Sepsis</h1>
+  <p>World J Crit Care Med. 2026;15(2):115389. Reviewed against the primary trial and
+  prior comparable data.</p>
+</header>
+
+<nav>
+  <a href="#s1">1 · The question</a>
+  <a href="#s2">2 · Trial design</a>
+  <a href="#s3">3 · Primary outcome</a>
+  <a href="#s4">4 · Secondary findings</a>
+  <a href="#s5">5 · Mortality: the honest gap</a>
+  <a href="#s6">6 · How this compares</a>
+  <a href="#s7">7 · Bottom line &amp; sources</a>
+</nav>
+
+<main>
+
+<section id="s1" style="--accent:#1F3A5F; --tint:#E7EDF4;">
+  <h2><span class="secnum">1.</span>The Question</h2>
+  <p class="body">Elevated lactate in sepsis tracks with worse outcomes, and how fast it
+  clears tracks with recovery. Magnesium is a cofactor in the enzymes that run cellular
+  energy metabolism, so the logic is direct: if magnesium is low or borderline, topping it
+  up might help the body clear lactate faster. This trial is the first to specifically test
+  time to 20% lactate clearance as the primary endpoint after magnesium supplementation in
+  sepsis.</p>
+</section>
+
+<section id="s2" style="--accent:#1F6F5C; --tint:#E6F2EF;">
+  <h2><span class="secnum">2.</span>Trial Design</h2>
+  <table>
+    <tr><td><b>Design</b></td><td>Single-center, triple-blind RCT</td></tr>
+    <tr><td><b>Population</b></td><td>138 adults meeting Sepsis-3 criteria, serum lactate above 2 mmol/L</td></tr>
+    <tr><td><b>Intervention</b></td><td>2 g magnesium sulfate in 50 mL normal saline over 2 hours, daily for 3 days (Group M)</td></tr>
+    <tr><td><b>Control</b></td><td>Identical-volume saline placebo (Group P)</td></tr>
+    <tr><td><b>Primary outcome</b></td><td>Time to 20% lactate clearance from baseline</td></tr>
+    <tr><td><b>Secondary outcomes</b></td><td>28-day mortality, daily lactate clearance percentage, vasopressor dose, ICU and hospital length of stay</td></tr>
+  </table>
+</section>
+
+<section id="s3" style="--accent:#5B3A8E; --tint:#EFE9F5;">
+  <h2><span class="secnum">3.</span>Primary Outcome</h2>
+  <div class="statgrid">
+    <div><div class="num" style="color:#4ade80;">5.73 h</div><div class="lbl">Magnesium</div></div>
+    <div><div class="num" style="color:#f87171;">8.54 h</div><div class="lbl">Placebo</div></div>
+    <div><div class="num" style="color:#e8e8e8;">P&lt;.001</div><div class="lbl">Mean diff -2.81 h</div></div>
+  </div>
+  <div class="box">
+    <p>Time to 20% lactate clearance: 5.73 ± 2.19 hours with magnesium versus 8.54 ± 2.72
+    hours with placebo. Mean difference -2.81 hours (95% CI -3.65 to -1.99), P&lt;.001.</p>
+  </div>
+  <p class="note">Nearly 3 hours faster to hit the same clearance threshold is a real
+  physiologic signal, not a marginal one.</p>
+</section>
+
+<section id="s4" style="--accent:#B5591F; --tint:#F8ECE0;">
+  <h2><span class="secnum">4.</span>Secondary Findings</h2>
+  <table>
+    <tr><th>Measure</th><th>Magnesium</th><th>Placebo</th></tr>
+    <tr><td>Lactate clearance, day 1</td><td>18.88%</td><td>12.61%</td></tr>
+    <tr><td>Lactate clearance, day 2</td><td>30.02%</td><td>23.34%</td></tr>
+    <tr><td>Lactate clearance, day 3</td><td>50.74%</td><td>37.94%</td></tr>
+    <tr><td>ICU length of stay</td><td>8 days</td><td>12 days</td></tr>
+    <tr><td>Hospital length of stay</td><td>12 days</td><td>16 days</td></tr>
+  </table>
+  <p class="body">Vasopressor dose was significantly lower in the magnesium group on days
+  2 and 3, consistent with magnesium's known effect on vascular tone and microcirculatory
+  perfusion.</p>
+</section>
+
+<section id="s5" style="--accent:#7A1620; --tint:#F5E4E5;">
+  <h2><span class="secnum">5.</span>Mortality: the Honest Gap</h2>
+  <p class="body">28-day mortality was numerically lower in the magnesium group, but the
+  difference did not reach statistical significance. The authors attribute this to the
+  single-center design and modest sample size (138 patients total), not to an absence of
+  effect. This is the same pattern seen in earlier, smaller magnesium trials in sepsis.</p>
+  <p class="note">A faster physiologic marker moving faster is not the same claim as fewer
+  people dying. Both can be true, but only one of them was actually shown here.</p>
+</section>
+
+<section id="s6" style="--accent:#2E6B3E; --tint:#E9F3EA;">
+  <h2><span class="secnum">6.</span>How This Compares</h2>
+  <p class="body">Noormandi et al (Eur J Clin Pharmacol, 2020) ran a similar triple-arm
+  comparison in 58 patients with severe sepsis and found the same direction of effect,
+  though the two trials measured "time to clearance" differently, so the raw hour counts
+  are not directly comparable.</p>
+  <table>
+    <tr><th>Trial</th><th>N</th><th>Lactate clearance, day 2</th><th>Lactate clearance, day 3</th></tr>
+    <tr><td>Anbarasan et al, 2026</td><td>138</td><td>30.02% vs 23.34%</td><td>50.74% vs 37.94%</td></tr>
+    <tr><td>Noormandi et al, 2020</td><td>58</td><td>27.53% vs 23.79%</td><td>49.83% vs 37.02%</td></tr>
+  </table>
+  <p class="note">Two independent trials, different countries, similar magnitude of effect
+  on the percentage-clearance metric. That consistency is more reassuring than either trial
+  alone.</p>
+</section>
+
+<section id="s7" style="--accent:#444444; --tint:#EFEFEF; border-bottom:none;">
+  <h2><span class="secnum">7.</span>Bottom Line &amp; Sources</h2>
+  <div class="box">
+    <p><b>Clinical takeaway:</b> in septic patients with an elevated lactate, empiric
+    magnesium supplementation (2 g IV over 2 hours, daily for 3 days) speeds lactate
+    clearance, cuts vasopressor requirements, and shortens ICU and hospital stay in this
+    trial. It has not yet been shown, in an adequately powered trial, to reduce mortality.
+    Treat it as a physiologically plausible adjunct with two consistent positive trials
+    behind it, not as a mortality-proven intervention.</p>
+  </div>
+  <ul class="sources">
+    <li>Anbarasan C, Sharma A, et al. Impact of magnesium on the clearance of lactate in critically sick patients with sepsis: randomized clinical trial. World J Crit Care Med. 2026;15(2):115389. doi:10.5492/wjccm.v15.i2.115389</li>
+    <li>Noormandi A, Khalili H, Mohammadi M, Abdollahi A. Effect of magnesium supplementation on lactate clearance in critically ill patients with severe sepsis: a randomized clinical trial. Eur J Clin Pharmacol. 2020;76(2):175-184.</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  Built from the primary trial (World J Crit Care Med, 2026) and its closest prior
+  comparator. Both the primary-outcome hours and the day-by-day clearance percentages are
+  reported directly from the published results as of July 2026.
+<div class="cv-tagline" style="margin-top:8px">The Critical Vector · Direction and magnitude.</div></footer>
+
+</body>
+</html>

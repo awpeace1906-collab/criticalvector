@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hypertonic Saline vs. Mannitol — Critical Vector</title>
+<style>
+  :root { --bg:#121212; --card:#1a1a1a; --text:#e8e8e8; --muted:#9a9a9a; --line:#2c2c2c; }
+  * { box-sizing: border-box; }
+  body { background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif; margin:0; padding:0 0 60px 0; line-height:1.5; }
+  header { padding:28px 20px 18px 20px; border-bottom:1px solid var(--line); }
+  header .kicker { font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
+  header h1 { font-size:26px; margin:0 0 8px 0; }
+  header p { color:var(--muted); font-size:14px; margin:0; }
+  .alert { margin:16px 20px; background:#14202a; border:1px solid #24404f; color:#cfe3ee; padding:12px 16px; border-radius:8px; font-size:14px; }
+  nav { display:flex; flex-wrap:wrap; gap:6px; padding:16px 20px; border-bottom:1px solid var(--line); }
+  nav a { font-size:12px; color:var(--text); background:var(--card); border:1px solid var(--line); padding:6px 10px; border-radius:20px; text-decoration:none; white-space:nowrap; }
+  main { padding:0 20px; max-width:760px; margin:0 auto; }
+  section { padding:26px 0; border-bottom:1px solid var(--line); }
+  section h2 .secnum { color:var(--accent,#888); margin-right:4px; }
+  section h2 { font-size:20px; margin:0 0 12px 0; padding-bottom:10px; border-bottom:2px solid var(--accent,#888); }
+  .box { background:var(--tint,var(--card)); border:1px solid var(--accent,var(--line)); border-radius:8px; padding:14px 16px; margin:12px 0; color:#1a1a1a; font-size:14px; }
+  .box p { margin:6px 0; } .box b { color:#000; }
+  p.body { font-size:14.5px; margin:10px 0; }
+  p.note { font-size:12.5px; color:var(--muted); font-style:italic; margin:8px 0; }
+  table { width:100%; border-collapse:collapse; margin:12px 0; font-size:13.5px; }
+  th { background:var(--accent,#444); color:#fff; text-align:left; padding:8px 10px; }
+  td { padding:8px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  tr:nth-child(even) td { background:rgba(255,255,255,0.03); }
+  .sources { font-size:12.5px; color:var(--muted); padding-left:18px; }
+  .sources li { margin-bottom:6px; }
+  .xref { margin:12px 0; padding:12px 16px; border-radius:8px; background:#14202a; border:1px solid #24404f; color:#cfe3ee; font-size:13.5px; }
+  footer { padding:24px 20px 0 20px; max-width:760px; margin:0 auto; font-size:12px; color:var(--muted); }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style id="cv-retheme">
+/* CV re-theme v1.0 — maps this file onto _cv-schema.html tokens */
+:root{--bg:#0a0e14; --surface:#111720; --surface2:#182030; --border:rgba(255,255,255,0.08); --teal:#00d4aa; --blue:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa; --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670; --t-teal:rgba(0,212,170,0.10); --t-blue:rgba(96,165,250,0.10); --t-red:rgba(232,76,76,0.10); --t-amber:rgba(245,158,11,0.10); --t-purple:rgba(167,139,250,0.10);}
+:root{--card:var(--surface); --muted:var(--text2); --line:var(--border);}
+body{font-family:'Source Serif 4', Georgia, serif !important; background:var(--bg) !important; color:var(--text);}
+h1,h2,h3,h4,th,nav a,.label,.lbl,.badge,.pill{font-family:'Syne', sans-serif !important;}
+h1{font-weight:800 !important; letter-spacing:.005em;}
+h2,h3{font-weight:700;}
+.kicker, header .kicker{font-family:'IBM Plex Mono', monospace !important; color:var(--teal) !important; letter-spacing:.12em; font-size:11px !important;}
+code, pre, .mono{font-family:'IBM Plex Mono', monospace;}
+main{max-width:900px !important;}
+header{max-width:900px; margin:0 auto;}
+section h2{font-size:20px; border-bottom:2px solid var(--accent, var(--teal)) !important;}
+.box{background:var(--surface2) !important; color:var(--text) !important; border:1px solid var(--border) !important; border-left:3px solid var(--accent, var(--teal)) !important; border-radius:10px; font-size:14.5px;}
+.box b, .box strong{color:var(--text) !important;}
+th{background:var(--surface2) !important; color:var(--text) !important; border-bottom:2px solid var(--accent, var(--border));}
+nav a{background:var(--surface) !important; color:var(--text2) !important; border:1px solid var(--border) !important; font-weight:600;}
+nav a:hover{color:var(--text) !important; border-color:var(--teal) !important;}
+.alert{background:var(--t-amber) !important; border:1px solid rgba(245,158,11,0.35) !important; color:#fde6b8 !important;}
+.note-banner{background:var(--t-amber) !important; color:var(--text) !important; border-color:rgba(245,158,11,0.35) !important;}
+.pill-yes{background:var(--t-teal) !important; color:var(--teal) !important;}
+.pill-no{background:var(--t-red) !important; color:var(--red) !important;}
+.pill-offlabel{background:var(--t-amber) !important; color:var(--amber) !important;}
+.statgrid > div{background:var(--surface) !important; border:1px solid var(--border) !important; border-left:4px solid var(--accent, var(--teal)) !important; text-align:left !important; color:var(--text) !important;}
+.statgrid .num{font-family:'Syne', sans-serif; color:var(--accent, var(--teal)) !important;}
+.statgrid .lbl{color:var(--text2) !important;}
+.card{background:var(--surface) !important; border-color:var(--border) !important; color:var(--text) !important;}
+.word{font-family:'Syne', sans-serif; color:var(--teal) !important;}
+.fig{background:var(--surface) !important; border-color:var(--border) !important;}
+footer{font-style:italic; color:var(--text3) !important;}
+[style*="--accent:#7A1620"],[style*="--accent:#9C2B3B"],[style*="--accent:#8B2635"]{--accent:var(--red) !important; --tint:var(--t-red) !important;}
+[style*="--accent:#5B3A8E"]{--accent:var(--purple) !important; --tint:var(--t-purple) !important;}
+[style*="--accent:#1F6F5C"],[style*="--accent:#2E6B3E"]{--accent:var(--teal) !important; --tint:var(--t-teal) !important;}
+[style*="--accent:#1F3A5F"],[style*="--accent:#3A5A8C"]{--accent:var(--blue) !important; --tint:var(--t-blue) !important;}
+[style*="--accent:#B5591F"],[style*="--accent:#96700A"]{--accent:var(--amber) !important; --tint:var(--t-amber) !important;}
+[style*="--accent:#444444"]{--accent:var(--text3) !important; --tint:var(--surface2) !important;}
+@media print{
+  :root{--bg:#f4f5f7; --surface:#ffffff; --surface2:#eef1f4; --border:#d7dde3; --teal:#00a688; --blue:#1d4ed8; --red:#c53030; --amber:#b45309; --purple:#7c3aed; --text:#0f1923; --text2:#4a5670; --text3:#6b7688;
+    --t-teal:rgba(0,166,136,0.08); --t-blue:rgba(29,78,216,0.07); --t-red:rgba(197,48,48,0.07); --t-amber:rgba(180,83,9,0.08); --t-purple:rgba(124,58,237,0.07); --card:#ffffff; --muted:#4a5670; --line:#d7dde3;}
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  html, body{background:#f4f5f7 !important; color:#0f1923 !important;}
+  nav{display:none !important;}
+  td{color:#0f1923 !important;}
+  .box{background:#ffffff !important; color:#0f1923 !important;}
+  .alert, .note-banner{color:#0f1923 !important;}
+  .alert{background:rgba(180,83,9,0.08) !important;}
+  section, .box, table, .card, .step, .statgrid > div, .fig{break-inside:avoid;}
+  h2{break-after:avoid;}
+  a{color:inherit; text-decoration:none;}
+}
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ a{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../workshop.html">The Workshop</a><span class="cv-sb-meta">Published 7 Oct 2026 · R. E. Suscitate &amp; A. Systole</span></nav>
+
+<header>
+  <div class="kicker">Critical Vector · Pocket Reference</div>
+  <h1>Hypertonic Saline vs. Mannitol</h1>
+  <p>v1. Not which one is better — which one is safer for the patient in front of you. Full
+  mechanism comparison, the actual meta-analytic evidence (including where it disagrees with
+  itself), dosing, safety thresholds, and a bedside decision framework. Verified against Crit Care
+  Med, Neurosurgery, Neurosurg Rev, and primary hyperosmolar-therapy literature. July 2026.</p>
+</header>
+
+<div class="alert">
+  ICP management fundamentals (Monro-Kellie doctrine, herniation recognition, Cushing's triad,
+  CO2 reactivity) already live in the arterial waveform/ICP guide. This document is specifically
+  about the choice between the two hyperosmolar agents — not a rebuild of general ICP management.
+</div>
+
+<nav>
+  <a href="#s1">1 · Why hyperosmolar therapy works</a>
+  <a href="#s2">2 · Mechanism comparison</a>
+  <a href="#s3">3 · The evidence: does either actually win?</a>
+  <a href="#s4">4 · Dosing</a>
+  <a href="#s5">5 · Safety profiles &amp; contraindications</a>
+  <a href="#s6">6 · The bedside decision</a>
+  <a href="#s7">7 · Quick card &amp; sources</a>
+</nav>
+
+<main>
+
+<section id="s1" style="--accent:#1F3A5F; --tint:#E7EDF4;">
+  <h2><span class="secnum">1.</span> Why Hyperosmolar Therapy Works</h2>
+  <p class="body">Both agents lower intracranial pressure by the same fundamental mechanism:
+  creating an osmotic gradient across an intact blood-brain barrier that pulls free water out of
+  brain tissue and into the vasculature, reducing cerebral edema and brain volume. Both are
+  genuinely effective — the more clinically important question is not whether either works, but
+  which one is safer for a specific patient's physiology.</p>
+  <div class="box">
+    <p><b>The premise most reference cards skip:</b> most clinicians pick between these two based
+    on habit — whichever their training program or attending defaulted to — rather than the
+    patient's volume status, renal function, or sodium trajectory in front of them.</p>
+  </div>
+</section>
+
+<section id="s2" style="--accent:#5B3A8E; --tint:#EFE9F5;">
+  <h2><span class="secnum">2.</span> Mechanism Comparison</h2>
+  <table>
+    <tr><th>Property</th><th>Mannitol</th><th>Hypertonic saline</th></tr>
+    <tr><td><b>Class</b></td><td>Osmotic diuretic (sugar alcohol)</td><td>Hyperosmolar sodium
+    solution</td></tr>
+    <tr><td><b>Reflection coefficient (BBB)</b></td><td>~0.9 — some crosses an injured BBB over
+    time, blunting the osmotic gradient</td><td>~1.0 — stays almost entirely intravascular even
+    with some BBB disruption, a more durable gradient</td></tr>
+    <tr><td><b>Secondary effects</b></td><td>Rheological effect: reduces blood viscosity,
+    transiently improves cerebral blood flow and oxygen delivery independent of the osmotic
+    effect; obligate diuresis</td><td>Volume expansion: increases intravascular volume and
+    cerebral perfusion pressure, generally without the diuretic volume loss</td></tr>
+    <tr><td><b>Effect on volume status</b></td><td>Depletes intravascular volume via diuresis —
+    a problem in an already hypovolemic or hypotensive patient</td><td>Expands intravascular
+    volume — an advantage in hypotension, a liability in volume-overloaded states (heart
+    failure)</td></tr>
+  </table>
+  <p class="note">The reflection-coefficient difference is the mechanistic reason hypertonic
+  saline is generally considered to hold its osmotic gradient more reliably across a
+  disrupted blood-brain barrier than mannitol — the theoretical basis for HS's proposed edge,
+  distinct from the clinical trial question addressed in section 3.</p>
+</section>
+
+<section id="s3" style="--accent:#9C2B3B; --tint:#F6E9EA;">
+  <h2><span class="secnum">3.</span> The Evidence: Does Either Actually Win?</h2>
+  <p class="body">This is a heavily meta-analyzed question, and the honest answer depends on
+  which time window you look at — a nuance the clean "HTS has the edge" framing common in social
+  media summaries tends to flatten.</p>
+  <table>
+    <tr><th>Study</th><th>Finding</th></tr>
+    <tr><td><b>Kamel et al., Crit Care Med 2011</b></td><td>Meta-analysis of randomized trials
+    comparing equiosmolar doses. Findings suggested hypertonic saline may be superior to mannitol
+    as the standard of care, but the authors explicitly called for a large multicenter RCT to
+    definitively establish first-line therapy — a call that, as of this writing, still hasn't
+    been fully answered.</td></tr>
+    <tr><td><b>Gu et al., Neurosurg Rev 2019</b></td><td>12 RCTs, 438 patients. HS and mannitol
+    were close on both functional outcome (RR 1.17, 95% CI 0.89–1.54) and ICP reduction (MD −0.16,
+    95% CI −0.59 to 0.26) — no significant difference found.</td></tr>
+    <tr><td><b>Mangat et al., Neurosurgery 2020</b></td><td>HS showed a superior combined effect
+    on ICP and CPP burden. Notably, HS patients had a significant CPP increase from baseline
+    (63±15 to 76±17 mmHg at 120 min) that was not seen with mannitol — consistent with HS's
+    volume-expansion mechanism in section 2.</td></tr>
+    <tr><td><b>Cai &amp; He, Brain Inj 2024</b></td><td>15 RCTs, 624 patients. HS raised CPP
+    more than mannitol at 30–60 minutes (MD 5.54 mmHg, 95% CI 3.04–8.03). <b>No significant
+    difference</b> in mortality, functional outcome, successful ICP treatment, ICP at 30–60 or
+    90–120 minutes, CPP at 90–120 minutes, or treatment failure.</td></tr>
+  </table>
+  <div class="box" style="--accent:#7A1620; --tint:#F5E4E5;">
+    <p><b>The nuance worth remembering:</b> hypertonic saline's advantage is most consistently
+    demonstrated in the acute, early post-infusion window — not as a durable, sustained
+    neuroprotective superiority over mannitol. Whether HS confers lasting outcome benefit over
+    mannitol remains unresolved (Cochrane 2020; Cai 2024). This is a genuinely
+    live evidence question, not a settled one in HS's favor.</p>
+  </div>
+</section>
+
+<section id="s4" style="--accent:#1F6F5C; --tint:#E6F2EF;">
+  <h2><span class="secnum">4.</span> Dosing</h2>
+  <table>
+    <tr><th>Parameter</th><th>Mannitol</th><th>Hypertonic saline</th></tr>
+    <tr><td><b>Typical dose</b></td><td>0.25–1 g/kg IV bolus</td><td>3%: 150–250 mL bolus, or
+    continuous infusion; 23.4%: 30 mL bolus (central line preferred)</td></tr>
+    <tr><td><b>Access</b></td><td>Peripheral line acceptable</td><td>3% peripheral IV generally
+    acceptable; higher concentrations (23.4%) preferably via central venous catheter</td></tr>
+    <tr><td><b>Onset of action</b></td><td>15–30 minutes</td><td>5–15 minutes</td></tr>
+    <tr><td><b>Duration of action</b></td><td>4–6 hours</td><td>2–4 hours</td></tr>
+  </table>
+  <p class="note">The faster onset and shorter duration of HS versus mannitol maps directly onto
+  the acute-vs-sustained evidence pattern in section 3 — a faster-acting agent showing its
+  clearest advantage in the acute window, then converging with the slower, longer-acting agent
+  by the time both have reached steady effect.</p>
+</section>
+
+<section id="s5" style="--accent:#B5591F; --tint:#F8ECE0;">
+  <h2><span class="secnum">5.</span> Safety Profiles &amp; Contraindications</h2>
+  <table>
+    <tr><th>Risk</th><th>Mannitol</th><th>Hypertonic saline</th></tr>
+    <tr><td><b>Hard stop</b></td><td>Serum osmolality &gt;320 mOsm/L</td><td>Serum sodium &gt;160–165
+    mEq/L</td></tr>
+    <tr><td><b>Volume/hemodynamic risk</b></td><td>Hypotension and hypovolemia from obligate
+    diuresis</td><td>Volume overload in patients with underlying heart failure</td></tr>
+    <tr><td><b>Renal risk</b></td><td>Acute kidney injury risk, particularly with repeated dosing
+    or in dehydrated/renal-compromised patients</td><td>Lower direct renal toxicity signal</td></tr>
+    <tr><td><b>Rebound phenomenon</b></td><td>Rebound ICP elevation described, particularly with
+    repeated dosing as the agent redistributes</td><td>Less prominently described, though not
+    entirely absent from the literature</td></tr>
+    <tr><td><b>Electrolyte risk</b></td><td>Dilutional hyponatremia</td><td>Hypernatremia and
+    volume overload if not monitored; central pontine myelinolysis is a theoretical concern with
+    rapid correction, though the acute-bolus context of ICP treatment differs from the chronic
+    hyponatremia correction scenario that risk is best established in</td></tr>
+  </table>
+  <div class="box">
+    <p><b>Avoid mannitol in:</b> dehydrated, hypotensive, or renal-compromised patients — the
+    obligate diuresis compounds all three problems simultaneously.</p>
+  </div>
+  <div class="box">
+    <p><b>Hypertonic saline's edge in specific populations:</b> more stable blood pressure with
+    fewer hemodynamic swings; a better option in patients who are already hemodynamically
+    unstable; preferred in dehydration and renal dysfunction where mannitol's diuretic effect
+    would compound the problem; may reduce ICU length of stay in some analyses; effective ICP
+    reduction with a comparatively predictable response, per the dosing/onset data in section 4.</p>
+  </div>
+  <p class="note">Reading sections 3 and 5 together: mannitol's safety concerns and hypertonic
+  saline's proposed advantages both trace back to the same mechanistic difference — mannitol's
+  obligate diuresis versus HS's volume-expanding effect. The choice is less "which drug is
+  better" and more "which direction do you need this patient's volume status to move."</p>
+</section>
+
+<section id="s6" style="--accent:#5B3A8E; --tint:#EFE9F5;">
+  <h2><span class="secnum">6.</span> The Bedside Decision</h2>
+  <table>
+    <tr><th>Parameter</th><th>Favors mannitol</th><th>Favors hypertonic saline</th></tr>
+    <tr><td><b>Volume status</b></td><td>Euvolemic or hypervolemic</td><td>Hypovolemic or
+    hemodynamically unstable</td></tr>
+    <tr><td><b>Renal function</b></td><td>Normal renal function</td><td>Renal dysfunction present
+    or at risk</td></tr>
+    <tr><td><b>Hemodynamics</b></td><td>Stable, normotensive</td><td>Unstable, hypotensive, or
+    at risk of hypotension</td></tr>
+    <tr><td><b>Access available</b></td><td>Peripheral line only</td><td>Peripheral OK for 3%;
+    central access available if higher concentration considered</td></tr>
+    <tr><td><b>Lab trigger to stop</b></td><td>Osmolality &gt;320 mOsm/L</td><td>Sodium &gt;160–165
+    mEq/L</td></tr>
+  </table>
+  <div class="box">
+    <p><b>The one-line summary worth remembering:</b> it's not about which one is better — the
+    meta-analytic evidence in section 3 doesn't clearly support either as definitively superior
+    once you look past the acute 30–60 minute window. It's about which one is safer for the
+    specific patient's volume status, renal function, and hemodynamics in front of you.</p>
+  </div>
+</section>
+
+<section id="s7" style="--accent:#444444; --tint:#EFEFEF; border-bottom:none;">
+  <h2><span class="secnum">7.</span> Quick Reference Card &amp; Primary Sources</h2>
+  <table>
+    <tr><th>Scenario</th><th>Reasonable default</th></tr>
+    <tr><td><b>Normovolemic, normal renal function</b></td><td>Either agent reasonable; mannitol
+    a standard, well-established default</td></tr>
+    <tr><td><b>Hypotensive / hemodynamically unstable</b></td><td>Hypertonic saline preferred —
+    avoids compounding volume depletion</td></tr>
+    <tr><td><b>Renal dysfunction or dehydration</b></td><td>Hypertonic saline preferred —
+    mannitol's diuretic effect compounds the problem</td></tr>
+    <tr><td><b>Osmolality already &gt;320 mOsm/L</b></td><td>Avoid further mannitol</td></tr>
+    <tr><td><b>Sodium already &gt;160–165 mEq/L</b></td><td>Avoid further hypertonic saline</td></tr>
+    <tr><td><b>Acute herniation, need fastest onset</b></td><td>Hypertonic saline (5–15 min onset
+    vs. mannitol's 15–30 min)</td></tr>
+  </table>
+  <p class="body"><b>Primary sources checked for this guide:</b></p>
+  <ul class="sources">
+    <li>Kamel H, Navi BB, Nakagawa K, Hemphill JC 3rd, Ko NU. Hypertonic saline versus mannitol for the treatment of elevated intracranial pressure: a meta-analysis of randomized clinical trials. Crit Care Med. 2011;39(3):554-559.</li>
+    <li>Gu J, Huang H, Huang Y, Sun H, Xu H. Hypertonic saline or mannitol for treating elevated intracranial pressure in traumatic brain injury: a meta-analysis of randomized controlled trials. Neurosurg Rev. 2019;42(2):499-509.</li>
+    <li>Mangat HS, Wu X, Gerber LM, Schwarz JT, Fakhar M, Murthy SB, et al. Hypertonic saline is superior to mannitol for the combined effect on intracranial pressure and cerebral perfusion pressure burdens in patients with severe traumatic brain injury. Neurosurgery. 2020;86(2):221-230.</li>
+    <li>Shi J, Tan L, Ye J, Hu L. Hypertonic saline and mannitol in patients with traumatic brain injury: a systematic review and meta-analysis. Medicine (Baltimore). 2020;99(35):e21655.</li>
+    <li>Cai L, He W. Effectiveness of hypertonic saline infusion in management of traumatic brain injury: an updated systematic review and meta-analysis of randomized controlled trials. Brain Inj. 2024;38(12):977-984. doi:10.1080/02699052.2024.2363340</li>
+    <li>Rickard AC, Smith JE, Newell P, Bailey A, Kehoe A, Mann C. Salt or sugar for your injured brain? A meta-analysis of randomised controlled trials of mannitol versus hypertonic sodium solutions to manage raised intracranial pressure in traumatic brain injury. Emerg Med J. 2014;31:679-683.</li>
+    <li>Chen H, Song Z, Dennis JA. Hypertonic saline versus other intracranial pressure-lowering agents for people with acute traumatic brain injury. Cochrane Database Syst Rev. 2020;1(1):CD010904.</li>
+    <li>Sakellaridis N, Pavlou E, Karatzas S, et al. Comparison of mannitol and hypertonic saline in the treatment of severe brain injuries. J Neurosurg. 2011;114(2):545-548.</li>
+    <li>Mangat HS, Chiu YL, Gerber LM, et al. Hypertonic saline reduces cumulative and daily intracranial pressure burdens after severe traumatic brain injury. J Neurosurg. 2015;122:202-210.</li>
+    <li><b>Retracted — do not cite:</b> Han C, Yang F, Guo S, Zhang J. Hypertonic saline compared to mannitol for the management of elevated intracranial pressure in traumatic brain injury: a meta-analysis. Front Surg. 2021;8:765784. Retraction: Front Surg. 2023;10:1220316. Source of the treatment-failure OR 0.38 figure formerly shown in section 3.</li>
+    <li>Therapeutic comparison of hypertonic saline and mannitol in pediatric intracranial hypertension: a systematic review and meta-analysis. Childs Nerv Syst. 2025 (PROSPERO CRD420251037689).</li>
+    <li>Burgess S, Abu-Laban RB, Slavik RS, Vu EN, Zed PJ. A systematic review of randomized controlled trials comparing hypertonic sodium solutions and mannitol for traumatic brain injury: implications for emergency department management.</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  The meta-analytic literature on this question is large, frequently contradictory in its
+  specifics, and most honest when it says the durable superiority question remains unresolved —
+  treat any single-source claim of definitive superiority with appropriate skepticism, including
+  the clean framing common in social-media clinical summaries. Every figure and threshold above
+  was cross-checked against the sources listed here as of July 2026.
+<div class="cv-tagline" style="margin-top:8px">The Critical Vector · Direction and magnitude.</div></footer>
+
+</body>
+</html>

@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Board-Tested Infections — The Critical Vector</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0e14; --surface:#111720; --surface2:#182030;
+  --border:rgba(255,255,255,0.08);
+  --teal:#00d4aa; --blue:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa;
+  --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  background:var(--bg); color:var(--text);
+  font-family:'Source Serif 4', Georgia, serif; font-size:16px; line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,.label,.kicker,.badge,nav a,th{font-family:'Syne', sans-serif;}
+.mono{font-family:'IBM Plex Mono', monospace;}
+/* Widened from the canonical 900px prose column: this doc is table-primary rather than
+   prose-primary, and six columns of clinical reasoning need the room. Everything else —
+   fonts, tokens, components — follows the canonical spec exactly. */
+.page{max-width:1440px; margin:0 auto; padding:0 32px 60px;}
+
+header{padding:32px 0 20px; border-bottom:1px solid var(--border);}
+.kicker{
+  font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--teal); margin-bottom:10px;
+}
+h1{font-family:'Syne', sans-serif; font-weight:800; font-size:30px; line-height:1.15; margin:0 0 10px; letter-spacing:.005em;}
+header p{font-family:'Source Serif 4', serif; font-style:italic; color:var(--text2); font-size:15.5px; margin:0; max-width:800px;}
+
+.alert{
+  margin:18px 0; padding:13px 18px; border-radius:10px; font-size:14px;
+  background:rgba(0,212,170,0.10); border:1px solid rgba(0,212,170,0.28); color:#bdf5e8;
+}
+
+nav{display:flex; flex-wrap:wrap; gap:7px; padding:18px 0; border-bottom:1px solid var(--border); margin-bottom:8px;}
+nav a{
+  font-size:12.5px; font-weight:600; color:var(--text2); background:var(--surface);
+  border:1px solid var(--border); padding:7px 12px; border-radius:20px;
+  text-decoration:none; white-space:nowrap; transition:all .15s;
+}
+nav a:hover{color:var(--text); border-color:var(--teal);}
+
+section{padding:30px 0; border-bottom:1px solid var(--border);}
+.sec-head{
+  display:flex; align-items:baseline; gap:10px; padding:11px 18px;
+  border-left:4px solid var(--teal);
+  background:linear-gradient(90deg, rgba(0,212,170,0.10), transparent);
+  border-radius:0 8px 8px 0; margin-bottom:16px;
+}
+.sec-head.c-blue{border-left-color:var(--blue); background:linear-gradient(90deg, rgba(96,165,250,0.10), transparent);}
+.sec-head.c-purple{border-left-color:var(--purple); background:linear-gradient(90deg, rgba(167,139,250,0.10), transparent);}
+.sec-num{font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--text3);}
+h2{font-family:'Syne', sans-serif; font-weight:700; font-size:20px; margin:0; color:var(--text);}
+.tagline{font-family:'Source Serif 4', serif; font-style:italic; font-size:13.5px; color:var(--text2); margin:0 0 12px;}
+
+table{width:100%; border-collapse:collapse; margin:14px 0; font-size:13.3px; table-layout:fixed;}
+th{background:var(--surface2); color:var(--text); text-align:left; padding:9px 11px; font-weight:600; font-size:11.5px; letter-spacing:.02em; border-bottom:2px solid var(--border);}
+td{padding:9px 11px; border-bottom:1px solid var(--border); vertical-align:top; font-family:'Source Serif 4', serif; line-height:1.42;}
+tr:nth-child(even) td{background:rgba(255,255,255,0.02);}
+col.c-inf{width:12%;} col.c-abx{width:19%;} col.c-rat{width:19%;}
+col.c-sym{width:17%;} col.c-res{width:17%;} col.c-note{width:16%;}
+td.infection{font-family:'Syne', sans-serif; font-weight:700; font-size:14.5px; color:var(--text);}
+td.infection .sub{display:block; font-family:'IBM Plex Mono', monospace; font-size:9.5px; text-transform:uppercase;
+  letter-spacing:.05em; color:var(--teal); font-weight:500; margin-top:3px;}
+td .drug{display:block; margin-bottom:3px;}
+td .drug b{color:var(--text);}
+td .alt{color:var(--text2); font-size:12px;}
+.tag{font-family:'IBM Plex Mono', monospace; font-size:9.5px; text-transform:uppercase; letter-spacing:.05em;
+  padding:2px 9px; border-radius:20px; display:inline-block; margin-top:5px;}
+.tag-red{background:rgba(232,76,76,0.14); color:#ff9e9e; border:1px solid rgba(232,76,76,0.3);}
+
+footer{padding:26px 0 0; margin-top:6px; font-size:12.5px; color:var(--text3); font-family:'Source Serif 4', serif; font-style:italic;}
+footer a{color:var(--teal);}
+
+@media print{
+  @page{ size: landscape; margin: 0.5in; }
+  :root{
+    --bg:#ffffff; --surface:#f5f4f0; --surface2:#ece9e1;
+    --border:#cfc9ba;
+    --teal:#0a8a6d; --blue:#1d4ed8; --red:#b3362c; --amber:#a1690a; --purple:#6d4fc7;
+    --text:#17171a; --text2:#4a4840; --text3:#6b6858;
+  }
+  body{background:#fff;}
+  .page{max-width:none; padding:0;}
+  nav{display:none;}
+  section{page-break-before:always; border-bottom:none;}
+  section:first-of-type{page-break-before:auto;}
+  thead{display:table-header-group;}
+  tr{break-inside:avoid;}
+}
+</style>
+<style id="cv-print">
+/* ===== CV PRINT v1.0 (per _cv-schema.html) ===== */
+@media print{
+  :root{
+    --bg:#f4f5f7; --surface:#ffffff; --surface2:#eef1f4; --border:#d7dde3;
+    --teal:#00a688; --blue:#1d4ed8; --accent:#00a688; --accent2:#1d4ed8;
+    --red:#c53030; --amber:#b45309; --purple:#7c3aed;
+    --text:#0f1923; --text2:#4a5670; --text3:#6b7688;
+  }
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  html, body{background:#f4f5f7 !important; color:#0f1923 !important;}
+  nav, .nav, .toc-pills{display:none !important;}
+  .alert{background:rgba(0,166,136,.08) !important; color:#0f1923 !important;}
+  td{color:#0f1923 !important;}
+  section, .box, table, .card, .stat-card, .statcard, .step-row, .step{break-inside:avoid;}
+  h2, .sec-head{break-after:avoid;}
+  a{color:inherit; text-decoration:none;}
+}
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ a{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../workshop.html">The Workshop</a><span class="cv-sb-meta">Published 7 Oct 2026 · R. E. Suscitate &amp; A. Systole</span></nav>
+<div class="page">
+
+<header>
+  <div class="kicker">The Critical Vector &middot; Empiric Therapy Guide, Part I of II</div>
+  <h1>Board-Tested Infections</h1>
+  <p>Bacterial, fungal, and viral pathogens COMLEX Level 2-CE reliably tests: the classic
+  symptom-triad vignette, the signature lab or imaging finding, and the one empiric regimen
+  the question wants you to name. Companion file covers ED/ICU presentations and rare,
+  time-critical infections.</p>
+</header>
+
+<div class="alert">
+  Regimens reflect standard board-pattern empiric teaching for study and clinical reasoning —
+  confirm against current guidelines and local antibiogram before treating an actual patient.
+  Doses are intentionally omitted; this is a bug/drug/why reference, not a dosing card.
+</div>
+
+<nav>
+  <a href="#bact">Bacterial</a>
+  <a href="#fung">Fungal</a>
+  <a href="#vir">Viral</a>
+</nav>
+
+<section id="bact">
+  <div class="sec-head"><span class="sec-num">01</span><h2>Bacterial</h2></div>
+  <table>
+    <colgroup><col class="c-inf"><col class="c-abx"><col class="c-rat"><col class="c-sym"><col class="c-res"><col class="c-note"></colgroup>
+    <thead><tr><th>Infection</th><th>Abx</th><th>Abx Rationale</th><th>Symptom Profile</th><th>Clinical Result Profile</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="infection">Group A Strep Pharyngitis</td>
+        <td><span class="drug"><b>Penicillin V</b> or <b>amoxicillin</b></span><span class="alt">Alt: cephalexin, azithromycin if PCN-allergic</span></td>
+        <td>S. pyogenes remains universally PCN-sensitive; narrow-spectrum first-line prevents rheumatic fever without broad collateral coverage.</td>
+        <td>Sudden sore throat, fever, tonsillar exudate, tender anterior cervical nodes, <i>absence</i> of cough/coryza.</td>
+        <td>Centor criteria 3–4 → rapid strep/culture; (+) rapid antigen or culture confirms.</td>
+        <td>Treat to prevent rheumatic fever, not primarily to shorten symptoms. Avoid amoxicillin if mono is on the differential (rash).</td>
+      </tr>
+      <tr>
+        <td class="infection">CAP — Typical<span class="sub">outpatient, healthy</span></td>
+        <td><span class="drug"><b>Amoxicillin</b> (high-dose)</span><span class="alt">Alt: doxycycline</span></td>
+        <td>S. pneumoniae is the dominant typical pathogen; narrow coverage preferred in low-risk outpatients per stewardship principles.</td>
+        <td>Acute fever, productive cough, pleuritic chest pain, rigors.</td>
+        <td>CXR: lobar consolidation. Elevated WBC with left shift.</td>
+        <td>CURB-65 to triage site of care. Macrolide monotherapy now limited by rising pneumococcal resistance.</td>
+      </tr>
+      <tr>
+        <td class="infection">CAP — Atypical<span class="sub">Mycoplasma / Chlamydophila / Legionella</span></td>
+        <td><span class="drug"><b>Azithromycin</b> or <b>doxycycline</b></span></td>
+        <td>Atypicals lack a cell wall (Mycoplasma) or are intracellular; beta-lactams are ineffective, macrolides/tetracyclines cover intracellular replication.</td>
+        <td>"Walking pneumonia": gradual onset, dry cough, headache, malaise out of proportion to exam.</td>
+        <td>CXR: patchy interstitial infiltrate, worse than exam suggests. Cold agglutinins (+) in Mycoplasma.</td>
+        <td>Legionella: hyponatremia + GI symptoms + confusion is the classic triad; urine antigen test.</td>
+      </tr>
+      <tr>
+        <td class="infection">Uncomplicated Cystitis</td>
+        <td><span class="drug"><b>Nitrofurantoin</b> or <b>TMP-SMX</b></span><span class="alt">Alt: fosfomycin single-dose</span></td>
+        <td>Both concentrate in urine with minimal systemic exposure and collateral resistance pressure; first-line per stewardship guidance for uncomplicated lower-tract disease.</td>
+        <td>Dysuria, urgency, frequency, suprapubic discomfort; afebrile, no flank pain.</td>
+        <td>UA: leukocyte esterase (+), nitrites (+, E. coli), pyuria.</td>
+        <td>Avoid nitrofurantoin if suspected early pyelo (poor tissue penetration) or CrCl &lt;30.</td>
+      </tr>
+      <tr>
+        <td class="infection">Pyelonephritis<span class="sub">outpatient-appropriate</span></td>
+        <td><span class="drug"><b>Fluoroquinolone</b> (cipro/levofloxacin)</span><span class="alt">Alt: ceftriaxone (single dose) → oral step-down</span></td>
+        <td>Requires an agent with reliable renal parenchymal and blood-level penetration, unlike nitrofurantoin.</td>
+        <td>Fever, chills, flank pain, CVA tenderness, +/- nausea/vomiting; cystitis symptoms often present.</td>
+        <td>UA: pyuria, WBC casts (specific for pyelo). Urine culture to confirm/de-escalate.</td>
+        <td>Admit and use IV therapy if unable to tolerate PO, pregnant, or systemically ill.</td>
+      </tr>
+      <tr>
+        <td class="infection">Acute Otitis Media</td>
+        <td><span class="drug"><b>Amoxicillin</b> (high-dose)</span><span class="alt">Alt: amox-clavulanate if recent abx/conjunctivitis</span></td>
+        <td>S. pneumoniae, nontypeable H. influenzae, M. catarrhalis; high-dose overcomes intermediate pneumococcal resistance.</td>
+        <td>Ear pain, fever, irritability (peds); recent URI.</td>
+        <td>Otoscopy: bulging, erythematous, non-mobile TM; +/- effusion.</td>
+        <td>Watchful waiting appropriate in select low-risk children per age/severity criteria.</td>
+      </tr>
+      <tr>
+        <td class="infection">Bacterial Sinusitis</td>
+        <td><span class="drug"><b>Amoxicillin-clavulanate</b></span></td>
+        <td>Added beta-lactamase coverage over amoxicillin alone addresses H. influenzae/M. catarrhalis co-infection typical of true bacterial sinusitis.</td>
+        <td>Symptoms &gt;10 days without improvement, "double-worsening," or severe onset with fever &gt;39°C + purulent discharge.</td>
+        <td>Clinical diagnosis; imaging not routine. CT if complication suspected (orbital, intracranial).</td>
+        <td>Most sinusitis is viral — reserved for the bacterial criteria above, not routine URI congestion.</td>
+      </tr>
+      <tr>
+        <td class="infection">Bacterial Meningitis<span class="sub">neonate</span></td>
+        <td><span class="drug"><b>Ampicillin + cefotaxime</b></span><span class="alt">or ampicillin + gentamicin</span></td>
+        <td>Ampicillin specifically covers Listeria and Group B Strep, unique to the neonatal period; cefotaxime preferred over ceftriaxone (bilirubin displacement risk). Cefotaxime's US availability has been limited; many centers substitute ceftazidime or cefepime.</td>
+        <td>Fever or hypothermia, poor feeding, lethargy, bulging fontanelle, irritability.</td>
+        <td>LP: high WBC (neutrophil-predominant), low glucose, high protein.</td>
+        <td>GBS, E. coli, Listeria monocytogenes are the classic neonatal triad.</td>
+      </tr>
+      <tr>
+        <td class="infection">Bacterial Meningitis<span class="sub">child / adult</span></td>
+        <td><span class="drug"><b>Vancomycin + ceftriaxone</b></span><span class="alt">+ dexamethasone before/with first dose</span></td>
+        <td>Vancomycin covers resistant S. pneumoniae; ceftriaxone covers N. meningitidis and susceptible pneumococcus; steroid blunts inflammatory hearing-loss/mortality in pneumococcal disease.</td>
+        <td>Fever, nuchal rigidity, headache, photophobia, altered mental status; petechial rash if meningococcal.</td>
+        <td>LP: neutrophilic pleocytosis, glucose &lt;40% of serum, elevated protein, elevated opening pressure.</td>
+        <td>Add ampicillin if age &gt;50 or immunocompromised (Listeria coverage). Do not delay abx for imaging/LP.</td>
+      </tr>
+      <tr>
+        <td class="infection">Cellulitis / Erysipelas</td>
+        <td><span class="drug"><b>Cephalexin</b> or <b>dicloxacillin</b></span><span class="alt">+ TMP-SMX/doxycycline if MRSA risk or purulence</span></td>
+        <td>Non-purulent cellulitis is overwhelmingly streptococcal/MSSA; anti-staphylococcal beta-lactam covers both without unneeded MRSA spectrum unless risk factors present.</td>
+        <td>Erythema, warmth, tenderness, poorly demarcated (cellulitis) vs. sharply demarcated raised border (erysipelas); +/- fever.</td>
+        <td>Clinical diagnosis; cultures low-yield unless purulent, abscess, or systemic toxicity.</td>
+        <td>Erysipelas is classically GAS and more superficial/lymphatic; mark borders to track response.</td>
+      </tr>
+      <tr>
+        <td class="infection">Lyme Disease<span class="sub">early localized</span></td>
+        <td><span class="drug"><b>Doxycycline</b></span><span class="alt">Alt: amoxicillin, cefuroxime (pregnancy/peds)</span></td>
+        <td>Borrelia burgdorferi is exquisitely doxycycline-sensitive; also covers coincident anaplasmosis from the same tick exposure.</td>
+        <td>Erythema migrans ("bullseye") rash, flu-like symptoms, recent endemic-area tick exposure.</td>
+        <td>Clinical diagnosis in endemic areas with classic rash; serology (ELISA → Western blot) if uncertain or disseminated.</td>
+        <td>Late disease (carditis, arthritis, neuroborreliosis) escalates to IV ceftriaxone.</td>
+      </tr>
+      <tr>
+        <td class="infection">Pertussis</td>
+        <td><span class="drug"><b>Azithromycin</b></span></td>
+        <td>Macrolide reduces transmissibility and shortens the catarrhal phase if given early; largely supportive once paroxysmal phase established.</td>
+        <td>Catarrhal (URI-like) → paroxysmal (severe coughing fits, inspiratory "whoop," post-tussive emesis) → convalescent.</td>
+        <td>NP PCR/culture for Bordetella pertussis; marked lymphocytosis on CBC.</td>
+        <td>Treatment mainly limits spread once paroxysmal — abx doesn't shorten established cough.</td>
+      </tr>
+      <tr>
+        <td class="infection">C. difficile Colitis</td>
+        <td><span class="drug"><b>Oral vancomycin</b> or <b>fidaxomicin</b></span><span class="alt">Metronidazole reserved for mild disease/low-resource settings</span></td>
+        <td>Oral vancomycin acts locally within the gut lumen where C. diff resides — IV vancomycin does not reach the colon in adequate concentration.</td>
+        <td>Watery diarrhea, abdominal cramping, recent/current antibiotic exposure, fever.</td>
+        <td>Stool PCR/toxin EIA (+) for C. diff toxin; leukocytosis often marked.</td>
+        <td>Fulminant disease (ileus, megacolon, shock) → oral + rectal vancomycin + IV metronidazole; surgery eval.</td>
+      </tr>
+      <tr>
+        <td class="infection">H. pylori</td>
+        <td><span class="drug"><b>Quadruple:</b> PPI + bismuth + metronidazole + tetracycline</span><span class="alt">Triple (PPI+amox+clarithro) if low local resistance</span></td>
+        <td>Rising clarithromycin resistance has shifted first-line to bismuth quadruple therapy in most regions.</td>
+        <td>Epigastric pain, peptic ulcer pattern (duodenal: relieved by food; gastric: worsened by food).</td>
+        <td>Urea breath test or stool antigen (hold PPI ~2wk prior); biopsy with rapid urease test if endoscopy performed.</td>
+        <td>Confirm eradication with test-of-cure 4+ weeks after completing therapy.</td>
+      </tr>
+      <tr>
+        <td class="infection">Gonorrhea / Chlamydia<span class="sub">cervicitis / urethritis</span></td>
+        <td><span class="drug"><b>Ceftriaxone</b> (single IM) <b>+ doxycycline</b></span></td>
+        <td>Empiric dual coverage given frequent co-infection; ceftriaxone dose increased given rising gonococcal resistance, doxycycline replaced azithromycin as chlamydia first-line.</td>
+        <td>Purulent discharge, dysuria; often asymptomatic, especially chlamydia in women.</td>
+        <td>NAAT of urine/cervical/urethral swab for both organisms.</td>
+        <td>Treat partners; test for other STIs including HIV/syphilis. Disseminated gonococcemia → migratory polyarthralgia + dermatitis.</td>
+      </tr>
+      <tr>
+        <td class="infection">Syphilis<span class="sub">primary / secondary / early latent</span></td>
+        <td><span class="drug"><b>Benzathine penicillin G</b> (single IM)</span><span class="alt">Late latent/tertiary: weekly x3</span></td>
+        <td>Treponema pallidum has no documented penicillin resistance; long-acting benzathine form maintains treponemicidal levels for weeks.</td>
+        <td>Primary: painless chancre. Secondary: diffuse rash incl. palms/soles, condyloma lata. Tertiary: gummas, aortitis, neurosyphilis.</td>
+        <td>Nontreponemal (RPR/VDRL) screen → treponemal (FTA-ABS) confirm; titers trend response.</td>
+        <td>PCN-allergic pregnant patients require desensitization — no substitute is acceptable in pregnancy.</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="fung">
+  <div class="sec-head c-purple"><span class="sec-num">02</span><h2>Fungal</h2></div>
+  <table>
+    <colgroup><col class="c-inf"><col class="c-abx"><col class="c-rat"><col class="c-sym"><col class="c-res"><col class="c-note"></colgroup>
+    <thead><tr><th>Infection</th><th>Antifungal</th><th>Rationale</th><th>Symptom Profile</th><th>Clinical Result Profile</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="infection">Oropharyngeal / Esophageal Candidiasis</td>
+        <td><span class="drug"><b>Nystatin</b> swish-and-swallow (mild oral)</span><span class="alt">Fluconazole (systemic) for esophageal disease</span></td>
+        <td>Esophageal involvement implies deeper mucosal invasion requiring systemic azole rather than topical polyene.</td>
+        <td>White plaques scraping off oral mucosa; odynophagia if esophageal extension.</td>
+        <td>Clinical diagnosis; endoscopy with brushings if refractory to empiric fluconazole.</td>
+        <td>Esophageal candidiasis in a young patient is AIDS-defining — check HIV status.</td>
+      </tr>
+      <tr>
+        <td class="infection">Vulvovaginal Candidiasis</td>
+        <td><span class="drug"><b>Fluconazole</b> (single oral dose)</span><span class="alt">Alt: topical azole (clotrimazole/miconazole)</span></td>
+        <td>Fluconazole's oral convenience and reliable efficacy against C. albicans make it first-line for uncomplicated disease.</td>
+        <td>Thick "cottage cheese" discharge, vulvar pruritus/erythema, dyspareunia.</td>
+        <td>Wet mount: pseudohyphae/budding yeast; vaginal pH normal (&lt;4.5), distinguishing from BV/trichomonas.</td>
+        <td>Recurrent disease (≥3/yr, per CDC 2021) warrants evaluation for uncontrolled diabetes.</td>
+      </tr>
+      <tr>
+        <td class="infection">Invasive Candidiasis / Candidemia</td>
+        <td><span class="drug"><b>Echinocandin</b> (micafungin/caspofungin)</span></td>
+        <td>Echinocandins are fungicidal, active against azole-resistant Candida (incl. glabrata/auris), and preferred empirically in critically ill/ICU patients.</td>
+        <td>Persistent fever unresponsive to broad-spectrum antibiotics in a line-bearing, ICU, or TPN patient.</td>
+        <td>Blood cultures (+) for Candida species; dilated eye exam to rule out endophthalmitis.</td>
+        <td>Remove/exchange central lines when feasible — source control is essential, not optional.</td>
+      </tr>
+      <tr>
+        <td class="infection">Cryptococcal Meningitis</td>
+        <td><span class="drug"><b>Liposomal amphotericin B + flucytosine</b> (induction)</span><span class="alt">→ fluconazole consolidation/maintenance</span></td>
+        <td>Combination fungicidal induction clears organism burden faster and reduces mortality versus fluconazole monotherapy; maintenance suppresses relapse in ongoing immunosuppression.</td>
+        <td>Subacute headache, fever, altered mentation in an immunocompromised (classically AIDS, CD4 &lt;100) host.</td>
+        <td>LP: markedly elevated opening pressure; India ink or cryptococcal antigen (+) in CSF/serum.</td>
+        <td>Serial therapeutic LPs to manage elevated opening pressure are often as important as the antifungal itself.</td>
+      </tr>
+      <tr>
+        <td class="infection">Histoplasmosis<span class="sub">disseminated / severe pulmonary</span></td>
+        <td><span class="drug"><b>Liposomal amphotericin B</b> → <b>itraconazole</b> step-down</span></td>
+        <td>Amphotericin provides rapid fungicidal control in severe/disseminated disease; itraconazole maintains suppression with better tolerability for prolonged courses.</td>
+        <td>Fever, weight loss, hepatosplenomegaly (disseminated); cough/dyspnea after exposure to bird/bat droppings (caves, Ohio/Mississippi River valleys).</td>
+        <td>Urine/serum Histoplasma antigen most sensitive; CXR may show diffuse nodular infiltrates or calcifications.</td>
+        <td>Mild pulmonary disease in immunocompetent hosts is often self-limited and observed.</td>
+      </tr>
+      <tr>
+        <td class="infection">Coccidioidomycosis<span class="sub">severe / disseminated</span></td>
+        <td><span class="drug"><b>Fluconazole</b> (or itraconazole)</span><span class="alt">Amphotericin B for severe/disseminated or pregnancy</span></td>
+        <td>Azole therapy is generally sufficient given the organism's susceptibility profile; amphotericin reserved for severe/CNS disease or pregnancy (azole teratogenicity).</td>
+        <td>"Valley fever": fever, cough, arthralgias, erythema nodosum after Southwestern US (San Joaquin Valley) dust exposure.</td>
+        <td>Serology (complement fixation/EIA) for Coccidioides; CXR may show consolidation, cavitary lesions.</td>
+        <td>Most cases in immunocompetent hosts are self-limited and don't require antifungals.</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="vir" style="border-bottom:none;">
+  <div class="sec-head c-blue"><span class="sec-num">03</span><h2>Viral</h2></div>
+  <table>
+    <colgroup><col class="c-inf"><col class="c-abx"><col class="c-rat"><col class="c-sym"><col class="c-res"><col class="c-note"></colgroup>
+    <thead><tr><th>Infection</th><th>Antiviral / Mgmt</th><th>Rationale</th><th>Symptom Profile</th><th>Clinical Result Profile</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="infection">Influenza</td>
+        <td><span class="drug"><b>Oseltamivir</b></span><span class="alt">Within 48h of onset, or any point if hospitalized/high-risk</span></td>
+        <td>Neuraminidase inhibition blocks viral release from infected cells, shortening illness most effectively when started early in the replication curve.</td>
+        <td>Abrupt fever, myalgias, headache, dry cough, prostration — more systemic than typical URI.</td>
+        <td>Rapid antigen or PCR nasal swab; leukopenia common.</td>
+        <td>Benefit is greatest within 48h of onset but still indicated later in hospitalized/high-risk patients.</td>
+      </tr>
+      <tr>
+        <td class="infection">HSV<span class="sub">genital / oral</span></td>
+        <td><span class="drug"><b>Valacyclovir</b> or <b>acyclovir</b></span></td>
+        <td>Nucleoside analog terminates viral DNA chain elongation via HSV thymidine kinase activation — no cure, but shortens outbreaks and reduces shedding.</td>
+        <td>Painful grouped vesicles on erythematous base; primary episode often with fever/lymphadenopathy.</td>
+        <td>Clinical diagnosis; PCR or viral culture from unroofed vesicle confirms.</td>
+        <td>Suppressive daily therapy reduces transmission and recurrence frequency in frequent recurrers.</td>
+      </tr>
+      <tr>
+        <td class="infection">HSV Encephalitis</td>
+        <td><span class="drug"><b>IV Acyclovir</b> — start empirically</span><span class="tag tag-red">Treat Before Confirmation</span></td>
+        <td>Untreated HSV encephalitis carries ~70% mortality; empiric treatment on suspicion alone is standard given the cost of delay versus the low toxicity of a short acyclovir course.</td>
+        <td>Fever, altered mental status, focal neuro deficits, seizures — classically temporal lobe.</td>
+        <td>MRI: temporal lobe edema/hemorrhage. CSF PCR for HSV (may be falsely negative very early).</td>
+        <td>Start acyclovir before LP/imaging results return if HSV encephalitis is on the differential.</td>
+      </tr>
+      <tr>
+        <td class="infection">VZV<span class="sub">varicella / zoster</span></td>
+        <td><span class="drug"><b>Valacyclovir</b> (within 72h of rash)</span></td>
+        <td>Same nucleoside-analog mechanism as HSV; efficacy is time-dependent, so treatment is only meaningfully effective started early in the vesicular phase.</td>
+        <td>Varicella: diffuse vesicles "in different stages." Zoster: dermatomal, painful vesicular rash, often with prodromal neuralgia.</td>
+        <td>Clinical diagnosis; Tzanck smear shows multinucleated giant cells (not specific to VZV vs HSV).</td>
+        <td>Zoster ophthalmicus (nasociliary involvement, Hutchinson's sign) requires urgent ophtho referral.</td>
+      </tr>
+      <tr>
+        <td class="infection">EBV Mononucleosis</td>
+        <td><span class="drug">Supportive care — <b>no specific antiviral indicated</b></span></td>
+        <td>EBV is self-limited in immunocompetent hosts; antivirals do not alter course. Management is symptomatic + activity restriction.</td>
+        <td>Fever, exudative pharyngitis, posterior cervical lymphadenopathy, fatigue, splenomegaly.</td>
+        <td>Heterophile (Monospot) antibody (+); atypical lymphocytosis on smear; transaminitis common.</td>
+        <td>Avoid amoxicillin/ampicillin — near-universal morbilliform rash in EBV infection. Avoid contact sports (splenic rupture) x3–4wk.</td>
+      </tr>
+      <tr>
+        <td class="infection">CMV<span class="sub">immunocompromised: retinitis, colitis</span></td>
+        <td><span class="drug"><b>Ganciclovir</b> (or valganciclovir PO)</span><span class="alt">Foscarnet for ganciclovir-resistant disease</span></td>
+        <td>Ganciclovir requires viral kinase for activation and is reserved for end-organ disease in immunocompromised hosts, where untreated CMV causes irreversible organ damage (blindness, colitis).</td>
+        <td>Retinitis: floaters, vision loss (AIDS, CD4 &lt;50). Colitis: diarrhea, abdominal pain in transplant/AIDS patients.</td>
+        <td>CMV PCR viral load; retinitis diagnosed by dilated fundoscopic exam (granular hemorrhagic pattern).</td>
+        <td>Immunocompetent CMV mono-like illness is self-limited and does not require treatment.</td>
+      </tr>
+      <tr>
+        <td class="infection">HIV<span class="sub">acute retroviral syndrome</span></td>
+        <td><span class="drug">Refer for prompt <b>ART initiation</b> (regimen per specialist)</span></td>
+        <td>Early ART initiation reduces viral reservoir size, reduces transmission risk, and improves long-term outcomes — treat as soon as diagnosis is confirmed, regardless of CD4 count.</td>
+        <td>Mono-like: fever, pharyngitis, diffuse lymphadenopathy, maculopapular rash, myalgias 2–4wk post-exposure.</td>
+        <td>4th-gen Ag/Ab combo test (detects p24 antigen); confirm with HIV RNA viral load if acute infection suspected (antibody may be falsely negative in the window period).</td>
+        <td>Consider PEP for any recent high-risk exposure presenting within 72h.</td>
+      </tr>
+      <tr>
+        <td class="infection">Hepatitis C</td>
+        <td><span class="drug"><b>Direct-acting antivirals</b> (sofosbuvir-based combinations)</span></td>
+        <td>DAAs target specific HCV viral enzymes (NS3/4A protease, NS5A, NS5B polymerase), achieving &gt;95% cure rates versus older interferon-based regimens.</td>
+        <td>Often asymptomatic acutely; chronic infection may present with fatigue, or incidentally with elevated LFTs.</td>
+        <td>Anti-HCV antibody screen → HCV RNA (viral load) confirms active infection; pangenotypic regimens mean genotyping is often unnecessary before treatment.</td>
+        <td>Universal one-time screening now recommended for all adults regardless of risk factors.</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+</div>
+
+<footer>
+  The Critical Vector — Empiric Therapy Guide, Part I of II · Board-Tested Infections ·
+  Aug 2026. Companion file <a href="./ed-icu-and-critical-infections.html">ED/ICU &amp;
+  Rare/Time-Critical Infections</a> covers the presentations that walk through the door and
+  the ones where the first dose has to be right before the culture comes back. Study
+  reference only — confirm against current guidelines and local antibiogram.
+<div class="cv-tagline" style="margin-top:8px">The Critical Vector · Direction and magnitude.</div></footer>
+
+</body>
+</html>

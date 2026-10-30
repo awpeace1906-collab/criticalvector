@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Code Blue — The Critical Vector</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&amp;family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><style>
+:root{
+  --bg:#0a0e14; --surface:#111720; --surface2:#182030;
+  --border:rgba(255,255,255,0.08);
+  --teal:#00d4aa; --blue:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa;
+  --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  background:var(--bg); color:var(--text);
+  font-family:'Source Serif 4', Georgia, serif; font-size:16px; line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,.label,.kicker,.badge,nav a,th{font-family:'Syne', sans-serif;}
+.mono{font-family:'IBM Plex Mono', monospace;}
+.page{max-width:900px; margin:0 auto; padding:0 24px 60px;}
+
+header{padding:32px 0 20px; border-bottom:1px solid var(--border);}
+.kicker{
+  font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--teal); margin-bottom:10px;
+}
+h1{font-family:'Syne', sans-serif; font-weight:800; font-size:30px; line-height:1.15; margin:0 0 10px; letter-spacing:.005em;}
+header p{font-family:'Source Serif 4', serif; font-style:italic; color:var(--text2); font-size:15.5px; margin:0; max-width:700px;}
+
+.alert{
+  margin:18px 0; padding:13px 18px; border-radius:10px; font-size:14px;
+  background:rgba(0,212,170,0.10); border:1px solid rgba(0,212,170,0.28); color:#bdf5e8;
+}
+.alert.c-red{background:rgba(232,76,76,0.10); border-color:rgba(232,76,76,0.28); color:#ffd7d7;}
+.alert.c-amber{background:rgba(245,158,11,0.10); border-color:rgba(245,158,11,0.28); color:#ffe8bd;}
+.alert.c-blue{background:rgba(96,165,250,0.10); border-color:rgba(96,165,250,0.28); color:#cfe0ff;}
+
+nav{display:flex; flex-wrap:wrap; gap:7px; padding:18px 0; border-bottom:1px solid var(--border); margin-bottom:8px;}
+nav .navpart{
+  width:100%; font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--text3); margin:8px 0 2px 2px;
+}
+nav .navpart:first-child{margin-top:0;}
+nav a{
+  font-size:12.5px; font-weight:600; color:var(--text2); background:var(--surface);
+  border:1px solid var(--border); padding:7px 12px; border-radius:20px;
+  text-decoration:none; white-space:nowrap; transition:all .15s;
+}
+nav a:hover{color:var(--text); border-color:var(--teal);}
+
+section{padding:30px 0; border-bottom:1px solid var(--border);}
+.sec-head{
+  display:flex; align-items:baseline; gap:10px; padding:11px 18px;
+  border-left:4px solid var(--teal);
+  background:linear-gradient(90deg, rgba(0,212,170,0.10), transparent);
+  border-radius:0 8px 8px 0; margin-bottom:16px;
+}
+.sec-head.c-blue{border-left-color:var(--blue); background:linear-gradient(90deg, rgba(96,165,250,0.10), transparent);}
+.sec-head.c-red{border-left-color:var(--red); background:linear-gradient(90deg, rgba(232,76,76,0.10), transparent);}
+.sec-head.c-amber{border-left-color:var(--amber); background:linear-gradient(90deg, rgba(245,158,11,0.10), transparent);}
+.sec-head.c-purple{border-left-color:var(--purple); background:linear-gradient(90deg, rgba(167,139,250,0.10), transparent);}
+.sec-num{font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--text3);}
+h2{font-family:'Syne', sans-serif; font-weight:700; font-size:20px; margin:0; color:var(--text);}
+.tagline{font-family:'Source Serif 4', serif; font-style:italic; font-size:13.5px; color:var(--text2); margin:0 0 12px;}
+
+p.body{font-size:15.5px; margin:12px 0;}
+p.note{font-size:13.5px; color:var(--text2); font-style:italic; margin:10px 0;}
+
+.box{
+  background:var(--surface2); border:1px solid var(--border); border-radius:10px;
+  padding:16px 18px; margin:14px 0; font-size:14.5px;
+}
+.box.t-teal{border-left:3px solid var(--teal);}
+.box.t-blue{border-left:3px solid var(--blue);}
+.box.t-red{border-left:3px solid var(--red); background:rgba(232,76,76,0.06);}
+.box.t-amber{border-left:3px solid var(--amber);}
+.box.t-purple{border-left:3px solid var(--purple);}
+.box b{color:var(--text); font-weight:700;}
+.box p{margin:7px 0;}
+
+table{width:100%; border-collapse:collapse; margin:14px 0; font-size:13.5px;}
+th{background:var(--surface2); color:var(--text); text-align:left; padding:9px 11px; font-weight:600; font-size:12px; letter-spacing:.02em; border-bottom:2px solid var(--border);}
+td{padding:9px 11px; border-bottom:1px solid var(--border); vertical-align:top; font-family:'Source Serif 4', serif;}
+tr:nth-child(even) td{background:rgba(255,255,255,0.02);}
+
+.checklist, .xlist{list-style:none; padding-left:0; margin:10px 0;}
+.checklist li, .xlist li{padding:5px 0 5px 26px; position:relative; font-size:14.5px;}
+.checklist li:before{content:"\2713"; position:absolute; left:0; color:var(--teal); font-weight:700;}
+.xlist li:before{content:"\2715"; position:absolute; left:0; color:var(--red); font-weight:700;}
+
+.flow{display:flex; flex-direction:column; gap:9px; margin:14px 0;}
+.flow .step{
+  border:1px solid var(--border); border-left:3px solid var(--teal);
+  background:var(--surface); border-radius:8px; padding:11px 15px; font-size:14px;
+}
+.flow .step.t-blue{border-left-color:var(--blue);}
+.flow .step.t-red{border-left-color:var(--red);}
+.flow .step.t-amber{border-left-color:var(--amber);}
+.flow .step.t-purple{border-left-color:var(--purple);}
+
+.timeline-item{
+  padding:7px 0 7px 15px; border-left:2px solid var(--teal);
+  margin:5px 0 5px 4px; font-size:13.5px; color:var(--text2);
+}
+.timeline-item.t-blue{border-left-color:var(--blue);}
+.timeline-item.t-red{border-left-color:var(--red);}
+.timeline-item.t-amber{border-left-color:var(--amber);}
+.timeline-item.t-purple{border-left-color:var(--purple);}
+
+.xref{
+  margin:14px 0; padding:13px 17px; border-radius:10px;
+  background:var(--surface2); border:1px solid var(--border); border-left:3px solid var(--blue);
+  font-size:14px;
+}
+.xreflabel{
+  display:block; font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--blue); margin-bottom:6px; font-weight:600;
+}
+
+.peds{
+  margin:8px 0 16px 0; padding:11px 15px; border-radius:8px;
+  background:var(--surface2); border:1px solid var(--border); border-left:3px solid var(--purple);
+  font-size:13.5px;
+}
+.pedlabel{
+  display:inline-block; font-family:'Syne', sans-serif; font-size:10px; font-weight:700; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--purple); margin-right:7px;
+}
+
+.part-divider{padding:34px 0 8px;}
+.part-divider .plabel{
+  font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--teal); margin-bottom:6px; font-weight:600;
+}
+.part-divider h2{font-size:23px; margin:0 0 6px 0;}
+.part-divider p{font-family:'Source Serif 4', serif; font-size:14px; color:var(--text2); margin:0; max-width:600px;}
+
+.sources{font-size:13px; color:var(--text2); padding-left:20px;}
+.sources li{margin-bottom:7px;}
+
+.caveat{
+  margin:14px 0; padding:13px 17px; border-radius:10px; font-size:13.5px;
+  background:rgba(245,158,11,0.08); border:1px solid rgba(245,158,11,0.24); color:var(--text2);
+}
+.caveat b{color:var(--amber); font-weight:700;}
+
+.statgrid{display:grid; grid-template-columns:repeat(4, 1fr); gap:10px; margin:16px 0;}
+.statgrid div{text-align:center;}
+.statgrid .num{font-family:'Syne', sans-serif; font-size:22px; font-weight:700;}
+.statgrid .lbl{font-family:'Syne', sans-serif; font-size:10.5px; color:var(--text2); text-transform:uppercase; letter-spacing:.05em; margin-top:3px;}
+
+.arrow{text-align:center; color:var(--text3); font-size:12px;}
+
+footer{padding:26px 0 0; margin-top:6px; font-size:12.5px; color:var(--text3); font-family:'Source Serif 4', serif; font-style:italic;}
+</style>
+<style id="cv-print">
+/* ===== CV PRINT v1.0 (per _cv-schema.html) ===== */
+@media print{
+  :root{
+    --bg:#f4f5f7; --surface:#ffffff; --surface2:#eef1f4; --border:#d7dde3;
+    --teal:#00a688; --blue:#1d4ed8; --accent:#00a688; --accent2:#1d4ed8;
+    --red:#c53030; --amber:#b45309; --purple:#7c3aed;
+    --text:#0f1923; --text2:#4a5670; --text3:#6b7688;
+  }
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  html, body{background:#f4f5f7 !important; color:#0f1923 !important;}
+  nav, .nav, .toc-pills{display:none !important;}
+  .alert{background:rgba(0,166,136,.08) !important; color:#0f1923 !important;}
+  td{color:#0f1923 !important;}
+  section, .box, table, .card, .stat-card, .statcard, .step-row, .step{break-inside:avoid;}
+  h2, .sec-head{break-after:avoid;}
+  a{color:inherit; text-decoration:none;}
+}
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ a{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../continuum.html">The Continuum</a><span class="cv-sb-meta">Published 7 Oct 2026 · R. E. Suscitate &amp; A. Systole</span></nav><div class="page">
+<header>
+<div class="kicker">The Critical Vector · Resuscitation Leadership</div>
+<h1>Code Blue: Run the Room</h1>
+<p>Verified against the AHA 2025 guideline updates and the primary trials behind them.
+  July 2026.</p>
+</header>
+<div class="alert">
+  VERIFIED: the three most checkable numeric claims in the original post (the BIHCA bicarb
+  trial, the DOSE VF defibrillation numbers, the COCA calcium trial) all matched their
+  primary sources exactly. One citation pairing is questionable, flagged in Section 4.
+</div>
+<nav>
+<a href="#s1">1 · Claim the room</a>
+<a href="#s2">2 · Assign roles</a>
+<a href="#s3">3 · Closed-loop comms</a>
+<a href="#s4">4 · CPR quality</a>
+<a href="#s5">5 · Epinephrine timing</a>
+<a href="#s6">6 · Calcium and bicarb</a>
+<a href="#s7">7 · Amio vs lidocaine</a>
+<a href="#s8">8 · Refractory VF</a>
+<a href="#s9">9 · H's and T's</a>
+<a href="#s10">10 · Cheat sheet &amp; sources</a>
+</nav>
+<main>
+<section id="s1">
+<div class="sec-head c-amber"><span class="sec-num">01</span><h2>Claim the Room</h2></div>
+<p class="body">The monitor blares. Fifteen people sprint in. There's no pulse, and the
+  attending is a zip code away. Someone has to lead, out loud, immediately: "I am leading
+  this code."</p>
+<div class="box t-amber">
+<p><b>Why say it out loud:</b> hospitals with the highest in-hospital cardiac arrest
+    (IHCA) survival use a pit crew model, structured role assignments running in parallel,
+    the way a NASCAR crew works a car.</p>
+<p>The leader does not do compressions. The leader does not push meds. The leader thinks.</p>
+<p>Stand at the foot of the bed. Be visible. Calm on the surface, working hard underneath.</p>
+</div>
+</section>
+<section id="s2">
+<div class="sec-head c-blue"><span class="sec-num">02</span><h2>Clear the Room and Assign Roles</h2></div>
+<p class="body">Too many people is chaos. First order of business: anyone standing around
+  either gets a job or leaves. Eye contact, name, task.</p>
+<div class="box t-blue">
+<p>"Sarah, compressions." "Mike, airway." "Jen, med cart and timer." "Alex, recorder."
+    "David, you're swapping in for compressions in 2 minutes." "Chris and Maria, you're my
+    runners, stay right outside the door."</p>
+<p>Everyone else: "Thank you for being here. We've got enough hands. If you want to
+    help, rotate in for compressions. Otherwise please step out." Respectful. Clear.</p>
+</div>
+</section>
+<section id="s3">
+<div class="sec-head"><span class="sec-num">03</span><h2>Closed-Loop Communication</h2></div>
+<p class="body">The most underrated skill in resuscitation. Leader: "Give 1 mg epi IV
+  push." Nurse: "1 mg epi IV push, given." If nobody repeats it back, it didn't happen.</p>
+<div class="box t-teal">
+<p><b>The counterintuitive part:</b> the best-run codes are quiet. No side conversations.
+    If someone has an idea, they walk over, say it at normal volume, and the leader announces
+    the plan. Think air traffic control tower, not a stadium.</p>
+</div>
+<p class="note">Chaos is not the same as effort. Calm is competence.</p>
+</section>
+<section id="s4">
+<div class="sec-head c-purple"><span class="sec-num">04</span><h2>CPR Quality Is the Whole Game</h2></div>
+<p class="body">Forget the drugs for a second. The single biggest determinant of survival
+  is CPR quality.</p>
+<ul class="checklist">
+<li>Rate: 100 to 120/min</li>
+<li>Depth: at least 5 cm, but under 6 cm. Yes, there is a ceiling.</li>
+<li>Full chest recoil</li>
+<li>Chest compression fraction: at least 60%, aim for 80% or higher</li>
+<li>Swap compressors every 2 minutes. Depth starts declining around 90 seconds, even when
+    the compressor doesn't feel tired.</li>
+</ul>
+<p class="body">Lower the bed. Get a backboard underneath. Compressions on a mattress are
+  compressions on a waterbed.</p>
+<div class="caveat">
+<b>Citation check:</b> the original post attaches a "25.6% improvement in survival to
+    discharge from audible depth/recoil feedback" claim to PMID 25565457. That PMID is
+    actually Idris et al.'s study on compression rate and survival, not a feedback-device
+    trial. Real-time feedback devices do reliably improve measured compression rate and
+    depth (well documented across multiple studies), but the specific 25.6% survival figure
+    needs a different, feedback-device-specific source before it should be cited that way.
+    Use a feedback device if you have one, that guidance holds either way.
+  </div>
+</section>
+<section id="s5">
+<div class="sec-head"><span class="sec-num">05</span><h2>Epinephrine: Timing Matters</h2></div>
+<p class="body">Epi 1 mg IV/IO every 3 to 5 minutes, roughly every other CPR cycle.</p>
+<table>
+<tr><th>Rhythm</th><th>Approach</th></tr>
+<tr><td>Nonshockable (PEA/asystole)</td><td>Give epi early. Earlier epi tracks with better ROSC across the evidence.</td></tr>
+<tr><td>Shockable (VF/pVT)</td><td>Prioritize defibrillation first. Epi comes after initial shocks fail.</td></tr>
+</table>
+<div class="box t-teal">
+<p>PARAMEDIC2 post-hoc analysis: epinephrine's benefit over placebo converges toward
+    zero at roughly 20 minutes of pulselessness. Early epi matters because the window
+    closes.</p>
+<p>High-dose epinephrine has shown no survival benefit in randomized trials.</p>
+</div>
+</section>
+<section id="s6">
+<div class="sec-head c-red"><span class="sec-num">06</span><h2>Calcium and Bicarbonate: the Sacred Cows</h2></div>
+<p class="body">Both drugs are reached for reflexively during codes. Neither holds up when
+  tested properly.</p>
+<div class="box t-red">
+<p><b>Calcium (COCA trial, Vallentin et al, JAMA 2021):</b> stopped early for signal of
+    harm. ROSC occurred in 19% of the calcium group versus 27% of placebo, RR 0.72 (95% CI
+    0.49 to 1.03). A trend toward harm, not benefit.</p>
+<p>The 2020 and 2025 AHA guidelines: routine calcium is not
+    recommended. Reserve it for confirmed hyperkalemia or calcium channel blocker overdose.</p>
+</div>
+<div class="box t-red">
+<p><b>Sodium bicarbonate (BIHCA trial, Granfeldt et al, JAMA, published June 11,
+    2026):</b> the first purpose-built RCT of bicarbonate in in-hospital cardiac arrest.
+    779 analyzed patients, up to 100 mmol of bicarbonate versus placebo, given after at least one epinephrine dose.</p>
+<p>Sustained ROSC: 39% bicarbonate versus 37% placebo, no significant difference.
+    30-day survival and good neurologic outcome also did not differ significantly, though
+    both numerically favored the bicarbonate group in this trial (12% vs 9.1% survival;
+    8.1% vs 5.4% good neuro outcome), a detail worth knowing even though the trial's
+    bottom-line conclusion is correctly "no significant difference."</p>
+<p>Bicarbonate is still given in roughly half of US in-hospital arrests despite this.
+    Reserve it for hyperkalemia, tricyclic overdose, or known severe metabolic acidosis.</p>
+</div>
+<p class="note">If you don't have a specific indication, leave both in the drawer.</p>
+</section>
+<section id="s7">
+<div class="sec-head c-amber"><span class="sec-num">07</span><h2>Amiodarone vs Lidocaine</h2></div>
+<p class="body">For shock-refractory VF/pVT, the ALPS trial found both drugs improved
+  survival to hospital admission versus placebo, but neither definitively improved survival
+  to discharge in the overall trial population.</p>
+<div class="box t-amber">
+<p>In bystander-witnessed arrests specifically, both drugs did improve discharge
+    survival.</p>
+<p>Amiodarone given within 8 minutes of ALS team arrival improved both survival to
+    discharge and functional outcome.</p>
+</div>
+<p class="note">Both drugs have a narrow, time-dependent window. The 2025 AHA treats
+  amiodarone and lidocaine as equivalent options. Pick one, give it early, move on.</p>
+</section>
+<section id="s8">
+<div class="sec-head c-blue"><span class="sec-num">08</span><h2>Refractory VF: What's New</h2></div>
+<p class="body">Still in VF after 3 shocks and amiodarone? The DOSE VF trial (NEJM 2022)
+  tested two alternate defibrillation strategies against standard care.</p>
+<table>
+<tr><th>Strategy</th><th>Survival to discharge</th></tr>
+<tr><td>Double sequential external defibrillation (DSED)</td><td>30.4%</td></tr>
+<tr><td>Vector-change (anterior-posterior pads)</td><td>21.7%</td></tr>
+<tr><td>Standard defibrillation</td><td>13.3%</td></tr>
+</table>
+<div class="box t-blue">
+<p><b>Caveats from the 2025 AHA guideline:</b> the benefit was concentrated in incessant
+    VF (about 17% of enrolled patients), not recurrent VF. When analyzed by treatment
+    actually received rather than intention-to-treat, the benefit was not significant. AHA 2025
+    rates the usefulness of both strategies as "not established" (Class 2b); ILCOR's softer wording is "may be considered." Not yet standard of care.</p>
+</div>
+<p class="note">Practical move: if VF persists after 3 shocks, at minimum switch pad
+  position to anterior-posterior. It's free, it's easy, and it has trial data behind it.</p>
+</section>
+<section id="s9">
+<div class="sec-head c-red"><span class="sec-num">09</span><h2>Think: The H's and T's</h2></div>
+<p class="body">While CPR runs, the leader's real job is diagnosing why the patient
+  arrested.</p>
+<div class="box t-red">
+<p><b>The H's:</b> Hypovolemia, fluid and blood. Hypoxia, confirm the tube, check
+    ETCO2. Hydrogen ion (acidosis), context-dependent bicarb. Hypo/hyperkalemia, point-of-care
+    testing, empiric calcium if suspected. Hypothermia, check the temperature.</p>
+<p><b>The T's:</b> Tension pneumothorax, needle or finger thoracostomy. Tamponade,
+    bedside echo. Toxins, lipid emulsion and specific antidotes. Thrombosis (coronary), STEMI
+    workup toward the cath lab. Thrombosis (pulmonary), tPA, consider ECPR.</p>
+</div>
+<p class="note">Fast POCUS during pulse checks, or TEE if available, is the fastest way to
+  narrow this list in real time.</p>
+</section>
+<section id="s10" style="border-bottom:none;">
+<div class="sec-head" style="border-left-color:var(--text3); background:none;"><span class="sec-num">10</span><h2>Cheat Sheet &amp; Primary Sources</h2></div>
+<table>
+<tr><th>#</th><th>Action</th></tr>
+<tr><td>1</td><td>Announce leadership: "I'll be leading this code"</td></tr>
+<tr><td>2</td><td>Clear the room, assign roles, extras rotate compressions or become runners</td></tr>
+<tr><td>3</td><td>CPR quality: 100-120/min, ≥5 cm, full recoil, swap q2min</td></tr>
+<tr><td>4</td><td>Rhythm check q2min: shockable → shock → resume CPR immediately</td></tr>
+<tr><td>5</td><td>Epi 1 mg q3-5min: early for PEA/asystole, after failed shocks for VF</td></tr>
+<tr><td>6</td><td>Amiodarone or lidocaine for refractory VF/pVT, give early</td></tr>
+<tr><td>7</td><td>Think H's and T's, POCUS during pulse checks</td></tr>
+<tr><td>8</td><td>Calcium/bicarb only for specific indications</td></tr>
+<tr><td>9</td><td>Refractory VF: change pad vector (A-P), consider DSED</td></tr>
+<tr><td>10</td><td>Closed-loop everything: if it wasn't repeated back, it wasn't heard</td></tr>
+</table>
+<p class="body"><b>Primary sources checked for this guide:</b></p>
+<ul class="sources">
+<li>AHA 2025 Part 4: Systems of Care. Circulation. 2025;152:S116-S148.</li>
+<li>AHA 2025 Part 7: Adult BLS. Circulation. 2025;152:S182-S218.</li>
+<li>AHA 2025 Part 9: Adult ALS. Circulation. 2025;152:S234-S280.</li>
+<li>AHA 2023 Focused Update on ACLS. Circulation. 2024;149:e254-e273.</li>
+<li>Granfeldt A, Kirkegaard BL, Vallentin MF, et al. Sodium Bicarbonate for In-Hospital Cardiac Arrest: A Randomized Clinical Trial (BIHCA). JAMA. Published online June 11, 2026.</li>
+<li>Vallentin MF, Granfeldt A, Meilandt C, et al. Effect of Intravenous or Intraosseous Calcium vs Saline on ROSC in Adults With OHCA (COCA trial). JAMA. 2021;326(22):2268-2276.</li>
+<li>Cheskes S, et al. Defibrillation Strategies for Refractory Ventricular Fibrillation (DOSE VF). N Engl J Med. 2022. PMID 36342151.</li>
+<li>Kudenchuk PJ, et al. Amiodarone, Lidocaine, or Placebo in Out-of-Hospital Cardiac Arrest (ALPS trial). N Engl J Med. 2016.</li>
+<li>Perkins GD, et al. A Randomized Trial of Epinephrine in Out-of-Hospital Cardiac Arrest (PARAMEDIC2). N Engl J Med. 2018. DOI 10.1056/NEJMoa1806842.</li>
+<li>Idris AH, Guffey D, Pepe PE, et al. Chest compression rates and survival following out-of-hospital cardiac arrest. Crit Care Med. 2015. PMID 25565457.</li>
+<li>Andersen LW, et al. In-Hospital Cardiac Arrest: A Review. JAMA. 2019. PMID 30910560.</li>
+</ul>
+</section>
+</main>
+<footer>
+  This guide expands on a 13-slide social post about running an in-hospital code. The three
+  most specific, checkable trial figures in the original post (BIHCA, DOSE VF, COCA) all
+  matched primary sources exactly. One citation attachment (the CPR feedback device claim)
+  doesn't match its cited PMID and is flagged rather than repeated uncritically. All figures
+  verified as of July 2026.
+<div class="cv-tagline" style="margin-top:8px">The Critical Vector · Direction and magnitude.</div></footer>
+</div></body>
+</html>

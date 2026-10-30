@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="cv:schema" content="1.0">
+<meta name="cv:verified" content="2026-10-05">
+<title>Continuous Suction During RSI — The Critical Vector</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style id="cv-base">
+/* ===== CV BASE v1.0 — copy this block verbatim into every guide ===== */
+:root{
+  --bg:#0a0e14; --surface:#111720; --surface2:#182030;
+  --border:rgba(255,255,255,0.08);
+  --teal:#00d4aa; --blue:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa;
+  --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670;
+  --t-teal:rgba(0,212,170,0.10); --t-blue:rgba(96,165,250,0.10); --t-red:rgba(232,76,76,0.10);
+  --t-amber:rgba(245,158,11,0.10); --t-purple:rgba(167,139,250,0.10);
+  /* legacy aliases: older guides use these names; same values */
+  --accent:var(--teal); --accent2:var(--blue);
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{background:var(--bg); color:var(--text); font-family:'Source Serif 4', Georgia, serif; font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased;}
+h1,h2,h3,.label,.kicker,.badge,nav a,th,.step-num,.stat-num{font-family:'Syne', sans-serif;}
+.mono, code{font-family:'IBM Plex Mono', monospace;}
+.page{max-width:900px; margin:0 auto; padding:0 24px 60px;}
+header{padding:32px 0 20px; border-bottom:1px solid var(--border);}
+.kicker{font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--teal); margin-bottom:10px;}
+h1{font-weight:800; font-size:30px; line-height:1.15; margin:0 0 10px; letter-spacing:.005em;}
+header p{font-style:italic; color:var(--text2); font-size:15.5px; margin:0; max-width:700px;}
+.byline{font-size:13px; color:var(--text3); margin-top:8px;}
+.badges{display:flex; flex-wrap:wrap; gap:6px; margin-top:16px;}
+.badge{font-size:11px; font-weight:700; letter-spacing:.04em; padding:4px 10px; border-radius:20px; border:1px solid var(--border); color:var(--text2); background:var(--surface);}
+.badge.ok{color:var(--teal); border-color:rgba(0,212,170,0.35); background:var(--t-teal);}
+.badge.flag{color:var(--red); border-color:rgba(232,76,76,0.40); background:var(--t-red);}
+.alert{margin:18px 0; padding:13px 18px; border-radius:10px; font-size:14px; background:var(--t-teal); border:1px solid rgba(0,212,170,0.28); color:#bdf5e8;}
+.alert.flag{background:rgba(232,76,76,0.08); border-color:rgba(232,76,76,0.35); color:#ffd2d2;}
+nav{display:flex; flex-wrap:wrap; gap:7px; padding:18px 0; border-bottom:1px solid var(--border); margin-bottom:8px;}
+nav a{font-size:12.5px; font-weight:600; color:var(--text2); background:var(--surface); border:1px solid var(--border); padding:7px 12px; border-radius:20px; text-decoration:none; white-space:nowrap; transition:all .15s;}
+nav a:hover, nav a:focus-visible{color:var(--text); border-color:var(--teal); outline:none;}
+section{padding:30px 0; border-bottom:1px solid var(--border);}
+.sec-head{display:flex; align-items:baseline; gap:10px; padding:11px 18px; border-left:4px solid var(--teal); background:linear-gradient(90deg, var(--t-teal), transparent); border-radius:0 8px 8px 0; margin-bottom:16px;}
+.sec-head.c-blue{border-left-color:var(--blue); background:linear-gradient(90deg, var(--t-blue), transparent);}
+.sec-head.c-red{border-left-color:var(--red); background:linear-gradient(90deg, var(--t-red), transparent);}
+.sec-head.c-amber{border-left-color:var(--amber); background:linear-gradient(90deg, var(--t-amber), transparent);}
+.sec-head.c-purple{border-left-color:var(--purple); background:linear-gradient(90deg, var(--t-purple), transparent);}
+.sec-num{font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--text3);}
+h2{font-weight:700; font-size:20px; margin:0; color:var(--text);}
+h3{font-weight:700; font-size:16px; margin:0 0 6px;}
+.tagline{font-style:italic; font-size:13.5px; color:var(--text2); margin:0 0 12px;}
+p.body{font-size:15.5px; margin:12px 0; max-width:72ch;}
+p.note{font-size:13.5px; color:var(--text2); font-style:italic; margin:10px 0;}
+.box{background:var(--surface2); border:1px solid var(--border); border-radius:10px; padding:16px 18px; margin:14px 0; font-size:14.5px;}
+.box.t-teal{border-left:3px solid var(--teal);} .box.t-blue{border-left:3px solid var(--blue);}
+.box.t-red{border-left:3px solid var(--red); background:rgba(232,76,76,0.06);}
+.box.t-amber{border-left:3px solid var(--amber);} .box.t-purple{border-left:3px solid var(--purple);}
+.box b{color:var(--text); font-weight:700;} .box p{margin:7px 0;}
+.stat-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:10px; margin:16px 0;}
+.stat-card{background:var(--surface); border:1px solid var(--border); border-left:4px solid var(--c,var(--teal)); border-radius:6px; padding:14px 16px 14px 18px; text-align:left;}
+.stat-num{font-weight:800; font-size:26px; line-height:1.1; color:var(--c,var(--teal));}
+.stat-label{font-size:13px; color:var(--text2); margin-top:4px;}
+.steps{display:flex; flex-direction:column; gap:10px; margin:16px 0;}
+.step-row{display:flex; gap:14px; align-items:flex-start; background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:12px 16px;}
+.step-num{flex-shrink:0; width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:13px; color:#0a0e14; background:var(--c,var(--teal));}
+.step-body{font-size:14.5px;} .step-body b{color:var(--text);}
+.scroll{overflow-x:auto; -webkit-overflow-scrolling:touch;}
+table{width:100%; border-collapse:collapse; margin:14px 0; font-size:13.5px;}
+th{background:var(--surface2); color:var(--text); text-align:left; padding:9px 11px; font-weight:600; font-size:12px; letter-spacing:.02em; border-bottom:2px solid var(--border);}
+td{padding:9px 11px; border-bottom:1px solid var(--border); vertical-align:top;}
+tr:nth-child(even) td{background:rgba(255,255,255,0.02);}
+.xlist,.clist{list-style:none; padding-left:0; margin:10px 0;}
+.xlist li,.clist li{padding:5px 0 5px 26px; position:relative; font-size:14.5px;}
+.xlist li:before{content:"✗"; position:absolute; left:0; color:var(--red); font-weight:700;}
+.clist li:before{content:"✓"; position:absolute; left:0; color:var(--teal); font-weight:700;}
+.sources{font-size:13px; color:var(--text2); padding-left:20px;}
+.sources li{margin-bottom:7px;} .sources a{color:var(--text2);}
+footer{padding:26px 0 0; margin-top:6px; font-size:12.5px; color:var(--text3); font-style:italic;}
+@media (max-width:640px){ h1{font-size:25px;} .page{padding:0 16px 48px;} }
+@media (prefers-reduced-motion:reduce){ *{transition:none !important;} }
+
+/* ===== PRINT: light-mode token swap (mandatory, non-optional) ===== */
+@media print{
+  :root{
+    --bg:#f4f5f7; --surface:#ffffff; --surface2:#eef1f4; --border:#d7dde3;
+    --teal:#00a688; --blue:#1d4ed8; --red:#c53030; --amber:#b45309; --purple:#7c3aed;
+    --text:#0f1923; --text2:#4a5670; --text3:#6b7688;
+    --t-teal:rgba(0,166,136,0.08); --t-blue:rgba(29,78,216,0.07); --t-red:rgba(197,48,48,0.07);
+    --t-amber:rgba(180,83,9,0.08); --t-purple:rgba(124,58,237,0.07);
+  }
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  body{background:var(--bg) !important; color:var(--text) !important; font-size:11pt;}
+  nav{display:none;}
+  .page{max-width:none; padding:0;}
+  .alert{background:var(--t-teal) !important; border-color:var(--teal); color:var(--text) !important;}
+  .alert.flag{background:var(--t-red) !important; border-color:var(--red);}
+  .box.t-red{background:var(--t-red);}
+  td{color:var(--text) !important;}
+  .step-num{color:#ffffff;}
+  section, .box, table, .stat-card, .step-row{break-inside:avoid;}
+  h2, .sec-head{break-after:avoid;}
+  a{color:inherit; text-decoration:none;}
+  @page{margin:14mm 14mm 16mm;}
+}
+/* ===== END CV BASE ===== */
+</style>
+<style>
+/* page archetype */
+
+.kicker{color:var(--amber);}
+.result{display:grid; grid-template-columns:1fr auto 1fr; align-items:end; gap:18px; margin:26px 0 6px; padding:22px 22px 18px; background:var(--surface); border:1px solid var(--border); border-radius:14px;}
+.arm .n{font-family:'Syne',sans-serif; font-weight:800; font-size:72px; line-height:.9; color:var(--text);}
+.arm .lab{font-size:14px; margin-top:8px;} .arm .iqr{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--text2);}
+.vs{font-family:'IBM Plex Mono',monospace; color:var(--text3); font-size:13px; padding-bottom:30px;}
+.result-cap{grid-column:1/-1; border-top:1px solid var(--border); padding-top:12px; font-size:14px; color:var(--text2);}
+.result-cap b{color:var(--amber);}
+.spec{display:grid; grid-template-columns:repeat(4,1fr); border:1px solid var(--border); border-radius:10px; overflow:hidden; margin:18px 0;}
+.spec div{padding:12px 14px; border-right:1px solid var(--border);}
+.spec div:last-child{border-right:none;}
+.spec dt{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--text3); margin:0 0 4px;}
+.spec dd{margin:0; font-size:14px;}
+.ledger{display:grid; grid-template-columns:1fr 1fr; gap:0; border:1px solid var(--border); border-radius:10px; overflow:hidden; margin:14px 0;}
+.ledger > div{padding:14px 18px;}
+.ledger > div + div{border-left:1px solid var(--border);}
+.ledger h3{font-size:14px;}
+.ledger .yes h3{color:var(--teal);} .ledger .no h3{color:var(--red);}
+.meter{margin:16px 0 4px;}
+.meter-track{display:grid; grid-template-columns:repeat(5,1fr); gap:4px;}
+.meter-track span{height:8px; border-radius:4px; background:var(--surface2);}
+.meter-track span.on{background:var(--amber);}
+.meter-labels{display:grid; grid-template-columns:repeat(5,1fr); gap:4px; font-size:12px; color:var(--text3); margin-top:6px;}
+.meter-labels .on{color:var(--amber); font-weight:600;}
+@media (max-width:720px){ .result{grid-template-columns:1fr; } .vs{padding:0;} .spec{grid-template-columns:1fr 1fr;} .spec div:nth-child(2){border-right:none;} .spec div:nth-child(-n+2){border-bottom:1px solid var(--border);} .ledger{grid-template-columns:1fr;} .ledger > div + div{border-left:none; border-top:1px solid var(--border);} .meter-labels{font-size:10.5px;} }
+@media print{ .arm .n{font-size:48px;} }
+
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ a{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../locker.html">The Evidence Locker</a><span class="cv-sb-meta">Published 6 Oct 2026 · R. E. Suscitate &amp; A. Systole</span></nav>
+<div class="page">
+
+<header>
+  <div class="kicker">The Critical Vector · Evidence Locker</div>
+  <h1>Continuous Suction During RSI</h1>
+  <p class="byline">R. E. Suscitate &amp; A. Systole</p>
+  <p>Does running the suction for the whole laryngoscopy pull oxygen out of the patient faster than suctioning only when needed? One pilot trial asked. Its answer is narrower than the headlines.</p>
+  <div class="badges"><span class="badge ok">VERIFIED</span><span class="badge">Strayer et al., J Emerg Med 2025</span><span class="badge">Pilot RCT · n = 76</span></div>
+</header>
+
+<div class="result" role="figure" aria-label="Median fall in oxygen saturation by group">
+  <div class="arm"><div class="n">0%</div><div class="lab">As-needed suction</div><div class="iqr">IQR 0–1 · n = 37</div></div>
+  <div class="vs">vs</div>
+  <div class="arm"><div class="n">0%</div><div class="lab">Constant suction</div><div class="iqr">IQR 0–0 · n = 39</div></div>
+  <div class="result-cap">Median absolute fall in SpO₂ from blade-in to tube confirmation. p = 0.321. <b>Almost nobody desaturated in either arm</b>, which is the most important number in the paper.</div>
+</div>
+
+<nav>
+  <a href="#trial">The trial</a><a href="#zero">Reading a zero</a><a href="#ledger">What it supports</a><a href="#bedside">At the bedside</a><a href="#weight">Weight of evidence</a><a href="#sources">Sources</a>
+</nav>
+
+<section id="trial">
+  <div class="sec-head c-amber"><span class="sec-num">01</span><h2>The trial</h2></div>
+  <dl class="spec">
+    <div><dt>Design</dt><dd>Pilot RCT, unblinded, no power calculation</dd></div>
+    <div><dt>Setting</dt><dd>3 academic level 1 trauma centers</dd></div>
+    <div><dt>Arms</dt><dd>As-needed suction vs. constant suction during laryngoscopy</dd></div>
+    <div><dt>Primary outcome</dt><dd>Fall in SpO₂, blade entering mouth to ETT confirmation</dd></div>
+  </dl>
+  <p class="body">The question came from a practice shift. Suction-assisted laryngoscopy (SALAD) and large-bore rigid catheters have made continuous suction during intubation common. Deep tracheal suctioning in already-intubated patients is known to drop saturations, and nobody had tested whether hypopharyngeal suction during RSI does the same.</p>
+</section>
+
+<section id="zero">
+  <div class="sec-head c-amber"><span class="sec-num">02</span><h2>Reading a zero</h2></div>
+  <p class="body">When the median fall in both arms is zero, the trial had almost no events to compare. That is a floor effect. It can show that continuous suction did not cause desaturation in patients who were never going to desaturate. It cannot show what happens in the patient with a shunt, a low reserve, or a contaminated airway.</p>
+  <div class="box t-amber"><p><b>Who was missing.</b> Enrollment was a convenience sample that depended on a research assistant being present. The crash intubations, done before anyone could enroll them, are the patients most likely to desaturate and least likely to be in the data.</p></div>
+  <div class="box t-amber"><p><b>Which catheter.</b> Only about a quarter of intubations used a large-bore catheter such as the DuCanto. The device that made continuous suction a standard technique is the one least represented.</p></div>
+</section>
+
+<section id="ledger">
+  <div class="sec-head c-amber"><span class="sec-num">03</span><h2>What it supports</h2></div>
+  <div class="ledger">
+    <div class="yes"><h3>Supports</h3>
+      <ul class="clist">
+        <li>Constant suction did not measurably worsen oxygenation in the ED patients who were enrolled.</li>
+        <li>No safety signal to stop suctioning a contaminated airway for fear of desaturation.</li>
+        <li>A larger trial is feasible and worth running.</li>
+      </ul></div>
+    <div class="no"><h3>Does not establish</h3>
+      <ul class="xlist">
+        <li>Safety in the hypoxemic, low-reserve, or crash patient.</li>
+        <li>Safety with high-flow, large-bore catheters left running.</li>
+        <li>Any effect on first-pass success, aspiration, or outcome.</li>
+      </ul></div>
+  </div>
+  <p class="note">Absence of a difference in a pilot study is not evidence of equivalence. The authors say as much in their own conclusion.</p>
+</section>
+
+<section id="bedside">
+  <div class="sec-head"><span class="sec-num">04</span><h2>At the bedside</h2></div>
+  <p class="body">Suction what needs suctioning. A soiled airway costs first-pass success and drives aspiration, and this trial gives no reason to hold back. What it does not license is suction running in the hypopharynx of a clean airway because it might help.</p>
+  <div class="box t-teal">
+    <p><b>Keep the tip above the cords.</b> The desaturation literature is about suction inside the airway. During laryngoscopy, the catheter clears the hypopharynx and stays out of the trachea.</p>
+    <p><b>The rest of the oxygenation plan still decides the outcome.</b> Head-up positioning, full preoxygenation, apneic oxygenation, and a defined desaturation threshold for abandoning the attempt are unchanged by this study.</p>
+  </div>
+</section>
+
+<section id="weight">
+  <div class="sec-head"><span class="sec-num">05</span><h2>Weight of evidence</h2></div>
+  <div class="meter" role="img" aria-label="Evidence strength: pilot, hypothesis-generating">
+    <div class="meter-track"><span class="on"></span><span class="on"></span><span></span><span></span><span></span></div>
+    <div class="meter-labels"><span>Case series</span><span class="on">Pilot RCT</span><span>Adequately powered RCT</span><span>Multiple RCTs</span><span>Guideline</span></div>
+  </div>
+  <p class="body">One small, unblinded pilot with a primary outcome that rarely occurred. It is a reasonable basis for not changing practice in either direction, and a weak basis for a rule.</p>
+</section>
+
+<section id="sources">
+  <div class="sec-head"><span class="sec-num">06</span><h2>Sources</h2></div>
+  <ol class="sources">
+    <li>Strayer RJ, Oliver M, Chen A, Gerges L, Caputo ND. The impact of suctioning on oxygenation during rapid sequence intubation in the emergency department: a multi-center pilot randomized controlled trial. <i>J Emerg Med</i>. 2025;76:88-94. <a href="https://doi.org/10.1016/j.jemermed.2025.04.016">doi:10.1016/j.jemermed.2025.04.016</a></li>
+    <li>ClinicalTrials.gov. NCT06667336: The impact of suctioning on oxygenation during RSI in the emergency department.</li>
+    <li>Swaminathan A. Continuous suctioning doesn't hasten hypoxemia. REBEL EM, February 9, 2026.</li>
+  </ol>
+</section>
+
+<footer>The Critical Vector · Direction and magnitude.</footer>
+
+</div>
+</body>
+</html>

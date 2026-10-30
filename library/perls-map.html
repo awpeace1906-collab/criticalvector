@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ASA PeRLS Protocol Map</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --surface: #1a1d27;
+    --surface2: #22263a;
+    --border: #2e3350;
+    --text: #e8eaf0;
+    --muted: #8b90a8;
+    --teal: #3ecfb2;
+    --blue: #5b9bd5;
+    --purple: #9b78d4;
+    --red: #e05c6e;
+    --amber: #e8a045;
+    --green: #5bc98a;
+    --pink: #e067a8;
+    --font: 'Segoe UI', system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    padding: 2rem;
+    min-height: 100vh;
+  }
+  .page-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+  .page-header h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--teal);
+    margin-bottom: 0.3rem;
+  }
+  .page-header .sub {
+    color: var(--muted);
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .badge-row {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 0.9rem;
+    flex-wrap: wrap;
+  }
+  .badge {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 0.25rem 0.9rem;
+    font-size: 0.75rem;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+
+  /* ── OVERVIEW STRIP ── */
+  .overview-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    text-align: center;
+  }
+  .stat-card .num {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--teal);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+  .stat-card .label {
+    font-size: 0.72rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── SECTION TITLE ── */
+  .section-title {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.9rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* ── MODULES ── */
+  .modules-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  .module-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .module-header {
+    padding: 0.6rem 1rem;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .module-header .num {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 800;
+    background: rgba(255,255,255,0.12);
+    flex-shrink: 0;
+  }
+  .module-body {
+    padding: 0.85rem 1rem;
+  }
+  .module-title {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.65rem;
+    line-height: 1.3;
+  }
+  .module-points {
+    list-style: none;
+  }
+  .module-points li {
+    font-size: 0.75rem;
+    color: var(--muted);
+    padding: 0.2rem 0;
+    padding-left: 0.9rem;
+    position: relative;
+    line-height: 1.35;
+  }
+  .module-points li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: inherit;
+    opacity: 0.6;
+  }
+  .m1 .module-header { background: rgba(62,207,178,0.12); color: var(--teal); }
+  .m2 .module-header { background: rgba(91,155,213,0.12); color: var(--blue); }
+  .m3 .module-header { background: rgba(155,120,212,0.12); color: var(--purple); }
+  .m4 .module-header { background: rgba(224,92,110,0.12); color: var(--red); }
+  .m1 .module-points li::before { color: var(--teal); }
+  .m2 .module-points li::before { color: var(--blue); }
+  .m3 .module-points li::before { color: var(--purple); }
+  .m4 .module-points li::before { color: var(--red); }
+  .m1 { border-top: 2px solid var(--teal); }
+  .m2 { border-top: 2px solid var(--blue); }
+  .m3 { border-top: 2px solid var(--purple); }
+  .m4 { border-top: 2px solid var(--red); }
+
+  /* ── SPECIAL SITUATIONS ── */
+  .situations-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  .sit-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.85rem 1rem;
+    border-left: 3px solid;
+  }
+  .sit-card .sit-name {
+    font-size: 0.82rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+  }
+  .sit-card .sit-points {
+    list-style: none;
+  }
+  .sit-card .sit-points li {
+    font-size: 0.7rem;
+    color: var(--muted);
+    padding: 0.15rem 0;
+    padding-left: 0.8rem;
+    position: relative;
+    line-height: 1.3;
+  }
+  .sit-card .sit-points li::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    font-size: 1rem;
+    line-height: 0.9;
+  }
+
+  /* ── CLINICAL DISTINGUISHERS ── */
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  .compare-col {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .compare-col .col-header {
+    padding: 0.6rem 1rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .compare-col .col-body {
+    padding: 0.85rem 1rem;
+  }
+  .compare-col ul {
+    list-style: none;
+  }
+  .compare-col ul li {
+    font-size: 0.78rem;
+    color: var(--muted);
+    padding: 0.25rem 0;
+    padding-left: 1rem;
+    position: relative;
+    border-bottom: 1px solid var(--border);
+    line-height: 1.35;
+  }
+  .compare-col ul li:last-child { border-bottom: none; }
+  .compare-col ul li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    font-size: 0.65rem;
+    top: 0.3rem;
+  }
+  .acls-col .col-header { background: rgba(232,160,69,0.1); color: var(--amber); }
+  .acls-col ul li::before { color: var(--amber); }
+  .acls-col { border-top: 2px solid var(--amber); }
+  .perls-col .col-header { background: rgba(62,207,178,0.1); color: var(--teal); }
+  .perls-col ul li::before { color: var(--teal); }
+  .perls-col { border-top: 2px solid var(--teal); }
+
+  /* ── KEY PRINCIPLES ROW ── */
+  .principles-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  .principle-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem 1.1rem;
+  }
+  .principle-card .icon {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  .principle-card .ptitle {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.4rem;
+  }
+  .principle-card .pdesc {
+    font-size: 0.72rem;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.68rem;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+    letter-spacing: 0.04em;
+  }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style id="cv-retheme">
+/* CV re-theme v1.0 — maps this file onto _cv-schema.html tokens */
+:root{--bg:#0a0e14; --surface:#111720; --surface2:#182030; --border:rgba(255,255,255,0.08); --teal:#00d4aa; --blue:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa; --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670; --t-teal:rgba(0,212,170,0.10); --t-blue:rgba(96,165,250,0.10); --t-red:rgba(232,76,76,0.10); --t-amber:rgba(245,158,11,0.10); --t-purple:rgba(167,139,250,0.10);}
+:root{--muted:var(--text2); --green:var(--teal); --pink:var(--purple); --font:'Source Serif 4', Georgia, serif;}
+body{font-family:'Source Serif 4', Georgia, serif !important; background:var(--bg) !important; color:var(--text);}
+h1,h2,h3,h4,th,nav a,.label,.lbl,.badge,.pill{font-family:'Syne', sans-serif !important;}
+h1{font-weight:800 !important; letter-spacing:.005em;}
+h2,h3{font-weight:700;}
+.kicker, header .kicker{font-family:'IBM Plex Mono', monospace !important; color:var(--teal) !important; letter-spacing:.12em; font-size:11px !important;}
+code, pre, .mono{font-family:'IBM Plex Mono', monospace;}
+@media print{
+  :root{--bg:#f4f5f7; --surface:#ffffff; --surface2:#eef1f4; --border:#d7dde3; --teal:#00a688; --blue:#1d4ed8; --red:#c53030; --amber:#b45309; --purple:#7c3aed; --text:#0f1923; --text2:#4a5670; --text3:#6b7688;
+    --t-teal:rgba(0,166,136,0.08); --t-blue:rgba(29,78,216,0.07); --t-red:rgba(197,48,48,0.07); --t-amber:rgba(180,83,9,0.08); --t-purple:rgba(124,58,237,0.07); --muted:#4a5670; --green:#00a688; --pink:#7c3aed;}
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  html, body{background:#f4f5f7 !important; color:#0f1923 !important;}
+  nav{display:none !important;}
+  td{color:#0f1923 !important;}
+  .flow-node{background:#ffffff !important; color:#0f1923 !important; border-color:#d7dde3 !important;}
+  .drug-tag, .flow-node em{color:#1d4ed8 !important;}
+  section, .box, table, .card{break-inside:avoid;}
+  h2{break-after:avoid;}
+  a{color:inherit; text-decoration:none;}
+}
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ a{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../workshop.html">The Workshop</a><span class="cv-sb-meta">Published 6 Oct 2026 · R. E. Suscitate &amp; A. Systole</span></nav>
+
+<div class="page-header">
+  <h1>ASA PeRLS — Perioperative Resuscitation &amp; Life Support</h1>
+  <div class="sub">Protocol Map · 2025 Guideline Update (Moitra et al., Anesthesiology)</div>
+  <div class="badge-row">
+    <span class="badge">ASA + SOCCA</span>
+    <span class="badge">GRADE Methodology</span>
+    <span class="badge">ACLS Alternative</span>
+    <span class="badge">17 International Experts</span>
+    <span class="badge">97 Clinical Questions</span>
+    <span class="badge">5.75–6.25 CME</span>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="overview-strip">
+  <div class="stat-card">
+    <div class="num">4</div>
+    <div class="label">Core Modules</div>
+  </div>
+  <div class="stat-card">
+    <div class="num">8</div>
+    <div class="label">Special Situations</div>
+  </div>
+  <div class="stat-card">
+    <div class="num">2–13</div>
+    <div class="label">Arrests per 10k anesthetics</div>
+  </div>
+  <div class="stat-card">
+    <div class="num">32–75%</div>
+    <div class="label">Mortality pre-discharge</div>
+  </div>
+</div>
+
+<!-- MODULES -->
+<div class="section-title">Core Curriculum — 4 Modules</div>
+<div class="modules-grid">
+  <div class="module-card m1">
+    <div class="module-header"><span class="num">1</span> Pre-Arrest</div>
+    <div class="module-body">
+      <div class="module-title">The Rescue Concept</div>
+      <ul class="module-points">
+        <li>Early recognition of deterioration</li>
+        <li>Pre-arrest interventions to delay/prevent arrest</li>
+        <li>Rescue vs. resuscitation philosophy</li>
+        <li>Monitoring thresholds &amp; trigger criteria</li>
+        <li>Team activation and communication</li>
+        <li>Proactive hemodynamic support</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="module-card m2">
+    <div class="module-header"><span class="num">2</span> Pre-Cardiac Arrest in OR</div>
+    <div class="module-body">
+      <div class="module-title">Intraoperative Crisis Management</div>
+      <ul class="module-points">
+        <li>Shock states → arrest continuum</li>
+        <li>Airway &amp; ventilation failure management</li>
+        <li>Gas trapping / auto-PEEP recognition</li>
+        <li>Hemodynamic instability workup</li>
+        <li>Hypovolemia and hemorrhage control</li>
+        <li>Surgical &amp; anesthetic contributing factors</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="module-card m3">
+    <div class="module-header"><span class="num">3</span> Arrhythmias</div>
+    <div class="module-body">
+      <div class="module-title">Perioperative Dysrhythmia Management</div>
+      <ul class="module-points">
+        <li>Tachydysrhythmia treatment algorithms</li>
+        <li>Bradydysrhythmia treatment algorithms</li>
+        <li>PEA — perioperative etiologies</li>
+        <li>Pump failure / cardiogenic shock</li>
+        <li>ACLS algorithm annotation for OR context</li>
+        <li>Cardioversion &amp; pacing indications</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="module-card m4">
+    <div class="module-header"><span class="num">4</span> Conditions Complicating Arrest</div>
+    <div class="module-body">
+      <div class="module-title">Arrest in OR / Periprocedural Setting</div>
+      <ul class="module-points">
+        <li>CPR modifications for surgical patients</li>
+        <li>Open cardiac massage — indications</li>
+        <li>TEE integration in arrest algorithms</li>
+        <li>ECMO / ECPR rescue pathways</li>
+        <li>Post-cardiac arrest management</li>
+        <li>Targeted temperature management</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- SPECIAL SITUATIONS -->
+<div class="section-title">8 Special Situations</div>
+<div class="situations-grid">
+  <div class="sit-card" style="border-color: var(--red);">
+    <div class="sit-name">🔴 Anaphylaxis</div>
+    <ul class="sit-points">
+      <li>IV epi first-line in OR (IV access present)</li>
+      <li>NMBs most common trigger (rocuronium)</li>
+      <li>Latex, antibiotics, contrast, chlorhexidine</li>
+      <li>Bronchospasm, urticaria, CV collapse triad</li>
+    </ul>
+  </div>
+  <div class="sit-card" style="border-color: var(--blue);">
+    <div class="sit-name">🔵 Gas Embolism</div>
+    <ul class="sit-points">
+      <li>VAE: Venous air embolism (seated, laparoscopic)</li>
+      <li>Durant's maneuver (L lateral decubitus)</li>
+      <li>Stop N₂O; 100% FiO₂</li>
+      <li>Aspiration via CVP catheter</li>
+    </ul>
+  </div>
+  <div class="sit-card" style="border-color: var(--amber);">
+    <div class="sit-name">🟡 Hyperkalemia</div>
+    <ul class="sit-points">
+      <li>Succinylcholine in burn/denervation patients</li>
+      <li>Calcium gluconate membrane stabilization</li>
+      <li>Bicarb, insulin/dextrose, albuterol</li>
+      <li>Renal failure, rhabdomyolysis risk</li>
+    </ul>
+  </div>
+  <div class="sit-card" style="border-color: var(--pink);">
+    <div class="sit-name">🩷 Transfusion Reaction</div>
+    <ul class="sit-points">
+      <li>ABO incompatibility → hemolytic arrest</li>
+      <li>TRALI: bilateral pulmonary edema</li>
+      <li>Stop transfusion immediately</li>
+      <li>Supportive care; renal protection</li>
+    </ul>
+  </div>
+  <div class="sit-card" style="border-color: var(--purple);">
+    <div class="sit-name">🟣 Traumatic Cardiac Arrest</div>
+    <ul class="sit-points">
+      <li>Hemorrhage control first priority</li>
+      <li>REBOA / resuscitative thoracotomy</li>
+      <li>Permissive hypotension pre-hemorrhage control</li>
+      <li>Calcium, TXA, MTP activation</li>
+    </ul>
+  </div>
+  <div class="sit-card" style="border-color: var(--teal);">
+    <div class="sit-name">🩵 LAST — Local Anesthetic Systemic Toxicity</div>
+    <ul class="sit-points">
+      <li>Lipid emulsion (Intralipid) 20% bolus + infusion</li>
+      <li>Seizures → cardiovascular collapse pattern</li>
+      <li>Avoid vasopressin &amp; beta-blockers</li>
+      <li>ASRA checklist, prolonged ACLS if needed</li>
+    </ul>
+  </div>
+  <div class="sit-card" style="border-color: var(--green);">
+    <div class="sit-name">🟢 Neuraxial Anesthesia</div>
+    <ul class="sit-points">
+      <li>High/total spinal → sympathectomy + apnea</li>
+      <li>Early vasopressor (phenylephrine, epi)</li>
+      <li>Airway control if unconscious</li>
+      <li>Leg elevation, IV fluid resuscitation</li>
+    </ul>
+  </div>
+  <div class="sit-card" style="border-color: var(--red);">
+    <div class="sit-name">🔥 Malignant Hyperthermia</div>
+    <ul class="sit-points">
+      <li>Dantrolene 2.5 mg/kg IV bolus, repeat PRN</li>
+      <li>Stop all triggering agents immediately</li>
+      <li>Hyperthermia, rigidity, hypercarbia, acidosis</li>
+      <li>MHAUS hotline: 1-800-MH-HYPER</li>
+    </ul>
+  </div>
+</div>
+
+<!-- PeRLS vs ACLS -->
+<div class="section-title">PeRLS vs. Standard ACLS — Key Distinctions</div>
+<div class="compare-grid">
+  <div class="compare-col acls-col">
+    <div class="col-header">Standard ACLS (AHA)</div>
+    <div class="col-body">
+      <ul>
+        <li>Designed for out-of-hospital / ward arrests</li>
+        <li>Assumes unwitnessed or delayed discovery</li>
+        <li>Epinephrine 1 mg IV q3–5 min standard dose</li>
+        <li>Airway training emphasized (redundant for anesthesiologists)</li>
+        <li>Generic shockable / non-shockable algorithm</li>
+        <li>No surgical or anesthetic etiologies built in</li>
+        <li>POCUS not integrated into arrest pathways</li>
+        <li>"One-size-fits-all" resuscitation approach</li>
+      </ul>
+    </div>
+  </div>
+  <div class="compare-col perls-col">
+    <div class="col-header">PeRLS (ASA)</div>
+    <div class="col-body">
+      <ul>
+        <li>Designed for OR, ICU, periprocedural settings</li>
+        <li>Assumes witnessed arrest, cause often known</li>
+        <li>Lower epinephrine doses recommended (titrated)</li>
+        <li>Skips basic airway — assumes provider proficiency</li>
+        <li>Etiology-driven, diagnosis-first algorithms</li>
+        <li>Surgical &amp; anesthetic causes explicitly addressed</li>
+        <li>POCUS / TEE integrated into arrest management</li>
+        <li>Open cardiac massage, ECMO/ECPR as rescue options</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- KEY PRINCIPLES -->
+<div class="section-title">Guiding Principles</div>
+<div class="principles-row">
+  <div class="principle-card">
+    <span class="icon">🎯</span>
+    <div class="ptitle">Rescue First — Prevent the Arrest</div>
+    <div class="pdesc">PeRLS emphasizes pre-arrest intervention. Early recognition and targeted treatment of deteriorating hemodynamics can abort arrest entirely. The "rescue" concept frames resuscitation as a continuum starting before cardiac standstill.</div>
+  </div>
+  <div class="principle-card">
+    <span class="icon">🔍</span>
+    <div class="pdesc">
+    <strong style="color:var(--text); font-size:0.82rem; display:block; margin-bottom:0.4rem;">Diagnosis-Driven Resuscitation</strong>
+    In the perioperative setting the cause of arrest is frequently known or immediately discoverable. PeRLS algorithms branch by etiology, not just rhythm. POCUS and TEE are first-line diagnostic tools integrated directly into arrest pathways.</div>
+  </div>
+  <div class="principle-card">
+    <span class="icon">⚡</span>
+    <div class="ptitle">Contextual Epinephrine Dosing</div>
+    <div class="pdesc">Unlike ACLS's fixed 1 mg q3–5 min, PeRLS recommends lower, titrated epi doses in perioperative cardiac arrest. Witnessed arrest with a known cause often requires less vasopressor than an out-of-hospital event with prolonged no-flow time.</div>
+  </div>
+  <div class="principle-card">
+    <span class="icon">🫀</span>
+    <div class="ptitle">Advanced Rescue Techniques</div>
+    <div class="pdesc">PeRLS specifically includes ECMO/ECPR, resuscitative thoracotomy, open cardiac massage, REBOA, and intraoperative TEE as tools beyond ACLS scope — options uniquely available in the perioperative environment.</div>
+  </div>
+  <div class="principle-card">
+    <span class="icon">🏥</span>
+    <div class="ptitle">Whole-Team Training</div>
+    <div class="pdesc">Designed for anesthesiologists, CRNAs, AAs, OR nurses, surgeons, and intensivists. Growing hospital acceptance as a full ACLS/BLS alternative. Optional Physical Resuscitation module satisfies BLS requirements.</div>
+  </div>
+  <div class="principle-card">
+    <span class="icon">🔄</span>
+    <div class="ptitle">Maintenance of Expertise</div>
+    <div class="pdesc">PeRLS offers an annual maintenance-of-expertise model with content delivered over 12 months — designed for high-stakes, low-frequency skills that deteriorate without regular reinforcement.</div>
+  </div>
+</div>
+
+<!-- OPTIONAL MODULE NOTE -->
+<div style="background:var(--surface2); border:1px solid var(--border); border-left:3px solid var(--green); border-radius:10px; padding:0.9rem 1.2rem; margin-bottom:2rem; font-size:0.78rem; color:var(--muted);">
+  <strong style="color:var(--green);">+ Optional: Physical Resuscitation Module</strong> — Covers proper chest compression technique; satisfies BLS requirements at many institutions. Enables hospitals to accept PeRLS as a complete BLS + ACLS alternative. Available as a bundle ($158–$200 depending on ASA membership and pathway).
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- TREATMENT ALGORITHMS SECTION -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<style>
+  /* ── DIVIDER ── */
+  .algo-divider {
+    border: none;
+    border-top: 2px solid var(--border);
+    margin: 2.5rem 0 2.5rem 0;
+  }
+  .algo-section-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--teal);
+    letter-spacing: 0.04em;
+    margin-bottom: 0.3rem;
+  }
+  .algo-section-sub {
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-bottom: 2rem;
+    letter-spacing: 0.03em;
+  }
+
+  /* ── MAIN ARREST ALGORITHM ── */
+  .algo-container {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+  }
+  .algo-header {
+    padding: 0.75rem 1.4rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .algo-header .dot {
+    width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+  }
+  .algo-body {
+    padding: 1.2rem 1.4rem;
+  }
+
+  /* ── FLOWCHART NODES ── */
+  .flow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+  .flow-node {
+    width: 100%;
+    max-width: 680px;
+    border-radius: 8px;
+    padding: 0.65rem 1rem;
+    font-size: 0.78rem;
+    text-align: center;
+    font-weight: 500;
+    position: relative;
+    color: var(--text);
+  }
+  .flow-node.trigger {
+    background: #1e2a1e; border: 2px solid var(--teal);
+    font-weight: 700; font-size: 0.85rem; color: var(--teal);
+  }
+  .flow-node.action {
+    background: var(--surface2); border: 1px solid var(--border);
+  }
+  .flow-node.decision {
+    background: #1e1e2a; border: 2px dashed var(--purple);
+    font-style: italic; color: #c4b3f0;
+  }
+  .flow-node.shockable {
+    background: #2a1e1e; border: 2px solid var(--red); color: var(--red);
+    font-weight: 700;
+  }
+  .flow-node.nonshock {
+    background: #1e221e; border: 2px solid var(--green); color: var(--green);
+    font-weight: 700;
+  }
+  .flow-node.rosc {
+    background: #1e2a28; border: 2px solid var(--teal); color: var(--teal);
+    font-weight: 700;
+  }
+  .flow-node.perls-diff {
+    background: #23201a; border: 2px solid var(--amber);
+    font-size: 0.72rem;
+  }
+  .flow-node.drug {
+    background: #1a1e2a; border: 1px solid var(--blue);
+    font-size: 0.74rem; color: #a8c4f0;
+  }
+  .flow-arrow {
+    width: 2px; height: 22px; background: var(--border); margin: 0 auto;
+  }
+  .flow-arrow.split {
+    height: 10px;
+  }
+  .flow-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    width: 100%;
+    max-width: 680px;
+  }
+  .flow-split-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+  .flow-split-col .flow-arrow { background: var(--border); }
+  .flow-label {
+    font-size: 0.65rem;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin: 3px 0;
+  }
+  .flow-join-line {
+    width: 100%; max-width: 680px;
+    height: 1px; background: var(--border);
+    margin: 0 auto 8px auto;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  /* ── TWO-COL ALGO LAYOUT ── */
+  .algo-two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  /* ── SPECIAL SITUATION ALGORITHM CARDS ── */
+  .sit-algo-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+  }
+  .sit-algo-header {
+    padding: 0.6rem 1.1rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .sit-algo-body {
+    padding: 1rem 1.1rem;
+  }
+  .step-list {
+    list-style: none;
+    counter-reset: step-counter;
+  }
+  .step-list li {
+    counter-increment: step-counter;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    padding: 0.45rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.76rem;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+  .step-list li:last-child { border-bottom: none; }
+  .step-list li::before {
+    content: counter(step-counter);
+    min-width: 20px; height: 20px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.65rem; font-weight: 800;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .step-list li .drug-tag {
+    display: inline-block;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 0 5px;
+    font-size: 0.68rem;
+    font-family: monospace;
+    white-space: nowrap;
+    margin: 0 2px;
+  }
+  .step-list li strong { color: var(--text); font-weight: 600; }
+  .step-critical {
+    background: rgba(224,92,110,0.08);
+    border: 1px solid rgba(224,92,110,0.3);
+    border-radius: 6px;
+    padding: 0.4rem 0.7rem;
+    font-size: 0.72rem;
+    color: var(--red);
+    margin-top: 0.6rem;
+    font-weight: 600;
+  }
+  .step-note {
+    background: var(--surface2);
+    border-left: 3px solid var(--amber);
+    border-radius: 0 6px 6px 0;
+    padding: 0.4rem 0.7rem;
+    font-size: 0.71rem;
+    color: var(--muted);
+    margin-top: 0.6rem;
+    line-height: 1.4;
+  }
+
+  /* sit colors */
+  .sc-red .sit-algo-header { background: rgba(224,92,110,0.1); color: var(--red); }
+  .sc-red .step-list li::before { background: rgba(224,92,110,0.15); color: var(--red); }
+  .sc-red { border-top: 3px solid var(--red); }
+
+  .sc-teal .sit-algo-header { background: rgba(62,207,178,0.1); color: var(--teal); }
+  .sc-teal .step-list li::before { background: rgba(62,207,178,0.12); color: var(--teal); }
+  .sc-teal { border-top: 3px solid var(--teal); }
+
+  .sc-blue .sit-algo-header { background: rgba(91,155,213,0.1); color: var(--blue); }
+  .sc-blue .step-list li::before { background: rgba(91,155,213,0.12); color: var(--blue); }
+  .sc-blue { border-top: 3px solid var(--blue); }
+
+  .sc-purple .sit-algo-header { background: rgba(155,120,212,0.1); color: var(--purple); }
+  .sc-purple .step-list li::before { background: rgba(155,120,212,0.12); color: var(--purple); }
+  .sc-purple { border-top: 3px solid var(--purple); }
+
+  .sc-amber .sit-algo-header { background: rgba(232,160,69,0.1); color: var(--amber); }
+  .sc-amber .step-list li::before { background: rgba(232,160,69,0.12); color: var(--amber); }
+  .sc-amber { border-top: 3px solid var(--amber); }
+
+  .sc-green .sit-algo-header { background: rgba(91,201,138,0.1); color: var(--green); }
+  .sc-green .step-list li::before { background: rgba(91,201,138,0.12); color: var(--green); }
+  .sc-green { border-top: 3px solid var(--green); }
+
+  .sc-pink .sit-algo-header { background: rgba(224,103,168,0.1); color: var(--pink); }
+  .sc-pink .step-list li::before { background: rgba(224,103,168,0.12); color: var(--pink); }
+  .sc-pink { border-top: 3px solid var(--pink); }
+
+  /* ── POST-ARREST TABLE ── */
+  .post-arrest-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .pa-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.9rem 1rem;
+  }
+  .pa-card .pa-title {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--teal);
+    margin-bottom: 0.6rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .pa-card ul {
+    list-style: none;
+  }
+  .pa-card ul li {
+    font-size: 0.73rem;
+    color: var(--muted);
+    padding: 0.2rem 0;
+    padding-left: 0.85rem;
+    position: relative;
+    line-height: 1.35;
+  }
+  .pa-card ul li::before {
+    content: '▸';
+    position: absolute; left: 0;
+    color: var(--teal);
+    font-size: 0.6rem;
+    top: 0.3rem;
+  }
+</style>
+
+<hr class="algo-divider">
+
+<div class="algo-section-title">Treatment Algorithms</div>
+<div class="algo-section-sub">PeRLS 2025 · Moitra et al., Anesthesiology 143(6):1453–1483 · Perioperative &amp; ICU-specific protocols</div>
+
+<!-- ══ MASTER PERIOPERATIVE CARDIAC ARREST ALGORITHM ══ -->
+<div class="section-title">Master Algorithm — Perioperative Cardiac Arrest</div>
+
+<div class="algo-container">
+  <div class="algo-header" style="background:rgba(62,207,178,0.08); color:var(--teal);">
+    <span class="dot" style="background:var(--teal);"></span>
+    PeRLS Perioperative Cardiac Arrest Algorithm (Witnessed, Cause-Driven)
+  </div>
+  <div class="algo-body">
+    <div class="flow">
+
+      <div class="flow-node trigger">CARDIAC ARREST RECOGNIZED IN OR / PERIPROCEDURAL SETTING</div>
+      <div class="flow-arrow"></div>
+
+      <div class="flow-node action">
+        <strong>IMMEDIATE ACTIONS (simultaneous)</strong><br>
+        Call for help · Designate team leader · Note time · Stop surgical bleeding if applicable · Note last anesthetic agents
+      </div>
+      <div class="flow-arrow"></div>
+
+      <div class="flow-node action">
+        <strong>START HIGH-QUALITY CPR</strong><br>
+        Rate 100–120/min · Depth ≥2 in · Full recoil · Minimize interruptions (&lt;10 sec pauses)<br>
+        <span style="color:var(--amber); font-size:0.72rem;">100% FiO₂ · Confirm ETT position · Disconnect N₂O if in use</span>
+      </div>
+      <div class="flow-arrow"></div>
+
+      <div class="flow-node perls-diff">
+        ⚡ <strong style="color:var(--amber);">PeRLS KEY STEP: Immediate Etiology Search</strong><br>
+        <span style="color:var(--muted);">Ask: What caused this arrest? — Anesthetic overdose? Hemorrhage? VAE? Anaphylaxis? LAST? MH? High spinal? Airway loss? Pneumothorax? Tamponade?</span><br>
+        Deploy POCUS / TEE immediately to guide diagnosis
+      </div>
+      <div class="flow-arrow"></div>
+
+      <div class="flow-node decision">Rhythm Check — Shockable or Non-Shockable?</div>
+      <div class="flow-arrow split"></div>
+
+      <!-- SPLIT -->
+      <div class="flow-split">
+        <!-- LEFT: VF/pVT -->
+        <div class="flow-split-col">
+          <div class="flow-node shockable">VF / Pulseless VT (Shockable)</div>
+          <div class="flow-arrow"></div>
+          <div class="flow-node action">Defibrillate — 200 J biphasic (escalate PRN)</div>
+          <div class="flow-arrow"></div>
+          <div class="flow-node action">Resume CPR × 2 min immediately</div>
+          <div class="flow-arrow"></div>
+          <div class="flow-node drug">
+            After 2nd shock if refractory:<br>
+            <span class="drug-tag">Epi 100–300 mcg IV</span> (PeRLS lower dose)<br>
+            Repeat q3–5 min PRN
+          </div>
+          <div class="flow-arrow"></div>
+          <div class="flow-node drug">
+            After 3rd shock — antiarrhythmic:<br>
+            <span class="drug-tag">Amiodarone 300 mg IV</span> then 150 mg<br>
+            <em>or</em> <span class="drug-tag">Lidocaine 1.5 mg/kg IV</span>
+          </div>
+          <div class="flow-arrow"></div>
+          <div class="flow-node action">Rhythm check q2 min · Treat reversible cause</div>
+        </div>
+
+        <!-- RIGHT: PEA/Asystole -->
+        <div class="flow-split-col">
+          <div class="flow-node nonshock">PEA / Asystole (Non-Shockable)</div>
+          <div class="flow-arrow"></div>
+          <div class="flow-node action">CPR × 2 min · Establish IV/IO access</div>
+          <div class="flow-arrow"></div>
+          <div class="flow-node drug">
+            <span class="drug-tag">Epi 100–300 mcg IV</span> as soon as possible<br>
+            (PeRLS: lower dose than ACLS 1 mg standard)<br>
+            Repeat q3–5 min
+          </div>
+          <div class="flow-arrow"></div>
+          <div class="flow-node action">Rhythm check q2 min</div>
+          <div class="flow-arrow"></div>
+          <div class="flow-node perls-diff">
+            ⚡ PeRLS PEA Differentials in OR:<br>
+            <span style="color:var(--muted); font-size:0.71rem;">
+              Hypovolemia · Hypoxia · Pneumothorax · Tamponade<br>
+              VAE · LAST · Anaphylaxis · MH · High spinal<br>
+              Anesthetic overdose · PE · Hyperkalemia
+            </span>
+          </div>
+          <div class="flow-arrow"></div>
+          <div class="flow-node action">Treat underlying cause · Consider POCUS/TEE</div>
+        </div>
+      </div>
+
+      <div style="height:16px;"></div>
+      <div class="flow-node decision">ROSC Achieved?</div>
+      <div class="flow-arrow"></div>
+
+      <div class="flow-split">
+        <div class="flow-split-col">
+          <div class="flow-label">NO — continue loop</div>
+          <div class="flow-node action">Continue CPR · Reassess etiology · Consider escalation:<br>Open cardiac massage · ECMO/ECPR · TEE guidance</div>
+        </div>
+        <div class="flow-split-col">
+          <div class="flow-label">YES — post-arrest care</div>
+          <div class="flow-node rosc">ROSC → Post-Arrest Management Protocol ↓</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ══ PERIOPERATIVE REVERSIBLE CAUSES ══ -->
+<div class="section-title">Perioperative Reversible Causes — The PeRLS "OR H's &amp; T's"</div>
+
+<div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:2rem;">
+  <div style="background:var(--surface); border:1px solid var(--border); border-top:2px solid var(--blue); border-radius:10px; padding:1rem 1.1rem;">
+    <div style="font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--blue); margin-bottom:0.7rem;">Perioperative "H's"</div>
+    <table style="width:100%; border-collapse:collapse; font-size:0.74rem;">
+      <tr style="border-bottom:1px solid var(--border);">
+        <td style="padding:0.3rem 0.5rem; color:var(--blue); font-weight:600; width:38%;">Hypovolemia</td>
+        <td style="padding:0.3rem 0.5rem; color:var(--muted);">Hemorrhage, anaphylaxis, third spacing</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border);">
+        <td style="padding:0.3rem 0.5rem; color:var(--blue); font-weight:600;">Hypoxia</td>
+        <td style="padding:0.3rem 0.5rem; color:var(--muted);">ETT displacement, circuit disconnect, bronchospasm</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border);">
+        <td style="padding:0.3rem 0.5rem; color:var(--blue); font-weight:600;">Hydrogen ion (acidosis)</td>
+        <td style="padding:0.3rem 0.5rem; color:var(--muted);">Metabolic, respiratory, sepsis, MH</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border);">
+        <td style="padding:0.3rem 0.5rem; color:var(--blue); font-weight:600;">Hypo/Hyperkalemia</td>
+        <td style="padding:0.3rem 0.5rem; color:var(--muted);">Succinylcholine + denervation, renal failure</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border);">
+        <td style="padding:0.3rem 0.5rem; color:var(--blue); font-weight:600;">Hypothermia</td>
+        <td style="padding:0.3rem 0.5rem; color:var(--muted);">Prolonged exposure, major trauma, irrigation</td>
+      </tr>
+      <tr>
+        <td style="padding:0.3rem 0.5rem; color:var(--blue); font-weight:600;">High spinal / Hypotension</td>
+        <td style="padding:0.3rem 0.5rem; color:var(--muted);">Neuraxial anesthesia spread, vasodilation</td>
+      </tr>
+    </table>
+  </div>
+  <div style="background:var(--surface); border:1px solid var(--border); border-top:2px solid var(--red); border-radius:10px; padding:1rem 1.1rem;">
+    <div style="font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--red); margin-bottom:0.7rem;">Perioperative "T's" + Anesthesia-Specifics</div>
+    <table style="width:100%; border-collapse:collapse; font-size:0.74rem;">
+      <tr style="border-bottom:1px solid var(--border);">
+        <td style="padding:0.3rem 0.5rem; color:var(--red); font-weight:600; width:38%;">Tension pneumothorax</td>
+        <td style="padding:0.3rem 0.5rem; color:var(--muted);">Central line, laparoscopy, auto-PEEP, trauma</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border);">
+        <td style="padding:0.3rem 0.5rem; color:var(--red); font-weight:600;">Tamponade</td>
+        <td style="padding:0.3rem 0.5rem; color:var(--muted);">TEE diagnostic; pericardiocentesis / open drainage</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border);">
+        <td style="padding:0.3rem 0.5rem; color:var(--red); font-weight:600;">Thrombosis (PE / AMI)</td>
+        <td style="padding:0.3rem 0.5rem; color:var(--muted);">Massive PE, coronary occlusion during case</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border);">
+        <td style="padding:0.3rem 0.5rem; color:var(--red); font-weight:600;">Toxins / Drugs</td>
+        <td style="padding:0.3rem 0.5rem; color:var(--muted);">LAST, anesthetic overdose, MH, adverse drug reaction</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border);">
+        <td style="padding:0.3rem 0.5rem; color:var(--red); font-weight:600;">Transfusion reaction</td>
+        <td style="padding:0.3rem 0.5rem; color:var(--muted);">ABO incompatibility, TRALI, hemolysis</td>
+      </tr>
+      <tr>
+        <td style="padding:0.3rem 0.5rem; color:var(--red); font-weight:600;">VAE (gas embolism)</td>
+        <td style="padding:0.3rem 0.5rem; color:var(--muted);">Venous air — seated, laparoscopic, craniotomy</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<!-- ══ SPECIAL SITUATION ALGORITHMS ══ -->
+<div class="section-title">Special Situation Treatment Algorithms</div>
+<div class="algo-two-col">
+
+  <!-- ANAPHYLAXIS -->
+  <div class="sit-algo-card sc-red">
+    <div class="sit-algo-header">🔴 Anaphylaxis</div>
+    <div class="sit-algo-body">
+      <ol class="step-list">
+        <li><strong>Declare emergency</strong> · call for help · identify &amp; stop trigger (NMBs most common)</li>
+        <li>Stop surgical procedure if possible · <strong>100% FiO₂</strong></li>
+        <li>Turn off volatile anesthetic if severe hemodynamic compromise</li>
+        <li>If hypotensive: <strong class="drug-tag">Epi 1–10 mcg/kg IV</strong> bolus (IV access present in OR = IV preferred over IM)</li>
+        <li>If no IV: <strong class="drug-tag">Epi 10 mcg/kg IM</strong></li>
+        <li>Start <strong class="drug-tag">Epinephrine infusion</strong> if multiple boluses required</li>
+        <li>Volume: <strong class="drug-tag">Isotonic saline 10–30 mL/kg IV rapid</strong></li>
+        <li>Adjuncts: <span class="drug-tag">Methylprednisolone 2 mg/kg IV</span> · <span class="drug-tag">Diphenhydramine 1 mg/kg IV</span></li>
+        <li>Bronchospasm: <span class="drug-tag">Albuterol 4–10 puffs</span></li>
+        <li>Send <strong>serum tryptase</strong> within 30 min–2 hrs to confirm diagnosis</li>
+        <li>If cardiac arrest → standard CPR + consider ECMO</li>
+      </ol>
+      <div class="step-critical">⚠ If cardiac arrest: standard CPR + vasopressors. No dose reduction in arrest — but treat the anaphylaxis simultaneously.</div>
+    </div>
+  </div>
+
+  <!-- LAST -->
+  <div class="sit-algo-card sc-teal">
+    <div class="sit-algo-header">🩵 Local Anesthetic Systemic Toxicity (LAST)</div>
+    <div class="sit-algo-body">
+      <ol class="step-list">
+        <li><strong>Declare emergency</strong> · call for help · stop LA injection immediately</li>
+        <li>100% FiO₂ · Airway control · Secure IV access</li>
+        <li>Seizures: <span class="drug-tag">Benzodiazepine</span> — avoid propofol in hemodynamic instability</li>
+        <li><strong class="drug-tag">20% Lipid Emulsion (Intralipid) bolus: 1.5 mL/kg IV over 1 min</strong></li>
+        <li>Follow with lipid infusion: <span class="drug-tag">0.25 mL/kg/min</span> (upper limit ~10–12 mL/kg total)</li>
+        <li>If cardiac arrest: <strong class="drug-tag">Epi 100–300 mcg IV</strong> (NOT standard 1 mg — impairs lipid rescue)</li>
+        <li>Avoid: vasopressin · calcium channel blockers · beta-blockers · propofol</li>
+        <li>If refractory: <strong>ECMO/ECPR</strong> — prolonged ACLS justified (LA redistributes)</li>
+        <li>Monitor for recurrence 4–6 hours post-event</li>
+      </ol>
+      <div class="step-critical">⚠ LAST-specific epi rule: ≤1 mcg/kg (or 100–300 mcg). Standard ACLS 1 mg epi impairs lipid emulsion efficacy and worsens outcomes.</div>
+      <div class="step-note">ASRA checklist available at asra.com/guidelines/last — print and post in every anesthetizing location.</div>
+    </div>
+  </div>
+
+  <!-- MALIGNANT HYPERTHERMIA -->
+  <div class="sit-algo-card sc-red">
+    <div class="sit-algo-header">🔥 Malignant Hyperthermia (MH)</div>
+    <div class="sit-algo-body">
+      <ol class="step-list">
+        <li><strong>Declare MH emergency</strong> · get help · surgeon stops procedure if possible</li>
+        <li><strong>Stop all triggering agents immediately</strong> — volatiles, succinylcholine</li>
+        <li>Attach <strong>activated charcoal filters</strong> to anesthesia circuit · O₂ flush 10 L/min</li>
+        <li>Hyperventilate to normalize EtCO₂ (or below target)</li>
+        <li><strong class="drug-tag">Dantrolene 2.5 mg/kg IV bolus</strong> — repeat q5 min until EtCO₂ &lt;45 mmHg, HR normalizes, rigidity resolves</li>
+        <li>Continue dantrolene until response — up to <span class="drug-tag">10 mg/kg cumulative</span> (if no response, reconsider diagnosis)</li>
+        <li>Maintenance: <span class="drug-tag">Dantrolene 1 mg/kg IV q6h × 24h</span> (prevent recrudescence)</li>
+        <li><strong>Active cooling</strong>: ice packs, cold saline irrigation, cooling blankets — target &lt;38.5°C</li>
+        <li>Hyperkalemia: <span class="drug-tag">CaGluconate 30 mg/kg IV</span> · <span class="drug-tag">NaHCO₃ 1–2 mEq/kg</span> · <span class="drug-tag">Insulin 0.1 U/kg</span></li>
+        <li>Arrhythmia: <span class="drug-tag">Amiodarone 5 mg/kg IV</span> — do NOT use calcium channel blockers (hyperkalemia risk)</li>
+        <li>Urinary catheter — maintain UO &gt;2 mL/kg/hr (rhabdomyolysis / renal protection)</li>
+        <li>If cardiac arrest → CPR + consider ECMO</li>
+      </ol>
+      <div class="step-critical">⚠ Ryanodex (new formulation) mixes in 5 mL sterile water in &lt;1 min vs. Dantrium's 60 mL — critical time savings.</div>
+      <div class="step-note">MHAUS Hotline: 1-800-MH-HYPER · mhaus.org · European: emhg.org</div>
+    </div>
+  </div>
+
+  <!-- HIGH SPINAL / NEURAXIAL -->
+  <div class="sit-algo-card sc-green">
+    <div class="sit-algo-header">🟢 High / Total Spinal — Neuraxial Anesthesia</div>
+    <div class="sit-algo-body">
+      <ol class="step-list">
+        <li><strong>Recognize</strong>: rapid hypotension + bradycardia + respiratory distress / apnea after neuraxial block</li>
+        <li>Call for help · lay patient supine (Trendelenburg if tolerated)</li>
+        <li><strong>Airway first</strong>: if apneic/unconscious → immediate <strong>RSI and intubation</strong></li>
+        <li>100% FiO₂ · Assisted ventilation</li>
+        <li><strong class="drug-tag">Epinephrine 10–100 mcg IV bolus</strong> for hemodynamic collapse (titrate to effect)</li>
+        <li>Severe bradycardia: <span class="drug-tag">Atropine 0.5–1 mg IV</span> · <span class="drug-tag">Epinephrine infusion</span> if persistent</li>
+        <li>Aggressive IV fluid resuscitation for preload support</li>
+        <li>Leg elevation to augment venous return</li>
+        <li>If cardiac arrest: CPR + vasopressors. Epinephrine dose per arrest algorithm.</li>
+        <li>Reassure patient if conscious — block resolves with time</li>
+      </ol>
+      <div class="step-note">Distinguish from anaphylaxis: no urticaria/bronchospasm; onset immediately after neuraxial. Timing and procedure type are key diagnostic clues.</div>
+    </div>
+  </div>
+
+  <!-- GAS EMBOLISM -->
+  <div class="sit-algo-card sc-blue">
+    <div class="sit-algo-header">🔵 Venous Air Embolism (VAE)</div>
+    <div class="sit-algo-body">
+      <ol class="step-list">
+        <li><strong>Recognize</strong>: sudden ↓ EtCO₂ · ↓ SpO₂ · hypotension · "mill-wheel" murmur · TEE shows air in RV</li>
+        <li>Alert surgeon — flood operative field with saline · pack wound</li>
+        <li><strong>Stop N₂O</strong> immediately · 100% FiO₂</li>
+        <li>Place patient in <strong>left lateral decubitus + Trendelenburg</strong> (Durant's maneuver) — traps air in RV away from RVOT</li>
+        <li>Aspirate air via <strong>central venous catheter</strong> (right atrial aspiration)</li>
+        <li>POCUS/TEE to confirm and guide — RV dilation, air visualization</li>
+        <li>Vasopressors for hemodynamic support: <span class="drug-tag">Norepinephrine</span> or <span class="drug-tag">Phenylephrine</span></li>
+        <li>CPR if cardiac arrest — may mobilize air</li>
+        <li>Consider ECMO if refractory</li>
+      </ol>
+      <div class="step-critical">⚠ High-risk positions: seated craniotomy, laparoscopy, hip arthroplasty. Precordial Doppler most sensitive early monitor.</div>
+    </div>
+  </div>
+
+  <!-- HYPERKALEMIA -->
+  <div class="sit-algo-card sc-amber">
+    <div class="sit-algo-header">🟡 Hyperkalemia-Induced Arrest</div>
+    <div class="sit-algo-body">
+      <ol class="step-list">
+        <li><strong>Recognize risk</strong>: succinylcholine in burn/denervation patients, renal failure, rhabdomyolysis (MH)</li>
+        <li>ECG changes: peaked T-waves → widened QRS → sine wave → arrest</li>
+        <li><strong>Membrane stabilization: <span class="drug-tag">Calcium gluconate 1–2 g IV</span></strong> (or CaCl 500–1000 mg) — give over 5–10 min, repeat PRN · obtain ECG before and after</li>
+        <li>Shift K⁺ intracellular: <span class="drug-tag">Sodium bicarbonate 1–2 mEq/kg IV</span></li>
+        <li>Shift K⁺: <span class="drug-tag">Insulin 10 units IV + Dextrose 50% 50 mL</span></li>
+        <li>Bronchodilator shift: <span class="drug-tag">Albuterol 10–20 mg nebulized</span></li>
+        <li>Eliminate K⁺: <strong>dialysis</strong> if refractory and available</li>
+        <li>Standard CPR if arrest — calcium and bicarb during resuscitation</li>
+      </ol>
+      <div class="step-note">Succinylcholine in burns/SCI can release K⁺ 5–14 mEq — can be immediately lethal. Avoid succinylcholine >24–48h post-burn or SCI.</div>
+    </div>
+  </div>
+
+  <!-- TRAUMATIC CARDIAC ARREST -->
+  <div class="sit-algo-card sc-purple">
+    <div class="sit-algo-header">🟣 Traumatic Cardiac Arrest</div>
+    <div class="sit-algo-body">
+      <ol class="step-list">
+        <li><strong>Simultaneously: hemorrhage control + CPR</strong> — in trauma arrest, the cause (hemorrhage) must be controlled for ROSC to be sustained</li>
+        <li>Permissive hypotension pre-hemorrhage control (SBP 80–90 before definitive bleeding control)</li>
+        <li>Massive transfusion: <strong>1:1:1 ratio</strong> pRBC:FFP:Plt · <span class="drug-tag">TXA 1g IV</span> (within 3h)</li>
+        <li>Calcium: <span class="drug-tag">CaCl 1g IV</span> (dilutional hypocalcemia during MTP)</li>
+        <li>Bilateral needle decompression if tension pneumothorax suspected — clinical diagnosis, no time for CXR in arrest</li>
+        <li>Consider <strong>resuscitative thoracotomy</strong> in refractory traumatic arrest (trained surgeon present)</li>
+        <li>Consider <strong>REBOA</strong> (Resuscitative Endovascular Balloon Occlusion of Aorta) for hemorrhage control</li>
+        <li>Epinephrine: use judiciously — vasoconstrictors in distributive/hemorrhagic arrest may be harmful; control the source first</li>
+        <li>ECMO if available and cause reversible</li>
+      </ol>
+      <div class="step-critical">⚠ Standard ACLS epinephrine emphasis is LEAST appropriate in traumatic arrest — hemorrhage control and volume are the priority.</div>
+    </div>
+  </div>
+
+  <!-- TRANSFUSION REACTION -->
+  <div class="sit-algo-card sc-pink">
+    <div class="sit-algo-header">🩷 Hemolytic Transfusion Reaction</div>
+    <div class="sit-algo-body">
+      <ol class="step-list">
+        <li><strong>Stop transfusion immediately</strong> · keep IV line open with saline</li>
+        <li>ABO incompatibility: fever, hemoglobinuria, hypotension, DIC — classically masked by GA</li>
+        <li>Aggressive IV fluids: maintain UO &gt;1 mL/kg/hr (renal protection from free Hgb)</li>
+        <li>Vasopressors if hypotensive: <span class="drug-tag">Norepinephrine</span></li>
+        <li>Monitor for DIC: coag panel, fibrinogen, TEG/ROTEM</li>
+        <li>Send blood bank specimens: repeat type &amp; screen, Coombs, return transfused unit</li>
+        <li>TRALI: bilateral pulmonary infiltrates + hypoxia within 6h — supportive care, no diuresis</li>
+        <li>Standard CPR if arrest + treat underlying cause</li>
+      </ol>
+      <div class="step-note">Under GA the classic symptoms (back pain, anxiety, dark urine) are masked. Unexplained intraoperative hypotension with ongoing transfusion = stop and investigate.</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ POST-ARREST MANAGEMENT ══ -->
+<div class="section-title">Post-Cardiac Arrest Management — PeRLS Framework</div>
+<div class="post-arrest-grid">
+  <div class="pa-card">
+    <div class="pa-title">Hemodynamic Targets</div>
+    <ul>
+      <li>MAP ≥65–80 mmHg (avoid hypotension)</li>
+      <li>Vasopressor of choice: <strong>norepinephrine</strong> — prepare before ROSC if anticipated</li>
+      <li>Push-dose epi as bridge to drip</li>
+      <li>Treat cardiogenic shock; MCS (IABP, Impella) if refractory — not routinely</li>
+      <li>Echocardiography to assess function post-ROSC</li>
+    </ul>
+  </div>
+  <div class="pa-card">
+    <div class="pa-title">Oxygenation &amp; Ventilation</div>
+    <ul>
+      <li>Target SpO₂ 94–98% — avoid hyperoxia</li>
+      <li>PaCO₂ 35–45 mmHg (normocapnia) — avoid hypercapnia</li>
+      <li>Lung-protective ventilation: TV 6 mL/kg IBW, PEEP 5–8 cmH₂O</li>
+      <li>Waveform capnography throughout</li>
+    </ul>
+  </div>
+  <div class="pa-card">
+    <div class="pa-title">Temperature &amp; Neuro</div>
+    <ul>
+      <li>Targeted Temperature Management: 32–36°C if comatose (avoid fever &gt;37.7°C)</li>
+      <li>Glucose control: 140–180 mg/dL</li>
+      <li>Treat seizures: EEG, non-sedating antiseizures if ictal pattern present</li>
+      <li>Neuroprognostication not before 72h after normothermia</li>
+    </ul>
+  </div>
+  <div class="pa-card">
+    <div class="pa-title">Diagnostic Workup</div>
+    <ul>
+      <li>12-lead ECG within 10 min post-ROSC (repeat at 30 min — early ECG has high false STEMI rate)</li>
+      <li>POCUS/TTE/TEE — wall motion, tamponade, effusion</li>
+      <li>Consider whole-body CT (head–pelvis) if etiology unclear</li>
+      <li>Labs: ABG, BMP, lactate, troponin, coags, CBC</li>
+    </ul>
+  </div>
+  <div class="pa-card">
+    <div class="pa-title">Coronary / Intervention</div>
+    <ul>
+      <li>Emergent cath if STEMI pattern on repeat ECG or clear OMI</li>
+      <li>Absence of ST elevation does not rule out culprit lesion</li>
+      <li>PCI reasonable in arrest from suspected ACS etiology</li>
+      <li>Consult cardiac surgery if ECMO/ECPR planned</li>
+    </ul>
+  </div>
+  <div class="pa-card">
+    <div class="pa-title">PeRLS Escalation Options</div>
+    <ul>
+      <li><strong>Open cardiac massage</strong> — if chest is open or immediately accessible; improves coronary perfusion pressure vs. external compressions</li>
+      <li><strong>ECMO/ECPR</strong> — early activation for young patients, reversible etiology, refractory arrest &lt;30–60 min no-flow</li>
+      <li><strong>TEE guidance</strong> during CPR — compressor position, cardiac filling, tamponade, LVEF</li>
+      <li>REBOA for hemorrhagic shock</li>
+    </ul>
+  </div>
+</div>
+
+<div class="step-note" style="margin-bottom:2rem;">
+  <strong style="color:var(--text);">Evidence note:</strong> Many PeRLS 2025 recommendations are conditional due to low or very low certainty of evidence — reflecting the scarcity of RCTs in perioperative resuscitation. The GRADE framework was applied to 97 clinical questions; 12 were prioritized. Four underwent formal Cochrane systematic reviews. The conditional nature of recommendations underscores the importance of clinical judgment and etiology-specific decision-making over rigid protocol adherence.
+</div>
+
+<div class="footer">
+  ASA PeRLS · Developed with SOCCA &amp; ASA Critical Care Committee · 2025 Update: Moitra et al., <em>Anesthesiology</em> 143(6):1453–1483 · Algorithms compiled from primary guideline sources for educational reference
+<div class="cv-tagline" style="margin-top:8px">The Critical Vector · Direction and magnitude.</div></div>
+
+</body>
+</html>

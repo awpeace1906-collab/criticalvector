@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TXA and POISE-3 — The Critical Vector</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0e14; --surface:#111720; --surface2:#182030;
+  --border:rgba(255,255,255,0.08);
+  --teal:#00d4aa; --blue:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa;
+  --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670;
+  --hl:var(--teal);
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{background:var(--bg); color:var(--text); font-family:'Source Serif 4', Georgia, serif; font-size:16px; line-height:1.62; -webkit-font-smoothing:antialiased;}
+h1,h2,h3,.label,nav a,th,.tag,.verdict{font-family:'Syne', sans-serif;}
+.mono,.num{font-family:'IBM Plex Mono', monospace;}
+.page{max-width:900px; margin:0 auto; padding:0 24px 60px;}
+header{padding:34px 0 20px; border-bottom:1px solid var(--border);}
+.kicker{font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--hl); margin-bottom:10px;}
+h1{font-weight:800; font-size:30px; line-height:1.15; margin:0 0 10px;}
+header p.sub{font-style:italic; color:var(--text2); font-size:15.5px; margin:0 0 12px;}
+.byline{font-size:13px; color:var(--text3); margin:0;}
+.byline a, .sources a, footer a, p a, td a{color:var(--teal);}
+.alert{margin:20px 0; padding:14px 18px; border-radius:10px; font-size:14.5px;}
+.alert.ok{background:rgba(0,212,170,.10); border:1px solid rgba(0,212,170,.28); color:#bdf5e8;}
+.alert.warn{background:rgba(245,158,11,.10); border:1px solid rgba(245,158,11,.28); color:#fbdca0;}
+nav{display:flex; flex-wrap:wrap; gap:7px; padding:16px 0; border-bottom:1px solid var(--border);}
+nav a{font-size:12.5px; font-weight:600; color:var(--text2); background:var(--surface); border:1px solid var(--border); padding:7px 12px; border-radius:20px; text-decoration:none; white-space:nowrap;}
+nav a:hover, nav a:focus-visible{color:var(--text); border-color:var(--hl); outline:none;}
+section{padding:28px 0; border-bottom:1px solid var(--border);}
+.sec-head{display:flex; align-items:baseline; gap:10px; padding:11px 18px; border-left:4px solid var(--teal); background:linear-gradient(90deg, rgba(0,212,170,0.10), transparent); border-radius:0 8px 8px 0; margin-bottom:14px;}
+.sec-head.c-blue{border-left-color:var(--blue); background:linear-gradient(90deg, rgba(96,165,250,0.10), transparent);}
+.sec-head.c-red{border-left-color:var(--red); background:linear-gradient(90deg, rgba(232,76,76,0.10), transparent);}
+.sec-head.c-amber{border-left-color:var(--amber); background:linear-gradient(90deg, rgba(245,158,11,0.10), transparent);}
+.sec-head.c-purple{border-left-color:var(--purple); background:linear-gradient(90deg, rgba(167,139,250,0.10), transparent);}
+.sec-head.c-grey{border-left-color:var(--text3); background:none;}
+.sec-num{font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--text3);}
+h2{font-weight:700; font-size:20px; margin:0;}
+h3{font-size:15px; font-weight:700; margin:18px 0 6px;}
+.tagline{font-style:italic; font-size:14px; color:var(--text2); margin:0 0 12px;}
+p{margin:.75rem 0;}
+.box{background:var(--surface2); border:1px solid var(--border); border-radius:10px; padding:14px 18px; margin:14px 0;}
+.box.t-teal{border-left:3px solid var(--teal);} .box.t-blue{border-left:3px solid var(--blue);}
+.box.t-amber{border-left:3px solid var(--amber);} .box.t-red{border-left:3px solid var(--red);} .box.t-purple{border-left:3px solid var(--purple);}
+.box .label{display:block; font-size:12.5px; font-weight:700; margin-bottom:4px;}
+.box.t-teal .label{color:var(--teal);} .box.t-blue .label{color:var(--blue);} .box.t-amber .label{color:var(--amber);} .box.t-red .label{color:var(--red);} .box.t-purple .label{color:var(--purple);}
+.box p{margin:.4rem 0;}
+.tbl{overflow-x:auto; margin:14px 0;}
+table{width:100%; border-collapse:collapse; font-size:13.6px;}
+th{background:var(--surface2); color:var(--text); text-align:left; padding:9px 11px; font-weight:600; font-size:12px; border-bottom:2px solid var(--border);}
+td{padding:9px 11px; border-bottom:1px solid var(--border); vertical-align:top; line-height:1.45;}
+tr:nth-child(even) td{background:rgba(255,255,255,0.02);}
+td.k{font-family:'Syne',sans-serif; font-weight:700; color:var(--text);}
+.tag{display:inline-block; font-size:10.5px; font-weight:700; padding:2px 9px; border-radius:20px; white-space:nowrap; margin-bottom:3px;}
+.tag.v{background:rgba(0,212,170,.12); color:var(--teal); border:1px solid rgba(0,212,170,.3);}
+.tag.c{background:rgba(245,158,11,.12); color:var(--amber); border:1px solid rgba(245,158,11,.3);}
+.tag.x{background:rgba(232,76,76,.12); color:#ff9e9e; border:1px solid rgba(232,76,76,.3);}
+.tag.u{background:rgba(167,139,250,.12); color:var(--purple); border:1px solid rgba(167,139,250,.3);}
+.tag.l{background:rgba(96,165,250,.12); color:var(--blue); border:1px solid rgba(96,165,250,.3);}
+ol.steps, ul.plain{padding-left:1.3rem; margin:.6rem 0;} ol.steps li, ul.plain li{margin-bottom:.45rem;}
+.figure{margin:18px 0; background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:16px;}
+.figure svg{width:100%; height:auto; display:block;}
+.figcap{font-size:12.5px; color:var(--text2); font-style:italic; margin-top:8px;}
+.sources{list-style:none; padding:0; margin:0; font-size:13px; color:var(--text2);}
+.sources li{padding:8px 0; border-bottom:1px solid var(--border);}
+.sources li:last-child{border-bottom:none;}
+footer{padding:26px 0 0; font-size:12.5px; color:var(--text3); font-style:italic;}
+@media (max-width:600px){ h1{font-size:24px;} .page{padding:0 16px 48px;} table{font-size:12.8px;} }
+@media (prefers-reduced-motion:reduce){*{transition:none !important;}}
+
+:root{--hl:#f59e0b;}
+
+</style>
+<style id="cv-print">
+/* ===== CV PRINT v1.0 (per _cv-schema.html) ===== */
+@media print{
+  :root{
+    --bg:#f4f5f7; --surface:#ffffff; --surface2:#eef1f4; --border:#d7dde3;
+    --teal:#00a688; --blue:#1d4ed8; --accent:#00a688; --accent2:#1d4ed8;
+    --red:#c53030; --amber:#b45309; --purple:#7c3aed;
+    --text:#0f1923; --text2:#4a5670; --text3:#6b7688;
+  }
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  html, body{background:#f4f5f7 !important; color:#0f1923 !important;}
+  nav, .nav, .toc-pills{display:none !important;}
+  .alert{background:rgba(0,166,136,.08) !important; color:#0f1923 !important;}
+  td{color:#0f1923 !important;}
+  section, .box, table, .card, .figure{break-inside:avoid;}
+  h2, .sec-head{break-after:avoid;}
+  a{color:inherit; text-decoration:none;}
+  .tag.x{color:#c53030 !important;}
+}
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ a{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../locker.html">The Evidence Locker</a><span class="cv-sb-meta">Published 28 Oct 2026 · R. E. Suscitate &amp; A. Systole</span></nav>
+<div class="page">
+<header><div class="kicker">The Critical Vector &middot; Content Audit &middot; Numbers verified, headline overstated</div>
+<h1>TXA: Where It Works, Where It Doesn't, and What POISE-3 Didn't Prove</h1>
+<p class="sub">The caption's POISE-3 numbers are exact. Its opening sentence, that TXA reduces bleeding "without promoting clot formation," is contradicted by the same trial's safety result two paragraphs later.</p>
+<p class="byline">R. E. Suscitate &amp; A. Systole &middot; October 2026. Original post: <a href="https://www.instagram.com/myanesthesiaconsult">@myanesthesiaconsult</a> (My Anesthesia Consult), TXA carousel. Only the caption was available for review; the slides on dosing and contraindications were not captured. This page is an independent third-party evaluation, not affiliated with or endorsed by the original creator.</p></header>
+<div class="alert warn"><strong>Verdict:</strong> mechanism, indications and POISE-3 figures are correct: composite bleeding 9.1% vs 11.7%, absolute reduction 2.6 points, NNT about 39, and noninferiority for cardiovascular safety not established. That last point is exactly why "without promoting clot formation" can't be the headline. POISE-3 could not rule out a small increase in cardiovascular and thrombotic events, and HALT-IT found more venous thrombosis with TXA in GI bleeding.</div>
+<nav><a href="#poise">POISE-3, exactly</a><a href="#map">Where TXA works</a><a href="#safety">The clot question</a><a href="#dosing">Dosing notes</a><a href="#sources">Sources</a></nav><section id="poise">
+<div class="sec-head "><span class="sec-num">01</span><h2>POISE-3, exactly</h2></div>
+<p class="tagline">9,535 noncardiac surgery patients; 1 g IV at start and end of surgery vs placebo.</p>
+<div class="tbl"><table><tr><th>Outcome at 30 days</th><th>TXA</th><th>Placebo</th><th>Effect</th></tr>
+<tr><td class="k">Composite bleeding (primary efficacy)</td><td class="mono">9.1%</td><td class="mono">11.7%</td><td class="mono">HR 0.76 (0.67&ndash;0.87); &minus;2.6 points</td></tr>
+<tr><td class="k">Composite cardiovascular (primary safety)</td><td class="mono">14.2%</td><td class="mono">13.9%</td><td class="mono">HR 1.02 (0.92&ndash;1.14)</td></tr></table></div>
+<p>To claim safety, the upper bound of the one-sided 97.5% confidence interval had to fall below 1.125. It came in at 1.14, so noninferiority was not shown (one-sided P = 0.04 against a 0.025 threshold). The safety composite included myocardial injury after noncardiac surgery, nonhemorrhagic stroke, peripheral arterial thrombosis and symptomatic proximal VTE. "Not established" is not the same as "harmful." The difference was 0.3 points, but it means the trial can't support a no-clot claim.</p>
+</section><section id="map">
+<div class="sec-head c-blue"><span class="sec-num">02</span><h2>Where TXA works, and where it doesn't</h2></div>
+<p class="tagline">The landmark trials by indication.</p>
+<div class="tbl"><table><tr><th style="width:20%">Trial</th><th>Population</th><th>Result</th><th style="width:16%">Verdict</th></tr>
+<tr><td class="k">CRASH-2 (2010, 2011)</td><td>20,211 bleeding trauma patients, enrolled within 8 h</td><td>All-cause mortality 14.5% vs 16.0% (RR 0.91). Exploratory timing analysis: death due to bleeding fell with treatment &le;1 h (RR 0.68) and 1&ndash;3 h (RR 0.79), but <b>rose</b> with treatment after 3 h (RR 1.44)</td><td><span class="tag v">Works early</span></td></tr>
+<tr><td class="k">WOMAN (2017)</td><td>20,060 women with postpartum hemorrhage</td><td>Death from bleeding 1.5% vs 1.9% (RR 0.81, 0.65&ndash;1.00; P = 0.045), larger within 3 h of birth (RR 0.69). The original composite primary outcome (death or hysterectomy) was not reduced. Thromboembolic events did not differ</td><td><span class="tag v">Works early</span></td></tr>
+<tr><td class="k">CRASH-3 (2019)</td><td>12,737 adults with TBI; primary analysis in 9,202 treated within 3 h</td><td>Head-injury death 18.5% vs 19.8%, RR 0.94 (0.86&ndash;1.02), not significant. Mild-to-moderate TBI RR 0.78 (0.64&ndash;0.95); severe TBI RR 0.99. Vascular occlusive events and seizures similar. The authors' conclusion is more positive than the primary result</td><td><span class="tag c">Selected patients</span></td></tr>
+<tr><td class="k">HALT-IT (2020)</td><td>12,009 patients with significant GI bleeding; 1 g load then 3 g over 24 h</td><td>Death from bleeding 4% vs 4% (RR 0.99). Venous thromboembolism 0.8% vs 0.4% (RR 1.85, 1.15&ndash;2.98); arterial events similar</td><td><span class="tag x">Doesn't work</span></td></tr>
+<tr><td class="k">POISE-3 (2022)</td><td>9,535 noncardiac surgery patients</td><td>Less bleeding; cardiovascular safety not established</td><td><span class="tag c">Works, safety open</span></td></tr></table></div>
+<p>The pattern: TXA helps when started early in hemorrhage where fibrinolysis drives bleeding, and the benefit fades or reverses with delay (CRASH-2 after 3 hours) or in bleeding where fibrinolysis isn't the main problem (HALT-IT, with a high-dose 24-hour infusion). Note also that FDA labeling covers only short-term use in hemophilia patients around tooth extraction; every use in this table is off-label, supported by trial evidence. CV's whole-blood post covers how TXA fits into early trauma resuscitation.</p>
+</section><section id="safety">
+<div class="sec-head c-red"><span class="sec-num">03</span><h2>The clot question</h2></div>
+<p class="tagline">Mechanism and data, side by side.</p>
+<p>The mechanism is right: TXA is a lysine analogue that blocks plasminogen's lysine-binding sites, so plasmin can't dock on fibrin and break down clot that has already formed. It doesn't activate coagulation. That's the basis for "doesn't promote clot formation." The trouble is that a drug that stabilizes clots can still tip the balance toward thrombosis in some patients, and the outcome data haven't fully excluded that. A safer caption: <em>TXA reduces surgical bleeding; whether it adds thrombotic risk is not settled, and in GI bleeding it did.</em></p>
+</section><section id="dosing">
+<div class="sec-head c-amber"><span class="sec-num">04</span><h2>Dosing notes</h2></div>
+<p class="tagline">The caption names these considerations; here are the specifics from the trials.</p>
+<div class="tbl"><table><tr><th style="width:24%">Setting</th><th>Regimen used in the trial</th></tr>
+<tr><td class="k">Trauma (CRASH-2)</td><td>1 g IV over 10 minutes, then 1 g over 8 hours, within 3 hours of injury</td></tr>
+<tr><td class="k">PPH (WOMAN)</td><td>1 g IV; second 1 g if bleeding continues after 30 minutes or restarts within 24 hours</td></tr>
+<tr><td class="k">Noncardiac surgery (POISE-3)</td><td>1 g IV bolus at start and at end of surgery</td></tr></table></div>
+<p>From the FDA label (Cyklokapron): infuse undiluted drug no faster than 1 mL/min (100 mg/min) to avoid hypotension, which is why the trial boluses run over 10 minutes; reduce the dose in renal impairment, using the label's creatinine-based table. Seizures are most often reported in cardiovascular surgery, at doses up to tenfold higher than labeled. For anesthesia, the label warning that matters most: <b>inadvertent neuraxial injection has caused seizures, arrhythmias and deaths.</b> The ampules can be confused with local anesthetics, so the label calls for clearly marking syringes with the IV route.</p>
+</section><section id="sources">
+<div class="sec-head c-grey"><span class="sec-num">05</span><h2>Sources</h2></div>
+
+<ul class="sources"><li><b>@myanesthesiaconsult.</b> TXA carousel and caption. Read the original before relying on this summary.</li>
+<li>Devereaux PJ, Marcucci M, Painter TW, et al. Tranexamic acid in patients undergoing noncardiac surgery (POISE-3). <em>N Engl J Med.</em> 2022;386(21):1986&ndash;1997. <a href="https://doi.org/10.1056/NEJMoa2201171">doi:10.1056/NEJMoa2201171</a></li>
+<li>CRASH-2 trial collaborators. Effects of tranexamic acid on death, vascular occlusive events, and blood transfusion in trauma patients with significant haemorrhage. <em>Lancet.</em> 2010;376(9734):23&ndash;32. <a href="https://doi.org/10.1016/S0140-6736(10)60835-5">doi:10.1016/S0140-6736(10)60835-5</a></li>
+<li>CRASH-2 collaborators. The importance of early treatment with tranexamic acid in bleeding trauma patients: an exploratory analysis of the CRASH-2 randomised controlled trial. <em>Lancet.</em> 2011;377(9771):1096&ndash;1101. <a href="https://doi.org/10.1016/S0140-6736(11)60278-X">doi:10.1016/S0140-6736(11)60278-X</a></li>
+<li>WOMAN Trial Collaborators. Effect of early tranexamic acid administration on mortality, hysterectomy, and other morbidities in women with post-partum haemorrhage. <em>Lancet.</em> 2017;389(10084):2105&ndash;2116. <a href="https://doi.org/10.1016/S0140-6736(17)30638-4">doi:10.1016/S0140-6736(17)30638-4</a></li>
+<li>CRASH-3 trial collaborators. Effects of tranexamic acid on death, disability, vascular occlusive events and other morbidities in patients with acute traumatic brain injury. <em>Lancet.</em> 2019;394(10210):1713&ndash;1723. <a href="https://doi.org/10.1016/S0140-6736(19)32233-0">doi:10.1016/S0140-6736(19)32233-0</a></li>
+<li>HALT-IT Trial Collaborators. Effects of a high-dose 24-h infusion of tranexamic acid on death and thromboembolic events in patients with acute gastrointestinal bleeding. <em>Lancet.</em> 2020;395(10241):1927&ndash;1936. <a href="https://doi.org/10.1016/S0140-6736(20)30848-5">doi:10.1016/S0140-6736(20)30848-5</a></li>
+<li>Pfizer. CYKLOKAPRON (tranexamic acid) injection, US prescribing information. Sections 2.1&ndash;2.2, 5.3.</li>
+<li>All trial figures verified against PubMed abstracts.</li></ul>
+</section><footer>The Critical Vector &middot; Direction and magnitude. Educational reference; verify against current guidelines and local protocol before applying to a patient.</footer>
+</div>
+</body>
+</html>

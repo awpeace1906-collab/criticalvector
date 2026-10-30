@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="cv:schema" content="1.0">
+<title>IV Fluids &amp; Volume Resuscitation — The Critical Vector</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0e14; --surface:#111720; --surface2:#182030;
+  --border:rgba(255,255,255,0.08);
+  --teal:#00d4aa; --blue:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa;
+  --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  background:var(--bg); color:var(--text);
+  font-family:'Source Serif 4', Georgia, serif; font-size:16px; line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,.label,.kicker,.badge,nav a,th{font-family:'Syne', sans-serif;}
+.mono{font-family:'IBM Plex Mono', monospace;}
+.page{max-width:900px; margin:0 auto; padding:0 24px 60px;}
+
+header{padding:32px 0 20px; border-bottom:1px solid var(--border);}
+.kicker{
+  font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--teal); margin-bottom:10px;
+}
+h1{font-family:'Syne', sans-serif; font-weight:800; font-size:30px; line-height:1.15; margin:0 0 10px; letter-spacing:.005em;}
+header p{font-family:'Source Serif 4', serif; font-style:italic; color:var(--text2); font-size:15.5px; margin:0; max-width:700px;}
+
+.alert{
+  margin:18px 0; padding:13px 18px; border-radius:10px; font-size:14px;
+  background:rgba(0,212,170,0.10); border:1px solid rgba(0,212,170,0.28); color:#bdf5e8;
+}
+
+nav{display:flex; flex-wrap:wrap; gap:7px; padding:18px 0; border-bottom:1px solid var(--border); margin-bottom:8px;}
+nav a{
+  font-size:12.5px; font-weight:600; color:var(--text2); background:var(--surface);
+  border:1px solid var(--border); padding:7px 12px; border-radius:20px;
+  text-decoration:none; white-space:nowrap; transition:all .15s;
+}
+nav a:hover{color:var(--text); border-color:var(--teal);}
+
+section{padding:30px 0; border-bottom:1px solid var(--border);}
+.sec-head{
+  display:flex; align-items:baseline; gap:10px; padding:11px 18px;
+  border-left:4px solid var(--teal);
+  background:linear-gradient(90deg, rgba(0,212,170,0.10), transparent);
+  border-radius:0 8px 8px 0; margin-bottom:16px;
+}
+.sec-head.c-blue{border-left-color:var(--blue); background:linear-gradient(90deg, rgba(96,165,250,0.10), transparent);}
+.sec-head.c-red{border-left-color:var(--red); background:linear-gradient(90deg, rgba(232,76,76,0.10), transparent);}
+.sec-head.c-amber{border-left-color:var(--amber); background:linear-gradient(90deg, rgba(245,158,11,0.10), transparent);}
+.sec-head.c-purple{border-left-color:var(--purple); background:linear-gradient(90deg, rgba(167,139,250,0.10), transparent);}
+.sec-num{font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--text3);}
+h2{font-family:'Syne', sans-serif; font-weight:700; font-size:20px; margin:0; color:var(--text);}
+.tagline{font-family:'Source Serif 4', serif; font-style:italic; font-size:13.5px; color:var(--text2); margin:0 0 12px;}
+
+p.body{font-size:15.5px; margin:12px 0;}
+p.note{font-size:13.5px; color:var(--text2); font-style:italic; margin:10px 0;}
+
+.box{
+  background:var(--surface2); border:1px solid var(--border); border-radius:10px;
+  padding:16px 18px; margin:14px 0; font-size:14.5px;
+}
+.box.t-teal{border-left:3px solid var(--teal);}
+.box.t-blue{border-left:3px solid var(--blue);}
+.box.t-red{border-left:3px solid var(--red); background:rgba(232,76,76,0.06);}
+.box.t-amber{border-left:3px solid var(--amber);}
+.box.t-purple{border-left:3px solid var(--purple);}
+.box b{color:var(--text); font-weight:700;}
+.box p{margin:7px 0;}
+
+table{width:100%; border-collapse:collapse; margin:14px 0; font-size:13.5px;}
+th{background:var(--surface2); color:var(--text); text-align:left; padding:9px 11px; font-weight:600; font-size:12px; letter-spacing:.02em; border-bottom:2px solid var(--border);}
+td{padding:9px 11px; border-bottom:1px solid var(--border); vertical-align:top; font-family:'Source Serif 4', serif;}
+tr:nth-child(even) td{background:rgba(255,255,255,0.02);}
+
+.xlist{list-style:none; padding-left:0; margin:10px 0;}
+.xlist li{padding:5px 0 5px 26px; position:relative; font-size:14.5px;}
+.xlist li:before{content:"✗"; position:absolute; left:0; color:var(--red); font-weight:700;}
+
+.sources{font-size:13px; color:var(--text2); padding-left:20px;}
+.sources li{margin-bottom:7px;}
+
+footer{padding:26px 0 0; margin-top:6px; font-size:12.5px; color:var(--text3); font-family:'Source Serif 4', serif; font-style:italic;}
+</style>
+<style id="cv-print">
+/* ===== CV PRINT v1.0 (per _cv-schema.html) ===== */
+@media print{
+  :root{
+    --bg:#f4f5f7; --surface:#ffffff; --surface2:#eef1f4; --border:#d7dde3;
+    --teal:#00a688; --blue:#1d4ed8; --accent:#00a688; --accent2:#1d4ed8;
+    --red:#c53030; --amber:#b45309; --purple:#7c3aed;
+    --text:#0f1923; --text2:#4a5670; --text3:#6b7688;
+  }
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  html, body{background:#f4f5f7 !important; color:#0f1923 !important;}
+  nav, .nav, .toc-pills{display:none !important;}
+  .alert{background:rgba(0,166,136,.08) !important; color:#0f1923 !important;}
+  td{color:#0f1923 !important;}
+  section, .box, table, .card, .stat-card, .statcard, .step-row, .step{break-inside:avoid;}
+  h2, .sec-head{break-after:avoid;}
+  a{color:inherit; text-decoration:none;}
+}
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ a{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../continuum.html">The Continuum</a><span class="cv-sb-meta">Published 7 Oct 2026 · R. E. Suscitate &amp; A. Systole</span></nav>
+<div class="page">
+
+<header>
+  <div class="kicker">The Critical Vector &middot; Right Fluid, Wrong Patient?</div>
+  <h1>IV Fluids &amp; Volume Resuscitation</h1>
+  <p>Crystalloids, colloids, blood product ratios, the traps, and the logistics limits of
+  prehospital/transport/combat environments. Verified against standard fluid composition
+  references, CHEST/6S, PROPPR, Bickell, PAMPer/COMBAT/RePHILL, and TCCC guideline data. July
+  2026.</p>
+</header>
+
+<div class="alert">
+  VERIFIED: fluid compositions match standard references. The 8 mEq/L/24h sodium correction
+  limit, the HES kidney injury/mortality signal (CHEST, 6S), and the blood-product/prehospital
+  trial data below were all checked directly against primary trial publications.
+</div>
+
+<nav>
+  <a href="#s1">1 &middot; Normal saline</a>
+  <a href="#s2">2 &middot; Ringer's lactate</a>
+  <a href="#s3">3 &middot; Plasma-Lyte</a>
+  <a href="#s4">4 &middot; 5% dextrose</a>
+  <a href="#s5">5 &middot; Half-normal saline</a>
+  <a href="#s6">6 &middot; Hypertonic saline 3%</a>
+  <a href="#s7">7 &middot; Albumin</a>
+  <a href="#s8">8 &middot; Composition &amp; clinical decision at a glance</a>
+  <a href="#s9">9 &middot; Permissive hypotension</a>
+  <a href="#s10">10 &middot; Blood product ratios</a>
+  <a href="#s11">11 &middot; Prehospital plasma: contradictory record</a>
+  <a href="#s12">12 &middot; Prehospital, transport &amp; combat limits</a>
+  <a href="#s13">13 &middot; The traps</a>
+  <a href="#s14">14 &middot; Quick card &amp; sources</a>
+</nav>
+
+<section id="s1">
+  <div class="sec-head"><span class="sec-num">01</span><h2>Normal Saline</h2></div>
+  <p class="tagline">0.9%, Na 154, Cl 154, isotonic</p>
+  <table>
+    <tr><th>Preferred</th><th>Avoid / caution</th></tr>
+    <tr><td>Head injury, metabolic alkalosis, hypercalcemia, with blood transfusion</td><td>Large-volume resuscitation, hyperchloremic acidosis</td></tr>
+  </table>
+  <div class="box t-teal"><p>Not actually "normal": its chloride sits far above plasma
+  (plasma Cl is roughly 100-106 mEq/L). The harm from large volumes is dose-dependent,
+  driven by chloride load causing a non-anion-gap metabolic acidosis.</p></div>
+</section>
+
+<section id="s2">
+  <div class="sec-head c-blue"><span class="sec-num">02</span><h2>Ringer's Lactate</h2></div>
+  <p class="tagline">Na 130, K 4, Ca 3, lactate 28 mEq/L, mildly hypotonic</p>
+  <table>
+    <tr><th>Preferred</th><th>Avoid / caution</th></tr>
+    <tr><td>Resuscitation, surgery/trauma, burns, GI losses</td><td>Head injury, same line as blood, liver failure</td></tr>
+  </table>
+  <div class="box t-blue"><p>Its potassium content is not a reason to withhold it in
+  hyperkalemia; the added potassium is small relative to the volume given and does not
+  meaningfully worsen hyperkalemia in practice.</p></div>
+  <p class="note">Avoid running LR through the same line as a blood transfusion because
+  its calcium can theoretically overcome the citrate anticoagulant in stored blood and promote
+  clotting in the line, though
+  the clinical significance of this is debated; avoid in significant liver failure because
+  lactate metabolism to bicarbonate depends on hepatic function.</p>
+</section>
+
+<section id="s3">
+  <div class="sec-head c-amber"><span class="sec-num">03</span><h2>Plasma-Lyte (/ Kabilyte)</h2></div>
+  <p class="tagline">Na 140, K 5, acetate 27, lactate-free, calcium-free</p>
+  <table>
+    <tr><th>Preferred</th><th>Avoid / caution</th></tr>
+    <tr><td>Resuscitation, liver failure, renal transplant, with blood</td><td>Head injury, cost/access</td></tr>
+  </table>
+  <div class="box t-amber"><p>Calcium-free, so it can safely run with blood products, and it
+  buffers via acetate metabolized peripherally in muscle rather than lactate metabolized in
+  the liver, so it needs no liver to buffer.</p></div>
+</section>
+
+<section id="s4">
+  <div class="sec-head c-purple"><span class="sec-num">04</span><h2>5% Dextrose</h2></div>
+  <p class="tagline">50 g/L glucose, becomes free water</p>
+  <table>
+    <tr><th>Preferred</th><th>Avoid / caution</th></tr>
+    <tr><td>Hypernatremia, hypoglycemia, free-water deficit, drug diluent</td><td>Resuscitation, hyponatremia, cerebral edema</td></tr>
+  </table>
+  <div class="box t-purple"><p>Not a resuscitation fluid. Once the glucose is metabolized,
+  almost none of the water stays in the intravascular space; it distributes across total
+  body water, making it a poor choice whenever intravascular volume is the goal.</p></div>
+</section>
+
+<section id="s5">
+  <div class="sec-head"><span class="sec-num">05</span><h2>Half-Normal Saline (0.45%)</h2></div>
+  <p class="tagline">Na 77, Cl 77, hypotonic</p>
+  <table>
+    <tr><th>Preferred</th><th>Avoid / caution</th></tr>
+    <tr><td>Maintenance, hypernatremia, free-water replacement</td><td>Resuscitation, raised ICP, hyponatremia risk</td></tr>
+  </table>
+  <div class="box t-teal"><p>A maintenance fluid. Never use it to resuscitate; its low
+  effective tonicity means much of it moves out of the vascular space quickly.</p></div>
+</section>
+
+<section id="s6">
+  <div class="sec-head c-red"><span class="sec-num">06</span><h2>Hypertonic Saline 3%</h2></div>
+  <p class="tagline">Na 513, Cl 513, hypertonic</p>
+  <table>
+    <tr><th>Preferred</th><th>Avoid / caution</th></tr>
+    <tr><td>Symptomatic hyponatremia, raised ICP/edema</td><td>Rapid correction, volume overload</td></tr>
+  </table>
+  <div class="box t-red"><p><b>Lift sodium no faster than 8 mEq/L in 24 hours, or risk
+  osmotic demyelination syndrome.</b> This is the standard limit for patients at elevated
+  risk (severe hyponatremia, liver disease, alcoholism, malnutrition); some guidelines allow
+  up to 10-12 mEq/L/24h in average-risk patients, but 8 is the safer number to default
+  to.</p></div>
+</section>
+
+<section id="s7">
+  <div class="sec-head c-amber"><span class="sec-num">07</span><h2>Albumin</h2></div>
+  <p class="tagline">5% iso-oncotic, 20-25% hyperoncotic</p>
+  <table>
+    <tr><th>Preferred</th><th>Avoid / caution</th></tr>
+    <tr><td>Large-volume paracentesis, SBP, hepatorenal syndrome</td><td>Head injury, routine resuscitation</td></tr>
+  </table>
+  <div class="box t-amber"><p>A targeted drug, not a routine resuscitation fluid. Its role is
+  specific: replacing oncotic pressure lost with large-volume paracentesis, preventing
+  renal impairment after spontaneous bacterial peritonitis, and treating hepatorenal
+  syndrome, not general-purpose volume expansion.</p></div>
+</section>
+
+<section id="s8">
+  <div class="sec-head c-blue"><span class="sec-num">08</span><h2>Composition &amp; Clinical Decision at a Glance</h2></div>
+  <p class="tagline">Side-by-side composition, then side-by-side indications/contraindications/best setting</p>
+  <table>
+    <tr><th>Fluid</th><th>Na</th><th>K</th><th>Ca</th><th>Cl</th><th>Buffer</th><th>Tonicity</th></tr>
+    <tr><td>Normal saline (0.9%)</td><td>154</td><td>0</td><td>0</td><td>154</td><td>none</td><td>Isotonic</td></tr>
+    <tr><td>Ringer's lactate</td><td>130</td><td>4</td><td>3</td><td>109</td><td>lactate 28</td><td>Mildly hypotonic</td></tr>
+    <tr><td>Plasma-Lyte</td><td>140</td><td>5</td><td>0</td><td>98</td><td>acetate 27, gluconate 23</td><td>Isotonic</td></tr>
+    <tr><td>5% dextrose</td><td>0</td><td>0</td><td>0</td><td>0</td><td>none</td><td>Isotonic in bag, hypotonic in vivo</td></tr>
+    <tr><td>Half-normal saline (0.45%)</td><td>77</td><td>0</td><td>0</td><td>77</td><td>none</td><td>Hypotonic</td></tr>
+    <tr><td>Hypertonic saline (3%)</td><td>513</td><td>0</td><td>0</td><td>513</td><td>none</td><td>Hypertonic</td></tr>
+    <tr><td>Albumin 5%</td><td>~130-160*</td><td>0</td><td>0</td><td>~130-160*</td><td>none</td><td>Iso-oncotic</td></tr>
+  </table>
+  <p class="note">*Albumin's electrolyte content varies by manufacturer and carrier
+  solution — check the specific product's label rather than assuming a fixed number. All
+  values in mEq/L except where noted.</p>
+
+  <table>
+    <tr><th>Fluid</th><th>Best-use setting</th><th>Absolute contraindication</th></tr>
+    <tr><td>Normal saline</td><td>TBI/raised ICP resuscitation; diluent for blood products; correcting metabolic alkalosis</td><td>None absolute; relative caution with large-volume use (hyperchloremic acidosis) and pre-existing hyperchloremia</td></tr>
+    <tr><td>Ringer's lactate</td><td>General trauma/surgical resuscitation, burns, GI-loss replacement</td><td>Severe hepatic failure (can't metabolize lactate); avoid same line as blood (calcium/citrate interaction)</td></tr>
+    <tr><td>Plasma-Lyte</td><td>Resuscitation when calcium-free/blood-compatible fluid is needed; hepatic or renal transplant recipients</td><td>None absolute; cost/formulary access is the practical limiter, not physiology</td></tr>
+    <tr><td>5% dextrose</td><td>Free-water deficit, hypernatremia correction, hypoglycemia, drug vehicle</td><td>Resuscitation for volume/hemorrhage; cerebral edema/raised ICP; will worsen hyponatremia</td></tr>
+    <tr><td>Half-normal saline</td><td>Maintenance fluid, gradual free-water replacement</td><td>Any acute resuscitation indication; raised ICP; risk of overly rapid sodium drop if over-used</td></tr>
+    <tr><td>Hypertonic saline 3%</td><td>Symptomatic hyponatremia, refractory raised ICP</td><td>Correction faster than 8 mEq/L/24h in at-risk patients (ODS risk); avoid as a routine resuscitation fluid</td></tr>
+    <tr><td>Albumin</td><td>Large-volume paracentesis, SBP prophylaxis, hepatorenal syndrome</td><td>Routine resuscitation (cost/no outcome benefit over crystalloid in most populations); TBI (worse outcomes vs. saline)</td></tr>
+  </table>
+  <div class="box t-red">
+    <p><b>The TBI/sepsis reversal, quantified:</b> a 2020 network meta-analysis across
+    sepsis, surgical, and trauma populations found the "best" fluid actually reverses by
+    population. In sepsis, balanced crystalloids reduced mortality more than saline (OR
+    0.84) and more than hydroxyethyl starch (OR 0.81). In traumatic brain injury
+    specifically, that flips: saline and starch achieved <b>lower</b> mortality than
+    albumin and balanced crystalloids, with saline significantly outperforming albumin (OR
+    0.55). This is the trial-level evidence behind the "avoid balanced fluid in head
+    injury" trap in section 13.</p>
+  </div>
+  <p class="note">The practical read: "always use balanced crystalloid" is a
+  sepsis-shaped default that doesn't transfer to TBI, where saline's higher effective
+  tonicity may matter more than a balanced solution's acid-base profile. Fluid choice is
+  population-specific, not universal.</p>
+</section>
+
+<section id="s9">
+  <div class="sec-head c-red"><span class="sec-num">09</span><h2>Permissive Hypotension</h2></div>
+  <div class="box t-red">
+    <p><b>Bickell et al., NEJM 1994 — the foundational trial:</b> 598 adults with penetrating
+    torso trauma and prehospital SBP ≤90 mmHg, randomized to immediate prehospital/ED fluid
+    resuscitation vs. delayed resuscitation withheld until operative control. Survival to
+    discharge was significantly higher in the delayed group (70% vs. 62%, p=0.04).</p>
+  </div>
+  <p class="note">The theory: aggressive crystalloid before hemorrhage control raises blood
+  pressure enough to dislodge a forming clot ("popping the clot"), while also driving dilutional
+  coagulopathy, dilutional anemia, and hypothermia — the same lethal triad damage control
+  resuscitation is built to avoid.</p>
+  <table>
+    <tr><th>Real limitations of the founding trial</th><th>Why it matters</th></tr>
+    <tr><td>Single center, single EMS system, penetrating torso trauma only</td><td>Limited
+    external validity to blunt trauma or systems with different transport times</td></tr>
+    <tr><td>Used crystalloid, not modern hemostatic/blood-component resuscitation</td><td>The
+    comparison being tested has moved on since 1994 — predates the blood-ratio evidence in
+    section 10</td></tr>
+    <tr><td>Blood pressure was actually similar between groups regardless of allocation</td><td>
+    A frequently overlooked methodologic detail — raises the question of what, mechanistically,
+    actually drove the mortality difference</td></tr>
+  </table>
+  <p class="note">Current practice generally applies permissive hypotension (targeting SBP
+  ~80–90 mmHg or MAP ~50 in pure hemorrhagic shock per EAST guidance) until hemorrhage is
+  controlled — with an important carve-out for concurrent traumatic brain injury, where SBP <90
+  is independently associated with worse outcomes and small aliquots (100–200 mL) to maintain SBP
+  above 90 are favored instead.</p>
+</section>
+
+<section id="s10">
+  <div class="sec-head c-purple"><span class="sec-num">10</span><h2>Blood Product Ratios</h2></div>
+  <div class="box t-purple">
+    <p><b>PROPPR (Holcomb et al., JAMA 2015):</b> in-hospital massive transfusion trial comparing
+    plasma:platelets:RBC ratios of 1:1:1 vs. 1:1:2. No statistically significant difference in
+    24-hour or 30-day mortality between ratios, though more patients in the 1:1:1 group achieved
+    hemostasis and fewer died from exsanguination in the first 24 hours.</p>
+  </div>
+  <p class="note">Despite PROPPR not reaching significance on its primary mortality endpoint,
+  balanced-ratio transfusion (approximating whole blood composition) has been widely adopted as
+  practice — built substantially on observational data with real survivorship-bias risk (patients
+  have to survive long enough to receive the later components of a ratio). A smaller earlier RCT
+  (Nascimento 2013) comparing a 1:1:1 target to standard care actually found higher, though not
+  statistically significant, mortality in the balanced-ratio group — a reminder that the
+  observational enthusiasm for balanced ratios outran the randomized evidence for some time.</p>
+</section>
+
+<section id="s11">
+  <div class="sec-head c-red"><span class="sec-num">11</span><h2>Prehospital Plasma: A Genuinely Contradictory Record</h2></div>
+  <p class="body">This is the section most relevant to evaluating any new plasma product's
+  real-world promise (freeze-dried or otherwise), and it's considerably messier than
+  "prehospital plasma saves lives."</p>
+  <table>
+    <tr><th>Trial</th><th>Design</th><th>Result</th></tr>
+    <tr><td>PAMPer (NEJM 2018)</td><td>Cluster-randomized, air-medical transport, 2 units
+    thawed plasma vs. standard care</td><td><b>Positive</b> — reduced 30-day mortality with
+    prehospital plasma</td></tr>
+    <tr><td>COMBAT (2018)</td><td>2 units thawed AB plasma prehospital vs. standard
+    crystalloid care, ground EMS</td><td><b>Negative</b> — stopped early for futility; no
+    outcome difference; groups imbalanced at baseline (plasma arm sicker)</td></tr>
+    <tr><td>RePHILL (Lancet Haematology 2022)</td><td>UK phase 3 RCT, PRBC + lyophilized
+    plasma vs. saline, prehospital</td><td><b>Negative</b> — did not demonstrate improved
+    survival or lactate clearance; stopped early (COVID-19 disruption)</td></tr>
+  </table>
+  <div class="box t-red">
+    <p><b>Worth sitting with:</b> RePHILL is the trial that actually tested lyophilized
+    plasma in the prehospital setting, and it was negative on both primary outcomes. This
+    doesn't mean freeze-dried plasma products won't help; RePHILL tested one specific product
+    (Lyoplas) in one health system with its own transport times, and was underpowered by
+    early stopping. But it's a directly relevant data point that a clean "freeze-dried
+    plasma saves lives" framing skips entirely.</p>
+  </div>
+  <p class="note">A post hoc analysis pooling PAMPer and COMBAT found the prehospital plasma
+  survival benefit was concentrated in patients with transport times longer than 20 minutes —
+  suggesting the effect, where real, may be distance/time-dependent rather than universal. A
+  second lyophilized-plasma trial, PREHO-PLYO (France, 2022, 134 patients), was also negative:
+  median admission INR was 1.21 with lyophilized plasma versus 1.20 with saline.</p>
+</section>
+
+<section id="s12">
+  <div class="sec-head c-amber"><span class="sec-num">12</span><h2>Prehospital, Transport &amp; Combat Limits</h2></div>
+  <p class="tagline">The "right" fluid on paper isn't always the fluid you can actually carry, keep stable, or afford the weight of</p>
+  <div class="box t-red">
+    <p><b>The doctrine has already moved past crystalloid for combat hemorrhagic shock.</b>
+    TCCC Guidelines Change 21-01 (2021) designated cold-stored low-titer group O whole
+    blood (CS-LTOWB) as the preferred resuscitation fluid, with fresh LTOWB as the first
+    alternate — and explicitly removed crystalloids and Hextend as recommended options for
+    hemorrhagic shock. The question below isn't really "which crystalloid to carry" at the
+    point of injury anymore; it's "how far down the evacuation chain can a blood product
+    realistically travel before logistics force a fallback to something else."</p>
+  </div>
+  <table>
+    <tr><th>Echelon</th><th>Storage reality</th><th>What that means for fluid choice</th></tr>
+    <tr><td>Ground ambulance</td><td>Cabin temperatures logged as low as −13.2°C
+    and as high as +50.6°C in real-world services; the vehicle interior exceeded the
+    recommended 25°C storage ceiling for roughly half of total transport time in one study.</td>
+    <td>Bagged crystalloid (saline) held up chemically even under sustained 70°C or
+    cyclic 70/22°C stress testing for a month — sodium/chloride stayed within
+    label range, no precipitation. The bigger unresolved risk is sub-freezing exposure
+    (bag/tubing integrity, IV catheter function), not chemical breakdown from heat. Many
+    progressive EMS systems now carry a small cooler of RBCs/plasma alongside crystalloid,
+    accepting the added cold-chain burden for the survival benefit.</td></tr>
+    <tr><td>Civilian HEMS (helicopter EMS)</td><td>Typically a climate-controlled
+    cabin, but payload is constrained by aircraft performance margins — weight and cube
+    compete directly with fuel, crew, and equipment.</td><td>Increasingly carries low-titer
+    O whole blood or a plasma/RBC combination under dedicated air-medical transfusion
+    programs, precisely because the climate control removes the ambulance's temperature
+    problem — the limiting factor here is payload weight and programmatic cost, not
+    thermal stability.</td></tr>
+    <tr><td>Military rotary-wing MEDEVAC/CASEVAC</td><td>Faces the ambulance's
+    thermal extremes and the civilian aircraft's payload limits simultaneously, often
+    without the benefit of a fully climate-controlled cabin, plus genuine tactical
+    constraints on dwell time at the landing zone.</td><td>CS-LTOWB is doctrine-preferred
+    per TCCC 21-01 where the cold chain can be maintained; when it can't, room-temperature-
+    stable freeze-dried plasma and reduced breakage risk (section 11) become the more
+    realistic fallback than frozen components.</td></tr>
+    <tr><td>Foot / dismounted / light transport (combat medic aid bag)</td><td>The
+    most severe constraint of all: doctrine explicitly requires equipment be "simple,
+    light, and rugged," carried in a backpack over body armor, often under hostile fire.
+    There is no cold chain at this echelon, full stop.</td><td>Whole blood is essentially
+    impossible to carry here — no refrigeration, no practical shelf life. This is the exact
+    gap freeze-dried plasma is built to close: no freezer, no thaw cycle, plastic packaging
+    that survives being carried and dropped, reconstituted in about a minute. Crystalloid
+    remains the lightest option by weight but is no longer TCCC's preferred choice for
+    hemorrhagic shock specifically.</td></tr>
+  </table>
+  <div class="box t-amber">
+    <p><b>Warming matters at every echelon.</b> TCCC recommends a battery-powered warming
+    device delivering fluid at 38°C; ATLS guidance for in-hospital use targets 39°C. In
+    practice, a single 2 L bolus of room-temperature (21°C) crystalloid drops core body
+    temperature by only about 0.3°C in healthy adults — a real but modest effect — so
+    active warming is about avoiding the cumulative, multi-liter scenario and the added
+    hypothermia risk of fluid that has equilibrated to a cold ambient environment (a winter
+    ambulance cabin, a cold LZ), not a single small bolus in isolation.</p>
+  </div>
+  <p class="note">The throughline across every echelon: the fluid that wins on paper
+  (whole blood, or a balanced crystalloid) isn't always the fluid that survives the
+  storage conditions, fits the weight budget, or can be resupplied at that point in the
+  evacuation chain. Matching fluid choice to the environment is as real a clinical decision
+  as matching it to the patient's physiology in sections 1-8.</p>
+</section>
+
+<section id="s13">
+  <div class="sec-head c-red"><span class="sec-num">13</span><h2>The Traps</h2></div>
+  <div class="box t-red">
+    <ul class="xlist">
+      <li>Starch (HES): avoid. Increases kidney injury and mortality, confirmed in the
+      CHEST and 6S trials in critically ill and septic patients.</li>
+      <li>D5W for "dehydration": drops sodium. It's mostly free water once metabolized,
+      the wrong fix for volume depletion.</li>
+      <li>Balanced fluid in head injury: use saline instead. The mild hypotonicity of
+      balanced solutions like LR or Plasma-Lyte can worsen cerebral edema — see the
+      quantified trial data in section 8.</li>
+      <li>Hypotonic fluid to resuscitate: won't fill the tank. It distributes out of the
+      vascular space too quickly to restore intravascular volume.</li>
+    </ul>
+  </div>
+  <p class="note">Match the fluid to the patient — and to the environment you're actually
+  operating in.</p>
+</section>
+
+<section id="s14" style="border-bottom:none;">
+  <div class="sec-head" style="border-left-color:var(--text3); background:none;"><span class="sec-num">14</span><h2>Quick Reference Card &amp; Primary Sources</h2></div>
+  <table>
+    <tr><th>Fluid</th><th>One-line reminder</th></tr>
+    <tr><td>Normal saline</td><td>Preferred in head injury; large volumes cause hyperchloremic acidosis</td></tr>
+    <tr><td>Ringer's lactate</td><td>Good general resuscitation fluid; avoid in head injury and severe liver failure</td></tr>
+    <tr><td>Plasma-Lyte</td><td>Calcium-free, runs with blood, no hepatic buffering needed</td></tr>
+    <tr><td>5% dextrose</td><td>Free water once metabolized; never for resuscitation</td></tr>
+    <tr><td>Half-normal saline</td><td>Maintenance and free-water replacement only</td></tr>
+    <tr><td>Hypertonic saline 3%</td><td>Symptomatic hyponatremia/raised ICP; cap correction at 8 mEq/L/24h</td></tr>
+    <tr><td>Albumin</td><td>Targeted use: paracentesis, SBP, hepatorenal syndrome</td></tr>
+    <tr><td>Starch (HES)</td><td>Avoid; kidney injury and mortality signal, CHEST/6S trials</td></tr>
+    <tr><td>Blood product ratio</td><td>~1:1:1 widely adopted; PROPPR itself didn't reach mortality significance</td></tr>
+    <tr><td>Fluid before hemorrhage control</td><td>Permissive hypotension (SBP ~80-90) outside TBI</td></tr>
+    <tr><td>Prehospital plasma</td><td>Contradictory trial record — positive, negative, and negative-for-lyophilized-specifically</td></tr>
+  </table>
+  <p class="body"><b>Primary sources checked for this guide:</b></p>
+  <ul class="sources">
+    <li>Myburgh JA, Finfer S, Bellomo R, et al. Hydroxyethyl Starch or Saline for Fluid Resuscitation in Intensive Care (CHEST). N Engl J Med. 2012;367(20):1901-1911.</li>
+    <li>Perner A, Haase N, Guttormsen AB, et al. Hydroxyethyl Starch 130/0.42 versus Ringer's Acetate in Severe Sepsis (6S). N Engl J Med. 2012;367(2):124-134.</li>
+    <li>Cross-referenced ODS correction-rate guidelines (European and North American), consistently citing an 8 mEq/L/24h limit in high-risk patients.</li>
+    <li>Standard crystalloid/colloid composition references (0.9% NaCl, lactated Ringer's, Plasma-Lyte 148, 5% dextrose, 0.45% NaCl, 3% NaCl, 5%/20-25% albumin).</li>
+    <li>Resuscitation fluid types in sepsis, surgical, and trauma patients: a systematic review and sequential network meta-analyses. Crit Care. 2020.</li>
+    <li>Bickell WH, Wall MJ Jr, Pepe PE, et al. Immediate versus delayed fluid resuscitation for hypotensive patients with penetrating torso injuries. N Engl J Med. 1994;331(17):1105-1109.</li>
+    <li>Holcomb JB, Tilley BC, Baraniuk S, et al. Transfusion of plasma, platelets, and red blood cells in a 1:1:1 vs. a 1:1:2 ratio (PROPPR). JAMA. 2015;313(5):471-482.</li>
+    <li>Nascimento B, et al. Effect of a fixed-ratio (1:1:1) transfusion protocol versus laboratory-guided transfusion in patients with severe trauma. CMAJ. 2013.</li>
+    <li>Sperry JL, Guyette FX, Brown JB, et al. Prehospital plasma during air medical transport in trauma patients at risk for hemorrhagic shock (PAMPer). N Engl J Med. 2018;379(4):315-326.</li>
+    <li>Moore HB, Moore EE, Chapman MP, et al. Plasma-first resuscitation to treat haemorrhagic shock during emergency ground transportation (COMBAT). Lancet. 2018.</li>
+    <li>Crombie N, Doughty HA, Bishop JRB, et al. Resuscitation with blood products in patients with trauma-related haemorrhagic shock receiving prehospital care (RePHILL). Lancet Haematol. 2022;9(4):e250-e261.</li>
+    <li>Guyette FX, et al. Association of prehospital plasma transfusion with survival when transport times are longer than 20 minutes: post hoc analysis of PAMPer and COMBAT. JAMA Surg. 2020;155:e195085.</li>
+    <li>Fluid Resuscitation in Tactical Combat Casualty Care: TCCC Guidelines Change 21-01, 4 November 2021. J Spec Oper Med.</li>
+    <li>Al-Hamad H, et al. Can we use normal saline stored under stress conditions? A simulated prehospital emergency medical setting. 2023.</li>
+    <li>Fluid Resuscitation in Trauma: a Position Statement and Resource Document of NAEMSP. Prehosp Emerg Care, 2024.</li>
+    <li>An Inventory of the Combat Medics' Aid Bag. MED-TAC International, 2026.</li>
+  </ul>
+</section>
+
+</div>
+
+<footer>
+  This guide checks and condenses an 11-slide post on IV fluid selection; only slides 1
+  through 9 were provided originally. v2 added the composition comparison table and the
+  sepsis-vs-TBI network meta-analysis. v3 added the prehospital/transport/combat logistics
+  section. v4 rebuilt to full Critical Vector standard and merged in the permissive
+  hypotension, blood product ratio, and prehospital plasma trial evidence that had been
+  developed separately — plus a full indications/contraindications/best-setting table
+  alongside the composition table. Every fluid composition, dose limit, and trial figure
+  above was cross-checked against primary sources as of July 2026.
+<div class="cv-tagline" style="margin-top:8px">The Critical Vector · Direction and magnitude.</div></footer>
+
+</body>
+</html>

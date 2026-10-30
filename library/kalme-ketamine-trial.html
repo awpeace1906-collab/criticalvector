@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>KALME: Ketamine in Mechanically Ventilated Adults — The Critical Vector</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<style>
+:root{
+  --bg:#0a0e14; --surface:#111720; --surface2:#182030;
+  --border:rgba(255,255,255,0.08);
+  --teal:#00d4aa; --blue:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa;
+  --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  background:var(--bg); color:var(--text);
+  font-family:'Source Serif 4', Georgia, serif; font-size:16px; line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,.label,.kicker,.badge,nav a,th{font-family:'Syne', sans-serif;}
+.mono{font-family:'IBM Plex Mono', monospace;}
+.page{max-width:900px; margin:0 auto; padding:0 24px 60px;}
+header{padding:32px 0 20px; border-bottom:1px solid var(--border);}
+.kicker{
+  font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--teal); margin-bottom:10px;
+}
+h1{font-family:'Syne', sans-serif; font-weight:800; font-size:30px; line-height:1.15; margin:0 0 10px; letter-spacing:.005em;}
+header p{font-family:'Source Serif 4', serif; font-style:italic; color:var(--text2); font-size:15.5px; margin:0; max-width:700px;}
+.alert{
+  margin:18px 0; padding:13px 18px; border-radius:10px; font-size:14px;
+  background:rgba(0,212,170,0.10); border:1px solid rgba(0,212,170,0.28); color:#bdf5e8;
+}
+.alert.c-red{background:rgba(232,76,76,0.10); border-color:rgba(232,76,76,0.28); color:#ffd7d7;}
+.alert.c-amber{background:rgba(245,158,11,0.10); border-color:rgba(245,158,11,0.28); color:#ffe8bd;}
+.alert.c-blue{background:rgba(96,165,250,0.10); border-color:rgba(96,165,250,0.28); color:#cfe0ff;}
+nav{display:flex; flex-wrap:wrap; gap:7px; padding:18px 0; border-bottom:1px solid var(--border); margin-bottom:8px;}
+nav a{
+  font-size:12.5px; font-weight:600; color:var(--text2); background:var(--surface);
+  border:1px solid var(--border); padding:7px 12px; border-radius:20px;
+  text-decoration:none; white-space:nowrap; transition:all .15s;
+}
+nav a:hover{color:var(--text); border-color:var(--teal);}
+section{padding:30px 0; border-bottom:1px solid var(--border);}
+.sec-head{
+  display:flex; align-items:baseline; gap:10px; padding:11px 18px;
+  border-left:4px solid var(--teal);
+  background:linear-gradient(90deg, rgba(0,212,170,0.10), transparent);
+  border-radius:0 8px 8px 0; margin-bottom:16px;
+}
+.sec-head.c-blue{border-left-color:var(--blue); background:linear-gradient(90deg, rgba(96,165,250,0.10), transparent);}
+.sec-head.c-red{border-left-color:var(--red); background:linear-gradient(90deg, rgba(232,76,76,0.10), transparent);}
+.sec-head.c-amber{border-left-color:var(--amber); background:linear-gradient(90deg, rgba(245,158,11,0.10), transparent);}
+.sec-num{font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--text3);}
+h2{font-family:'Syne', sans-serif; font-weight:700; font-size:20px; margin:0; color:var(--text);}
+p.body{font-size:15.5px; margin:12px 0;}
+p.note{font-size:13.5px; color:var(--text2); font-style:italic; margin:10px 0;}
+.box{
+  background:var(--surface2); border:1px solid var(--border); border-radius:10px;
+  padding:16px 18px; margin:14px 0; font-size:14.5px;
+}
+.box.t-teal{border-left:3px solid var(--teal);}
+.box.t-blue{border-left:3px solid var(--blue);}
+.box.t-amber{border-left:3px solid var(--amber);}
+.box b{color:var(--text); font-weight:700;}
+.box p{margin:7px 0;}
+table{width:100%; border-collapse:collapse; margin:14px 0; font-size:13.5px;}
+th{background:var(--surface2); color:var(--text); text-align:left; padding:9px 11px; font-weight:600; font-size:12px; letter-spacing:.02em; border-bottom:2px solid var(--border);}
+td{padding:9px 11px; border-bottom:1px solid var(--border); vertical-align:top; font-family:'Source Serif 4', serif;}
+tr:nth-child(even) td{background:rgba(255,255,255,0.02);}
+.statgrid{display:grid; grid-template-columns:repeat(4, 1fr); gap:10px; margin:16px 0;}
+.statgrid div{text-align:center;}
+.statgrid .num{font-family:'Syne', sans-serif; font-size:22px; font-weight:700;}
+.statgrid .lbl{font-family:'Syne', sans-serif; font-size:10.5px; color:var(--text2); text-transform:uppercase; letter-spacing:.05em; margin-top:3px;}
+.sources{font-size:13px; color:var(--text2); padding-left:20px;}
+.sources li{margin-bottom:7px;}
+footer{padding:26px 0 0; margin-top:6px; font-size:12.5px; color:var(--text3); font-family:'Source Serif 4', serif; font-style:italic;}
+</style>
+<style id="cv-print">
+/* ===== CV PRINT v1.0 (per _cv-schema.html) ===== */
+@media print{
+  :root{
+    --bg:#f4f5f7; --surface:#ffffff; --surface2:#eef1f4; --border:#d7dde3;
+    --teal:#00a688; --blue:#1d4ed8; --accent:#00a688; --accent2:#1d4ed8;
+    --red:#c53030; --amber:#b45309; --purple:#7c3aed;
+    --text:#0f1923; --text2:#4a5670; --text3:#6b7688;
+  }
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  html, body{background:#f4f5f7 !important; color:#0f1923 !important;}
+  nav, .nav, .toc-pills{display:none !important;}
+  .alert{background:rgba(0,166,136,.08) !important; color:#0f1923 !important;}
+  td{color:#0f1923 !important;}
+  section, .box, table, .card, .stat-card, .statcard, .step-row, .step{break-inside:avoid;}
+  h2, .sec-head{break-after:avoid;}
+  a{color:inherit; text-decoration:none;}
+}
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ a{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../locker.html">The Evidence Locker</a><span class="cv-sb-meta">Published 6 Oct 2026 · R. E. Suscitate &amp; A. Systole</span></nav><div class="page">
+<header>
+<div class="kicker">The Critical Vector · ICU Analgosedation</div>
+<h1>KALME: Ketamine Didn't Move the Outcomes That Matter</h1>
+<p>Critical care pharmacology. Traced to its registered protocol and investigator group. September 2026.</p>
+</header>
+<div class="alert">
+  VERIFIED: KALME is a real, registered phase 2 RCT — Casamento, Serpa Neto, Bellomo; Austin Hospital Melbourne / ANZICRC (Monash University). The protocol (posted July 2024) specifies adjunctive ketamine 0.15 mg/kg/h (max 15 mg/h, capped at 100 kg) or placebo, added to an opioid infusion in mechanically ventilated adults — matching the source reel's design description exactly.
+</div>
+<div class="alert c-amber">
+  PARTIAL VERIFICATION: the trial's protocol, investigators, and design check out cleanly. The specific effect-size numbers below (64 vs. 77 µg/h, credible interval, probability of benefit) are as reported by the source and were not independently re-checked against the final published article text — the doi:10.1097/CCM.0000000000007341 record was not independently retrievable at time of writing. Treat as reported-and-plausible-given-the-protocol, not line-by-line re-verified.
+</div>
+<nav>
+<a href="#s1">1 · Trial design</a>
+<a href="#s2">2 · Reported results</a>
+<a href="#s3">3 · Interpretation</a>
+<a href="#s4">4 · Sources</a>
+</nav>
+<main>
+
+<section id="s1">
+<div class="sec-head c-blue"><span class="sec-num">01</span><h2>Trial Design</h2></div>
+<div class="box t-blue">
+<p><b>KALME</b> — Ketamine for AnaLgesia in MEchanically Ventilated Adults. Phase 2 RCT, 2 centers, 120 adults. Adjunctive ketamine 0.15 mg/kg/h (0.075 mL/kg/h, max 15 mg/h, capped at 100 kg actual body weight), no bolus, added to an opioid infusion during mechanical ventilation, vs. placebo. Sedation driven by nursing protocol rather than fixed titration.</p>
+</div>
+<p class="body">Same Austin Hospital / ANZICRC group behind the ANALGESIC fentanyl-vs-morphine analgosedation trial and several other ketamine-in-ICU studies — an established program, not a one-off.</p>
+</section>
+
+<section id="s2">
+<div class="sec-head"><span class="sec-num">02</span><h2>Reported Results</h2></div>
+<p class="body">Primary outcome — hourly opioid dose:</p>
+<div class="statgrid">
+<div><div class="num">64</div><div class="lbl">µg/h, ketamine</div></div>
+<div><div class="num">77</div><div class="lbl">µg/h, placebo</div></div>
+<div><div class="num">−13</div><div class="lbl">µg/h, median diff.</div></div>
+<div><div class="num">95.1%</div><div class="lbl">prob. of benefit</div></div>
+</div>
+<table>
+<tr><th>Outcome</th><th>Result</th></tr>
+<tr><td>95% credible interval (opioid dose difference)</td><td>−26.6 to 2.4 µg/h</td></tr>
+<tr><td>Ventilator-free days</td><td>No signal</td></tr>
+<tr><td>Delirium</td><td>No signal</td></tr>
+<tr><td>ICU / hospital length of stay</td><td>No signal</td></tr>
+<tr><td>Mortality</td><td>No signal</td></tr>
+<tr><td>Adverse events attributed to study drug</td><td>None</td></tr>
+</table>
+</section>
+
+<section id="s3">
+<div class="sec-head c-amber"><span class="sec-num">03</span><h2>Interpretation</h2></div>
+<div class="box t-amber">
+<p>Textbook small-phase-2-with-Bayesian-analysis result: a credible interval that leans favorable but straddles clinical near-zero, on a surrogate (opioid dose) rather than a patient-centered endpoint.</p>
+</div>
+<p class="body">Consistent with the broader ketamine-in-ICU literature: opioid-sparing signals show up reasonably often; downstream benefit (LOS, delirium, mortality) essentially never does in adequately powered work. File under "reasonable adjunct, not a practice-changer" until a larger multicenter trial with a patient-centered primary endpoint says otherwise.</p>
+</section>
+
+<section id="s4" style="border-bottom:none;">
+<div class="sec-head" style="border-left-color:var(--text3); background:none;"><span class="sec-num">04</span><h2>Primary Sources</h2></div>
+<ul class="sources">
+<li>Casamento A, Serpa Neto A, Bellomo R. KALME trial protocol and statistical analysis plan. Monash University / Austin Health, July 2024.</li>
+<li>Casamento A, et al. [Reported] Crit Care Med. 2026. doi:10.1097/CCM.0000000000007341</li>
+</ul>
+</section>
+
+</main>
+<footer>
+  This guide traces a 1-slide KALME trial summary post back to its registered protocol and investigator group — both check out. The reported effect-size numbers were not independently re-verified against the final published article text. Verified as of September 2026.
+<div class="cv-tagline" style="margin-top:8px">The Critical Vector · Direction and magnitude.</div></footer>
+</div></body>
+</html>

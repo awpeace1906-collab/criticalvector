@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="cv:schema" content="1.0">
+<meta name="cv:verified" content="2026-10-05">
+<title>POCUS-Guided Shock Resuscitation — The Critical Vector</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style id="cv-base">
+/* ===== CV BASE v1.0 — copy this block verbatim into every guide ===== */
+:root{
+  --bg:#0a0e14; --surface:#111720; --surface2:#182030;
+  --border:rgba(255,255,255,0.08);
+  --teal:#00d4aa; --blue:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa;
+  --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670;
+  --t-teal:rgba(0,212,170,0.10); --t-blue:rgba(96,165,250,0.10); --t-red:rgba(232,76,76,0.10);
+  --t-amber:rgba(245,158,11,0.10); --t-purple:rgba(167,139,250,0.10);
+  /* legacy aliases: older guides use these names; same values */
+  --accent:var(--teal); --accent2:var(--blue);
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{background:var(--bg); color:var(--text); font-family:'Source Serif 4', Georgia, serif; font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased;}
+h1,h2,h3,.label,.kicker,.badge,nav a,th,.step-num,.stat-num{font-family:'Syne', sans-serif;}
+.mono, code{font-family:'IBM Plex Mono', monospace;}
+.page{max-width:900px; margin:0 auto; padding:0 24px 60px;}
+header{padding:32px 0 20px; border-bottom:1px solid var(--border);}
+.kicker{font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--teal); margin-bottom:10px;}
+h1{font-weight:800; font-size:30px; line-height:1.15; margin:0 0 10px; letter-spacing:.005em;}
+header p{font-style:italic; color:var(--text2); font-size:15.5px; margin:0; max-width:700px;}
+.byline{font-size:13px; color:var(--text3); margin-top:8px;}
+.badges{display:flex; flex-wrap:wrap; gap:6px; margin-top:16px;}
+.badge{font-size:11px; font-weight:700; letter-spacing:.04em; padding:4px 10px; border-radius:20px; border:1px solid var(--border); color:var(--text2); background:var(--surface);}
+.badge.ok{color:var(--teal); border-color:rgba(0,212,170,0.35); background:var(--t-teal);}
+.badge.flag{color:var(--red); border-color:rgba(232,76,76,0.40); background:var(--t-red);}
+.alert{margin:18px 0; padding:13px 18px; border-radius:10px; font-size:14px; background:var(--t-teal); border:1px solid rgba(0,212,170,0.28); color:#bdf5e8;}
+.alert.flag{background:rgba(232,76,76,0.08); border-color:rgba(232,76,76,0.35); color:#ffd2d2;}
+nav{display:flex; flex-wrap:wrap; gap:7px; padding:18px 0; border-bottom:1px solid var(--border); margin-bottom:8px;}
+nav a{font-size:12.5px; font-weight:600; color:var(--text2); background:var(--surface); border:1px solid var(--border); padding:7px 12px; border-radius:20px; text-decoration:none; white-space:nowrap; transition:all .15s;}
+nav a:hover, nav a:focus-visible{color:var(--text); border-color:var(--teal); outline:none;}
+section{padding:30px 0; border-bottom:1px solid var(--border);}
+.sec-head{display:flex; align-items:baseline; gap:10px; padding:11px 18px; border-left:4px solid var(--teal); background:linear-gradient(90deg, var(--t-teal), transparent); border-radius:0 8px 8px 0; margin-bottom:16px;}
+.sec-head.c-blue{border-left-color:var(--blue); background:linear-gradient(90deg, var(--t-blue), transparent);}
+.sec-head.c-red{border-left-color:var(--red); background:linear-gradient(90deg, var(--t-red), transparent);}
+.sec-head.c-amber{border-left-color:var(--amber); background:linear-gradient(90deg, var(--t-amber), transparent);}
+.sec-head.c-purple{border-left-color:var(--purple); background:linear-gradient(90deg, var(--t-purple), transparent);}
+.sec-num{font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--text3);}
+h2{font-weight:700; font-size:20px; margin:0; color:var(--text);}
+h3{font-weight:700; font-size:16px; margin:0 0 6px;}
+.tagline{font-style:italic; font-size:13.5px; color:var(--text2); margin:0 0 12px;}
+p.body{font-size:15.5px; margin:12px 0; max-width:72ch;}
+p.note{font-size:13.5px; color:var(--text2); font-style:italic; margin:10px 0;}
+.box{background:var(--surface2); border:1px solid var(--border); border-radius:10px; padding:16px 18px; margin:14px 0; font-size:14.5px;}
+.box.t-teal{border-left:3px solid var(--teal);} .box.t-blue{border-left:3px solid var(--blue);}
+.box.t-red{border-left:3px solid var(--red); background:rgba(232,76,76,0.06);}
+.box.t-amber{border-left:3px solid var(--amber);} .box.t-purple{border-left:3px solid var(--purple);}
+.box b{color:var(--text); font-weight:700;} .box p{margin:7px 0;}
+.stat-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:10px; margin:16px 0;}
+.stat-card{background:var(--surface); border:1px solid var(--border); border-left:4px solid var(--c,var(--teal)); border-radius:6px; padding:14px 16px 14px 18px; text-align:left;}
+.stat-num{font-weight:800; font-size:26px; line-height:1.1; color:var(--c,var(--teal));}
+.stat-label{font-size:13px; color:var(--text2); margin-top:4px;}
+.steps{display:flex; flex-direction:column; gap:10px; margin:16px 0;}
+.step-row{display:flex; gap:14px; align-items:flex-start; background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:12px 16px;}
+.step-num{flex-shrink:0; width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:13px; color:#0a0e14; background:var(--c,var(--teal));}
+.step-body{font-size:14.5px;} .step-body b{color:var(--text);}
+.scroll{overflow-x:auto; -webkit-overflow-scrolling:touch;}
+table{width:100%; border-collapse:collapse; margin:14px 0; font-size:13.5px;}
+th{background:var(--surface2); color:var(--text); text-align:left; padding:9px 11px; font-weight:600; font-size:12px; letter-spacing:.02em; border-bottom:2px solid var(--border);}
+td{padding:9px 11px; border-bottom:1px solid var(--border); vertical-align:top;}
+tr:nth-child(even) td{background:rgba(255,255,255,0.02);}
+.xlist,.clist{list-style:none; padding-left:0; margin:10px 0;}
+.xlist li,.clist li{padding:5px 0 5px 26px; position:relative; font-size:14.5px;}
+.xlist li:before{content:"✗"; position:absolute; left:0; color:var(--red); font-weight:700;}
+.clist li:before{content:"✓"; position:absolute; left:0; color:var(--teal); font-weight:700;}
+.sources{font-size:13px; color:var(--text2); padding-left:20px;}
+.sources li{margin-bottom:7px;} .sources a{color:var(--text2);}
+footer{padding:26px 0 0; margin-top:6px; font-size:12.5px; color:var(--text3); font-style:italic;}
+@media (max-width:640px){ h1{font-size:25px;} .page{padding:0 16px 48px;} }
+@media (prefers-reduced-motion:reduce){ *{transition:none !important;} }
+
+/* ===== PRINT: light-mode token swap (mandatory, non-optional) ===== */
+@media print{
+  :root{
+    --bg:#f4f5f7; --surface:#ffffff; --surface2:#eef1f4; --border:#d7dde3;
+    --teal:#00a688; --blue:#1d4ed8; --red:#c53030; --amber:#b45309; --purple:#7c3aed;
+    --text:#0f1923; --text2:#4a5670; --text3:#6b7688;
+    --t-teal:rgba(0,166,136,0.08); --t-blue:rgba(29,78,216,0.07); --t-red:rgba(197,48,48,0.07);
+    --t-amber:rgba(180,83,9,0.08); --t-purple:rgba(124,58,237,0.07);
+  }
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  body{background:var(--bg) !important; color:var(--text) !important; font-size:11pt;}
+  nav{display:none;}
+  .page{max-width:none; padding:0;}
+  .alert{background:var(--t-teal) !important; border-color:var(--teal); color:var(--text) !important;}
+  .alert.flag{background:var(--t-red) !important; border-color:var(--red);}
+  .box.t-red{background:var(--t-red);}
+  td{color:var(--text) !important;}
+  .step-num{color:#ffffff;}
+  section, .box, table, .stat-card, .step-row{break-inside:avoid;}
+  h2, .sec-head{break-after:avoid;}
+  a{color:inherit; text-decoration:none;}
+  @page{margin:14mm 14mm 16mm;}
+}
+/* ===== END CV BASE ===== */
+</style>
+<style>
+/* page layout */
+
+.kicker{color:var(--amber);}
+.forest{margin:22px 0 6px; padding:16px 18px 10px; background:var(--surface); border:1px solid var(--border); border-radius:12px;}
+.forest svg{width:100%; height:auto; display:block;}
+.forest text{font-family:'IBM Plex Mono',monospace; fill:var(--text2); font-size:11px;}
+.forest .lab{font-family:'Syne',sans-serif; fill:var(--text); font-size:13px; font-weight:700;}
+.forest .fav{font-family:'Source Serif 4',serif; font-style:italic; font-size:12px;}
+.spec{display:grid; grid-template-columns:repeat(4,1fr); border:1px solid var(--border); border-radius:10px; overflow:hidden; margin:16px 0;}
+.spec div{padding:12px 14px; border-right:1px solid var(--border);} .spec div:last-child{border-right:none;}
+.spec dt{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--text3); margin:0 0 4px;} .spec dd{margin:0; font-size:14px;}
+.cert{display:inline-flex; gap:3px; vertical-align:middle;}
+.cert i{width:9px; height:9px; border-radius:50%; background:var(--surface2); border:1px solid var(--border);}
+.cert i.on{background:var(--teal); border-color:var(--teal);}
+.v-ok{color:var(--teal); font-weight:700;} .v-over{color:var(--amber); font-weight:700;} .v-no{color:var(--red); font-weight:700;}
+@media (max-width:640px){ .spec{grid-template-columns:1fr 1fr;} .spec div:nth-child(2){border-right:none;} .spec div:nth-child(-n+2){border-bottom:1px solid var(--border);} }
+@media print{ .forest text{fill:#4a5670;} .forest .lab{fill:#0f1923;} }
+
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ a{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../locker.html">The Evidence Locker</a><span class="cv-sb-meta">Published 6 Oct 2026 · R. E. Suscitate &amp; A. Systole</span></nav>
+<div class="page">
+
+<header>
+  <div class="kicker">The Critical Vector · Evidence Locker</div>
+  <h1>POCUS-Guided Shock Resuscitation</h1>
+  <p class="byline">R. E. Suscitate &amp; A. Systole</p>
+  <p>A 2024 meta-analysis of 18 randomized trials found a small mortality signal for ultrasound-guided resuscitation. The signal is real but narrow, rests largely on small trials, and arrives without a clear explanation of what the ultrasound changed.</p>
+  <div class="badges"><span class="badge ok">VERIFIED</span><span class="badge">Basmaji et al., Crit Care Med 2024</span><span class="badge">SR/MA · 18 RCTs · GRADE</span></div>
+</header>
+
+<div class="forest" role="figure"><svg viewBox="0 0 620 205" role="img" aria-label="Forest plot: 28-day mortality RR 0.88 (0.78 to 0.99); renal replacement therapy RR 0.80 (0.63 to 1.02)">
+<line x1="452.4" y1="20" x2="452.4" y2="150" stroke="var(--text3)" stroke-dasharray="3 4"/>
+<text x="444.4" y="30" text-anchor="end" class="fav">favors POCUS</text>
+<text x="460.4" y="30" class="fav">favors usual care</text>
+<text class="lab" x="10" y="70">28-day mortality</text><text x="10" y="87">RR 0.88 (0.78–0.99)</text><line x1="361.9" y1="66" x2="448.7" y2="66" stroke="var(--teal)" stroke-width="3"/><line x1="361.9" y1="59" x2="361.9" y2="73" stroke="var(--teal)" stroke-width="2"/><line x1="448.7" y1="59" x2="448.7" y2="73" stroke="var(--teal)" stroke-width="2"/><rect x="399.8" y="60" width="12" height="12" fill="var(--teal)"/>
+<text class="lab" x="10" y="122">Need for RRT</text><text x="10" y="139">RR 0.80 (0.63–1.02)</text><line x1="284.1" y1="118" x2="459.6" y2="118" stroke="var(--amber)" stroke-width="3"/><line x1="284.1" y1="111" x2="284.1" y2="125" stroke="var(--amber)" stroke-width="2"/><line x1="459.6" y1="111" x2="459.6" y2="125" stroke="var(--amber)" stroke-width="2"/><rect x="365.1" y="112" width="12" height="12" fill="var(--amber)"/>
+<line x1="200.0" y1="150" x2="600.0" y2="150" stroke="var(--text3)"/>
+<line x1="200.0" y1="150" x2="200.0" y2="155" stroke="var(--text3)"/><text x="200.0" y="170" text-anchor="middle">0.5</text><line x1="347.6" y1="150" x2="347.6" y2="155" stroke="var(--text3)"/><text x="347.6" y="170" text-anchor="middle">0.75</text><line x1="452.4" y1="150" x2="452.4" y2="155" stroke="var(--text3)"/><text x="452.4" y="170" text-anchor="middle">1.0</text><line x1="533.6" y1="150" x2="533.6" y2="155" stroke="var(--text3)"/><text x="533.6" y="170" text-anchor="middle">1.25</text><line x1="600.0" y1="150" x2="600.0" y2="155" stroke="var(--text3)"/><text x="600.0" y="170" text-anchor="middle">1.5</text>
+<text x="452.4" y="195" text-anchor="middle">Relative risk, log scale</text>
+</svg></div>
+<p class="note">The mortality interval clears 1.0 by a hundredth. The renal replacement therapy interval does not clear it at all.</p>
+
+<nav>
+  <a href="#review">The review</a><a href="#caption">Caption vs paper</a><a href="#nochange">What did not change</a><a href="#ed">The ED question</a><a href="#bedside">At the bedside</a><a href="#sources">Sources</a>
+</nav>
+
+<section id="review">
+  <div class="sec-head c-amber"><span class="sec-num">01</span><h2>The review</h2></div>
+  <dl class="spec">
+    <div><dt>Design</dt><dd>Systematic review and meta-analysis, RCTs only</dd></div>
+    <div><dt>Trials</dt><dd>18 RCTs, searched through December 2023</dd></div>
+    <div><dt>Population</dt><dd>Adults with shock of any cause; mostly small trials</dd></div>
+    <div><dt>Comparison</dt><dd>POCUS-guided resuscitation vs care without it</dd></div>
+  </dl>
+  <div class="stat-grid">
+    <div class="stat-card" style="--c:var(--teal)"><div class="stat-num">−0.73 d</div><div class="stat-label">Vasoactive drug duration (95% CI −1.16 to −0.30)</div></div>
+    <div class="stat-card" style="--c:var(--blue)"><div class="stat-num">High</div><div class="stat-label">Certainty that lactate clearance improves, the only high-certainty benefit</div></div>
+  </div>
+</section>
+
+<section id="caption">
+  <div class="sec-head c-red"><span class="sec-num">02</span><h2>Caption vs paper</h2></div>
+  <div class="scroll"><table>
+    <tr><th>Claim in the circulating post</th><th>What the review found</th><th>Certainty</th><th>Verdict</th></tr>
+    <tr><td>Reduced 28-day mortality</td><td>RR 0.88 (0.78–0.99); "probably reduces"</td><td><span class="cert" aria-label="2 of 4"><i class="on"></i><i class="on"></i><i></i><i></i></span>–<span class="cert" aria-label="3 of 4"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></td><td class="v-ok">Supported, narrowly</td></tr>
+    <tr><td>Shorter vasoactive duration</td><td>About three-quarters of a day shorter</td><td><span class="cert" aria-label="2 of 4"><i class="on"></i><i class="on"></i><i></i><i></i></span>–<span class="cert" aria-label="3 of 4"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></td><td class="v-ok">Supported</td></tr>
+    <tr><td>Improved lactate clearance</td><td>Improved; a surrogate, not an outcome</td><td><span class="cert" aria-label="4 of 4"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></td><td class="v-ok">Supported</td></tr>
+    <tr><td>↓ Need for RRT</td><td>RR 0.80 (0.63–1.02); the interval includes no effect</td><td><span class="cert" aria-label="2 of 4"><i class="on"></i><i class="on"></i><i></i><i></i></span>–<span class="cert" aria-label="3 of 4"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></td><td class="v-over">Overstated</td></tr>
+    <tr><td>In undifferentiated shock</td><td>Pooled across shock settings; the one ED undifferentiated-hypotension RCT was neutral (section 04)</td><td>—</td><td class="v-over">Overstated</td></tr>
+    <tr><td>"Smarter resuscitation"</td><td>POCUS shifted plans slightly but produced little to no change in fluid or inotrope actually given</td><td><span class="cert" aria-label="3 of 4"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span>–<span class="cert" aria-label="4 of 4"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></td><td class="v-no">Mechanism unclear</td></tr>
+  </table></div>
+  <p class="note">Certainty dots follow the review's GRADE ratings: one dot very low, four high. Ranges reflect the abstract's grouped ratings.</p>
+</section>
+
+<section id="nochange">
+  <div class="sec-head c-purple"><span class="sec-num">03</span><h2>What did not change</h2></div>
+  <ul class="xlist">
+    <li>ICU and hospital admissions, and ICU and hospital length of stay (little to no difference).</li>
+    <li>Need for mechanical ventilation (little to no difference).</li>
+    <li>Number of CT scans (may be no change); diagnostic echocardiograms probably decreased.</li>
+    <li>Acute kidney injury and duration of ventilation or RRT (very low certainty; effect uncertain).</li>
+  </ul>
+  <div class="box t-purple"><p><b>The puzzle.</b> Mortality moved, but the fluids and inotropes delivered barely did. Either the benefit runs through decisions the trials did not measure, such as earlier source control or a corrected diagnosis, or the mortality signal is less robust than its interval suggests. The review cannot say which.</p></div>
+</section>
+
+<section id="ed">
+  <div class="sec-head c-blue"><span class="sec-num">04</span><h2>The ED question</h2></div>
+  <p class="body">The trial closest to "undifferentiated shock in the emergency department" is SHoC-ED: 273 hypotensive ED patients across six centers in North America and South Africa, randomized to an early POCUS protocol or standard care. Survival to 30 days or discharge was essentially identical (104/136 vs 102/134; difference 0.35%, 95% CI −10.2% to 11.0%), and a later report found no difference in shock index, lactate, or bicarbonate at four hours.</p>
+  <p class="body">SHoC-ED was small and cannot exclude benefit. It does mean the strongest ED-specific trial is neutral, and the pooled mortality signal comes from the other trials.</p>
+</section>
+
+<section id="bedside">
+  <div class="sec-head"><span class="sec-num">05</span><h2>At the bedside</h2></div>
+  <ul class="clist">
+    <li>Use POCUS in shock. The pooled evidence leans toward benefit and away from harm, and it reliably answers questions an exam cannot: tamponade, RV failure, a hyperdynamic empty heart, gross LV dysfunction.</li>
+    <li>Expect it to sharpen decisions, not to replace them. The benefit depends on what you do with the image.</li>
+  </ul>
+  <ul class="xlist">
+    <li>Do not cite it as proof that POCUS reduces dialysis; that estimate crosses no effect.</li>
+    <li>Do not quote the mortality effect as settled. A relative risk of 0.88 with an upper bound of 0.99 is a probable small benefit at low-to-moderate certainty.</li>
+  </ul>
+  <div class="meter" role="img" aria-label="Evidence strength: meta-analysis of mostly small single-center RCTs" style="margin:16px 0 4px;">
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:4px;"><span style="height:8px;border-radius:4px;background:var(--amber)"></span><span style="height:8px;border-radius:4px;background:var(--amber)"></span><span style="height:8px;border-radius:4px;background:var(--amber)"></span><span style="height:8px;border-radius:4px;background:var(--surface2)"></span><span style="height:8px;border-radius:4px;background:var(--surface2)"></span></div>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:4px;font-size:12px;color:var(--text3);margin-top:6px;"><span>Case series</span><span>Single RCT</span><span style="color:var(--amber);font-weight:600">MA of small RCTs</span><span>Large multicenter RCT</span><span>Guideline</span></div>
+  </div>
+</section>
+
+<section id="sources">
+  <div class="sec-head"><span class="sec-num">06</span><h2>Sources</h2></div>
+  <ol class="sources">
+    <li>Basmaji J, Arntfield R, Desai K, et al. The impact of point-of-care ultrasound-guided resuscitation on clinical outcomes in patients with shock: a systematic review and meta-analysis. <i>Crit Care Med</i>. 2024;52(11):1661-1673. <a href="https://doi.org/10.1097/CCM.0000000000006399">doi:10.1097/CCM.0000000000006399</a></li>
+    <li>Atkinson PR, Milne J, Diegelmann L, et al. Does point-of-care ultrasonography improve clinical outcomes in emergency department patients with undifferentiated hypotension? An international randomized controlled trial from the SHoC-ED investigators. <i>Ann Emerg Med</i>. 2018;72(4):478-489. <a href="https://doi.org/10.1016/j.annemergmed.2018.04.002">doi:10.1016/j.annemergmed.2018.04.002</a></li>
+    <li>Atkinson P, Taylor L, Milne J, et al. Does point of care ultrasound improve resuscitation markers in undifferentiated hypotension? An international randomized controlled trial from the SHoC-ED series. <i>Cureus</i>. 2020;12(8):e9899. <a href="https://doi.org/10.7759/cureus.9899">doi:10.7759/cureus.9899</a></li>
+    <li>Karnicki C. POCUS use in shock resuscitation: evidence for patient and system-level benefits. REBEL EM, January 5, 2026.</li>
+  </ol>
+</section>
+
+<footer>The Critical Vector · Direction and magnitude.</footer>
+</div>
+</body>
+</html>

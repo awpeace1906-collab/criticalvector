@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ECG Changes: Electrolytes &amp; Drug Effects — Critical Vector</title>
+<style>
+  :root { --bg:#121212; --card:#1a1a1a; --text:#e8e8e8; --muted:#9a9a9a; --line:#2c2c2c; }
+  * { box-sizing: border-box; }
+  body { background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif; margin:0; padding:0 0 60px 0; line-height:1.5; }
+  header { padding:28px 20px 18px 20px; border-bottom:1px solid var(--line); }
+  header .kicker { font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
+  header h1 { font-size:26px; margin:0 0 8px 0; }
+  header p { color:var(--muted); font-size:14px; margin:0; }
+  .alert { margin:16px 20px; background:#14202a; border:1px solid #24404f; color:#cfe3ee; padding:12px 16px; border-radius:8px; font-size:14px; }
+  nav { display:flex; flex-wrap:wrap; gap:6px; padding:16px 20px; border-bottom:1px solid var(--line); }
+  nav a { font-size:12px; color:var(--text); background:var(--card); border:1px solid var(--line); padding:6px 10px; border-radius:20px; text-decoration:none; white-space:nowrap; }
+  main { padding:0 20px; max-width:720px; margin:0 auto; }
+  section { padding:26px 0; border-bottom:1px solid var(--line); }
+  section h2 .secnum { color:var(--accent,#888); margin-right:4px; }
+  section h2 { font-size:20px; margin:0 0 12px 0; padding-bottom:10px; border-bottom:2px solid var(--accent,#888); }
+  .box { background:var(--tint,var(--card)); border:1px solid var(--accent,var(--line)); border-radius:8px; padding:14px 16px; margin:12px 0; color:#1a1a1a; font-size:14px; }
+  .box p { margin:6px 0; } .box b { color:#000; }
+  p.body { font-size:14.5px; margin:10px 0; }
+  p.note { font-size:12.5px; color:var(--muted); font-style:italic; margin:8px 0; }
+  table { width:100%; border-collapse:collapse; margin:12px 0; font-size:13.5px; }
+  th { background:var(--accent,#444); color:#fff; text-align:left; padding:8px 10px; }
+  td { padding:8px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  tr:nth-child(even) td { background:rgba(255,255,255,0.03); }
+  .sources { font-size:12.5px; color:var(--muted); padding-left:18px; }
+  .sources li { margin-bottom:6px; }
+  footer { padding:24px 20px 0 20px; max-width:720px; margin:0 auto; font-size:12px; color:var(--muted); }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style id="cv-retheme">
+/* CV re-theme v1.0 — maps this file onto _cv-schema.html tokens */
+:root{--bg:#0a0e14; --surface:#111720; --surface2:#182030; --border:rgba(255,255,255,0.08); --teal:#00d4aa; --blue:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa; --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670; --t-teal:rgba(0,212,170,0.10); --t-blue:rgba(96,165,250,0.10); --t-red:rgba(232,76,76,0.10); --t-amber:rgba(245,158,11,0.10); --t-purple:rgba(167,139,250,0.10);}
+:root{--card:var(--surface); --muted:var(--text2); --line:var(--border);}
+body{font-family:'Source Serif 4', Georgia, serif !important; background:var(--bg) !important; color:var(--text);}
+h1,h2,h3,h4,th,nav a,.label,.lbl,.badge,.pill{font-family:'Syne', sans-serif !important;}
+h1{font-weight:800 !important; letter-spacing:.005em;}
+h2,h3{font-weight:700;}
+.kicker, header .kicker{font-family:'IBM Plex Mono', monospace !important; color:var(--teal) !important; letter-spacing:.12em; font-size:11px !important;}
+code, pre, .mono{font-family:'IBM Plex Mono', monospace;}
+main{max-width:900px !important;}
+header{max-width:900px; margin:0 auto;}
+section h2{font-size:20px; border-bottom:2px solid var(--accent, var(--teal)) !important;}
+.box{background:var(--surface2) !important; color:var(--text) !important; border:1px solid var(--border) !important; border-left:3px solid var(--accent, var(--teal)) !important; border-radius:10px; font-size:14.5px;}
+.box b, .box strong{color:var(--text) !important;}
+th{background:var(--surface2) !important; color:var(--text) !important; border-bottom:2px solid var(--accent, var(--border));}
+nav a{background:var(--surface) !important; color:var(--text2) !important; border:1px solid var(--border) !important; font-weight:600;}
+nav a:hover{color:var(--text) !important; border-color:var(--teal) !important;}
+.alert{background:var(--t-amber) !important; border:1px solid rgba(245,158,11,0.35) !important; color:#fde6b8 !important;}
+.note-banner{background:var(--t-amber) !important; color:var(--text) !important; border-color:rgba(245,158,11,0.35) !important;}
+.pill-yes{background:var(--t-teal) !important; color:var(--teal) !important;}
+.pill-no{background:var(--t-red) !important; color:var(--red) !important;}
+.pill-offlabel{background:var(--t-amber) !important; color:var(--amber) !important;}
+.statgrid > div{background:var(--surface) !important; border:1px solid var(--border) !important; border-left:4px solid var(--accent, var(--teal)) !important; text-align:left !important; color:var(--text) !important;}
+.statgrid .num{font-family:'Syne', sans-serif; color:var(--accent, var(--teal)) !important;}
+.statgrid .lbl{color:var(--text2) !important;}
+.card{background:var(--surface) !important; border-color:var(--border) !important; color:var(--text) !important;}
+.word{font-family:'Syne', sans-serif; color:var(--teal) !important;}
+.fig{background:var(--surface) !important; border-color:var(--border) !important;}
+footer{font-style:italic; color:var(--text3) !important;}
+[style*="--accent:#7A1620"],[style*="--accent:#9C2B3B"],[style*="--accent:#8B2635"]{--accent:var(--red) !important; --tint:var(--t-red) !important;}
+[style*="--accent:#5B3A8E"]{--accent:var(--purple) !important; --tint:var(--t-purple) !important;}
+[style*="--accent:#1F6F5C"],[style*="--accent:#2E6B3E"]{--accent:var(--teal) !important; --tint:var(--t-teal) !important;}
+[style*="--accent:#1F3A5F"],[style*="--accent:#3A5A8C"]{--accent:var(--blue) !important; --tint:var(--t-blue) !important;}
+[style*="--accent:#B5591F"],[style*="--accent:#96700A"]{--accent:var(--amber) !important; --tint:var(--t-amber) !important;}
+[style*="--accent:#444444"]{--accent:var(--text3) !important; --tint:var(--surface2) !important;}
+@media print{
+  :root{--bg:#f4f5f7; --surface:#ffffff; --surface2:#eef1f4; --border:#d7dde3; --teal:#00a688; --blue:#1d4ed8; --red:#c53030; --amber:#b45309; --purple:#7c3aed; --text:#0f1923; --text2:#4a5670; --text3:#6b7688;
+    --t-teal:rgba(0,166,136,0.08); --t-blue:rgba(29,78,216,0.07); --t-red:rgba(197,48,48,0.07); --t-amber:rgba(180,83,9,0.08); --t-purple:rgba(124,58,237,0.07); --card:#ffffff; --muted:#4a5670; --line:#d7dde3;}
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  html, body{background:#f4f5f7 !important; color:#0f1923 !important;}
+  nav{display:none !important;}
+  td{color:#0f1923 !important;}
+  .box{background:#ffffff !important; color:#0f1923 !important;}
+  .alert, .note-banner{color:#0f1923 !important;}
+  .alert{background:rgba(180,83,9,0.08) !important;}
+  section, .box, table, .card, .step, .statgrid > div, .fig{break-inside:avoid;}
+  h2{break-after:avoid;}
+  a{color:inherit; text-decoration:none;}
+}
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ a{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../workshop.html">The Workshop</a><span class="cv-sb-meta">Published 6 Oct 2026 · R. E. Suscitate &amp; A. Systole</span></nav>
+
+<header>
+  <div class="kicker">Critical Vector · Pocket Reference</div>
+  <h1>ECG Changes: Electrolytes &amp; Drug Effects</h1>
+  <p>v1. The metabolic and pharmacologic ECG patterns that get missed for being "not a rhythm
+  problem" — with the pearls that actually change bedside decisions. Verified against LITFL,
+  EMCrit, and primary electrophysiology literature. July 2026.</p>
+</header>
+
+<div class="alert">
+  Ischemia-pattern ECGs (STEMI equivalents, Wellens, de Winter, posterior MI) and arrhythmia
+  treatment algorithms already live in other Critical Vector references. This guide covers the
+  metabolic and drug-effect territory those don't — not a rebuild of either.
+</div>
+
+<nav>
+  <a href="#s1">1 · Potassium</a>
+  <a href="#s2">2 · Calcium</a>
+  <a href="#s3">3 · Digoxin: effect vs. toxicity</a>
+  <a href="#s4">4 · Other drug effects</a>
+  <a href="#s5">5 · Quick card &amp; sources</a>
+</nav>
+
+<main>
+
+<section id="s1" style="--accent:#9C2B3B; --tint:#F6E9EA;">
+  <h2><span class="secnum">1.</span> Potassium</h2>
+  <p class="body">Potassium changes are often described as pushing the T wave in one direction or
+  the other — hyperkalemia "pulls it up," hypokalemia "pushes it down" — a genuinely useful way
+  to remember the pattern, since the effects then cascade the same direction through the rest of
+  the tracing.</p>
+  <table>
+    <tr><th>Stage</th><th>Hyperkalemia progression</th></tr>
+    <tr><td>Earliest</td><td>Tall, narrow-based ("tented") T waves, especially precordial —
+    often the first sign, typically mild-moderate elevation</td></tr>
+    <tr><td>Moderate</td><td>P wave flattening, PR prolongation, atrial arrest / nodal rhythms</td></tr>
+    <tr><td>Severe</td><td>QRS widening, right axis deviation, tall terminal R in aVR (mimicking
+    sodium-channel toxicity)</td></tr>
+    <tr><td>Pre-terminal</td><td>QRS and T merge into a "sine wave" pattern — a pre-arrest rhythm
+    that can be mistaken for VT/idioventricular rhythm in the absence of visible P waves</td></tr>
+  </table>
+  <div class="box" style="--accent:#7A1620; --tint:#F5E4E5;">
+    <p><b>Counterintuitive finding:</b> a retrospective study of 188 patients with severe
+    hyperkalemia found that peaked T waves alone did <em>not</em> predict short-term adverse
+    events — the ECG changes that did were more advanced (widened QRS, bradyarrhythmia, high-grade
+    block). Don't let a reassuring-looking T wave alone talk you out of treating a severe lab
+    value.</p>
+  </div>
+  <div class="box">
+    <p><b>Hyperkalemia is the "great ECG imitator"</b> — it can mimic an anterior STEMI closely
+    enough (particularly in V1-V2) that patients have gone to the cath lab for hyperkalemia. If
+    the pattern doesn't fully fit a coronary distribution, or the clinical picture doesn't fit
+    ACS, check a potassium before assuming occlusion.</p>
+  </div>
+  <p class="note"><b>Hypokalemia</b> runs the opposite direction: T-wave flattening/inversion, ST
+  depression, and prominent U waves — sometimes fusing with the T wave into a T-U complex easy to
+  mistake for QT prolongation. Hypokalemia also increases automaticity and reduces AV conduction
+  in a manner that parallels digoxin toxicity — worth remembering when both are plausible in the
+  same patient.</p>
+  <div class="box" style="--accent:#7A1620; --tint:#F5E4E5;">
+    <p><b>Critical interaction:</b> IV calcium, the standard cardioprotective treatment for
+    hyperkalemia, can precipitate fatal arrhythmia if the hyperkalemia is being driven by digoxin
+    toxicity. Ask about digoxin use before pushing calcium in a hyperkalemic patient with any
+    digoxin-effect features on the tracing.</p>
+  </div>
+</section>
+
+<section id="s2" style="--accent:#5B3A8E; --tint:#EFE9F5;">
+  <h2><span class="secnum">2.</span> Calcium</h2>
+  <table>
+    <tr><th>Abnormality</th><th>ECG finding</th></tr>
+    <tr><td><b>Hypercalcemia</b></td><td>Shortened QT interval — often a symmetric, domed ST-T
+    complex without a true ST segment. Can produce tall, peaked T waves in V2-V3, and can mimic a
+    lateral occlusion MI pattern.</td></tr>
+    <tr><td><b>Hypocalcemia</b></td><td>Prolonged QT interval — the ST segment itself lengthens
+    (distinct from a prolonged QT from repolarization/T-wave abnormalities), raising torsades
+    risk if severe.</td></tr>
+  </table>
+  <p class="note">QT shortening alone is nonspecific — catecholamine excess, acidosis, digoxin,
+  and simply being critically ill can all shorten it. Hypercalcemia is one differential among
+  several, not a diagnosis to make from the ECG in isolation.</p>
+</section>
+
+<section id="s3" style="--accent:#1F6F5C; --tint:#E6F2EF;">
+  <h2><span class="secnum">3.</span> Digoxin: Effect vs. Toxicity</h2>
+  <p class="body">This is one of the most consistently confused pairs in ECG interpretation, and
+  the distinction changes what you do next: one is an expected finding in a patient taking the
+  drug, the other is an emergency.</p>
+  <div class="box">
+    <p><b>Digoxin effect</b> (seen at therapeutic levels, does NOT imply toxicity): downsloping,
+    "scooped" ST depression — variously called a reverse tick, hockey stick, or "Salvador Dali's
+    moustache" — most prominent in leads with a tall R wave (V5-V6). Shortened QT interval.
+    Flattened, biphasic, or inverted T waves. Increased U-wave amplitude. The scooped depression
+    characteristically starts from the isoelectric line without J-point depression.</p>
+  </div>
+  <div class="box" style="--accent:#7A1620; --tint:#F5E4E5;">
+    <p><b>Digoxin toxicity</b> can occur with or without the classic "effect" morphology present,
+    and vice versa — the ECG "effect" pattern is not a reliable marker of toxicity either way.
+    What actually signals toxicity: PVCs (the most common toxic dysrhythmia), any new bradycardia
+    or AV block with increased automaticity elsewhere (atrial tachycardia with block, accelerated
+    junctional rhythm, slow atrial fibrillation), and — near-pathognomonic when present —
+    bidirectional ventricular tachycardia.</p>
+  </div>
+  <p class="note">The clinical takeaway: don't diagnose toxicity from the scooped ST segment
+  alone, and don't rule it out just because the classic scoop isn't there. Diagnose toxicity from
+  the rhythm and the clinical picture (nausea, visual changes, hyperkalemia in acute overdose,
+  renal function), with the level as supporting evidence, not the ST morphology.</p>
+</section>
+
+<section id="s4" style="--accent:#B5591F; --tint:#F8ECE0;">
+  <h2><span class="secnum">4.</span> Other Drug Effects</h2>
+  <table>
+    <tr><th>Drug / class</th><th>ECG changes</th></tr>
+    <tr><td><b>Tricyclic antidepressants / Na-channel blockers</b></td><td>QRS widening, terminal
+    R wave in aVR — the substrate for the sodium bicarbonate treatment covered in the Antidotes
+    &amp; Reversal Agents guide.</td></tr>
+    <tr><td><b>Amiodarone</b></td><td>QT prolongation, bradycardia — expected pharmacologic
+    effect; distinguishing expected QT prolongation from a dangerous one is a clinical judgment
+    call, not an ECG-alone one.</td></tr>
+    <tr><td><b>Beta-blockers / calcium channel blockers</b></td><td>Bradycardia, PR prolongation,
+    AV block — overdose management for both lives in the Antidotes &amp; Reversal Agents
+    guide's poison-induced cardiogenic shock section.</td></tr>
+    <tr><td><b>Local anesthetic systemic toxicity</b></td><td>QRS widening, ventricular
+    arrhythmias — management (lipid emulsion) also lives in that same guide.</td></tr>
+  </table>
+  <p class="note">These four rows are intentionally thin — full mechanism and treatment detail
+  for each already exists elsewhere in this reference set. This guide is the recognition layer;
+  the antidotes guide is the action layer.</p>
+</section>
+
+<section id="s5" style="--accent:#444444; --tint:#EFEFEF; border-bottom:none;">
+  <h2><span class="secnum">5.</span> Quick Reference Card &amp; Primary Sources</h2>
+  <table>
+    <tr><th>Finding</th><th>Consider</th></tr>
+    <tr><td><b>Tall, tented T waves</b></td><td>Hyperkalemia (early) — but don't rely on this alone to gauge severity</td></tr>
+    <tr><td><b>Sine wave pattern</b></td><td>Severe/pre-terminal hyperkalemia — treat immediately</td></tr>
+    <tr><td><b>Flattened T, prominent U wave</b></td><td>Hypokalemia</td></tr>
+    <tr><td><b>Short QT, domed ST-T</b></td><td>Hypercalcemia (among other causes)</td></tr>
+    <tr><td><b>Long QT (ST-segment prolongation)</b></td><td>Hypocalcemia</td></tr>
+    <tr><td><b>Scooped ST depression, V5-V6</b></td><td>Digoxin effect — not itself diagnostic of toxicity</td></tr>
+    <tr><td><b>Bidirectional VT</b></td><td>Near-pathognomonic for digoxin toxicity</td></tr>
+    <tr><td><b>Wide QRS, terminal R in aVR</b></td><td>Na-channel blocker toxicity (TCA, etc.) — see Antidotes guide</td></tr>
+  </table>
+  <p class="body"><b>Primary sources checked for this guide:</b></p>
+  <ul class="sources">
+    <li>Hyperkalaemia ECG changes. LITFL ECG Library, reviewed 2024.</li>
+    <li>ECG Diagnosis: Hyperkalemia. The Permanente Journal.</li>
+    <li>Hyperkalemia. ECG Stampede, including the 188-patient predictive-findings study.</li>
+    <li>Long B, Warix JR, Koyfman A. Controversies in management of hyperkalemia. J Emerg Med. 2018;55(2):192-205.</li>
+    <li>U-waves, QT interval, hypokalemia. EMCrit Project IBCC, reviewed 2025.</li>
+    <li>Digoxin Effect. LITFL ECG Library Toxicology, reviewed 2024.</li>
+    <li>Special Feature: Digoxin Effect on the Electrocardiogram. Clinician Reviews, 2001 (foundational description, still standard-referenced).</li>
+    <li>Digoxin Toxicity. ECG Stampede and Atlas of Emergency Medicine, 5e.</li>
+    <li>Surawicz B, et al. AHA/ACCF/HRS recommendations for standardization and interpretation of the electrocardiogram. Circulation. 2009.</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  Metabolic and drug-effect ECG patterns get missed for the same reason every time — the tracing
+  doesn't look like a "cardiac" problem, so it doesn't get read as one. Every pattern above was
+  cross-checked against the sources listed here as of July 2026.
+<div class="cv-tagline" style="margin-top:8px">The Critical Vector · Direction and magnitude.</div></footer>
+
+</body>
+</html>

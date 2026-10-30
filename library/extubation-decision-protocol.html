@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="cv:schema" content="1.0">
+<meta name="cv:verified" content="2026-10-05">
+<title>Extubation Decision Protocol — The Critical Vector</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style id="cv-base">
+/* ===== CV BASE v1.0 — copy this block verbatim into every guide ===== */
+:root{
+  --bg:#0a0e14; --surface:#111720; --surface2:#182030;
+  --border:rgba(255,255,255,0.08);
+  --teal:#00d4aa; --blue:#2563eb; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa;
+  --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670;
+  --t-teal:rgba(0,212,170,0.10); --t-blue:rgba(37,99,235,0.10); --t-red:rgba(232,76,76,0.10);
+  --t-amber:rgba(245,158,11,0.10); --t-purple:rgba(167,139,250,0.10);
+  /* legacy aliases: older guides use these names; same values */
+  --accent:var(--teal); --accent2:var(--blue);
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{background:var(--bg); color:var(--text); font-family:'Source Serif 4', Georgia, serif; font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased;}
+h1,h2,h3,.label,.kicker,.badge,nav a,th,.step-num,.stat-num{font-family:'Syne', sans-serif;}
+.mono, code{font-family:'IBM Plex Mono', monospace;}
+.page{max-width:900px; margin:0 auto; padding:0 24px 60px;}
+header{padding:32px 0 20px; border-bottom:1px solid var(--border);}
+.kicker{font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--teal); margin-bottom:10px;}
+h1{font-weight:800; font-size:30px; line-height:1.15; margin:0 0 10px; letter-spacing:.005em;}
+header p{font-style:italic; color:var(--text2); font-size:15.5px; margin:0; max-width:700px;}
+.byline{font-size:13px; color:var(--text3); margin-top:8px;}
+.badges{display:flex; flex-wrap:wrap; gap:6px; margin-top:16px;}
+.badge{font-size:11px; font-weight:700; letter-spacing:.04em; padding:4px 10px; border-radius:20px; border:1px solid var(--border); color:var(--text2); background:var(--surface);}
+.badge.ok{color:var(--teal); border-color:rgba(0,212,170,0.35); background:var(--t-teal);}
+.badge.flag{color:var(--red); border-color:rgba(232,76,76,0.40); background:var(--t-red);}
+.alert{margin:18px 0; padding:13px 18px; border-radius:10px; font-size:14px; background:var(--t-teal); border:1px solid rgba(0,212,170,0.28); color:#bdf5e8;}
+.alert.flag{background:rgba(232,76,76,0.08); border-color:rgba(232,76,76,0.35); color:#ffd2d2;}
+nav{display:flex; flex-wrap:wrap; gap:7px; padding:18px 0; border-bottom:1px solid var(--border); margin-bottom:8px;}
+nav a{font-size:12.5px; font-weight:600; color:var(--text2); background:var(--surface); border:1px solid var(--border); padding:7px 12px; border-radius:20px; text-decoration:none; white-space:nowrap; transition:all .15s;}
+nav a:hover, nav a:focus-visible{color:var(--text); border-color:var(--teal); outline:none;}
+section{padding:30px 0; border-bottom:1px solid var(--border);}
+.sec-head{display:flex; align-items:baseline; gap:10px; padding:11px 18px; border-left:4px solid var(--teal); background:linear-gradient(90deg, var(--t-teal), transparent); border-radius:0 8px 8px 0; margin-bottom:16px;}
+.sec-head.c-blue{border-left-color:var(--blue); background:linear-gradient(90deg, var(--t-blue), transparent);}
+.sec-head.c-red{border-left-color:var(--red); background:linear-gradient(90deg, var(--t-red), transparent);}
+.sec-head.c-amber{border-left-color:var(--amber); background:linear-gradient(90deg, var(--t-amber), transparent);}
+.sec-head.c-purple{border-left-color:var(--purple); background:linear-gradient(90deg, var(--t-purple), transparent);}
+.sec-num{font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--text3);}
+h2{font-weight:700; font-size:20px; margin:0; color:var(--text);}
+h3{font-weight:700; font-size:16px; margin:0 0 6px;}
+.tagline{font-style:italic; font-size:13.5px; color:var(--text2); margin:0 0 12px;}
+p.body{font-size:15.5px; margin:12px 0; max-width:72ch;}
+p.note{font-size:13.5px; color:var(--text2); font-style:italic; margin:10px 0;}
+.box{background:var(--surface2); border:1px solid var(--border); border-radius:10px; padding:16px 18px; margin:14px 0; font-size:14.5px;}
+.box.t-teal{border-left:3px solid var(--teal);} .box.t-blue{border-left:3px solid var(--blue);}
+.box.t-red{border-left:3px solid var(--red); background:rgba(232,76,76,0.06);}
+.box.t-amber{border-left:3px solid var(--amber);} .box.t-purple{border-left:3px solid var(--purple);}
+.box b{color:var(--text); font-weight:700;} .box p{margin:7px 0;}
+.stat-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:10px; margin:16px 0;}
+.stat-card{background:var(--surface); border:1px solid var(--border); border-left:4px solid var(--c,var(--teal)); border-radius:6px; padding:14px 16px 14px 18px; text-align:left;}
+.stat-num{font-weight:800; font-size:26px; line-height:1.1; color:var(--c,var(--teal));}
+.stat-label{font-size:13px; color:var(--text2); margin-top:4px;}
+.steps{display:flex; flex-direction:column; gap:10px; margin:16px 0;}
+.step-row{display:flex; gap:14px; align-items:flex-start; background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:12px 16px;}
+.step-num{flex-shrink:0; width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:13px; color:#0a0e14; background:var(--c,var(--teal));}
+.step-body{font-size:14.5px;} .step-body b{color:var(--text);}
+.scroll{overflow-x:auto; -webkit-overflow-scrolling:touch;}
+table{width:100%; border-collapse:collapse; margin:14px 0; font-size:13.5px;}
+th{background:var(--surface2); color:var(--text); text-align:left; padding:9px 11px; font-weight:600; font-size:12px; letter-spacing:.02em; border-bottom:2px solid var(--border);}
+td{padding:9px 11px; border-bottom:1px solid var(--border); vertical-align:top;}
+tr:nth-child(even) td{background:rgba(255,255,255,0.02);}
+.xlist,.clist{list-style:none; padding-left:0; margin:10px 0;}
+.xlist li,.clist li{padding:5px 0 5px 26px; position:relative; font-size:14.5px;}
+.xlist li:before{content:"✗"; position:absolute; left:0; color:var(--red); font-weight:700;}
+.clist li:before{content:"✓"; position:absolute; left:0; color:var(--teal); font-weight:700;}
+.sources{font-size:13px; color:var(--text2); padding-left:20px;}
+.sources li{margin-bottom:7px;} .sources a{color:var(--text2);}
+footer{padding:26px 0 0; margin-top:6px; font-size:12.5px; color:var(--text3); font-style:italic;}
+@media (max-width:640px){ h1{font-size:25px;} .page{padding:0 16px 48px;} }
+@media (prefers-reduced-motion:reduce){ *{transition:none !important;} }
+
+/* ===== PRINT: light-mode token swap (mandatory, non-optional) ===== */
+@media print{
+  :root{
+    --bg:#f4f5f7; --surface:#ffffff; --surface2:#eef1f4; --border:#d7dde3;
+    --teal:#00a688; --blue:#1d4ed8; --red:#c53030; --amber:#b45309; --purple:#7c3aed;
+    --text:#0f1923; --text2:#4a5670; --text3:#6b7688;
+    --t-teal:rgba(0,166,136,0.08); --t-blue:rgba(29,78,216,0.07); --t-red:rgba(197,48,48,0.07);
+    --t-amber:rgba(180,83,9,0.08); --t-purple:rgba(124,58,237,0.07);
+  }
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  body{background:var(--bg) !important; color:var(--text) !important; font-size:11pt;}
+  nav{display:none;}
+  .page{max-width:none; padding:0;}
+  .alert{background:var(--t-teal) !important; border-color:var(--teal); color:var(--text) !important;}
+  .alert.flag{background:var(--t-red) !important; border-color:var(--red);}
+  .box.t-red{background:var(--t-red);}
+  td{color:var(--text) !important;}
+  .step-num{color:#ffffff;}
+  section, .box, table, .stat-card, .step-row{break-inside:avoid;}
+  h2, .sec-head{break-after:avoid;}
+  a{color:inherit; text-decoration:none;}
+  @page{margin:14mm 14mm 16mm;}
+}
+/* ===== END CV BASE ===== */
+</style>
+<style>
+/* page layout */
+
+.kicker{color:var(--blue);}
+.tracks{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:22px 0 8px;}
+.track{display:block; text-decoration:none; color:var(--text); background:var(--surface); border:1px solid var(--border); border-top:4px solid var(--c); border-radius:0 0 12px 12px; padding:16px 18px;}
+.track:hover{border-color:var(--c);}
+.track .who{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--text2);}
+.track .verb{font-family:'Syne',sans-serif; font-weight:800; font-size:26px; margin:6px 0 8px; color:var(--c);}
+.track p{font-size:14px; margin:4px 0; color:var(--text2);}
+.part{font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--text3); margin:34px 0 0; padding-top:14px; border-top:2px solid var(--border);}
+@media (max-width:720px){ .tracks{grid-template-columns:1fr;} }
+
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ a{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../continuum.html">The Continuum</a><span class="cv-sb-meta">Published 14 Oct 2026 · R. E. Suscitate &amp; A. Systole</span></nav>
+<div class="page">
+
+<header>
+  <div class="kicker">The Critical Vector · Continuum</div>
+  <h1>Extubation Decision Protocol</h1>
+  <p class="byline">R. E. Suscitate &amp; A. Systole</p>
+  <p>Two decisions share one name. At the end of an anesthetic, the question is how to take the tube out safely. In the ICU, it's whether the patient can stay extubated, and what support follows. Both end with a rescue plan.</p>
+  <div class="badges"><span class="badge ok">VERIFIED</span><span class="badge">DAS 2012 · ASA 2023 · ATS/ACCP 2017</span><span class="badge">Companion: interactive tool</span></div>
+</header>
+
+<div class="tracks">
+  <a class="track" href="#or-gate" style="--c:var(--purple)"><div class="who">End of anesthetic</div><div class="verb">OR emergence</div><p>Gate → airway risk → awake or deep → technique</p></a>
+  <a class="track" href="#icu-ready" style="--c:var(--teal)"><div class="who">Ventilated patient</div><div class="verb">ICU liberation</div><p>Readiness → SBT → airway → reintubation risk → support</p></a>
+</div>
+<div class="alert">Decision aid for education and team discussion. It is not an order. Clinical judgment and local protocol take priority.</div>
+
+<nav>
+  <a href="#or-gate">OR gate</a><a href="#or-risk">OR risk</a><a href="#icu-ready">ICU readiness</a><a href="#icu-sbt">SBT</a><a href="#icu-airway">Airway &amp; stridor</a><a href="#icu-risk">Reintubation risk</a><a href="#icu-support">Support</a><a href="#rescue">Rescue plan</a><a href="#sources">Sources</a>
+</nav>
+
+<div class="part">Track A · OR emergence</div>
+
+<section id="or-gate">
+  <div class="sec-head c-purple"><span class="sec-num">01</span><h2>The gate</h2></div>
+  <p class="tagline">Every item is checked before the tube moves. The first three are hard stops.</p>
+  <ul class="clist"><li>Quantitative train-of-four ratio is 0.9 or higher (adductor pollicis)</li><li>Adequate spontaneous ventilation and oxygenation</li><li>Hemodynamically stable</li><li>Normothermic, with metabolic problems corrected</li><li>Pain is adequately controlled</li></ul>
+  <div class="box t-purple"><p><b>Reversal is a number.</b> Subjective fade can't be detected above a train-of-four ratio of about 0.4, so the ASA 2023 guideline calls for quantitative monitoring and a ratio of at least 0.9 before extubation.</p></div>
+</section>
+
+<section id="or-risk">
+  <div class="sec-head c-red"><span class="sec-num">02</span><h2>Airway risk decides depth</h2></div>
+  <p class="body">The DAS guidelines classify every extubation as low risk or at risk before choosing a technique. Any one of these makes it at risk:</p>
+  <ul class="xlist"><li>Known or suspected difficult intubation or mask ventilation</li><li>Restricted airway access (head or neck surgery, halo, wired jaw, cervical fixation)</li><li>Airway edema, hematoma, or changed anatomy</li><li>Aspiration risk (full stomach, delayed gastric emptying)</li><li>Obesity or obstructive sleep apnea</li><li>Limited respiratory or cardiovascular reserve</li></ul>
+  <div class="scroll"><table>
+    <tr><th>Classification</th><th>Technique</th></tr>
+    <tr><td>At risk</td><td><b>Awake only.</b> Consider an airway exchange catheter, supraglottic airway exchange, remifentanil infusion, or postponing extubation. State the rescue plan out loud.</td></tr>
+    <tr><td>Low risk, coughing harmful to the repair</td><td>Awake by default; <b>deep</b> extubation acceptable in a patient with an easy airway, no aspiration risk, and a clinician ready to rescue it.</td></tr>
+    <tr><td>Low risk</td><td>Awake extubation.</td></tr>
+  </table></div>
+</section>
+
+<div class="part">Track B · ICU liberation</div>
+
+<section id="icu-ready">
+  <div class="sec-head"><span class="sec-num">03</span><h2>Readiness screen</h2></div>
+  <p class="tagline">Daily. Pair it with a sedation interruption; protocolized sedation minimization is an ATS/ACCP recommendation.</p>
+  <ul class="clist"><li>The cause of respiratory failure is improving</li><li>PaO2/FiO2 is 150 or higher on PEEP of 8 or less and FiO2 of 0.5 or less</li><li>Hemodynamically stable (no vasopressor or a low dose)</li><li>Breathing on their own with sedation minimized</li></ul>
+</section>
+
+<section id="icu-sbt">
+  <div class="sec-head c-blue"><span class="sec-num">04</span><h2>Spontaneous breathing trial</h2></div>
+  <div class="stat-grid">
+    <div class="stat-card" style="--c:var(--blue)"><div class="stat-num">PS 5–8</div><div class="stat-label">cmH₂O of inspiratory support for the initial SBT (ATS/ACCP 2017)</div></div>
+    <div class="stat-card" style="--c:var(--teal)"><div class="stat-num">30 min</div><div class="stat-label">PS 8 for 30 min vs T-piece for 2 h: more successful extubations, 82.3% vs 74.0% (Subirà 2019)</div></div>
+  </div>
+  <p class="body"><b>Stop the trial for any of:</b></p>
+  <ul class="xlist"><li>respiratory rate above 35</li><li>SpO2 below 90%</li><li>heart rate above 140 or a sustained change of more than 20%</li><li>systolic pressure above 180 or below 90</li><li>agitation, sweating, or rising work of breathing</li></ul>
+  <p class="note">A rapid shallow breathing index under 105 (Yang &amp; Tobin) predicts success, but no single index should decide extubation on its own.</p>
+</section>
+
+<section id="icu-airway">
+  <div class="sec-head c-amber"><span class="sec-num">05</span><h2>Airway protection and stridor</h2></div>
+  <p class="body">Passing an SBT proves the patient can breathe, not that they can protect the airway. Check:</p>
+  <ul class="clist"><li>Effective cough</li><li>Secretions manageable (suctioned 2 times or fewer in the last 8 hours)</li><li>Follows commands or protects their airway</li></ul>
+  <div class="box t-amber">
+    <p><b>Cuff-leak test, for patients at high risk of post-extubation stridor:</b> traumatic or difficult intubation, intubation for more than 6 days, a large tube, female sex, or reintubation after an unplanned extubation.</p>
+    <p><b>Failed leak</b> (a leak below 110 mL or below 12 to 24% of the delivered tidal volume): give systemic steroids at least 4 hours before extubation (for example methylprednisolone 20 mg IV 12 hours before, then every 4 hours); a repeat leak test is not required.</p>
+  </div>
+</section>
+
+<section id="icu-risk">
+  <div class="sec-head c-red"><span class="sec-num">06</span><h2>Reintubation risk</h2></div>
+  <p class="tagline">Hernández 2016: any one factor defines high risk. Count them; more factors, more risk.</p>
+  <div class="scroll"><table><tr><th>Risk factor</th></tr><tr><td>Age over 65</td></tr><tr><td>APACHE II above 12 today</td></tr><tr><td>BMI above 30</td></tr><tr><td>Poor secretion management</td></tr><tr><td>Difficult or prolonged weaning (failed the first trial)</td></tr><tr><td>Two or more comorbidities</td></tr><tr><td>Heart failure was the main reason for ventilation</td></tr><tr><td>Moderate to severe COPD</td></tr><tr><td>Airway patency problems (high risk of laryngeal edema)</td></tr><tr><td>Ventilated for more than 7 days</td></tr></table></div>
+  <p class="note">The ≥1 threshold puts most ICU patients in the high-risk group, so the count matters more than the label.</p>
+</section>
+
+<section id="icu-support">
+  <div class="sec-head c-blue"><span class="sec-num">07</span><h2>Post-extubation support</h2></div>
+  <div class="scroll"><table>
+    <tr><th>Risk</th><th>Support</th><th>Evidence</th></tr>
+    <tr><td>Low</td><td>High-flow nasal cannula, 24 h</td><td>Reintubation 4.9% vs 12.2% with conventional oxygen (Hernández 2016)</td></tr>
+    <tr><td>High</td><td>Prophylactic NIV, or HFNC</td><td>ATS/ACCP 2017 recommends preventive NIV; HFNC was noninferior to NIV for reintubation (22.8% vs 19.1%; Hernández 2016)</td></tr>
+    <tr><td>High, tolerating it</td><td>HFNC alternating with NIV</td><td>Day-7 reintubation 11.8% vs 18.2% with HFNC alone (HIGH-WEAN 2019)</td></tr>
+  </table></div>
+  <div class="alert flag"><b>Prevention, not rescue.</b> NIV started for established post-extubation respiratory failure did not prevent reintubation and was associated with higher ICU mortality, likely from delayed reintubation (Esteban 2004). If they're failing, reintubate.</div>
+</section>
+
+<section id="rescue">
+  <div class="sec-head c-purple"><span class="sec-num">08</span><h2>Rescue plan, both tracks</h2></div>
+  <div class="steps"><div class="step-row"><div class="step-num">1</div><div class="step-body"><b>Who will reintubate?</b></div></div><div class="step-row"><div class="step-num">2</div><div class="step-body"><b>Which device and plan (videolaryngoscope, bougie, supraglottic airway)?</b></div></div><div class="step-row"><div class="step-num">3</div><div class="step-body"><b>Where is the front-of-neck access kit?</b></div></div><div class="step-row"><div class="step-num">4</div><div class="step-body"><b>Where will the patient go, and who will watch them?</b></div></div></div>
+  <p class="note">The companion tool ends with a printable handoff card carrying these four answers, the risk classification, and the support plan.</p>
+</section>
+
+<section id="sources">
+  <div class="sec-head"><span class="sec-num">09</span><h2>Sources</h2></div>
+  <ol class="sources"><li>Popat M, et al. Difficult Airway Society guidelines for the management of tracheal extubation. Anaesthesia. 2012;67(3):318-340.</li><li>Thilen SR, et al. 2023 American Society of Anesthesiologists practice guidelines for monitoring and antagonism of neuromuscular blockade. Anesthesiology. 2023;138(1):13-41.</li><li>Schmidt GA, Girard TD, Kress JP, et al. Official executive summary of an ATS/ACCP clinical practice guideline: liberation from mechanical ventilation in critically ill adults. Am J Respir Crit Care Med. 2017;195(1):115-119.</li><li>Subirà C, et al. Effect of pressure support vs T-piece ventilation strategies during spontaneous breathing trials on successful extubation among patients receiving mechanical ventilation. JAMA. 2019;321(22):2175-2182.</li><li>François B, et al. 12-h pretreatment with methylprednisolone versus placebo for prevention of postextubation laryngeal oedema. Lancet. 2007;369(9567):1083-1089.</li><li>Hernández G, et al. Effect of postextubation high-flow nasal cannula vs conventional oxygen therapy on reintubation in low-risk patients. JAMA. 2016;315(13):1354-1361.</li><li>Hernández G, et al. Effect of postextubation high-flow nasal cannula vs noninvasive ventilation on reintubation and postextubation respiratory failure in high-risk patients. JAMA. 2016;316(15):1565-1574.</li><li>Thille AW, et al. Effect of postextubation high-flow nasal oxygen with noninvasive ventilation vs high-flow nasal oxygen alone on reintubation among patients at high risk of extubation failure. JAMA. 2019;322(15):1465-1475.</li><li>Esteban A, et al. Noninvasive positive-pressure ventilation for respiratory failure after extubation. N Engl J Med. 2004;350(24):2452-2460.</li><li>Yang KL, Tobin MJ. A prospective study of indexes predicting the outcome of trials of weaning from mechanical ventilation. N Engl J Med. 1991;324(21):1445-1450.</li></ol>
+</section>
+
+<script type="application/json" id="cv-extubation-logic">
+{"schema": "cv-extubation-logic", "version": "1.1", "updated": "2026-10-14", "ui": {"disclaimer": "Decision aid for education and team discussion. It is not an order. Clinical judgment and local protocol take priority.", "recommendationPrefix": "Protocol suggests:", "buttons": {"next": "Next", "back": "Back", "reset": "Start over", "print": "Share handoff card", "evidence": "Evidence", "resetConfirm": "Changing the setting clears all answers. Continue?"}, "stepLabel": "Step {current} of {total}", "acknowledge": "I have read this warning"}, "tracks": {"or": {"title": "OR emergence", "subtitle": "End of an anesthetic", "totalSteps": 4}, "icu": {"title": "ICU liberation", "subtitle": "Ventilated patient", "totalSteps": 7}}, "screens": [{"id": "setting", "track": null, "step": 0, "type": "single_choice", "title": "Choose the setting", "prompt": "Where is this extubation happening?", "options": [{"id": "or", "label": "OR emergence"}, {"id": "icu", "label": "ICU liberation"}], "required": true}, {"id": "or_gate", "track": "or", "step": 1, "type": "checklist", "title": "The gate", "prompt": "Check each item that is true right now.", "items": [{"id": "tofr", "label": "Quantitative train-of-four ratio is 0.9 or higher (adductor pollicis)", "hard": true}, {"id": "spont", "label": "Adequate spontaneous ventilation and oxygenation", "hard": true}, {"id": "hemo", "label": "Hemodynamically stable", "hard": true}, {"id": "temp", "label": "Normothermic, with metabolic problems corrected", "hard": false}, {"id": "analg", "label": "Pain is adequately controlled", "hard": false}]}, {"id": "or_risk", "track": "or", "step": 2, "type": "checklist", "title": "Airway risk", "prompt": "Check every item that applies. Leave all unchecked if none apply.", "items": [{"id": "diffint", "label": "Known or suspected difficult intubation or mask ventilation"}, {"id": "access", "label": "Restricted airway access (head or neck surgery, halo, wired jaw, cervical fixation)"}, {"id": "edema", "label": "Airway edema, hematoma, or changed anatomy"}, {"id": "aspir", "label": "Aspiration risk (full stomach, delayed gastric emptying)"}, {"id": "obos", "label": "Obesity or obstructive sleep apnea"}, {"id": "reserve", "label": "Limited respiratory or cardiovascular reserve"}]}, {"id": "or_cough", "track": "or", "step": 3, "type": "yes_no", "title": "Surgical priority", "prompt": "Would coughing at extubation harm the surgical repair (for example intracranial, eye, some ENT or plastic surgery)?", "showIf": {"count": "or_risk", "eq": 0}, "required": true}, {"id": "or_rescue", "track": "or", "step": 4, "type": "text_fields", "title": "Rescue plan", "prompt": "Answer all four before extubation.", "fields": [{"id": "who", "label": "Who will reintubate?"}, {"id": "device", "label": "Which device and plan (videolaryngoscope, bougie, supraglottic airway)?"}, {"id": "fona", "label": "Where is the front-of-neck access kit?"}, {"id": "where", "label": "Where will the patient go, and who will watch them?"}], "required": true}, {"id": "icu_ready", "track": "icu", "step": 1, "type": "checklist", "title": "Readiness screen", "prompt": "Check each item that is true today.", "items": [{"id": "cause", "label": "The cause of respiratory failure is improving", "hard": true}, {"id": "oxy", "label": "PaO2/FiO2 is 150 or higher on PEEP of 8 or less and FiO2 of 0.5 or less", "hard": true}, {"id": "hemo", "label": "Hemodynamically stable (no vasopressor or a low dose)", "hard": true}, {"id": "drive", "label": "Breathing on their own with sedation minimized", "hard": true}]}, {"id": "icu_sbt", "track": "icu", "step": 2, "type": "yes_no", "title": "Spontaneous breathing trial", "prompt": "Did the patient pass a 30 to 120 minute trial on pressure support of 5 to 8 cmH2O (or T-piece)?", "info": "Stop the trial for any of: respiratory rate above 35; SpO2 below 90%; heart rate above 140 or a sustained change of more than 20%; systolic pressure above 180 or below 90; agitation, sweating, or rising work of breathing.", "infoSources": ["ats2017", "subira2019"], "required": true}, {"id": "icu_airway", "track": "icu", "step": 3, "type": "checklist", "title": "Airway protection", "prompt": "Check each item that is true.", "items": [{"id": "cough", "label": "Effective cough"}, {"id": "secr", "label": "Secretions manageable (suctioned 2 times or fewer in the last 8 hours)"}, {"id": "mental", "label": "Follows commands or protects their airway"}]}, {"id": "icu_stridor", "track": "icu", "step": 4, "type": "checklist", "title": "Stridor risk", "prompt": "Check every item that applies. Leave all unchecked if none apply.", "items": [{"id": "trauma", "label": "Traumatic or difficult intubation"}, {"id": "long", "label": "Intubated for more than 6 days"}, {"id": "large", "label": "Large endotracheal tube for the airway"}, {"id": "female", "label": "Female"}, {"id": "reint", "label": "Reintubated after an unplanned extubation"}]}, {"id": "icu_cuff", "track": "icu", "step": 5, "type": "single_choice", "title": "Cuff-leak test", "prompt": "Result of the cuff-leak test. A failed test is a leak below 110 mL or below 12 to 24% of the delivered tidal volume.", "showIf": {"count": "icu_stridor", "gte": 1}, "options": [{"id": "pass", "label": "Passed"}, {"id": "fail", "label": "Failed"}, {"id": "not_done", "label": "Not done"}], "required": true}, {"id": "icu_reint", "track": "icu", "step": 6, "type": "checklist", "title": "Reintubation risk", "prompt": "Check every item that applies. Leave all unchecked if none apply.", "items": [{"id": "age", "label": "Age over 65"}, {"id": "apache", "label": "APACHE II above 12 today"}, {"id": "bmi", "label": "BMI above 30"}, {"id": "secr", "label": "Poor secretion management"}, {"id": "wean", "label": "Difficult or prolonged weaning (failed the first trial)"}, {"id": "comorb", "label": "Two or more comorbidities"}, {"id": "hf", "label": "Heart failure was the main reason for ventilation"}, {"id": "copd", "label": "Moderate to severe COPD"}, {"id": "patency", "label": "Airway patency problems (high risk of laryngeal edema)"}, {"id": "mv7", "label": "Ventilated for more than 7 days"}], "note": "Any one factor counts as high risk in the Hernández 2016 trials. Most ICU patients qualify, so the count is shown with the result."}, {"id": "icu_rescue", "track": "icu", "step": 7, "type": "text_fields", "title": "Rescue plan", "prompt": "Answer all four before extubation.", "fields": [{"id": "who", "label": "Who will reintubate?"}, {"id": "device", "label": "Which device and plan (videolaryngoscope, bougie, supraglottic airway)?"}, {"id": "fona", "label": "Where is the front-of-neck access kit?"}, {"id": "where", "label": "Where will the patient go, and who will watch them?"}], "required": true}], "flow": {"or": [{"at": "or_gate", "stopIf": {"anyUnchecked": "or_gate", "hardOnly": true}, "outcome": "OR_STOP_GATE"}, {"at": "or_risk"}, {"at": "or_cough"}, {"at": "or_rescue"}], "icu": [{"at": "icu_ready", "stopIf": {"anyUnchecked": "icu_ready", "hardOnly": true}, "outcome": "ICU_STOP_NOT_READY"}, {"at": "icu_sbt", "stopIf": {"answer": "icu_sbt", "eq": "no"}, "outcome": "ICU_STOP_SBT_FAILED"}, {"at": "icu_airway"}, {"at": "icu_stridor"}, {"at": "icu_cuff"}, {"at": "icu_reint"}, {"at": "icu_rescue"}]}, "flowRules": ["Screens run in the order listed in flow for the chosen track.", "A screen with showIf is skipped when its condition is false. Skipped screens still count toward the step number.", "After a screen with stopIf, if the condition is true, go straight to the result with that outcome. Later screens are not shown.", "checklist screens never require a box to be checked. yes_no, single_choice, and text_fields screens marked required cannot advance until answered (text fields: non-empty after trimming).", "Back returns to the previous shown screen and keeps its answers. Choosing a different setting asks resetConfirm and then clears every answer."], "outcomes": {"OR_STOP_GATE": {"class": "stop", "chip": "Not ready", "title": "Do not extubate yet", "text": "Correct each unmet hard item, then reassess.", "why": {"uncheckedHard": "or_gate", "prefix": "Not met: "}, "sources": ["thilen2023", "das2012"]}, "OR_AT_RISK": {"class": "high", "chip": "At risk", "title": "Awake extubation only", "text": "Extubate awake. Consider an airway exchange catheter, exchange to a supraglottic airway, a remifentanil infusion, or postponing extubation.", "why": {"checked": "or_risk"}, "sources": ["das2012"]}, "OR_LOW_DEEP_OPTION": {"class": "low", "chip": "Low risk", "title": "Awake by default; deep is an option", "text": "Extubate awake by default. Deep extubation is acceptable here only with an easy airway, no aspiration risk, and a clinician ready to rescue the airway.", "why": {"fixed": ["No airway risk factors", "Coughing would harm the surgical repair"]}, "sources": ["das2012"]}, "OR_LOW_AWAKE": {"class": "low", "chip": "Low risk", "title": "Awake extubation", "text": "Extubate awake.", "why": {"fixed": ["No airway risk factors"]}, "sources": ["das2012"]}, "ICU_STOP_NOT_READY": {"class": "stop", "chip": "Not ready", "title": "Not ready for a breathing trial", "text": "Do not start a spontaneous breathing trial today. Continue daily sedation interruption and reassess tomorrow.", "why": {"uncheckedHard": "icu_ready", "prefix": "Not met: "}, "sources": ["ats2017"]}, "ICU_STOP_SBT_FAILED": {"class": "stop", "chip": "Trial failed", "title": "Do not extubate", "text": "Return to rest ventilator settings, look for the reversible cause, and reassess in 24 hours.", "why": {"fixed": ["Failed the spontaneous breathing trial"]}, "sources": ["ats2017"]}, "ICU_LOW_RISK": {"class": "low", "chip": "Low risk · 0 of 10 factors", "title": "Extubate to high-flow nasal cannula", "text": "Extubate to high-flow nasal cannula for 24 hours. In low-risk patients it reduced reintubation compared with conventional oxygen (4.9% vs 12.2%).", "why": {"fixed": ["Passed readiness screen and breathing trial", "No reintubation risk factors"]}, "sources": ["hernandez2016a"]}, "ICU_HIGH_RISK": {"class": "high", "chip": "High risk · {count} of 10 factors", "title": "Extubate to preventive support", "text": "Extubate to preventive noninvasive ventilation (ATS/ACCP 2017) or high-flow nasal cannula (noninferior to NIV for reintubation, 22.8% vs 19.1%). If the patient tolerates it, high-flow alternating with NIV reduced day-7 reintubation compared with high-flow alone (11.8% vs 18.2%).", "why": {"checked": "icu_reint"}, "sources": ["ats2017", "hernandez2016b", "thille2019"]}}, "outcomeRules": [{"track": "or", "when": {"count": "or_risk", "gte": 1}, "outcome": "OR_AT_RISK"}, {"track": "or", "when": {"answer": "or_cough", "eq": "yes"}, "outcome": "OR_LOW_DEEP_OPTION"}, {"track": "or", "when": {"always": true}, "outcome": "OR_LOW_AWAKE"}, {"track": "icu", "when": {"count": "icu_reint", "eq": 0}, "outcome": "ICU_LOW_RISK"}, {"track": "icu", "when": {"always": true}, "outcome": "ICU_HIGH_RISK"}], "outcomeRulesNote": "Evaluated top to bottom for the track; the first match wins. Only used when no stopIf fired.", "alerts": {"ALERT_OR_SOFT_GATE": {"level": "amber", "text": "Not yet optimized: {items}. Correct if possible before extubation.", "when": {"anyUnchecked": "or_gate", "softOnly": true}, "items": {"uncheckedSoft": "or_gate"}, "sources": ["das2012"], "tracks": ["or"], "onStop": false}, "ALERT_ICU_AIRWAY": {"level": "amber", "text": "Passed the trial, but airway protection is uncertain: {items}. Discuss before extubation.", "when": {"anyUnchecked": "icu_airway"}, "items": {"unchecked": "icu_airway"}, "requiresAck": true, "sources": ["ats2017"], "tracks": ["icu"], "onStop": false}, "ALERT_CUFF_FAILED": {"level": "amber", "text": "Cuff-leak test failed. Give systemic steroids at least 4 hours before extubation (for example methylprednisolone 20 mg IV 12 hours before, then every 4 hours). A repeat leak test is not required.", "when": {"answer": "icu_cuff", "eq": "fail"}, "sources": ["ats2017", "francois2007"], "tracks": ["icu"], "onStop": false}, "ALERT_CUFF_NOT_DONE": {"level": "amber", "text": "This patient has stridor risk factors. A cuff-leak test is recommended before extubation.", "when": {"answer": "icu_cuff", "eq": "not_done"}, "sources": ["ats2017"], "tracks": ["icu"], "onStop": false}, "ALERT_POSTEXT_FAILURE": {"level": "red", "text": "If respiratory failure develops after extubation, do not use NIV as rescue. Reintubate without delay.", "when": {"always": true}, "sources": ["esteban2004"], "tracks": ["icu"], "onStop": false}}, "alertRules": ["Show alerts only when the result is not a stop outcome (onStop false).", "Order on screen and card: red alerts first, then amber, each group in the order listed here.", "An alert with requiresAck is shown on its screen when its condition becomes true; Next stays disabled until the acknowledge checkbox is checked. It also appears on the result."], "resultLayout": ["chip", "title", "recommendation (recommendationPrefix + text)", "alerts", "why", "rescuePlan (if answered)", "evidence (collapsed; full citations for outcome and alert sources, deduplicated, in order of first appearance)", "disclaimer", "buttons: print, reset"], "cardLayout": ["header: app name, 'Extubation handoff', track title, local date and time", "blank box labeled 'Patient label (write by hand)'", "chip", "title", "recommendation", "alerts", "why", "rescuePlan", "references: short source labels, then full citations", "disclaimer"], "sources": {"das2012": {"short": "DAS 2012", "full": "Popat M, et al. Difficult Airway Society guidelines for the management of tracheal extubation. Anaesthesia. 2012;67(3):318-340."}, "thilen2023": {"short": "ASA 2023", "full": "Thilen SR, et al. 2023 American Society of Anesthesiologists practice guidelines for monitoring and antagonism of neuromuscular blockade. Anesthesiology. 2023;138(1):13-41."}, "ats2017": {"short": "ATS/ACCP 2017", "full": "Schmidt GA, Girard TD, Kress JP, et al. Official executive summary of an ATS/ACCP clinical practice guideline: liberation from mechanical ventilation in critically ill adults. Am J Respir Crit Care Med. 2017;195(1):115-119."}, "subira2019": {"short": "Subirà 2019", "full": "Subirà C, et al. Effect of pressure support vs T-piece ventilation strategies during spontaneous breathing trials on successful extubation among patients receiving mechanical ventilation. JAMA. 2019;321(22):2175-2182."}, "francois2007": {"short": "François 2007", "full": "François B, et al. 12-h pretreatment with methylprednisolone versus placebo for prevention of postextubation laryngeal oedema. Lancet. 2007;369(9567):1083-1089."}, "hernandez2016a": {"short": "Hernández 2016 (low risk)", "full": "Hernández G, et al. Effect of postextubation high-flow nasal cannula vs conventional oxygen therapy on reintubation in low-risk patients. JAMA. 2016;315(13):1354-1361."}, "hernandez2016b": {"short": "Hernández 2016 (high risk)", "full": "Hernández G, et al. Effect of postextubation high-flow nasal cannula vs noninvasive ventilation on reintubation and postextubation respiratory failure in high-risk patients. JAMA. 2016;316(15):1565-1574."}, "thille2019": {"short": "HIGH-WEAN 2019", "full": "Thille AW, et al. Effect of postextubation high-flow nasal oxygen with noninvasive ventilation vs high-flow nasal oxygen alone on reintubation among patients at high risk of extubation failure. JAMA. 2019;322(15):1465-1475."}, "esteban2004": {"short": "Esteban 2004", "full": "Esteban A, et al. Noninvasive positive-pressure ventilation for respiratory failure after extubation. N Engl J Med. 2004;350(24):2452-2460."}}}
+</script>
+
+<footer>The Critical Vector · Direction and magnitude.</footer>
+</div>
+</body>
+</html>

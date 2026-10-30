@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Advanced Ventilator Terms — The Critical Vector</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0e14; --surface:#111720; --surface2:#182030;
+  --border:rgba(255,255,255,0.08);
+  --teal:#00d4aa; --blue:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa;
+  --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670;
+  --hl:var(--teal);
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{background:var(--bg); color:var(--text); font-family:'Source Serif 4', Georgia, serif; font-size:16px; line-height:1.62; -webkit-font-smoothing:antialiased;}
+h1,h2,h3,.label,nav a,th,.tag,.verdict{font-family:'Syne', sans-serif;}
+.mono,.num{font-family:'IBM Plex Mono', monospace;}
+.page{max-width:900px; margin:0 auto; padding:0 24px 60px;}
+header{padding:34px 0 20px; border-bottom:1px solid var(--border);}
+.kicker{font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--hl); margin-bottom:10px;}
+h1{font-weight:800; font-size:30px; line-height:1.15; margin:0 0 10px;}
+header p.sub{font-style:italic; color:var(--text2); font-size:15.5px; margin:0 0 12px;}
+.byline{font-size:13px; color:var(--text3); margin:0;}
+.byline a, .sources a, footer a, p a, td a{color:var(--teal);}
+.alert{margin:20px 0; padding:14px 18px; border-radius:10px; font-size:14.5px;}
+.alert.ok{background:rgba(0,212,170,.10); border:1px solid rgba(0,212,170,.28); color:#bdf5e8;}
+.alert.warn{background:rgba(245,158,11,.10); border:1px solid rgba(245,158,11,.28); color:#fbdca0;}
+nav{display:flex; flex-wrap:wrap; gap:7px; padding:16px 0; border-bottom:1px solid var(--border);}
+nav a{font-size:12.5px; font-weight:600; color:var(--text2); background:var(--surface); border:1px solid var(--border); padding:7px 12px; border-radius:20px; text-decoration:none; white-space:nowrap;}
+nav a:hover, nav a:focus-visible{color:var(--text); border-color:var(--hl); outline:none;}
+section{padding:28px 0; border-bottom:1px solid var(--border);}
+.sec-head{display:flex; align-items:baseline; gap:10px; padding:11px 18px; border-left:4px solid var(--teal); background:linear-gradient(90deg, rgba(0,212,170,0.10), transparent); border-radius:0 8px 8px 0; margin-bottom:14px;}
+.sec-head.c-blue{border-left-color:var(--blue); background:linear-gradient(90deg, rgba(96,165,250,0.10), transparent);}
+.sec-head.c-red{border-left-color:var(--red); background:linear-gradient(90deg, rgba(232,76,76,0.10), transparent);}
+.sec-head.c-amber{border-left-color:var(--amber); background:linear-gradient(90deg, rgba(245,158,11,0.10), transparent);}
+.sec-head.c-purple{border-left-color:var(--purple); background:linear-gradient(90deg, rgba(167,139,250,0.10), transparent);}
+.sec-head.c-grey{border-left-color:var(--text3); background:none;}
+.sec-num{font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--text3);}
+h2{font-weight:700; font-size:20px; margin:0;}
+h3{font-size:15px; font-weight:700; margin:18px 0 6px;}
+.tagline{font-style:italic; font-size:14px; color:var(--text2); margin:0 0 12px;}
+p{margin:.75rem 0;}
+.box{background:var(--surface2); border:1px solid var(--border); border-radius:10px; padding:14px 18px; margin:14px 0;}
+.box.t-teal{border-left:3px solid var(--teal);} .box.t-blue{border-left:3px solid var(--blue);}
+.box.t-amber{border-left:3px solid var(--amber);} .box.t-red{border-left:3px solid var(--red);} .box.t-purple{border-left:3px solid var(--purple);}
+.box .label{display:block; font-size:12.5px; font-weight:700; margin-bottom:4px;}
+.box.t-teal .label{color:var(--teal);} .box.t-blue .label{color:var(--blue);} .box.t-amber .label{color:var(--amber);} .box.t-red .label{color:var(--red);} .box.t-purple .label{color:var(--purple);}
+.box p{margin:.4rem 0;}
+.tbl{overflow-x:auto; margin:14px 0;}
+table{width:100%; border-collapse:collapse; font-size:13.6px;}
+th{background:var(--surface2); color:var(--text); text-align:left; padding:9px 11px; font-weight:600; font-size:12px; border-bottom:2px solid var(--border);}
+td{padding:9px 11px; border-bottom:1px solid var(--border); vertical-align:top; line-height:1.45;}
+tr:nth-child(even) td{background:rgba(255,255,255,0.02);}
+td.k{font-family:'Syne',sans-serif; font-weight:700; color:var(--text);}
+.tag{display:inline-block; font-size:10.5px; font-weight:700; padding:2px 9px; border-radius:20px; white-space:nowrap; margin-bottom:3px;}
+.tag.v{background:rgba(0,212,170,.12); color:var(--teal); border:1px solid rgba(0,212,170,.3);}
+.tag.c{background:rgba(245,158,11,.12); color:var(--amber); border:1px solid rgba(245,158,11,.3);}
+.tag.x{background:rgba(232,76,76,.12); color:#ff9e9e; border:1px solid rgba(232,76,76,.3);}
+.tag.u{background:rgba(167,139,250,.12); color:var(--purple); border:1px solid rgba(167,139,250,.3);}
+.tag.l{background:rgba(96,165,250,.12); color:var(--blue); border:1px solid rgba(96,165,250,.3);}
+ol.steps, ul.plain{padding-left:1.3rem; margin:.6rem 0;} ol.steps li, ul.plain li{margin-bottom:.45rem;}
+.figure{margin:18px 0; background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:16px;}
+.figure svg{width:100%; height:auto; display:block;}
+.figcap{font-size:12.5px; color:var(--text2); font-style:italic; margin-top:8px;}
+.sources{list-style:none; padding:0; margin:0; font-size:13px; color:var(--text2);}
+.sources li{padding:8px 0; border-bottom:1px solid var(--border);}
+.sources li:last-child{border-bottom:none;}
+footer{padding:26px 0 0; font-size:12.5px; color:var(--text3); font-style:italic;}
+@media (max-width:600px){ h1{font-size:24px;} .page{padding:0 16px 48px;} table{font-size:12.8px;} }
+@media (prefers-reduced-motion:reduce){*{transition:none !important;}}
+
+:root{--hl:#f59e0b;}
+
+</style>
+<style id="cv-print">
+/* ===== CV PRINT v1.0 (per _cv-schema.html) ===== */
+@media print{
+  :root{
+    --bg:#f4f5f7; --surface:#ffffff; --surface2:#eef1f4; --border:#d7dde3;
+    --teal:#00a688; --blue:#1d4ed8; --accent:#00a688; --accent2:#1d4ed8;
+    --red:#c53030; --amber:#b45309; --purple:#7c3aed;
+    --text:#0f1923; --text2:#4a5670; --text3:#6b7688;
+  }
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  html, body{background:#f4f5f7 !important; color:#0f1923 !important;}
+  nav, .nav, .toc-pills{display:none !important;}
+  .alert{background:rgba(0,166,136,.08) !important; color:#0f1923 !important;}
+  td{color:#0f1923 !important;}
+  section, .box, table, .card, .figure{break-inside:avoid;}
+  h2, .sec-head{break-after:avoid;}
+  a{color:inherit; text-decoration:none;}
+  .tag.x{color:#c53030 !important;}
+}
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ a{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../locker.html">The Evidence Locker</a><span class="cv-sb-meta">Published 28 Oct 2026 · R. E. Suscitate &amp; A. Systole</span></nav>
+<div class="page">
+<header><div class="kicker">The Critical Vector &middot; Content Audit &middot; Verified, one citation misattached</div>
+<h1>Pendelluft, P-SILI, Viscoelasticity: The Advanced Vent Glossary, Checked</h1>
+<p class="sub">A seven-slide primer on ventilator physiology that cites its sources. The physics is right, the P-SILI slides argue both sides fairly, and the two viscoelasticity slides lean on a paper about something else.</p>
+<p class="byline">R. E. Suscitate &amp; A. Systole &middot; October 2026. Original post: <a href="https://www.instagram.com/pulmtoilet">@pulmtoilet</a> (PulmToilet.com, The Peak Inspiration podcast), "Essential Ventilator Terms: Advanced Edition." This page is an independent third-party evaluation, not affiliated with or endorsed by the original creator.</p></header>
+<div class="alert warn"><strong>Verdict:</strong> the pendelluft and P-SILI slides are accurate and well sourced, and presenting an "argument against" P-SILI is unusually honest for the format. The correction: both viscoelasticity slides cite PMID 17575096, which is Bates et al. 2007 on <em>percolation</em> in fibrosis and emphysema. It supports slide 5's network-stiffening points and its figure, but not the definition of viscoelasticity or anything on slide 6 about ARDS and inspiratory holds.</div>
+<nav><a href="#terms">The terms</a><a href="#ledger">Citation check</a><a href="#psili">P-SILI: the trials</a><a href="#power">Mechanical power</a><a href="#sources">Sources</a></nav><section id="terms">
+<div class="sec-head "><span class="sec-num">01</span><h2>The terms, in one table</h2></div>
+
+<div class="tbl"><table><tr><th style="width:20%">Term</th><th>Plain definition</th><th style="width:30%">Why it matters at the bedside</th></tr>
+<tr><td class="k">Time constant</td><td>Resistance &times; compliance: how fast a lung unit fills and empties.</td><td>Units with different time constants fill out of step with each other.</td></tr>
+<tr><td class="k">Pendelluft</td><td>Gas moving between lung regions within a breath, even with no flow at the airway opening.</td><td>With strong patient effort, gas shifts from non-dependent to dependent lung, stretching dependent regions more than the tidal volume suggests. Shown in injured pig lungs with EIT and dynamic CT (Yoshida 2013): matching that dependent inflation under paralysis took nearly three times the driving pressure. Invisible on the ventilator; visible on electrical impedance tomography.</td></tr>
+<tr><td class="k">P-SILI</td><td>Lung injury attributed to the patient's own vigorous inspiratory effort. Term proposed by Brochard, Slutsky and Pesenti in 2017, originally about spontaneously breathing, non-intubated patients with high respiratory drive.</td><td>The same concern extends to ventilated patients: a strong drive on pressure support can generate large transpulmonary pressures while the airway pressure looks reassuring.</td></tr>
+<tr><td class="k">Viscoelasticity</td><td>Lung tissue behaves partly like a spring (stores energy) and partly like a damper (dissipates it), so its stiffness depends on time and speed of inflation.</td><td>During an inspiratory hold, pressure falls from the first zero-flow value toward the plateau as tissue stress relaxes and gas redistributes, so hold length changes the plateau you read. Covered in Bates's <em>Lung Mechanics</em>, chapter 4 (tissue resistance and elastance).</td></tr>
+<tr><td class="k">Percolation</td><td>A threshold effect: once damaged regions connect across a network, the whole network's behavior changes abruptly.</td><td>Explains why lung function can stay near normal through early disease, then worsen quickly. The basis of slide 5's figure.</td></tr></table></div>
+</section><section id="ledger">
+<div class="sec-head c-amber"><span class="sec-num">02</span><h2>Citation check</h2></div>
+<p class="tagline">Every PMID on the slides opened and compared with the claim it supports.</p>
+<div class="tbl"><table><tr><th style="width:38%">Post says</th><th style="width:16%">Verdict</th><th>Note</th></tr><tr><td>Pendelluft first described by Otis et al. in the 1950s (PMID 13286206)</td><td><span class="tag v">Verified</span></td><td>Otis AB et al., <em>J Appl Physiol</em> 1956, mechanical factors in distribution of ventilation. The source of the slow-versus-rapid rate figure.</td></tr><tr><td>Pendelluft and EIT, link to P-SILI (PMID 41920010)</td><td><span class="tag v">Verified</span></td><td>Piraino T, <em>Respir Care</em> 2026 review: effort-related pendelluft is common in ventilated patients and may contribute to P-SILI, with real gaps in the outcome data.</td></tr><tr><td>P-SILI mechanism, lower vs higher PEEP figure (PMID 31815775)</td><td><span class="tag v">Verified</span></td><td>Yoshida, Grieco, Brochard, Fujino, <em>Curr Opin Crit Care</em> 2020. Argues a higher PEEP strategy can make spontaneous effort safer in severe ARDS.</td></tr><tr><td>Arguments against P-SILI: largely animal and physiologic data; associations, not causation; NMB benefits don't prove the mechanism (PMID 31815775)</td><td><span class="tag v">Verified</span></td><td>Fair summary of the uncertainty.</td></tr><tr><td>Viscoelasticity definition, stress relaxation, rate dependence (PMID 17575096)</td><td><span class="tag x">Wrong source</span></td><td>Bates et al. 2007 is a percolation model of fibrosis and emphysema. The definitions are correct; they need a lung-mechanics source.</td></tr><tr><td>Stiff regions forming a connected network sharply raise elastance (PMID 17575096)</td><td><span class="tag v">Verified</span></td><td>This is the paper's main finding, and the hexagonal network figure comes from it.</td></tr><tr><td>Viscoelasticity and ARDS: collagen&ndash;elastin changes, stress relaxation during holds, regional heterogeneity (PMID 17575096)</td><td><span class="tag x">Wrong source</span></td><td>The cited paper does not study ARDS or inspiratory holds. The physiology is broadly right but unsourced as posted.</td></tr></table></div>
+</section><section id="psili">
+<div class="sec-head c-blue"><span class="sec-num">03</span><h2>P-SILI: what the trials say</h2></div>
+<p class="tagline">Slide 4 mentions neuromuscular blockade. Here are the two trials behind that.</p>
+<div class="tbl"><table><tr><th>Trial</th><th>Population</th><th>Result</th></tr>
+<tr><td class="k">ACURASYS (2010)</td><td>340 patients, severe ARDS (P/F &lt;150) within 48 h, cisatracurium vs placebo for 48 h</td><td>Adjusted 90-day mortality HR 0.68 (0.48&ndash;0.98). Crude 90-day mortality 31.6% vs 40.7%, P = 0.08, not significant unadjusted</td></tr>
+<tr><td class="k">ROSE (2019)</td><td>1,006 patients, moderate-to-severe ARDS, high-PEEP strategy in both arms, lighter sedation targets in control</td><td>90-day mortality 42.5% vs 42.8%; stopped for futility. Paralyzed patients were less physically active and had more adverse cardiovascular events</td></tr></table></div>
+<p>The usual reading: when the control arm is lightly sedated on higher PEEP, routine early paralysis adds nothing, which fits Yoshida's argument that PEEP can make spontaneous effort safer. It also shows why slide 4's caution matters. Neither trial measured effort or pendelluft, so neither tests P-SILI directly. Measuring drive and effort at the bedside (airway occlusion pressure, P<sub>0.1</sub>, esophageal pressure) is the practical next step the slides point toward.</p>
+</section><section id="power">
+<div class="sec-head c-purple"><span class="sec-num">04</span><h2>Next up: mechanical power</h2></div>
+<p class="tagline">Slide 7's teaser, previewed.</p>
+<p>Mechanical power is the energy delivered to the respiratory system per minute, combining tidal volume, driving pressure, PEEP, flow and rate in one number (Gattinoni et al., 2016). The slide's figure splits each breath into PEEP, elastic and resistive components. In Gattinoni's derivation, power rose with the square of tidal volume, driving pressure and flow, with rate to the power 1.4, and linearly with PEEP. The idea: no single setting injures the lung on its own, and rate is a multiplier people forget. The equation was validated against measured pressure-volume loops in 80 patients; no trial has yet established a safe threshold.</p>
+</section><section id="sources">
+<div class="sec-head c-grey"><span class="sec-num">05</span><h2>Sources</h2></div>
+
+<ul class="sources"><li><b>@pulmtoilet.</b> "Essential Ventilator Terms: Advanced Edition." Instagram carousel. Read the original before relying on this summary.</li>
+<li>Otis AB, McKerrow CB, Bartlett RA, et al. Mechanical factors in distribution of pulmonary ventilation. <em>J Appl Physiol.</em> 1956;8(4):427&ndash;443. <a href="https://doi.org/10.1152/jappl.1956.8.4.427">doi:10.1152/jappl.1956.8.4.427</a></li>
+<li>Piraino T. Discordance, pendelluft, and electrical impedance tomography. <em>Respir Care.</em> 2026;71(6):687&ndash;696. <a href="https://doi.org/10.1177/19433654261424874">doi:10.1177/19433654261424874</a></li>
+<li>Yoshida T, Grieco DL, Brochard L, Fujino Y. Patient self-inflicted lung injury and positive end-expiratory pressure for safe spontaneous breathing. <em>Curr Opin Crit Care.</em> 2020;26(1):59&ndash;65. <a href="https://doi.org/10.1097/MCC.0000000000000691">doi:10.1097/MCC.0000000000000691</a></li>
+<li>Bates JHT, Davis GS, Majumdar A, Butnor KJ, Suki B. Linking parenchymal disease progression to changes in lung mechanical function by percolation. <em>Am J Respir Crit Care Med.</em> 2007;176(6):617&ndash;623. <a href="https://doi.org/10.1164/rccm.200611-1739OC">doi:10.1164/rccm.200611-1739OC</a></li>
+<li>Brochard L, Slutsky A, Pesenti A. Mechanical ventilation to minimize progression of lung injury in acute respiratory failure. <em>Am J Respir Crit Care Med.</em> 2017;195(4):438&ndash;442. <a href="https://doi.org/10.1164/rccm.201605-1081CP">doi:10.1164/rccm.201605-1081CP</a></li>
+<li>Yoshida T, Torsani V, Gomes S, et al. Spontaneous effort causes occult pendelluft during mechanical ventilation. <em>Am J Respir Crit Care Med.</em> 2013;188(12):1420&ndash;1427. <a href="https://doi.org/10.1164/rccm.201303-0539OC">doi:10.1164/rccm.201303-0539OC</a> (porcine lung-injury model)</li>
+<li>Papazian L, Forel JM, Gacouin A, et al. Neuromuscular blockers in early acute respiratory distress syndrome (ACURASYS). <em>N Engl J Med.</em> 2010;363(12):1107&ndash;1116. <a href="https://doi.org/10.1056/NEJMoa1005372">doi:10.1056/NEJMoa1005372</a></li>
+<li>National Heart, Lung, and Blood Institute PETAL Clinical Trials Network. Early neuromuscular blockade in the acute respiratory distress syndrome (ROSE). <em>N Engl J Med.</em> 2019;380(21):1997&ndash;2008. <a href="https://doi.org/10.1056/NEJMoa1901686">doi:10.1056/NEJMoa1901686</a></li>
+<li>Gattinoni L, Tonetti T, Cressoni M, et al. Ventilator-related causes of lung injury: the mechanical power. <em>Intensive Care Med.</em> 2016;42(10):1567&ndash;1575. <a href="https://doi.org/10.1007/s00134-016-4505-2">doi:10.1007/s00134-016-4505-2</a></li>
+<li>Bates JHT. <em>Lung Mechanics: An Inverse Modeling Approach.</em> Cambridge University Press; 2009. ISBN 9780521509602. Suggested source for the viscoelasticity definitions (chapter 4, resistance and elastance).</li>
+<li>All journal citations verified against PubMed records; textbook verified against the publisher's catalog.</li></ul>
+</section><footer>The Critical Vector &middot; Direction and magnitude. Educational reference; verify against current guidelines and local protocol before applying to a patient.</footer>
+</div>
+</body>
+</html>

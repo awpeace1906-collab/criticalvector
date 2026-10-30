@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Remimazolam — Critical Vector</title>
+<style>
+  :root {
+    --bg: #121212;
+    --card: #1a1a1a;
+    --text: #e8e8e8;
+    --muted: #9a9a9a;
+    --line: #2c2c2c;
+  }
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0 0 60px 0;
+    line-height: 1.5;
+  }
+  header {
+    padding: 28px 20px 18px 20px;
+    border-bottom: 1px solid var(--line);
+  }
+  header .kicker {
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  header h1 { font-size: 26px; margin: 0 0 8px 0; }
+  header p { color: var(--muted); font-size: 14px; margin: 0; }
+  .alert {
+    margin: 16px 20px;
+    background: #3a1418;
+    border: 1px solid #7a1620;
+    color: #ffd7d7;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--line);
+  }
+  nav a {
+    font-size: 12px;
+    color: var(--text);
+    background: var(--card);
+    border: 1px solid var(--line);
+    padding: 6px 10px;
+    border-radius: 20px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  main { padding: 0 20px; max-width: 720px; margin: 0 auto; }
+  section { padding: 26px 0; border-bottom: 1px solid var(--line); }
+  section h2 .secnum {
+    color: var(--accent, #888);
+    margin-right: 4px;
+  }
+  section h2 {
+    font-size: 20px;
+    margin: 0 0 12px 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--accent, #888);
+  }
+  .box {
+    background: var(--tint, var(--card));
+    border: 1px solid var(--accent, var(--line));
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin: 12px 0;
+    color: #1a1a1a;
+    font-size: 14px;
+  }
+  .box p { margin: 6px 0; }
+  .box b { color: #000; }
+  p.body { font-size: 14.5px; margin: 10px 0; }
+  p.note { font-size: 12.5px; color: var(--muted); font-style: italic; margin: 8px 0; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13.5px; }
+  th { background: var(--accent, #444); color: #fff; text-align: left; padding: 8px 10px; }
+  td { padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  tr:nth-child(even) td { background: rgba(255,255,255,0.03); }
+  .sources { font-size: 12.5px; color: var(--muted); padding-left: 18px; }
+  .sources li { margin-bottom: 6px; }
+  .pill {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 12px;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+  .pill-yes { background: #1e4a2e; color: #a6e6b8; }
+  .pill-no { background: #4a1e1e; color: #e6a6a6; }
+  .pill-offlabel { background: #4a3a1e; color: #e6c6a6; }
+  footer {
+    padding: 24px 20px 0 20px;
+    max-width: 720px;
+    margin: 0 auto;
+    font-size: 12px;
+    color: var(--muted);
+  }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style id="cv-retheme">
+/* CV re-theme v1.0 — maps this file onto _cv-schema.html tokens */
+:root{--bg:#0a0e14; --surface:#111720; --surface2:#182030; --border:rgba(255,255,255,0.08); --teal:#00d4aa; --blue:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa; --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670; --t-teal:rgba(0,212,170,0.10); --t-blue:rgba(96,165,250,0.10); --t-red:rgba(232,76,76,0.10); --t-amber:rgba(245,158,11,0.10); --t-purple:rgba(167,139,250,0.10);}
+:root{--card:var(--surface); --muted:var(--text2); --line:var(--border);}
+body{font-family:'Source Serif 4', Georgia, serif !important; background:var(--bg) !important; color:var(--text);}
+h1,h2,h3,h4,th,nav a,.label,.lbl,.badge,.pill{font-family:'Syne', sans-serif !important;}
+h1{font-weight:800 !important; letter-spacing:.005em;}
+h2,h3{font-weight:700;}
+.kicker, header .kicker{font-family:'IBM Plex Mono', monospace !important; color:var(--teal) !important; letter-spacing:.12em; font-size:11px !important;}
+code, pre, .mono{font-family:'IBM Plex Mono', monospace;}
+main{max-width:900px !important;}
+header{max-width:900px; margin:0 auto;}
+section h2{font-size:20px; border-bottom:2px solid var(--accent, var(--teal)) !important;}
+.box{background:var(--surface2) !important; color:var(--text) !important; border:1px solid var(--border) !important; border-left:3px solid var(--accent, var(--teal)) !important; border-radius:10px; font-size:14.5px;}
+.box b, .box strong{color:var(--text) !important;}
+th{background:var(--surface2) !important; color:var(--text) !important; border-bottom:2px solid var(--accent, var(--border));}
+nav a{background:var(--surface) !important; color:var(--text2) !important; border:1px solid var(--border) !important; font-weight:600;}
+nav a:hover{color:var(--text) !important; border-color:var(--teal) !important;}
+.alert{background:rgba(232,76,76,0.08) !important; border:1px solid rgba(232,76,76,0.35) !important; color:#ffd2d2 !important;}
+.note-banner{background:var(--t-amber) !important; color:var(--text) !important; border-color:rgba(245,158,11,0.35) !important;}
+.statgrid > div{background:var(--surface) !important; border:1px solid var(--border) !important; border-left:4px solid var(--accent, var(--teal)) !important; text-align:left !important; color:var(--text) !important;}
+.statgrid .num{font-family:'Syne', sans-serif; color:var(--accent, var(--teal)) !important;}
+.statgrid .lbl{color:var(--text2) !important;}
+.card{background:var(--surface) !important; border-color:var(--border) !important; color:var(--text) !important;}
+.fig{background:var(--surface) !important; border-color:var(--border) !important;}
+footer{font-style:italic; color:var(--text3) !important;}
+[style*="--accent:#7A1620"],[style*="--accent:#9C2B3B"],[style*="--accent:#8B2635"]{--accent:var(--red) !important; --tint:var(--t-red) !important;}
+[style*="--accent:#5B3A8E"]{--accent:var(--purple) !important; --tint:var(--t-purple) !important;}
+[style*="--accent:#1F6F5C"],[style*="--accent:#2E6B3E"]{--accent:var(--teal) !important; --tint:var(--t-teal) !important;}
+[style*="--accent:#1F3A5F"],[style*="--accent:#3A5A8C"]{--accent:var(--blue) !important; --tint:var(--t-blue) !important;}
+[style*="--accent:#B5591F"],[style*="--accent:#96700A"]{--accent:var(--amber) !important; --tint:var(--t-amber) !important;}
+[style*="--accent:#444444"]{--accent:var(--text3) !important; --tint:var(--surface2) !important;}
+@media print{
+  :root{--bg:#f4f5f7; --surface:#ffffff; --surface2:#eef1f4; --border:#d7dde3; --teal:#00a688; --blue:#1d4ed8; --red:#c53030; --amber:#b45309; --purple:#7c3aed; --text:#0f1923; --text2:#4a5670; --text3:#6b7688;
+    --t-teal:rgba(0,166,136,0.08); --t-blue:rgba(29,78,216,0.07); --t-red:rgba(197,48,48,0.07); --t-amber:rgba(180,83,9,0.08); --t-purple:rgba(124,58,237,0.07); --card:#ffffff; --muted:#4a5670; --line:#d7dde3;}
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  html, body{background:#f4f5f7 !important; color:#0f1923 !important;}
+  nav{display:none !important;}
+  td{color:#0f1923 !important;}
+  .box{background:#ffffff !important; color:#0f1923 !important;}
+  .alert{background:rgba(197,48,48,0.07) !important; color:#0f1923 !important;}
+  .note-banner{color:#0f1923 !important;}
+  section, .box, table, .card, .step, .statgrid > div, .fig{break-inside:avoid;}
+  h2{break-after:avoid;}
+  a{color:inherit; text-decoration:none;}
+}
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ a{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../workshop.html">The Workshop</a><span class="cv-sb-meta">Published 7 Oct 2026 · R. E. Suscitate &amp; A. Systole</span></nav>
+
+<header>
+  <div class="kicker">Critical Vector · Pocket Reference</div>
+  <h1>Remimazolam</h1>
+  <p>Corrected and condensed. Verified against FDA, package labeling, and primary trial data. July 2026.</p>
+</header>
+
+<div class="alert">
+  CORRECTED: Remimazolam (Byfavo) is FDA-approved in the US only for procedural sedation in
+  procedures lasting 30 minutes or less. The general anesthesia induction and maintenance
+  dosing below is not on the US label. It comes from the Japanese and Korean approved
+  regimens and their supporting trials, and is off-label in the US. See section 8.
+</div>
+
+<nav>
+  <a href="#s1">1 · Main uses</a>
+  <a href="#s2">2 · Mechanism + PK</a>
+  <a href="#s3">3 · Procedural sedation</a>
+  <a href="#s4">4 · General anesthesia</a>
+  <a href="#s5">5 · ICU sedation</a>
+  <a href="#s6">6 · Reversal</a>
+  <a href="#s7">7 · Strengths vs limits</a>
+  <a href="#s8">8 · Regulatory status</a>
+  <a href="#s9">9 · Pitfalls</a>
+  <a href="#s10">10 · Quick card &amp; sources</a>
+</nav>
+
+<main>
+
+<section id="s1" style="--accent:#1F3A5F; --tint:#E7EDF4;">
+  <h2><span class="secnum">1.</span> Main Uses</h2>
+  <p class="body">Remimazolam is an ultra-short-acting benzodiazepine. Three roles come up in
+  practice: procedural sedation, general anesthesia, and ICU sedation in selected cases.</p>
+  <div class="box">
+    <p><b>Best fit when you need:</b></p>
+    <p>Fast titration, matched to a short procedure</p>
+    <p>Stability in a patient with fragile hemodynamics</p>
+    <p>Sedation that can be reversed if things go sideways</p>
+  </div>
+  <table>
+    <tr><th>Use</th><th>US FDA status</th></tr>
+    <tr><td>Procedural sedation, ≤30 min</td><td><span class="pill pill-yes">Approved</span></td></tr>
+    <tr><td>General anesthesia induction/maintenance</td><td><span class="pill pill-no">Not approved</span></td></tr>
+    <tr><td>ICU sedation</td><td><span class="pill pill-no">Not approved</span></td></tr>
+  </table>
+</section>
+
+<section id="s2" style="--accent:#1F6F5C; --tint:#E6F2EF;">
+  <h2><span class="secnum">2.</span> Mechanism + PK</h2>
+  <p class="body">Remimazolam binds the benzodiazepine site on the GABA-A receptor, the same
+  site as midazolam, increasing chloride influx and producing sedation, anxiolysis, and
+  amnesia.</p>
+  <div class="box">
+    <p><b>What makes it different from midazolam:</b></p>
+    <p>Rapid onset, within minutes of IV administration</p>
+    <p>Metabolized by tissue esterases (carboxylesterase-1), not primarily by the liver or kidney</p>
+    <p>Breaks down to an inactive metabolite, CNS7054</p>
+    <p>Short context-sensitive half-time, giving predictable, fast recovery even after longer infusions</p>
+  </div>
+  <p class="note">Severe hepatic impairment does slow clearance somewhat despite the
+  esterase pathway; titrate carefully in that population rather than assuming clearance is
+  fully organ-independent.</p>
+</section>
+
+<section id="s3" style="--accent:#5B3A8E; --tint:#EFE9F5;">
+  <h2><span class="secnum">3.</span> Procedural Sedation <span class="pill pill-yes">FDA-labeled</span></h2>
+  <table>
+    <tr><th>Population</th><th>Initial dose</th><th>Supplemental dose</th></tr>
+    <tr><td>Standard adult</td><td>5 mg IV over 1 min</td><td>2.5 mg IV over 15 sec, at least 2 min apart</td></tr>
+    <tr><td>ASA III/IV or frail/elderly</td><td>2.5 to 5 mg IV over 1 min</td><td>1.25 to 2.5 mg IV over 15 sec, at least 2 min apart</td></tr>
+  </table>
+  <div class="box">
+    <p><b>Clinical pearls:</b></p>
+    <p>Titrate slowly to the sedation level the procedure needs</p>
+    <p>Reduce doses further in frail or elderly patients beyond the ASA III/IV adjustment</p>
+    <p>Monitor respiratory status, SpO2, and hemodynamics continuously</p>
+    <p>Flumazenil is available if reversal is needed</p>
+  </div>
+  <p class="note">This dosing is the actual FDA label (Byfavo, initial approval 2020) and is
+  the only indication the drug carries in the US.</p>
+</section>
+
+<section id="s4" style="--accent:#B5591F; --tint:#F8ECE0;">
+  <h2><span class="secnum">4.</span> General Anesthesia <span class="pill pill-offlabel">Off-label, US</span></h2>
+  <table>
+    <tr><th>Phase</th><th>Dose</th></tr>
+    <tr><td>Induction (continuous infusion)</td><td>6 to 12 mg/kg/hr until loss of consciousness</td></tr>
+    <tr><td>Maintenance, start</td><td>1 mg/kg/hr</td></tr>
+    <tr><td>Maintenance, typical range</td><td>1 to 2 mg/kg/hr, titrate to EEG/BIS and clinical response</td></tr>
+  </table>
+  <div class="box">
+    <p><b>Where this regimen actually comes from:</b> it is the anesthetic regimen approved
+    by Japan's PMDA and Korea's Ministry of Food and Drug Safety, built on the Doi et al
+    phase IIb/III trials out of Japan. It is not part of the FDA label. In the US this use is
+    off-label, extrapolated from that foreign approval and the trial data behind it.</p>
+  </div>
+  <p class="body">Bolus induction (a single weight-based push rather than a titrated infusion)
+  shows up in case reports and some off-label practice, but the infusion regimen above is the
+  one with trial support behind it.</p>
+  <p class="note">Adjust for depth of anesthesia, hemodynamics, and clinical context. Reduce
+  dose in elderly, hypovolemic, or hemodynamically unstable patients.</p>
+</section>
+
+<section id="s5" style="--accent:#2E6B3E; --tint:#E9F3EA;">
+  <h2><span class="secnum">5.</span> ICU Sedation <span class="pill pill-offlabel">Off-label, US</span></h2>
+  <p class="body">Remimazolam sees use for ICU sedation in Belgium and in scattered case series
+  elsewhere, but this is not an FDA-approved indication anywhere it is used in the US. Consider
+  it in fragile hemodynamics or when a reversible sedative is valuable, but treat it as an
+  extension of procedural-sedation and general-anesthesia evidence rather than a
+  dedicated ICU indication.</p>
+</section>
+
+<section id="s6" style="--accent:#3A5A8C; --tint:#E8ECF5;">
+  <h2><span class="secnum">6.</span> Reversal: Flumazenil</h2>
+  <p class="body">Remimazolam is reversible with flumazenil, the same benzodiazepine
+  antagonist used for midazolam. This is a genuine safety advantage over propofol, which has
+  no reversal agent.</p>
+  <p class="note">Watch for re-sedation after flumazenil reversal, a known risk with any
+  benzodiazepine reversal, remimazolam included.</p>
+</section>
+
+<section id="s7" style="--accent:#96700A; --tint:#F7EFDD;">
+  <h2><span class="secnum">7.</span> Strengths vs Limitations</h2>
+  <table>
+    <tr><th>Strengths</th><th>Limitations</th></tr>
+    <tr><td>Rapid titration</td><td>Respiratory depression still possible</td></tr>
+    <tr><td>Less hypotension than midazolam or propofol in most comparisons</td><td>Variable recovery after long infusions</td></tr>
+    <tr><td>Organ-independent clearance in most patients</td><td>PONV advantage over other agents is not consistent across studies</td></tr>
+    <tr><td>Reversible with flumazenil</td><td>Check local availability and cost</td></tr>
+  </table>
+</section>
+
+<section id="s8" style="--accent:#7A1620; --tint:#F5E4E5;">
+  <h2><span class="secnum">8.</span> New: Global Regulatory Status</h2>
+  <p class="body">The gap between what remimazolam is approved for and what it is actually
+  used for is the single most important thing to know before quoting a dosing chart. The
+  drug carries different indications in different countries, under different brand names,
+  and the US indication is the narrowest of the major markets.</p>
+  <table>
+    <tr><th>Country/Region</th><th>Brand</th><th>Approved for</th></tr>
+    <tr><td>United States</td><td>Byfavo</td><td>Procedural sedation, ≤30 min, since July 2020</td></tr>
+    <tr><td>Japan</td><td>Anerem</td><td>General anesthesia induction/maintenance, since Jan 2020; first market approval globally</td></tr>
+    <tr><td>South Korea</td><td>Byfavo</td><td>Sedation and general anesthesia, MFDS approval 2021</td></tr>
+    <tr><td>China</td><td>Ruima</td><td>Procedural sedation (approved July 2020); general anesthesia added later</td></tr>
+    <tr><td>European Union</td><td>Byfavo</td><td>Procedural sedation since March 2021; induction and maintenance of general anesthesia added in 2023 (50 mg formulation)</td></tr>
+  </table>
+  <p class="note">Any infographic citing "FDA prescribing information" as the source for
+  general anesthesia dosing is citing the wrong document. The induction and maintenance
+  numbers in section 4 trace back to the Japanese and Korean labels, not Byfavo's.</p>
+</section>
+
+<section id="s9" style="--accent:#8B2635; --tint:#F7E8E9;">
+  <h2><span class="secnum">9.</span> Complications &amp; Pitfalls</h2>
+  <div class="box"><p><b>Respiratory depression:</b> still occurs. Continuous capnography,
+  pulse oximetry, and clinical monitoring are required during sedation and recovery,
+  regardless of remimazolam's reputation for a wider margin than propofol.</p></div>
+  <div class="box"><p><b>Off-label extrapolation:</b> using the Japan/Korea general
+  anesthesia regimen in the US is common in practice but is off-label. Document accordingly
+  and know your institution's policy on off-label anesthetic dosing.</p></div>
+  <div class="box"><p><b>Re-sedation after flumazenil:</b> reversal can wear off before the
+  parent drug's effect is fully cleared in some contexts. Reassess after reversal rather than
+  assuming the effect is done.</p></div>
+  <div class="box"><p><b>Contraindication:</b> severe hypersensitivity to dextran 40, an
+  excipient in the formulation.</p></div>
+</section>
+
+<section id="s10" style="--accent:#444444; --tint:#EFEFEF; border-bottom:none;">
+  <h2><span class="secnum">10.</span> Quick Reference Card &amp; Primary Sources</h2>
+  <table>
+    <tr><th>Setting</th><th>Dose</th><th>US status</th></tr>
+    <tr><td>Procedural sedation, standard adult</td><td>5 mg IV, then 2.5 mg IV q≥2min</td><td>On-label</td></tr>
+    <tr><td>Procedural sedation, ASA III/IV or frail</td><td>2.5–5 mg IV, then 1.25–2.5 mg IV q≥2min</td><td>On-label</td></tr>
+    <tr><td>GA induction</td><td>6–12 mg/kg/hr infusion to LOC</td><td>Off-label</td></tr>
+    <tr><td>GA maintenance</td><td>1–2 mg/kg/hr, titrate to EEG/BIS</td><td>Off-label</td></tr>
+    <tr><td>Reversal</td><td>Flumazenil</td><td>On-label</td></tr>
+  </table>
+  <p class="body"><b>Primary sources checked for this revision:</b></p>
+  <ul class="sources">
+    <li>FDA. BYFAVO (remimazolam) Prescribing Information. Initial approval 2020, accessdata.fda.gov, DailyMed.</li>
+    <li>Doi M, Morita K, Takeda J, et al. Efficacy and safety of remimazolam versus propofol for general anesthesia. J Anesth. 2020 (Japan phase IIb/III program, source of the 6/12 mg/kg/hr regimen).</li>
+    <li>Yoon S, et al. Frequency of BIS ≥60 during remimazolam general anesthesia. Sci Rep. 2023;13. Confirms Korea MFDS-approved regimen of 6 or 12 mg/kg/hr induction, 1–2 mg/kg/hr maintenance.</li>
+    <li>Kim NY, et al. Pharmacol Res Perspect. 2022;10:e00915.</li>
+    <li>Aho M, et al. Acta Anaesthesiol Scand. 2023;67:283-293.</li>
+    <li>APSF. Remimazolam: Patient Safety Considerations of a Novel, Practice-Changing Drug. apsf.org, Dec 2024.</li>
+    <li>VA National Drug Monograph Addendum, Remimazolam (BYFAVO). Aug 2024: explicitly states remimazolam is not FDA approved for induction of general anesthesia.</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  This guide corrects and condenses a set of social infographics that attributed a general
+  anesthesia dosing regimen to the FDA Byfavo label. That regimen is real and trial-supported,
+  but it belongs to Japan's and Korea's approvals, not the US one. Every dose and status claim
+  above was cross-checked against the sources listed here as of July 2026.
+<div class="cv-tagline" style="margin-top:8px">The Critical Vector · Direction and magnitude.</div></footer>
+
+</body>
+</html>

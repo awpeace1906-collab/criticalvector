@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="cv:schema" content="1.0">
+<title>Wound Ballistics &amp; Blast Injury Manual — The Critical Vector</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style id="cv-base">
+/* ===== CV BASE v1.0 — copy this block verbatim into every guide ===== */
+:root{
+  --bg:#0a0e14; --surface:#111720; --surface2:#182030;
+  --border:rgba(255,255,255,0.08);
+  --teal:#00d4aa; --blue:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa;
+  --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670;
+  --t-teal:rgba(0,212,170,0.10); --t-blue:rgba(96,165,250,0.10); --t-red:rgba(232,76,76,0.10);
+  --t-amber:rgba(245,158,11,0.10); --t-purple:rgba(167,139,250,0.10);
+  /* legacy aliases: older guides use these names; same values */
+  --accent:var(--teal); --accent2:var(--blue);
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{background:var(--bg); color:var(--text); font-family:'Source Serif 4', Georgia, serif; font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased;}
+h1,h2,h3,.label,.kicker,.badge,nav a,th,.step-num,.stat-num{font-family:'Syne', sans-serif;}
+.mono, code{font-family:'IBM Plex Mono', monospace;}
+.page{max-width:900px; margin:0 auto; padding:0 24px 60px;}
+header{padding:32px 0 20px; border-bottom:1px solid var(--border);}
+.kicker{font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--teal); margin-bottom:10px;}
+h1{font-weight:800; font-size:30px; line-height:1.15; margin:0 0 10px; letter-spacing:.005em;}
+header p{font-style:italic; color:var(--text2); font-size:15.5px; margin:0; max-width:700px;}
+.byline{font-size:13px; color:var(--text3); margin-top:8px;}
+.badges{display:flex; flex-wrap:wrap; gap:6px; margin-top:16px;}
+.badge{font-size:11px; font-weight:700; letter-spacing:.04em; padding:4px 10px; border-radius:20px; border:1px solid var(--border); color:var(--text2); background:var(--surface);}
+.badge.ok{color:var(--teal); border-color:rgba(0,212,170,0.35); background:var(--t-teal);}
+.badge.flag{color:var(--red); border-color:rgba(232,76,76,0.40); background:var(--t-red);}
+.alert{margin:18px 0; padding:13px 18px; border-radius:10px; font-size:14px; background:var(--t-teal); border:1px solid rgba(0,212,170,0.28); color:#bdf5e8;}
+.alert.flag{background:rgba(232,76,76,0.08); border-color:rgba(232,76,76,0.35); color:#ffd2d2;}
+nav{display:flex; flex-wrap:wrap; gap:7px; padding:18px 0; border-bottom:1px solid var(--border); margin-bottom:8px;}
+nav a{font-size:12.5px; font-weight:600; color:var(--text2); background:var(--surface); border:1px solid var(--border); padding:7px 12px; border-radius:20px; text-decoration:none; white-space:nowrap; transition:all .15s;}
+nav a:hover, nav a:focus-visible{color:var(--text); border-color:var(--teal); outline:none;}
+section{padding:30px 0; border-bottom:1px solid var(--border);}
+.sec-head{display:flex; align-items:baseline; gap:10px; padding:11px 18px; border-left:4px solid var(--teal); background:linear-gradient(90deg, var(--t-teal), transparent); border-radius:0 8px 8px 0; margin-bottom:16px;}
+.sec-head.c-blue{border-left-color:var(--blue); background:linear-gradient(90deg, var(--t-blue), transparent);}
+.sec-head.c-red{border-left-color:var(--red); background:linear-gradient(90deg, var(--t-red), transparent);}
+.sec-head.c-amber{border-left-color:var(--amber); background:linear-gradient(90deg, var(--t-amber), transparent);}
+.sec-head.c-purple{border-left-color:var(--purple); background:linear-gradient(90deg, var(--t-purple), transparent);}
+.sec-num{font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--text3);}
+h2{font-weight:700; font-size:20px; margin:0; color:var(--text);}
+h3{font-weight:700; font-size:16px; margin:0 0 6px;}
+.tagline{font-style:italic; font-size:13.5px; color:var(--text2); margin:0 0 12px;}
+p.body{font-size:15.5px; margin:12px 0; max-width:72ch;}
+p.note{font-size:13.5px; color:var(--text2); font-style:italic; margin:10px 0;}
+.box{background:var(--surface2); border:1px solid var(--border); border-radius:10px; padding:16px 18px; margin:14px 0; font-size:14.5px;}
+.box.t-teal{border-left:3px solid var(--teal);} .box.t-blue{border-left:3px solid var(--blue);}
+.box.t-red{border-left:3px solid var(--red); background:rgba(232,76,76,0.06);}
+.box.t-amber{border-left:3px solid var(--amber);} .box.t-purple{border-left:3px solid var(--purple);}
+.box b{color:var(--text); font-weight:700;} .box p{margin:7px 0;}
+.stat-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:10px; margin:16px 0;}
+.stat-card{background:var(--surface); border:1px solid var(--border); border-left:4px solid var(--c,var(--teal)); border-radius:6px; padding:14px 16px 14px 18px; text-align:left;}
+.stat-num{font-weight:800; font-size:26px; line-height:1.1; color:var(--c,var(--teal));}
+.stat-label{font-size:13px; color:var(--text2); margin-top:4px;}
+.steps{display:flex; flex-direction:column; gap:10px; margin:16px 0;}
+.step-row{display:flex; gap:14px; align-items:flex-start; background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:12px 16px;}
+.step-num{flex-shrink:0; width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:13px; color:#0a0e14; background:var(--c,var(--teal));}
+.step-body{font-size:14.5px;} .step-body b{color:var(--text);}
+.scroll{overflow-x:auto; -webkit-overflow-scrolling:touch;}
+table{width:100%; border-collapse:collapse; margin:14px 0; font-size:13.5px;}
+th{background:var(--surface2); color:var(--text); text-align:left; padding:9px 11px; font-weight:600; font-size:12px; letter-spacing:.02em; border-bottom:2px solid var(--border);}
+td{padding:9px 11px; border-bottom:1px solid var(--border); vertical-align:top;}
+tr:nth-child(even) td{background:rgba(255,255,255,0.02);}
+.xlist,.clist{list-style:none; padding-left:0; margin:10px 0;}
+.xlist li,.clist li{padding:5px 0 5px 26px; position:relative; font-size:14.5px;}
+.xlist li:before{content:"✗"; position:absolute; left:0; color:var(--red); font-weight:700;}
+.clist li:before{content:"✓"; position:absolute; left:0; color:var(--teal); font-weight:700;}
+.sources{font-size:13px; color:var(--text2); padding-left:20px;}
+.sources li{margin-bottom:7px;} .sources a{color:var(--text2);}
+footer{padding:26px 0 0; margin-top:6px; font-size:12.5px; color:var(--text3); font-style:italic;}
+@media (max-width:640px){ h1{font-size:25px;} .page{padding:0 16px 48px;} }
+@media (prefers-reduced-motion:reduce){ *{transition:none !important;} }
+
+/* ===== PRINT: light-mode token swap (mandatory, non-optional) ===== */
+@media print{
+  :root{
+    --bg:#f4f5f7; --surface:#ffffff; --surface2:#eef1f4; --border:#d7dde3;
+    --teal:#00a688; --blue:#1d4ed8; --red:#c53030; --amber:#b45309; --purple:#7c3aed;
+    --text:#0f1923; --text2:#4a5670; --text3:#6b7688;
+    --t-teal:rgba(0,166,136,0.08); --t-blue:rgba(29,78,216,0.07); --t-red:rgba(197,48,48,0.07);
+    --t-amber:rgba(180,83,9,0.08); --t-purple:rgba(124,58,237,0.07);
+  }
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  body{background:var(--bg) !important; color:var(--text) !important; font-size:11pt;}
+  nav{display:none;}
+  .page{max-width:none; padding:0;}
+  .alert{background:var(--t-teal) !important; border-color:var(--teal); color:var(--text) !important;}
+  .alert.flag{background:var(--t-red) !important; border-color:var(--red);}
+  .box.t-red{background:var(--t-red);}
+  td{color:var(--text) !important;}
+  .step-num{color:#ffffff;}
+  section, .box, table, .stat-card, .step-row{break-inside:avoid;}
+  h2, .sec-head{break-after:avoid;}
+  a{color:inherit; text-decoration:none;}
+  @page{margin:14mm 14mm 16mm;}
+}
+/* ===== END CV BASE ===== */
+</style>
+<style>
+
+/* chapter colors: 10 legacy chapter classes mapped onto the 5 CV accents */
+.c-steel,.c-navy{--c:var(--blue);  --tint:var(--t-blue);}
+.c-rust,.c-brick{--c:var(--amber); --tint:var(--t-amber);}
+.c-teal,.c-plum {--c:var(--teal);  --tint:var(--t-teal);}
+.c-forest,.c-slate{--c:var(--purple); --tint:var(--t-purple);}
+.c-gold,.c-crimson{--c:var(--red); --tint:var(--t-red);}
+.page{max-width:900px;}
+.titlepage{padding:40px 0 28px !important; border-bottom:1px solid var(--border); margin-bottom:10px;}
+.brand{text-align:left;}
+.maintitle{font-family:'Syne',sans-serif; font-weight:800; font-size:34px; line-height:1.12; margin:6px 0 10px; color:var(--text);}
+.subtitle{font-style:italic; color:var(--text2); font-size:15px; margin:0 0 20px;}
+hr.rule{border:none; border-top:1px solid var(--border); margin:0 0 20px;}
+.titlepage h3.subhead{color:var(--blue);}
+.toc-item{font-size:14px; padding:8px 10px; border-bottom:1px solid var(--border);}
+.toc-num{display:inline-block; width:30px; font-family:'IBM Plex Mono',monospace; color:var(--teal); font-weight:600;}
+.chapter{padding:26px 0 8px; border-bottom:1px solid var(--border);}
+h2.sechead{font-family:'Syne',sans-serif; font-weight:700; font-size:20px; color:var(--text); margin:0 0 14px; padding:11px 18px; border-left:4px solid var(--c,var(--teal)); background:linear-gradient(90deg,var(--tint,var(--t-teal)),transparent); border-radius:0 8px 8px 0;}
+h3.subhead{font-family:'Syne',sans-serif; font-weight:700; font-size:16px; color:var(--c,var(--text)); margin:20px 0 8px;}
+p{font-size:15.5px; margin:0 0 12px; max-width:76ch;}
+ul{padding-left:20px; margin:6px 0 14px;} li{margin-bottom:6px; font-size:15px;}
+table{width:100%; border-collapse:collapse; margin:12px 0; font-size:13.5px;}
+th,td{padding:9px 11px; text-align:left; vertical-align:top; border-bottom:1px solid var(--border);}
+th{background:var(--surface2); color:var(--text); font-family:'Syne',sans-serif; font-size:12px; border-bottom:2px solid var(--c,var(--border));}
+tr:nth-child(even) td{background:rgba(255,255,255,0.02);}
+.src{font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--text3); margin:4px 0 12px;}
+.callout{background:var(--surface2); border:1px solid var(--border); border-left:3px solid var(--c,var(--teal)); border-radius:10px; padding:14px 16px; margin:14px 0; font-size:14.5px; color:var(--text);}
+.cardgrid{display:grid; grid-template-columns:1fr 1fr; gap:12px;}
+.cardcol{display:flex; flex-direction:column; gap:10px;}
+.qcard{background:var(--surface); border:1px solid var(--border); border-left:4px solid var(--c,var(--teal)); border-radius:6px; padding:12px 14px; font-size:13.5px;}
+.qcard h4{font-family:'Syne',sans-serif; margin:0 0 6px; font-size:14px; color:var(--text);}
+.scrollwrap{overflow-x:auto;}
+@media (max-width:700px){ table{display:block; overflow-x:auto;} .cardgrid{grid-template-columns:1fr;} .titlepage div[style*="display:table"]{display:block !important;} .titlepage div[style*="display:table-cell"]{display:block !important; width:100% !important; padding:0 !important;} .maintitle{font-size:27px;} }
+
+/* print: letter pages, light tokens come from the base block */
+@media print{
+  @page{size:letter; margin:0.55in 0.55in 0.6in;}
+  body{font-size:9.8pt; line-height:1.48;}
+  .page{max-width:none; padding:0;}
+  .titlepage{page-break-after:always; border-bottom:none; padding-top:0.15in !important;}
+  .titlepage p{font-size:9pt; line-height:1.4;}
+  .titlepage h3.subhead{margin:10px 0 4px;}
+  .maintitle{font-size:30pt;}
+  .subtitle{font-size:11pt;}
+  .toc-item{font-size:9.2pt; padding:4px 6px;}
+  .chapter{padding:0 0 6px; border-bottom:none;}
+  .chapter{page-break-before:auto;} h2.sechead{margin-top:18px;}
+  h2.sechead{font-size:15pt; background:none !important; padding:6px 0 6px 12px; page-break-after:avoid;}
+  h3.subhead{font-size:11.5pt; page-break-after:avoid;}
+  p{font-size:9.8pt; max-width:none; text-align:justify; orphans:3; widows:3;}
+  li{font-size:9.8pt;}
+  table{font-size:8.6pt; page-break-inside:auto;} tr{break-inside:avoid;} thead{display:table-header-group;}
+  th{background:#ffffff !important; font-size:8.8pt;}
+  tr:nth-child(even) td{background:var(--tint) !important;}
+  .src{font-size:7.6pt;}
+  .callout{font-size:9.6pt; background:var(--tint) !important; page-break-inside:avoid;}
+  .qcard{font-size:8.4pt; page-break-inside:avoid; background:#ffffff !important;}
+  .qcard h4{font-size:9pt;}
+  .headblock{page-break-inside:avoid;} .keeptogether{page-break-inside:auto;}
+  .headblock{page-break-after:avoid;}
+  footer{font-size:8pt;}
+}
+
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ a{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../flightdeck.html">From the Flight Deck</a><span class="cv-sb-meta">Published 6 Oct 2026 · R. E. Suscitate &amp; A. Systole</span></nav>
+<div class="page">
+
+<!-- ============ TITLE PAGE ============ -->
+<div class="titlepage" style="padding-top:50px;">
+  <div class="kicker brand">The Critical Vector · Flight Deck</div>
+  <h1 class="maintitle">Wound Ballistics &amp;<br>Blast Injury Manual</h1>
+  <p class="subtitle">Cavitation mechanics, caliber and range dependent wounding, forensic characterization,<br>
+  body armor interaction, regional trauma, blast physics and TBI, prehospital care, damage control resuscitation,<br>
+  underwater blast, CBRN mass casualty framework, and pediatric considerations</p>
+  <hr class="rule">
+  <h3 class="subhead" style="font-size:13pt;">Scope</h3>
+  <p style="font-size:9.6pt;">This manual covers the physics and clinical consequences of penetrating ballistic trauma and blast
+  overpressure injury, including range dependent wounding, forensic wound
+  characterization, body armor interaction, regional anatomic trauma (neck, thorax, extremity), blast wave
+  physics, blast traumatic brain injury, combined injury patterns, imaging workup, prehospital TCCC, damage
+  control resuscitation, underwater blast, CBRN mass casualty triage principles, and pediatric blast and ballistic
+  considerations. It is organized for rapid reference during trauma resuscitation, audition rotation review, or
+  teaching. It is not a targeting, defeat, or weapons design document and contains no guidance on weapon
+  construction, charge design, agent synthesis, or optimization. The CBRN section covers triage, decontamination,
+  and clinical management principles only, not agent identification or effects detail. Pediatric content covers
+  anatomic and physiologic considerations only and does not include weight-based dosing. All figures on wounding
+  mechanics are drawn from open clinical, forensic, and military medical literature and are intended to inform
+  diagnosis, triage, and surgical planning.</p>
+
+  <h3 class="subhead" style="font-size:13pt; margin-top:18px;">Contents</h3>
+  <div style="display:table; width:100%; margin-top:6px;">
+    <div style="display:table-cell; width:50%; vertical-align:top; padding-right:14px;">
+      <div class="toc-item"><span class="toc-num">1</span>Fundamentals of wound ballistics</div>
+      <div class="toc-item"><span class="toc-num">2</span>Caliber profiles: velocity, trajectory, cavitation, range decay</div>
+      <div class="toc-item"><span class="toc-num">3</span>Bullet construction and tissue effect</div>
+      <div class="toc-item"><span class="toc-num">4</span>Tissue specific wounding patterns</div>
+      <div class="toc-item"><span class="toc-num">5</span>Forensic wound characterization: range of fire</div>
+      <div class="toc-item"><span class="toc-num">6</span>Body armor and behind armor blunt trauma</div>
+      <div class="toc-item"><span class="toc-num">7</span>Penetrating neck trauma</div>
+      <div class="toc-item"><span class="toc-num">8</span>Thoracic trauma and REBOA zones</div>
+      <div class="toc-item"><span class="toc-num">9</span>Mangled extremity and vascular injury</div>
+      <div class="toc-item"><span class="toc-num">10</span>Blast injury: mechanism taxonomy</div>
+      <div class="toc-item"><span class="toc-num">11</span>Blast wave physics: overpressure and scaled distance</div>
+      <div class="toc-item"><span class="toc-num">12</span>Primary blast pathophysiology</div>
+    </div>
+    <div style="display:table-cell; width:50%; vertical-align:top; padding-left:14px;">
+      <div class="toc-item"><span class="toc-num">13</span>Blast traumatic brain injury</div>
+      <div class="toc-item"><span class="toc-num">14</span>Combined injury patterns</div>
+      <div class="toc-item"><span class="toc-num">15</span>Imaging and retained fragment workup</div>
+      <div class="toc-item"><span class="toc-num">16</span>Antibiotic prophylaxis and damage control surgery</div>
+      <div class="toc-item"><span class="toc-num">17</span>Prehospital care: the MARCH algorithm</div>
+      <div class="toc-item"><span class="toc-num">18</span>Clinical management: damage control resuscitation</div>
+      <div class="toc-item"><span class="toc-num">19</span>Underwater blast injury</div>
+      <div class="toc-item"><span class="toc-num">20</span>CBRN mass casualty framework</div>
+      <div class="toc-item"><span class="toc-num">21</span>Pediatric blast and ballistic considerations</div>
+      <div class="toc-item"><span class="toc-num">22</span>Quick reference summary card</div>
+      <div class="toc-item"><span class="toc-num">23</span>Primary sources</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 1 ============ -->
+<div class="chapter c-steel">
+  <div class="headblock"><h2 class="sechead">1&nbsp;&nbsp;FUNDAMENTALS OF WOUND BALLISTICS</h2></div>
+  <h3 class="subhead">Energy, momentum, and what actually wounds tissue</h3>
+  <p>A projectile's wounding capacity begins with kinetic energy, KE = &#189;mv&sup2;. Velocity dominates this
+  equation. Doubling mass doubles energy, but doubling velocity quadruples it, which is why rifle rounds at
+  modest bullet weight outperform far heavier handgun bullets in tissue disruption. What matters clinically is how
+  much of that energy is deposited in tissue along the wound track, not how much the bullet carried at the
+  muzzle.</p>
+  <p>Wounding reduces to two physical mechanisms, and only two: tissue crush and tissue stretch. Crush produces
+  the permanent cavity, the track of tissue destroyed by direct contact with the bullet and the crushing action of
+  the stress field around it. Stretch produces the temporary cavity, a radial displacement of tissue outward from
+  the bullet path from kinetic energy transferred during passage, which collapses back toward the permanent track
+  within milliseconds.</p>
+  <h3 class="subhead">Yaw, tumble, and why the bullet's path in tissue is not straight</h3>
+  <p>Tissue density is roughly 800 times that of air, and the gyroscopic stability that keeps a bullet true in
+  flight is overwhelmed almost immediately on impact. Most rifle bullets begin to yaw within the first several
+  centimeters of tissue; once yaw exceeds roughly 90 degrees the bullet travels sideways or base first, presenting
+  far greater frontal area and transferring energy faster. The point of maximum yaw, not the point of entry, is
+  usually where the temporary cavity peaks.</p>
+  <h3 class="subhead">Which tissues are hurt by stretch, and which are not</h3>
+  <p>Temporary cavitation matters clinically only when it exceeds the elastic limit of the tissue involved.
+  Elastic, low density tissue such as lung and skeletal muscle stretches and recoils with little lasting injury.
+  Dense, low elasticity organs such as liver, spleen, kidney, and brain fracture or burst under the same cavity.
+  Fluid or gas distended hollow structures behave like a hydraulic ram and can rupture at a distance from the
+  bullet path.</p>
+  <table class="keeptogether">
+    <tr><th style="width:16%;">Concept</th><th style="width:44%;">Definition</th><th style="width:40%;">Clinical relevance</th></tr>
+    <tr><td>Permanent cavity</td><td>Track of tissue crushed and destroyed by direct bullet contact and immediate stress field.</td><td>Defines debridement margins. What the surgeon must excise.</td></tr>
+    <tr><td>Temporary cavity</td><td>Transient radial stretch of tissue, up to roughly 10&ndash;30x bullet diameter, lasting 5&ndash;10 ms.</td><td>Source of injury outside the visible track, especially in dense organs.</td></tr>
+    <tr><td>Yaw</td><td>Rotation of the bullet off its long axis during tissue penetration.</td><td>Determines depth of maximum energy transfer; explains asymmetric wound tracks.</td></tr>
+    <tr><td>Fragmentation</td><td>Breakup of the projectile into multiple fragments within tissue.</td><td>Multiplies permanent cavity volume and track number; most severe of the three mechanisms.</td></tr>
+    <tr><td>Deformation</td><td>Flattening or expansion of the bullet nose on impact, increasing frontal diameter.</td><td>Increases permanent cavity 4&ndash;6 fold over a non-deforming bullet of the same caliber.</td></tr>
+  </table>
+  <p class="src">Definitions synthesized from WikEM wound ballistics reference and Denver Health trauma conference terminal ballistics course material.</p>
+
+  <h3 class="subhead">Sectional density, ballistic coefficient, and penetration</h3>
+  <p>Two related figures are often conflated with wounding potential but answer different questions entirely.
+  Sectional density, a bullet's mass divided by its cross-sectional area, correlates with penetration depth for a
+  given caliber: at equal velocity, a longer, heavier-for-caliber bullet retains momentum better as it crushes
+  through tissue and tends to penetrate deeper than a shorter, lighter bullet of the same diameter. This is a
+  property of the bullet itself and holds regardless of what it strikes. Ballistic coefficient, by contrast,
+  describes how efficiently a bullet resists air drag in flight and governs velocity retention downrange (the
+  basis for the range decay data in Section 2); it says nothing about behavior once the bullet reaches tissue,
+  since air resistance and tissue resistance are governed by entirely different physics. A bullet optimized for a
+  flat trajectory at long range is not necessarily optimized for penetration or cavitation once it arrives, and
+  the two figures should not be used interchangeably when reasoning about wound severity.</p>
+  <p class="src">Sectional density and ballistic coefficient concepts reflect standard exterior and terminal ballistics teaching, distinguished explicitly here because the two are frequently conflated in secondary sources.</p>
+
+  <h3 class="subhead">Where the numbers come from: ballistic gelatin testing</h3>
+  <p>Most of the cavitation and penetration data cited in this manual traces back to a standardized test medium
+  rather than direct human observation. Ordnance gelatin mixed to a 10 percent concentration by weight, chilled to
+  a specified temperature, closely approximates the density and low-velocity flow behavior of skeletal muscle and
+  is the tissue simulant behind the modern "FBI protocol," developed after the 1986 Miami FBI shootout exposed
+  how inconsistent ammunition testing had been across agencies. Before a gelatin block is used for testing, it
+  must pass a calibration shot: a steel BB fired at a specified velocity must penetrate to a defined depth, or the
+  block is discarded as improperly mixed. Standardized testing also fires through simulated clothing layers, since
+  fabric measurably changes bullet expansion and can cause an otherwise reliable hollow point to fail to open.
+  This matters clinically because a caliber's published "performance" is a laboratory figure obtained under
+  controlled conditions; real wounds occur through variable clothing, at variable range, and against tissue that
+  is not homogeneous gelatin, so gelatin test results bound the range of plausible wounding behavior rather than
+  predicting any single patient's injury.</p>
+  <p class="src">Ballistic gelatin protocol and FBI testing standard drawn from Hornady Manufacturing, Ballistic Gelatin Mixing Procedures Practiced by the FBI; Hornady Law Enforcement, FBI Test Protocol; and Brassfetcher, FBI Ammunition Protocol.</p>
+
+  <h3 class="subhead">The hydrostatic shock controversy</h3>
+  <p>Whether a bullet's pressure wave can injure tissue it never directly touches is a genuine, unresolved dispute
+  in the wound ballistics literature, and this manual presents both positions rather than picking one. Martin
+  Fackler, a Vietnam-era military surgeon and long-time head of the US Army's Wound Ballistics Laboratory, argued
+  that so-called hydrostatic shock is not physically real: in his view, all clinically significant tissue damage
+  traces back to direct crush or to temporary cavity stretch, and a review of Vietnam-era rifle wound data found
+  no fractures or major vessel injuries that were not directly struck by the bullet. Michael and Amy Courtney,
+  reviewing the same and additional literature, argue the opposite: that a bullet's pressure wave can produce
+  measurable remote effects, including central nervous system and vascular injury at a distance from the direct
+  path, particularly with higher energy rifle rounds, and they point to a later reanalysis of the same Vietnam
+  data that documented indirect fractures and organ effects the original review had not emphasized. Both sides
+  agree the effect, if real, requires substantial energy transfer and is far more plausible with high-velocity
+  rifle wounds than with typical handgun rounds; the dispute is about magnitude and mechanism, not about whether
+  energy transfer matters at all. Practically, this disagreement does not change acute management: the same
+  thorough exam for occult injury near a high-energy wound track applies whether the mechanism is temporary
+  cavity strain, a genuine pressure wave effect, or both.</p>
+  <p class="src">Hydrostatic shock debate summarized from Courtney &amp; Courtney, History and Evidence Regarding Hydrostatic Shock, and Scientific Evidence for "Hydrostatic Shock" (arXiv); Fackler's counter-position from Fackler, Wound ballistics: a review of common misconceptions (JAMA 1988); this manual takes no position on which side is correct.</p>
+</div>
+
+<!-- ============ 2 ============ -->
+<div class="chapter c-rust">
+  <div class="headblock"><h2 class="sechead">2&nbsp;&nbsp;CALIBER PROFILES: VELOCITY, TRAJECTORY, CAVITATION, AND RANGE DECAY</h2></div>
+  <p>Caliber alone predicts little. Velocity, bullet construction, and barrel length matter more than bore
+  diameter. Figures below are representative of common factory loadings; treat them as an order of magnitude
+  reference.</p>
+  <table class="keeptogether">
+    <tr><th style="width:14%;">Cartridge</th><th style="width:10%;">Class</th><th style="width:11%;">Typical MV (fps)</th><th style="width:11%;">Typical ME (ft-lb)</th><th style="width:54%;">Cavitation pattern</th></tr>
+    <tr><td>.22 LR</td><td>Handgun/rifle, rimfire</td><td>1,070&ndash;1,640</td><td>95&ndash;140</td><td>Too little energy for meaningful cavitation of either kind. Low mass and blunt profile make it prone to deflection off bone into a nonlinear track rather than exiting; frequently retained.</td></tr>
+    <tr><td>.38 Special</td><td>Handgun</td><td>755&ndash;950</td><td>200&ndash;280</td><td>Among the lowest energy common defensive handgun rounds. Wounding relies almost entirely on the permanent crush track; essentially no temporary cavitation.</td></tr>
+    <tr><td>9mm Luger</td><td>Handgun</td><td>1,050&ndash;1,200</td><td>350&ndash;400</td><td>Minimal reliable temporary cavitation. Wounding driven almost entirely by permanent crush track and bullet expansion.</td></tr>
+    <tr><td>.357 Magnum</td><td>Handgun</td><td>1,235&ndash;1,250</td><td>535&ndash;550</td><td>Same bullet diameter as .38 Special but far more velocity and energy from a longer case and heavier powder charge; still a handgun-class wound profile, but notably more permanent cavity disruption at the higher end of the class.</td></tr>
+    <tr><td>.45 ACP</td><td>Handgun</td><td>830&ndash;950</td><td>350&ndash;420</td><td>Slower, larger diameter bullet. Permanent cavity wider at low velocity, temporary cavity negligible.</td></tr>
+    <tr><td>.40 S&amp;W</td><td>Handgun</td><td>1,000&ndash;1,150</td><td>400&ndash;500</td><td>Intermediate between 9mm and .45 in velocity and diameter. Same low velocity wounding profile.</td></tr>
+    <tr><td>5.45x39mm (AK-74)</td><td>Rifle, intermediate</td><td>2,900&ndash;2,970</td><td>1,000&ndash;1,050</td><td>Widely mythologized as an extreme fragmenter ("the poison bullet"), but controlled testing shows the standard FMJ round does not reliably fragment; yaws and produces a temporary cavity at two depths, roughly 100mm and 350mm.</td></tr>
+    <tr><td>5.56x45 NATO</td><td>Rifle, intermediate</td><td>2,900&ndash;3,150</td><td>1,150&ndash;1,300</td><td>Rapid yaw onset (often 7&ndash;12 cm), frequent fragmentation at the cannelure. Large, forward temporary cavity.</td></tr>
+    <tr><td>7.62x39 (AK pattern)</td><td>Rifle, intermediate</td><td>2,300&ndash;2,400</td><td>1,400&ndash;1,550</td><td>Heavier, less frangible bullet than 5.56. Later yaw onset, deeper permanent track, less fragmentation.</td></tr>
+    <tr><td>.308 Win / 7.62x51 NATO</td><td>Rifle, full power</td><td>2,650&ndash;2,800</td><td>2,600&ndash;2,750</td><td>High retained energy at range. Large temporary cavity with blunt extension into surrounding tissue planes.</td></tr>
+    <tr><td>12 gauge buckshot</td><td>Shotgun</td><td>1,200&ndash;1,325/pellet</td><td>&asymp;40&ndash;55/pellet</td><td>Multiple simultaneous permanent tracks at close range; cumulative crush rather than single track cavitation.</td></tr>
+    <tr><td>12 gauge slug</td><td>Shotgun</td><td>1,450&ndash;1,600</td><td>2,400&ndash;2,700</td><td>Large diameter, low velocity relative to rifle. Massive permanent cavity, limited penetration depth.</td></tr>
+  </table>
+  <p class="src">Approximate velocity and energy ranges compiled from ammunition manufacturer ballistics tables, not peer reviewed (Ammo.com, Sportsman's Warehouse, Military Factory small arms ballistics chart, AmmunitionToGo, Gunvera .22 LR ballistics chart). 5.45x39mm behavior per Fackler, J Trauma 1984 (AK-74 gelatin and live-tissue testing), cited in Section 20.</p>
+
+  <h3 class="subhead">Barrel length: why the same cartridge is not a fixed number</h3>
+  <p>The velocity and energy figures above assume a specific test barrel length, and the same load can wound
+  quite differently depending on what actually fired it. A 9mm load loses roughly 70&ndash;100 fps moving from a
+  full-size duty pistol down to a 3-inch micro-compact, and gains 200 fps or more moving up to a 16-inch pistol
+  caliber carbine; that carbine swing alone is enough to take a 124-grain load from roughly 360 ft-lb to over 500
+  ft-lb of muzzle energy, a difference that changes whether a hollow point expands reliably. Rifle cartridges are
+  even more barrel-length sensitive: 5.56x45 loses velocity rapidly out of a short-barreled rifle in the
+  10&ndash;11 inch class, and a round that would fragment reliably out of a 14.5- or 20-inch barrel can leave the
+  muzzle already below the fragmentation threshold discussed above. The practical point is that a wound's severity
+  cannot be fully predicted from cartridge and range alone; the firearm that fired it is a third variable that
+  belongs in the same mental model.</p>
+  <p class="src">Barrel length effects drawn from IronScout, 9mm Ballistics: Velocity, Energy &amp; Drop by Grain Weight; Gunvera, 9mm Ballistics: Velocity, Energy &amp; Trajectory Charts; and Firearm Wiki, Velocity by Barrel Length of Various Calibers.</p>
+
+  <div class="headblock">
+  <h3 class="subhead">Likelihood of tumbling (yaw) in tissue, by cartridge class</h3>
+  <p>Yaw is not universal; whether and when a bullet tumbles in tissue depends on velocity, bullet length-to-diameter
+  ratio, and construction, not on caliber alone. The table below groups the cartridges above by how reliably each
+  yaws or tumbles once it enters tissue.</p>
+  <table class="keeptogether">
+    <tr><th style="width:16%;">Cartridge class</th><th style="width:14%;">Tumbling likelihood</th><th style="width:20%;">Typical onset</th><th style="width:50%;">Clinical note</th></tr>
+    <tr><td>.22 LR</td><td>Low, but unpredictable</td><td>Variable</td><td>Too slow to reliably yaw the way rifle bullets do; instead the light, blunt bullet is easily deflected off fascia or bone into an erratic, nonlinear track. Track unpredictability, not yaw, is the relevant hazard.</td></tr>
+    <tr><td>Handgun rounds (.38 Special, 9mm, .357 Magnum, .45 ACP, .40 S&amp;W)</td><td>Low</td><td>Often exits before completing a yaw cycle</td><td>Handgun bullets are usually too slow and the torso too short a travel distance for yaw to become the dominant wounding mechanism; permanent crush track and (if applicable) expansion account for nearly all the injury.</td></tr>
+    <tr><td>5.56x45 NATO</td><td>High</td><td>Rapid, often 7&ndash;12 cm</td><td>Yaw and cannelure fragmentation together are the primary wounding mechanism; onset this shallow means even limbs can see fragmentation.</td></tr>
+    <tr><td>5.45x39mm (AK-74)</td><td>High</td><td>Two temporary cavity peaks, roughly 100mm and 350mm</td><td>Reliably yaws despite its reputation for fragmenting; the FMJ bullet itself typically stays intact (see table above).</td></tr>
+    <tr><td>7.62x39 (AK pattern)</td><td>High</td><td>Later than 5.56, deeper in the track</td><td>Yaws reliably but the heavier, more robust bullet construction fragments less often than 5.56.</td></tr>
+    <tr><td>.308 Win / 7.62x51 NATO</td><td>High</td><td>Later onset given higher retained velocity over distance</td><td>Yaws reliably at typical engagement ranges; large temporary cavity even without fragmentation, given the bullet's mass and energy.</td></tr>
+    <tr><td>12 gauge buckshot / slug</td><td>Not applicable</td><td>&mdash;</td><td>Round pellets and most slug designs do not yaw in the rifle-bullet sense; wounding comes from multiple simultaneous crush tracks (buckshot) or sheer permanent cavity size at low velocity (slug).</td></tr>
+  </table>
+  </div>
+  <p class="src">Tumbling likelihood and onset depth synthesized from wound ballistics literature cited in Section 20, including Fackler's wounding pattern studies and the AK-74/5.45x39mm gelatin and tissue testing discussed above.</p>
+  <h3 class="subhead">Range dependent wounding</h3>
+  <p>Retained velocity falls continuously downrange, and many wounding effects depend on crossing a velocity
+  threshold rather than on distance itself. As a rifle bullet slows, fragmentation at a cannelure becomes
+  markedly less reliable. The velocity at which a given bullet stops fragmenting depends on its construction; no
+  single figure is given here because no primary source for one was confirmed. The same cartridge that produced a fragmenting, high energy wound
+  at close range can produce a comparatively simple through and through track at extended range.</p>
+  <table class="keeptogether">
+    <tr><th style="width:20%;">Cartridge</th><th style="width:20%;">Velocity, muzzle</th><th style="width:20%;">Velocity, ~200 yd</th><th style="width:40%;">Wounding implication at extended range</th></tr>
+    <tr><td>5.56x45 NATO (M855/62gr)</td><td>~2,950 fps</td><td>~2,300 fps</td><td>Fragmentation becomes less reliable as retained velocity falls; at extended range, wounds trend toward a simple track.</td></tr>
+    <tr><td>7.62x39 (123gr)</td><td>~2,350 fps</td><td>~1,850 fps</td><td>Heavier, less frangible bullet that fragments less than 5.56 even at close range; extended range wounds are usually a simple permanent track.</td></tr>
+    <tr><td>.308 Win (150&ndash;168gr)</td><td>~2,700 fps</td><td>~2,350 fps</td><td>Retains energy well past 300 yd; large temporary cavity persists further downrange than either intermediate cartridge.</td></tr>
+  </table>
+  <p class="src">Approximate velocity decay compiled from ammunition manufacturer ballistics charts (not peer reviewed; varies by load and barrel). Fragmentation behavior from Fackler's wound ballistics studies cited in Section 20.</p>
+</div>
+
+<!-- ============ 3 + 4 ============ -->
+<div class="chapter c-teal">
+  <div class="headblock"><h2 class="sechead">3&nbsp;&nbsp;BULLET CONSTRUCTION AND TISSUE EFFECT</h2></div>
+  <p>Construction determines how a bullet behaves after the physics of velocity and yaw have set the stage.</p>
+  <table class="keeptogether">
+    <tr><th style="width:22%;">Design</th><th style="width:39%;">Behavior in tissue</th><th style="width:39%;">Typical wound signature</th></tr>
+    <tr><td>Full metal jacket (FMJ)</td><td>Copper jacket resists deformation; bullet stays intact and relies on yaw and velocity for effect.</td><td>Narrow permanent track, may through-and-through with retained energy; military ball ammunition built this way by convention.</td></tr>
+    <tr><td>Expanding (hollow point, soft point)</td><td>Nose flattens or petals outward on impact, increasing frontal diameter and drag.</td><td>Wider, shorter permanent track close to entry; energy dumped earlier over a shorter distance.</td></tr>
+    <tr><td>Fragmenting</td><td>Bullet breaks into multiple pieces, often at a cannelure or core jacket junction.</td><td>Multiple divergent permanent tracks from a single entry; most tissue destruction per unit of retained energy.</td></tr>
+  </table>
+  <p class="src">Design categories and mechanisms drawn from ScienceDirect wound ballistics reference and WikEM.</p>
+  <h3 class="subhead">The military ball convention</h3>
+  <p>Military rifle ammunition intended for use by uniformed forces is generally built as FMJ ball, a design
+  choice shaped by longstanding international convention against expanding projectiles in international armed
+  conflict, which is why battlefield gunshot wounds and many civilian handgun wounds differ systematically in
+  construction, independent of caliber.</p>
+
+  <div class="headblock" style="margin-top:14px;">
+  <h2 class="sechead">4&nbsp;&nbsp;TISSUE SPECIFIC WOUNDING PATTERNS</h2>
+  <table class="keeptogether">
+    <tr><th style="width:17%;">Tissue / organ</th><th style="width:41%;">Response to cavitation</th><th style="width:42%;">Clinical note</th></tr>
+    <tr><td>Skeletal muscle</td><td>High elasticity, tolerates large temporary cavities with modest lasting injury.</td><td>Debride only clearly nonviable tissue; visible damage often overstates true injury.</td></tr>
+    <tr><td>Lung</td><td>Low density, high elasticity, air filled architecture absorbs stretch well.</td><td>Cavitation resistant to gunshot wounds, but exquisitely sensitive to blast overpressure (Section 12).</td></tr>
+    <tr><td>Liver, spleen, kidney</td><td>Dense, low elasticity, encapsulated; fractures or bursts when temporary cavity exceeds capsule tolerance.</td><td>Solid organ injury may extend well beyond the visible permanent track.</td></tr>
+    <tr><td>Bone</td><td>Rigid and brittle; can fragment into secondary missiles.</td><td>Look for a wound pattern more complex than the primary bullet track over a long bone.</td></tr>
+    <tr><td>Bowel and hollow viscera</td><td>Behaves as a fluid/gas reservoir; can burst at a point distant from direct contact.</td><td>Perforation may be found remote from the visible entry-exit line; mandates a full bowel run at laparotomy.</td></tr>
+    <tr><td>Blood vessels</td><td>Elastic vessels may be pushed aside, then develop delayed thrombosis or a false aneurysm.</td><td>A normal appearing vessel adjacent to a high energy track still warrants imaging.</td></tr>
+    <tr><td>Central nervous system</td><td>Rigid encasement, minimal room for stretch; small cavity can be immediately fatal.</td><td>Temporary cavitation inside the cranial vault causes diffuse injury beyond the bullet track.</td></tr>
+  </table>
+  </div>
+  <p class="src">Organ specific responses synthesized from WikEM wound ballistics reference and Rotman et al., Ballistic Injury Imaging: The Basics.</p>
+</div>
+
+<!-- ============ 5 + 6 ============ -->
+<div class="chapter c-slate">
+  <div class="headblock">
+  <h2 class="sechead">5&nbsp;&nbsp;FORENSIC WOUND CHARACTERIZATION: RANGE OF FIRE</h2>
+  <p>Range of fire is read from secondary discharge effects deposited around the entrance wound. This carries
+  direct clinical value beyond the medico-legal record: contact and near-contact wounds carry distinct injury
+  patterns from gas injection and thermal effect that distant wounds do not.</p>
+  </div>
+  <table class="keeptogether">
+    <tr><th style="width:14%;">Range category</th><th style="width:16%;">Approx. distance</th><th style="width:35%;">Skin findings</th><th style="width:35%;">Notes</th></tr>
+    <tr><td>Contact</td><td>Muzzle touching skin</td><td>Soot and seared, charred margin; stellate tearing over bone from gas injection; muzzle imprint possible.</td><td>Gas expansion under skin over bone can mimic an exit wound; common in suicide.</td></tr>
+    <tr><td>Close range</td><td>Roughly &lt;30 cm</td><td>Abrasion collar plus soot plus stippling.</td><td>Soot is water soluble and can be wiped away; photograph before cleaning.</td></tr>
+    <tr><td>Intermediate range</td><td>Roughly 30&ndash;90 cm handgun; further for rifle</td><td>Abrasion collar plus stippling (tattooing), no soot.</td><td>Stippling is mechanically embedded and cannot be washed off.</td></tr>
+    <tr><td>Distant / indeterminate</td><td>Beyond stippling range</td><td>Abrasion collar only.</td><td>Entry wound size bears no reliable relationship to bullet caliber.</td></tr>
+  </table>
+  <p class="src">Range of fire categories synthesized from PathologyOutlines forensic gunshot wound reference, ACEP Now clinical forensic evaluation of gunshot wounds, and Archives of Pathology &amp; Laboratory Medicine practical pathology of gunshot wounds.</p>
+  <ul>
+    <li>Entrance wounds almost always show an abrasion collar; asymmetry points toward the muzzle direction.</li>
+    <li>Exit wounds are typically irregular, often larger, and lack an abrasion collar or discharge residue.</li>
+    <li>Photograph and diagram discharge findings before cleaning; soot is removable, stippling is not.</li>
+  </ul>
+
+  <h2 class="sechead" style="margin-top:12px;">6&nbsp;&nbsp;BODY ARMOR AND BEHIND ARMOR BLUNT TRAUMA</h2>
+  <p>Body armor that stops penetration does not stop all kinetic energy. Behind armor blunt trauma (BABT) results
+  when the armor's rear face deforms rapidly and transmits a stress wave, plus shear deformation of the body wall,
+  into the chest or abdomen beneath an intact vest.</p>
+  <ul>
+    <li>Two combined mechanisms: a pressure/stress wave from rapid initial armor back face motion, and shear deformation of viscera from gross body wall deflection.</li>
+    <li>Reported injuries include rib fracture, pulmonary contusion, and rarely direct cardiac injury; systematic review found no confirmed BABT fatalities from properly rated soft armor, though severe case reports exist.</li>
+    <li>An intact vest with no penetration does not exclude significant intrathoracic or intra-abdominal injury; treat a reported high energy hit on worn armor as blunt trauma of unclear mechanism.</li>
+    <li>Experimental work implicates BABT as a possible transmission pathway for remote brain injury via a thoracic mechanism (Section 13).</li>
+  </ul>
+  <p class="src">Mechanism and injury pattern drawn from Cannon L, Behind Armour Blunt Trauma: An Emerging Problem, J R Army Med Corps 2001; NCBI Bookshelf systematic review of BABT (DARE); and Courtney &amp; Courtney, A Thoracic Mechanism of Mild Traumatic Brain Injury Due to Blast Pressure Waves.</p>
+</div>
+
+<!-- ============ 7 ============ -->
+<div class="chapter c-crimson">
+  <div class="headblock"><h2 class="sechead">7&nbsp;&nbsp;PENETRATING NECK TRAUMA</h2></div>
+  <p>The neck concentrates airway, vascular, and aerodigestive structures in a small space with minimal
+  protection, so a small entry wound can carry a large differential. Historically the neck was divided into three
+  zones to guide surgical versus selective management, though a penetrating track can cross zones and the "no
+  zone" approach (CT angiography driven regardless of zone) has gained favor at many centers.</p>
+  <table class="keeptogether">
+    <tr><th style="width:12%;">Zone</th><th style="width:36%;">Boundaries</th><th style="width:52%;">Management implication</th></tr>
+    <tr><td>Zone I</td><td>Clavicles / thoracic inlet to cricoid cartilage.</td><td>High risk of occult vascular or thoracic injury; may require sternotomy or thoracic surgical involvement; endovascular options considered early.</td></tr>
+    <tr><td>Zone II</td><td>Cricoid cartilage to angle of the mandible.</td><td>Most accessible surgically; historically the zone most often explored directly, though CTA has reduced negative explorations here as well.</td></tr>
+    <tr><td>Zone III</td><td>Angle of the mandible to skull base.</td><td>High risk of occult vascular injury; surgically difficult, endovascular management often preferred.</td></tr>
+  </table>
+  <table class="keeptogether">
+    <tr><th style="width:16%;">Sign category</th><th style="width:84%;">Findings</th></tr>
+    <tr><td>Hard signs</td><td>Shock, pulsatile bleeding or expanding hematoma, audible bruit/thrill, and loss of pulse with a stable or evolving neurologic deficit. Mandates immediate operative exploration or urgent definitive intervention; do not delay for imaging.</td></tr>
+    <tr><td>Soft signs</td><td>Stable, non-expanding hematoma; minor hemoptysis or hematemesis; dysphonia or dysphagia; subcutaneous or mediastinal air; history of bleeding at the scene. Warrants CT angiography (or duplex) in the stable patient rather than immediate exploration.</td></tr>
+  </table>
+  <p>Violation of the platysma increases the likelihood of deep structure injury and generally warrants further
+  workup even without hard or soft signs. CT angiography has sensitivity around 90&ndash;100 percent for major
+  vascular injury and is now the default screening study in stable patients with soft signs or proximity findings;
+  physical exam alone is highly sensitive for vascular injury but less reliable for aerodigestive injury, so
+  maintain a low threshold for esophagoscopy, esophagography, or bronchoscopy when aerodigestive injury is
+  suspected despite a negative CTA.</p>
+  <p class="src">Zone definitions and hard/soft sign criteria drawn from EAST Practice Management Guideline, Penetrating Zone II Neck Trauma; REBEL EM and Taming the SRU penetrating neck injury reviews; NCBI Bookshelf Neck Trauma (StatPearls); and PMC review, Contemporary Strategies in the Management of Civilian Neck Zone II Vascular Trauma.</p>
+</div>
+
+<!-- ============ 8 ============ -->
+<div class="chapter c-brick">
+  <div class="headblock">
+  <h2 class="sechead">8&nbsp;&nbsp;THORACIC TRAUMA AND REBOA ZONES</h2>
+  <h3 class="subhead">Tension pneumothorax and cardiac tamponade</h3>
+  <p>Both are immediately treatable causes of obstructive shock from penetrating (and sometimes blunt) chest
+  trauma, and both are clinical diagnoses that should not wait for imaging in an unstable patient. Tension
+  pneumothorax presents with hypotension, absent or decreased unilateral breath sounds, distended neck veins, and
+  often tracheal deviation away from the affected side; treatment is immediate needle or finger decompression
+  followed by tube thoracostomy. Pericardial tamponade from a penetrating cardiac wound presents with hypotension,
+  distended neck veins, and muffled heart sounds (Beck's triad, often incomplete), and in a penetrating chest
+  wound with cardiac box involvement and shock, resuscitative thoracotomy or emergent pericardiocentesis/sternotomy
+  may be the only interventions fast enough to matter.</p>
+  </div>
+  <h3 class="subhead">REBOA: zone selection</h3>
+  <p>Resuscitative endovascular balloon occlusion of the aorta is a bridge to definitive hemostasis for
+  non-compressible torso or junctional hemorrhage, used to preserve cerebral and cardiac perfusion while surgical
+  or interventional control is arranged.</p>
+  <table class="keeptogether">
+    <tr><th style="width:12%;">Zone</th><th style="width:38%;">Anatomic boundary</th><th style="width:50%;">Indication</th></tr>
+    <tr><td>Zone I</td><td>Descending thoracic aorta, left subclavian artery to celiac artery.</td><td>Suspected intra-abdominal or thoracic hemorrhage, profound shock, or impending cardiovascular collapse; preserves brain and heart perfusion at the cost of increased LV afterload.</td></tr>
+    <tr><td>Zone II</td><td>Paravisceral aorta, celiac to lowest renal artery.</td><td>Avoided; risk of severe visceral/renal ischemia with no compensating benefit over Zone I or III.</td></tr>
+    <tr><td>Zone III</td><td>Infrarenal aorta, lowest renal artery to bifurcation.</td><td>Pelvic fracture or junctional femoral/groin hemorrhage without suspected thoraco-abdominal injury; more modest hemodynamic effect than Zone I.</td></tr>
+  </table>
+  <p class="src">Tension pneumothorax and tamponade management reflect standard ATLS teaching. REBOA zone definitions and indications drawn from LITFL REBOA in resuscitation reference; Dove Medical Press, Is Occlusion the Solution? REBOA as a Hemorrhage Control Adjunct; and Journal of Trauma Injury, Case Series of Zone III REBOA in Traumatic Shock Patients.</p>
+</div>
+
+<!-- ============ 9 ============ -->
+<div class="chapter c-gold">
+  <div class="headblock"><h2 class="sechead">9&nbsp;&nbsp;MANGLED EXTREMITY AND VASCULAR INJURY</h2></div>
+  <p>Ballistic and blast trauma to an extremity raises the salvage-versus-amputation question early, often before
+  full imaging is available. The Mangled Extremity Severity Score (MESS) remains the most widely applied bedside
+  tool, though its predictive value is better established for identifying limbs that can be salvaged (low score)
+  than for mandating amputation on a high score.</p>
+  <table class="keeptogether">
+    <tr><th style="width:30%;">MESS component</th><th style="width:70%;">Scoring concept</th></tr>
+    <tr><td>Skeletal / soft tissue injury</td><td>Graded 1&ndash;4 from low energy (stab, simple fracture) to high energy or mass casualty crush/blast with gross contamination.</td></tr>
+    <tr><td>Limb ischemia</td><td>Graded 1&ndash;3 (doubled if ischemia duration exceeds 6 hours), from a pulse-reduced but perfused limb to a pulseless, cool, paralyzed, insensate limb.</td></tr>
+    <tr><td>Shock</td><td>Graded 0&ndash;2 from normotensive to persistent hypotension in the field or on arrival.</td></tr>
+    <tr><td>Age</td><td>Graded 0&ndash;2, increasing with age given lower physiologic reserve.</td></tr>
+  </table>
+  <p>A MESS of 7 or higher is the most commonly cited cutoff associated with amputation, but multiple validation
+  studies, including combat casualty data, show only modest sensitivity for this cutoff and caution against using
+  it as an automatic indication; the decision remains a clinical one weighing mechanism, ischemia time, associated
+  injuries, and available reconstructive resources. Blast and crush mechanisms, polytrauma, and massive transfusion
+  requirement are independently associated with higher amputation rates even when the MESS itself performs
+  imperfectly as a predictor.</p>
+  <p class="src">MESS components and validation limitations drawn from Kauvar et al., Utility of the Mangled Extremity Severity Score in Predicting Amputation in Military Lower Extremity Arterial Injury, Annals of Vascular Surgery; and EAST Landmark Papers, Mangled Extremity (Bosse et al. and Helfet et al.).</p>
+</div>
+
+<!-- ============ 10 + 11 ============ -->
+<div class="chapter c-plum">
+  <div class="headblock"><h2 class="sechead">10&nbsp;&nbsp;BLAST INJURY: MECHANISM TAXONOMY</h2></div>
+  <p>Explosive injury is classified by the Department of Defense taxonomy into five mechanisms, primary through
+  quinary. A single casualty commonly sustains more than one mechanism simultaneously, and the blast environment
+  shifts which mechanism dominates.</p>
+  <table class="keeptogether">
+    <tr><th style="width:11%;">Mechanism</th><th style="width:34%;">Cause</th><th style="width:55%;">Characteristic injuries</th></tr>
+    <tr><td>Primary</td><td>Direct interaction of the blast overpressure wave with the body, concentrated at air-tissue interfaces.</td><td>Tympanic membrane rupture, blast lung, bowel perforation, air embolism, globe rupture.</td></tr>
+    <tr><td>Secondary</td><td>Energized fragments, casing shrapnel, or environmental debris propelled by the explosion.</td><td>Penetrating and blunt trauma from projectiles; the most common cause of blast related death overall.</td></tr>
+    <tr><td>Tertiary</td><td>Displacement of the entire body by blast wind, followed by impact.</td><td>Blunt trauma, traumatic amputation, closed head injury, fractures.</td></tr>
+    <tr><td>Quaternary</td><td>All other direct effects of the explosion: thermal, toxic, or crush.</td><td>Burns, inhalation injury, crush syndrome, exacerbation of chronic disease.</td></tr>
+    <tr><td>Quinary</td><td>Post-detonation environmental contaminants added to or released by the device.</td><td>Toxic, chemical, radiologic, or biological contamination superimposed on the blast wound.</td></tr>
+  </table>
+  <p class="src">Taxonomy per DoD Directive 6025.21E, summarized in the Blast Injury Research Coordinating Office reference and Kim &amp; Nguyen, Blast Injuries: A Review.</p>
+  <p>Open air detonations disperse the pressure wave quickly and produce proportionally more secondary
+  fragmentation injury. Confined space detonations trap and reflect the overpressure wave, driving a higher
+  proportion of primary blast lung and bowel injury. Structural collapse adds heavy quaternary crush injury and
+  delayed extraction.</p>
+
+  <h2 class="sechead" style="margin-top:14px;">11&nbsp;&nbsp;BLAST WAVE PHYSICS: OVERPRESSURE AND SCALED DISTANCE</h2>
+  <p>A high explosive detonation produces a shock front that outruns the local speed of sound, a brief negative
+  pressure phase, and a return to ambient. Peak overpressure at any point falls off steeply, not linearly, with
+  distance. Blast engineering describes this with the Hopkinson-Cranz, or cube root, scaling law: scaled distance
+  Z equals standoff distance divided by the cube root of charge mass. Because the relationship is a cube root, a
+  tenfold increase in charge mass requires only roughly a 2.15 fold increase in standoff distance to reach an
+  equivalent overpressure. The clinical takeaway: overpressure and injury severity fall off far faster with
+  distance than most people intuitively expect, so relatively modest increases in standoff distance produce large
+  reductions in primary blast injury risk, and casualty distribution from a mass casualty blast is not random,
+  patients closest to the seat of the explosion carry a disproportionate share of primary blast injury.</p>
+  <p class="src">Scaling law summarized from ScienceDirect Topics, Scaled Distance overview, and the Hopkinson-Cranz cube root scaling law reference (vCalc); this manual omits charge-specific coefficients and yield estimation tables, which are structural engineering and munitions safety planning tools outside clinical scope.</p>
+</div>
+
+<!-- ============ 12 ============ -->
+<div class="chapter c-forest">
+  <div class="headblock"><h2 class="sechead">12&nbsp;&nbsp;PRIMARY BLAST PATHOPHYSIOLOGY</h2></div>
+  <h3 class="subhead">Barotrauma at density interfaces</h3>
+  <p>The overpressure wave interacts most violently at interfaces between tissues of very different density,
+  which is why air filled or air adjacent organs bear the brunt of primary injury. Three named mechanisms describe
+  the damage: spalling (a stress wave tears the far side of a denser medium at a density boundary), implosion
+  (compressed gas pockets collapse and rebound violently), and inertial shear (adjacent tissues of different
+  density accelerate and decelerate at different rates and tear at their junction).</p>
+  <h3 class="subhead">Blast lung</h3>
+  <p>The pathognomonic primary blast injury and leading cause of immediate blast death among initial survivors.
+  Alveolar hemorrhage, pneumothorax, and alveolar-capillary disruption allow air to enter the pulmonary venous
+  circulation. Classic film findings are a bilateral, perihilar butterfly infiltrate developing within hours.
+  A deceptively normal initial exam can deteriorate over the following minutes to hours, arguing for observation
+  after any close range blast exposure with respiratory symptoms.</p>
+  <h3 class="subhead">Arterial air embolism</h3>
+  <p>Alveolar-venous disruption allows air to reach the left heart and systemic circulation, producing sudden
+  focal neurologic deficit, myocardial infarction, or mesenteric ischemia with no direct injury to the affected
+  organ. Suspect this in any blast patient with new focal neurologic or cardiac findings; consider left lateral,
+  head down positioning and high flow oxygen while arranging transfer.</p>
+  <h3 class="subhead">Tympanic membrane and blast bowel</h3>
+  <p>TM rupture occurs at overpressures far below the threshold for lung or bowel injury and functions as a
+  sentinel finding for meaningful exposure, though its absence does not exclude other primary injury. Blast bowel
+  produces mucosal and submucosal hemorrhage, perforation, and mesenteric injury that can present with a delay of
+  hours; a benign early abdominal exam does not exclude a perforation that will declare itself over the following
+  day, supporting admission and serial exams after blast exposure with abdominal symptoms.</p>
+</div>
+
+<!-- ============ 13 + 14 ============ -->
+<div class="chapter c-forest">
+  <div class="headblock"><h2 class="sechead">13&nbsp;&nbsp;BLAST TRAUMATIC BRAIN INJURY</h2></div>
+  <p>Blast induced traumatic brain injury (bTBI) has been the most common brain injury among survivors of recent
+  military conflicts, yet the physical mechanism connecting an overpressure wave to neuronal injury is still
+  contested. Three candidate mechanisms dominate the literature and are not mutually exclusive.</p>
+  <table class="keeptogether">
+    <tr><th style="width:26%;">Proposed mechanism</th><th style="width:74%;">Description</th></tr>
+    <tr><td>Direct transcranial transmission</td><td>The pressure transient crosses the skull and propagates directly through brain parenchyma; skin and meninges may amplify the applied pressure, cranial air sinuses provide some attenuation.</td></tr>
+    <tr><td>Thoracic / vascular transmission</td><td>A pressure transient enters via the great vessels or a vagally mediated reflex originating in the thorax and reaches the brain through the vascular tree, also implicated in behind armor blunt trauma (Section 6).</td></tr>
+    <tr><td>Cerebrospinal fluid cavitation</td><td>Proposed formation and violent collapse of microbubbles within CSF and brain vasculature; a debated, actively researched hypothesis rather than an established mechanism.</td></tr>
+  </table>
+  <p class="src">Mechanisms summarized from Courtney &amp; Courtney, The Complexity of Biomechanics Causing Primary Blast Induced TBI, Front Neurol 2015; Rosenfeld et al., Neurological Effects of Blast Injury; Marsh &amp; Bentil, Cerebrospinal Fluid Cavitation as a Mechanism of Blast Induced TBI, Front Neurol 2021.</p>
+  <p>Mild to moderate blast TBI presents much like concussion from any other mechanism: transient loss of
+  consciousness or altered mentation, followed by post concussive syndrome (headache, cognitive disruption,
+  irritability, anxiety, fatigue) that can persist well beyond the acute period. Diffusion tensor MRI in
+  symptomatic patients has demonstrated diffuse axonal injury signatures. A normal head CT does not exclude this
+  injury pattern; the diagnosis remains clinical, based on mechanism and symptom trajectory.</p>
+
+  <div class="headblock" style="margin-top:14px;">
+  <h2 class="sechead">14&nbsp;&nbsp;COMBINED INJURY PATTERNS</h2>
+  <p>Real world explosive events rarely produce a single blast mechanism in isolation. An IED casualty commonly
+  presents with an overlapping combination of primary blast lung or TM rupture, secondary fragment wounds with
+  their own cavitation physics, tertiary blunt trauma from being thrown, and quaternary burns or crush injury, all
+  in the same patient at once.</p>
+  </div>
+  <ul>
+    <li><strong>Confined space or vehicle-based blast:</strong> heavier primary injury burden layered on lower extremity fracture and traumatic amputation from an under-vehicle blast pattern.</li>
+    <li><strong>Open air device with fragmentation casing:</strong> secondary penetrating wounds dominate, primary injury limited to patients closest to the seat of the blast (Section 11).</li>
+    <li><strong>Structural collapse:</strong> a shift toward quaternary crush injury and delayed extraction on top of injury at the moment of detonation.</li>
+    <li><strong>Body armor plus blast or fragment impact:</strong> a casualty with no penetrating chest wound can still carry a significant primary-pattern thoracic injury from BABT; an intact vest should not lower suspicion.</li>
+  </ul>
+  <p>Practical implication: do not let an obvious injury close the differential for a co-occurring primary blast
+  injury with no external sign yet. Every blast casualty needs the same primary-injury screen (lung, ears,
+  abdomen, neuro) regardless of how dramatic the secondary or tertiary injuries look.</p>
+  <p class="src">Combined injury patterns synthesized from JMVH, Evolving mechanisms and patterns of blast injury; Halpern et al. mass casualty terrorist bombings implications, as adapted in Medscape Blast Injuries: A Review; Deranged Physiology blast injury reference.</p>
+</div>
+
+<!-- ============ 15 + 16 ============ -->
+<div class="chapter c-navy">
+  <div class="headblock"><h2 class="sechead" style="border-color:#1d4ed8;">15&nbsp;&nbsp;IMAGING AND RETAINED FRAGMENT WORKUP</h2></div>
+  <ul>
+    <li><strong>CT trajectory reconstruction:</strong> plot entry, retained fragments, and exit (if present) on axial and reformatted imaging; a nonlinear or discontinuous track signals yaw, ricochet off bone, or fragmentation, and should prompt a specific search for secondary bone or bullet fragments along a plausible deflected path.</li>
+    <li><strong>e-FAST:</strong> extended FAST remains the fastest bedside screen for hemoperitoneum, hemothorax, and pneumothorax in both GSW and blast patients; a negative e-FAST does not exclude retroperitoneal, bowel, or delayed primary blast injury and should not by itself end the workup in a concerning mechanism.</li>
+    <li><strong>Retained bullet fragments, general:</strong> the reflex to remove every retained fragment is outdated. Established indications for removal are progressive neurologic deterioration, sepsis referable to the fragment, lead toxicity, and (for spinal fragments) an intracanal position between roughly T12 and L4 with incomplete neurologic injury. Most retained fragments elsewhere can be left in place.</li>
+    <li><strong>Retained fragments and MRI:</strong> long-standing avoidance of MRI in patients with retained ballistic fragments is being revised. Most bullets, shot, and fragments are non-ferromagnetic or too small to generate clinically significant RF heating; imaging composition on prior CT/X-ray (and dual-energy CT where available) can identify non-ferromagnetic fragments as MRI-safe. Known ferromagnetic fragments (some BBs, steel-core rounds) still warrant caution and case-by-case radiology consultation.</li>
+  </ul>
+  <p class="src">CT trajectory and e-FAST practice reflect standard trauma imaging teaching. Retained fragment removal indications drawn from SciELO, Civilian gunshot wounds of the spine: a literature review, and Wheeless' Textbook of Orthopaedics, Gunshot Injuries to the Lumbar Spine. MRI safety synthesized from mriquestions.com, MR Safety Bullets, and Marino et al., Magnetic Resonance Imaging of Patients With Retained Ballistic Projectiles, J Magn Reson Imaging 2026.</p>
+
+  <h2 class="sechead" style="margin-top:14px; border-color:#1d4ed8;">16&nbsp;&nbsp;ANTIBIOTIC PROPHYLAXIS AND DAMAGE CONTROL SURGERY</h2>
+  <ul>
+    <li><strong>Tetanus:</strong> address tetanus immunization status in all penetrating ballistic and blast wounds; give prophylaxis when status is unknown or incomplete, regardless of wound appearance.</li>
+    <li><strong>Antibiotics for isolated soft tissue GSW:</strong> evidence for low velocity, soft tissue only gunshot wounds is inconclusive; base the decision on tissue destruction, contamination, time since injury, anatomic location, and velocity rather than reflexive prophylaxis for every wound. A bullet is not sterilized by firing; contamination from clothing and skin flora is well documented.</li>
+    <li><strong>Antibiotics with viscus involvement:</strong> broad spectrum coverage is indicated when the track traverses bowel; roughly 48&ndash;72 hours is generally sufficient once there is no ongoing contamination, with duration guided by the degree of soft tissue destruction rather than a fixed course for every patient.</li>
+    <li><strong>Damage control surgery sequencing:</strong> in the physiologically exhausted patient (acidotic, coagulopathic, hypothermic), the operative goal shifts from definitive repair to abbreviated surgery: control hemorrhage, control contamination, pack and temporarily close, and return to the ICU for ongoing resuscitation before a planned re-look and definitive repair once physiology has been restored. Attempting definitive repair in a patient still in the lethal triad is a recognized way to lose a salvageable patient on the table.</li>
+  </ul>
+  <p class="src">Antibiotic and tetanus guidance drawn from Antibiotic prophylaxis in injury: an AAST Critical Care Committee clinical consensus document, PMC11149135; SciELO gunshot wounds of the spine review; and Musculoskeletal Key, Surgical Management Principles of Gunshot-Related Fractures. Damage control surgery sequencing reflects standard trauma surgery teaching paired with the damage control resuscitation literature in Section 18.</p>
+</div>
+
+<!-- ============ 17 ============ -->
+<div class="chapter c-teal">
+  <div class="headblock">
+  <h2 class="sechead">17&nbsp;&nbsp;PREHOSPITAL CARE: THE MARCH ALGORITHM</h2>
+  <p>Tactical Combat Casualty Care reordered the trauma primary survey from ABC to MARCH after battlefield data
+  showed hemorrhage, not airway compromise, was the dominant preventable cause of death: roughly 91 percent of
+  preventable combat deaths were due to hemorrhage versus about 8 percent from airway obstruction and about 1
+  percent from tension pneumothorax. The same ordering has been adopted widely in civilian tactical and mass
+  casualty response (TECC).</p>
+  </div>
+  <table class="keeptogether">
+    <tr><th style="width:8%;">Step</th><th style="width:20%;">Priority</th><th style="width:72%;">Action</th></tr>
+    <tr><td>M</td><td>Massive hemorrhage</td><td>Life-threatening extremity bleeding: hasty tourniquet placed high and tight over clothing during care under fire, converted to a deliberate placement 2&ndash;3 inches proximal to the wound against skin once behind cover. Junctional hemorrhage (groin, axilla, neck base): direct pressure plus a junctional tourniquet or hemostatic wound packing with sustained pressure. Time of application is recorded on the tourniquet and casualty card.</td></tr>
+    <tr><td>A</td><td>Airway</td><td>Assess patency; a conscious, speaking casualty has a patent airway. Address obstruction from maxillofacial trauma or inhalation injury before moving on.</td></tr>
+    <tr><td>R</td><td>Respiration</td><td>Assess for tension pneumothorax and treat with needle or finger decompression; occlusive dressing for open chest wounds.</td></tr>
+    <tr><td>C</td><td>Circulation</td><td>Reassess for additional non-compressible or previously missed hemorrhage; establish access; early TXA and blood product administration when indicated and available.</td></tr>
+    <tr><td>H</td><td>Hypothermia / head injury</td><td>Active warming to prevent potentiation of the lethal triad; assess for head injury and avoid hypotension/hypoxia which worsen secondary brain injury.</td></tr>
+  </table>
+  <p>TXA is indicated for massive hemorrhage, hemorrhagic shock, or suspected significant intrathoracic or
+  intra-abdominal hemorrhage, and early blood product use is favored over crystalloid whenever available in the
+  prehospital setting, carrying the damage control resuscitation principles in Section 18 forward from the point
+  of injury.</p>
+  <p class="src">MARCH sequencing and battlefield mortality data drawn from NCBI Bookshelf, EMS Tactical Combat Casualty Care (StatPearls), citing Eastridge et al., Death on the Battlefield, J Trauma 2012; tourniquet and junctional hemorrhage technique from the TCCC Casualty Card guidance summarized in MED-TAC International's MARCH Algorithm reference and Rescue Essentials' TCCC MARCH overview.</p>
+</div>
+
+<!-- ============ 18 ============ -->
+<div class="chapter c-gold">
+  <div class="headblock"><h2 class="sechead">18&nbsp;&nbsp;CLINICAL MANAGEMENT: DAMAGE CONTROL RESUSCITATION</h2></div>
+  <p>Damage control resuscitation (DCR) is the resuscitation framework built for exactly the injury pattern this
+  manual describes: hemorrhagic shock with a high likelihood of trauma induced coagulopathy. Its aim is to break
+  the lethal triad of coagulopathy, acidosis, and hypothermia before it becomes self-sustaining.</p>
+  <table class="keeptogether">
+    <tr><th style="width:24%;">Component</th><th style="width:76%;">Practice point</th></tr>
+    <tr><td>Permissive hypotension</td><td>Titrate resuscitation to a systolic blood pressure in the 80&ndash;90 mmHg range until hemorrhage is controlled, rather than normalizing pressure with crystalloid. Not used in suspected traumatic brain injury, where SBP is kept above 90 mmHg.</td></tr>
+    <tr><td>Hemostatic resuscitation</td><td>Early, balanced blood product transfusion (roughly 1:1:1 PRBC:FFP:platelets) in place of large volume crystalloid, targeting correction of coagulopathy rather than volume alone.</td></tr>
+    <tr><td>Massive transfusion protocol</td><td>Activated for anticipated need of 10 or more units of red cells in 24 hours; each 10 mmHg drop in presenting SBP is associated with roughly a 26 percent increase in MTP likelihood.</td></tr>
+    <tr><td>Tranexamic acid</td><td>1 g IV within 3 hours of injury, followed by a second 1 g infusion over the following 8 hours, in patients with significant hemorrhage.</td></tr>
+    <tr><td>Hypothermia and acidosis correction</td><td>Active warming of the patient and of all administered fluids/blood products; a resuscitation priority, not an afterthought.</td></tr>
+    <tr><td>REBOA</td><td>Adjunct for non-compressible torso or junctional hemorrhage (zone selection in Section 8); buys time to definitive hemostasis, complementary to, not a substitute for, permissive hypotension and rapid surgical control.</td></tr>
+  </table>
+  <p class="src">Practice points drawn from the AAST/ACS-COT Clinical Protocol for Damage Control Resuscitation for the Adult Trauma Patient; EAST Practice Management Guideline, Damage Control Resuscitation in Patients with Severe Traumatic Hemorrhage; and McGovern Medical School Controlled Resuscitation in Trauma Patients Clinical Practice Guideline.</p>
+  <div class="callout">Wound ballistics and blast injury share a common bedside principle: the visible wound is a floor, not a ceiling, on the injury actually present. Build the differential from mechanism and energy, then confirm or exclude with a deliberate, complete exam, the right imaging, and a resuscitation strategy matched to the physiology in front of you.</div>
+</div>
+
+<!-- ============ 19: UNDERWATER BLAST ============ -->
+<div class="chapter c-forest">
+  <div class="headblock"><h2 class="sechead">19&nbsp;&nbsp;UNDERWATER BLAST INJURY</h2></div>
+  <p>Water is roughly 800 times denser and far less compressible than air, and this single fact reshapes blast
+  injury physics. An underwater shock wave travels faster, propagates further with less attenuation, and couples
+  into the body far more efficiently than the same charge detonated in air. The practical result: underwater
+  blast injuries occur almost exclusively through the primary mechanism, since fragments and blast wind lose most
+  of their relevance once submerged, and a charge that would be a modest air blast at a given range can be
+  lethal underwater at the same range.</p>
+  <h3 class="subhead">Injury pattern</h3>
+  <p>As with air blast, gas containing organs bear the brunt of injury, but the pattern in water differs in
+  emphasis. Intestinal barotrauma, particularly to the colon, is more common with underwater than with air blast,
+  reflecting how efficiently the pressure wave couples through torso tissue to the gas filled bowel. Pulmonary
+  injury remains prominent, with alveolar hemorrhage, air embolism, and a vagally mediated bradycardia and apnea
+  described in animal models as a reflex response to lung damage. Cerebral injury is thought to occur via
+  compression of the thoracic and abdominal venous reservoirs, raising venous pressure and rupturing small
+  cerebral veins, though human data here remains limited. The ear remains the single most sensitive organ to
+  primary blast injury in water as in air.</p>
+  <h3 class="subhead">Additional risk from disorientation</h3>
+  <p>A diver or swimmer exposed to an underwater blast faces a hazard with no air blast analog: disorientation and
+  vestibular disruption sufficient to prevent airway protection, which converts a primary blast injury into a
+  drowning risk. Any diver recovered after a nearby underwater detonation warrants the same primary-injury screen
+  as an air blast casualty (lung, ear, bowel) plus a specific assessment for aspiration and hypoxic injury from
+  loss of airway control during the event.</p>
+  <p class="src">Underwater blast physiology and injury pattern drawn from Axelsson et al., Underwater Blast Injury: A Review of Standards, and the related Annals of Biomedical Engineering feasibility study; SCUBADOC Diving Medicine Online, Underwater Blast Injuries; and Medscape, Blast Injuries: Background, Pathophysiology, Etiology (intestinal barotrauma comparison).</p>
+</div>
+
+<!-- ============ 20: CBRN FRAMEWORK ============ -->
+<div class="chapter c-crimson">
+  <div class="headblock"><h2 class="sechead">20&nbsp;&nbsp;CBRN MASS CASUALTY FRAMEWORK</h2></div>
+  <p>Quinary blast injury (Section 10) refers to clinical consequences of contaminants added to or released by a
+  device: chemical, biological, radiological, or nuclear (CBRN) material superimposed on a blast or ballistic
+  wound. This section covers triage and management framework only; it intentionally omits agent identification,
+  effects detail, or any content that could inform agent selection or device design.</p>
+  <h3 class="subhead">Sequencing principle</h3>
+  <p>Security and scene safety are coordinated first, since a CBRN event is by definition an ongoing hazard, not
+  only a casualty event. Once safe to approach, the sequence is decontamination, then medical triage, in that
+  order for any casualty with suspected external contamination: decontamination is itself a medical intervention,
+  since it minimizes conversion of external contamination to internal dose, and a casualty with suspected liquid
+  chemical exposure is triaged as immediate until decontaminated, then re-triaged on medical grounds.</p>
+  <table class="keeptogether">
+    <tr><th style="width:20%;">Contamination type</th><th style="width:80%;">Practice point</th></tr>
+    <tr><td>Liquid chemical exposure</td><td>Decontaminate before definitive medical triage regardless of initial symptoms; vesicant exposure is treated with particular urgency given delayed but progressive tissue injury.</td></tr>
+    <tr><td>Vapor-only chemical exposure</td><td>Can generally tolerate a delay in thorough decontamination, unlike liquid or vesicant exposure.</td></tr>
+    <tr><td>Radiological / nuclear exposure</td><td>Initial triage follows conventional trauma injury severity; a secondary triage pass incorporating estimated radiation dose occurs once dosimetry resources are available, with combined trauma-radiation injury bumped to a higher acuity category.</td></tr>
+    <tr><td>Wound contamination</td><td>External, internal, and wound contamination are each assessed separately; wound decontamination and, for certain radiological exposures, decorporation agents (e.g., chelation) may be indicated in coordination with radiation safety and toxicology expertise.</td></tr>
+  </table>
+  <p>Standard mass casualty principles still apply on top of this framework: do the most good for the most people
+  with the resources available, and expect iterative re-triage as the event unfolds and more information (agent
+  identification, dosimetry, decontamination capacity) becomes available. A dedicated, experienced triage officer
+  is recommended given the added complexity of combined trauma and CBRN casualties.</p>
+  <p class="src">Sequencing and triage principles drawn from Joint Trauma System CBRN Injury Clinical Practice Guidelines, Parts I and III (Initial Response to CBRN Agents; Medical Management of Radiation Exposure); PMC, Chemical, biological, radiological and nuclear considerations in a major incident; and DHS, Patient Decontamination in a Mass Chemical Exposure Incident, National Planning Guidance. This section deliberately omits agent-specific detection, identification, or effects information.</p>
+</div>
+
+<!-- ============ 21: PEDIATRIC CONSIDERATIONS ============ -->
+<div class="chapter c-gold">
+  <div class="headblock"><h2 class="sechead" style="color:#7c3aed; border-color:#7c3aed;">21&nbsp;&nbsp;PEDIATRIC BLAST AND BALLISTIC CONSIDERATIONS</h2></div>
+  <p>Children are not small adults, and the same explosive device or projectile that wounds an adult can kill a
+  child through anatomic and physiologic differences alone. This section covers those differences; it does not
+  cover weight-based dosing, which should be drawn from a current pediatric reference or protocol at the point of
+  care.</p>
+  <table class="keeptogether">
+    <tr><th style="width:20%;">System</th><th style="width:80%;">Pediatric difference and implication</th></tr>
+    <tr><td>Head</td><td>Larger head-to-body ratio, thinner skull, less myelinated brain. Head injuries are more common and more severe in children exposed to blast or ballistic trauma than in adults, and a child can sustain significant TBI without loss of consciousness; triage to further evaluation any child with altered behavior, irritability, or excessive sleepiness after a blast or head impact even if initially alert.</td></tr>
+    <tr><td>Chest</td><td>More compliant, cartilaginous rib cage transmits force to underlying lung and heart with less fracture than in adults; significant pulmonary or cardiac contusion can be present with few or no rib fractures, so the absence of chest wall injury does not exclude major thoracic injury.</td></tr>
+    <tr><td>Abdomen</td><td>Thinner abdominal wall and proportionally larger, less protected solid organs (liver, spleen); children are more prone to significant abdominal injury from both blunt and penetrating mechanisms at forces that a thicker adult abdominal wall would attenuate.</td></tr>
+    <tr><td>Ears / lungs (primary blast)</td><td>Ocular trauma, tympanic membrane rupture, and primary blast lung injury occur at higher rates in children than adults exposed to comparable blast conditions.</td></tr>
+    <tr><td>Skeleton</td><td>More pliable bone produces plastic deformity and torus (buckle) fractures not seen in mature bone; standard adult fracture patterns and healing timelines do not directly apply.</td></tr>
+    <tr><td>Global physiology</td><td>Smaller absolute blood volume means a given volume of blood loss represents a larger fraction of total circulating volume; children compensate for hemorrhage with tachycardia and vasoconstriction longer than adults before hypotension appears, so normal blood pressure can be falsely reassuring in a child who is already in compensated shock. Children also become hypothermic more easily given greater body surface area to mass ratio, compounding coagulopathy risk in the same lethal triad described in Section 18.</td></tr>
+  </table>
+  <p>Practical implication: apply the same MARCH and damage control resuscitation framework used for adults
+  (Sections 17 and 18), but read vital signs against pediatric norms rather than adult thresholds, maintain a
+  lower threshold for occult head, chest, and abdominal injury given the anatomic differences above, and prioritize
+  active warming given faster heat loss. Resource availability is a documented gap: pediatric-specific equipment
+  and supplies are disproportionately unavailable across EMS and emergency department settings relative to the
+  pediatric share of most populations, which argues for deliberate advance planning rather than improvisation in
+  the moment.</p>
+  <p class="src">Anatomic and physiologic differences drawn from Turkish Journal of Emergency Medicine, Pediatric blast injuries: Distinguishing features and unique challenges (2026); ACEP, Pediatric Blast Injury fact sheet; PMC, Disaster preparedness, pediatric considerations in primary blast injury, chemical, and biological terrorism; and the EXTRACCT Clinical Practice Guideline, Resuscitation of the Pediatric Blast Injury Patient.</p>
+</div>
+
+<!-- ============ 22: QUICK REFERENCE CARD ============ -->
+<div class="chapter c-navy">
+  <div class="headblock">
+  <h2 class="sechead" style="border-color:#1d4ed8;">22&nbsp;&nbsp;QUICK REFERENCE SUMMARY CARD</h2>
+  <div class="cardgrid">
+    <div class="cardcol">
+      <div class="qcard"><h4>Two wounding mechanisms</h4>Crush = permanent cavity (what you must excise). Stretch = temporary cavity (hurts dense/inelastic organs, spares elastic ones).</div>
+      <div class="qcard"><h4>Caliber is not destiny</h4>Velocity and construction predict wounding better than bore diameter. Fragmentation depends on impact velocity, so range can change the wound pattern of the same round.</div>
+      <div class="qcard"><h4>Forensic range of fire</h4>Contact: soot, searing, stellate tears. Close: soot + stippling. Intermediate: stippling only (not washable). Distant: abrasion collar only.</div>
+      <div class="qcard"><h4>Body armor</h4>Intact vest &ne; no internal injury. BABT can fracture ribs and bruise lung/heart beneath unbroken armor.</div>
+      <div class="qcard"><h4>Neck zones</h4>I = thoracic inlet to cricoid. II = cricoid to mandible angle. III = mandible angle to skull base. Hard signs &rarr; OR now. Soft signs &rarr; CTA.</div>
+      <div class="qcard"><h4>REBOA zones</h4>Zone I (subclavian&ndash;celiac): abdominal/thoracic hemorrhage, profound shock. Zone III (renal&ndash;bifurcation): pelvic/junctional hemorrhage. Zone II: avoid.</div>
+      <div class="qcard"><h4>MARCH</h4>Massive hemorrhage &rarr; Airway &rarr; Respiration &rarr; Circulation &rarr; Hypothermia/Head injury. Hemorrhage kills fastest; treat it first.</div>
+    </div>
+    <div class="cardcol">
+      <div class="qcard"><h4>Blast taxonomy</h4>Primary = overpressure (lung, ear, bowel, air embolism). Secondary = fragments. Tertiary = thrown. Quaternary = burns/toxic/crush. Quinary = contamination.</div>
+      <div class="qcard"><h4>Blast lung / TM rupture</h4>TM rupture = sentinel finding, not the main injury. Blast lung can look fine early then decompensate &mdash; observe.</div>
+      <div class="qcard"><h4>DCR core</h4>Permissive hypotension (SBP 80&ndash;90, not in TBI) + 1:1:1 blood products + TXA within 3h + active warming + rapid hemostasis.</div>
+      <div class="qcard"><h4>Underwater blast</h4>Water couples pressure far more efficiently than air &mdash; almost pure primary injury. Colon barotrauma more common than in air blast. Screen for drowning/aspiration from disorientation.</div>
+      <div class="qcard"><h4>CBRN sequence</h4>Safety first &rarr; decontaminate liquid/vesicant exposures before medical triage &rarr; re-triage after decon &rarr; secondary radiation-adjusted triage once dosimetry is available.</div>
+      <div class="qcard"><h4>Pediatric red flags</h4>Normal BP can mean compensated shock, not "fine." Few rib fractures &ne; no chest injury. Altered behavior after blast = TBI until proven otherwise, even with no LOC.</div>
+    </div>
+  </div>
+  </div>
+</div>
+
+<!-- ============ 23: SOURCES ============ -->
+<div class="chapter c-slate">
+  <div class="headblock"><h2 class="sechead">23&nbsp;&nbsp;PRIMARY SOURCES</h2></div>
+  <ul style="font-size:8.1pt; line-height:1.45;">
+    <li>Axelsson H, et al. Underwater Blast Injury: A Review of Standards.</li>
+    <li>Annals of Biomedical Engineering. An Experimental Model for the Study of Underwater Pressure Waves on the CNS in Rodents (2021).</li>
+    <li>SCUBADOC Diving Medicine Online. Underwater Blast Injuries.</li>
+    <li>Joint Trauma System. CBRN Injury Clinical Practice Guideline, Part I: Initial Response to CBRN Agents.</li>
+    <li>Joint Trauma System. CBRN Injury Response, Part 3: Medical Management of Radiation Exposure and Nuclear Events.</li>
+    <li>PMC. Chemical, biological, radiological and nuclear considerations in a major incident.</li>
+    <li>US DHS. Patient Decontamination in a Mass Chemical Exposure Incident: National Planning Guidance (2014).</li>
+    <li>Turkish Journal of Emergency Medicine. Pediatric blast injuries: Distinguishing features and unique challenges (2026).</li>
+    <li>ACEP. Pediatric Blast Injury fact sheet.</li>
+    <li>PMC. Disaster preparedness, pediatric considerations in primary blast injury, chemical, and biological terrorism.</li>
+    <li>EXTRACCT Clinical Practice Guideline. Resuscitation of the Pediatric Blast Injury Patient.</li>
+    <li>WikEM. Wound Ballistics. wikem.org/wiki/Wound_ballistics</li>
+    <li>Rotman JA, et al. Ballistic Injury Imaging: The Basics.</li>
+    <li>ScienceDirect. Understanding Ballistic Injuries.</li>
+    <li>Denver Health Trauma Conference. Terminal Ballistics course material.</li>
+    <li>Courtney A, Courtney M. Comparing Terminal Performance of .357 SIG and 9mm Bullets in Ballistic Gelatin.</li>
+    <li>Ballistics reviews: Mechanisms of bullet wound trauma. ResearchGate, 2009.</li>
+    <li>PathologyOutlines.com. Gunshot Wounds.</li>
+    <li>ACEP Now. The Clinical Forensic Evaluation of Gunshot Wounds in the ED.</li>
+    <li>Archives of Pathology &amp; Laboratory Medicine. Practical Pathology of Gunshot Wounds.</li>
+    <li>Cannon L. Behind Armour Blunt Trauma: An Emerging Problem. J R Army Med Corps 2001;147(1):87-96.</li>
+    <li>NCBI Bookshelf (DARE). Is behind armour blunt trauma a real threat to users of body armour? A systematic review.</li>
+    <li>EAST Practice Management Guideline. Penetrating Zone II Neck Trauma.</li>
+    <li>REBEL EM / Core EM / Taming the SRU. Penetrating Neck Injuries reviews.</li>
+    <li>NCBI Bookshelf (StatPearls). Neck Trauma.</li>
+    <li>PMC. Contemporary Strategies in the Management of Civilian Neck Zone II Vascular Trauma.</li>
+    <li>LITFL. REBOA in Resuscitation.</li>
+    <li>Dove Medical Press. Is Occlusion the Solution? REBOA as a Hemorrhage Control Adjunct.</li>
+    <li>Journal of Trauma Injury. Case Series of Zone III REBOA in Traumatic Shock Patients.</li>
+    <li>Kauvar DS, et al. Utility of the Mangled Extremity Severity Score in Predicting Amputation in Military Lower Extremity Arterial Injury. Ann Vasc Surg.</li>
+    <li>EAST Landmark Papers in Trauma. Mangled Extremity (Helfet et al. 1990; Bosse et al. 2001).</li>
+    <li>Kim DY, Nguyen KT. Blast Injuries: A Review. Medscape Education.</li>
+    <li>Emergency War Surgery (Bowen TE, Bellamy RF, eds). US Government Printing Office, 1988.</li>
+    <li>Medscape. Blast Injuries: Background, Pathophysiology, Etiology.</li>
+    <li>Blast Injury Research Coordinating Office (BIRCO). What Is Blast Injury? DoD Directive 6025.21E.</li>
+    <li>Journal of Military and Veterans Health. Evolving mechanisms and patterns of blast injury.</li>
+    <li>National Academies. Gulf War and Health, Volume 9: Pathophysiology of Blast Injury. NCBI Bookshelf.</li>
+    <li>ScienceDirect Topics. Scaled Distance overview (Hopkinson-Cranz cube root scaling law).</li>
+    <li>Courtney A, Courtney M. The Complexity of Biomechanics Causing Primary Blast Induced TBI. Front Neurol 2015.</li>
+    <li>Rosenfeld JV, et al. Neurological Effects of Blast Injury.</li>
+    <li>Marsh JL, Bentil SA. Cerebrospinal Fluid Cavitation as a Mechanism of Blast Induced TBI. Front Neurol 2021.</li>
+    <li>SciELO. Civilian gunshot wounds of the spine: A literature review.</li>
+    <li>Wheeless' Textbook of Orthopaedics. Gunshot Injuries to the Lumbar Spine.</li>
+    <li>Musculoskeletal Key. Surgical Management Principles of Gunshot-Related Fractures.</li>
+    <li>AAST Critical Care Committee. Antibiotic prophylaxis in injury: a clinical consensus document. PMC11149135.</li>
+    <li>mriquestions.com. MR Safety Bullets.</li>
+    <li>Marino et al. Magnetic Resonance Imaging of Patients With Retained Ballistic Projectiles. J Magn Reson Imaging 2026.</li>
+    <li>NCBI Bookshelf (StatPearls). EMS Tactical Combat Casualty Care.</li>
+    <li>Eastridge BJ, et al. Death on the battlefield (2001&ndash;2011): implications for the future of combat casualty care. J Trauma 2012.</li>
+    <li>AAST/ACS-COT. Clinical Protocol for Damage Control Resuscitation for the Adult Trauma Patient. J Trauma Acute Care Surg 2024.</li>
+    <li>EAST Practice Management Guideline. Damage Control Resuscitation in Patients with Severe Traumatic Hemorrhage.</li>
+    <li>McGovern Medical School. Controlled Resuscitation in Trauma Patients Clinical Practice Guideline.</li>
+    <li>Approximate velocity and energy figures, not peer reviewed &mdash; ammunition manufacturer ballistics tables: Ammo.com, AmmunitionToGo, Sportsman's Warehouse, Gunvera, Military Factory small arms ballistics chart.</li>
+    <li>IronScout. 9mm Ballistics: Velocity, Energy &amp; Drop by Grain Weight. Firearm Wiki, Velocity by Barrel Length of Various Calibers.</li>
+    <li>Fackler ML, Surinchak JS, Malinowski JA, Bowen RE. Bullet fragmentation: a major cause of tissue disruption. J Trauma. 1984;24(1):35-39.</li>
+    <li>Fackler ML, Surinchak JS, Malinowski JA, Bowen RE. Wounding potential of the Russian AK-74 assault rifle. J Trauma. 1984;24(3):263-266. doi:10.1097/00005373-198403000-00014</li>
+    <li>Fackler ML, Bellamy RF, Malinowski JA. The wound profile: illustration of the missile-tissue interaction. J Trauma. 1988;28(1 Suppl):S21-29. doi:10.1097/00005373-198801001-00007</li>
+    <li>Fackler ML. Wound ballistics: a review of common misconceptions. JAMA. 1988;259(18):2730-2736. doi:10.1001/jama.259.18.2730</li>
+    <li>Hollerman JJ, Fackler ML, Coldwell DM, Ben-Menachem Y. Gunshot wounds: 1. Bullets, ballistics, and mechanisms of injury. AJR Am J Roentgenol. 1990;155(4):685-690. doi:10.2214/ajr.155.4.2119095</li>
+    <li>Hornady Manufacturing. Ballistic Gelatin Mixing Procedures Practiced by the FBI.</li>
+    <li>Hornady Law Enforcement. FBI Test Protocol.</li>
+    <li>Brassfetcher. FBI Ammunition Protocol.</li>
+    <li>Courtney M, Courtney A. History and Evidence Regarding Hydrostatic Shock, and Scientific Evidence for "Hydrostatic Shock." arXiv preprints (not peer reviewed).</li>
+  </ul>
+  <p class="src">Compiled for clinical and educational reference. Cross-check specific figures against current editions of PHTLS, TCCC guidelines, Emergency War Surgery, EAST/AAST practice guidelines, and primary literature before use in a protocol or teaching document.</p>
+</div>
+
+<footer>The Critical Vector · Direction and magnitude.</footer>
+</div>
+</body>
+</html>
