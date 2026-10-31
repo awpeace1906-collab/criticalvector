@@ -150,7 +150,7 @@
   margin-top: 48px;
   padding: 16px 20px;
   border-left: 3px solid var(--purple);
-  background: rgba(167,139,250,0.06);
+  background: color-mix(in srgb, var(--purple) 6%, transparent);
   border-radius: 0 6px 6px 0;
   font-family: var(--font-sans);
   font-size: 12px;
@@ -419,17 +419,17 @@
   border: 1px solid transparent;
   vertical-align: middle;
 }
-.badge-continuum   { color: var(--blue); background: rgba(96,165,250,0.08); border-color: rgba(96,165,250,0.2); }
+.badge-continuum   { color: var(--blue); background: var(--tag-blue-bg); border-color: var(--tag-blue-border); }
 .badge-prehospital { color: var(--green);  background: rgba(74,222,128,0.08);  border-color: rgba(74,222,128,0.2); }
-.badge-transfusion { color: var(--red);    background: rgba(248,113,113,0.09); border-color: rgba(248,113,113,0.22); }
-.badge-evidence    { color: var(--purple); background: rgba(167,139,250,0.1);  border-color: rgba(167,139,250,0.25); }
-.badge-critical    { color: var(--amber);  background: rgba(245,158,11,0.08);  border-color: rgba(245,158,11,0.2); }
+.badge-transfusion { color: var(--red);    background: var(--tag-red-bg); border-color: var(--tag-red-border); }
+.badge-evidence    { color: var(--purple); background: var(--tag-purple-bg);  border-color: var(--tag-purple-border); }
+.badge-critical    { color: var(--amber);  background: var(--tag-amber-bg);  border-color: var(--tag-amber-border); }
 
 /* ── cv-callout v2 ── */
 .cv-callout {
-  border: 1px solid rgba(45,212,191,0.18);
+  border: 1px solid color-mix(in srgb, var(--teal) 18%, transparent);
   border-left: 3px solid var(--teal);
-  background: rgba(45,212,191,0.06);
+  background: color-mix(in srgb, var(--teal) 6%, transparent);
   border-radius: var(--radius-sm);
   padding: 1.1rem 1.3rem;
   margin: 1.8rem 0;
@@ -438,14 +438,14 @@
   line-height: 1.65;
 }
 .cv-callout.warning {
-  border-color: rgba(245,158,11,0.2);
+  border-color: color-mix(in srgb, var(--amber) 20%, transparent);
   border-left-color: var(--amber);
-  background: rgba(245,158,11,0.06);
+  background: color-mix(in srgb, var(--amber) 6%, transparent);
 }
 .cv-callout.danger {
-  border-color: rgba(248,113,113,0.22);
+  border-color: color-mix(in srgb, var(--red) 22%, transparent);
   border-left-color: var(--red);
-  background: rgba(248,113,113,0.07);
+  background: color-mix(in srgb, var(--red) 7%, transparent);
 }
 .cv-callout .callout-label {
   display: block;
@@ -553,8 +553,8 @@
   flex-shrink: 0;
   margin-top: 0.1rem;
 }
-.ind-tag.hemo   { color: var(--teal);  background: rgba(45,212,191,0.08);  border: 1px solid rgba(45,212,191,0.18); }
-.ind-tag.injury { color: var(--red);   background: rgba(248,113,113,0.09); border: 1px solid rgba(248,113,113,0.22); }
+.ind-tag.hemo   { color: var(--teal);  background: var(--tag-teal-bg);  border: 1px solid var(--tag-teal-border); }
+.ind-tag.injury { color: var(--red);   background: var(--tag-red-bg); border: 1px solid var(--tag-red-border); }
 .ind-tag.image  { color: var(--green); background: rgba(74,222,128,0.08);  border: 1px solid rgba(74,222,128,0.2); }
 .ind-text { color: var(--text2); line-height: 1.5; }
 .ind-text strong { color: var(--text); font-weight: 600; }

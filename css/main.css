@@ -19,16 +19,36 @@
   --text: #e8edf5;
   --text2: #8a9ab5;
   --text3: #4a5670;
-  --tag-teal-bg: rgba(0,212,170,0.1);
-  --tag-teal-text: #00d4aa;
-  --tag-teal-border: rgba(0,212,170,0.2);
-  --tag-blue-bg: rgba(37,99,235,0.12);
-  --tag-blue-text: #60a5fa;
-  --tag-blue-border: rgba(37,99,235,0.25);
   --font-sans: 'Syne', sans-serif;
   --font-serif: 'Source Serif 4', serif;
   --radius: 10px;
   --radius-sm: 6px;
+  --tag-alpha: 10%;
+  --tag-border-alpha: 22%;
+
+  /* Pill tints derived from the hue tokens. data-theme sits on <html>,
+     so these recompute from the light values without redeclaring. */
+  --tag-teal-bg:     color-mix(in srgb, var(--teal) var(--tag-alpha), transparent);
+  --tag-teal-border: color-mix(in srgb, var(--teal) var(--tag-border-alpha), transparent);
+  --tag-teal-text:   var(--teal);
+  --tag-blue-bg:     color-mix(in srgb, var(--blue) var(--tag-alpha), transparent);
+  --tag-blue-border: color-mix(in srgb, var(--blue) var(--tag-border-alpha), transparent);
+  --tag-blue-text:   var(--blue);
+  --tag-amber-bg:     color-mix(in srgb, var(--amber) var(--tag-alpha), transparent);
+  --tag-amber-border: color-mix(in srgb, var(--amber) var(--tag-border-alpha), transparent);
+  --tag-amber-text:   var(--amber);
+  --tag-purple-bg:     color-mix(in srgb, var(--purple) var(--tag-alpha), transparent);
+  --tag-purple-border: color-mix(in srgb, var(--purple) var(--tag-border-alpha), transparent);
+  --tag-purple-text:   var(--purple);
+  --tag-red-soft-bg:     color-mix(in srgb, var(--red-soft) var(--tag-alpha), transparent);
+  --tag-red-soft-border: color-mix(in srgb, var(--red-soft) var(--tag-border-alpha), transparent);
+  --tag-red-soft-text:   var(--red-soft);
+  --tag-red-bg:     color-mix(in srgb, var(--red) var(--tag-alpha), transparent);
+  --tag-red-border: color-mix(in srgb, var(--red) var(--tag-border-alpha), transparent);
+  --tag-red-text:   var(--red);
+  --tag-neutral-bg:     color-mix(in srgb, var(--text2) var(--tag-alpha), transparent);
+  --tag-neutral-border: color-mix(in srgb, var(--text2) var(--tag-border-alpha), transparent);
+  --tag-neutral-text:   var(--text2);
 }
 
 [data-theme="light"] {
@@ -44,15 +64,11 @@
   --red: #c53030;
   --amber: #b45309;
   --red-soft: #dc2626;
+  --tag-alpha: 8%;
+  --tag-border-alpha: 20%;
   --text: #0f1923;
   --text2: #4a5670;
   --text3: #9aa3b5;
-  --tag-teal-bg: rgba(0,166,136,0.08);
-  --tag-teal-text: #007a63;
-  --tag-teal-border: rgba(0,166,136,0.2);
-  --tag-blue-bg: rgba(29,78,216,0.07);
-  --tag-blue-text: #1d4ed8;
-  --tag-blue-border: rgba(29,78,216,0.2);
 }
 
 /* ── RESET ── */
@@ -272,9 +288,9 @@ img { max-width: 100%; display: block; }
   border: 1px solid var(--tag-blue-border);
 }
 .tag-default {
-  background: rgba(138,154,181,0.1);
+  background: var(--tag-neutral-bg);
   color: var(--text2);
-  border: 1px solid rgba(138,154,181,0.15);
+  border: 1px solid var(--tag-neutral-border);
 }
 
 /* ── LAYOUT ── */
@@ -376,14 +392,14 @@ img { max-width: 100%; display: block; }
   border-radius: 3px;
 }
 .badge-teal {
-  background: rgba(0,212,170,0.12);
+  background: var(--tag-teal-bg);
   color: var(--tag-teal-text);
-  border: 1px solid rgba(0,212,170,0.25);
+  border: 1px solid var(--tag-teal-border);
 }
 .badge-blue {
-  background: rgba(37,99,235,0.1);
+  background: var(--tag-blue-bg);
   color: var(--tag-blue-text);
-  border: 1px solid rgba(37,99,235,0.2);
+  border: 1px solid var(--tag-blue-border);
 }
 
 /* ── POST LIST ── */
@@ -511,9 +527,9 @@ img { max-width: 100%; display: block; }
   justify-content: center;
   font-size: 14px;
 }
-.icon-app { background: rgba(37,99,235,0.12); }
-.icon-html { background: rgba(0,212,170,0.1); }
-.icon-pdf { background: rgba(232,76,76,0.1); }
+.icon-app { background: var(--tag-blue-bg); }
+.icon-html { background: var(--tag-teal-bg); }
+.icon-pdf { background: var(--tag-red-soft-bg); }
 
 .cv-resource-name {
   font-size: 13px;
@@ -811,14 +827,10 @@ img { max-width: 100%; display: block; }
   padding: 4px 10px;
   border-radius: 4px;
 }
-.htag.prehospital { background: rgba(232,76,76,0.1);  color: var(--red-soft); border: 1px solid rgba(232,76,76,0.2); }
-.htag.em          { background: rgba(37,99,235,0.1);  color: var(--blue); border: 1px solid rgba(37,99,235,0.2); }
-.htag.cc          { background: rgba(167,139,250,0.1);color: var(--purple); border: 1px solid rgba(167,139,250,0.2); }
-.htag.anes        { background: rgba(0,212,170,0.1);  color: var(--teal); border: 1px solid rgba(0,212,170,0.2); }
-[data-theme="light"] .htag.prehospital { background: rgba(220,38,38,0.08); }
-[data-theme="light"] .htag.em          { background: rgba(29,78,216,0.08); }
-[data-theme="light"] .htag.cc          { color: var(--purple); background: rgba(124,58,237,0.08); }
-[data-theme="light"] .htag.anes        { color: #00a688; background: rgba(0,166,136,0.08); }
+.htag.prehospital { background: var(--tag-red-soft-bg);  color: var(--red-soft); border: 1px solid var(--tag-red-soft-border); }
+.htag.em          { background: var(--tag-blue-bg);  color: var(--blue); border: 1px solid var(--tag-blue-border); }
+.htag.cc          { background: var(--tag-purple-bg);color: var(--purple); border: 1px solid var(--tag-purple-border); }
+.htag.anes        { background: var(--tag-teal-bg);  color: var(--teal); border: 1px solid var(--tag-teal-border); }
 
 /* ── MAIN GRID (index.html) ── */
 .main-grid {
@@ -914,11 +926,11 @@ img { max-width: 100%; display: block; }
 .read-more:hover { gap: 10px; }
 
 /* ── BADGE VARIANTS ── */
-.badge.fresh { background: rgba(0,212,170,0.12); color: var(--teal); border: 1px solid rgba(0,212,170,0.25); }
-.badge.cont  { background: rgba(37,99,235,0.1);  color: var(--blue);       border: 1px solid rgba(37,99,235,0.2); }
-.badge.pre   { background: rgba(232,76,76,0.1);  color: var(--red-soft);       border: 1px solid rgba(232,76,76,0.2); }
-.badge.cc-badge { background: rgba(167,139,250,0.1); color: var(--purple);   border: 1px solid rgba(167,139,250,0.2); }
-.badge.amb   { background: rgba(245,158,11,0.1); color: var(--amber);  border: 1px solid rgba(245,158,11,0.2); }
+.badge.fresh { background: var(--tag-teal-bg); color: var(--teal); border: 1px solid var(--tag-teal-border); }
+.badge.cont  { background: var(--tag-blue-bg);  color: var(--blue);       border: 1px solid var(--tag-blue-border); }
+.badge.pre   { background: var(--tag-red-soft-bg);  color: var(--red-soft);       border: 1px solid var(--tag-red-soft-border); }
+.badge.cc-badge { background: var(--tag-purple-bg); color: var(--purple);   border: 1px solid var(--tag-purple-border); }
+.badge.amb   { background: var(--tag-amber-bg); color: var(--amber);  border: 1px solid var(--tag-amber-border); }
 [data-theme="light"] .badge.fresh { color: #00a688; }
 [data-theme="light"] .badge.cc-badge { color: var(--purple); }
 
@@ -1125,11 +1137,11 @@ img { max-width: 100%; display: block; }
   justify-content: center;
   font-size: 15px;
 }
-.teal-ico   { background: rgba(0,212,170,0.1); }
-.red-ico    { background: rgba(232,76,76,0.1); }
-.blue-ico   { background: rgba(37,99,235,0.1); }
-.amber-ico  { background: rgba(245,158,11,0.1); }
-.purple-ico { background: rgba(167,139,250,0.1); }
+.teal-ico   { background: var(--tag-teal-bg); }
+.red-ico    { background: var(--tag-red-soft-bg); }
+.blue-ico   { background: var(--tag-blue-bg); }
+.amber-ico  { background: var(--tag-amber-bg); }
+.purple-ico { background: var(--tag-purple-bg); }
 .rname {
   font-family: var(--font-sans);
   font-size: 13px;
@@ -1185,14 +1197,6 @@ img { max-width: 100%; display: block; }
   font-size: 16px;
   font-style: italic;
   color: var(--text2);
-}
-
-/* ── ALIASES ── */
-:root {
-  --red-tag: var(--red);
-}
-[data-theme="light"] {
-  --red-tag: var(--red);
 }
 
 /* ── RESPONSIVE ── */
