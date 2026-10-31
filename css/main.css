@@ -225,7 +225,7 @@ img { max-width: 100%; display: block; }
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--teal);
+  color: var(--teal-deep);
   margin-bottom: 20px;
   display: flex;
   align-items: center;
@@ -378,7 +378,7 @@ img { max-width: 100%; display: block; }
   font-weight: 700;
   letter-spacing: 0.07em;
   text-transform: uppercase;
-  color: var(--teal);
+  color: var(--teal-deep);
   transition: gap 0.15s;
 }
 .cv-read-more::after { content: '→'; }
@@ -433,7 +433,7 @@ img { max-width: 100%; display: block; }
   text-transform: uppercase;
   margin-bottom: 4px;
 }
-.cv-post-type.teal { color: var(--teal); }
+.cv-post-type.teal { color: var(--teal-deep); }
 .cv-post-type.blue { color: var(--tag-blue-text); }
 .cv-post-type.red { color: var(--red-soft); }
 .cv-post-type.amber { color: #fbbf24; }
@@ -575,7 +575,7 @@ img { max-width: 100%; display: block; }
   color: var(--text3);
   transition: color 0.15s;
 }
-.cv-footer-right a:hover { color: var(--teal); }
+.cv-footer-right a:hover { color: var(--teal-deep); }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 860px) {
@@ -657,7 +657,7 @@ img { max-width: 100%; display: block; }
 }
 .nav-links a:hover, .nav-link:hover { color: var(--text); }
 .nav-link.continuum:hover { color: var(--blue); }
-.nav-link.workshop:hover  { color: var(--teal); }
+.nav-link.workshop:hover  { color: var(--teal-deep); }
 .nav-link.locker:hover    { color: var(--amber); }
 .nav-link.flightdeck:hover{ color: var(--red-soft); }
 .nav-link.stack:hover     { color: var(--purple); }
@@ -751,7 +751,7 @@ img { max-width: 100%; display: block; }
   transition: color 0.15s;
   font-family: var(--font-sans);
 }
-.footer-right a:hover { color: var(--teal); }
+.footer-right a:hover { color: var(--teal-deep); }
 
 /* ── HERO (index.html) ── */
 .hero {
@@ -774,7 +774,7 @@ img { max-width: 100%; display: block; }
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--teal);
+  color: var(--teal-deep);
   margin-bottom: 20px;
   display: flex;
   align-items: center;
@@ -867,11 +867,11 @@ img { max-width: 100%; display: block; }
   background: var(--border);
 }
 .section-label.continuum-label { color: var(--blue); }
-.section-label.workshop-label  { color: var(--teal); }
+.section-label.workshop-label  { color: var(--teal-deep); }
 .section-label.locker-label    { color: var(--amber); }
 .section-label.flightdeck-label{ color: var(--red-soft); }
 .section-label.stack-label     { color: var(--purple); }
-.section-label.about-label     { color: var(--teal); }
+.section-label.about-label     { color: var(--teal-deep); }
 
 /* ── FEATURED CARD ── */
 .featured-card {
@@ -921,7 +921,7 @@ img { max-width: 100%; display: block; }
   font-weight: 700;
   letter-spacing: 0.07em;
   text-transform: uppercase;
-  color: var(--teal);
+  color: var(--teal-deep);
   text-decoration: none;
   transition: gap 0.15s;
 }
@@ -968,7 +968,7 @@ img { max-width: 100%; display: block; }
 .post-type.cc-type          { color: var(--purple); }
 .post-type.locker-type      { color: var(--amber); }
 .post-type.flightdeck-type  { color: var(--red-soft); }
-.post-type.workshop-type    { color: var(--teal); }
+.post-type.workshop-type    { color: var(--teal-deep); }
 [data-theme="light"] .post-type.cc-type          { color: var(--purple); }
 .post-title {
   font-family: var(--font-sans);
@@ -979,7 +979,7 @@ img { max-width: 100%; display: block; }
   margin-bottom: 3px;
 }
 .continuum-row  .post-title { color: var(--blue); }
-.workshop-row   .post-title { color: var(--teal); }
+.workshop-row   .post-title { color: var(--teal-deep); }
 .locker-row     .post-title { color: var(--amber); }
 .flightdeck-row .post-title { color: var(--red-soft); }
 [data-stack] .rname         { color: var(--purple); }
@@ -1043,7 +1043,7 @@ img { max-width: 100%; display: block; }
   color: var(--text3);
   margin-bottom: 8px;
 }
-.about-bio a { color: var(--teal); text-decoration: none; font-style: normal; }
+.about-bio a { color: var(--teal-deep); text-decoration: none; font-style: normal; }
 .about-bio {
   font-family: var(--font-serif);
   font-size: 13px;
@@ -1069,7 +1069,7 @@ img { max-width: 100%; display: block; }
   padding: 14px 16px 10px;
   border-bottom: 1px solid var(--border);
 }
-.sidebar-title.workshop-label { color: var(--teal); }
+.sidebar-title.workshop-label { color: var(--teal-deep); }
 .sidebar-title.stack-label    { color: var(--purple); }
 
 .sec-row {
@@ -1097,7 +1097,7 @@ img { max-width: 100%; display: block; }
   color: var(--text);
 }
 .sec-name.continuum-name  { color: var(--blue); }
-.sec-name.workshop-name   { color: var(--teal); }
+.sec-name.workshop-name   { color: var(--teal-deep); }
 .sec-name.locker-name     { color: var(--amber); }
 .sec-name.flightdeck-name { color: var(--red-soft); }
 .sec-name.stack-name      { color: var(--purple); }
