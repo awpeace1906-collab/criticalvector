@@ -7,7 +7,7 @@ A blog at the intersection of emergency medicine, anesthesiology, critical care,
 ## Sections
 
 - **The Continuum** — Case breakdowns and clinical writing spanning prehospital → ED → OR → ICU
-- **Projects** — Tools, apps, and clinical guides (AnesCalc, HTML study guides, etc.)
+- **Projects** — Tools, apps, and clinical guides (web apps, HTML study guides, etc.)
 - **Research** — Paper summaries, case reports, literature reviews
 - **From the Flight Deck** — Field essays and personal perspective
 

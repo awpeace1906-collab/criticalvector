@@ -1,4 +1,4 @@
-# The Critical Vector: colour token spec
+# The Critical Vector: color token spec
 
 Status: canon. Every Critical Vector change follows these rules.
 Source of truth: `css/main.css` → `:root` (dark, default) and `[data-theme="light"]`.
@@ -7,7 +7,7 @@ Source of truth: `css/main.css` → `:root` (dark, default) and `[data-theme="li
 
 | Token | Dark | Light | Role |
 |---|---|---|---|
-| `--teal` | `#00d4aa` | `#00a688` | Primary brand colour. The Workshop. Logo mark, links, "magnitude" in the hero, focus and hover accents. |
+| `--teal` | `#00d4aa` | `#00a688` | Primary brand color. The Workshop. Logo mark, links, "magnitude" in the hero, focus and hover accents. |
 | `--blue` | `#60a5fa` | `#1d4ed8` | The Continuum. |
 | `--amber` | `#f59e0b` | `#b45309` | The Evidence Locker (the "yellow"). |
 | `--red` | `#e84c4c` | `#c53030` | Reserved for alerts, warnings and error flags (danger callouts, injury and transfusion pills). |
@@ -20,7 +20,7 @@ Retired: `--accent` (now `--teal`) and `--accent2` (now `--blue`). Do not reintr
 | Token | Dark | Light | Use |
 |---|---|---|---|
 | `--teal-deep` | `#00d4aa` | `#007a63` | Teal for small text on light surfaces (pills, captions); dark value = `--teal`. Feeds `--tag-teal-text`. Use for any teal text under ~16px (labels, meta, small links, hover states); keep `--teal` for large text, headings, the logo, borders, icons and fills. |
-| `--blue-deep` | `#2563eb` | `#1d4ed8` | Only the end stop of the teal→blue gradient stripe (About card). Not a section colour. |
+| `--blue-deep` | `#2563eb` | `#1d4ed8` | Only the end stop of the teal→blue gradient stripe (About card). Not a section color. |
 | `--red-soft` | `#f87171` | `#dc2626` | From the Flight Deck identity: page title, sidebar dot, section label, post-type, nav hover, htags, badges, sidebar name, list link titles. Not for alerts. |
 | `--bg` | `#0a0e14` | `#f4f5f7` | Page background |
 | `--surface` | `#111720` | `#ffffff` | Cards, nav, footer |
@@ -51,7 +51,7 @@ Non-pill tints (callouts, disclaimers) use the same formula with a fixed percent
 
 Typography tokens: `--font-sans: 'Syne'`, `--font-serif: 'Source Serif 4'`. Radii: `--radius: 10px`, `--radius-sm: 6px`.
 
-## 3. Section → colour map
+## 3. Section → color map
 
 | Section | Token | Applies to |
 |---|---|---|
@@ -64,21 +64,21 @@ Typography tokens: `--font-sans: 'Syne'`, `--font-serif: 'Source Serif 4'`. Radi
 Rules:
 - Section **labels** always use the section token. `--red` stays reserved for alerts and warnings, so Flight Deck labels use `--red-soft`.
 - No label rule hardcodes a hex or needs a `[data-theme="light"]` override; the token carries both modes.
-- A post's list label and link title always use its section colour (`typeClass = <section>-type`, row class `<section>-row`). The guide/post page itself is not recoloured.
+- A post's list label and link title always use its section color (`typeClass = <section>-type`, row class `<section>-row`). The guide/post page itself is not recolored.
 - Light mode uses the darker value of the same token. Never hardcode a dark-mode hex in a rule that also renders in light mode.
 
 ## 4. Guide pages (library/)
 
 - Each standalone guide defines the same five brand tokens in its own `:root`, with light values in `@media print` (the print light-mode swap).
-- Tints: `--t-teal`, `--t-blue`, `--t-red`, `--t-amber`, `--t-purple` (≈7–10% alpha of the brand colour) for box and section backgrounds.
-- `--hue` (with `--hue-dark`, `--hue-tint`, `--hue-border` in the binders) is a per-section **slot**, not a brand colour. A section sets `style="--hue:…"` or a class like `.c-red`, and its borders and labels read `var(--hue, var(--teal))`. Never name this slot after a brand token.
+- Tints: `--t-teal`, `--t-blue`, `--t-red`, `--t-amber`, `--t-purple` (≈7–10% alpha of the brand color) for box and section backgrounds.
+- `--hue` (with `--hue-dark`, `--hue-tint`, `--hue-border` in the binders) is a per-section **slot**, not a brand color. A section sets `style="--hue:…"` or a class like `.c-red`, and its borders and labels read `var(--hue, var(--teal))`. Never name this slot after a brand token.
 
 ## 5. Naming conventions
 
-- Brand colours are named by hue (`--teal`, `--blue`, `--amber`, `--red`, `--purple`), never by role (`--accent`, `--primary`).
+- Brand colors are named by hue (`--teal`, `--blue`, `--amber`, `--red`, `--purple`), never by role (`--accent`, `--primary`).
 - Shades of a brand hue get a suffix (`--blue-deep`). Tints get a `--t-` prefix. Tag pill sets get a `--tag-<hue>-bg/-text/-border` pattern.
-- Component slots that take any colour get a neutral name (`--hue`).
-- Pill and tint colours are a `color-mix()` of the hue token, never a raw `rgba()` or hex.
+- Component slots that take any color get a neutral name (`--hue`).
+- Pill and tint colors are a `color-mix()` of the hue token, never a raw `rgba()` or hex.
 - No alias tokens. `--red-tag` and the accent tokens are retired; reference the canonical token directly.
 
 ## 6. Known gaps
