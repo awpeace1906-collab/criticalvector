@@ -15,6 +15,7 @@
   --purple: #a78bfa;
   --red: #e84c4c;
   --amber: #f59e0b;
+  --red-soft: #f87171;
   --text: #e8edf5;
   --text2: #8a9ab5;
   --text3: #4a5670;
@@ -42,6 +43,7 @@
   --purple: #7c3aed;
   --red: #c53030;
   --amber: #b45309;
+  --red-soft: #dc2626;
   --text: #0f1923;
   --text2: #4a5670;
   --text3: #9aa3b5;
@@ -415,7 +417,7 @@ img { max-width: 100%; display: block; }
 }
 .cv-post-type.teal { color: var(--teal); }
 .cv-post-type.blue { color: var(--tag-blue-text); }
-.cv-post-type.red { color: #f87171; }
+.cv-post-type.red { color: var(--red-soft); }
 .cv-post-type.amber { color: #fbbf24; }
 [data-theme="light"] .cv-post-type.red { color: var(--red); }
 [data-theme="light"] .cv-post-type.amber { color: var(--amber); }
@@ -636,10 +638,10 @@ img { max-width: 100%; display: block; }
   white-space: nowrap;
 }
 .nav-links a:hover, .nav-link:hover { color: var(--text); }
-.nav-link.continuum:hover { color: var(--blue, #60a5fa); }
+.nav-link.continuum:hover { color: var(--blue); }
 .nav-link.workshop:hover  { color: var(--teal); }
 .nav-link.locker:hover    { color: var(--amber); }
-.nav-link.flightdeck:hover{ color: var(--red); }
+.nav-link.flightdeck:hover{ color: var(--red-soft); }
 .nav-link.stack:hover     { color: var(--purple); }
 
 .nav-hamburger {
@@ -809,12 +811,12 @@ img { max-width: 100%; display: block; }
   padding: 4px 10px;
   border-radius: 4px;
 }
-.htag.prehospital { background: rgba(232,76,76,0.1);  color: #f87171; border: 1px solid rgba(232,76,76,0.2); }
-.htag.em          { background: rgba(37,99,235,0.1);  color: #60a5fa; border: 1px solid rgba(37,99,235,0.2); }
+.htag.prehospital { background: rgba(232,76,76,0.1);  color: var(--red-soft); border: 1px solid rgba(232,76,76,0.2); }
+.htag.em          { background: rgba(37,99,235,0.1);  color: var(--blue); border: 1px solid rgba(37,99,235,0.2); }
 .htag.cc          { background: rgba(167,139,250,0.1);color: var(--purple); border: 1px solid rgba(167,139,250,0.2); }
 .htag.anes        { background: rgba(0,212,170,0.1);  color: var(--teal); border: 1px solid rgba(0,212,170,0.2); }
-[data-theme="light"] .htag.prehospital { color: #dc2626; background: rgba(220,38,38,0.08); }
-[data-theme="light"] .htag.em          { color: #1d4ed8; background: rgba(29,78,216,0.08); }
+[data-theme="light"] .htag.prehospital { background: rgba(220,38,38,0.08); }
+[data-theme="light"] .htag.em          { background: rgba(29,78,216,0.08); }
 [data-theme="light"] .htag.cc          { color: var(--purple); background: rgba(124,58,237,0.08); }
 [data-theme="light"] .htag.anes        { color: #00a688; background: rgba(0,166,136,0.08); }
 
@@ -850,11 +852,11 @@ img { max-width: 100%; display: block; }
   height: 1px;
   background: var(--border);
 }
-.section-label.continuum-label { color: #60a5fa; }
+.section-label.continuum-label { color: var(--blue); }
 .section-label.workshop-label  { color: var(--teal); }
 .section-label.locker-label    { color: var(--amber); }
-.section-label.flightdeck-label{ color: var(--red); }
-.section-label.stack-label     { color: #a78bfa; }
+.section-label.flightdeck-label{ color: var(--red-soft); }
+.section-label.stack-label     { color: var(--purple); }
 .section-label.about-label     { color: var(--teal); }
 
 /* ── FEATURED CARD ── */
@@ -913,13 +915,11 @@ img { max-width: 100%; display: block; }
 
 /* ── BADGE VARIANTS ── */
 .badge.fresh { background: rgba(0,212,170,0.12); color: var(--teal); border: 1px solid rgba(0,212,170,0.25); }
-.badge.cont  { background: rgba(37,99,235,0.1);  color: #60a5fa;       border: 1px solid rgba(37,99,235,0.2); }
-.badge.pre   { background: rgba(232,76,76,0.1);  color: #f87171;       border: 1px solid rgba(232,76,76,0.2); }
+.badge.cont  { background: rgba(37,99,235,0.1);  color: var(--blue);       border: 1px solid rgba(37,99,235,0.2); }
+.badge.pre   { background: rgba(232,76,76,0.1);  color: var(--red-soft);       border: 1px solid rgba(232,76,76,0.2); }
 .badge.cc-badge { background: rgba(167,139,250,0.1); color: var(--purple);   border: 1px solid rgba(167,139,250,0.2); }
 .badge.amb   { background: rgba(245,158,11,0.1); color: var(--amber);  border: 1px solid rgba(245,158,11,0.2); }
 [data-theme="light"] .badge.fresh { color: #00a688; }
-[data-theme="light"] .badge.pre   { color: #dc2626; }
-[data-theme="light"] .badge.cont  { color: #1d4ed8; }
 [data-theme="light"] .badge.cc-badge { color: var(--purple); }
 
 /* ── POST LIST & ROWS ── */
@@ -951,16 +951,13 @@ img { max-width: 100%; display: block; }
   text-transform: uppercase;
   margin-bottom: 4px;
 }
-.post-type.prehospital-type { color: #f87171; }
-.post-type.continuum-type   { color: #60a5fa; }
+.post-type.prehospital-type { color: var(--red-soft); }
+.post-type.continuum-type   { color: var(--blue); }
 .post-type.cc-type          { color: var(--purple); }
 .post-type.locker-type      { color: var(--amber); }
-.post-type.flightdeck-type  { color: #f87171; }
+.post-type.flightdeck-type  { color: var(--red-soft); }
 .post-type.workshop-type    { color: var(--teal); }
-[data-theme="light"] .post-type.prehospital-type { color: #dc2626; }
-[data-theme="light"] .post-type.continuum-type   { color: #1d4ed8; }
 [data-theme="light"] .post-type.cc-type          { color: var(--purple); }
-[data-theme="light"] .post-type.flightdeck-type  { color: #dc2626; }
 .post-title {
   font-family: var(--font-sans);
   font-size: 14px;
@@ -972,7 +969,7 @@ img { max-width: 100%; display: block; }
 .continuum-row  .post-title { color: var(--blue); }
 .workshop-row   .post-title { color: var(--teal); }
 .locker-row     .post-title { color: var(--amber); }
-.flightdeck-row .post-title { color: var(--red-tag); }
+.flightdeck-row .post-title { color: var(--red-soft); }
 [data-stack] .rname         { color: var(--purple); }
 .post-meta {
   font-family: var(--font-sans);
@@ -1061,7 +1058,7 @@ img { max-width: 100%; display: block; }
   border-bottom: 1px solid var(--border);
 }
 .sidebar-title.workshop-label { color: var(--teal); }
-.sidebar-title.stack-label    { color: #a78bfa; }
+.sidebar-title.stack-label    { color: var(--purple); }
 
 .sec-row {
   display: flex;
@@ -1087,11 +1084,11 @@ img { max-width: 100%; display: block; }
   font-weight: 600;
   color: var(--text);
 }
-.sec-name.continuum-name  { color: #60a5fa; }
+.sec-name.continuum-name  { color: var(--blue); }
 .sec-name.workshop-name   { color: var(--teal); }
 .sec-name.locker-name     { color: var(--amber); }
-.sec-name.flightdeck-name { color: #f87171; }
-.sec-name.stack-name      { color: #a78bfa; }
+.sec-name.flightdeck-name { color: var(--red-soft); }
+.sec-name.stack-name      { color: var(--purple); }
 .sec-count {
   margin-left: 8px;
   font-size: 10px;

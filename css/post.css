@@ -419,7 +419,7 @@
   border: 1px solid transparent;
   vertical-align: middle;
 }
-.badge-continuum   { color: var(--blue, #60a5fa); background: rgba(96,165,250,0.08); border-color: rgba(96,165,250,0.2); }
+.badge-continuum   { color: var(--blue); background: rgba(96,165,250,0.08); border-color: rgba(96,165,250,0.2); }
 .badge-prehospital { color: var(--green);  background: rgba(74,222,128,0.08);  border-color: rgba(74,222,128,0.2); }
 .badge-transfusion { color: var(--red);    background: rgba(248,113,113,0.09); border-color: rgba(248,113,113,0.22); }
 .badge-evidence    { color: var(--purple); background: rgba(167,139,250,0.1);  border-color: rgba(167,139,250,0.25); }
