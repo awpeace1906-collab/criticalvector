@@ -125,7 +125,7 @@ ${badges}
   // ── Section counts in the sidebar (entries listed on each page) ──
   for (const section of Object.keys(SECTIONS)) {
     const page = fs.readFileSync(path.join(ROOT, SECTIONS[section]), 'utf8');
-    const n = (page.match(/class="post-row"/g) || []).length;
+    const n = (page.match(/class="post-row[ "]/g) || []).length;
     index = index.replace(
       new RegExp(`(<span class="sec-count" data-section="${section}">)[^<]*(</span>)`),
       `$1${n}$2`);

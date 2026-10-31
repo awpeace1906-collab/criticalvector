@@ -21,7 +21,7 @@
   color: var(--text3);
   transition: color 0.15s;
 }
-.cv-back:hover { color: var(--accent); }
+.cv-back:hover { color: var(--teal); }
 
 .cv-post-tags { display: flex; gap: 8px; }
 
@@ -33,7 +33,7 @@
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--teal);
   margin-bottom: 14px;
   display: flex;
   align-items: center;
@@ -44,7 +44,7 @@
   display: inline-block;
   width: 18px;
   height: 1px;
-  background: var(--accent);
+  background: var(--teal);
 }
 
 .cv-post h1,
@@ -69,7 +69,7 @@
   color: var(--text3);
 }
 .cv-post-source a {
-  color: var(--accent);
+  color: var(--teal);
   text-decoration: underline;
   text-underline-offset: 2px;
 }
@@ -98,7 +98,7 @@
 .cv-post-body em { font-style: italic; }
 
 .cv-post-body a {
-  color: var(--accent);
+  color: var(--teal);
   text-decoration: underline;
   text-underline-offset: 2px;
 }
@@ -106,7 +106,7 @@
 .cv-post-citation {
   margin-top: 48px;
   padding: 16px 20px;
-  border-left: 3px solid var(--accent);
+  border-left: 3px solid var(--teal);
   background: var(--surface);
   border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
   font-family: var(--font-sans) !important;
@@ -115,7 +115,7 @@
   line-height: 1.65 !important;
   color: var(--text3) !important;
 }
-.cv-post-citation a { color: var(--accent) !important; }
+.cv-post-citation a { color: var(--teal) !important; }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 600px) {

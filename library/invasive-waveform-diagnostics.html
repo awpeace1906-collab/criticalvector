@@ -12,11 +12,6 @@
     --surface: #161b22;
     --surface2: #1c2230;
     --border: #2a3441;
-    --accent: #58c4dc;
-    --accent2: #f0a05a;
-    --accent3: #7ee787;
-    --accent4: #e05c6a;
-    --accent5: #bf91f3;
     --text: #e6edf3;
     --text-dim: #7d8590;
     --text-mid: #b0bbc5;
@@ -47,7 +42,7 @@
     font-family: var(--mono);
     font-size: 0.72rem;
     letter-spacing: 0.14em;
-    color: var(--accent);
+    color: var(--teal);
     text-transform: uppercase;
   }
   header h1 {
@@ -91,7 +86,7 @@
   .section-num {
     font-family: var(--mono);
     font-size: 0.72rem;
-    color: var(--accent);
+    color: var(--teal);
     background: rgba(88,196,220,0.1);
     border: 1px solid rgba(88,196,220,0.3);
     border-radius: 4px;
@@ -107,7 +102,7 @@
   /* ── PROSE ───────────────────────────────── */
   p { color: var(--text-mid); margin-bottom: 1rem; max-width: 90ch; }
   p strong { color: var(--text); }
-  p em { color: var(--accent); font-style: normal; font-weight: 500; }
+  p em { color: var(--teal); font-style: normal; font-weight: 500; }
 
   /* ── SVG WAVEFORM CONTAINER ─────────────── */
   .wave-container {
@@ -122,7 +117,7 @@
     font-family: var(--mono);
     font-size: 0.72rem;
     letter-spacing: 0.1em;
-    color: var(--accent);
+    color: var(--teal);
     text-transform: uppercase;
     margin-bottom: 0.8rem;
   }
@@ -148,11 +143,11 @@
     top: 0; left: 0; right: 0;
     height: 3px;
   }
-  .comp-card.blue::before  { background: var(--accent); }
-  .comp-card.orange::before { background: var(--accent2); }
-  .comp-card.green::before { background: var(--accent3); }
-  .comp-card.red::before   { background: var(--accent4); }
-  .comp-card.purple::before { background: var(--accent5); }
+  .comp-card.blue::before  { background: var(--teal); }
+  .comp-card.orange::before { background: var(--amber); }
+  .comp-card.green::before { background: var(--blue); }
+  .comp-card.red::before   { background: var(--red); }
+  .comp-card.purple::before { background: var(--purple); }
   .comp-card h3 {
     font-size: 0.88rem;
     font-weight: 600;
@@ -217,10 +212,10 @@
     border-radius: 4px;
     border: 1px solid;
   }
-  .pill-blue  { color: var(--accent);  border-color: rgba(88,196,220,0.4); background: rgba(88,196,220,0.08); }
-  .pill-orange{ color: var(--accent2); border-color: rgba(240,160,90,0.4);  background: rgba(240,160,90,0.08); }
-  .pill-red   { color: var(--accent4); border-color: rgba(224,92,106,0.4);  background: rgba(224,92,106,0.08); }
-  .pill-green { color: var(--accent3); border-color: rgba(126,231,135,0.4); background: rgba(126,231,135,0.08); }
+  .pill-blue  { color: var(--teal);  border-color: rgba(88,196,220,0.4); background: rgba(88,196,220,0.08); }
+  .pill-orange{ color: var(--amber); border-color: rgba(240,160,90,0.4);  background: rgba(240,160,90,0.08); }
+  .pill-red   { color: var(--red); border-color: rgba(224,92,106,0.4);  background: rgba(224,92,106,0.08); }
+  .pill-green { color: var(--blue); border-color: rgba(126,231,135,0.4); background: rgba(126,231,135,0.08); }
 
   /* ── CALLOUT BOXES ───────────────────────── */
   .callout {
@@ -230,11 +225,11 @@
     margin: 1.4rem 0;
     background: var(--surface);
   }
-  .callout.info   { border-color: var(--accent);  background: rgba(88,196,220,0.06); }
-  .callout.warn   { border-color: var(--accent2); background: rgba(240,160,90,0.06); }
-  .callout.danger { border-color: var(--accent4); background: rgba(224,92,106,0.06); }
-  .callout.tip    { border-color: var(--accent3); background: rgba(126,231,135,0.06); }
-  .callout.purple { border-color: var(--accent5); background: rgba(191,145,243,0.06); }
+  .callout.info   { border-color: var(--teal);  background: rgba(88,196,220,0.06); }
+  .callout.warn   { border-color: var(--amber); background: rgba(240,160,90,0.06); }
+  .callout.danger { border-color: var(--red); background: rgba(224,92,106,0.06); }
+  .callout.tip    { border-color: var(--blue); background: rgba(126,231,135,0.06); }
+  .callout.purple { border-color: var(--purple); background: rgba(191,145,243,0.06); }
   .callout-head {
     font-family: var(--mono);
     font-size: 0.7rem;
@@ -243,11 +238,11 @@
     margin-bottom: 0.4rem;
     font-weight: 600;
   }
-  .callout.info   .callout-head { color: var(--accent); }
-  .callout.warn   .callout-head { color: var(--accent2); }
-  .callout.danger .callout-head { color: var(--accent4); }
-  .callout.tip    .callout-head { color: var(--accent3); }
-  .callout.purple .callout-head { color: var(--accent5); }
+  .callout.info   .callout-head { color: var(--teal); }
+  .callout.warn   .callout-head { color: var(--amber); }
+  .callout.danger .callout-head { color: var(--red); }
+  .callout.tip    .callout-head { color: var(--blue); }
+  .callout.purple .callout-head { color: var(--purple); }
   .callout p { font-size: 0.86rem; margin: 0; color: var(--text-mid); max-width: 100%; }
   .callout p + p { margin-top: 0.5rem; }
 
@@ -268,7 +263,7 @@
     padding: 1rem 1.3rem;
     font-family: var(--mono);
     font-size: 0.88rem;
-    color: var(--accent3);
+    color: var(--blue);
     line-height: 1.8;
     margin: 1rem 0;
   }
@@ -302,7 +297,7 @@
     display: flex; align-items: center; justify-content: center;
     font-family: var(--mono);
     font-size: 0.72rem;
-    color: var(--accent);
+    color: var(--teal);
     font-weight: 600;
   }
   .step-body { flex: 1; padding-top: 0.3rem; }
@@ -328,8 +323,8 @@
     text-transform: uppercase;
     margin-bottom: 0.7rem;
   }
-  .compare-panel.left h4 { color: var(--accent); }
-  .compare-panel.right h4 { color: var(--accent4); }
+  .compare-panel.left h4 { color: var(--teal); }
+  .compare-panel.right h4 { color: var(--red); }
   .compare-panel ul { list-style: none; }
   .compare-panel ul li {
     font-size: 0.83rem;
@@ -372,9 +367,7 @@
     :root {
       --bg: #fff; --surface: #f5f5f5; --surface2: #ebebeb;
       --border: #ddd; --text: #111; --text-mid: #333; --text-dim: #666;
-      --accent: #0066aa; --accent2: #b85a00; --accent3: #226633;
-      --accent4: #cc2233; --accent5: #6633aa;
-    }
+      }
     header { padding: 1rem 0 0.8rem; }
     .wrapper { padding: 1rem 0; }
     .wave-container, .comp-card, table, .callout, .formula { break-inside: avoid; }
@@ -419,7 +412,7 @@
     font-size: 0.72rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--accent);
+    color: var(--teal);
   }
   #toc-close {
     background: none; border: 1px solid var(--border); cursor: pointer;
@@ -474,8 +467,8 @@
   }
   a.toc-item.toc-active {
     background: rgba(88,196,220,0.11);
-    color: var(--accent);
-    border-left-color: var(--accent);
+    color: var(--teal);
+    border-left-color: var(--teal);
   }
   .toc-n {
     font-family: var(--mono);
@@ -485,7 +478,7 @@
     padding-top: 0.1rem;
     flex-shrink: 0;
   }
-  a.toc-item.toc-active .toc-n { color: var(--accent); }
+  a.toc-item.toc-active .toc-n { color: var(--teal); }
 
   /* ── TOC TOGGLE BUTTON ──────────────────── */
   #toc-toggle {
@@ -510,7 +503,7 @@
   }
   #toc-toggle:hover, #toc-toggle.toc-btn-active {
     background: rgba(88,196,220,0.12);
-    color: var(--accent);
+    color: var(--teal);
     border-color: rgba(88,196,220,0.45);
   }
   .toc-toggle-icon {
@@ -543,7 +536,7 @@
     gap: 0.35em;
   }
   a.btt-link:hover {
-    color: var(--accent);
+    color: var(--teal);
     border-color: rgba(88,196,220,0.4);
     background: rgba(88,196,220,0.06);
   }
@@ -561,7 +554,7 @@
 <style id="cv-retheme">
 /* CV re-theme v1.0 — maps this file onto _cv-schema.html tokens */
 :root{--bg:#0a0e14; --surface:#111720; --surface2:#182030; --border:rgba(255,255,255,0.08); --teal:#00d4aa; --blue:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa; --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670; --t-teal:rgba(0,212,170,0.10); --t-blue:rgba(96,165,250,0.10); --t-red:rgba(232,76,76,0.10); --t-amber:rgba(245,158,11,0.10); --t-purple:rgba(167,139,250,0.10);}
-:root{--accent:var(--teal); --accent2:var(--amber); --accent3:var(--blue); --accent4:var(--red); --accent5:var(--purple); --text-dim:var(--text2); --text-mid:var(--text); --sans:'Source Serif 4', Georgia, serif;}
+:root{--text-dim:var(--text2); --text-mid:var(--text); --sans:'Source Serif 4', Georgia, serif;}
 body{font-family:'Source Serif 4', Georgia, serif !important; background:var(--bg) !important; color:var(--text);}
 h1,h2,h3,h4,th,nav a,.label,.lbl,.badge,.pill{font-family:'Syne', sans-serif !important;}
 h1{font-weight:800 !important; letter-spacing:.005em;}
@@ -570,7 +563,7 @@ h2,h3{font-weight:700;}
 code, pre, .mono{font-family:'IBM Plex Mono', monospace;}
 @media print{
   :root{--bg:#f4f5f7; --surface:#ffffff; --surface2:#eef1f4; --border:#d7dde3; --teal:#00a688; --blue:#1d4ed8; --red:#c53030; --amber:#b45309; --purple:#7c3aed; --text:#0f1923; --text2:#4a5670; --text3:#6b7688;
-    --t-teal:rgba(0,166,136,0.08); --t-blue:rgba(29,78,216,0.07); --t-red:rgba(197,48,48,0.07); --t-amber:rgba(180,83,9,0.08); --t-purple:rgba(124,58,237,0.07); --accent:#00a688; --accent2:#b45309; --accent3:#1d4ed8; --accent4:#c53030; --accent5:#7c3aed; --text-dim:#4a5670; --text-mid:#0f1923;}
+    --t-teal:rgba(0,166,136,0.08); --t-blue:rgba(29,78,216,0.07); --t-red:rgba(197,48,48,0.07); --t-amber:rgba(180,83,9,0.08); --t-purple:rgba(124,58,237,0.07); --text-dim:#4a5670; --text-mid:#0f1923;}
   *{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
   html, body{background:#f4f5f7 !important; color:#0f1923 !important;}
   nav, #sidebar{display:none !important;}
@@ -1503,7 +1496,7 @@ code, pre, .mono{font-family:'IBM Plex Mono', monospace;}
 
   <!-- ══════ DIVIDER ══════ -->
   <div style="border-top:2px solid var(--border);margin:4rem 0 3rem;padding-top:2rem;display:flex;align-items:center;gap:1.2rem;">
-    <span style="font-family:var(--mono);font-size:0.72rem;color:var(--accent);letter-spacing:0.14em;text-transform:uppercase;white-space:nowrap;">Part II</span>
+    <span style="font-family:var(--mono);font-size:0.72rem;color:var(--teal);letter-spacing:0.14em;text-transform:uppercase;white-space:nowrap;">Part II</span>
     <span style="flex:1;height:1px;background:var(--border);"></span>
     <span style="font-size:1.3rem;font-weight:700;letter-spacing:-0.01em;white-space:nowrap;">Invasive Right Heart &amp; PAC Waveform Diagnostics</span>
     <span style="flex:1;height:1px;background:var(--border);"></span>
@@ -1549,7 +1542,7 @@ code, pre, .mono{font-family:'IBM Plex Mono', monospace;}
     </div>
 
     <div class="section-label" style="margin-top:2.4rem;">
-      <span class="section-num" style="background:rgba(240,160,90,0.1);border-color:rgba(240,160,90,0.3);color:var(--accent2);">WEST</span>
+      <span class="section-num" style="background:rgba(240,160,90,0.1);border-color:rgba(240,160,90,0.3);color:var(--amber);">WEST</span>
       <h2>West Lung Zones — Why Catheter Position Determines PCWP Accuracy</h2>
     </div>
 
@@ -1985,35 +1978,35 @@ code, pre, .mono{font-family:'IBM Plex Mono', monospace;}
       </thead>
       <tbody>
         <tr>
-          <td><strong style="color:var(--accent4)">a wave</strong></td>
+          <td><strong style="color:var(--red)">a wave</strong></td>
           <td>RA contraction (atrial kick)</td>
           <td>After P wave, before QRS</td>
           <td>Tricuspid stenosis, RV hypertrophy, reduced RV compliance, complete heart block (cannon a)</td>
           <td>Atrial fibrillation (absent a), atrial flutter</td>
         </tr>
         <tr>
-          <td><strong style="color:var(--accent2)">c wave</strong></td>
+          <td><strong style="color:var(--amber)">c wave</strong></td>
           <td>Tricuspid valve closure + bulging into RA</td>
           <td>Just after QRS onset</td>
           <td>Tricuspid regurgitation (merges with v)</td>
           <td>Often not visible in peripheral lines; may be absent normally</td>
         </tr>
         <tr>
-          <td><strong style="color:var(--accent)">x descent</strong></td>
+          <td><strong style="color:var(--teal)">x descent</strong></td>
           <td>Atrial relaxation + TV annular descent toward apex during systole</td>
           <td>During ST segment</td>
           <td>Prominent in tamponade (dominant x) and constrictive pericarditis</td>
           <td>Attenuated in RV failure, elevated in constrictive (paradoxically prominent y too)</td>
         </tr>
         <tr>
-          <td><strong style="color:var(--accent5)">v wave</strong></td>
+          <td><strong style="color:var(--purple)">v wave</strong></td>
           <td>Passive atrial filling with TV closed (ventricular systole)</td>
           <td>Near/after T wave</td>
           <td>Tricuspid regurgitation (massive), ASD, RV failure. In PCWP: MR, VSD</td>
           <td>Hypovolemia</td>
         </tr>
         <tr>
-          <td><strong style="color:var(--accent3)">y descent</strong></td>
+          <td><strong style="color:var(--blue)">y descent</strong></td>
           <td>Tricuspid valve opens → RA empties into RV</td>
           <td>After T wave</td>
           <td>Constrictive pericarditis (rapid, steep y = fast early filling)</td>
@@ -2557,11 +2550,11 @@ code, pre, .mono{font-family:'IBM Plex Mono', monospace;}
       <thead>
         <tr>
           <th>Parameter</th>
-          <th style="color:var(--accent4)">Hypovolemic</th>
-          <th style="color:var(--accent2)">Distributive (Sepsis)</th>
-          <th style="color:var(--accent5)">Cardiogenic (LV)</th>
-          <th style="color:var(--accent3)">RV Failure / PE</th>
-          <th style="color:var(--accent)">Tamponade</th>
+          <th style="color:var(--red)">Hypovolemic</th>
+          <th style="color:var(--amber)">Distributive (Sepsis)</th>
+          <th style="color:var(--purple)">Cardiogenic (LV)</th>
+          <th style="color:var(--blue)">RV Failure / PE</th>
+          <th style="color:var(--teal)">Tamponade</th>
           <th>Constriction</th>
         </tr>
       </thead>
@@ -2599,7 +2592,7 @@ code, pre, .mono{font-family:'IBM Plex Mono', monospace;}
 
   <!-- ══ PART III DIVIDER ══ -->
   <div style="border-top:2px solid var(--border);margin:4rem 0 3rem;padding-top:2rem;display:flex;align-items:center;gap:1.2rem;">
-    <span style="font-family:var(--mono);font-size:0.72rem;color:var(--accent2);letter-spacing:0.14em;text-transform:uppercase;white-space:nowrap;">Part III</span>
+    <span style="font-family:var(--mono);font-size:0.72rem;color:var(--amber);letter-spacing:0.14em;text-transform:uppercase;white-space:nowrap;">Part III</span>
     <span style="flex:1;height:1px;background:var(--border);"></span>
     <span style="font-size:1.3rem;font-weight:700;letter-spacing:-0.01em;white-space:nowrap;">CVP · IABP · Drug Effects · LVAD/MCS · LV Waveform</span>
     <span style="flex:1;height:1px;background:var(--border);"></span>
@@ -2627,7 +2620,7 @@ code, pre, .mono{font-family:'IBM Plex Mono', monospace;}
     </div>
 
     <div class="section-label" style="margin-top:2rem;">
-      <span class="section-num" style="background:rgba(240,160,90,0.1);border-color:rgba(240,160,90,0.3);color:var(--accent2);">JVP</span>
+      <span class="section-num" style="background:rgba(240,160,90,0.1);border-color:rgba(240,160,90,0.3);color:var(--amber);">JVP</span>
       <h2>JVP — Bedside Correlate of the CVP Waveform</h2>
     </div>
     <p>The jugular venous pulse is the non-invasive surface expression of the same RAP waveform. Every component of the CVP tracing has a JVP equivalent visible at 30–45° head elevation. Mastery of one transfers directly to the other.</p>
@@ -3068,7 +3061,7 @@ code, pre, .mono{font-family:'IBM Plex Mono', monospace;}
 
   <!-- PART IV DIVIDER -->
   <div style="border-top:2px solid var(--border);margin:4rem 0 3rem;padding-top:2rem;display:flex;align-items:center;gap:1.2rem;">
-    <span style="font-family:var(--mono);font-size:0.72rem;color:var(--accent3);letter-spacing:0.14em;text-transform:uppercase;white-space:nowrap;">Part IV</span>
+    <span style="font-family:var(--mono);font-size:0.72rem;color:var(--blue);letter-spacing:0.14em;text-transform:uppercase;white-space:nowrap;">Part IV</span>
     <span style="flex:1;height:1px;background:var(--border);"></span>
     <span style="font-size:1.3rem;font-weight:700;letter-spacing:-0.01em;white-space:nowrap;">Specialized Populations &amp; Clinical Contexts</span>
     <span style="flex:1;height:1px;background:var(--border);"></span>
@@ -3129,7 +3122,7 @@ code, pre, .mono{font-family:'IBM Plex Mono', monospace;}
       <thead><tr><th>Phase</th><th>Arterial Waveform</th><th>CO/CI</th><th>SVR</th><th>PCWP</th><th>SvO₂</th><th>Priority Intervention</th></tr></thead>
       <tbody>
         <tr>
-          <td><strong style="color:var(--accent3)">Early / Warm</strong><br><small>Compensated hyperdynamic</small></td>
+          <td><strong style="color:var(--blue)">Early / Warm</strong><br><small>Compensated hyperdynamic</small></td>
           <td>Wide PP, low notch, rapid run-off, low DBP, ↑HR</td>
           <td>↑↑ (hyperdynamic)</td>
           <td>↓↓↓</td>
@@ -3138,7 +3131,7 @@ code, pre, .mono{font-family:'IBM Plex Mono', monospace;}
           <td>Vasopressors (NE first-line), fluid if PPV/PLR responsive, source control, abx within 1h</td>
         </tr>
         <tr>
-          <td><strong style="color:var(--accent2)">Mid / Transitional</strong></td>
+          <td><strong style="color:var(--amber)">Mid / Transitional</strong></td>
           <td>PP normalizing with NE. PPV useful if valid CMV criteria met.</td>
           <td>↑ or N</td>
           <td>↓ requiring escalating NE</td>
@@ -3147,7 +3140,7 @@ code, pre, .mono{font-family:'IBM Plex Mono', monospace;}
           <td>Optimize MAP, reassess fluid responsiveness, add vasopressin if NE &gt;0.25 mcg/kg/min</td>
         </tr>
         <tr>
-          <td><strong style="color:var(--accent4)">Late / Cold</strong><br><small>Septic cardiomyopathy</small></td>
+          <td><strong style="color:var(--red)">Late / Cold</strong><br><small>Septic cardiomyopathy</small></td>
           <td>Narrow PP (↓CO), slow upstroke, possible pulsus alternans if biventricular failure</td>
           <td>↓↓ (myocardial depression)</td>
           <td>Variable — mixed ↓SVR + ↓CO</td>
@@ -3281,7 +3274,7 @@ code, pre, .mono{font-family:'IBM Plex Mono', monospace;}
 
   <!-- PART V DIVIDER -->
   <div style="border-top:2px solid var(--border);margin:4rem 0 3rem;padding-top:2rem;display:flex;align-items:center;gap:1.2rem;">
-    <span style="font-family:var(--mono);font-size:0.72rem;color:var(--accent5);letter-spacing:0.14em;text-transform:uppercase;white-space:nowrap;">Part V</span>
+    <span style="font-family:var(--mono);font-size:0.72rem;color:var(--purple);letter-spacing:0.14em;text-transform:uppercase;white-space:nowrap;">Part V</span>
     <span style="flex:1;height:1px;background:var(--border);"></span>
     <span style="font-size:1.3rem;font-weight:700;letter-spacing:-0.01em;white-space:nowrap;">Neuromonitoring</span>
     <span style="flex:1;height:1px;background:var(--border);"></span>
@@ -3443,7 +3436,7 @@ code, pre, .mono{font-family:'IBM Plex Mono', monospace;}
 
   <!-- PART VI DIVIDER -->
   <div style="border-top:2px solid var(--border);margin:4rem 0 3rem;padding-top:2rem;display:flex;align-items:center;gap:1.2rem;">
-    <span style="font-family:var(--mono);font-size:0.72rem;color:var(--accent4);letter-spacing:0.14em;text-transform:uppercase;white-space:nowrap;">Part VI</span>
+    <span style="font-family:var(--mono);font-size:0.72rem;color:var(--red);letter-spacing:0.14em;text-transform:uppercase;white-space:nowrap;">Part VI</span>
     <span style="flex:1;height:1px;background:var(--border);"></span>
     <span style="font-size:1.3rem;font-weight:700;letter-spacing:-0.01em;white-space:nowrap;">Pulse Wave Physics &amp; the Vascular Tree</span>
     <span style="flex:1;height:1px;background:var(--border);"></span>
@@ -3529,7 +3522,7 @@ code, pre, .mono{font-family:'IBM Plex Mono', monospace;}
     </div>
 
     <div class="section-label" style="margin-top:2rem;">
-      <span class="section-num" style="background:rgba(191,145,243,0.1);border-color:rgba(191,145,243,0.3);color:var(--accent5);">AIx</span>
+      <span class="section-num" style="background:rgba(191,145,243,0.1);border-color:rgba(191,145,243,0.3);color:var(--purple);">AIx</span>
       <h2>Wave Reflection &amp; the Augmentation Index</h2>
     </div>
     <p>The peripheral amplitude increase visible above is not random — it is the predictable product of wave reflection. The forward wave generated by LV ejection travels outward and partially reflects backward at points of impedance mismatch (arterial branch points, the high-resistance arteriolar bed). The forward and reflected waves summate, and where in the cardiac cycle that summation lands depends entirely on how fast the reflected wave returns — which depends on arterial stiffness.</p>
@@ -3612,7 +3605,7 @@ code, pre, .mono{font-family:'IBM Plex Mono', monospace;}
     </div>
 
     <div class="section-label" style="margin-top:2rem;">
-      <span class="section-num" style="background:rgba(126,231,135,0.1);border-color:rgba(126,231,135,0.3);color:var(--accent3);">R</span>
+      <span class="section-num" style="background:rgba(126,231,135,0.1);border-color:rgba(126,231,135,0.3);color:var(--blue);">R</span>
       <h2>The Arteriole — Where the Pressure Actually Drops</h2>
     </div>
     <p>The SVR formula in Section 02 treats resistance as a single lumped value, but resistance is not distributed evenly across the vascular tree. Anatomically, one segment does almost all of the work.</p>
@@ -3721,51 +3714,51 @@ code, pre, .mono{font-family:'IBM Plex Mono', monospace;}
   <div class="footnotes">
     <h3>References &amp; Further Reading</h3>
 
-    <p style="font-family:var(--mono);font-size:0.72rem;color:var(--accent);letter-spacing:0.1em;margin-bottom:0.8rem;text-transform:uppercase;">Primary References</p>
+    <p style="font-family:var(--mono);font-size:0.72rem;color:var(--teal);letter-spacing:0.1em;margin-bottom:0.8rem;text-transform:uppercase;">Primary References</p>
     <p>[1] Scheeren TWL, Saugel B. Management of Intraoperative Hypotension: Prediction, Prevention and Personalization. In: Vincent JL (ed). <em>Annual Update in Intensive Care and Emergency Medicine 2018.</em> Springer, Cham. DOI: 10.1007/978-3-319-73670-9.</p>
     <p>[2] Hernandez G, Messina A, Kattan E. Invasive arterial pressure monitoring: much more than mean arterial pressure! <em>Intensive Care Medicine</em> 48:1495–1497 (2022). DOI: 10.1007/s00134-022-06854-3.</p>
 
-    <p style="font-family:var(--mono);font-size:0.72rem;color:var(--accent);letter-spacing:0.1em;margin-top:1.4rem;margin-bottom:0.8rem;text-transform:uppercase;">Fluid Responsiveness &amp; Dynamic Indices</p>
+    <p style="font-family:var(--mono);font-size:0.72rem;color:var(--teal);letter-spacing:0.1em;margin-top:1.4rem;margin-bottom:0.8rem;text-transform:uppercase;">Fluid Responsiveness &amp; Dynamic Indices</p>
     <p>[3] Cannesson M, Le Manach Y, Hofer CK, et al. Assessing the diagnostic accuracy of pulse pressure variations for the prediction of fluid responsiveness: a "gray zone" approach. <em>Anesthesiology</em> 115(2):231–241 (2011). PMID: 21705869.</p>
     <p>[4] Biais M, Ehrmann S, Mari A, et al. Clinical relevance of pulse pressure variations for predicting fluid responsiveness in mechanically ventilated ICU patients: the grey zone approach. <em>Crit Care</em> 18:587 (2014). DOI: 10.1186/s13054-014-0587-9.</p>
     <p>[5] Monnet X, Marik P, Teboul JL. Passive leg raising for predicting fluid responsiveness: a systematic review and meta-analysis. <em>Intensive Care Med</em> 42(12):1935–1947 (2016). PMID: 26825952.</p>
     <p>[6] Monnet X, Teboul JL. Passive leg raising: five rules, not a drop of fluid! <em>Crit Care</em> 19:18 (2015). DOI: 10.1186/s13054-014-0708-5.</p>
     <p>[7] Marik PE, Cavallazzi R, Vasu T, Hirani A. Dynamic changes in arterial waveform derived variables and fluid responsiveness in mechanically ventilated patients: a systematic review of the literature. <em>Crit Care Med</em> 37(9):2642–2647 (2009). PMID: 19602972.</p>
 
-    <p style="font-family:var(--mono);font-size:0.72rem;color:var(--accent);letter-spacing:0.1em;margin-top:1.4rem;margin-bottom:0.8rem;text-transform:uppercase;">Hypotension Prediction &amp; Intraoperative Management</p>
+    <p style="font-family:var(--mono);font-size:0.72rem;color:var(--teal);letter-spacing:0.1em;margin-top:1.4rem;margin-bottom:0.8rem;text-transform:uppercase;">Hypotension Prediction &amp; Intraoperative Management</p>
     <p>[8] Hatib F, Jian Z, Buddi S, et al. Machine-learning algorithm to predict hypotension based on high-fidelity arterial pressure waveform analysis. <em>Anesthesiology</em> 129(4):663–674 (2018). [HPI derivation study].</p>
     <p>[9] Davies SJ, Vistisen ST, Jian Z, et al. Ability of an arterial waveform analysis–derived Hypotension Prediction Index to predict future hypotensive events in surgical patients. <em>Anesth Analg</em> 130(2):352–359 (2020). DOI: 10.1213/ANE.0000000000004121.</p>
     <p>[10] Michard F, Chemla D, Teboul JL. Applicability of pulse pressure variation: how many shades of grey? <em>Crit Care</em> 19:144 (2015). DOI: 10.1186/s13054-015-0869-x.</p>
 
-    <p style="font-family:var(--mono);font-size:0.72rem;color:var(--accent);letter-spacing:0.1em;margin-top:1.4rem;margin-bottom:0.8rem;text-transform:uppercase;">Right Heart Catheterization &amp; PAC</p>
+    <p style="font-family:var(--mono);font-size:0.72rem;color:var(--teal);letter-spacing:0.1em;margin-top:1.4rem;margin-bottom:0.8rem;text-transform:uppercase;">Right Heart Catheterization &amp; PAC</p>
     <p>[11] Kern MJ, et al. Practical guidance for hemodynamic assessment by right heart catheterization in management of heart failure. <em>JACC Heart Fail</em> 12(9):1497–1516 (2024).</p>
     <p>[12] Garan AR, et al. Complete hemodynamic profiling with pulmonary artery catheters in cardiogenic shock is associated with lower in-hospital mortality. <em>JACC Heart Fail</em> 8(11):903–913 (2020). DOI: 10.1016/j.jchf.2020.08.010.</p>
     <p>[13] Hahn RT, et al. The accuracy of a large V wave in the pulmonary capillary wedge pressure waveform for diagnosing current mitral regurgitation. <em>Cardiology</em> 141(1):46–55 (2018). [Giant V wave specificity/sensitivity data].</p>
     <p>[14] West JB. Pulmonary blood flow and metabolism. In: <em>Respiratory Physiology: The Essentials,</em> 9th ed. Lippincott Williams &amp; Wilkins, 2012. [West Zones].</p>
     <p>[15] Marik PE, Cavallazzi R. Does the central venous pressure predict fluid responsiveness? An updated meta-analysis and a plea for some common sense. <em>Crit Care Med</em> 41(7):1774–1781 (2013). PMID: 23774337. [CVP AUC 0.56].</p>
 
-    <p style="font-family:var(--mono);font-size:0.72rem;color:var(--accent);letter-spacing:0.1em;margin-top:1.4rem;margin-bottom:0.8rem;text-transform:uppercase;">Advanced Hemodynamic Parameters</p>
+    <p style="font-family:var(--mono);font-size:0.72rem;color:var(--teal);letter-spacing:0.1em;margin-top:1.4rem;margin-bottom:0.8rem;text-transform:uppercase;">Advanced Hemodynamic Parameters</p>
     <p>[16] Hochman JS, et al. Cardiac power is the strongest hemodynamic correlate of mortality in cardiogenic shock: a report from the SHOCK trial registry. <em>JACC</em> 44(2):340–348 (2004). DOI: 10.1016/j.jacc.2004.03.060. [CPO &lt;0.6 W threshold].</p>
     <p>[17] Lim HS, et al. Pulmonary artery pulsatility index: physiological basis and clinical application. <em>Eur J Heart Fail</em> 22(1):32–38 (2020). PMID: 31680410. [PAPI &lt;0.9 RV failure threshold].</p>
 
-    <p style="font-family:var(--mono);font-size:0.72rem;color:var(--accent);letter-spacing:0.1em;margin-top:1.4rem;margin-bottom:0.8rem;text-transform:uppercase;">IABP &amp; MCS</p>
+    <p style="font-family:var(--mono);font-size:0.72rem;color:var(--teal);letter-spacing:0.1em;margin-top:1.4rem;margin-bottom:0.8rem;text-transform:uppercase;">IABP &amp; MCS</p>
     <p>[18] Thiele H, et al. Intra-aortic balloon counterpulsation in acute myocardial infarction complicated by cardiogenic shock (IABP-SHOCK II): final 12-month results of a randomised, open-label trial. <em>Lancet</em> 382(9905):1638–1645 (2013).</p>
     <p>[19] Sayer GT, Semigran MJ. Mechanical Circulatory Support: State of the Art and New Horizons. <em>JACC Heart Fail</em> (2023). [LVAD, Impella, VA-ECMO waveform characteristics].</p>
 
-    <p style="font-family:var(--mono);font-size:0.72rem;color:var(--accent);letter-spacing:0.1em;margin-top:1.4rem;margin-bottom:0.8rem;text-transform:uppercase;">ICP Monitoring &amp; Neuromonitoring</p>
+    <p style="font-family:var(--mono);font-size:0.72rem;color:var(--teal);letter-spacing:0.1em;margin-top:1.4rem;margin-bottom:0.8rem;text-transform:uppercase;">ICP Monitoring &amp; Neuromonitoring</p>
     <p>[20] Carney N, et al. Guidelines for the Management of Severe Traumatic Brain Injury, Fourth Edition. <em>Neurosurgery</em> 80(1):6–15 (2017). [BTF guidelines; CPP targets; ICP treatment thresholds].</p>
     <p>[21] Chesnut RM, et al. A trial of intracranial-pressure monitoring in traumatic brain injury. <em>N Engl J Med</em> 367:2471–2481 (2012). [BEST:TRIP trial].</p>
     <p>[22] Czosnyka M, Pickard JD. Monitoring and interpretation of intracranial pressure. <em>J Neurol Neurosurg Psychiatry</em> 75(6):813–821 (2004). [PRx, autoregulation, optimal CPP].</p>
     <p>[23] Lundberg N. Continuous recording and control of ventricular fluid pressure in neurosurgical practice. <em>Acta Psychiatr Scand Suppl</em> 36(149):1–193 (1960). [Original Lundberg A/B/C wave description].</p>
 
-    <p style="font-family:var(--mono);font-size:0.72rem;color:var(--accent);letter-spacing:0.1em;margin-top:1.4rem;margin-bottom:0.8rem;text-transform:uppercase;">Specialty Populations</p>
+    <p style="font-family:var(--mono);font-size:0.72rem;color:var(--teal);letter-spacing:0.1em;margin-top:1.4rem;margin-bottom:0.8rem;text-transform:uppercase;">Specialty Populations</p>
     <p>[24] Clark SL, Cotton DB, Lee W, et al. Central hemodynamic assessment of normal term pregnancy. <em>Am J Obstet Gynecol</em> 161(6):1439–1442 (1989). [Reference values for pregnant hemodynamics].</p>
     <p>[25] Evans L, et al. Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2021. <em>Intensive Care Med</em> 47:1181–1247 (2021).</p>
     <p>[26] Kliegman RM et al. <em>Nelson Textbook of Pediatrics,</em> 21st ed. Elsevier, 2020. [Pediatric normal hemodynamic values and transitional circulation].</p>
     <p>[27] Konstantinides SV, et al. 2019 ESC Guidelines for the diagnosis and management of acute pulmonary embolism. <em>Eur Heart J</em> 41(4):543–603 (2020). [PE hemodynamic classification, intervention thresholds].</p>
 
     
-    <p style="font-family:var(--mono);font-size:0.72rem;color:var(--accent);letter-spacing:0.1em;margin-top:1.4rem;margin-bottom:0.8rem;text-transform:uppercase;">Pulse Wave Physics, Arterial Stiffness &amp; Wave Reflection</p>
+    <p style="font-family:var(--mono);font-size:0.72rem;color:var(--teal);letter-spacing:0.1em;margin-top:1.4rem;margin-bottom:0.8rem;text-transform:uppercase;">Pulse Wave Physics, Arterial Stiffness &amp; Wave Reflection</p>
     <p>[28] Mitchell GF, Parise H, Benjamin EJ, et al. Changes in arterial stiffness and wave reflection with advancing age in healthy men and women: the Framingham Heart Study. <em>Hypertension</em> 43(6):1239–1245 (2004). DOI: 10.1161/01.HYP.0000128420.01881.aa.</p>
     <p>[29] O'Rourke MF. Arterial stiffness, systolic blood pressure, and logical treatment of arterial hypertension. <em>Hypertension</em> 15(4):339–347 (1990). PMID: 2180816.</p>
     <p>[30] Nichols WW, O'Rourke MF, Vlachopoulos C. <em>McDonald's Blood Flow in Arteries: Theoretical, Experimental and Clinical Principles,</em> 6th ed. Hodder Arnold, London, 2011. [Standard reference text for PWV, augmentation index, and the systemic pressure-drop distribution.]</p>
@@ -3774,12 +3767,12 @@ code, pre, .mono{font-family:'IBM Plex Mono', monospace;}
     <p>[33] Pauca AL, Wallenhaupt SL, Kon ND, Tucker WY. Does radial artery pressure accurately reflect aortic pressure? <em>Chest</em> 102(4):1193–1198 (1992). PMID: 1395767.</p>
     <p>[34] Kelly R, Hayward C, Avolio A, O'Rourke M. Noninvasive determination of age-related changes in the human arterial pulse. <em>Circulation</em> 80(6):1652–1659 (1989). DOI: 10.1161/01.cir.80.6.1652.</p>
 
-    <p style="font-family:var(--mono);font-size:0.72rem;color:var(--accent);letter-spacing:0.1em;margin-top:1.4rem;margin-bottom:0.8rem;text-transform:uppercase;">Vascular Resistance Distribution</p>
+    <p style="font-family:var(--mono);font-size:0.72rem;color:var(--teal);letter-spacing:0.1em;margin-top:1.4rem;margin-bottom:0.8rem;text-transform:uppercase;">Vascular Resistance Distribution</p>
     <p>[35] <em>(Pulmonary resistance distribution — see Ref. 14, West.)</em></p>
     <p>[36] Davis MJ, Ferrer PN, Gore RW. Vascular anatomy and hydrostatic pressure profile in the hamster cheek pouch. <em>Am J Physiol</em> 250(2 Pt 2):H291–H303 (1986). [Primary micropuncture data localizing the principal site of arteriolar resistance.]</p>
     <p>[37] Alahdab F, Raja A. Physiology, Peripheral Vascular Resistance. <em>StatPearls</em> [Internet]. NCBI Bookshelf, updated 2023. [Hagen-Poiseuille relationship and arteriolar resistance regulation.]</p>
 
-    <p style="font-family:var(--mono);font-size:0.72rem;color:var(--accent);letter-spacing:0.1em;margin-top:1.4rem;margin-bottom:0.8rem;text-transform:uppercase;">Hemodynamic Coherence &amp; Microcirculation</p>
+    <p style="font-family:var(--mono);font-size:0.72rem;color:var(--teal);letter-spacing:0.1em;margin-top:1.4rem;margin-bottom:0.8rem;text-transform:uppercase;">Hemodynamic Coherence &amp; Microcirculation</p>
     <p>[38] Ince C. Hemodynamic coherence and the rationale for monitoring the microcirculation. <em>Crit Care</em> 19(Suppl 3):S8 (2015). DOI: 10.1186/cc14726. [Primary source; defines hemodynamic coherence and the four mechanisms of microcirculatory dissociation.]</p>
     <p>[39] Lima A, Jansen TC, van Bommel J, Ince C, Bakker J. The prognostic value of the subjective assessment of peripheral perfusion in critically ill patients. <em>Crit Care Med</em> 37(3):934–938 (2009). PMID: 19237902.</p>
     <p>[40] Edul VSK, Ince C, Navarro N, et al. Dissociation between sublingual and gut microcirculation in the response to a fluid challenge in postoperative patients with abdominal sepsis. <em>Ann Intensive Care</em> 4:39 (2014). DOI: 10.1186/s13613-014-0039-3.</p>

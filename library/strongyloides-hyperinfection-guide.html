@@ -9,25 +9,25 @@
 <style>
   :root{
     --bg:#0a0e14; --surface:#111720; --surface2:#182030; --border:rgba(255,255,255,.08);
-    --accent:#00d4aa; --accent2:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa;
+    --teal:#00d4aa; --blue:#60a5fa; --red:#e84c4c; --amber:#f59e0b; --purple:#a78bfa;
     --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670;
   }
   *{box-sizing:border-box;}
   body{margin:0; background:var(--bg); color:var(--text); font-family:'Source Serif 4',serif; line-height:1.6;}
   .page{max-width:900px; margin:0 auto; padding:48px 28px 64px;}
 
-  .kicker{font-family:'IBM Plex Mono',monospace; font-size:12.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-bottom:10px;}
+  .kicker{font-family:'IBM Plex Mono',monospace; font-size:12.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--teal); margin-bottom:10px;}
   h1{font-family:'Syne',sans-serif; font-weight:800; font-size:30px; margin:0 0 10px; line-height:1.15;}
   header p.sub{font-family:'Source Serif 4',serif; font-style:italic; color:var(--text2); font-size:16px; margin:0 0 28px; max-width:640px;}
 
   .alert{border-radius:10px; padding:16px 18px; margin:18px 0 28px; background:rgba(0,212,170,.10); border:1px solid rgba(0,212,170,.28); color:var(--text);}
-  .alert strong{color:var(--accent);}
+  .alert strong{color:var(--teal);}
   .alert.c-amber{background:rgba(245,158,11,.10); border-color:rgba(245,158,11,.28);}
   .alert.c-amber strong{color:var(--amber);}
 
-  .sec-head{display:flex; align-items:center; gap:10px; padding:10px 14px; border-radius:6px; border-left:4px solid var(--accent);
+  .sec-head{display:flex; align-items:center; gap:10px; padding:10px 14px; border-radius:6px; border-left:4px solid var(--teal);
     background:linear-gradient(90deg, rgba(0,212,170,.10), rgba(0,212,170,0)); margin:40px 0 6px;}
-  .sec-head.c-blue{border-left-color:var(--accent2); background:linear-gradient(90deg, rgba(96,165,250,.10), rgba(96,165,250,0));}
+  .sec-head.c-blue{border-left-color:var(--blue); background:linear-gradient(90deg, rgba(96,165,250,.10), rgba(96,165,250,0));}
   .sec-head.c-red{border-left-color:var(--red); background:linear-gradient(90deg, rgba(232,76,76,.10), rgba(232,76,76,0));}
   .sec-head.c-amber{border-left-color:var(--amber); background:linear-gradient(90deg, rgba(245,158,11,.10), rgba(245,158,11,0));}
   .sec-head.c-purple{border-left-color:var(--purple); background:linear-gradient(90deg, rgba(167,139,250,.10), rgba(167,139,250,0));}
@@ -36,8 +36,8 @@
   .tagline{font-style:italic; color:var(--text2); font-size:14.5px; margin:6px 2px 18px;}
 
   .box{background:var(--surface2); border:1px solid var(--border); border-radius:10px; padding:16px 18px; margin:14px 0;}
-  .box.t-teal{border-left:3px solid var(--accent);}
-  .box.t-blue{border-left:3px solid var(--accent2);}
+  .box.t-teal{border-left:3px solid var(--teal);}
+  .box.t-blue{border-left:3px solid var(--blue);}
   .box.t-red{border-left:3px solid var(--red); background:rgba(232,76,76,.06);}
   .box.t-amber{border-left:3px solid var(--amber);}
   .box.t-purple{border-left:3px solid var(--purple);}
@@ -50,10 +50,10 @@
   tr:last-child td{border-bottom:none;}
 
   .stat-row{display:flex; flex-wrap:wrap; margin:18px 0;}
-  .stat-card{flex:1; min-width:150px; min-height:100px; padding:22px; border-left:4px solid var(--accent); margin-right:14px; margin-bottom:14px; background:var(--surface);}
+  .stat-card{flex:1; min-width:150px; min-height:100px; padding:22px; border-left:4px solid var(--teal); margin-right:14px; margin-bottom:14px; background:var(--surface);}
   .stat-card.s-red{border-left-color:var(--red);}
   .stat-card.s-amber{border-left-color:var(--amber);}
-  .stat-card.s-blue{border-left-color:var(--accent2);}
+  .stat-card.s-blue{border-left-color:var(--blue);}
   .stat-num{font-family:'Syne',sans-serif; font-weight:800; font-size:28pt; display:block; line-height:1;}
   .stat-label{font-family:'Source Serif 4',serif; font-size:9.5pt; color:var(--text2); display:block; margin-top:6px;}
 
@@ -63,11 +63,11 @@
   .step-body h4{margin:2px 0 4px; font-family:'Syne',sans-serif; font-size:15px; color:var(--text);}
   .step-body p{margin:0; color:var(--text2); font-size:15px;}
 
-  .xref{border-left:3px solid var(--accent2); background:rgba(96,165,250,.08); border-radius:6px; padding:12px 16px; margin:14px 0; font-size:14.5px;}
+  .xref{border-left:3px solid var(--blue); background:rgba(96,165,250,.08); border-radius:6px; padding:12px 16px; margin:14px 0; font-size:14.5px;}
   .peds{border-left:3px solid var(--purple); background:rgba(167,139,250,.08); border-radius:6px; padding:12px 16px; margin:14px 0; font-size:14.5px;}
 
   .badge{display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:11px; padding:3px 9px; border-radius:5px; margin:2px 4px 2px 0;}
-  .badge.b-teal{background:rgba(0,212,170,.12); border:1px solid rgba(0,212,170,.25); color:var(--accent);}
+  .badge.b-teal{background:rgba(0,212,170,.12); border:1px solid rgba(0,212,170,.25); color:var(--teal);}
   .badge.b-red{background:rgba(232,76,76,.12); border:1px solid rgba(232,76,76,.25); color:var(--red);}
   .badge.b-blue{background:rgba(96,165,250,.12); border:1px solid rgba(96,165,250,.25); color:#60a5fa;}
   .badge.b-amber{background:rgba(245,158,11,.12); border:1px solid rgba(245,158,11,.25); color:var(--amber);}
@@ -84,7 +84,7 @@
   @media print{
     :root{
       --bg:#f4f5f7; --surface:#fff; --surface2:#eef0f3; --border:rgba(15,25,35,.12);
-      --accent:#00a688; --accent2:#1d4ed8; --red:#c53030; --amber:#b45309; --purple:#7c3aed;
+      --teal:#00a688; --blue:#1d4ed8; --red:#c53030; --amber:#b45309; --purple:#7c3aed;
       --text:#0f1923; --text2:#4a5670; --text3:#6b7688;
     }
   }
@@ -176,8 +176,8 @@
   <div class="sec-head c-purple"><span class="sec-num">05</span><h2>Empiric Treatment: When You Can't Wait for the Result</h2></div>
   <p class="tagline">Same-day serology exists in very few hospitals. Emergencies don't wait for send-out labs.</p>
 
-  <div class="step-row"><div class="step-num" style="background:var(--accent);">1</div><div class="step-body"><h4>Identify the at-risk patient</h4><p>Any plausible exposure history (Section 03) plus an indication for urgent, unavoidable immunosuppression — emergent transplant, status asthmaticus, antenatal steroids for imminent delivery, severe COVID-19 pneumonia on high-dose steroids.</p></div></div>
-  <div class="step-row"><div class="step-num" style="background:var(--accent2);">2</div><div class="step-body"><h4>Send serology and stool O&amp;P — but don't wait if the clock won't allow it</h4><p>If same-day testing isn't available and immunosuppression can't be safely delayed, guidance supports empiric treatment rather than withholding it pending results.</p></div></div>
+  <div class="step-row"><div class="step-num" style="background:var(--teal);">1</div><div class="step-body"><h4>Identify the at-risk patient</h4><p>Any plausible exposure history (Section 03) plus an indication for urgent, unavoidable immunosuppression — emergent transplant, status asthmaticus, antenatal steroids for imminent delivery, severe COVID-19 pneumonia on high-dose steroids.</p></div></div>
+  <div class="step-row"><div class="step-num" style="background:var(--blue);">2</div><div class="step-body"><h4>Send serology and stool O&amp;P — but don't wait if the clock won't allow it</h4><p>If same-day testing isn't available and immunosuppression can't be safely delayed, guidance supports empiric treatment rather than withholding it pending results.</p></div></div>
   <div class="step-row"><div class="step-num" style="background:var(--amber);">3</div><div class="step-body"><h4>Rule out Loa loa exposure first, if relevant</h4><p>In patients with Central/West African residence history, screen for concurrent <em>Loa loa</em> microfilaremia (daytime blood smear) before ivermectin — high-burden loiasis plus ivermectin carries a risk of severe encephalopathy. This is the one hard contraindication-adjacent caveat to empiric dosing.</p></div></div>
   <div class="step-row"><div class="step-num" style="background:var(--red);">4</div><div class="step-body"><h4>Dose: ivermectin 200 mcg/kg PO</h4><p>Single dose or two consecutive daily doses — CDC and most current protocols now favor the single-dose regimen (efficacy comparable, ~95%+ effectiveness in recent series). Relative contraindications: weight &lt;15 kg, pregnancy/breastfeeding (weigh risk of untreated hyperinfection against treatment risk case-by-case), Loa loa co-infection per Step 3.</p></div></div>
   <div class="step-row"><div class="step-num" style="background:var(--purple);">5</div><div class="step-body"><h4>Confirm eradication</h4><p>Falling eosinophil count and declining serology titer over follow-up support cure; repeat stool/serology at 1–2 years is the guideline-level recommendation given how easily low-level persistence hides.</p></div></div>
