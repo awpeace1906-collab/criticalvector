@@ -42,13 +42,13 @@
   section h2 {
     font-size: 19px; margin: 0 0 4px 0; letter-spacing: 0.5px;
   }
-  section h2 .secnum { color: var(--accent, #888); margin-right: 8px; }
+  section h2 .secnum { color: var(--hue, #888); margin-right: 8px; }
   section .for {
     font-size: 13px; color: var(--muted); margin: 0 0 12px 0;
   }
   .card {
     background: var(--tint, var(--card));
-    border-left: 4px solid var(--accent, #888);
+    border-left: 4px solid var(--hue, #888);
     border-radius: 6px;
     padding: 14px 16px;
     color: #1a1a1a;
@@ -73,10 +73,10 @@ h2,h3{font-weight:700;}
 code, pre, .mono{font-family:'IBM Plex Mono', monospace;}
 main{max-width:900px !important;}
 header{max-width:900px; margin:0 auto;}
-section h2{font-size:20px; border-bottom:2px solid var(--accent, var(--teal)) !important;}
-.box{background:var(--surface2) !important; color:var(--text) !important; border:1px solid var(--border) !important; border-left:3px solid var(--accent, var(--teal)) !important; border-radius:10px; font-size:14.5px;}
+section h2{font-size:20px; border-bottom:2px solid var(--hue, var(--teal)) !important;}
+.box{background:var(--surface2) !important; color:var(--text) !important; border:1px solid var(--border) !important; border-left:3px solid var(--hue, var(--teal)) !important; border-radius:10px; font-size:14.5px;}
 .box b, .box strong{color:var(--text) !important;}
-th{background:var(--surface2) !important; color:var(--text) !important; border-bottom:2px solid var(--accent, var(--border));}
+th{background:var(--surface2) !important; color:var(--text) !important; border-bottom:2px solid var(--hue, var(--border));}
 nav a{background:var(--surface) !important; color:var(--text2) !important; border:1px solid var(--border) !important; font-weight:600;}
 nav a:hover{color:var(--text) !important; border-color:var(--teal) !important;}
 .alert{background:var(--t-amber) !important; border:1px solid rgba(245,158,11,0.35) !important; color:#fde6b8 !important;}
@@ -84,19 +84,19 @@ nav a:hover{color:var(--text) !important; border-color:var(--teal) !important;}
 .pill-yes{background:var(--t-teal) !important; color:var(--teal) !important;}
 .pill-no{background:var(--t-red) !important; color:var(--red) !important;}
 .pill-offlabel{background:var(--t-amber) !important; color:var(--amber) !important;}
-.statgrid > div{background:var(--surface) !important; border:1px solid var(--border) !important; border-left:4px solid var(--accent, var(--teal)) !important; text-align:left !important; color:var(--text) !important;}
-.statgrid .num{font-family:'Syne', sans-serif; color:var(--accent, var(--teal)) !important;}
+.statgrid > div{background:var(--surface) !important; border:1px solid var(--border) !important; border-left:4px solid var(--hue, var(--teal)) !important; text-align:left !important; color:var(--text) !important;}
+.statgrid .num{font-family:'Syne', sans-serif; color:var(--hue, var(--teal)) !important;}
 .statgrid .lbl{color:var(--text2) !important;}
 .card{background:var(--surface) !important; border-color:var(--border) !important; color:var(--text) !important;}
 .word{font-family:'Syne', sans-serif; color:var(--teal) !important;}
 .fig{background:var(--surface) !important; border-color:var(--border) !important;}
 footer{font-style:italic; color:var(--text3) !important;}
-[style*="--accent:#7A1620"],[style*="--accent:#9C2B3B"],[style*="--accent:#8B2635"]{--accent:var(--red) !important; --tint:var(--t-red) !important;}
-[style*="--accent:#5B3A8E"]{--accent:var(--purple) !important; --tint:var(--t-purple) !important;}
-[style*="--accent:#1F6F5C"],[style*="--accent:#2E6B3E"]{--accent:var(--teal) !important; --tint:var(--t-teal) !important;}
-[style*="--accent:#1F3A5F"],[style*="--accent:#3A5A8C"]{--accent:var(--blue) !important; --tint:var(--t-blue) !important;}
-[style*="--accent:#B5591F"],[style*="--accent:#96700A"]{--accent:var(--amber) !important; --tint:var(--t-amber) !important;}
-[style*="--accent:#444444"]{--accent:var(--text3) !important; --tint:var(--surface2) !important;}
+[style*="--hue:#7A1620"],[style*="--hue:#9C2B3B"],[style*="--hue:#8B2635"]{--hue:var(--red) !important; --tint:var(--t-red) !important;}
+[style*="--hue:#5B3A8E"]{--hue:var(--purple) !important; --tint:var(--t-purple) !important;}
+[style*="--hue:#1F6F5C"],[style*="--hue:#2E6B3E"]{--hue:var(--teal) !important; --tint:var(--t-teal) !important;}
+[style*="--hue:#1F3A5F"],[style*="--hue:#3A5A8C"]{--hue:var(--blue) !important; --tint:var(--t-blue) !important;}
+[style*="--hue:#B5591F"],[style*="--hue:#96700A"]{--hue:var(--amber) !important; --tint:var(--t-amber) !important;}
+[style*="--hue:#444444"]{--hue:var(--text3) !important; --tint:var(--surface2) !important;}
 @media print{
   :root{--bg:#f4f5f7; --surface:#ffffff; --surface2:#eef1f4; --border:#d7dde3; --teal:#00a688; --blue:#1d4ed8; --red:#c53030; --amber:#b45309; --purple:#7c3aed; --text:#0f1923; --text2:#4a5670; --text3:#6b7688;
     --t-teal:rgba(0,166,136,0.08); --t-blue:rgba(29,78,216,0.07); --t-red:rgba(197,48,48,0.07); --t-amber:rgba(180,83,9,0.08); --t-purple:rgba(124,58,237,0.07); --card:#ffffff; --muted:#4a5670; --line:#d7dde3;}
@@ -147,7 +147,7 @@ footer{font-style:italic; color:var(--text3) !important;}
 
 <main>
 
-<section id="s1" style="--accent:#8B2635; --tint:#F7E8E9;">
+<section id="s1" style="--hue:#8B2635; --tint:#F7E8E9;">
   <h2><span class="secnum">1.</span>I GET SMASHED</h2>
   <p class="for">Causes of pancreatitis</p>
   <div class="card">
@@ -167,7 +167,7 @@ footer{font-style:italic; color:var(--text3) !important;}
   </div>
 </section>
 
-<section id="s2" style="--accent:#1F3A5F; --tint:#E7EDF4;">
+<section id="s2" style="--hue:#1F3A5F; --tint:#E7EDF4;">
   <h2><span class="secnum">2.</span>PINCH ME</h2>
   <p class="for">Reversible contributors to delirium</p>
   <div class="card">
@@ -183,7 +183,7 @@ footer{font-style:italic; color:var(--text3) !important;}
   </div>
 </section>
 
-<section id="s3" style="--accent:#1F6F5C; --tint:#E6F2EF;">
+<section id="s3" style="--hue:#1F6F5C; --tint:#E6F2EF;">
   <h2><span class="secnum">3.</span>SOCRATES</h2>
   <p class="for">Structured pain history</p>
   <div class="card">
@@ -200,7 +200,7 @@ footer{font-style:italic; color:var(--text3) !important;}
   </div>
 </section>
 
-<section id="s4" style="--accent:#5B3A8E; --tint:#EFE9F5;">
+<section id="s4" style="--hue:#5B3A8E; --tint:#EFE9F5;">
   <h2><span class="secnum">4.</span>CHIMPANZEES</h2>
   <p class="for">Causes of hypercalcaemia</p>
   <div class="card">
@@ -220,7 +220,7 @@ footer{font-style:italic; color:var(--text3) !important;}
   </div>
 </section>
 
-<section id="s5" style="--accent:#B5591F; --tint:#F8ECE0;">
+<section id="s5" style="--hue:#B5591F; --tint:#F8ECE0;">
   <h2><span class="secnum">5.</span>TUNA FISH</h2>
   <p class="for">Red flags in back pain</p>
   <div class="card">
@@ -237,7 +237,7 @@ footer{font-style:italic; color:var(--text3) !important;}
   </div>
 </section>
 
-<section id="s6" style="--accent:#2E6B3E; --tint:#E9F3EA;">
+<section id="s6" style="--hue:#2E6B3E; --tint:#E9F3EA;">
   <h2><span class="secnum">6.</span>SPIKES</h2>
   <p class="for">Framework for breaking bad news</p>
   <div class="card">
@@ -252,7 +252,7 @@ footer{font-style:italic; color:var(--text3) !important;}
   </div>
 </section>
 
-<section id="s7" style="--accent:#3A5A8C; --tint:#E8ECF5;">
+<section id="s7" style="--hue:#3A5A8C; --tint:#E8ECF5;">
   <h2><span class="secnum">7.</span>LEMON</h2>
   <p class="for">Predicting a difficult airway</p>
   <div class="card">
@@ -266,7 +266,7 @@ footer{font-style:italic; color:var(--text3) !important;}
   </div>
 </section>
 
-<section id="s8" style="--accent:#96700A; --tint:#F7EFDD;">
+<section id="s8" style="--hue:#96700A; --tint:#F7EFDD;">
   <h2><span class="secnum">8.</span>AEIOU TIPS</h2>
   <p class="for">Causes of altered consciousness</p>
   <div class="card">
@@ -284,7 +284,7 @@ footer{font-style:italic; color:var(--text3) !important;}
   </div>
 </section>
 
-<section id="s9" style="--accent:#7A1620; --tint:#F5E4E5;">
+<section id="s9" style="--hue:#7A1620; --tint:#F5E4E5;">
   <h2><span class="secnum">9.</span>MUDPILES</h2>
   <p class="for">Causes of a high anion gap metabolic acidosis</p>
   <div class="card">
@@ -301,7 +301,7 @@ footer{font-style:italic; color:var(--text3) !important;}
   </div>
 </section>
 
-<section id="s10" style="--accent:#444444; --tint:#EFEFEF; border-bottom:none;">
+<section id="s10" style="--hue:#444444; --tint:#EFEFEF; border-bottom:none;">
   <h2><span class="secnum">10.</span>DR ABCDE</h2>
   <p class="for">Systematic approach to reading a chest X-ray</p>
   <div class="card">

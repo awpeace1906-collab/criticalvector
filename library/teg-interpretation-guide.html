@@ -20,7 +20,7 @@
     --red: #e84c4c;
     --purple: #a78bfa;
     --amber: #e8a94c;
-    --accent: var(--red);
+    --hue: var(--red);
   }
 
   *{ box-sizing: border-box; }
@@ -50,7 +50,7 @@
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.14em;
-    color: var(--accent);
+    color: var(--hue);
     text-transform: uppercase;
     margin-bottom: 10px;
   }
@@ -80,7 +80,7 @@
   }
   .waveform path{
     fill: none;
-    stroke: var(--accent);
+    stroke: var(--hue);
     stroke-width: 1.6;
   }
 
@@ -91,7 +91,7 @@
     display:flex;
     align-items: baseline;
     gap: 14px;
-    border-bottom: 2px solid var(--section-accent, var(--accent));
+    border-bottom: 2px solid var(--section-accent, var(--hue));
     padding-bottom: 8px;
     margin-bottom: 4px;
   }
@@ -101,7 +101,7 @@
     font-weight: 700;
     letter-spacing: 0.02em;
     text-transform: uppercase;
-    color: var(--section-accent, var(--accent));
+    color: var(--section-accent, var(--hue));
     margin: 0;
   }
 
@@ -115,7 +115,7 @@
 
   p{ margin: 0 0 14px; font-size: 0.98rem; }
 
-  sup{ color: var(--accent); font-weight: 600; }
+  sup{ color: var(--hue); font-weight: 600; }
 
   /* ---------- badges ---------- */
   .badge{
@@ -151,7 +151,7 @@
     text-transform: uppercase;
     color: #fff;
     padding: 10px 12px;
-    background: var(--table-accent, var(--accent));
+    background: var(--table-accent, var(--hue));
   }
 
   tbody td{
@@ -195,7 +195,7 @@
   /* ---------- references ---------- */
   .refs ol{ padding-left: 1.3em; margin: 0; }
   .refs li{ font-size: 0.85rem; color: var(--muted); margin-bottom: 10px; line-height: 1.5; }
-  .refs li::marker{ color: var(--accent); font-weight: 700; }
+  .refs li::marker{ color: var(--hue); font-weight: 700; }
 
   /* ---------- footer ---------- */
   footer{
@@ -235,8 +235,7 @@
 @media print{
   :root{
     --bg:#f4f5f7; --surface:#ffffff; --surface2:#eef1f4; --border:#d7dde3;
-    --teal:#00a688; --blue:#1d4ed8; --accent:#00a688; --accent2:#1d4ed8;
-    --red:#c53030; --amber:#b45309; --purple:#7c3aed;
+    --teal:#00a688; --blue:#1d4ed8; --hue:#00a688; --red:#c53030; --amber:#b45309; --purple:#7c3aed;
     --text:#0f1923; --text2:#4a5670; --text3:#6b7688;
   }
   *{-webkit-print-color-adjust:exact; print-color-adjust:exact;}

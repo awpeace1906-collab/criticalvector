@@ -72,11 +72,11 @@ h3 { bookmark-level: 3; bookmark-label: content(); }
 .chapter-head { display: block; margin-bottom: 4px; }
 .chapter-num {
     font-size: 9pt; letter-spacing: 0.12em; font-weight: 700;
-    background: var(--accent-tint); color: var(--accent-dark);
-    border: 1px solid var(--accent-border); border-radius: 4px;
+    background: var(--hue-tint); color: var(--hue-dark);
+    border: 1px solid var(--hue-border); border-radius: 4px;
     padding: 1px 7px;
 }
-h1.chapter-title { font-size: 17pt; font-weight: 800; margin: 6px 0 6px 0; color: var(--accent-dark); }
+h1.chapter-title { font-size: 17pt; font-weight: 800; margin: 6px 0 6px 0; color: var(--hue-dark); }
 .chapter-desc { font-size: 9pt; color: #4a5670; margin-bottom: 14px; font-style: italic; }
 
 /* ---------- Table of Contents ---------- */
@@ -87,12 +87,12 @@ a.toc-link { text-decoration: none; color: inherit; }
 .toc-row1 {
     display: flex; align-items: baseline; gap: 8px;
     padding: 7px 0 5px 0; margin-top: 10px;
-    border-bottom: 2px solid var(--accent);
+    border-bottom: 2px solid var(--hue);
 }
 .toc-row1 .toc-num {
     font-family: 'Syne', sans-serif; font-size: 9pt; font-weight: 700;
-    color: var(--accent-dark); background: var(--accent-tint);
-    border: 1px solid var(--accent-border); border-radius: 4px; padding: 1px 6px;
+    color: var(--hue-dark); background: var(--hue-tint);
+    border: 1px solid var(--hue-border); border-radius: 4px; padding: 1px 6px;
 }
 .toc-row1 .toc-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 11.5pt; color: #0f1923; }
 .toc-row2 {
@@ -104,19 +104,19 @@ a.toc-link { text-decoration: none; color: inherit; }
 
 h2.subhead {
     font-size: 11pt; font-weight: 700; margin: 18px 0 8px 0; padding-bottom: 3px;
-    border-bottom: 2px solid var(--accent);
+    border-bottom: 2px solid var(--hue);
     color: #0f1923;
     page-break-after: avoid; page-break-inside: avoid;
 }
 h3.subsubhead {
-    font-size: 9.6pt; font-weight: 700; margin: 12px 0 4px 0; color: var(--accent-dark);
+    font-size: 9.6pt; font-weight: 700; margin: 12px 0 4px 0; color: var(--hue-dark);
     page-break-after: avoid; page-break-inside: avoid;
 }
 
 .card {
     background: #fff;
     border: 1px solid rgba(0,0,0,.08);
-    border-left: 4px solid var(--accent);
+    border-left: 4px solid var(--hue);
     border-radius: 6px;
     padding: 9px 12px;
     margin-bottom: 8px;
@@ -131,9 +131,9 @@ h3.subsubhead {
     text-transform: uppercase;
     padding: 1.5px 6px;
     border-radius: 4px;
-    background: var(--accent-tint);
-    border: 1px solid var(--accent-border);
-    color: var(--accent-dark);
+    background: var(--hue-tint);
+    border: 1px solid var(--hue-border);
+    color: var(--hue-dark);
     margin-bottom: 4px;
 }
 .card h4 { font-size: 9.8pt; font-weight: 700; margin: 0 0 4px 0; color: #0f1923; }
@@ -162,11 +162,11 @@ p { orphans: 3; widows: 3; }
 .toc-sub { padding-left: 16px; color: #4a5670; font-size: 8.6pt; }
 
 /* five accent classes used per chapter */
-.c-teal   { --accent:#00a688; --accent-dark:#00695a; --accent-tint:rgba(0,166,136,.10); --accent-border:rgba(0,166,136,.28); }
-.c-blue   { --accent:#1d4ed8; --accent-dark:#1d4ed8; --accent-tint:rgba(29,78,216,.08); --accent-border:rgba(29,78,216,.25); }
-.c-red    { --accent:#c53030; --accent-dark:#c53030; --accent-tint:rgba(197,48,48,.08); --accent-border:rgba(197,48,48,.25); }
-.c-amber  { --accent:#b45309; --accent-dark:#b45309; --accent-tint:rgba(180,83,9,.10); --accent-border:rgba(180,83,9,.28); }
-.c-purple { --accent:#7c3aed; --accent-dark:#7c3aed; --accent-tint:rgba(124,58,237,.10); --accent-border:rgba(124,58,237,.28); }
+.c-teal   { --hue:#00a688; --hue-dark:#00695a; --hue-tint:rgba(0,166,136,.10); --hue-border:rgba(0,166,136,.28); }
+.c-blue   { --hue:#1d4ed8; --hue-dark:#1d4ed8; --hue-tint:rgba(29,78,216,.08); --hue-border:rgba(29,78,216,.25); }
+.c-red    { --hue:#c53030; --hue-dark:#c53030; --hue-tint:rgba(197,48,48,.08); --hue-border:rgba(197,48,48,.25); }
+.c-amber  { --hue:#b45309; --hue-dark:#b45309; --hue-tint:rgba(180,83,9,.10); --hue-border:rgba(180,83,9,.28); }
+.c-purple { --hue:#7c3aed; --hue-dark:#7c3aed; --hue-tint:rgba(124,58,237,.10); --hue-border:rgba(124,58,237,.28); }
 
 .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 @media print { .grid2 { display: block; } }

@@ -17,14 +17,14 @@
   nav a { font-size:12px; color:var(--text); background:var(--card); border:1px solid var(--line); padding:6px 10px; border-radius:20px; text-decoration:none; white-space:nowrap; }
   main { padding:0 20px; max-width:760px; margin:0 auto; }
   section { padding:26px 0; border-bottom:1px solid var(--line); }
-  section h2 .secnum { color:var(--accent,#888); margin-right:4px; }
-  section h2 { font-size:20px; margin:0 0 12px 0; padding-bottom:10px; border-bottom:2px solid var(--accent,#888); }
-  .box { background:var(--tint,var(--card)); border:1px solid var(--accent,var(--line)); border-radius:8px; padding:14px 16px; margin:12px 0; color:#1a1a1a; font-size:14px; }
+  section h2 .secnum { color:var(--hue,#888); margin-right:4px; }
+  section h2 { font-size:20px; margin:0 0 12px 0; padding-bottom:10px; border-bottom:2px solid var(--hue,#888); }
+  .box { background:var(--tint,var(--card)); border:1px solid var(--hue,var(--line)); border-radius:8px; padding:14px 16px; margin:12px 0; color:#1a1a1a; font-size:14px; }
   .box p { margin:6px 0; } .box b { color:#000; }
   p.body { font-size:14.5px; margin:10px 0; }
   p.note { font-size:12.5px; color:var(--muted); font-style:italic; margin:8px 0; }
   table { width:100%; border-collapse:collapse; margin:12px 0; font-size:13.5px; }
-  th { background:var(--accent,#444); color:#fff; text-align:left; padding:8px 10px; }
+  th { background:var(--hue,#444); color:#fff; text-align:left; padding:8px 10px; }
   td { padding:8px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
   tr:nth-child(even) td { background:rgba(255,255,255,0.03); }
   .sources { font-size:12.5px; color:var(--muted); padding-left:18px; }
@@ -44,10 +44,10 @@ h2,h3{font-weight:700;}
 code, pre, .mono{font-family:'IBM Plex Mono', monospace;}
 main{max-width:900px !important;}
 header{max-width:900px; margin:0 auto;}
-section h2{font-size:20px; border-bottom:2px solid var(--accent, var(--teal)) !important;}
-.box{background:var(--surface2) !important; color:var(--text) !important; border:1px solid var(--border) !important; border-left:3px solid var(--accent, var(--teal)) !important; border-radius:10px; font-size:14.5px;}
+section h2{font-size:20px; border-bottom:2px solid var(--hue, var(--teal)) !important;}
+.box{background:var(--surface2) !important; color:var(--text) !important; border:1px solid var(--border) !important; border-left:3px solid var(--hue, var(--teal)) !important; border-radius:10px; font-size:14.5px;}
 .box b, .box strong{color:var(--text) !important;}
-th{background:var(--surface2) !important; color:var(--text) !important; border-bottom:2px solid var(--accent, var(--border));}
+th{background:var(--surface2) !important; color:var(--text) !important; border-bottom:2px solid var(--hue, var(--border));}
 nav a{background:var(--surface) !important; color:var(--text2) !important; border:1px solid var(--border) !important; font-weight:600;}
 nav a:hover{color:var(--text) !important; border-color:var(--teal) !important;}
 .alert{background:var(--t-amber) !important; border:1px solid rgba(245,158,11,0.35) !important; color:#fde6b8 !important;}
@@ -55,19 +55,19 @@ nav a:hover{color:var(--text) !important; border-color:var(--teal) !important;}
 .pill-yes{background:var(--t-teal) !important; color:var(--teal) !important;}
 .pill-no{background:var(--t-red) !important; color:var(--red) !important;}
 .pill-offlabel{background:var(--t-amber) !important; color:var(--amber) !important;}
-.statgrid > div{background:var(--surface) !important; border:1px solid var(--border) !important; border-left:4px solid var(--accent, var(--teal)) !important; text-align:left !important; color:var(--text) !important;}
-.statgrid .num{font-family:'Syne', sans-serif; color:var(--accent, var(--teal)) !important;}
+.statgrid > div{background:var(--surface) !important; border:1px solid var(--border) !important; border-left:4px solid var(--hue, var(--teal)) !important; text-align:left !important; color:var(--text) !important;}
+.statgrid .num{font-family:'Syne', sans-serif; color:var(--hue, var(--teal)) !important;}
 .statgrid .lbl{color:var(--text2) !important;}
 .card{background:var(--surface) !important; border-color:var(--border) !important; color:var(--text) !important;}
 .word{font-family:'Syne', sans-serif; color:var(--teal) !important;}
 .fig{background:var(--surface) !important; border-color:var(--border) !important;}
 footer{font-style:italic; color:var(--text3) !important;}
-[style*="--accent:#7A1620"],[style*="--accent:#9C2B3B"],[style*="--accent:#8B2635"]{--accent:var(--red) !important; --tint:var(--t-red) !important;}
-[style*="--accent:#5B3A8E"]{--accent:var(--purple) !important; --tint:var(--t-purple) !important;}
-[style*="--accent:#1F6F5C"],[style*="--accent:#2E6B3E"]{--accent:var(--teal) !important; --tint:var(--t-teal) !important;}
-[style*="--accent:#1F3A5F"],[style*="--accent:#3A5A8C"]{--accent:var(--blue) !important; --tint:var(--t-blue) !important;}
-[style*="--accent:#B5591F"],[style*="--accent:#96700A"]{--accent:var(--amber) !important; --tint:var(--t-amber) !important;}
-[style*="--accent:#444444"]{--accent:var(--text3) !important; --tint:var(--surface2) !important;}
+[style*="--hue:#7A1620"],[style*="--hue:#9C2B3B"],[style*="--hue:#8B2635"]{--hue:var(--red) !important; --tint:var(--t-red) !important;}
+[style*="--hue:#5B3A8E"]{--hue:var(--purple) !important; --tint:var(--t-purple) !important;}
+[style*="--hue:#1F6F5C"],[style*="--hue:#2E6B3E"]{--hue:var(--teal) !important; --tint:var(--t-teal) !important;}
+[style*="--hue:#1F3A5F"],[style*="--hue:#3A5A8C"]{--hue:var(--blue) !important; --tint:var(--t-blue) !important;}
+[style*="--hue:#B5591F"],[style*="--hue:#96700A"]{--hue:var(--amber) !important; --tint:var(--t-amber) !important;}
+[style*="--hue:#444444"]{--hue:var(--text3) !important; --tint:var(--surface2) !important;}
 @media print{
   :root{--bg:#f4f5f7; --surface:#ffffff; --surface2:#eef1f4; --border:#d7dde3; --teal:#00a688; --blue:#1d4ed8; --red:#c53030; --amber:#b45309; --purple:#7c3aed; --text:#0f1923; --text2:#4a5670; --text3:#6b7688;
     --t-teal:rgba(0,166,136,0.08); --t-blue:rgba(29,78,216,0.07); --t-red:rgba(197,48,48,0.07); --t-amber:rgba(180,83,9,0.08); --t-purple:rgba(124,58,237,0.07); --card:#ffffff; --muted:#4a5670; --line:#d7dde3;}
@@ -130,7 +130,7 @@ footer{font-style:italic; color:var(--text3) !important;}
 
 <main>
 
-<section id="s1" style="--accent:#9C2B3B; --tint:#F6E9EA;">
+<section id="s1" style="--hue:#9C2B3B; --tint:#F6E9EA;">
   <h2><span class="secnum">1.</span> The Problem &amp; the Proposed Fix</h2>
   <p class="body">Roughly a quarter of patients in ventricular fibrillation are still fibrillating
   after three standard defibrillation attempts — refractory VF. These patients have
@@ -147,7 +147,7 @@ footer{font-style:italic; color:var(--text3) !important;}
   proof — that distinction is the entire subject of this document.</p>
 </section>
 
-<section id="s2" style="--accent:#5B3A8E; --tint:#EFE9F5;">
+<section id="s2" style="--hue:#5B3A8E; --tint:#EFE9F5;">
   <h2><span class="secnum">2.</span> DOSE-VF: The Actual Results</h2>
   <p class="body">DOSE-VF (Cheskes et al., NEJM 2022) is the first and, as of this writing, only
   randomized controlled trial directly comparing DSED and VC against standard defibrillation for
@@ -170,13 +170,13 @@ footer{font-style:italic; color:var(--text3) !important;}
   </div>
 </section>
 
-<section id="s3" style="--accent:#1F6F5C; --tint:#E6F2EF;">
+<section id="s3" style="--hue:#1F6F5C; --tint:#E6F2EF;">
   <h2><span class="secnum">3.</span> The Mechanism Claim, Questioned</h2>
   <p class="body">The carousel's mechanistic story — inadequate current delivery to fibrillating
   myocardium, the same shock vector repeatedly missing more myocardium, and electrical remodeling
   making VF progressively harder to terminate — is a reasonable physiologic narrative. It is
   also, largely, a narrative rather than a demonstrated mechanism in this trial.</p>
-  <div class="box" style="--accent:#7A1620; --tint:#F5E4E5;">
+  <div class="box" style="--hue:#7A1620; --tint:#F5E4E5;">
     <p><b>A finding that complicates the story:</b> a 2025 multistakeholder AHA/ILCOR thinktank
     report noted that among patients meeting a pragmatic definition of "refractory VF," the VF
     being treated is most likely <em>recurrent</em> rather than truly continuously refractory —
@@ -191,7 +191,7 @@ footer{font-style:italic; color:var(--text3) !important;}
   in the standard-defibrillation arm — a dramatic number built on a very small denominator.</p>
 </section>
 
-<section id="s4" style="--accent:#7A1620; --tint:#F5E4E5;">
+<section id="s4" style="--hue:#7A1620; --tint:#F5E4E5;">
   <h2><span class="secnum">4.</span> What the Confident Version Leaves Out</h2>
   <p class="body">This is the section a clean carousel summary has no room for, and it's the
   section that most changes how much weight this evidence should carry.</p>
@@ -225,7 +225,7 @@ footer{font-style:italic; color:var(--text3) !important;}
     observational studies pulled in alongside DOSE-VF, but a real reminder that DOSE-VF in
     isolation is the single most favorable data point in the literature, not the average of it.</td></tr>
   </table>
-  <div class="box" style="--accent:#7A1620; --tint:#F5E4E5;">
+  <div class="box" style="--hue:#7A1620; --tint:#F5E4E5;">
     <p><b>A published critical appraisal worth reading directly, not just citing:</b> a 2025
     Cureus editorial reviewing this same trial concluded plainly: "Since DSED did not show a
     statistically significant improvement in the actual treatment received, the findings are more
@@ -239,7 +239,7 @@ footer{font-style:italic; color:var(--text3) !important;}
   than an endorsement.</p>
 </section>
 
-<section id="s5" style="--accent:#5B3A8E; --tint:#EFE9F5;">
+<section id="s5" style="--hue:#5B3A8E; --tint:#EFE9F5;">
   <h2><span class="secnum">5.</span> What the Guidelines Actually Say</h2>
   <table>
     <tr><th>Body</th><th>Actual language</th></tr>
@@ -256,7 +256,7 @@ footer{font-style:italic; color:var(--text3) !important;}
     acknowledges individual clinicians may consider it case-by-case "when no further treatment
     options exist," contingent on operational feasibility and local policy.</td></tr>
   </table>
-  <div class="box" style="--accent:#7A1620; --tint:#F5E4E5;">
+  <div class="box" style="--hue:#7A1620; --tint:#F5E4E5;">
     <p><b>A regulatory gap worth knowing:</b> as of the most recent guideline commentary
     reviewed for this document, no manual or automated external defibrillator is manufacturer-
     approved for DSED use. Two devices delivering near-simultaneous shocks through a shared
@@ -269,7 +269,7 @@ footer{font-style:italic; color:var(--text3) !important;}
   real evidentiary scrutiny, not an established rescue algorithm.</p>
 </section>
 
-<section id="s6" style="--accent:#1F3A5F; --tint:#E7EDF4;">
+<section id="s6" style="--hue:#1F3A5F; --tint:#E7EDF4;">
   <h2><span class="secnum">6.</span> Technique Specifics the Carousel Skipped</h2>
   <div class="box">
     <p><b>When to start:</b> per the DOSE-VF investigators' own recommendation, DSED or VC should
@@ -278,7 +278,7 @@ footer{font-style:italic; color:var(--text3) !important;}
     than half of cases; the recommendation is to prioritize prompt standard defibrillation first,
     then escalate at shock 4, not to reach for DSED reflexively at the first sign of difficulty.</p>
   </div>
-  <div class="box" style="--accent:#7A1620; --tint:#F5E4E5;">
+  <div class="box" style="--hue:#7A1620; --tint:#F5E4E5;">
     <p><b>The safety detail that actually matters:</b> genuinely <em>simultaneous</em> shocks from
     two defibrillators carry a real, if low, theoretical risk of equipment damage. The mitigation
     used in DOSE-VF and recommended by the investigators is to ensure shocks are delivered
@@ -294,9 +294,9 @@ footer{font-style:italic; color:var(--text3) !important;}
   question is being actively worked out in parallel with the clinical question.</p>
 </section>
 
-<section id="s7" style="--accent:#B5591F; --tint:#F8ECE0;">
+<section id="s7" style="--hue:#B5591F; --tint:#F8ECE0;">
   <h2><span class="secnum">7.</span> Safety: The Claim I Couldn't Verify</h2>
-  <div class="box" style="--accent:#7A1620; --tint:#F5E4E5;">
+  <div class="box" style="--hue:#7A1620; --tint:#F5E4E5;">
     <p><b>The carousel states defibrillator damage occurs in "~0.4%, rare and manageable" of
     DSED cases.</b> I was not able to locate this specific figure in the DOSE-VF trial
     publication, its secondary analyses, or the ILCOR/AHA/ANZCOR guideline documents reviewed for
@@ -321,7 +321,7 @@ footer{font-style:italic; color:var(--text3) !important;}
   </div>
 </section>
 
-<section id="s8" style="--accent:#1F6F5C; --tint:#E6F2EF;">
+<section id="s8" style="--hue:#1F6F5C; --tint:#E6F2EF;">
   <h2><span class="secnum">8.</span> Practical Bottom Line</h2>
   <div class="box">
     <p><b>What's reasonably defensible:</b> after 3 failed standard shocks in refractory VF/pVT,
@@ -331,7 +331,7 @@ footer{font-style:italic; color:var(--text3) !important;}
     the two — but it requires a second defibrillator, an off-label equipment use, and
     institutional buy-in that most systems don't yet have in place.</p>
   </div>
-  <div class="box" style="--accent:#7A1620; --tint:#F5E4E5;">
+  <div class="box" style="--hue:#7A1620; --tint:#F5E4E5;">
     <p><b>What's not yet established, regardless of how it's presented on social media:</b> that
     DSED is a proven, guideline-mandated "fix," that its mechanism is confirmed, that its safety
     profile is quantified and settled, or that it belongs in a fixed stepwise algorithm before
@@ -354,7 +354,7 @@ footer{font-style:italic; color:var(--text3) !important;}
   </div>
 </section>
 
-<section id="s9" style="--accent:#444444; --tint:#EFEFEF; border-bottom:none;">
+<section id="s9" style="--hue:#444444; --tint:#EFEFEF; border-bottom:none;">
   <h2><span class="secnum">9.</span> Quick Reference Card &amp; Primary Sources</h2>
   <table>
     <tr><th>Claim (as commonly presented)</th><th>What the primary sources actually support</th></tr>
