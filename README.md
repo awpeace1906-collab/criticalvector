@@ -13,7 +13,7 @@ A blog at the intersection of emergency medicine, anesthesiology, critical care,
 
 ## Live Site
 
-[awpeace1906-collab.github.io/criticalvector](https://awpeace1906-collab.github.io/criticalvector)
+[thecriticalvector.com](https://www.thecriticalvector.com)
 
 ## Structure
 

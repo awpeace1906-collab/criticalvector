@@ -17,7 +17,7 @@ HERE = pathlib.Path(__file__).resolve().parent
 MEDIA = HERE.parent / "media"
 FPS = 30
 FFMPEG = imageio_ffmpeg.get_ffmpeg_exe()
-CHROMIUM = next((str(p) for p in pathlib.Path("/opt/pw-browsers").glob("chromium-*/chrome-linux/chrome")), None)
+CHROMIUM = next((str(p) for p in pathlib.Path("/opt/pw-browsers").glob("chromium-*/chrome-linux*/chrome")), None)
 
 
 def open_page(p):
