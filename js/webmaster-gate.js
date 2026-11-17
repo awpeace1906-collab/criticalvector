@@ -34,7 +34,13 @@
   const recall   = () => idb('readonly', s => s.get(ID)).catch(() => null);
   const forget   = () => idb('readwrite', s => s.delete(ID)).catch(() => {});
 
+  // Only letters and digits count: case, spaces and dashes (including the
+  // long dashes phone keyboards substitute) are ignored. Must match
+  // normalize() in scripts/webmaster-vault.js.
+  const normalize = p => String(p).normalize('NFKC').toLowerCase().replace(/[^a-z0-9]/g, '');
+
   async function deriveKey(password) {
+    password = normalize(password);
     const base = await crypto.subtle.importKey('raw', new TextEncoder().encode(password), 'PBKDF2', false, ['deriveKey']);
     return crypto.subtle.deriveKey(
       { name: 'PBKDF2', hash: 'SHA-256', salt: unb64(vault.salt), iterations: vault.iter },

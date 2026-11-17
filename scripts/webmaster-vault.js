@@ -24,7 +24,13 @@ const ITERATIONS = 600000;
 const b64   = buf => Buffer.from(buf).toString('base64');
 const unb64 = str => new Uint8Array(Buffer.from(str, 'base64'));
 
+// Passwords are compared on their letters and digits only, so case, spaces
+// and dashes (including the long dashes phone keyboards substitute) never
+// cause a mismatch. Must match normalize() in js/webmaster-gate.js.
+const normalize = p => String(p).normalize('NFKC').toLowerCase().replace(/[^a-z0-9]/g, '');
+
 async function deriveKey(password, salt, iterations) {
+  password = normalize(password);
   const base = await crypto.subtle.importKey('raw', new TextEncoder().encode(password), 'PBKDF2', false, ['deriveKey']);
   return crypto.subtle.deriveKey(
     { name: 'PBKDF2', hash: 'SHA-256', salt, iterations },
@@ -167,6 +173,10 @@ async function decrypt(password) {
 
 const [cmd] = process.argv.slice(2);
 const password = process.env.WM_PASS;
+if (password && normalize(password).length < 12) {
+  console.error('Password too short: use at least 12 letters and digits.');
+  process.exit(1);
+}
 if (!password || !['encrypt', 'decrypt'].includes(cmd)) {
   console.error("Usage: WM_PASS='…' node scripts/webmaster-vault.js encrypt|decrypt");
   process.exit(1);
