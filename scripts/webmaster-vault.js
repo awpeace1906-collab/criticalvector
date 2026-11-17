@@ -37,9 +37,68 @@ function readVault() {
   return JSON.parse(m[1]);
 }
 
+// ── Site index ──
+// Every page, grouped, with the ones nothing links to marked unlisted.
+// Built at encrypt time and baked into the (encrypted) panel script, so
+// the unlisted addresses never appear in the public page.
+// anesocalc/ is kept fully separate from the site and never indexed here.
+const SKIP = [/^anesocalc\//, /^webmaster-src\//, /^webmaster\.html$/, /_PWA\/(?!index\.html$)/, /^node_modules\//];
+const SECTION_NAMES = { continuum: 'The Continuum', workshop: 'The Workshop', locker: 'The Evidence Locker', flightdeck: 'From the Flight Deck' };
+
+function htmlFiles(dir, out = []) {
+  for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
+    if (e.name.startsWith('.')) continue;
+    const p = path.join(dir, e.name);
+    if (e.isDirectory()) htmlFiles(p, out);
+    else if (e.name.endsWith('.html')) out.push(path.relative(ROOT, p).split(path.sep).join('/'));
+  }
+  return out;
+}
+
+function titleOf(file) {
+  const m = fs.readFileSync(path.join(ROOT, file), 'utf8').match(/<title>([^<]*)<\/title>/i);
+  const t = m ? m[1].replace(/\s*[—|–-]\s*(The\s+)?Critical\s*Vector\s*$/i, '').replace(/^(The\s+)?Critical\s*Vector\s*[—|–-]\s*/i, '').trim() : '';
+  return t || file;
+}
+
+function buildSiteIndex() {
+  const all = htmlFiles(ROOT);
+  const pages = all.filter(f => !SKIP.some(r => r.test(f)));
+  const posts = JSON.parse(fs.readFileSync(path.join(ROOT, 'posts.json'), 'utf8'));
+
+  const linked = new Set(posts.map(p => p.file));
+  for (const f of all.filter(f => !/^webmaster/.test(f))) {
+    const html = fs.readFileSync(path.join(ROOT, f), 'utf8');
+    for (const [, href] of html.matchAll(/href="([^"#?]+)/g)) {
+      if (/^(https?:|mailto:|data:)/.test(href)) continue;
+      let target = path.posix.normalize(path.posix.join(path.posix.dirname(f), href));
+      if (href.endsWith('/') || fs.existsSync(path.join(ROOT, target)) && fs.statSync(path.join(ROOT, target)).isDirectory()) target = path.posix.join(target, 'index.html');
+      linked.add(target);
+    }
+  }
+
+  const entry = f => ({ path: f, title: titleOf(f) });
+  const listed = pages.filter(f => linked.has(f));
+  const groups = [
+    { name: 'Site pages', items: listed.filter(f => !f.includes('/')).map(entry) },
+    { name: 'Apps', items: listed.filter(f => /_PWA\/index\.html$/.test(f)).map(entry) },
+    { name: 'Tools', items: listed.filter(f => f.startsWith('tools/')).map(entry) },
+  ];
+  for (const [key, name] of Object.entries(SECTION_NAMES)) {
+    const items = posts.filter(p => p.section === key).sort((a, b) => b.date.localeCompare(a.date))
+      .map(p => ({ path: p.file, title: p.title, meta: p.meta }));
+    groups.push({ name, section: key, items });
+  }
+  const unlisted = pages.filter(f => !linked.has(f)).map(entry);
+  return { built: new Date().toISOString().slice(0, 10), groups, unlisted };
+}
+
 async function encrypt(password) {
   const html = fs.readFileSync(path.join(SRC, 'panel.html'), 'utf8');
-  const js   = fs.readFileSync(path.join(SRC, 'panel.js'), 'utf8');
+  let js = fs.readFileSync(path.join(SRC, 'panel.js'), 'utf8');
+  const index = buildSiteIndex();
+  js = js.replace(/^  const SITE_INDEX = .*$/m, () => '  const SITE_INDEX = ' + JSON.stringify(index) + ';');
+  fs.writeFileSync(path.join(SRC, 'panel.js'), js);
   const salt = crypto.getRandomValues(new Uint8Array(16));
   const iv   = crypto.getRandomValues(new Uint8Array(12));
   const key  = await deriveKey(password, salt, ITERATIONS);
@@ -49,7 +108,7 @@ async function encrypt(password) {
   const page = fs.readFileSync(PAGE, 'utf8');
   const block = `${START}\n  <script type="application/json" id="wmVault">${JSON.stringify(vault)}</script>\n  ${END}`;
   fs.writeFileSync(PAGE, page.slice(0, page.indexOf(START)) + block + page.slice(page.indexOf(END) + END.length));
-  console.log(`Encrypted ${html.length + js.length} characters into webmaster.html`);
+  console.log(`Encrypted ${html.length + js.length} characters into webmaster.html (index: ${index.groups.reduce((n, g) => n + g.items.length, 0)} listed, ${index.unlisted.length} unlisted)`);
 }
 
 async function decrypt(password) {

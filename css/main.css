@@ -1214,6 +1214,14 @@ img { max-width: 100%; display: block; }
 }
 .wm-btn:hover { border-color: var(--border-hover); }
 .wm-count { margin-left: auto; font-family: var(--font-sans); font-size: 13px; font-weight: 700; color: var(--text2); }
+.wm-group { border-bottom: 1px solid var(--border); }
+.wm-group:last-of-type { border-bottom: none; }
+.wm-group > summary { list-style: none; cursor: pointer; border-bottom: none; }
+.wm-group > summary::-webkit-details-marker { display: none; }
+.wm-group > summary::before { content: '▸'; color: var(--text3); font-size: 11px; width: 10px; }
+.wm-group[open] > summary::before { content: '▾'; }
+.wm-group > .rrow:not(summary) { padding-left: 36px; }
+.wm-group .rrow > div, #wmLatest .rrow > div { min-width: 0; overflow-wrap: anywhere; }
 .wm-login { max-width: 420px; width: 100%; justify-self: center; }
 .wm-form { display: grid; gap: 10px; padding: 16px; }
 .wm-field-label { font-family: var(--font-sans); font-size: 12px; font-weight: 600; color: var(--text2); }
