@@ -13,9 +13,14 @@
 
   if (document.documentElement.hasAttribute('data-no-count')) return;
 
+  // Pinned release with Subresource Integrity, as GoatCounter recommends:
+  // the browser refuses the script if its contents ever change. To upgrade,
+  // update the version and the sha384 hash together.
   const s = document.createElement('script');
   s.async = true;
-  s.src = 'https://gc.zgo.at/count.js';
+  s.src = 'https://gc.zgo.at/count.v5.js';
+  s.integrity = 'sha384-atnOLvQb9t+jTSipvd75X2yginT4PjVbqDdlJAmxMm+wYElFmeR6EmLP5bYeoRVQ';
+  s.crossOrigin = 'anonymous';
   s.dataset.goatcounter = endpoint + '/count';
   document.head.appendChild(s);
 })();
