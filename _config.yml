@@ -6,5 +6,6 @@ exclude:
   - README.md
   - docs/
   - scripts/
+  - webmaster/
   - webmaster-src/
   - build-posts.yml

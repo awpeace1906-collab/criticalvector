@@ -33,23 +33,14 @@ jobs:
       - name: Run build script
         run: node scripts/build-post-lists.js
 
-      # The plaintext lands in the git-ignored webmaster-src/ and is never
-      # committed; only webmaster.html (ciphertext) is, and only if it changed.
-      # To change the password: set WM_PASS to the new one and, once, add
-      # WM_PASS_OLD holding the current one; the page is re-locked with
-      # WM_PASS on the next run. Then delete WM_PASS_OLD.
-      - name: Refresh webmaster index
+      # Builds the locked page from the templates in webmaster/ plus the
+      # generated site index; only the ciphertext in webmaster.html is
+      # committed, and only if it changed. To change the password: set
+      # WM_PASS to the new one and, once, WM_PASS_OLD to the current one;
+      # then delete WM_PASS_OLD.
+      - name: Refresh webmaster page
         if: env.WM_PASS != ''
-        run: |
-          if ! node scripts/webmaster-vault.js decrypt; then
-            if [ -z "$WM_PASS_OLD" ]; then
-              echo "::error::WM_PASS does not open webmaster.html. Set WM_PASS to the current webmaster password, or add WM_PASS_OLD (the current password) once to switch the page to WM_PASS."
-              exit 1
-            fi
-            echo "Switching the webmaster password to WM_PASS"
-            WM_PASS="$WM_PASS_OLD" node scripts/webmaster-vault.js decrypt
-          fi
-          node scripts/webmaster-vault.js encrypt
+        run: node scripts/webmaster-vault.js encrypt
 
       - name: Commit updated pages
         run: |
