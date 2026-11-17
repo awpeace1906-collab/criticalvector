@@ -2,3 +2,6 @@
 .claude/
 *.xcuserstate
 xcuserdata/
+
+# Plaintext source of the encrypted webmaster page. Never commit it.
+webmaster-src/
