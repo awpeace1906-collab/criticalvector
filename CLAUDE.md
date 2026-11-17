@@ -16,7 +16,9 @@
 
 ## Other conventions
 
+- `_config.yml` keeps repo-only files (this file, `README.md`, `docs/`, `scripts/`) off the published site. Add any new maintainer-only file or folder to its `exclude` list.
+
 - Post lists, homepage "Latest from each section" and sidebar counts are generated from `posts.json` by `scripts/build-post-lists.js`. Edit `posts.json`, then run the script.
 - Bump the `?v=` query on `css/main.css` / `css/post.css` links when those files change.
-- Every public page loads `js/stats.js` (GoatCounter, cookieless). The site code lives only in that file. Add the script tag to any new page; never add it under `anesocalc/`.
-- `webmaster.html` is the back office, reached from the footer `©` (wired in `js/main.js`) and locked by password. Its panels and script are stored encrypted in the page; the plaintext lives in the git-ignored `webmaster-src/`. To edit it, get the password from the site owner, then run `WM_PASS=… node scripts/webmaster-vault.js decrypt`, edit `webmaster-src/`, and `encrypt`. The encrypt step also rebuilds the page's site index (every page, listed and unlisted, never `anesocalc/`), so re-run it after adding or removing pages. Never commit `webmaster-src/`, the password, or plaintext of the panels. Even locked, keep secrets and identifying details off it.
+- Every public page loads `js/stats.js` (GoatCounter, cookieless). The site code lives only in that file. Add the script tag to any new page; never add it under `anesocalc/`, and never link `anesocalc/` from public pages. The encrypted webmaster index is the only place the two connect.
+- `webmaster.html` is the back office, reached from the footer `©` (wired in `js/main.js`) and locked by password. Its panels and script are stored encrypted in the page; the plaintext lives in the git-ignored `webmaster-src/`. To edit it, get the password from the site owner, then run `WM_PASS=… node scripts/webmaster-vault.js decrypt`, edit `webmaster-src/`, and `encrypt`. The encrypt step also rebuilds the page's site index (every page in the repo, listed and unlisted, with `anesocalc/` in its own group), so re-run it after adding or removing pages. Never commit `webmaster-src/`, the password, or plaintext of the panels. Even locked, keep secrets and identifying details off it.

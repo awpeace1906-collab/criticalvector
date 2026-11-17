@@ -38,11 +38,12 @@ function readVault() {
 }
 
 // ── Site index ──
-// Every page, grouped, with the ones nothing links to marked unlisted.
-// Built at encrypt time and baked into the (encrypted) panel script, so
-// the unlisted addresses never appear in the public page.
-// anesocalc/ is kept fully separate from the site and never indexed here.
-const SKIP = [/^anesocalc\//, /^webmaster-src\//, /^webmaster\.html$/, /_PWA\/(?!index\.html$)/, /^node_modules\//];
+// Every page in the repo, grouped, with the ones nothing links to marked
+// unlisted. Built at encrypt time and baked into the (encrypted) panel
+// script, so none of it appears in the public page. A top-level folder the
+// site's own pages never link into is a separate project: it gets its own
+// group, named after the folder. App-internal fragments are skipped.
+const SKIP = [/^webmaster-src\//, /^webmaster\.html$/, /_PWA\/(?!index\.html$)/, /^node_modules\//];
 const SECTION_NAMES = { continuum: 'The Continuum', workshop: 'The Workshop', locker: 'The Evidence Locker', flightdeck: 'From the Flight Deck' };
 
 function htmlFiles(dir, out = []) {
@@ -78,7 +79,17 @@ function buildSiteIndex() {
   }
 
   const entry = f => ({ path: f, title: titleOf(f) });
-  const listed = pages.filter(f => linked.has(f));
+  // Folders reached only from inside themselves are separate projects.
+  const siteLinks = new Set();
+  for (const f of all.filter(f => !f.includes('/') && !/^webmaster/.test(f)).concat(posts.map(p => p.file))) {
+    for (const [, href] of fs.readFileSync(path.join(ROOT, f), 'utf8').matchAll(/href="([^"#?:]+)/g)) {
+      siteLinks.add(path.posix.normalize(path.posix.join(path.posix.dirname(f), href)).split('/')[0]);
+    }
+  }
+  const separate = [...new Set(pages.filter(f => f.includes('/')).map(f => f.split('/')[0]))]
+    .filter(d => !siteLinks.has(d) && !posts.some(p => p.file.startsWith(d + '/')) && !/^unlisted$/.test(d)).sort();
+  const inSeparate = f => separate.some(d => f.startsWith(d + '/'));
+  const listed = pages.filter(f => linked.has(f) && !inSeparate(f));
   const groups = [
     { name: 'Site pages', items: listed.filter(f => !f.includes('/')).map(entry) },
     { name: 'Apps', items: listed.filter(f => /_PWA\/index\.html$/.test(f)).map(entry) },
@@ -89,7 +100,11 @@ function buildSiteIndex() {
       .map(p => ({ path: p.file, title: p.title, meta: p.meta }));
     groups.push({ name, section: key, items });
   }
-  const unlisted = pages.filter(f => !linked.has(f)).map(entry);
+  for (const dir of separate) {
+    groups.push({ name: dir + '/', items: pages.filter(f => f.startsWith(dir + '/'))
+      .map(f => ({ ...entry(f), meta: f + (linked.has(f) ? '' : ' · unlisted') })) });
+  }
+  const unlisted = pages.filter(f => !inSeparate(f) && !linked.has(f)).map(entry);
   return { built: new Date().toISOString().slice(0, 10), groups, unlisted };
 }
 
