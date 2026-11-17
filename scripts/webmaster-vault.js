@@ -6,7 +6,8 @@
 //   WM_PASS='…' node scripts/webmaster-vault.js decrypt   → webmaster-src/
 //   WM_PASS='…' node scripts/webmaster-vault.js encrypt   → webmaster.html
 //
-// To change the password: decrypt with the old one, encrypt with the new.
+// To change the password: decrypt with the old one, encrypt with the new
+// (a new password gets a new salt, which signs out remembered devices).
 // Format must match js/webmaster-gate.js: PBKDF2-SHA256 → AES-256-GCM.
 
 const fs   = require('fs');
@@ -108,17 +109,46 @@ function buildSiteIndex() {
   return { built: new Date().toISOString().slice(0, 10), groups, unlisted };
 }
 
+// Decrypt the current vault; null when there is none or the password differs.
+async function openVault(password) {
+  let v;
+  try { v = readVault(); } catch (e) { return null; }
+  const key = await deriveKey(password, unb64(v.salt), v.iter);
+  try {
+    const plain = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: unb64(v.iv) }, key, unb64(v.ct));
+    return { vault: v, ...JSON.parse(new TextDecoder().decode(plain)) };
+  } catch (e) {
+    return null;
+  }
+}
+
+const indexOf = js => { const m = js.match(/^  const SITE_INDEX = (.*);$/m); try { return JSON.parse(m[1]); } catch (e) { return null; } };
+const sameIndex = (a, b) => !!a && !!b && JSON.stringify({ ...a, built: 0 }) === JSON.stringify({ ...b, built: 0 });
+
+// Re-encrypting with the same password keeps the salt, so devices that
+// remembered the derived key stay signed in; a new password gets a new salt.
+// Nothing is written when the panels and the site index are unchanged.
 async function encrypt(password) {
+  const old = await openVault(password);
   const html = fs.readFileSync(path.join(SRC, 'panel.html'), 'utf8');
   let js = fs.readFileSync(path.join(SRC, 'panel.js'), 'utf8');
   const index = buildSiteIndex();
+  const oldIndex = old && indexOf(old.js);
+  if (sameIndex(oldIndex, index)) index.built = oldIndex.built;
   js = js.replace(/^  const SITE_INDEX = .*$/m, () => '  const SITE_INDEX = ' + JSON.stringify(index) + ';');
   fs.writeFileSync(path.join(SRC, 'panel.js'), js);
-  const salt = crypto.getRandomValues(new Uint8Array(16));
+
+  if (old && old.html === html && old.js === js) {
+    console.log('webmaster.html unchanged');
+    return;
+  }
+
+  const salt = old ? unb64(old.vault.salt) : crypto.getRandomValues(new Uint8Array(16));
+  const iterations = old ? old.vault.iter : ITERATIONS;
   const iv   = crypto.getRandomValues(new Uint8Array(12));
-  const key  = await deriveKey(password, salt, ITERATIONS);
+  const key  = await deriveKey(password, salt, iterations);
   const ct   = await crypto.subtle.encrypt({ name: 'AES-GCM', iv }, key, new TextEncoder().encode(JSON.stringify({ html, js })));
-  const vault = { v: 1, iter: ITERATIONS, salt: b64(salt), iv: b64(iv), ct: b64(ct) };
+  const vault = { v: 1, iter: iterations, salt: b64(salt), iv: b64(iv), ct: b64(ct) };
 
   const page = fs.readFileSync(PAGE, 'utf8');
   const block = `${START}\n  <script type="application/json" id="wmVault">${JSON.stringify(vault)}</script>\n  ${END}`;
@@ -127,18 +157,11 @@ async function encrypt(password) {
 }
 
 async function decrypt(password) {
-  const v = readVault();
-  const key = await deriveKey(password, unb64(v.salt), v.iter);
-  let plain;
-  try {
-    plain = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: unb64(v.iv) }, key, unb64(v.ct));
-  } catch (e) {
-    throw new Error('Wrong password');
-  }
-  const { html, js } = JSON.parse(new TextDecoder().decode(plain));
+  const old = await openVault(password);
+  if (!old) throw new Error('Wrong password');
   fs.mkdirSync(SRC, { recursive: true });
-  fs.writeFileSync(path.join(SRC, 'panel.html'), html);
-  fs.writeFileSync(path.join(SRC, 'panel.js'), js);
+  fs.writeFileSync(path.join(SRC, 'panel.html'), old.html);
+  fs.writeFileSync(path.join(SRC, 'panel.js'), old.js);
   console.log('Decrypted into webmaster-src/ (git-ignored)');
 }
 

@@ -2,7 +2,8 @@
 // Cookieless page counts through GoatCounter. GOATCOUNTER_CODE is the site
 // code chosen at goatcounter.com; an empty string turns counting off.
 // Pages marked <html data-no-count> (the webmaster page) load the config
-// without counting themselves. A browser opted out from the webmaster page
+// without counting themselves; it reads the counts through GoatCounter's
+// private API, so the public counter endpoint can stay switched off. A browser opted out from the webmaster page
 // (localStorage "skipgc") is skipped by count.js itself.
 (function () {
   const GOATCOUNTER_CODE = 'criticalvector';
