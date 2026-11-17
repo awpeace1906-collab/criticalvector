@@ -1,0 +1,10 @@
+# GitHub Pages (Jekyll) build settings.
+# Repo-only files stay in the repo and off the published site: working
+# notes, docs and build scripts are for maintainers, not visitors.
+exclude:
+  - CLAUDE.md
+  - README.md
+  - docs/
+  - scripts/
+  - webmaster-src/
+  - build-posts.yml

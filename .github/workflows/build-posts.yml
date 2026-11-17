@@ -1,19 +1,25 @@
 name: Build Post Lists
 
+# Runs on every push to main: rebuilds the homepage and section lists from
+# posts.json, then (when the WM_PASS secret is set) refreshes the encrypted
+# webmaster index so new, moved or removed pages show up there.
 on:
   push:
     branches: [main]
-    paths:
-      - 'posts.json'
-      - 'posts/**'
-      - 'scripts/build-post-lists.js'
+  workflow_dispatch:
 
 permissions:
   contents: write
 
+concurrency:
+  group: build-posts
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      WM_PASS: ${{ secrets.WM_PASS }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -26,10 +32,18 @@ jobs:
       - name: Run build script
         run: node scripts/build-post-lists.js
 
+      # The plaintext lands in the git-ignored webmaster-src/ and is never
+      # committed; only webmaster.html (ciphertext) is, and only if it changed.
+      - name: Refresh webmaster index
+        if: env.WM_PASS != ''
+        run: |
+          node scripts/webmaster-vault.js decrypt
+          node scripts/webmaster-vault.js encrypt
+
       - name: Commit updated pages
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add index.html continuum.html workshop.html locker.html flightdeck.html
-          git diff --staged --quiet || git commit -m "chore: rebuild post lists [skip ci]"
+          git add index.html continuum.html workshop.html locker.html flightdeck.html webmaster.html
+          git diff --staged --quiet || git commit -m "chore: rebuild post lists and webmaster index [skip ci]"
           git push

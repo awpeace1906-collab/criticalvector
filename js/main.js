@@ -52,3 +52,21 @@ if (navToggle && navLinks) {
     if (window.innerWidth > 860) setMenu(false);
   });
 }
+
+// ── WEBMASTER ACCESS ──
+// The © in the footer quietly links to the webmaster page. It keeps the
+// text's look (no colour, underline or pointer) so it reads as plain text.
+(function () {
+  const footer = document.querySelector('.footer-left');
+  const me = document.currentScript;
+  if (!footer || !me || !footer.firstChild || footer.firstChild.nodeType !== 3) return;
+  const text = footer.firstChild;
+  if (!text.textContent.startsWith('©')) return;
+  const link = document.createElement('a');
+  link.href = new URL('../webmaster.html', me.src).href;
+  link.className = 'wm-door';
+  link.textContent = '©';
+  link.setAttribute('aria-label', 'Copyright');
+  text.textContent = text.textContent.slice(1);
+  footer.insertBefore(link, text);
+})();
