@@ -1,13 +1,17 @@
 // webmaster-vault.js
-// Encrypts the webmaster page's panels and script into webmaster.html, or
-// decrypts them back for editing. The plaintext lives in webmaster-src/,
-// which is git-ignored: only ciphertext is ever committed.
+// Builds the locked webmaster page: takes the panel templates in
+// webmaster/ (no secrets; kept off the published site by _config.yml),
+// adds the generated site index, and encrypts the result into
+// webmaster.html. Only the encrypted copy contains the index.
 //
-//   WM_PASS='…' node scripts/webmaster-vault.js decrypt   → webmaster-src/
 //   WM_PASS='…' node scripts/webmaster-vault.js encrypt   → webmaster.html
+//   WM_PASS='…' node scripts/webmaster-vault.js decrypt   → webmaster-src/
+//                                    (git-ignored, for inspection only)
 //
-// To change the password: decrypt with the old one, encrypt with the new
-// (a new password gets a new salt, which signs out remembered devices).
+// To change the password, set WM_PASS to the new one and WM_PASS_OLD to
+// the current one for a single encrypt; a new salt signs out remembered
+// devices. Without WM_PASS_OLD, a WM_PASS that doesn't open the current
+// page is refused, so a mistyped secret can't silently re-lock it.
 // Format must match js/webmaster-gate.js: PBKDF2-SHA256 → AES-256-GCM.
 
 const fs   = require('fs');
@@ -16,6 +20,7 @@ const { webcrypto: crypto } = require('crypto');
 
 const ROOT   = path.join(__dirname, '..');
 const PAGE   = path.join(ROOT, 'webmaster.html');
+const TEMPLATES = path.join(ROOT, 'webmaster');
 const SRC    = path.join(ROOT, 'webmaster-src');
 const START  = '<!-- WM:VAULT-START -->';
 const END    = '<!-- WM:VAULT-END -->';
@@ -50,7 +55,7 @@ function readVault() {
 // script, so none of it appears in the public page. A top-level folder the
 // site's own pages never link into is a separate project: it gets its own
 // group, named after the folder. App-internal fragments are skipped.
-const SKIP = [/^webmaster-src\//, /^webmaster\.html$/, /_PWA\/(?!index\.html$)/, /^node_modules\//];
+const SKIP = [/^webmaster-src\//, /^webmaster\//, /^webmaster\.html$/, /_PWA\/(?!index\.html$)/, /^node_modules\//];
 const SECTION_NAMES = { continuum: 'The Continuum', workshop: 'The Workshop', locker: 'The Evidence Locker', flightdeck: 'From the Flight Deck' };
 
 function htmlFiles(dir, out = []) {
@@ -115,6 +120,8 @@ function buildSiteIndex() {
   return { built: new Date().toISOString().slice(0, 10), groups, unlisted };
 }
 
+const hasVault = () => { try { readVault(); return true; } catch (e) { return false; } };
+
 // Decrypt the current vault; null when there is none or the password differs.
 async function openVault(password) {
   let v;
@@ -135,22 +142,30 @@ const sameIndex = (a, b) => !!a && !!b && JSON.stringify({ ...a, built: 0 }) ===
 // remembered the derived key stay signed in; a new password gets a new salt.
 // Nothing is written when the panels and the site index are unchanged.
 async function encrypt(password) {
-  const old = await openVault(password);
-  const html = fs.readFileSync(path.join(SRC, 'panel.html'), 'utf8');
-  let js = fs.readFileSync(path.join(SRC, 'panel.js'), 'utf8');
+  let old = await openVault(password);
+  let switching = false;
+  if (!old && hasVault()) {
+    const previous = process.env.WM_PASS_OLD && await openVault(process.env.WM_PASS_OLD);
+    if (!previous) throw new Error('WM_PASS does not open the current webmaster.html. Use the current password, or set WM_PASS_OLD to it once to switch to WM_PASS.');
+    old = previous;
+    switching = true;
+    console.log('Switching the webmaster password to WM_PASS');
+  }
+  const html = fs.readFileSync(path.join(TEMPLATES, 'panel.html'), 'utf8');
+  let js = fs.readFileSync(path.join(TEMPLATES, 'panel.js'), 'utf8');
   const index = buildSiteIndex();
   const oldIndex = old && indexOf(old.js);
   if (sameIndex(oldIndex, index)) index.built = oldIndex.built;
   js = js.replace(/^  const SITE_INDEX = .*$/m, () => '  const SITE_INDEX = ' + JSON.stringify(index) + ';');
-  fs.writeFileSync(path.join(SRC, 'panel.js'), js);
 
-  if (old && old.html === html && old.js === js) {
+  if (old && !switching && old.html === html && old.js === js) {
     console.log('webmaster.html unchanged');
     return;
   }
 
-  const salt = old ? unb64(old.vault.salt) : crypto.getRandomValues(new Uint8Array(16));
-  const iterations = old ? old.vault.iter : ITERATIONS;
+  const keep = old && !switching;
+  const salt = keep ? unb64(old.vault.salt) : crypto.getRandomValues(new Uint8Array(16));
+  const iterations = keep ? old.vault.iter : ITERATIONS;
   const iv   = crypto.getRandomValues(new Uint8Array(12));
   const key  = await deriveKey(password, salt, iterations);
   const ct   = await crypto.subtle.encrypt({ name: 'AES-GCM', iv }, key, new TextEncoder().encode(JSON.stringify({ html, js })));

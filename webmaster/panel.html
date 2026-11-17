@@ -1,0 +1,50 @@
+    <section class="sidebar-card" aria-labelledby="wm-visits">
+      <div class="sidebar-title" id="wm-visits">Visits</div>
+      <div class="wm-grid">
+        <div class="wm-stat"><div class="wm-num" data-days="today">—</div><div class="wm-label">Visitors today</div></div>
+        <div class="wm-stat"><div class="wm-num" data-days="7">—</div><div class="wm-label">Past 7 days</div></div>
+        <div class="wm-stat"><div class="wm-num" data-days="30">—</div><div class="wm-label">Past 30 days</div></div>
+        <div class="wm-stat"><div class="wm-num" data-days="all">—</div><div class="wm-label">All time</div></div>
+      </div>
+      <div class="wm-note" id="wmStatus">Loading counts…</div>
+      <form class="wm-form" id="wmKeyForm" hidden>
+        <label class="wm-field-label" for="wmKey">GoatCounter API key (read statistics)</label>
+        <input class="wm-input" id="wmKey" type="password" autocomplete="off" spellcheck="false" required />
+        <button class="wm-btn" type="submit">Save on this device</button>
+      </form>
+      <div class="wm-actions">
+        <a class="wm-btn" id="wmDashboard" href="#" target="_blank" rel="noopener">Open full dashboard</a>
+        <button class="wm-btn" id="wmSkip" type="button">Count my visits: …</button>
+        <button class="wm-btn" id="wmForgetKey" type="button" hidden>Forget API key on this device</button>
+      </div>
+    </section>
+
+    <section class="sidebar-card" aria-labelledby="wm-pages">
+      <div class="sidebar-title" id="wm-pages">Visitors by section (all time)</div>
+      <div id="wmPages"></div>
+    </section>
+
+    <section class="sidebar-card" aria-labelledby="wm-content">
+      <div class="sidebar-title" id="wm-content">Content</div>
+      <div id="wmSections"></div>
+      <div class="sidebar-title">Latest entries</div>
+      <div id="wmLatest"></div>
+    </section>
+
+    <section class="sidebar-card" aria-labelledby="wm-index">
+      <div class="sidebar-title" id="wm-index">Site index</div>
+      <div id="wmIndex"></div>
+    </section>
+
+    <section class="sidebar-card" aria-labelledby="wm-house">
+      <div class="sidebar-title" id="wm-house">Housekeeping</div>
+      <div class="wm-note" id="wmBuild">Checking the live build…</div>
+      <div class="wm-actions">
+        <button class="wm-btn" id="wmCaches" type="button">Refresh this device's app caches</button>
+        <a class="wm-btn" href="POCUS_Compass_PWA/">POCUS Field Guide</a>
+        <a class="wm-btn" href="TEE_FlipBook_PWA/">TEE Compass</a>
+        <a class="wm-btn" href="HemoCalc_PWA/">Hemo Calc</a>
+      </div>
+    </section>
+
+  
