@@ -107,6 +107,10 @@ function buildSiteIndex() {
     { name: 'Apps', items: listed.filter(f => /_PWA\/index\.html$/.test(f)).map(entry) },
     { name: 'Tools', items: listed.filter(f => f.startsWith('tools/')).map(entry) },
   ];
+  // Linked pages that fit none of the groups above (e.g. printables/).
+  const grouped = new Set(groups.flatMap(g => g.items.map(i => i.path)).concat(posts.map(p => p.file)));
+  const other = listed.filter(f => !grouped.has(f) && !/_PWA\//.test(f) && !f.startsWith('tools/'));
+  if (other.length) groups.push({ name: 'Other pages', items: other.map(entry) });
   for (const [key, name] of Object.entries(SECTION_NAMES)) {
     const items = posts.filter(p => p.section === key).sort((a, b) => b.date.localeCompare(a.date))
       .map(p => ({ path: p.file, title: p.title, meta: p.meta }));

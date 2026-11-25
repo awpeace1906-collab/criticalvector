@@ -1246,6 +1246,56 @@ img { max-width: 100%; display: block; }
   .wm-stat:nth-child(-n+2) { border-bottom: 1px solid var(--border); }
 }
 
+/* ── PRINTABLES (Workshop · Hard Copy) ── */
+.print-page { max-width: 960px; margin: 0 auto; padding: 32px 28px 64px; display: grid; gap: 20px; }
+.print-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 14px; align-items: start; }
+.print-shot {
+  margin: 0;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  display: grid;
+  gap: 8px;
+}
+.print-shot img { width: 100%; height: auto; display: block; border-radius: var(--radius-sm); }
+.print-shot-pair > div { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.print-shot figcaption { font-family: var(--font-sans); font-size: 11px; color: var(--text3); }
+.print-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.print-table { width: 100%; border-collapse: collapse; font-family: var(--font-sans); font-size: 13px; }
+.print-table th, .print-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: middle; }
+.print-table thead th { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text3); }
+.print-table tbody th { font-weight: 600; color: var(--text); white-space: nowrap; }
+.print-table tbody th span { display: block; font-size: 11px; font-weight: 400; color: var(--text3); margin-top: 2px; }
+.print-table tbody tr:last-child th, .print-table tbody tr:last-child td { border-bottom: none; }
+.print-dl {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--tag-teal-border);
+  background: var(--tag-teal-bg);
+  color: var(--tag-teal-text);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.print-dl:hover { border-color: var(--border-hover); }
+.print-actions { padding: 12px 16px; border-top: 1px solid var(--border); }
+.print-tips { margin: 0; padding: 14px 16px 14px 34px; display: grid; gap: 8px; font-family: var(--font-sans); font-size: 13px; line-height: 1.55; color: var(--text2); }
+.print-tips strong { color: var(--text); }
+.print-credit { font-family: var(--font-sans); font-size: 11px; color: var(--text3); margin: 0; }
+@media (max-width: 640px) {
+  .print-page { padding: 24px 16px 48px; }
+  .print-gallery { grid-template-columns: 1fr 1fr; }
+  .print-shot-pair { grid-column: 1 / -1; }
+  .print-table th, .print-table td { padding: 8px 3px; }
+  .print-table th:first-child { padding-left: 12px; }
+  .print-table tbody th { white-space: normal; font-size: 12px; }
+  .print-table .print-dl { padding: 5px 7px; font-size: 11px; }
+}
+
 /* ── ABOUT PAGE ── */
 .about-page {
   max-width: 800px;
