@@ -5,6 +5,8 @@
 const fs   = require('fs');
 const path = require('path');
 
+const { buildWorkshop } = require('./build-workshop');
+
 const ROOT  = path.join(__dirname, '..');
 const posts = JSON.parse(fs.readFileSync(path.join(ROOT, 'posts.json'), 'utf8'));
 
@@ -45,6 +47,7 @@ function buildRows(section) {
 let updated = 0;
 
 for (const [section, filename] of Object.entries(SECTIONS)) {
+  if (section === 'workshop') continue;  // built by build-workshop.js
   const filepath = path.join(ROOT, filename);
   if (!fs.existsSync(filepath)) { console.log(`Skipping ${filename} — not found`); continue; }
 
@@ -63,6 +66,10 @@ for (const [section, filename] of Object.entries(SECTIONS)) {
   console.log(`Updated ${filename} with ${posts.filter(p => p.section === section).length} post(s)`);
   updated++;
 }
+
+// ── Workshop overview, subpages and search index ───────────────
+const workshop = buildWorkshop(posts);
+updated += 1 + workshop.pages.length;
 
 // ── index.html — featured card + recent posts ──────────────────
 const indexPath = path.join(ROOT, 'index.html');
@@ -125,11 +132,14 @@ ${badges}
   // ── Section counts in the sidebar (entries listed on each page) ──
   for (const section of Object.keys(SECTIONS)) {
     const page = fs.readFileSync(path.join(ROOT, SECTIONS[section]), 'utf8');
-    const n = (page.match(/class="post-row[ "]/g) || []).length;
+    const n = section === 'workshop' ? workshop.total : (page.match(/class="post-row[ "]/g) || []).length;
     index = index.replace(
       new RegExp(`(<span class="sec-count" data-section="${section}">)[^<]*(</span>)`),
       `$1${n}$2`);
   }
+
+  // The sidebar's "All tools" line counts every Workshop entry.
+  index = index.replace(/(<div class="rname">All tools<\/div><div class="rsub">)\d+( apps, guides and references<\/div>)/, `$1${workshop.total}$2`);
 
   fs.writeFileSync(indexPath, index, 'utf8');
   updated++;

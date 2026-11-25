@@ -1246,6 +1246,43 @@ img { max-width: 100%; display: block; }
   .wm-stat:nth-child(-n+2) { border-bottom: 1px solid var(--border); }
 }
 
+/* ── WORKSHOP: search, category overview, subpages ── */
+.wk-search { display: grid; gap: 8px; margin-bottom: 28px; }
+.wk-search-label { font-family: var(--font-sans); font-size: 12px; font-weight: 600; color: var(--text2); }
+.wk-input {
+  width: 100%;
+  font: 15px var(--font-sans);
+  padding: 12px 14px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+}
+.wk-input:focus { outline: none; border-color: var(--border-hover); }
+.wk-status { font-family: var(--font-sans); font-size: 12px; color: var(--text3); min-height: 1em; }
+.wk-results[hidden], #wkOverview[hidden] { display: none !important; }
+.wk-cat { margin-bottom: 36px; }
+.wk-cat-link { text-decoration: none; margin-bottom: 6px; }
+.wk-cat-link:hover { color: var(--text); }
+.wk-cat-count { font-weight: 500; color: var(--text3); letter-spacing: 0; }
+.wk-cat-blurb { font-family: var(--font-sans); font-size: 13px; line-height: 1.5; color: var(--text2); margin: 0 0 12px; }
+.wk-more {
+  display: inline-block;
+  margin-top: 10px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--tag-teal-border);
+  background: var(--tag-teal-bg);
+  color: var(--tag-teal-text);
+  text-decoration: none;
+}
+.wk-more:hover { border-color: var(--border-hover); }
+.wk-back { text-decoration: none; }
+.wk-back:hover { color: var(--text); }
+
 /* ── PRINTABLES (Workshop · Hard Copy) ── */
 .print-page { max-width: 960px; margin: 0 auto; padding: 32px 28px 64px; display: grid; gap: 20px; }
 .print-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 14px; align-items: start; }
