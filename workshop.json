@@ -1,0 +1,110 @@
+{
+  "_comment": "Workshop categories. Hand-written items live here; Clinical References comes from posts.json (section: workshop). Rebuilt by scripts/build-workshop.js.",
+  "categories": [
+    {
+      "key": "apps",
+      "title": "Apps & Projects",
+      "page": "workshop-apps.html",
+      "blurb": "Installable web apps that work offline, at the bedside or in the field.",
+      "items": [
+        {
+          "href": "POCUS_Compass_PWA/",
+          "type": "Web App · Offline-Ready",
+          "title": "POCUS Field Guide — Point-of-Care Ultrasound",
+          "meta": "EM · Critical Care · Anesthesia · Installable PWA"
+        },
+        {
+          "href": "TEE_FlipBook_PWA/",
+          "type": "Web App · Offline-Ready",
+          "title": "TEE Compass — ASE 20-View Comprehensive Exam",
+          "meta": "Anesthesiology · Critical Care · Installable PWA"
+        },
+        {
+          "href": "HemoCalc_PWA/",
+          "type": "Web App · Offline-Ready",
+          "title": "Hemo Calc — CVICU / CTICU Hemodynamic Calculator",
+          "meta": "Critical Care · Anesthesiology · Cardiothoracic · Installable PWA"
+        }
+      ]
+    },
+    {
+      "key": "pocket-guides",
+      "title": "Pocket Guides",
+      "page": "workshop-pocket-guides.html",
+      "blurb": "Single-file guides that open offline: emergency medicine, ICU, OB, anesthesia, neonatology and ventilation.",
+      "items": [
+        {
+          "href": "tools/anesthesia_reference_v4.html",
+          "type": "HTML Guide · Offline-Ready",
+          "title": "Pocket Anesthesia Reference — Neuraxial, Local Anesthetics, LAST, OB, NMT, Nerve Blocks, Abx",
+          "meta": "ASRA 2023/2025 · ASA 2023 · ACOG 2023 · ASHP/IDSA 2023 · ASTM D4774-24 · v4 · 2026"
+        },
+        {
+          "href": "tools/em_pocket_guide_v5.html",
+          "type": "HTML Guide · Offline-Ready",
+          "title": "Emergency Medicine Pocket Guide — Resuscitation, RSI, Airway, Toxicology, Stroke, Trauma",
+          "meta": "AHA 2020 · ACEP 2023 · ACS TQIP · ACMT · v5 · 2026"
+        },
+        {
+          "href": "tools/icu_pocket_guide_v4.html",
+          "type": "HTML Guide · Offline-Ready",
+          "title": "ICU Pocket Guide — Ventilation, Vasopressors, Sepsis, AKI, Neurocritical Care, Sedation",
+          "meta": "SSC 2026 · ARDSNet · KDIGO · Neurocrit Care Society · v4 · 2026"
+        },
+        {
+          "href": "tools/ob_pocket_guide_v4.html",
+          "type": "HTML Guide · Offline-Ready",
+          "title": "OB Pocket Guide — Maternal Arrest, PPH, Preeclampsia, EFM, Fetal Surveillance, Labor",
+          "meta": "OBLS 2024 · ACOG 2024 · AHA 2025 · FIGO · v4 · 2026"
+        },
+        {
+          "href": "tools/neonatology_pocket_guide_v1.html",
+          "type": "HTML Guide · Offline-Ready",
+          "title": "Neonatology & Pediatrics Pocket Guide — NRP, Hypoglycemia, Seizures, Jaundice, Milestones",
+          "meta": "AAP 2022 · NRP/AHA 2020 · Sarnat/NICHD · PES 2015 · v1 · 2026"
+        },
+        {
+          "href": "tools/vent_pocket_guide_v1.html",
+          "type": "HTML Guide · Offline-Ready",
+          "title": "Vent Pocket Guide — Modes, Loops, ARDS, NIV, Weaning, Equations",
+          "meta": "ARDSNet/EOLIA/OSCILLATE · Tobin's Principles · Owens · v1 · 2026"
+        }
+      ]
+    },
+    {
+      "key": "references",
+      "title": "Clinical References",
+      "page": "workshop-references.html",
+      "blurb": "Focused references, pocket cards and teaching guides from the library, newest first.",
+      "source": "posts"
+    },
+    {
+      "key": "procedures",
+      "title": "Procedural Education",
+      "page": "workshop-procedures.html",
+      "blurb": "Step-by-step procedural frameworks and checklists.",
+      "items": [
+        {
+          "href": "tools/pocus_nerve_block_reference_v1.html",
+          "type": "Procedural Education",
+          "title": "POCUS-Guided Nerve Block — Procedural Reference",
+          "meta": "Six-phase framework · 47-step checklist · LAST response · ASRA 2023"
+        }
+      ]
+    },
+    {
+      "key": "hard-copy",
+      "title": "Hard Copy — Printables",
+      "page": "workshop-hard-copy.html",
+      "blurb": "Printable cards and checklists, from badge buddy to letter size.",
+      "items": [
+        {
+          "href": "printables/pre-sign-out.html",
+          "type": "Printable · ED Handoff",
+          "title": "Pre-Sign-Out Checklist",
+          "meta": "Focused ED I-PASS · 3×5, 5×7, letter, badge buddy · dark & light"
+        }
+      ]
+    }
+  ]
+}

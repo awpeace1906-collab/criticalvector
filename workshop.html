@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300;1,8..60,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/main.css?v=11" />
+  <link rel="stylesheet" href="css/main.css?v=13" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23111720'/><polyline points='2,18 7,18 9,10 12,24 15,14 17,20 19,8 22,22 24,16 30,16' stroke='%2300d4aa' stroke-width='1.8' stroke-linejoin='round' stroke-linecap='round' fill='none'/><circle cx='19' cy='8' r='2' fill='%2300d4aa'/></svg>" />
 </head>
 <body>
@@ -48,8 +48,19 @@
 
   <div class="section-grid">
 
-    <div class="section-label workshop-label">Apps &amp; Projects</div>
-    <div class="post-list">
+    <div class="wk-search" id="search">
+      <label class="wk-search-label" for="wkQuery">Search the Workshop</label>
+      <input class="wk-input" id="wkQuery" type="search" placeholder="Title, topic or keyword: vent, TEG, sign-out, neonatal…" autocomplete="off" spellcheck="false" />
+      <div class="wk-status" id="wkStatus" role="status" aria-live="polite"></div>
+    </div>
+    <div class="post-list wk-results" id="wkResults" hidden></div>
+
+    <!-- CV:WORKSHOP-START -->
+    <div id="wkOverview">
+    <section class="wk-cat" aria-labelledby="wk-apps">
+      <a href="workshop-apps.html" class="section-label workshop-label wk-cat-link" id="wk-apps">Apps &amp; Projects <span class="wk-cat-count">3</span></a>
+      <p class="wk-cat-blurb">Installable web apps that work offline, at the bedside or in the field.</p>
+      <div class="post-list">
       <a href="POCUS_Compass_PWA/" class="post-row workshop-row">
         <div class="post-info">
           <div class="post-type workshop-type">Web App · Offline-Ready</div>
@@ -74,11 +85,14 @@
         </div>
         <span class="post-arrow">›</span>
       </a>
-    </div>
+      </div>
+      <a class="wk-more" href="workshop-apps.html">Open Apps &amp; Projects →</a>
+    </section>
 
-    <div class="section-label workshop-label" style="margin-top:36px;">Pocket Guides — Offline-Ready</div>
-    <div class="post-list">
-
+    <section class="wk-cat" aria-labelledby="wk-pocket-guides">
+      <a href="workshop-pocket-guides.html" class="section-label workshop-label wk-cat-link" id="wk-pocket-guides">Pocket Guides <span class="wk-cat-count">6</span></a>
+      <p class="wk-cat-blurb">Single-file guides that open offline: emergency medicine, ICU, OB, anesthesia, neonatology and ventilation.</p>
+      <div class="post-list">
       <a href="tools/anesthesia_reference_v4.html" class="post-row workshop-row">
         <div class="post-info">
           <div class="post-type workshop-type">HTML Guide · Offline-Ready</div>
@@ -87,7 +101,6 @@
         </div>
         <span class="post-arrow">›</span>
       </a>
-
       <a href="tools/em_pocket_guide_v5.html" class="post-row workshop-row">
         <div class="post-info">
           <div class="post-type workshop-type">HTML Guide · Offline-Ready</div>
@@ -96,7 +109,6 @@
         </div>
         <span class="post-arrow">›</span>
       </a>
-
       <a href="tools/icu_pocket_guide_v4.html" class="post-row workshop-row">
         <div class="post-info">
           <div class="post-type workshop-type">HTML Guide · Offline-Ready</div>
@@ -105,7 +117,6 @@
         </div>
         <span class="post-arrow">›</span>
       </a>
-
       <a href="tools/ob_pocket_guide_v4.html" class="post-row workshop-row">
         <div class="post-info">
           <div class="post-type workshop-type">HTML Guide · Offline-Ready</div>
@@ -114,30 +125,14 @@
         </div>
         <span class="post-arrow">›</span>
       </a>
+      </div>
+      <a class="wk-more" href="workshop-pocket-guides.html">See all 6 →</a>
+    </section>
 
-      <a href="tools/neonatology_pocket_guide_v1.html" class="post-row workshop-row">
-        <div class="post-info">
-          <div class="post-type workshop-type">HTML Guide · Offline-Ready</div>
-          <div class="post-title">Neonatology &amp; Pediatrics Pocket Guide — NRP, Hypoglycemia, Seizures, Jaundice, Milestones</div>
-          <div class="post-meta">AAP 2022 · NRP/AHA 2020 · Sarnat/NICHD · PES 2015 · v1 · 2026</div>
-        </div>
-        <span class="post-arrow">›</span>
-      </a>
-
-      <a href="tools/vent_pocket_guide_v1.html" class="post-row workshop-row">
-        <div class="post-info">
-          <div class="post-type workshop-type">HTML Guide · Offline-Ready</div>
-          <div class="post-title">Vent Pocket Guide — Modes, Loops, ARDS, NIV, Weaning, Equations</div>
-          <div class="post-meta">ARDSNet/EOLIA/OSCILLATE · Tobin's Principles · Owens · v1 · 2026</div>
-        </div>
-        <span class="post-arrow">›</span>
-      </a>
-
-    </div>
-
-    <div class="section-label workshop-label" style="margin-top:36px;">Clinical References</div>
-    <div class="post-list">
-    <!-- CV:POST-LIST-START -->
+    <section class="wk-cat" aria-labelledby="wk-references">
+      <a href="workshop-references.html" class="section-label workshop-label wk-cat-link" id="wk-references">Clinical References <span class="wk-cat-count">35</span></a>
+      <p class="wk-cat-blurb">Focused references, pocket cards and teaching guides from the library, newest first.</p>
+      <div class="post-list">
       <a href="library/pancreatitis-severity-ranson-bisap.html" class="post-row workshop-row">
         <div class="post-info">
           <div class="post-type workshop-type">Scoring Systems</div>
@@ -170,260 +165,14 @@
         </div>
         <span class="post-arrow">›</span>
       </a>
-      <a href="library/intoxicating-substances-reference.html" class="post-row workshop-row">
-        <div class="post-info">
-          <div class="post-type workshop-type">Clinical Reference</div>
-          <div class="post-title">Intoxicating Substances Reference: Stimulants</div>
-          <div class="post-meta">Clinical Reference · Oct 2026</div>
-        </div>
-        <span class="post-arrow">›</span>
-      </a>
-      <a href="library/peds-drug-database-us-complete.html" class="post-row workshop-row">
-        <div class="post-info">
-          <div class="post-type workshop-type">Pediatric Reference</div>
-          <div class="post-title">Pediatric Drug Database v4 — US Edition, Fully Reviewed</div>
-          <div class="post-meta">Pediatric Reference · Oct 2026</div>
-        </div>
-        <span class="post-arrow">›</span>
-      </a>
-      <a href="library/emergency-drugs-pregnancy.html" class="post-row workshop-row">
-        <div class="post-info">
-          <div class="post-type workshop-type">Clinical Reference</div>
-          <div class="post-title">Emergency Drugs in Pregnancy</div>
-          <div class="post-meta">Clinical Reference · Oct 2026</div>
-        </div>
-        <span class="post-arrow">›</span>
-      </a>
-      <a href="library/macrolides-compared.html" class="post-row workshop-row">
-        <div class="post-info">
-          <div class="post-type workshop-type">Pharmacology</div>
-          <div class="post-title">Macrolides Compared</div>
-          <div class="post-meta">Pharmacology · Oct 2026</div>
-        </div>
-        <span class="post-arrow">›</span>
-      </a>
-      <a href="library/perls-map.html" class="post-row workshop-row">
-        <div class="post-info">
-          <div class="post-type workshop-type">Protocol Map</div>
-          <div class="post-title">ASA PeRLS Protocol Map</div>
-          <div class="post-meta">Protocol Map · Oct 2026</div>
-        </div>
-        <span class="post-arrow">›</span>
-      </a>
-      <a href="library/sutures-tying-guide.html" class="post-row workshop-row">
-        <div class="post-info">
-          <div class="post-type workshop-type">Clinical Reference</div>
-          <div class="post-title">Sutures &amp; Tying Techniques</div>
-          <div class="post-meta">Clinical Reference · Oct 2026</div>
-        </div>
-        <span class="post-arrow">›</span>
-      </a>
-      <a href="library/board-tested-infections.html" class="post-row workshop-row">
-        <div class="post-info">
-          <div class="post-type workshop-type">Empiric Therapy Guide, Part I</div>
-          <div class="post-title">Board-Tested Infections</div>
-          <div class="post-meta">Empiric Therapy Guide, Part I · Aug 2026</div>
-        </div>
-        <span class="post-arrow">›</span>
-      </a>
-      <a href="library/ed-icu-and-critical-infections.html" class="post-row workshop-row">
-        <div class="post-info">
-          <div class="post-type workshop-type">Empiric Therapy Guide, Part II</div>
-          <div class="post-title">ED/ICU &amp; Critical Infections</div>
-          <div class="post-meta">Empiric Therapy Guide, Part II · Aug 2026</div>
-        </div>
-        <span class="post-arrow">›</span>
-      </a>
-      <a href="library/biostatistics-for-clinicians.html" class="post-row workshop-row">
-        <div class="post-info">
-          <div class="post-type workshop-type">Reference</div>
-          <div class="post-title">Biostatistics for Clinicians</div>
-          <div class="post-meta">Reference · Aug 2026</div>
-        </div>
-        <span class="post-arrow">›</span>
-      </a>
-      <a href="library/blood-products-guide.html" class="post-row workshop-row">
-        <div class="post-info">
-          <div class="post-type workshop-type">Blood Products</div>
-          <div class="post-title">Blood Products</div>
-          <div class="post-meta">Blood Products · Jul 2026</div>
-        </div>
-        <span class="post-arrow">›</span>
-      </a>
-      <a href="library/hypertonic-saline-vs-mannitol.html" class="post-row workshop-row">
-        <div class="post-info">
-          <div class="post-type workshop-type">Pocket Reference</div>
-          <div class="post-title">Hypertonic Saline vs. Mannitol</div>
-          <div class="post-meta">Pocket Reference · Jul 2026</div>
-        </div>
-        <span class="post-arrow">›</span>
-      </a>
-      <a href="library/refractory-vf-dsed.html" class="post-row workshop-row">
-        <div class="post-info">
-          <div class="post-type workshop-type">Pocket Reference</div>
-          <div class="post-title">Refractory VF: Vector Change &amp; DSED</div>
-          <div class="post-meta">Pocket Reference · Jul 2026</div>
-        </div>
-        <span class="post-arrow">›</span>
-      </a>
-      <a href="library/remimazolam-guide.html" class="post-row workshop-row">
-        <div class="post-info">
-          <div class="post-type workshop-type">Pocket Reference</div>
-          <div class="post-title">Remimazolam</div>
-          <div class="post-meta">Pocket Reference · Jul 2026</div>
-        </div>
-        <span class="post-arrow">›</span>
-      </a>
-      <a href="library/rocuronium-dosing.html" class="post-row workshop-row">
-        <div class="post-info">
-          <div class="post-type workshop-type">Pocket Reference</div>
-          <div class="post-title">High-Dose Rocuronium &amp; First-Pass Success</div>
-          <div class="post-meta">Pocket Reference · Jul 2026</div>
-        </div>
-        <span class="post-arrow">›</span>
-      </a>
-      <a href="library/capnography.html" class="post-row workshop-row">
-        <div class="post-info">
-          <div class="post-type workshop-type">Pocket Reference</div>
-          <div class="post-title">Capnography</div>
-          <div class="post-meta">Pocket Reference · Jul 2026</div>
-        </div>
-        <span class="post-arrow">›</span>
-      </a>
-      <a href="library/extreme-axis-deviation.html" class="post-row workshop-row">
-        <div class="post-info">
-          <div class="post-type workshop-type">Pocket Reference</div>
-          <div class="post-title">Extreme Axis Deviation (Northwest Axis)</div>
-          <div class="post-meta">Pocket Reference · Jul 2026</div>
-        </div>
-        <span class="post-arrow">›</span>
-      </a>
-      <a href="library/mechanical-ventilation-full.html" class="post-row workshop-row">
-        <div class="post-info">
-          <div class="post-type workshop-type">Comprehensive Reference</div>
-          <div class="post-title">Mechanical Ventilation</div>
-          <div class="post-meta">Comprehensive Reference · Jul 2026</div>
-        </div>
-        <span class="post-arrow">›</span>
-      </a>
-      <a href="library/volemic-status-resuscitation.html" class="post-row workshop-row">
-        <div class="post-info">
-          <div class="post-type workshop-type">Pocket Reference</div>
-          <div class="post-title">Maintaining Volemic Status in Hemorrhagic Shock</div>
-          <div class="post-meta">Pocket Reference · Jul 2026</div>
-        </div>
-        <span class="post-arrow">›</span>
-      </a>
-      <a href="library/antidotes-reversal-agents.html" class="post-row workshop-row">
-        <div class="post-info">
-          <div class="post-type workshop-type">Pocket Reference</div>
-          <div class="post-title">Antidotes &amp; Reversal Agents</div>
-          <div class="post-meta">Pocket Reference · Jul 2026</div>
-        </div>
-        <span class="post-arrow">›</span>
-      </a>
-      <a href="library/awake-intubation-guide.html" class="post-row workshop-row">
-        <div class="post-info">
-          <div class="post-type workshop-type">Intubation Series</div>
-          <div class="post-title">Awake Intubation in the ICU</div>
-          <div class="post-meta">Intubation Series · Jul 2026</div>
-        </div>
-        <span class="post-arrow">›</span>
-      </a>
-      <a href="library/bis-monitoring.html" class="post-row workshop-row">
-        <div class="post-info">
-          <div class="post-type workshop-type">Pocket Reference</div>
-          <div class="post-title">BIS Monitoring</div>
-          <div class="post-meta">Pocket Reference · Jul 2026</div>
-        </div>
-        <span class="post-arrow">›</span>
-      </a>
-      <a href="library/cspine-rules-guide.html" class="post-row workshop-row">
-        <div class="post-info">
-          <div class="post-type workshop-type">Clinical Decision Rules</div>
-          <div class="post-title">NEXUS, Canadian C-Spine &amp; CT Head Rules</div>
-          <div class="post-meta">Clinical Decision Rules · Jul 2026</div>
-        </div>
-        <span class="post-arrow">›</span>
-      </a>
-      <a href="library/ecg-changes.html" class="post-row workshop-row">
-        <div class="post-info">
-          <div class="post-type workshop-type">Pocket Reference</div>
-          <div class="post-title">ECG Changes: Electrolytes &amp; Drug Effects</div>
-          <div class="post-meta">Pocket Reference · Jul 2026</div>
-        </div>
-        <span class="post-arrow">›</span>
-      </a>
-      <a href="library/mnemonics-guide.html" class="post-row workshop-row">
-        <div class="post-info">
-          <div class="post-type workshop-type">Quick Reference</div>
-          <div class="post-title">Clinical Mnemonics</div>
-          <div class="post-meta">Quick Reference · Jul 2026</div>
-        </div>
-        <span class="post-arrow">›</span>
-      </a>
-      <a href="library/uw-em-drug-guide.html" class="post-row workshop-row">
-        <div class="post-info">
-          <div class="post-type workshop-type">Pocket Reference</div>
-          <div class="post-title">Emergency Medicine Drug Guide: Peds &amp; Adult</div>
-          <div class="post-meta">Pocket Reference · Jul 2026</div>
-        </div>
-        <span class="post-arrow">›</span>
-      </a>
-      <a href="library/ventilator-loops.html" class="post-row workshop-row">
-        <div class="post-info">
-          <div class="post-type workshop-type">Pocket Reference</div>
-          <div class="post-title">Ventilator Loops</div>
-          <div class="post-meta">Pocket Reference · Jul 2026</div>
-        </div>
-        <span class="post-arrow">›</span>
-      </a>
-      <a href="library/dex-polyuria-guide.html" class="post-row workshop-row">
-        <div class="post-info">
-          <div class="post-type workshop-type">Spot It, Explain It, Fix It</div>
-          <div class="post-title">Dexmedetomidine &amp; Polyuria</div>
-          <div class="post-meta">Spot It, Explain It, Fix It · Jul 2026</div>
-        </div>
-        <span class="post-arrow">›</span>
-      </a>
-      <a href="library/asra-neuraxial-guide.html" class="post-row workshop-row">
-        <div class="post-info">
-          <div class="post-type workshop-type">Anesthesia Reference</div>
-          <div class="post-title">Neuraxial Blocks &amp; Blood Thinners</div>
-          <div class="post-meta">Anesthesia Reference · Jul 2026</div>
-        </div>
-        <span class="post-arrow">›</span>
-      </a>
-      <a href="library/bleeding-reversal-guide.html" class="post-row workshop-row">
-        <div class="post-info">
-          <div class="post-type workshop-type">Pocket Reference</div>
-          <div class="post-title">Bleeding, Reversal &amp; Antiplatelet Decisions</div>
-          <div class="post-meta">Pocket Reference · Jul 2026</div>
-        </div>
-        <span class="post-arrow">›</span>
-      </a>
-      <a href="library/pediatric-code-blue-guide.html" class="post-row workshop-row">
-        <div class="post-info">
-          <div class="post-type workshop-type">Numbers Worth Knowing</div>
-          <div class="post-title">Pediatric Code Blue</div>
-          <div class="post-meta">Numbers Worth Knowing · Jul 2026</div>
-        </div>
-        <span class="post-arrow">›</span>
-      </a>
-      <a href="library/invasive-waveform-diagnostics.html" class="post-row workshop-row">
-        <div class="post-info">
-          <div class="post-type workshop-type">Hemodynamic Monitoring</div>
-          <div class="post-title">Invasive Waveform Diagnostics — Arterial &amp; Right Heart</div>
-          <div class="post-meta">Hemodynamic Monitoring · Jun 2026</div>
-        </div>
-        <span class="post-arrow">›</span>
-      </a>
-    <!-- CV:POST-LIST-END -->
-    </div>
+      </div>
+      <a class="wk-more" href="workshop-references.html">See all 35 →</a>
+    </section>
 
-    <div class="section-label workshop-label" style="margin-top:36px;">Procedural Education</div>
-    <div class="post-list">
-
+    <section class="wk-cat" aria-labelledby="wk-procedures">
+      <a href="workshop-procedures.html" class="section-label workshop-label wk-cat-link" id="wk-procedures">Procedural Education <span class="wk-cat-count">1</span></a>
+      <p class="wk-cat-blurb">Step-by-step procedural frameworks and checklists.</p>
+      <div class="post-list">
       <a href="tools/pocus_nerve_block_reference_v1.html" class="post-row workshop-row">
         <div class="post-info">
           <div class="post-type workshop-type">Procedural Education</div>
@@ -432,12 +181,14 @@
         </div>
         <span class="post-arrow">›</span>
       </a>
+      </div>
+      <a class="wk-more" href="workshop-procedures.html">Open Procedural Education →</a>
+    </section>
 
-    </div>
-
-    <div class="section-label workshop-label" style="margin-top:36px;">Hard Copy — Printables</div>
-    <div class="post-list">
-
+    <section class="wk-cat" aria-labelledby="wk-hard-copy">
+      <a href="workshop-hard-copy.html" class="section-label workshop-label wk-cat-link" id="wk-hard-copy">Hard Copy — Printables <span class="wk-cat-count">1</span></a>
+      <p class="wk-cat-blurb">Printable cards and checklists, from badge buddy to letter size.</p>
+      <div class="post-list">
       <a href="printables/pre-sign-out.html" class="post-row workshop-row">
         <div class="post-info">
           <div class="post-type workshop-type">Printable · ED Handoff</div>
@@ -446,8 +197,12 @@
         </div>
         <span class="post-arrow">›</span>
       </a>
-
+      </div>
+      <a class="wk-more" href="workshop-hard-copy.html">Open Hard Copy — Printables →</a>
+    </section>
     </div>
+    <script type="application/json" id="wkIndex">[{"h":"POCUS_Compass_PWA/","t":"POCUS Field Guide — Point-of-Care Ultrasound","y":"Web App · Offline-Ready","m":"EM · Critical Care · Anesthesia · Installable PWA","c":"Apps & Projects","p":"workshop-apps.html","k":"POCUS Field Guide · POCUS Field Guide — EM · Critical Care · Anesthesia point-of-care ultrasound reference"},{"h":"TEE_FlipBook_PWA/","t":"TEE Compass — ASE 20-View Comprehensive Exam","y":"Web App · Offline-Ready","m":"Anesthesiology · Critical Care · Installable PWA","c":"Apps & Projects","p":"workshop-apps.html","k":"TEE Compass · TEE Compass — ASE 20-View Comprehensive Exam, Anesthesiology & Critical Care"},{"h":"HemoCalc_PWA/","t":"Hemo Calc — CVICU / CTICU Hemodynamic Calculator","y":"Web App · Offline-Ready","m":"Critical Care · Anesthesiology · Cardiothoracic · Installable PWA","c":"Apps & Projects","p":"workshop-apps.html","k":"Hemo Calc — The Critical Vector · Bedside hemodynamic, oxygen transport and CTICU calculator from The Critical Vector. · Patient data · Results · Patient · Pressures · Flow and blood gases · Shunt sampling · Fluid responsiveness · Valves and echo · Vasoactive drips · CTICU: bypass and perfusion · CTICU: thoracic and ventilator · CTICU: ECMO · CTICU: post-op valve echo · CTICU: transplant donor · Derived · Flow · Resistance · Work and power · Right ventricle · Oxygen transport · Fick cardiac output · CO₂ perfusion markers · Shunt and gas exchange · Valves and coronary perfusion · Vasoactive burden and class · CTICU: transplant sizing"},{"h":"tools/anesthesia_reference_v4.html","t":"Pocket Anesthesia Reference — Neuraxial, Local Anesthetics, LAST, OB, NMT, Nerve Blocks, Abx","y":"HTML Guide · Offline-Ready","m":"ASRA 2023/2025 · ASA 2023 · ACOG 2023 · ASHP/IDSA 2023 · ASTM D4774-24 · v4 · 2026","c":"Pocket Guides","p":"workshop-pocket-guides.html","k":"Pocket Anesthesia Reference v4 · Pocket Anesthesia Reference - Offline Version · Pre-Induction Checklist — MSMAID · Maintenance Fluids — 4-2-1 · Avg Blood Volume · NPO Guidelines — ASA 2023 · Drug Concentration Math · MAC Values (%) · Airway Ultrasound · Neuraxial Ultrasound · Cardiac POCUS — Golden Spiral (5 Views) · Vascular Access POCUS · Lung Ultrasound — OR Context · Contraindications to Neuraxial · Spinal Anesthesia — Agents · Spinal Hypotension · Epidural — Levels & Dosing · Local Anesthetic Properties — ASRA 2023 · Vascularity Hierarchy — LAST Risk · CNS Signs · CV Signs · LAST Treatment Algorithm — ASRA 2023 · LAST Prevention · TOF — Depth Classification (ASA 2023) · Reversal Dosing — Quick Reference · NMB Drug Duration Reference · High / Total Spinal · Malignant Hyperthermia (MH) · Anaphylaxis · CICO — Cannot Intubate Cannot Oxygenate · Hyperkalemia · Post-Partum Hemorrhage (PPH) · Hypertensive Disorders of Pregnancy · Emergent GA for C-Section · Pediatric Normal Parameters · Intraop Glucose — Infants & Neonates · Surgical Antibiotic Prophylaxis — ASHP/IDSA/SHEA 2023 · ASTM D4774-24 / ISO 26825 — Verified Color Reference · Sources & References"},{"h":"tools/em_pocket_guide_v5.html","t":"Emergency Medicine Pocket Guide — Resuscitation, RSI, Airway, Toxicology, Stroke, Trauma","y":"HTML Guide · Offline-Ready","m":"AHA 2020 · ACEP 2023 · ACS TQIP · ACMT · v5 · 2026","c":"Pocket Guides","p":"workshop-pocket-guides.html","k":"EM Pocket Guide v5 · ⌨ Keyboard Shortcuts · Resuscitation · ACLS / Cardiac Arrest · Anaphylaxis · Airway · RSI — 7 P · Post-Intubation Mgmt · Shock · Shock Recognition · Sepsis / SSC 2026 · Acute Dyspnea / NIV · Neurology · Stroke / TIA · Status Epilepticus · Altered Mental Status · Toxicology · Toxidromes · Specific Overdoses · Trauma · ATLS Primary Survey · Hemorrhagic Shock / MTP · Trauma Activation · POCUS · eFAST · Electrolytes · Hyperkalemia · Sodium Disorders · Scores & Tools · EM Scores & Formulas · ECG Patterns · References · Syncope Risk (CSRS/SFSR) · Chest Pain / hs-cTn Algorithm"},{"h":"tools/icu_pocket_guide_v4.html","t":"ICU Pocket Guide — Ventilation, Vasopressors, Sepsis, AKI, Neurocritical Care, Sedation","y":"HTML Guide · Offline-Ready","m":"SSC 2026 · ARDSNet · KDIGO · Neurocrit Care Society · v4 · 2026","c":"Pocket Guides","p":"workshop-pocket-guides.html","k":"ICU Pocket Guide v4 · ⌨ Keyboard Shortcuts · Ventilation · ARDS / Lung Protection · Weaning & Extubation · Hemodynamics · Vasopressors / Inotropes · Shock & Sepsis · Sedation/Analgesia · PADIS Bundle · Renal / AKI · AKI Staging & RRT · ID / Abx · Empiric Antibiotics · Neurology · ICP / TBI · Status Epilepticus · Metabolic · Electrolytes & Glycemia · Hematology · Anticoagulation & Reversal · POCUS · Cardiac POCUS · Scores & Tools · Critical Care Scores · References"},{"h":"tools/ob_pocket_guide_v4.html","t":"OB Pocket Guide — Maternal Arrest, PPH, Preeclampsia, EFM, Fetal Surveillance, Labor","y":"HTML Guide · Offline-Ready","m":"OBLS 2024 · ACOG 2024 · AHA 2025 · FIGO · v4 · 2026","c":"Pocket Guides","p":"workshop-pocket-guides.html","k":"OB/GYN Pocket Guide · ⌨ Keyboard Shortcuts · OB Emergencies · Maternal Cardiac Arrest · Postpartum Hemorrhage · Preeclampsia / Eclampsia / HELLP · Shoulder Dystocia / Cord Prolapse · Labor & Delivery · EFM / Fetal Heart Rate · Labor Progression · Induction / Augmentation · Antepartum · Prenatal Screening · HTN & GDM in Pregnancy · Preterm Labor · GYN Emergencies · Ovarian Torsion · PID & Tubo-ovarian Abscess · Ectopic Pregnancy · Bartholin Abscess & Vulvar Emergencies · POCUS · OB POCUS · Gynecology · Abnormal Uterine Bleeding · Contraception · Fetal Medicine · Fetal Surveillance · Scores & Tools · OB Formulas & Scores · References"},{"h":"tools/neonatology_pocket_guide_v1.html","t":"Neonatology & Pediatrics Pocket Guide — NRP, Hypoglycemia, Seizures, Jaundice, Milestones","y":"HTML Guide · Offline-Ready","m":"AAP 2022 · NRP/AHA 2020 · Sarnat/NICHD · PES 2015 · v1 · 2026","c":"Pocket Guides","p":"workshop-pocket-guides.html","k":"Neonatology & Pediatrics Pocket Guide v1 · ⌨ Keyboard Shortcuts · Normal Newborn · Assessment & APGAR · Exam Timeline & Routine Care · Growth & Development · Growth Parameters · Developmental Milestones · Developmental Delay Evaluation · Neonatal Resuscitation · NRP Algorithm (ABCD) · Prematurity & Birth Injury · Low Birth Weight & Prematurity · SGA / IUGR & LGA · Birth Injury · Feeding & Immunization · Infant Feeding & Weaning · Immunization · Genetic Disorders · Chromosomal Disorders · Modes of Inheritance · Neonatal Pathology · Infant of Diabetic Mother · Neonatal Seizures · Neonatal Jaundice · Inborn Errors of Metabolism · RDS & HIE · RDS (Hyaline Membrane Disease) · HIE & Therapeutic Hypothermia · References"},{"h":"tools/vent_pocket_guide_v1.html","t":"Vent Pocket Guide — Modes, Loops, ARDS, NIV, Weaning, Equations","y":"HTML Guide · Offline-Ready","m":"ARDSNet/EOLIA/OSCILLATE · Tobin's Principles · Owens · v1 · 2026","c":"Pocket Guides","p":"workshop-pocket-guides.html","k":"Vent Pocket Guide v1 · Modes · VC vs PC vs Adaptive · VC vs PC & the SIMV Question · Cross-Manufacturer Table · APRV Initial Setup · Advanced Modes · PRVC / VC+ Hybrid · NAVA · PAV+ · ASV / IntelliVent-ASV · Settings & Waveform · Initial Settings · PIP / Pplat / Driving P · Ventilator Loops · Pressure-Volume Loop · Flow-Volume Loop · Clinical Applications · Capnography · Normal Waveform · Abnormal Patterns · Cardiac Arrest · By Clinical Setting · Dyssynchrony · Asynchrony Types · ARDS & Protection · Berlin Criteria & Protocol · PEEP/FiO2 Ladder · Adjuncts in Severe ARDS · What the Trials Actually Found · Status Asthmaticus · Invasive Ventilation in COPD · Recruitment Maneuver Technique · Intraoperative Protective Ventilation · NIV / HFNC · Trial Evidence · When Not to Use NIV · Weaning · SBT & RSBI · VIDD & Diaphragm US · Weaning Classification · Sedation & ABCDEF Bundle · Post-Extubation Support · Tracheostomy Timing · Troubleshooting · DOPES / DOTTS · Alarm Table · Owens · VAP Prevention Bundle"},{"h":"library/pancreatitis-severity-ranson-bisap.html","t":"Pancreatitis Severity: Ranson vs BISAP","y":"Scoring Systems","m":"Scoring Systems · Oct 2026","c":"Clinical References","p":"workshop-references.html","k":"Pancreatitis Severity: Ranson vs BISAP — The Critical Vector · Pancreatitis Severity: Ranson vs BISAP · Correction to the circulating chart · What \"severe\" means now · At the bedside · Sources"},{"h":"library/human-factors-clinician-performance.html","t":"Human Factors: The Clinician as Part of the Treatment","y":"Reference","m":"Reference · Oct 2026","c":"Clinical References","p":"workshop-references.html","k":"Human Factors: The Clinician as Part of the Treatment — The Critical Vector · Human Factors: The Clinician as Part of the Treatment · Checklists · Presence · Shift performance · Carrying the weight · Sources"},{"h":"library/anesthesia-breathing-circuits.html","t":"Anesthesia Breathing Circuits","y":"Reference","m":"Reference · Oct 2026","c":"Clinical References","p":"workshop-references.html","k":"Anesthesia Breathing Circuits — The Critical Vector · Anesthesia Breathing Circuits · Claim by claim · Mapleson A–F · The circle · Pearls that hold · Sources"},{"h":"library/teg-interpretation-guide.html","t":"TEG Interpretation — A Complete Teaching Guide","y":"Teaching Guide","m":"Teaching Guide · Oct 2026","c":"Clinical References","p":"workshop-references.html","k":"TEG Interpretation — A Complete Teaching Guide | Critical Vector · TEG Interpretation · What TEG Actually Measures · Reading the Raw Tracing · The Classic Model: TEG 5000 · The New Model: TEG 6s · Which Cartridge You're Running · Platelet Mapping: Detecting Antiplatelet Drug Effect · Translating Between Models · Crossing Over to ROTEM · Goal-Directed Transfusion Framework · Reading the Tracing by Shape · Pitfalls & Pre-Analytical Limitations · Special Populations · References"},{"h":"library/intoxicating-substances-reference.html","t":"Intoxicating Substances Reference: Stimulants","y":"Clinical Reference","m":"Clinical Reference · Oct 2026","c":"Clinical References","p":"workshop-references.html","k":"The Critical Vector — Intoxicating Substances Reference: Stimulants · Intoxicating Substances Reference · Full Index — 12 Classes, 39 Substances · Stimulants · Cocaine · Amphetamine / Dextroamphetamine · Methamphetamine · MDMA / MDA · Synthetic Cathinones · Methylphenidate · Caffeine · Opioids · Heroin · Fentanyl & Analogs · Methadone & Buprenorphine · Tramadol & Loperamide · Sedative-Hypnotics · Benzodiazepines · Barbiturates & Z-Drugs · GHB / GBL / 1,4-Butanediol · Dissociatives · Ketamine & Phencyclidine (PCP) · Dextromethorphan & Nitrous Oxide · Hallucinogens / Psychedelics · LSD, Psilocybin & Mescaline · NBOMe Compounds · Cannabinoids · Cannabis / THC · Synthetic Cannabinoids · Inhalants · Volatile Solvents & Nitrites · Anticholinergics · Diphenhydramine & Jimsonweed (Datura) · Alcohol & Toxic Alcohols · Ethanol · Methanol & Ethylene Glycol · Nicotine · Nicotine & E-Liquid · Kratom · Anabolic-Androgenic Steroids · Full Build Complete — 12 Classes, 39 Substances"},{"h":"library/peds-drug-database-us-complete.html","t":"Pediatric Drug Database v4 — US Edition, Fully Reviewed","y":"Pediatric Reference","m":"Pediatric Reference · Oct 2026","c":"Clinical References","p":"workshop-references.html","k":"Pediatric Drug Database v4 — US Edition, Fully Reviewed | Critical Vector · Pediatric Drug Database · Verification Methodology & References · Amoxicillin · Amoxicillin-Clavulanate · Azithromycin · Clarithromycin · Cefixime · Cefpodoxime · Cefuroxime axetil · Cefaclor · Cephalexin · Clindamycin · Trimethoprim-Sulfamethoxazole · Ciprofloxacin · Metronidazole · Nitazoxanide · Ceftriaxone · Cefotaxime · Amikacin · Ampicillin · Meropenem · Vancomycin · Piperacillin-Tazobactam · Linezolid · Metronidazole (IV) · Levofloxacin · Aminophylline · Diazepam · Ondansetron · Diphenhydramine · Hydrocortisone · Dexamethasone · Phenytoin · Epinephrine · Furosemide · Pantoprazole · Acetaminophen (IV) · Mannitol · Naloxone · Calcium Gluconate · Blood Products · Glucagon · Dimenhydrinate · Ondansetron (oral) · Simethicone · Lactase enzyme · Castor Oil · Mebendazole · Albendazole · Ranitidine · Famotidine · Lactulose · Cyproheptadine · Zinc Sulfate · Metoclopramide · Omeprazole/Sodium Bicarbonate · Bisacodyl · Glycerin Suppository · Acetaminophen · Ibuprofen · Ketorolac · Aspirin · Sumatriptan · Fluconazole · Nystatin · Clotrimazole · Miconazole · Amphotericin B · Clotrimazole/Betamethasone · Zinc Oxide · Nystatin/Triamcinolone · Bacitracin/Polymyxin B · Lindane · Permethrin · Ivermectin · Multivitamin Drops · Ferrous Sulfate · Vitamin E · Vitamin D3 · Vitamin A · Vitamin C · Calcium Carbonate/Citrate · Lactated Ringer · Maintenance IV Fluids · Neonatal Fluids · Oral Rehydration Solution · Deslora"},{"h":"library/emergency-drugs-pregnancy.html","t":"Emergency Drugs in Pregnancy","y":"Clinical Reference","m":"Clinical Reference · Oct 2026","c":"Clinical References","p":"workshop-references.html","k":"The Critical Vector — Emergency Drugs in Pregnancy · Emergency Drugs in Pregnancy · Scenarios · The FDA Pregnancy Category System · Arrhythmias · Dosing & Use Notes · Seizure / Eclampsia · Hypertensive Emergency · Anaphylaxis · Postpartum Hemorrhage · RSI / Sedation / Analgesia · Antiemetics / Hyperemesis Gravidarum · Anticoagulation (VTE / PE) · Toxicology Antidotes · Antibiotics · 10 Scenarios — Emergency Drugs in Pregnancy"},{"h":"library/macrolides-compared.html","t":"Macrolides Compared","y":"Pharmacology","m":"Pharmacology · Oct 2026","c":"Clinical References","p":"workshop-references.html","k":"Macrolides Compared — The Critical Vector · Macrolides: Azithromycin, Clarithromycin, Erythromycin · Corrections to the circulating chart · Where each one earns its place · Azithromycin · Clarithromycin · Erythromycin · Interactions and QT · Class features · Sources"},{"h":"library/perls-map.html","t":"ASA PeRLS Protocol Map","y":"Protocol Map","m":"Protocol Map · Oct 2026","c":"Clinical References","p":"workshop-references.html","k":"ASA PeRLS Protocol Map · ASA PeRLS — Perioperative Resuscitation & Life Support"},{"h":"library/sutures-tying-guide.html","t":"Sutures & Tying Techniques","y":"Clinical Reference","m":"Clinical Reference · Oct 2026","c":"Clinical References","p":"workshop-references.html","k":"Sutures & Tying Techniques | The Critical Vector · Sutures & Tying Techniques · 01 Principles Before Pattern · Edge eversion · Bite symmetry · Tension distribution · Instrument economy · Knot vocabulary: half-hitch, square, hybrid, granny · Half-hitch · Square knot · Hybrid knot · Granny knot · 02 One-Hand and Two-Hand Ties · Two-hand tie · One-hand tie · 03 The Instrument Tie · 04 Simple Interrupted · 05 Vertical Mattress · 06 Horizontal Mattress · 07 Running (Continuous) Suture · 08 Subcuticular (Running Intradermal) · 09 Less Common Sutures · Half-buried (tip) horizontal mattress · Purse-string suture · Figure-of-eight · Pulley stitch (near-far, far-near modification) · Retention sutures · 10 Less Common Knots · Surgeon's knot · Aberdeen knot · Slip knot · Self-check before moving on · 11 Needle Selection: Curved vs. Keith (Straight) · Curved needle · Keith needle (straight) · Practical differences that matter · 12 Quick Reference · Primary References"},{"h":"library/board-tested-infections.html","t":"Board-Tested Infections","y":"Empiric Therapy Guide, Part I","m":"Empiric Therapy Guide, Part I · Aug 2026","c":"Clinical References","p":"workshop-references.html","k":"Board-Tested Infections — The Critical Vector · Board-Tested Infections · Bacterial · Fungal · Viral"},{"h":"library/ed-icu-and-critical-infections.html","t":"ED/ICU & Critical Infections","y":"Empiric Therapy Guide, Part II","m":"Empiric Therapy Guide, Part II · Aug 2026","c":"Clinical References","p":"workshop-references.html","k":"ED/ICU & Critical Infections — The Critical Vector · ED/ICU & Critical Infections · ED / ICU — Bacterial · ED / ICU — Fungal · ED / ICU — Viral · Rare & Time-Critical"},{"h":"library/biostatistics-for-clinicians.html","t":"Biostatistics for Clinicians","y":"Reference","m":"Reference · Aug 2026","c":"Clinical References","p":"workshop-references.html","k":"Biostatistics for Clinicians | The Critical Vector · Biostatistics for Clinicians · Know Your Data · Centre & Spread · The Bell Curve · P-value & Confidence Interval · Errors & Power · Which Test? · The 2&times;2 Diagnostic Table · Likelihood Ratios, ROC, and Sample Size · Sources & Conventions"},{"h":"library/blood-products-guide.html","t":"Blood Products","y":"Blood Products","m":"Blood Products · Jul 2026","c":"Clinical References","p":"workshop-references.html","k":"Blood Products — The Critical Vector · 6 Blood Products You Must Know Cold · Packed Red Cells (PRBC) · Platelets · Fresh Frozen Plasma (FFP) · Cryoprecipitate · Whole Blood (LTOWB) · Prothrombin Complex Concentrate (PCC) · Time & Temperature · Quick Reference Card & Primary Sources"},{"h":"library/hypertonic-saline-vs-mannitol.html","t":"Hypertonic Saline vs. Mannitol","y":"Pocket Reference","m":"Pocket Reference · Jul 2026","c":"Clinical References","p":"workshop-references.html","k":"Hypertonic Saline vs. Mannitol — Critical Vector · Hypertonic Saline vs. Mannitol · 1. Why Hyperosmolar Therapy Works · 2. Mechanism Comparison · 3. The Evidence: Does Either Actually Win? · 4. Dosing · 5. Safety Profiles & Contraindications · 6. The Bedside Decision · 7. Quick Reference Card & Primary Sources"},{"h":"library/refractory-vf-dsed.html","t":"Refractory VF: Vector Change & DSED","y":"Pocket Reference","m":"Pocket Reference · Jul 2026","c":"Clinical References","p":"workshop-references.html","k":"Refractory VF: Vector Change & DSED — Critical Vector · Refractory VF: Vector Change & DSED · 1. The Problem & the Proposed Fix · 2. DOSE-VF: The Actual Results · 3. The Mechanism Claim, Questioned · 4. What the Confident Version Leaves Out · 5. What the Guidelines Actually Say · 6. Technique Specifics the Carousel Skipped · 7. Safety: The Claim I Couldn't Verify · 8. Practical Bottom Line · 9. Quick Reference Card & Primary Sources"},{"h":"library/remimazolam-guide.html","t":"Remimazolam","y":"Pocket Reference","m":"Pocket Reference · Jul 2026","c":"Clinical References","p":"workshop-references.html","k":"Remimazolam — Critical Vector · Remimazolam · 1. Main Uses · 2. Mechanism + PK · 3. Procedural Sedation FDA-labeled · 4. General Anesthesia Off-label, US · 5. ICU Sedation Off-label, US · 6. Reversal: Flumazenil · 7. Strengths vs Limitations · 8. New: Global Regulatory Status · 9. Complications & Pitfalls · 10. Quick Reference Card & Primary Sources"},{"h":"library/rocuronium-dosing.html","t":"High-Dose Rocuronium & First-Pass Success","y":"Pocket Reference","m":"Pocket Reference · Jul 2026","c":"Clinical References","p":"workshop-references.html","k":"High-Dose Rocuronium & First-Pass Success — Critical Vector · High-Dose Rocuronium & First-Pass Success · 1. The Question · 2. The New Data: DEVICE/PREOXI Secondary Analysis · 3. What Came Before: Registry Evidence · 4. The Tradeoff: Why More Isn't Free · 5. Practical Synthesis · 6. Quick Reference Card & Primary Sources"},{"h":"library/capnography.html","t":"Capnography","y":"Pocket Reference","m":"Pocket Reference · Jul 2026","c":"Clinical References","p":"workshop-references.html","k":"Capnography — The Critical Vector · Capnography · The Normal Waveform · Abnormal Patterns · Capnography in Cardiac Arrest · Clinical Applications by Setting · Quick Reference Card & Primary Sources"},{"h":"library/extreme-axis-deviation.html","t":"Extreme Axis Deviation (Northwest Axis)","y":"Pocket Reference","m":"Pocket Reference · Jul 2026","c":"Clinical References","p":"workshop-references.html","k":"Extreme Axis Deviation (Northwest Axis) — Critical Vector · Extreme Axis Deviation (Northwest Axis) · 1. The Big Picture · 2. The 10-Second Calculation · 3. Rule This Out First: Lead Reversal · 4. The Main Event: VT vs. SVT with Aberrancy · 5. The Rest of the Differential · 6. Quick Reference Card & Primary Sources"},{"h":"library/mechanical-ventilation-full.html","t":"Mechanical Ventilation","y":"Comprehensive Reference","m":"Comprehensive Reference · Jul 2026","c":"Clinical References","p":"workshop-references.html","k":"Mechanical Ventilation — Critical Vector · Mechanical Ventilation · 1. The Big Picture · 2. Modes · 2.1 — APRV: Initial Setup · 2.2 — VC vs. PC and the SIMV Question: What the Evidence Actually Shows · 2.3 — Advanced & Closed-Loop Modes · 3. Initial Settings & the Waveform · 4. Ventilator Loops · 4.1 — Pressure-Volume Loop · 4.2 — Flow-Volume Loop · 4.3 — Clinical Applications of Loops · 5. Capnography on the Vent · 5.1 — The Normal Waveform · 5.2 — Abnormal Patterns · 5.3 — Capnography in Cardiac Arrest · 5.4 — Clinical Applications by Setting · 6. Lung-Protective Ventilation & ARDS · 6.1 — The ARDSNet Protocol, Step by Step · 6.2 — PEEP/FiO2 Ladder (Lower-PEEP, Higher-FiO2 Table) · 6.3 — Adjuncts in Severe ARDS · 6.3a — Special Populations · 6.4 — What the Later Trials Actually Found: Recruitment, PEEP Titration, HFOV, ECMO · 6.5 — Patient-Ventilator Dyssynchrony · 6.6 — Status Asthmaticus: A Distinct Ventilator Strategy · 6.7 — Invasive Ventilation in COPD · 6.8 — Recruitment Maneuver Technique (Where Still Used Selectively) · 6.9 — Intraoperative Protective Ventilation (A Different Population) · 7. NIV, CPAP, BiPAP & HFNC · 8. Weaning & Extubation · 8.1 — Classifying Weaning Difficulty (Boles/ERS-ATS 2007) · 8.2 — The ACCP/AARC/SCCM Evidence-Based Guidelines · 8.3 — Sedation & the ABCDEF Bundle: Getting to a Screenable Patient · 8.4 — Post-Extubation Support: Cuff Leak and Prophylactic NIV/HFNC · 8.5 — Tracheostomy Timing · 9. Troubleshooting, Alarms & VAP Prevention · 9."},{"h":"library/volemic-status-resuscitation.html","t":"Maintaining Volemic Status in Hemorrhagic Shock","y":"Pocket Reference","m":"Pocket Reference · Jul 2026","c":"Clinical References","p":"workshop-references.html","k":"Maintaining Volemic Status in Hemorrhagic Shock — The Critical Vector · Maintaining Volemic Status in Hemorrhagic Shock · The News: EZPLAZ · The Bigger Question · Permissive Hypotension · Blood Product Ratios · Prehospital Plasma: A Genuinely Contradictory Record · Crystalloid Choice Is Context-Dependent · Freeze-Dried Plasma in Context · Practical Synthesis · Quick Reference Card & Primary Sources"},{"h":"library/antidotes-reversal-agents.html","t":"Antidotes & Reversal Agents","y":"Pocket Reference","m":"Pocket Reference · Jul 2026","c":"Clinical References","p":"workshop-references.html","k":"Antidotes & Reversal Agents — The Critical Vector · Antidotes & Reversal Agents · The Big Picture · Anaphylaxis & Refractory Shock · Sedation & Opioid Reversal · Muscle Relaxant Reversal · Poison-Induced Cardiogenic Shock · Toxidrome Rescue Agents · Anesthesia-Specific Emergencies · Anticoagulant Reversal · Toxicology I: Antidote by Substance · Toxicology II: Chelation & Metabolic Rescue · Toxicology III: The Rest · Envenomation & Biological Toxins · Quick Reference Card & Primary Sources"},{"h":"library/awake-intubation-guide.html","t":"Awake Intubation in the ICU","y":"Intubation Series","m":"Intubation Series · Jul 2026","c":"Clinical References","p":"workshop-references.html","k":"Awake Intubation in the ICU — The Critical Vector · Awake Intubation in the ICU · The Problem · The Hammer: Why RSI Can Wreck ICU Patients · Enter: the Awake Intubation · Who Stays Awake · When Not to Intubate Awake · The Setup: Topicalization · Sedation: the Art of \"Just Enough\" · Choose Your Weapon: Scope vs VL · The Recipe · Honorable Mention: Delayed Sequence Intubation · Quick Reference Card & Primary Sources"},{"h":"library/bis-monitoring.html","t":"BIS Monitoring","y":"Pocket Reference","m":"Pocket Reference · Jul 2026","c":"Clinical References","p":"workshop-references.html","k":"BIS Monitoring — The Critical Vector · BIS Monitoring · What BIS Measures · Value Ranges & Waveform Patterns · The Evidence: Does It Actually Work? · Artifacts & Limitations · Quick Reference Card & Primary Sources"},{"h":"library/cspine-rules-guide.html","t":"NEXUS, Canadian C-Spine & CT Head Rules","y":"Clinical Decision Rules","m":"Clinical Decision Rules · Jul 2026","c":"Clinical References","p":"workshop-references.html","k":"NEXUS, Canadian C-Spine & CT Head Rules — The Critical Vector · NEXUS, C-Spine, CT Head & New Orleans Rules · Why These Rules Exist · NEXUS Criteria · Canadian C-Spine Rule · Spine Rules Head-to-Head · Why CCR Outperforms NEXUS · Limitations & Pitfalls · Canadian CT Head Rule · New Orleans Criteria · Head Rules Head-to-Head · Quick Reference Card & Primary Sources"},{"h":"library/ecg-changes.html","t":"ECG Changes: Electrolytes & Drug Effects","y":"Pocket Reference","m":"Pocket Reference · Jul 2026","c":"Clinical References","p":"workshop-references.html","k":"ECG Changes: Electrolytes & Drug Effects — Critical Vector · ECG Changes: Electrolytes & Drug Effects · 1. Potassium · 2. Calcium · 3. Digoxin: Effect vs. Toxicity · 4. Other Drug Effects · 5. Quick Reference Card & Primary Sources"},{"h":"library/mnemonics-guide.html","t":"Clinical Mnemonics","y":"Quick Reference","m":"Quick Reference · Jul 2026","c":"Clinical References","p":"workshop-references.html","k":"Clinical Mnemonics — Critical Vector · Clinical Mnemonics · 1. I GET SMASHED · 2. PINCH ME · 3. SOCRATES · 4. CHIMPANZEES · 5. TUNA FISH · 6. SPIKES · 7. LEMON · 8. AEIOU TIPS · 9. MUDPILES · 10. DR ABCDE"},{"h":"library/uw-em-drug-guide.html","t":"Emergency Medicine Drug Guide: Peds & Adult","y":"Pocket Reference","m":"Pocket Reference · Jul 2026","c":"Clinical References","p":"workshop-references.html","k":"Emergency Medicine Drug Guide: Peds & Adult — The Critical Vector · Emergency Medicine Drug Guide: Pediatric & Adult · Quick Recall: Dosing by Drug Function · Resuscitation Drugs · Vasopressors / Inotropes · Antiarrhythmics · Bradycardia / Chronotropic · Induction / Sedation · Paralytics (Neuromuscular Blockers) · Reversal Agents · Anticonvulsants · Steroids · Antihistamines / H2 Blockers · Antihypertensives · Analgesics · Antiemetics · Metabolic / Electrolyte Emergency · Vitals & Airway Parameters by Age · Rapid Sequence Intubation · Premedication · Sedation / Induction · Paralysis · Seizures / Status Epilepticus · Increased Intracranial Pressure · Hyperkalemia & Endocrine · Hyperkalemia · Endocrine · Anaphylaxis · Asthma & Croup · Asthma / Bronchospasm · Upper Airway Obstruction / Croup · Cardiac Arrest & Electrical Therapy · Pressors & Antihypertensives · Antimicrobials · Volume Resuscitation · Pain, Sedation & Antiemetic · Sedatives & Antiemetic · GCS, Pupils & Pain Scale · Formulas & Equations · Quick Reference Card & Primary Sources"},{"h":"library/ventilator-loops.html","t":"Ventilator Loops","y":"Pocket Reference","m":"Pocket Reference · Jul 2026","c":"Clinical References","p":"workshop-references.html","k":"Ventilator Loops — Critical Vector · Ventilator Loops · 1. Why Loops, Not Just Numbers · 2. Pressure-Volume Loop · 3. Flow-Volume Loop · 4. Clinical Applications · 5. Quick Reference Card & Primary Sources"},{"h":"library/dex-polyuria-guide.html","t":"Dexmedetomidine & Polyuria","y":"Spot It, Explain It, Fix It","m":"Spot It, Explain It, Fix It · Jul 2026","c":"Clinical References","p":"workshop-references.html","k":"Dexmedetomidine & Polyuria — Critical Vector · Dexmedetomidine & Polyuria · 1. The Scenario · 2. How Urine Is Normally Concentrated · 3. How Dex Opens the Floodgates · 4. How to Recognize It · 5. What the Evidence Actually Says · 6. Don't Get Fooled · 7. What to Do · 8. The Sentinel Case · 9. Quick Reference Card & Primary Sources"},{"h":"library/asra-neuraxial-guide.html","t":"Neuraxial Blocks & Blood Thinners","y":"Anesthesia Reference","m":"Anesthesia Reference · Jul 2026","c":"Clinical References","p":"workshop-references.html","k":"Neuraxial Blocks & Blood Thinners — The Critical Vector · Neuraxial Blocks & Blood Thinners · What's New in the 5th Edition · First Principles · DOACs: When to Stop · DOACs: Levels & Restart · Unfractionated Heparin · LMW Heparin · Antiplatelets: Stop Times · Warfarin, Fondaparinux, Lytics · Quick Card & Primary Sources"},{"h":"library/bleeding-reversal-guide.html","t":"Bleeding, Reversal & Antiplatelet Decisions","y":"Pocket Reference","m":"Pocket Reference · Jul 2026","c":"Clinical References","p":"workshop-references.html","k":"Bleeding, Reversal & Antiplatelet Decisions — The Critical Vector · Bleeding, Reversal & Antiplatelet Decisions · The Big Picture · Classify the Cause · Where Drugs Hit the Cascade · Reversing Warfarin · Reversing DOACs, Updated for 2026 · Protamine, Platelets & DDAVP · TEG / ROTEM: What Each Value Means · The Bedside Algorithm: One Look, One Plan · New: The Andexxa Withdrawal, What Changed and Why · Complications & Pitfalls: Don't Get Burned · Quick Reference Card & Primary Sources · Antiplatelet Therapy Decisions · STEMI + Primary PCI: Load the Potent Agent · NSTE-ACS: Load Prasugrel After the Angiogram, Not Before · Minor Stroke / High-Risk TIA: DAPT, Sequenced · Antiplatelet-Associated ICH: The Full PATCH Data · Urgent Surgery on DAPT: Interrupt, Don't Reflexively Bridge · Clopidogrel Resistance: Test the Genotype · Post-Arrest TTM: Oral P2Y12 Absorption Fails Quietly · Quick Reference: Antiplatelet Decisions & Sources"},{"h":"library/pediatric-code-blue-guide.html","t":"Pediatric Code Blue","y":"Numbers Worth Knowing","m":"Numbers Worth Knowing · Jul 2026","c":"Clinical References","p":"workshop-references.html","k":"Pediatric Code Blue — Critical Vector · Pediatric Code Blue · 1. The 1-2-4 Rule · 2. Bonus Pearls · 3. CPR Tempo · 4. Quick Reference Card & Primary Sources"},{"h":"library/invasive-waveform-diagnostics.html","t":"Invasive Waveform Diagnostics — Arterial & Right Heart","y":"Hemodynamic Monitoring","m":"Hemodynamic Monitoring · Jun 2026","c":"Clinical References","p":"workshop-references.html","k":"Invasive Waveform Diagnostics — Arterial & Right Heart · Invasive Waveform Diagnostics · Waveform Anatomy & Physiology · Anacrotic Limb systole · Systolic Peak (SBP) systole · Dicrotic Notch (Incisura) transition · Dicrotic Wave · Diastolic Run-off · Diastolic Nadir (DBP) end-diastole · Derived Hemodynamic Parameters · Heart–Lung Interaction: PPV & SPV · Pathologic Waveform Morphologies · Predicting Fluid Responsiveness · Intraoperative Hemodynamic Management · Technical Setup, Troubleshooting & Artifacts · Zeroing & Leveling · Over-Damping · Under-Damping (Resonance) · Optimal Damping · Site-Specific Amplification · Post-CPB Radial Artifact · Pulse Contour Analysis & CO Estimation · Bedside Waveform Interpretation — Rapid Algorithm · PA Catheter Anatomy, Lumens & West Zones · Distal Lumen tip — PA · Proximal Lumen 30 cm from tip — RA · Balloon Port tip inflation · Thermistor 4 cm from tip · VIP / Infusion Lumen ~14–26 cm from tip · Continuous SvO2 fiberoptic catheter · West Lung Zones — Why Catheter Position Determines PCWP Accuracy · Flotation Sequence: RA → RV → PA → PCWP · Right Atrial Waveform: a, c, v Waves & x, y Descents · Pathologic RA Waveform Patterns · PCWP Pathology & Giant V Waves · Derived Right Heart Parameters: SVR, PVR, CPO, PAPI, Fick, SvO₂ · Hemodynamic Phenotyping: Shock & Complex Diagnoses · Central Venous Pressure (CVP) — Dedicated Reference · JVP — Bedside Correlate of the CVP Waveform · Intra-Aortic Balloon Pump (IABP) Waveform Analysis · Vasopressor "},{"h":"tools/pocus_nerve_block_reference_v1.html","t":"POCUS-Guided Nerve Block — Procedural Reference","y":"Procedural Education","m":"Six-phase framework · 47-step checklist · LAST response · ASRA 2023","c":"Procedural Education","p":"workshop-procedures.html","k":"POCUS-Guided Nerve Block — Procedural Reference | The Critical Vector"},{"h":"printables/pre-sign-out.html","t":"Pre-Sign-Out Checklist","y":"Printable · ED Handoff","m":"Focused ED I-PASS · 3×5, 5×7, letter, badge buddy · dark & light","c":"Hard Copy — Printables","p":"workshop-hard-copy.html","k":"Pre-Sign-Out Checklist — The Critical Vector · A free printable ED pre-sign-out checklist with a Focused ED I-PASS key: 3×5 and 5×7 cards, letter, and a two-sided badge buddy, in dark and light. · Pre-Sign-Out Checklist"}]</script>
+    <!-- CV:WORKSHOP-END -->
 
   </div>
 
@@ -461,5 +216,6 @@
 
   <script src="js/main.js?v=3"></script>
 <script src="js/stats.js?v=2"></script>
+<script src="js/workshop-search.js?v=1"></script>
 </body>
 </html>

@@ -7,5 +7,6 @@ exclude:
   - docs/
   - scripts/
   - webmaster/
+  - workshop.json
   - webmaster-src/
   - build-posts.yml
