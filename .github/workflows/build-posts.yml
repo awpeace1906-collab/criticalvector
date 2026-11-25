@@ -46,6 +46,6 @@ jobs:
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add index.html continuum.html workshop.html workshop-*.html locker.html flightdeck.html webmaster.html
+          git add index.html continuum.html workshop.html workshop-*.html search-index.json locker.html flightdeck.html webmaster.html
           git diff --staged --quiet || git commit -m "chore: rebuild post lists and webmaster index [skip ci]"
           git push

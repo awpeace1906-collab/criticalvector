@@ -6,6 +6,7 @@ const fs   = require('fs');
 const path = require('path');
 
 const { buildWorkshop } = require('./build-workshop');
+const { buildSearch } = require('./build-search');
 
 const ROOT  = path.join(__dirname, '..');
 const posts = JSON.parse(fs.readFileSync(path.join(ROOT, 'posts.json'), 'utf8'));
@@ -70,6 +71,10 @@ for (const [section, filename] of Object.entries(SECTIONS)) {
 // ── Workshop overview, subpages and search index ───────────────
 const workshop = buildWorkshop(posts);
 updated += 1 + workshop.pages.length;
+
+// ── Site-wide search index (homepage search) ───────────────────
+buildSearch(posts);
+updated++;
 
 // ── index.html — featured card + recent posts ──────────────────
 const indexPath = path.join(ROOT, 'index.html');

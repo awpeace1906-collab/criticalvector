@@ -133,7 +133,7 @@ function buildWorkshop(posts) {
   return { total, pages: cats.map(c => c.page) };
 }
 
-module.exports = { buildWorkshop };
+module.exports = { buildWorkshop, keywordsFor, decode, text };
 if (require.main === module) {
   buildWorkshop(JSON.parse(fs.readFileSync(path.join(ROOT, 'posts.json'), 'utf8')));
 }
