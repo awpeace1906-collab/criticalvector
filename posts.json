@@ -1,5 +1,113 @@
 [
   {
+    "file": "library/asm-icu-dosing-audit.html",
+    "section": "locker",
+    "type": "Content Audit",
+    "typeClass": "locker-type",
+    "title": "Antiseizure Drugs in the ICU: A Good Map With One Missing Warning",
+    "meta": "Content Audit · Nov 2026",
+    "date": "2026-11-19"
+  },
+  {
+    "file": "library/avrt-orthodromic-antidromic-audit.html",
+    "section": "locker",
+    "type": "Content Audit",
+    "typeClass": "locker-type",
+    "title": "Orthodromic vs Antidromic AVRT: Not Every Pathway Shows a Delta Wave",
+    "meta": "Content Audit · Nov 2026",
+    "date": "2026-11-19"
+  },
+  {
+    "file": "library/hrv-critical-illness-audit.html",
+    "section": "locker",
+    "type": "Content Audit",
+    "typeClass": "locker-type",
+    "title": "Heart Rate Variability in the ICU: Real Signal, Thin Outcome Data",
+    "meta": "Content Audit · Nov 2026",
+    "date": "2026-11-19"
+  },
+  {
+    "file": "library/neutropenic-fever-intensivist-audit.html",
+    "section": "locker",
+    "type": "Content Audit",
+    "typeClass": "locker-type",
+    "title": "Neutropenic Fever Notes: Good Bones, Wrong PMIDs",
+    "meta": "Content Audit · Nov 2026",
+    "date": "2026-11-19"
+  },
+  {
+    "file": "library/nurse-perioperative-empathy-audit.html",
+    "section": "locker",
+    "type": "Content Audit",
+    "typeClass": "locker-type",
+    "title": "NURSE in the Preop Bay: The Table Lost Its E",
+    "meta": "Content Audit · Nov 2026",
+    "date": "2026-11-19"
+  },
+  {
+    "file": "library/pitting-edema-grading-audit.html",
+    "section": "locker",
+    "type": "Content Audit",
+    "typeClass": "locker-type",
+    "title": "Pitting Edema Grades: Four Scales Wearing One Name",
+    "meta": "Content Audit · Nov 2026",
+    "date": "2026-11-19"
+  },
+  {
+    "file": "library/postcardiotomy-shock-principles-audit.html",
+    "section": "locker",
+    "type": "Content Audit",
+    "typeClass": "locker-type",
+    "title": "Postcardiotomy Shock: Ten Principles and a Closing Window",
+    "meta": "Content Audit · Nov 2026",
+    "date": "2026-11-19"
+  },
+  {
+    "file": "library/scai-shock-2026-audit.html",
+    "section": "locker",
+    "type": "Content Audit",
+    "typeClass": "locker-type",
+    "title": "SCAI SHOCK 2026: Perfusion Over Pressure",
+    "meta": "Content Audit · Nov 2026",
+    "date": "2026-11-19"
+  },
+  {
+    "file": "library/spontaneous-intracranial-hypotension-dx.html",
+    "section": "workshop",
+    "type": "Clinical Reference",
+    "typeClass": "workshop-type",
+    "title": "Spontaneous Intracranial Hypotension: How the Diagnosis Is Made",
+    "meta": "Clinical Reference · Nov 2026",
+    "date": "2026-11-19"
+  },
+  {
+    "file": "library/tame-hypercapnia-rv-audit.html",
+    "section": "locker",
+    "type": "Content Audit",
+    "typeClass": "locker-type",
+    "title": "Mild Hypercapnia After Cardiac Arrest Didn’t Hurt the Right Ventricle",
+    "meta": "Content Audit · Nov 2026",
+    "date": "2026-11-19"
+  },
+  {
+    "file": "library/whole-blood-vs-components-review.html",
+    "section": "locker",
+    "type": "Evidence Review",
+    "typeClass": "locker-type",
+    "title": "Whole Blood vs Components: The Meta-Analysis Says Yes, the Trials Say Not Yet",
+    "meta": "Evidence Review · Nov 2026",
+    "date": "2026-11-19"
+  },
+  {
+    "file": "library/wlst-sfar-guidelines-audit.html",
+    "section": "locker",
+    "type": "Content Audit",
+    "typeClass": "locker-type",
+    "title": "Withholding and Withdrawing Life Support: A French Flowchart, Read in Context",
+    "meta": "Content Audit · Nov 2026",
+    "date": "2026-11-19"
+  },
+  {
     "file": "library/advanced-vent-terms-audit.html",
     "section": "locker",
     "type": "Content Audit",

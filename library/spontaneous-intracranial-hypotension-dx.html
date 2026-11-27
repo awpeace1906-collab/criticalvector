@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spontaneous Intracranial Hypotension: Diagnostic Criteria and Workup — The Critical Vector</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0e14; --surface:#111720; --surface2:#182030;
+  --border:rgba(255,255,255,0.08);
+  --teal:#00d4aa; --teal-deep:#00d4aa; --blue:#60a5fa; --red:#e84c4c; --red-soft:#f87171; --amber:#f59e0b; --purple:#a78bfa;
+  --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670;
+  --hl:var(--amber);
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{background:var(--bg); color:var(--text); font-family:'Source Serif 4', Georgia, serif; font-size:16px; line-height:1.62; -webkit-font-smoothing:antialiased;}
+h1,h2,h3,.label,nav a,th,.tag,.stat .k,.step .n{font-family:'Syne', sans-serif;}
+.mono,.num{font-family:'IBM Plex Mono', monospace;}
+.page{max-width:900px; margin:0 auto; padding:0 24px 60px;}
+header{padding:34px 0 20px; border-bottom:1px solid var(--border);}
+.kicker{font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--hl); margin-bottom:10px;}
+h1{font-weight:800; font-size:30px; line-height:1.15; margin:0 0 10px;}
+header p.sub{font-style:italic; color:var(--text2); font-size:15.5px; margin:0 0 12px;}
+.byline{font-size:13px; color:var(--text3); margin:0;}
+.byline a, .sources a, footer a, p a, td a, li a{color:var(--teal-deep);}
+.alert{margin:20px 0; padding:14px 18px; border-radius:10px; font-size:14.5px; color:var(--text);}
+.alert.ok{background:color-mix(in srgb, var(--teal) 10%, transparent); border:1px solid color-mix(in srgb, var(--teal) 28%, transparent);}
+.alert.warn{background:color-mix(in srgb, var(--amber) 10%, transparent); border:1px solid color-mix(in srgb, var(--amber) 28%, transparent);}
+.alert.err{background:color-mix(in srgb, var(--red) 10%, transparent); border:1px solid color-mix(in srgb, var(--red) 28%, transparent);}
+nav.toc{display:flex; flex-wrap:wrap; gap:7px; padding:16px 0; border-bottom:1px solid var(--border);}
+nav.toc a{font-size:12.5px; font-weight:600; color:var(--text2); background:var(--surface); border:1px solid var(--border); padding:7px 12px; border-radius:20px; text-decoration:none; white-space:nowrap;}
+nav.toc a:hover, nav.toc a:focus-visible{color:var(--text); border-color:var(--hl); outline:none;}
+section{padding:28px 0; border-bottom:1px solid var(--border);}
+.sec-head{--hue:var(--teal); display:flex; align-items:baseline; gap:10px; padding:11px 18px; border-left:4px solid var(--hue); background:linear-gradient(90deg, color-mix(in srgb, var(--hue) 10%, transparent), transparent); border-radius:0 8px 8px 0; margin-bottom:14px;}
+.c-blue{--hue:var(--blue);} .c-red{--hue:var(--red);} .c-amber{--hue:var(--amber);} .c-purple{--hue:var(--purple);} .c-teal{--hue:var(--teal);}
+.sec-head.c-grey{border-left-color:var(--text3); background:none;}
+.sec-num{font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--text3);}
+h2{font-weight:700; font-size:20px; margin:0;}
+h3{font-size:15px; font-weight:700; margin:18px 0 6px;}
+.tagline{font-style:italic; font-size:14px; color:var(--text2); margin:0 0 12px;}
+p{margin:.75rem 0;}
+.box{--hue:var(--teal); background:var(--surface2); border:1px solid var(--border); border-left:3px solid var(--hue); border-radius:10px; padding:14px 18px; margin:14px 0;}
+.box .label{display:block; font-size:12.5px; font-weight:700; margin-bottom:4px; color:var(--hue);}
+.box p{margin:.4rem 0;}
+.tbl{overflow-x:auto; margin:14px 0;}
+table{width:100%; border-collapse:collapse; font-size:13.6px;}
+th{background:var(--surface2); color:var(--text); text-align:left; padding:9px 11px; font-weight:600; font-size:12px; border-bottom:2px solid var(--border);}
+td{padding:9px 11px; border-bottom:1px solid var(--border); vertical-align:top; line-height:1.45;}
+tr:nth-child(even) td{background:color-mix(in srgb, var(--text) 2%, transparent);}
+td.k{font-family:'Syne',sans-serif; font-weight:700; color:var(--text);}
+td.num, .num{font-family:'IBM Plex Mono', monospace; font-size:13px;}
+.tag{--hue:var(--teal); display:inline-block; font-size:10.5px; font-weight:700; padding:2px 9px; border-radius:20px; white-space:nowrap; margin-bottom:3px; background:color-mix(in srgb, var(--hue) 12%, transparent); color:var(--hue); border:1px solid color-mix(in srgb, var(--hue) 30%, transparent);}
+.tag.v{--hue:var(--teal);} .tag.c{--hue:var(--amber);} .tag.x{--hue:var(--red-soft);} .tag.u{--hue:var(--purple);} .tag.l{--hue:var(--blue);}
+.stats{display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:12px; margin:16px 0;}
+.stat{--hue:var(--teal); background:var(--surface); border:1px solid var(--border); border-left:4px solid var(--hue); border-radius:10px; padding:16px 18px;}
+.stat .v{font-family:'IBM Plex Mono', monospace; font-size:24px; font-weight:600; color:var(--hue); line-height:1.1;}
+.stat .k{font-size:12px; font-weight:700; color:var(--text); margin:6px 0 2px;}
+.stat .d{font-size:13px; color:var(--text2); line-height:1.4;}
+.steps{display:grid; gap:10px; margin:14px 0; counter-reset:s;}
+.step{--hue:var(--blue); display:grid; grid-template-columns:42px 1fr; gap:12px; background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:14px 16px;}
+.step .n{width:32px; height:32px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:14px; color:var(--hue); background:color-mix(in srgb, var(--hue) 12%, transparent); border:1px solid color-mix(in srgb, var(--hue) 30%, transparent);}
+.step h3{margin:2px 0 4px;}
+.step p{margin:.3rem 0; font-size:14.5px;}
+ul.plain, ol.plain{padding-left:1.3rem; margin:.6rem 0;} ul.plain li, ol.plain li{margin-bottom:.45rem;}
+.figure{margin:18px 0; background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:16px;}
+.figure svg{width:100%; height:auto; display:block;}
+.figcap{font-size:12.5px; color:var(--text2); font-style:italic; margin-top:8px;}
+.sources{list-style:none; padding:0; margin:0; font-size:13px; color:var(--text2);}
+.sources li{padding:8px 0; border-bottom:1px solid var(--border);}
+.sources li:last-child{border-bottom:none;}
+.xref{font-size:14px;}
+footer{padding:26px 0 0; font-size:12.5px; color:var(--text3); font-style:italic;}
+.c-blue{--hue:var(--blue)!important;} .c-red{--hue:var(--red)!important;} .c-amber{--hue:var(--amber)!important;} .c-purple{--hue:var(--purple)!important;} .c-teal{--hue:var(--teal)!important;}
+@media (max-width:600px){ h1{font-size:24px;} .page{padding:0 16px 48px;} table{font-size:12.8px;} .step{grid-template-columns:34px 1fr;} }
+@media (prefers-reduced-motion:reduce){*{transition:none !important;}}
+</style>
+<style id="cv-print">
+/* ===== CV PRINT v1.0 (per _cv-schema.html) ===== */
+@media print{
+  :root{
+    --bg:#f4f5f7; --surface:#ffffff; --surface2:#f0f2f5; --border:#d7dde3;
+    --teal:#00a688; --teal-deep:#007a63; --blue:#1d4ed8; --red:#c53030; --red-soft:#dc2626;
+    --amber:#b45309; --purple:#7c3aed;
+    --text:#0f1923; --text2:#4a5670; --text3:#6b7688;
+  }
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  html, body{background:#f4f5f7 !important; color:#0f1923 !important;}
+  nav.toc{display:none !important;}
+  section, .box, table, .stat, .step, .figure{break-inside:avoid;}
+  h2, .sec-head{break-after:avoid;}
+  a{color:inherit; text-decoration:none;}
+}
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ a{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../workshop.html">The Workshop</a><span class="cv-sb-meta">Published 19 Nov 2026 · R. E. Suscitate &amp; A. Systole</span></nav>
+<div class="page">
+<header><div class="kicker">The Critical Vector &middot; Diagnostic Reference &middot; Neuro / EM</div>
+<h1>Spontaneous Intracranial Hypotension: How the Diagnosis Is Made</h1>
+<p class="sub">ICHD-3 criteria, the SEEPS signs, the Bern score, what opening pressure can and can&rsquo;t tell you, and how leaks are localized, from the primary literature.</p>
+<p class="byline">R. E. Suscitate &amp; A. Systole &middot; November 2026. Prompted by a <a href="https://www.instagram.com/keyradiologist">@keyradiologist</a> case carousel on SIH. This page is an independent third-party evaluation, not affiliated with or endorsed by the original creator.</p></header>
+<div class="alert ok"><strong>Bottom line:</strong> SIH is a CSF <em>volume</em> problem from a spinal leak. ICHD-3 needs a headache temporally linked to low pressure (&lt;60 mm CSF) or imaging evidence of a leak, with no recent dural puncture or trauma; the headache does not have to be orthostatic. Brain and whole-spine MRI come first. Brain MRI is normal in about 19% and opening pressure normal in about 32%, so neither excludes the diagnosis.</div>
+<nav class="toc"><a href="#what">What it is</a><a href="#ichd">ICHD-3</a><a href="#mri">Brain MRI</a><a href="#lp">Lumbar puncture</a><a href="#spine">Leak types</a><a href="#treat">Treatment</a><a href="#pitfalls">Pitfalls</a><a href="#sources">Sources</a></nav>
+<section id="what">
+<div class="sec-head c-blue"><span class="sec-num">01</span><h2>What SIH is</h2></div>
+
+<p>Spontaneous intracranial hypotension is a syndrome of CSF volume loss from a spinal leak, without a preceding procedure or trauma. &ldquo;Hypotension&rdquo; is a misnomer that has stuck: about a third of patients have a normal opening pressure. The problem is volume. The brain loses buoyancy and sags, and by the Monro&ndash;Kellie doctrine the venous system, dura and pituitary engorge to fill the space CSF has vacated.</p>
+<div class="stats">
+<div class="stat c-blue"><div class="v">92%</div><div class="k">Orthostatic headache</div><div class="d">Pooled across 144 studies. Nausea 54%, neck pain or stiffness 43%.</div></div>
+<div class="stat c-teal"><div class="v">66%</div><div class="k">Women</div><div class="d">568-patient Cedars-Sinai series; mean age 45.7.</div></div>
+<div class="stat c-amber"><div class="v">19%</div><div class="k">Normal brain MRI</div><div class="d">Pooled. A normal scan does not exclude the diagnosis.</div></div>
+<div class="stat c-purple"><div class="v">32%</div><div class="k">Normal opening pressure</div><div class="d">60&ndash;200 mm H<sub>2</sub>O; low in 67%, high in 3%.</div></div>
+</div>
+<p>The orthostatic pattern can fade with time. Long-standing cases often describe a headache that builds through the day, or one that is barely positional. Other symptoms that point toward a leak: muffled hearing or tinnitus, interscapular pain, nausea, and relief within minutes of lying flat.</p>
+
+</section>
+<section id="ichd">
+<div class="sec-head c-amber"><span class="sec-num">02</span><h2>ICHD-3 criteria</h2></div>
+
+<div class="tbl"><table><tr><th style="width:10%"></th><th>7.2 Headache attributed to low CSF pressure</th><th>7.2.3 Headache attributed to SIH</th></tr>
+<tr><td class="k">A</td><td>Any headache fulfilling criterion C</td><td>Headache fulfilling 7.2, and criterion C below</td></tr>
+<tr><td class="k">B</td><td>Either or both: low CSF pressure (&lt;60 mm CSF), and/or evidence of CSF leakage on imaging</td><td>Absence of a procedure or trauma known to be able to cause CSF leakage</td></tr>
+<tr><td class="k">C</td><td>Headache developed in temporal relation to the low pressure or leak, or led to its discovery</td><td>Headache developed in temporal relation to low CSF pressure or CSF leakage, or led to its discovery</td></tr>
+<tr><td class="k">D</td><td>Not better accounted for by another ICHD-3 diagnosis</td><td>Not better accounted for by another ICHD-3 diagnosis</td></tr></table></div>
+<div class="box c-amber"><span class="label">Three details that matter</span>
+<p><b>Orthostatic is not a criterion.</b> ICHD-3 describes the headache as usually but not invariably orthostatic and explicitly says the postural feature cannot be relied on for diagnosis.</p>
+<p><b>A dural puncture in the prior month excludes 7.2.3.</b> That case is 7.2.1, post-dural puncture headache.</p>
+<p><b>&lt;60 mm CSF equals 6 cm H<sub>2</sub>O.</b> Brain MRI evidence of intracranial hypotension counts as imaging evidence of leakage, which is why most patients reach the diagnosis without a lumbar puncture.</p></div>
+<p>The criteria miss people. In one series of 85 patients with suspected leaks, 69 did not meet ICHD-3, yet many improved durably after blood patching; relief when lying flat before treatment predicted response. Treat the criteria as a floor for research classification, not a gate for treatment.</p>
+
+</section>
+<section id="mri">
+<div class="sec-head c-teal"><span class="sec-num">03</span><h2>Brain MRI: SEEPS and the Bern score</h2></div>
+
+<p>SEEPS, the mnemonic popularized by Schievink, lists the five classic findings. Order of appearance in practice is roughly the reverse: pachymeningeal enhancement is the most common sign (73% pooled), subdural collections the least.</p>
+<div class="tbl"><table><tr><th style="width:8%"></th><th style="width:30%">Finding</th><th>What it looks like</th><th style="width:22%">Don&rsquo;t mistake it for</th></tr>
+<tr><td class="k" style="color:var(--blue)">S</td><td>Subdural fluid</td><td>Thin, bilateral, crescentic hygromas; sometimes hematomas. Often in young patients with no trauma.</td><td>Traumatic SDH &mdash; draining without sealing the leak can worsen sagging</td></tr>
+<tr><td class="k" style="color:var(--red-soft)">E</td><td>Enhancement of the pachymeninges</td><td>Smooth, diffuse, uniform dural enhancement over convexities, falx and tentorium; does not dip into sulci.</td><td>Meningitis or carcinomatosis (leptomeningeal, follows sulci)</td></tr>
+<tr><td class="k" style="color:var(--purple)">E</td><td>Engorgement of venous structures</td><td>Inferior margin of the transverse sinus turns convex (venous distension sign).</td><td>Sinus thrombosis &mdash; check flow</td></tr>
+<tr><td class="k" style="color:var(--amber)">P</td><td>Pituitary hyperemia</td><td>Enlarged gland with a convex superior border.</td><td>Adenoma or hypophysitis</td></tr>
+<tr><td class="k" style="color:var(--teal)">S</td><td>Sagging of the brain</td><td>Low midbrain and tonsils, effaced prepontine and suprasellar cisterns, chiasm draped over the sella.</td><td>Chiari I &mdash; decompression does not help and can harm</td></tr></table></div>
+<div class="figure"><svg viewBox="0 0 760 270" role="img" aria-label="Midline sagittal measurements in the Bern score">
+<style>.b{font:700 12px Syne,sans-serif;fill:var(--text)} .s{font:500 10.5px 'IBM Plex Mono',monospace;fill:var(--text2)}</style>
+<path d="M60 230 C 60 60, 360 20, 420 120 C 440 160, 400 200, 360 210 L 300 215 C 260 240, 150 250, 60 230 Z" fill="var(--surface2)" stroke="var(--border)"/>
+<rect x="250" y="150" width="34" height="20" rx="6" fill="color-mix(in srgb, var(--amber) 30%, transparent)" stroke="var(--amber)"/><text class="s" x="267" y="190" text-anchor="middle">pituitary</text>
+<path d="M300 140 C 320 150, 330 175, 325 215" stroke="var(--text3)" stroke-width="14" fill="none" stroke-linecap="round"/>
+<circle cx="292" cy="128" r="5" fill="var(--teal)"/><text class="s" x="270" y="118" text-anchor="end">mamillary body</text>
+<line x1="292" y1="128" x2="318" y2="160" stroke="var(--teal)" stroke-width="3"/>
+<line x1="267" y1="128" x2="267" y2="150" stroke="var(--blue)" stroke-width="3"/>
+<line x1="290" y1="196" x2="318" y2="196" stroke="var(--purple)" stroke-width="3"/><text class="s" x="286" y="200" text-anchor="end">clivus</text>
+<text class="s" x="330" y="155">pons</text>
+<text class="b" x="470" y="70">Measured on midline sagittal T1</text>
+<text class="s" x="470" y="100" style="fill:var(--blue)">&#9632; suprasellar cistern &le;4.0 mm &rarr; 2 pts</text>
+<text class="s" x="470" y="124" style="fill:var(--purple)">&#9632; prepontine cistern &le;5.0 mm &rarr; 1 pt</text>
+<text class="s" x="470" y="148" style="fill:var(--teal)">&#9632; mamillopontine distance &le;6.5 mm &rarr; 1 pt</text>
+<text class="s" x="470" y="186">Plus: pachymeningeal enhancement 2,</text>
+<text class="s" x="470" y="204">venous sinus engorgement 2,</text>
+<text class="s" x="470" y="222">subdural collection 1</text>
+</svg><div class="figcap">Schematic, not to scale. Line colors: blue suprasellar, purple prepontine, teal mamillopontine. All three distances shrink as the brain sags.</div></div>
+<h3>Bern score (Dobrocky et al., JAMA Neurology 2019)</h3>
+<div class="tbl"><table><tr><th>Finding</th><th style="width:16%">Points</th></tr>
+<tr><td>Pachymeningeal enhancement</td><td class="num">2</td></tr>
+<tr><td>Venous sinus engorgement</td><td class="num">2</td></tr>
+<tr><td>Suprasellar cistern effacement &le;4.0 mm</td><td class="num">2</td></tr>
+<tr><td>Subdural fluid collection</td><td class="num">1</td></tr>
+<tr><td>Prepontine cistern effacement &le;5.0 mm</td><td class="num">1</td></tr>
+<tr><td>Mamillopontine distance &le;6.5 mm</td><td class="num">1</td></tr></table></div>
+<div class="stats">
+<div class="stat c-teal"><div class="v">&le;2</div><div class="k">Low probability</div><div class="d">Of finding a spinal leak on myelography.</div></div>
+<div class="stat c-amber"><div class="v">3&ndash;4</div><div class="k">Intermediate</div><div class="d">Clinical context decides.</div></div>
+<div class="stat c-red"><div class="v">&ge;5</div><div class="k">High</div><div class="d">Proceed to leak localization.</div></div>
+</div>
+<p>The score predicts a <em>positive spinal study</em>, not the diagnosis itself. It was derived in a single Bern cohort (56 leak-positive patients, 16 orthostatic headache without leak, 60 controls) and validated internally in 20 patients. A low score in a convincing history does not end the workup.</p>
+
+</section>
+<section id="lp">
+<div class="sec-head c-purple"><span class="sec-num">04</span><h2>Lumbar puncture: rarely needed, often misleading</h2></div>
+
+<p>Opening pressure is normal in about a third of patients with SIH. In Kranz&rsquo;s series of 106, only 34% had pressure &le;6 cm H<sub>2</sub>O; higher abdominal girth, longer symptom duration and a normal brain MRI all pushed the measurement up. An LP also adds a new dural hole. The UK consensus puts MRI brain and whole spine first and does not require an LP for diagnosis. Reserve it for excluding infection or malignancy when the enhancement pattern is atypical.</p>
+
+</section>
+<section id="spine">
+<div class="sec-head c-red"><span class="sec-num">05</span><h2>Finding the leak: the Schievink types</h2></div>
+<div class="figure"><svg viewBox="0 0 760 360" role="img" aria-label="Diagnostic pathway for spontaneous intracranial hypotension">
+<style>.b{font:700 12px Syne,sans-serif;fill:var(--text)} .s{font:500 10.5px 'IBM Plex Mono',monospace;fill:var(--text2)}</style>
+<defs><marker id="fa" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8z" fill="var(--text2)"/></marker></defs>
+<rect x="180" y="10" width="400" height="46" rx="10" fill="var(--surface2)" stroke="var(--blue)"/><text class="b" x="380" y="30" text-anchor="middle">Suspect SIH</text><text class="s" x="380" y="47" text-anchor="middle">orthostatic or atypical headache, no recent dural puncture</text>
+<path d="M380 56 L380 78" stroke="var(--text2)" stroke-width="2" marker-end="url(#fa)"/>
+<rect x="160" y="80" width="440" height="46" rx="10" fill="var(--surface2)" stroke="var(--teal)"/><text class="b" x="380" y="100" text-anchor="middle">MRI brain with gadolinium + MRI whole spine</text><text class="s" x="380" y="117" text-anchor="middle">Bern score on the brain &middot; look for SLEC on fat-sat T2 spine</text>
+<path d="M300 126 L170 160" stroke="var(--text2)" stroke-width="2" marker-end="url(#fa)"/><path d="M460 126 L590 160" stroke="var(--text2)" stroke-width="2" marker-end="url(#fa)"/>
+<rect x="20" y="162" width="300" height="60" rx="10" fill="var(--surface2)" stroke="var(--amber)"/><text class="b" x="170" y="184" text-anchor="middle">Consistent with leak</text><text class="s" x="170" y="201" text-anchor="middle">non-targeted epidural blood patch, early</text><text class="s" x="170" y="215" text-anchor="middle">(UK consensus first-line)</text>
+<rect x="440" y="162" width="300" height="60" rx="10" fill="var(--surface2)" stroke="var(--purple)"/><text class="b" x="590" y="184" text-anchor="middle">Normal or equivocal imaging</text><text class="s" x="590" y="201" text-anchor="middle">~1 in 5 SIH brain MRIs are normal;</text><text class="s" x="590" y="215" text-anchor="middle">clinical judgment, specialist referral</text>
+<path d="M170 222 L330 262" stroke="var(--text2)" stroke-width="2" marker-end="url(#fa)"/><path d="M590 222 L430 262" stroke="var(--text2)" stroke-width="2" marker-end="url(#fa)"/>
+<rect x="150" y="264" width="460" height="80" rx="10" fill="var(--surface2)" stroke="var(--red)"/><text class="b" x="380" y="286" text-anchor="middle">Persistent symptoms &rarr; localize the leak</text><text class="s" x="380" y="304" text-anchor="middle">SLEC present: DSM or dynamic CT myelography (ventral tear)</text><text class="s" x="380" y="320" text-anchor="middle">No SLEC: decubitus CTM or DSM for CSF-venous fistula</text><text class="s" x="380" y="336" text-anchor="middle">then targeted patch, glue, surgery or transvenous embolization</text>
+</svg><div class="figcap">Simplified from the 2023 UK multidisciplinary consensus guideline (Cheema et al.). Positioning details and modality choice vary by center.</div></div>
+<div class="tbl"><table><tr><th style="width:18%">Type</th><th>Lesion</th><th style="width:16%">Share (n = 568)</th><th style="width:22%">Spine MRI clue</th></tr>
+<tr><td class="k">1 &middot; dural tear</td><td>1a ventral (96% of type 1), usually from a calcified disc osteophyte; 1b posterolateral</td><td class="num">26.6%</td><td>Extradural CSF collection (SLEC), almost always</td></tr>
+<tr><td class="k">2 &middot; meningeal diverticulum</td><td>2a simple, 2b complex diverticula or dural ectasia</td><td class="num">42.3%</td><td>SLEC in only 22%</td></tr>
+<tr><td class="k">3 &middot; CSF-venous fistula</td><td>Direct CSF drainage into a paraspinal vein</td><td class="num">2.5%</td><td>No collection; spine MRI may look normal</td></tr>
+<tr><td class="k">Indeterminate</td><td>Leak not localized</td><td class="num">28.7%</td><td>SLEC in about half</td></tr></table></div>
+<p>CSF-venous fistulas were rare in that 2016 series because the imaging techniques to find them were new. Decubitus CT myelography and digital subtraction myelography now find them far more often in centers that look, and they explain many cases once labeled &ldquo;indeterminate.&rdquo; Pooled data show extradural CSF on spinal imaging in 48&ndash;76% of patients.</p>
+
+</section>
+<section id="treat">
+<div class="sec-head c-teal"><span class="sec-num">06</span><h2>Treatment, briefly</h2></div>
+
+<div class="steps">
+<div class="step c-teal"><div class="n">1</div><div><h3>Conservative care</h3><p>Bed rest, fluids, caffeine, analgesia. Effective in 28% pooled; reasonable for mild, recent cases but not a reason to delay a patch.</p></div></div>
+<div class="step c-blue"><div class="n">2</div><div><h3>Non-targeted epidural blood patch</h3><p>UK consensus first-line, as early as possible. A single patch succeeded in 64% pooled; larger volumes (&gt;20 mL) did better than smaller (77% vs 66%).</p></div></div>
+<div class="step c-amber"><div class="n">3</div><div><h3>Targeted therapy</h3><p>After localization: CT-guided targeted patch, fibrin glue, surgical repair of a ventral tear or diverticulum, or transvenous embolization of a CSF-venous fistula.</p></div></div>
+<div class="step c-red"><div class="n">4</div><div><h3>Watch for rebound high pressure</h3><p>Some patients develop a new headache that is worse lying down after a successful seal: rebound intracranial hypertension. It is a sign the leak closed, and it is usually treatable.</p></div></div>
+</div>
+<p class="xref">Related on CV: <a href="ed-icu-and-critical-infections.html">ED and ICU critical infections</a> (meningitis, for the enhancement differential)</p>
+
+</section>
+<section id="pitfalls">
+<div class="sec-head c-amber"><span class="sec-num">07</span><h2>Five ways to miss it</h2></div>
+
+<ol class="plain">
+<li><b>Normal brain MRI.</b> One in five patients. Image the spine anyway if the story fits.</li>
+<li><b>Normal opening pressure.</b> One in three. The disease is volume loss, not a number on a manometer.</li>
+<li><b>&ldquo;Chiari I&rdquo; with a sagging brainstem.</b> Look at the mamillopontine distance and cisterns before anyone plans a decompression.</li>
+<li><b>&ldquo;Pituitary adenoma&rdquo; or &ldquo;pachymeningitis.&rdquo;</b> Both are SEEPS findings. Smooth, diffuse dural enhancement with the rest of the pattern is a leak until shown otherwise.</li>
+<li><b>Bilateral subdurals in a young patient without trauma.</b> Drained without sealing the leak, they recur and the brain sags further.</li>
+</ol>
+
+</section>
+<section id="sources">
+<div class="sec-head c-grey"><span class="sec-num">08</span><h2>Sources</h2></div>
+<ul class="sources">
+<li>Headache Classification Committee of the International Headache Society. The International Classification of Headache Disorders, 3rd edition. <em>Cephalalgia.</em> 2018;38(1):1&ndash;211. <a href="https://doi.org/10.1177/0333102417738202">doi:10.1177/0333102417738202</a> (PMID 29368949); criteria 7.2 and 7.2.3 at <a href="https://ichd-3.org/7-headache-attributed-to-non-vascular-intracranial-disorder/7-2-headache-attributed-to-low-cerebrospinal-fluid-pressure/">ichd-3.org</a></li>
+<li>Dobrocky T, Grunder L, Breiding PS, et al. Assessing spinal cerebrospinal fluid leaks in spontaneous intracranial hypotension with a scoring system based on brain magnetic resonance imaging findings. <em>JAMA Neurol.</em> 2019;76(5):580&ndash;587. <a href="https://doi.org/10.1001/jamaneurol.2018.4921">doi:10.1001/jamaneurol.2018.4921</a> (PMID 30776059)</li>
+<li>D&rsquo;Antona L, Jaime Merchan MA, Vassiliou A, et al. Clinical presentation, investigation findings, and treatment outcomes of spontaneous intracranial hypotension syndrome: a systematic review and meta-analysis. <em>JAMA Neurol.</em> 2021;78(3):329&ndash;337. <a href="https://doi.org/10.1001/jamaneurol.2020.4799">doi:10.1001/jamaneurol.2020.4799</a> (PMID 33393980)</li>
+<li>Schievink WI, Maya MM, Jean-Pierre S, et al. A classification system of spontaneous spinal CSF leaks. <em>Neurology.</em> 2016;87(7):673&ndash;679. <a href="https://doi.org/10.1212/WNL.0000000000002986">doi:10.1212/WNL.0000000000002986</a> (PMID 27440149)</li>
+<li>Kranz PG, Tanpitukpongse TP, Choudhury KR, Amrhein TJ, Gray L. How common is normal cerebrospinal fluid pressure in spontaneous intracranial hypotension? <em>Cephalalgia.</em> 2016;36(13):1209&ndash;1217. <a href="https://doi.org/10.1177/0333102415623071">doi:10.1177/0333102415623071</a> (PMID 26682575)</li>
+<li>Cheema S, Anderson J, Angus-Leppan H, et al. Multidisciplinary consensus guideline for the diagnosis and management of spontaneous intracranial hypotension. <em>J Neurol Neurosurg Psychiatry.</em> 2023;94(10):835&ndash;843. <a href="https://doi.org/10.1136/jnnp-2023-331166">doi:10.1136/jnnp-2023-331166</a> (PMID 37147116)</li>
+<li>Schievink WI. Spontaneous spinal cerebrospinal fluid leaks and intracranial hypotension. <em>JAMA.</em> 2006;295(19):2286&ndash;2296. (PMID 16705110; SEEPS background)</li>
+<li>Epidural blood patch in suspected CSF leak not meeting ICHD-3 criteria (85-patient series). <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11244740">PMC11244740</a> (abstract only reviewed)</li>
+<li>Journal citations verified against PubMed records. Rebound intracranial hypertension and myelography positioning are described from general practice, not a single cited source.</li>
+</ul>
+</section>
+<footer>The Critical Vector &middot; Direction and magnitude. Educational reference; verify against current guidelines and local protocol before applying to a patient.</footer>
+</div>
+<script src="../js/stats.js?v=2"></script>
+</body>
+</html>

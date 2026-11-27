@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orthodromic vs Antidromic AVRT, Audited — The Critical Vector</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0e14; --surface:#111720; --surface2:#182030;
+  --border:rgba(255,255,255,0.08);
+  --teal:#00d4aa; --teal-deep:#00d4aa; --blue:#60a5fa; --red:#e84c4c; --red-soft:#f87171; --amber:#f59e0b; --purple:#a78bfa;
+  --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670;
+  --hl:var(--amber);
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{background:var(--bg); color:var(--text); font-family:'Source Serif 4', Georgia, serif; font-size:16px; line-height:1.62; -webkit-font-smoothing:antialiased;}
+h1,h2,h3,.label,nav a,th,.tag,.stat .k,.step .n{font-family:'Syne', sans-serif;}
+.mono,.num{font-family:'IBM Plex Mono', monospace;}
+.page{max-width:900px; margin:0 auto; padding:0 24px 60px;}
+header{padding:34px 0 20px; border-bottom:1px solid var(--border);}
+.kicker{font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--hl); margin-bottom:10px;}
+h1{font-weight:800; font-size:30px; line-height:1.15; margin:0 0 10px;}
+header p.sub{font-style:italic; color:var(--text2); font-size:15.5px; margin:0 0 12px;}
+.byline{font-size:13px; color:var(--text3); margin:0;}
+.byline a, .sources a, footer a, p a, td a, li a{color:var(--teal-deep);}
+.alert{margin:20px 0; padding:14px 18px; border-radius:10px; font-size:14.5px; color:var(--text);}
+.alert.ok{background:color-mix(in srgb, var(--teal) 10%, transparent); border:1px solid color-mix(in srgb, var(--teal) 28%, transparent);}
+.alert.warn{background:color-mix(in srgb, var(--amber) 10%, transparent); border:1px solid color-mix(in srgb, var(--amber) 28%, transparent);}
+.alert.err{background:color-mix(in srgb, var(--red) 10%, transparent); border:1px solid color-mix(in srgb, var(--red) 28%, transparent);}
+nav.toc{display:flex; flex-wrap:wrap; gap:7px; padding:16px 0; border-bottom:1px solid var(--border);}
+nav.toc a{font-size:12.5px; font-weight:600; color:var(--text2); background:var(--surface); border:1px solid var(--border); padding:7px 12px; border-radius:20px; text-decoration:none; white-space:nowrap;}
+nav.toc a:hover, nav.toc a:focus-visible{color:var(--text); border-color:var(--hl); outline:none;}
+section{padding:28px 0; border-bottom:1px solid var(--border);}
+.sec-head{--hue:var(--teal); display:flex; align-items:baseline; gap:10px; padding:11px 18px; border-left:4px solid var(--hue); background:linear-gradient(90deg, color-mix(in srgb, var(--hue) 10%, transparent), transparent); border-radius:0 8px 8px 0; margin-bottom:14px;}
+.c-blue{--hue:var(--blue);} .c-red{--hue:var(--red);} .c-amber{--hue:var(--amber);} .c-purple{--hue:var(--purple);} .c-teal{--hue:var(--teal);}
+.sec-head.c-grey{border-left-color:var(--text3); background:none;}
+.sec-num{font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--text3);}
+h2{font-weight:700; font-size:20px; margin:0;}
+h3{font-size:15px; font-weight:700; margin:18px 0 6px;}
+.tagline{font-style:italic; font-size:14px; color:var(--text2); margin:0 0 12px;}
+p{margin:.75rem 0;}
+.box{--hue:var(--teal); background:var(--surface2); border:1px solid var(--border); border-left:3px solid var(--hue); border-radius:10px; padding:14px 18px; margin:14px 0;}
+.box .label{display:block; font-size:12.5px; font-weight:700; margin-bottom:4px; color:var(--hue);}
+.box p{margin:.4rem 0;}
+.tbl{overflow-x:auto; margin:14px 0;}
+table{width:100%; border-collapse:collapse; font-size:13.6px;}
+th{background:var(--surface2); color:var(--text); text-align:left; padding:9px 11px; font-weight:600; font-size:12px; border-bottom:2px solid var(--border);}
+td{padding:9px 11px; border-bottom:1px solid var(--border); vertical-align:top; line-height:1.45;}
+tr:nth-child(even) td{background:color-mix(in srgb, var(--text) 2%, transparent);}
+td.k{font-family:'Syne',sans-serif; font-weight:700; color:var(--text);}
+td.num, .num{font-family:'IBM Plex Mono', monospace; font-size:13px;}
+.tag{--hue:var(--teal); display:inline-block; font-size:10.5px; font-weight:700; padding:2px 9px; border-radius:20px; white-space:nowrap; margin-bottom:3px; background:color-mix(in srgb, var(--hue) 12%, transparent); color:var(--hue); border:1px solid color-mix(in srgb, var(--hue) 30%, transparent);}
+.tag.v{--hue:var(--teal);} .tag.c{--hue:var(--amber);} .tag.x{--hue:var(--red-soft);} .tag.u{--hue:var(--purple);} .tag.l{--hue:var(--blue);}
+.stats{display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:12px; margin:16px 0;}
+.stat{--hue:var(--teal); background:var(--surface); border:1px solid var(--border); border-left:4px solid var(--hue); border-radius:10px; padding:16px 18px;}
+.stat .v{font-family:'IBM Plex Mono', monospace; font-size:24px; font-weight:600; color:var(--hue); line-height:1.1;}
+.stat .k{font-size:12px; font-weight:700; color:var(--text); margin:6px 0 2px;}
+.stat .d{font-size:13px; color:var(--text2); line-height:1.4;}
+.steps{display:grid; gap:10px; margin:14px 0; counter-reset:s;}
+.step{--hue:var(--blue); display:grid; grid-template-columns:42px 1fr; gap:12px; background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:14px 16px;}
+.step .n{width:32px; height:32px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:14px; color:var(--hue); background:color-mix(in srgb, var(--hue) 12%, transparent); border:1px solid color-mix(in srgb, var(--hue) 30%, transparent);}
+.step h3{margin:2px 0 4px;}
+.step p{margin:.3rem 0; font-size:14.5px;}
+ul.plain, ol.plain{padding-left:1.3rem; margin:.6rem 0;} ul.plain li, ol.plain li{margin-bottom:.45rem;}
+.figure{margin:18px 0; background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:16px;}
+.figure svg{width:100%; height:auto; display:block;}
+.figcap{font-size:12.5px; color:var(--text2); font-style:italic; margin-top:8px;}
+.sources{list-style:none; padding:0; margin:0; font-size:13px; color:var(--text2);}
+.sources li{padding:8px 0; border-bottom:1px solid var(--border);}
+.sources li:last-child{border-bottom:none;}
+.xref{font-size:14px;}
+footer{padding:26px 0 0; font-size:12.5px; color:var(--text3); font-style:italic;}
+.c-blue{--hue:var(--blue)!important;} .c-red{--hue:var(--red)!important;} .c-amber{--hue:var(--amber)!important;} .c-purple{--hue:var(--purple)!important;} .c-teal{--hue:var(--teal)!important;}
+@media (max-width:600px){ h1{font-size:24px;} .page{padding:0 16px 48px;} table{font-size:12.8px;} .step{grid-template-columns:34px 1fr;} }
+@media (prefers-reduced-motion:reduce){*{transition:none !important;}}
+</style>
+<style id="cv-print">
+/* ===== CV PRINT v1.0 (per _cv-schema.html) ===== */
+@media print{
+  :root{
+    --bg:#f4f5f7; --surface:#ffffff; --surface2:#f0f2f5; --border:#d7dde3;
+    --teal:#00a688; --teal-deep:#007a63; --blue:#1d4ed8; --red:#c53030; --red-soft:#dc2626;
+    --amber:#b45309; --purple:#7c3aed;
+    --text:#0f1923; --text2:#4a5670; --text3:#6b7688;
+  }
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  html, body{background:#f4f5f7 !important; color:#0f1923 !important;}
+  nav.toc{display:none !important;}
+  section, .box, table, .stat, .step, .figure{break-inside:avoid;}
+  h2, .sec-head{break-after:avoid;}
+  a{color:inherit; text-decoration:none;}
+}
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ a{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../locker.html">The Evidence Locker</a><span class="cv-sb-meta">Published 19 Nov 2026 · R. E. Suscitate &amp; A. Systole</span></nav>
+<div class="page">
+<header><div class="kicker">The Critical Vector &middot; Content Audit &middot; Accurate, one substrate correction</div>
+<h1>Orthodromic vs Antidromic AVRT: Not Every Pathway Shows a Delta Wave</h1>
+<p class="sub">An ECGPlus infographic on the AVRT circuit. The physiology and the circuit drawings are right. The substrate box ties AVRT to the WPW pattern, which leaves out concealed pathways, and the management box needs a caution for antidromic AVRT.</p>
+<p class="byline">R. E. Suscitate &amp; A. Systole &middot; November 2026. Original post: <a href="https://www.instagram.com/ecgplus1">@ecgplus1</a>, &ldquo;Orthodromic vs Antidromic AVRT: same circuit, opposite direction.&rdquo; This page is an independent third-party evaluation, not affiliated with or endorsed by the original creator.</p></header>
+<div class="alert ok"><strong>Verdict:</strong> mechanism, ECG features and proportions match ESC 2019 and ACC/AHA/HRS 2015. Correction: orthodromic AVRT often runs on a concealed pathway with a normal baseline ECG, so &ldquo;WPW pattern&rdquo; is not part of the definition. The caption&rsquo;s warning about AV nodal blockers in pre-excited AF is correct and deserves more space than the infographic gives it.</div>
+<nav class="toc"><a href="#circuit">The circuit</a><a href="#ledger">Check</a><a href="#bedside">Bedside sequence</a><a href="#sources">Sources</a></nav>
+<section id="circuit">
+<div class="sec-head c-blue"><span class="sec-num">01</span><h2>Same loop, opposite direction</h2></div>
+<div class="figure"><svg viewBox="0 0 640 285" role="img" aria-label="Orthodromic and antidromic AVRT circuits"><style>.b{font:700 12px Syne,sans-serif;fill:var(--text)} .s{font:500 11px 'IBM Plex Mono',monospace;fill:var(--text2)} .w{font:700 11px Syne,sans-serif;fill:var(--text)}</style>
+<defs><marker id="arO" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8z" fill="var(--teal)"/></marker>
+<marker id="arA" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8z" fill="var(--purple)"/></marker></defs>
+
+<g>
+<text class="b" x="150" y="24" text-anchor="middle">Orthodromic: narrow QRS</text>
+<rect x="20" y="36" width="260" height="70" rx="12" fill="var(--surface2)" stroke="var(--border)"/><text class="s" x="150" y="56" text-anchor="middle">ATRIA</text>
+<rect x="20" y="176" width="260" height="70" rx="12" fill="var(--surface2)" stroke="var(--border)"/><text class="s" x="150" y="236" text-anchor="middle">VENTRICLES</text>
+<circle cx="90" cy="141" r="12" fill="var(--surface)" stroke="var(--text3)"/><text class="s" x="72" y="145" text-anchor="end">AV node</text>
+<rect x="202" y="106" width="16" height="70" rx="5" fill="color-mix(in srgb, var(--teal) 25%, transparent)" stroke="var(--teal)"/><text class="s" x="226" y="145">pathway</text>
+<path d="M90 76 L90 200" stroke="var(--teal)" stroke-width="3" fill="none" marker-end="url(#arO)"/>
+<path d="M210 205 L210 82" stroke="var(--teal)" stroke-width="3" fill="none" stroke-dasharray="6 4" marker-end="url(#arO)"/>
+<path d="M90 212 Q150 226 210 212" stroke="var(--teal)" stroke-width="2" fill="none" opacity=".6"/>
+<path d="M210 70 Q150 52 90 70" stroke="var(--teal)" stroke-width="2" fill="none" opacity=".6"/>
+<text class="s" x="150" y="270" text-anchor="middle">solid = antegrade &middot; dashed = retrograde</text>
+</g>
+
+<g>
+<text class="b" x="490" y="24" text-anchor="middle">Antidromic: wide QRS</text>
+<rect x="360" y="36" width="260" height="70" rx="12" fill="var(--surface2)" stroke="var(--border)"/><text class="s" x="490" y="56" text-anchor="middle">ATRIA</text>
+<rect x="360" y="176" width="260" height="70" rx="12" fill="var(--surface2)" stroke="var(--border)"/><text class="s" x="490" y="236" text-anchor="middle">VENTRICLES</text>
+<circle cx="430" cy="141" r="12" fill="var(--surface)" stroke="var(--text3)"/><text class="s" x="412" y="145" text-anchor="end">AV node</text>
+<rect x="542" y="106" width="16" height="70" rx="5" fill="color-mix(in srgb, var(--purple) 25%, transparent)" stroke="var(--purple)"/><text class="s" x="566" y="145">pathway</text>
+<path d="M550 76 L550 200" stroke="var(--purple)" stroke-width="3" fill="none" marker-end="url(#arA)"/>
+<path d="M430 205 L430 82" stroke="var(--purple)" stroke-width="3" fill="none" stroke-dasharray="6 4" marker-end="url(#arA)"/>
+<path d="M550 212 Q490 226 430 212" stroke="var(--purple)" stroke-width="2" fill="none" opacity=".6"/>
+<path d="M430 70 Q490 52 550 70" stroke="var(--purple)" stroke-width="2" fill="none" opacity=".6"/>
+<text class="s" x="490" y="270" text-anchor="middle">solid = antegrade &middot; dashed = retrograde</text>
+</g>
+</svg><div class="figcap">Schematic. Down the AV node and His&ndash;Purkinje gives a normal, narrow QRS; down the pathway activates the ventricle muscle-to-muscle and gives a wide, pre-excited QRS. A concealed pathway can only carry the dashed (retrograde) limb, so it supports orthodromic AVRT alone.</div></div>
+<div class="tbl"><table><tr><th style="width:22%"></th><th>Orthodromic AVRT</th><th>Antidromic AVRT</th></tr>
+<tr><td class="k">Antegrade limb</td><td>AV node &rarr; His&ndash;Purkinje</td><td>Accessory pathway</td></tr>
+<tr><td class="k">Retrograde limb</td><td>Accessory pathway</td><td>AV node, or a second accessory pathway</td></tr>
+<tr><td class="k">QRS</td><td>Narrow, unless rate-related aberrancy or baseline bundle branch block</td><td>Wide, maximally pre-excited</td></tr>
+<tr><td class="k">P wave</td><td>Retrograde, short RP (RP usually &gt;70 ms)</td><td>Often hidden</td></tr>
+<tr><td class="k">Share of AVRT</td><td>About 90&ndash;95%</td><td>About 5&ndash;10%</td></tr>
+<tr><td class="k">Baseline ECG</td><td>Pre-excited <em>or normal</em> (concealed pathway)</td><td>Pre-excited (the pathway must conduct antegrade)</td></tr>
+<tr><td class="k">Main mimic</td><td>AVNRT, atrial tachycardia</td><td>VT</td></tr></table></div>
+
+</section>
+<section id="ledger">
+<div class="sec-head "><span class="sec-num">02</span><h2>Infographic and caption check</h2></div>
+<div class="tbl"><table><tr><th style="width:38%">Post says</th><th style="width:15%">Verdict</th><th>Note</th></tr>
+<tr><td>Orthodromic: down AV node, up the pathway; narrow, regular; retrograde P after QRS; no delta wave during tachycardia</td><td><span class="tag v">Verified</span></td><td>Correct, and the circuit drawing matches. Narrow unless aberrant conduction widens it.</td></tr>
+<tr><td>Antidromic: down the pathway, up the AV node or a second pathway; wide, fully pre-excited; mimics VT</td><td><span class="tag v">Verified</span></td><td>Correct. Multiple pathways are common in antidromic AVRT.</td></tr>
+<tr><td>~90&ndash;95% orthodromic, ~5&ndash;10% antidromic</td><td><span class="tag v">Verified</span></td><td>Consistent with ESC 2019 and ACC/AHA/HRS 2015.</td></tr>
+<tr><td>Trigger: a premature beat blocks in one limb and conducts down the other</td><td><span class="tag v">Verified</span></td><td>The standard re-entry mechanism.</td></tr>
+<tr><td>Substrate: Bundle of Kent &hellip; WPW pattern</td><td><span class="tag x">Correction</span></td><td>True only for manifest pathways. Many patients with orthodromic AVRT have a <em>concealed</em> pathway that conducts only retrograde, a normal resting ECG, and no WPW pattern. &ldquo;Bundle of Kent&rdquo; is the eponym; guidelines now say atrioventricular accessory pathway.</td></tr>
+<tr><td>Management box: vagal / adenosine block the AV node</td><td><span class="tag c">Needs context</span></td><td>Right for orthodromic AVRT (vagal maneuvers first, then adenosine). For antidromic AVRT adenosine can terminate the circuit, since the AV node is the retrograde limb, but it can provoke atrial fibrillation that then conducts down the pathway. Have a defibrillator attached.</td></tr>
+<tr><td>Caption: antidromic &mdash; be careful with AV nodal blockers if pre-excited AF is possible</td><td><span class="tag v">Verified</span></td><td>The right instinct. In pre-excited AF, avoid adenosine, beta blockers, calcium channel blockers, digoxin and (ESC 2019) IV amiodarone; cardiovert if unstable, procainamide or ibutilide if stable.</td></tr>
+<tr><td>Unstable: synchronized cardioversion; catheter ablation is curative</td><td><span class="tag v">Verified</span></td><td>Both class I in current guidelines.</td></tr>
+<tr><td>Pearl: wide regular tachycardia in WPW, think antidromic, not just VT</td><td><span class="tag c">Needs context</span></td><td>Keep the converse. Without a known pathway or a prior pre-excited ECG, a wide regular tachycardia is VT until proven otherwise.</td></tr>
+</table></div>
+</section>
+<section id="bedside">
+<div class="sec-head c-red"><span class="sec-num">03</span><h2>In the resus bay</h2></div>
+
+<div class="steps">
+<div class="step c-red"><div class="n">1</div><div><h3>Unstable at any width</h3><p>Synchronized cardioversion. This does not depend on working out which limb is antegrade.</p></div></div>
+<div class="step c-blue"><div class="n">2</div><div><h3>Stable, narrow, regular</h3><p>Modified Valsalva, then adenosine with a recording strip running. Termination with a retrograde P after the last QRS favors AVRT over AVNRT.</p></div></div>
+<div class="step c-amber"><div class="n">3</div><div><h3>Stable, wide, regular, known WPW</h3><p>Antidromic AVRT is likely but VT is still possible. Procainamide is the drug that treats both safely. Adenosine is reasonable only with pads on.</p></div></div>
+<div class="step c-red"><div class="n">4</div><div><h3>Wide, irregular, fast, varying QRS</h3><p>Pre-excited AF. No AV nodal blockers. Procainamide or ibutilide if stable, cardioversion if not.</p></div></div>
+<div class="step c-teal"><div class="n">5</div><div><h3>After the event</h3><p>Electrophysiology referral. Ablation of the pathway is first-line, curative in most patients, and removes the sudden-death risk of a fast-conducting manifest pathway.</p></div></div>
+</div>
+<p class="xref">Related on CV: <a href="antidromic-mahaim-tachycardia.html">Antidromic Mahaim tachycardia, with the named criteria</a></p>
+
+</section>
+<section id="sources">
+<div class="sec-head c-grey"><span class="sec-num">04</span><h2>Sources</h2></div>
+<ul class="sources">
+<li><b>@ecgplus1.</b> &ldquo;Mechanism of Antidromic &amp; Orthodromic AVRT and Their Circuit.&rdquo; Instagram infographic and caption. Read the original before relying on this summary.</li>
+<li>Brugada J, Katritsis DG, Arbelo E, et al. 2019 ESC Guidelines for the management of patients with supraventricular tachycardia. <em>Eur Heart J.</em> 2020;41(5):655&ndash;720. <a href="https://doi.org/10.1093/eurheartj/ehz467">doi:10.1093/eurheartj/ehz467</a> (PMID 31504425)</li>
+<li>Page RL, Joglar JA, Caldwell MA, et al. 2015 ACC/AHA/HRS guideline for the management of adult patients with supraventricular tachycardia. <em>J Am Coll Cardiol.</em> 2016;67(13):e27&ndash;e115. <a href="https://doi.org/10.1016/j.jacc.2015.08.856">doi:10.1016/j.jacc.2015.08.856</a> (PMID 26409259)</li>
+<li>Guideline citations verified against PubMed records; specific drug recommendations summarized from the guidelines without re-reading each table, so check the current class of recommendation locally.</li>
+</ul>
+</section>
+<footer>The Critical Vector &middot; Direction and magnitude. Educational reference; verify against current guidelines and local protocol before applying to a patient.</footer>
+</div>
+<script src="../js/stats.js?v=2"></script>
+</body>
+</html>

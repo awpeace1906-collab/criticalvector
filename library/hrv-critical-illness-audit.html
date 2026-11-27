@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Heart Rate Variability in Critical Illness, Audited — The Critical Vector</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0e14; --surface:#111720; --surface2:#182030;
+  --border:rgba(255,255,255,0.08);
+  --teal:#00d4aa; --teal-deep:#00d4aa; --blue:#60a5fa; --red:#e84c4c; --red-soft:#f87171; --amber:#f59e0b; --purple:#a78bfa;
+  --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670;
+  --hl:var(--amber);
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{background:var(--bg); color:var(--text); font-family:'Source Serif 4', Georgia, serif; font-size:16px; line-height:1.62; -webkit-font-smoothing:antialiased;}
+h1,h2,h3,.label,nav a,th,.tag,.stat .k,.step .n{font-family:'Syne', sans-serif;}
+.mono,.num{font-family:'IBM Plex Mono', monospace;}
+.page{max-width:900px; margin:0 auto; padding:0 24px 60px;}
+header{padding:34px 0 20px; border-bottom:1px solid var(--border);}
+.kicker{font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--hl); margin-bottom:10px;}
+h1{font-weight:800; font-size:30px; line-height:1.15; margin:0 0 10px;}
+header p.sub{font-style:italic; color:var(--text2); font-size:15.5px; margin:0 0 12px;}
+.byline{font-size:13px; color:var(--text3); margin:0;}
+.byline a, .sources a, footer a, p a, td a, li a{color:var(--teal-deep);}
+.alert{margin:20px 0; padding:14px 18px; border-radius:10px; font-size:14.5px; color:var(--text);}
+.alert.ok{background:color-mix(in srgb, var(--teal) 10%, transparent); border:1px solid color-mix(in srgb, var(--teal) 28%, transparent);}
+.alert.warn{background:color-mix(in srgb, var(--amber) 10%, transparent); border:1px solid color-mix(in srgb, var(--amber) 28%, transparent);}
+.alert.err{background:color-mix(in srgb, var(--red) 10%, transparent); border:1px solid color-mix(in srgb, var(--red) 28%, transparent);}
+nav.toc{display:flex; flex-wrap:wrap; gap:7px; padding:16px 0; border-bottom:1px solid var(--border);}
+nav.toc a{font-size:12.5px; font-weight:600; color:var(--text2); background:var(--surface); border:1px solid var(--border); padding:7px 12px; border-radius:20px; text-decoration:none; white-space:nowrap;}
+nav.toc a:hover, nav.toc a:focus-visible{color:var(--text); border-color:var(--hl); outline:none;}
+section{padding:28px 0; border-bottom:1px solid var(--border);}
+.sec-head{--hue:var(--teal); display:flex; align-items:baseline; gap:10px; padding:11px 18px; border-left:4px solid var(--hue); background:linear-gradient(90deg, color-mix(in srgb, var(--hue) 10%, transparent), transparent); border-radius:0 8px 8px 0; margin-bottom:14px;}
+.c-blue{--hue:var(--blue);} .c-red{--hue:var(--red);} .c-amber{--hue:var(--amber);} .c-purple{--hue:var(--purple);} .c-teal{--hue:var(--teal);}
+.sec-head.c-grey{border-left-color:var(--text3); background:none;}
+.sec-num{font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--text3);}
+h2{font-weight:700; font-size:20px; margin:0;}
+h3{font-size:15px; font-weight:700; margin:18px 0 6px;}
+.tagline{font-style:italic; font-size:14px; color:var(--text2); margin:0 0 12px;}
+p{margin:.75rem 0;}
+.box{--hue:var(--teal); background:var(--surface2); border:1px solid var(--border); border-left:3px solid var(--hue); border-radius:10px; padding:14px 18px; margin:14px 0;}
+.box .label{display:block; font-size:12.5px; font-weight:700; margin-bottom:4px; color:var(--hue);}
+.box p{margin:.4rem 0;}
+.tbl{overflow-x:auto; margin:14px 0;}
+table{width:100%; border-collapse:collapse; font-size:13.6px;}
+th{background:var(--surface2); color:var(--text); text-align:left; padding:9px 11px; font-weight:600; font-size:12px; border-bottom:2px solid var(--border);}
+td{padding:9px 11px; border-bottom:1px solid var(--border); vertical-align:top; line-height:1.45;}
+tr:nth-child(even) td{background:color-mix(in srgb, var(--text) 2%, transparent);}
+td.k{font-family:'Syne',sans-serif; font-weight:700; color:var(--text);}
+td.num, .num{font-family:'IBM Plex Mono', monospace; font-size:13px;}
+.tag{--hue:var(--teal); display:inline-block; font-size:10.5px; font-weight:700; padding:2px 9px; border-radius:20px; white-space:nowrap; margin-bottom:3px; background:color-mix(in srgb, var(--hue) 12%, transparent); color:var(--hue); border:1px solid color-mix(in srgb, var(--hue) 30%, transparent);}
+.tag.v{--hue:var(--teal);} .tag.c{--hue:var(--amber);} .tag.x{--hue:var(--red-soft);} .tag.u{--hue:var(--purple);} .tag.l{--hue:var(--blue);}
+.stats{display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:12px; margin:16px 0;}
+.stat{--hue:var(--teal); background:var(--surface); border:1px solid var(--border); border-left:4px solid var(--hue); border-radius:10px; padding:16px 18px;}
+.stat .v{font-family:'IBM Plex Mono', monospace; font-size:24px; font-weight:600; color:var(--hue); line-height:1.1;}
+.stat .k{font-size:12px; font-weight:700; color:var(--text); margin:6px 0 2px;}
+.stat .d{font-size:13px; color:var(--text2); line-height:1.4;}
+.steps{display:grid; gap:10px; margin:14px 0; counter-reset:s;}
+.step{--hue:var(--blue); display:grid; grid-template-columns:42px 1fr; gap:12px; background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:14px 16px;}
+.step .n{width:32px; height:32px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:14px; color:var(--hue); background:color-mix(in srgb, var(--hue) 12%, transparent); border:1px solid color-mix(in srgb, var(--hue) 30%, transparent);}
+.step h3{margin:2px 0 4px;}
+.step p{margin:.3rem 0; font-size:14.5px;}
+ul.plain, ol.plain{padding-left:1.3rem; margin:.6rem 0;} ul.plain li, ol.plain li{margin-bottom:.45rem;}
+.figure{margin:18px 0; background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:16px;}
+.figure svg{width:100%; height:auto; display:block;}
+.figcap{font-size:12.5px; color:var(--text2); font-style:italic; margin-top:8px;}
+.sources{list-style:none; padding:0; margin:0; font-size:13px; color:var(--text2);}
+.sources li{padding:8px 0; border-bottom:1px solid var(--border);}
+.sources li:last-child{border-bottom:none;}
+.xref{font-size:14px;}
+footer{padding:26px 0 0; font-size:12.5px; color:var(--text3); font-style:italic;}
+.c-blue{--hue:var(--blue)!important;} .c-red{--hue:var(--red)!important;} .c-amber{--hue:var(--amber)!important;} .c-purple{--hue:var(--purple)!important;} .c-teal{--hue:var(--teal)!important;}
+@media (max-width:600px){ h1{font-size:24px;} .page{padding:0 16px 48px;} table{font-size:12.8px;} .step{grid-template-columns:34px 1fr;} }
+@media (prefers-reduced-motion:reduce){*{transition:none !important;}}
+</style>
+<style id="cv-print">
+/* ===== CV PRINT v1.0 (per _cv-schema.html) ===== */
+@media print{
+  :root{
+    --bg:#f4f5f7; --surface:#ffffff; --surface2:#f0f2f5; --border:#d7dde3;
+    --teal:#00a688; --teal-deep:#007a63; --blue:#1d4ed8; --red:#c53030; --red-soft:#dc2626;
+    --amber:#b45309; --purple:#7c3aed;
+    --text:#0f1923; --text2:#4a5670; --text3:#6b7688;
+  }
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  html, body{background:#f4f5f7 !important; color:#0f1923 !important;}
+  nav.toc{display:none !important;}
+  section, .box, table, .stat, .step, .figure{break-inside:avoid;}
+  h2, .sec-head{break-after:avoid;}
+  a{color:inherit; text-decoration:none;}
+}
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ a{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../locker.html">The Evidence Locker</a><span class="cv-sb-meta">Published 19 Nov 2026 · R. E. Suscitate &amp; A. Systole</span></nav>
+<div class="page">
+<header><div class="kicker">The Critical Vector &middot; Content Audit &middot; Accurate; evidence claim needs context</div>
+<h1>Heart Rate Variability in the ICU: Real Signal, Thin Outcome Data</h1>
+<p class="sub">An <em>Anesthesiology</em> journal post promoting a new review of HRV methods in critical illness. The citation and the figure check out. The caption&rsquo;s &ldquo;prognosis and treatment&rdquo; runs ahead of the adult evidence.</p>
+<p class="byline">R. E. Suscitate &amp; A. Systole &middot; November 2026. Original post: <a href="https://www.instagram.com/anesthesiology_journal">@anesthesiology_journal</a>, October 26, 2026, promoting Bharadwaj et al. This page is an independent third-party evaluation, not affiliated with or endorsed by the original creator.</p></header>
+<div class="alert ok"><strong>Verdict:</strong> the review exists as cited (<em>Anesthesiology</em>, November 2026). The baroreflex figure is correct but incomplete. The only randomized trial showing an outcome benefit from HRV-type monitoring was in premature neonates; adult critical care data remain prognostic and observational.</div>
+<nav class="toc"><a href="#figure">Figure</a><a href="#ledger">Check</a><a href="#metrics">Metrics</a><a href="#evidence">Evidence</a><a href="#sources">Sources</a></nav>
+<section id="figure">
+<div class="sec-head c-teal"><span class="sec-num">01</span><h2>The figure</h2></div>
+<p>The diagram shows glossopharyngeal afferents from the carotid sinus to the brainstem, vagal efferents to the heart, and sympathetic fibers to the heart and a vessel. That is the baroreflex arc, and the parts shown are drawn correctly. Two clarifications: the carotid <em>body</em> is a chemoreceptor, not a baroreceptor, although both travel in CN IX; and the aortic arch baroreceptors, carried by the vagus, are left out.</p><div class="figure"><svg viewBox="0 0 760 230" role="img" aria-label="Baroreflex arc">
+<style>.b{font:700 12px Syne,sans-serif;fill:var(--text)} .s{font:500 11px 'IBM Plex Mono',monospace;fill:var(--text2)}</style>
+<rect x="290" y="20" width="180" height="56" rx="10" fill="var(--surface2)" stroke="var(--border)"/><text class="b" x="380" y="44" text-anchor="middle">Medulla (NTS)</text><text class="s" x="380" y="62" text-anchor="middle">integrates the reflex</text>
+<rect x="20" y="140" width="190" height="62" rx="10" fill="var(--surface2)" stroke="var(--teal)"/><text class="b" x="115" y="164" text-anchor="middle">Carotid sinus</text><text class="s" x="115" y="182" text-anchor="middle">baroreceptor &middot; CN IX</text>
+<rect x="20" y="20" width="190" height="62" rx="10" fill="var(--surface2)" stroke="var(--amber)" stroke-dasharray="5 4"/><text class="b" x="115" y="44" text-anchor="middle">Aortic arch</text><text class="s" x="115" y="62" text-anchor="middle">baroreceptor &middot; CN X</text>
+<rect x="550" y="20" width="190" height="62" rx="10" fill="var(--surface2)" stroke="var(--blue)"/><text class="b" x="645" y="44" text-anchor="middle">SA node</text><text class="s" x="645" y="62" text-anchor="middle">vagal efferent &middot; fast</text>
+<rect x="550" y="140" width="190" height="62" rx="10" fill="var(--surface2)" stroke="var(--red)"/><text class="b" x="645" y="164" text-anchor="middle">Heart + vessels</text><text class="s" x="645" y="182" text-anchor="middle">sympathetic &middot; slower</text>
+<path d="M210 160 C 260 140, 280 100, 300 76" stroke="var(--teal)" stroke-width="2" fill="none"/>
+<path d="M210 50 L 290 48" stroke="var(--amber)" stroke-width="2" stroke-dasharray="5 4" fill="none"/>
+<path d="M470 48 L 550 48" stroke="var(--blue)" stroke-width="2" fill="none"/>
+<path d="M440 76 C 480 110, 520 150, 550 165" stroke="var(--red)" stroke-width="2" fill="none"/>
+<text class="s" x="250" y="38">missing from post</text>
+</svg><div class="figcap">The post&rsquo;s figure shows the carotid limb only. The aortic arch afferent runs in the vagus. HRV in the high-frequency band mostly reflects the fast vagal efferent.</div></div>
+</section>
+<section id="ledger">
+<div class="sec-head "><span class="sec-num">02</span><h2>Caption check</h2></div>
+<div class="tbl"><table><tr><th style="width:38%">Post says</th><th style="width:15%">Verdict</th><th>Note</th></tr>
+<tr><td>Bharadwaj et al., new Clinical Focus Review on HRV methods in critical illness</td><td><span class="tag v">Verified</span></td><td>Bharadwaj MS, Krishnamoorthy V, Miller JB, et al. <em>Anesthesiology</em> 2026;145(5):1227&ndash;1241 (PMID 42644480). PubMed lists no abstract; the review itself was not read for this audit.</td></tr>
+<tr><td>HRV offers a practical, noninvasive window into autonomic function</td><td><span class="tag c">Needs context</span></td><td>Noninvasive, yes. Practical in the ICU is harder: ectopy, atrial fibrillation, pacing, sedatives, vasopressors and positive-pressure ventilation all change the signal independent of autonomic tone.</td></tr>
+<tr><td>Potential applications for prognosis and treatment across critical care</td><td><span class="tag c">Needs context</span></td><td>Prognosis has real data. Treatment guided by HRV has one positive randomized trial, and it was in very-low-birth-weight neonates (HeRO). No adult ICU outcome trial yet.</td></tr>
+<tr><td>Figure: baroreflex anatomy</td><td><span class="tag c">Needs context</span></td><td>Correct as drawn; the aortic arch limb and the baroreceptor/chemoreceptor distinction are missing.</td></tr>
+</table></div>
+</section>
+<section id="metrics">
+<div class="sec-head c-purple"><span class="sec-num">03</span><h2>What the common metrics measure</h2></div>
+
+<div class="tbl"><table><tr><th style="width:18%">Metric</th><th style="width:16%">Domain</th><th>Reflects</th></tr>
+<tr><td class="k">SDNN</td><td>Time</td><td>Overall variability over the recording; depends heavily on recording length</td></tr>
+<tr><td class="k">RMSSD</td><td>Time</td><td>Beat-to-beat change; mainly vagal</td></tr>
+<tr><td class="k">HF power</td><td>Frequency, 0.15&ndash;0.40 Hz</td><td>Vagal modulation tied to respiration; shifts with ventilator rate</td></tr>
+<tr><td class="k">LF power</td><td>Frequency, 0.04&ndash;0.15 Hz</td><td>Mixed sympathetic and vagal, plus baroreflex activity</td></tr>
+<tr><td class="k">LF/HF</td><td>Ratio</td><td>Often sold as &ldquo;sympathovagal balance.&rdquo; Billman (2013) set out why that reading doesn&rsquo;t hold. Avoid it.</td></tr>
+<tr><td class="k">Entropy, DFA</td><td>Nonlinear</td><td>Complexity and fractal structure; used in the sepsis and neonatal work</td></tr></table></div>
+<p class="tagline">Bands and definitions from the 1996 Task Force standards.</p>
+
+</section>
+<section id="evidence">
+<div class="sec-head c-amber"><span class="sec-num">04</span><h2>The outcome evidence</h2></div>
+
+<div class="stats">
+<div class="stat c-teal"><div class="v">10.2% &rarr; 8.1%</div><div class="k">HeRO neonatal RCT, mortality</div><div class="d">3,003 VLBW infants; HR 0.78 (0.61&ndash;0.99); number needed to monitor 48. Displayed heart rate characteristics vs masked.</div></div>
+<div class="stat c-amber"><div class="v">&minus;25%, 35 h early</div><div class="k">Adult sepsis signal</div><div class="d">17 bone marrow transplant patients: HRV fell before clinical sepsis in 12 of 14 who became infected. Feasibility only.</div></div>
+</div>
+<p>The gap between those two boxes is the state of the field. Bedside HRV in adults is a research tool that may become a monitoring channel; it is not yet something to act on in isolation.</p>
+
+</section>
+<section id="sources">
+<div class="sec-head c-grey"><span class="sec-num">05</span><h2>Sources</h2></div>
+<ul class="sources">
+<li><b>@anesthesiology_journal.</b> Instagram post, October 26, 2026. Read the original and the review before relying on this summary.</li>
+<li>Bharadwaj MS, Krishnamoorthy V, Miller JB, et al. Analyzing heart rate variability in critical illness: contemporary and emerging methods. <em>Anesthesiology.</em> 2026;145(5):1227&ndash;1241. <a href="https://doi.org/10.1097/ALN.0000000000006168">doi:10.1097/ALN.0000000000006168</a> (PMID 42644480)</li>
+<li>Task Force of the European Society of Cardiology and the North American Society of Pacing and Electrophysiology. Heart rate variability: standards of measurement, physiological interpretation and clinical use. <em>Circulation.</em> 1996;93(5):1043&ndash;1065. (PMID 8598068)</li>
+<li>Billman GE. The LF/HF ratio does not accurately measure cardiac sympatho-vagal balance. <em>Front Physiol.</em> 2013;4:26. (PMID 23431279)</li>
+<li>Moorman JR, Carlo WA, Kattwinkel J, et al. Mortality reduction by heart rate characteristic monitoring in very low birth weight neonates: a randomized trial. <em>J Pediatr.</em> 2011;159(6):900&ndash;906. <a href="https://doi.org/10.1016/j.jpeds.2011.06.044">doi:10.1016/j.jpeds.2011.06.044</a> (PMID 21864846)</li>
+<li>Ahmad S, Ramsay T, Huebsch L, et al. Continuous multi-parameter heart rate variability analysis heralds onset of sepsis in adults. <em>PLoS One.</em> 2009;4(8):e6642. <a href="https://doi.org/10.1371/journal.pone.0006642">doi:10.1371/journal.pone.0006642</a> (PMID 19680545)</li>
+<li>Citations verified against PubMed records; Task Force and Billman matched by citation.</li>
+</ul>
+</section>
+<footer>The Critical Vector &middot; Direction and magnitude. Educational reference; verify against current guidelines and local protocol before applying to a patient.</footer>
+</div>
+<script src="../js/stats.js?v=2"></script>
+</body>
+</html>

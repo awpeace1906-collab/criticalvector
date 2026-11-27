@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Whole Blood vs Component Therapy in Trauma: An Evidence Review — The Critical Vector</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0e14; --surface:#111720; --surface2:#182030;
+  --border:rgba(255,255,255,0.08);
+  --teal:#00d4aa; --teal-deep:#00d4aa; --blue:#60a5fa; --red:#e84c4c; --red-soft:#f87171; --amber:#f59e0b; --purple:#a78bfa;
+  --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670;
+  --hl:var(--amber);
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{background:var(--bg); color:var(--text); font-family:'Source Serif 4', Georgia, serif; font-size:16px; line-height:1.62; -webkit-font-smoothing:antialiased;}
+h1,h2,h3,.label,nav a,th,.tag,.stat .k,.step .n{font-family:'Syne', sans-serif;}
+.mono,.num{font-family:'IBM Plex Mono', monospace;}
+.page{max-width:900px; margin:0 auto; padding:0 24px 60px;}
+header{padding:34px 0 20px; border-bottom:1px solid var(--border);}
+.kicker{font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--hl); margin-bottom:10px;}
+h1{font-weight:800; font-size:30px; line-height:1.15; margin:0 0 10px;}
+header p.sub{font-style:italic; color:var(--text2); font-size:15.5px; margin:0 0 12px;}
+.byline{font-size:13px; color:var(--text3); margin:0;}
+.byline a, .sources a, footer a, p a, td a, li a{color:var(--teal-deep);}
+.alert{margin:20px 0; padding:14px 18px; border-radius:10px; font-size:14.5px; color:var(--text);}
+.alert.ok{background:color-mix(in srgb, var(--teal) 10%, transparent); border:1px solid color-mix(in srgb, var(--teal) 28%, transparent);}
+.alert.warn{background:color-mix(in srgb, var(--amber) 10%, transparent); border:1px solid color-mix(in srgb, var(--amber) 28%, transparent);}
+.alert.err{background:color-mix(in srgb, var(--red) 10%, transparent); border:1px solid color-mix(in srgb, var(--red) 28%, transparent);}
+nav.toc{display:flex; flex-wrap:wrap; gap:7px; padding:16px 0; border-bottom:1px solid var(--border);}
+nav.toc a{font-size:12.5px; font-weight:600; color:var(--text2); background:var(--surface); border:1px solid var(--border); padding:7px 12px; border-radius:20px; text-decoration:none; white-space:nowrap;}
+nav.toc a:hover, nav.toc a:focus-visible{color:var(--text); border-color:var(--hl); outline:none;}
+section{padding:28px 0; border-bottom:1px solid var(--border);}
+.sec-head{--hue:var(--teal); display:flex; align-items:baseline; gap:10px; padding:11px 18px; border-left:4px solid var(--hue); background:linear-gradient(90deg, color-mix(in srgb, var(--hue) 10%, transparent), transparent); border-radius:0 8px 8px 0; margin-bottom:14px;}
+.c-blue{--hue:var(--blue);} .c-red{--hue:var(--red);} .c-amber{--hue:var(--amber);} .c-purple{--hue:var(--purple);} .c-teal{--hue:var(--teal);}
+.sec-head.c-grey{border-left-color:var(--text3); background:none;}
+.sec-num{font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--text3);}
+h2{font-weight:700; font-size:20px; margin:0;}
+h3{font-size:15px; font-weight:700; margin:18px 0 6px;}
+.tagline{font-style:italic; font-size:14px; color:var(--text2); margin:0 0 12px;}
+p{margin:.75rem 0;}
+.box{--hue:var(--teal); background:var(--surface2); border:1px solid var(--border); border-left:3px solid var(--hue); border-radius:10px; padding:14px 18px; margin:14px 0;}
+.box .label{display:block; font-size:12.5px; font-weight:700; margin-bottom:4px; color:var(--hue);}
+.box p{margin:.4rem 0;}
+.tbl{overflow-x:auto; margin:14px 0;}
+table{width:100%; border-collapse:collapse; font-size:13.6px;}
+th{background:var(--surface2); color:var(--text); text-align:left; padding:9px 11px; font-weight:600; font-size:12px; border-bottom:2px solid var(--border);}
+td{padding:9px 11px; border-bottom:1px solid var(--border); vertical-align:top; line-height:1.45;}
+tr:nth-child(even) td{background:color-mix(in srgb, var(--text) 2%, transparent);}
+td.k{font-family:'Syne',sans-serif; font-weight:700; color:var(--text);}
+td.num, .num{font-family:'IBM Plex Mono', monospace; font-size:13px;}
+.tag{--hue:var(--teal); display:inline-block; font-size:10.5px; font-weight:700; padding:2px 9px; border-radius:20px; white-space:nowrap; margin-bottom:3px; background:color-mix(in srgb, var(--hue) 12%, transparent); color:var(--hue); border:1px solid color-mix(in srgb, var(--hue) 30%, transparent);}
+.tag.v{--hue:var(--teal);} .tag.c{--hue:var(--amber);} .tag.x{--hue:var(--red-soft);} .tag.u{--hue:var(--purple);} .tag.l{--hue:var(--blue);}
+.stats{display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:12px; margin:16px 0;}
+.stat{--hue:var(--teal); background:var(--surface); border:1px solid var(--border); border-left:4px solid var(--hue); border-radius:10px; padding:16px 18px;}
+.stat .v{font-family:'IBM Plex Mono', monospace; font-size:24px; font-weight:600; color:var(--hue); line-height:1.1;}
+.stat .k{font-size:12px; font-weight:700; color:var(--text); margin:6px 0 2px;}
+.stat .d{font-size:13px; color:var(--text2); line-height:1.4;}
+.steps{display:grid; gap:10px; margin:14px 0; counter-reset:s;}
+.step{--hue:var(--blue); display:grid; grid-template-columns:42px 1fr; gap:12px; background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:14px 16px;}
+.step .n{width:32px; height:32px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:14px; color:var(--hue); background:color-mix(in srgb, var(--hue) 12%, transparent); border:1px solid color-mix(in srgb, var(--hue) 30%, transparent);}
+.step h3{margin:2px 0 4px;}
+.step p{margin:.3rem 0; font-size:14.5px;}
+ul.plain, ol.plain{padding-left:1.3rem; margin:.6rem 0;} ul.plain li, ol.plain li{margin-bottom:.45rem;}
+.figure{margin:18px 0; background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:16px;}
+.figure svg{width:100%; height:auto; display:block;}
+.figcap{font-size:12.5px; color:var(--text2); font-style:italic; margin-top:8px;}
+.sources{list-style:none; padding:0; margin:0; font-size:13px; color:var(--text2);}
+.sources li{padding:8px 0; border-bottom:1px solid var(--border);}
+.sources li:last-child{border-bottom:none;}
+.xref{font-size:14px;}
+footer{padding:26px 0 0; font-size:12.5px; color:var(--text3); font-style:italic;}
+.c-blue{--hue:var(--blue)!important;} .c-red{--hue:var(--red)!important;} .c-amber{--hue:var(--amber)!important;} .c-purple{--hue:var(--purple)!important;} .c-teal{--hue:var(--teal)!important;}
+@media (max-width:600px){ h1{font-size:24px;} .page{padding:0 16px 48px;} table{font-size:12.8px;} .step{grid-template-columns:34px 1fr;} }
+@media (prefers-reduced-motion:reduce){*{transition:none !important;}}
+</style>
+<style id="cv-print">
+/* ===== CV PRINT v1.0 (per _cv-schema.html) ===== */
+@media print{
+  :root{
+    --bg:#f4f5f7; --surface:#ffffff; --surface2:#f0f2f5; --border:#d7dde3;
+    --teal:#00a688; --teal-deep:#007a63; --blue:#1d4ed8; --red:#c53030; --red-soft:#dc2626;
+    --amber:#b45309; --purple:#7c3aed;
+    --text:#0f1923; --text2:#4a5670; --text3:#6b7688;
+  }
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  html, body{background:#f4f5f7 !important; color:#0f1923 !important;}
+  nav.toc{display:none !important;}
+  section, .box, table, .stat, .step, .figure{break-inside:avoid;}
+  h2, .sec-head{break-after:avoid;}
+  a{color:inherit; text-decoration:none;}
+}
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ a{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../locker.html">The Evidence Locker</a><span class="cv-sb-meta">Published 19 Nov 2026 · R. E. Suscitate &amp; A. Systole</span></nav>
+<div class="page">
+<header><div class="kicker">The Critical Vector &middot; Evidence Review &middot; Trauma resuscitation</div>
+<h1>Whole Blood vs Components: The Meta-Analysis Says Yes, the Trials Say Not Yet</h1>
+<p class="sub">A close read of Ibrahim et al. in JAMA Surgery (2026), set against the two large randomized trials that arrived after its search ended, the major cohort studies, and the safety data.</p>
+<p class="byline">R. E. Suscitate &amp; A. Systole &middot; November 2026. Prompted by Ibrahim W, Meza Monge K, Menzel J, et al. <em>JAMA Surg</em> 2026;161(5):497&ndash;506. This page is an independent third-party evaluation, not affiliated with or endorsed by the original creator.</p></header>
+<div class="alert warn"><strong>Verdict:</strong> the meta-analysis finds lower civilian 24-hour mortality with whole blood (OR 0.73), almost entirely from observational studies, with a prediction interval of 0.28&ndash;1.91. Its search ended in June 2025, before SWiFT (n = 942) and TOWAR (n = 1,020) were published in 2026. Neither trial found a benefit from prehospital whole blood. Whole blood is safe and logistically useful; a survival advantage over balanced component therapy is not established.</div>
+<nav class="toc"><a href="#question">Definitions</a><a href="#jama">The meta-analysis</a><a href="#critique">Weak points</a><a href="#confounding">Confounding</a><a href="#rcts">Trials</a><a href="#case">Real advantages</a><a href="#safety">Safety</a><a href="#verdict">Bottom line</a><a href="#sources">Sources</a></nav>
+<section id="question">
+<div class="sec-head c-blue"><span class="sec-num">01</span><h2>What is actually being compared</h2></div>
+
+<p>&ldquo;Whole blood versus components&rdquo; sounds like two products. In practice it is three different comparisons, and the literature mixes them.</p>
+<div class="tbl"><table><tr><th style="width:24%">Product</th><th>What it is</th><th style="width:30%">Where the evidence comes from</th></tr>
+<tr><td class="k">Low-titer group O whole blood (LTOWB)</td><td>Cold-stored, uncrossmatched, anti-A/anti-B titers below a set threshold (TOWAR used &lt;256), shelf life up to 21 days. Contains cold-stored platelets and less additive solution than the equivalent components.</td><td>Almost all modern civilian data; SWiFT and TOWAR</td></tr>
+<tr><td class="k">Modified whole blood</td><td>Leukoreduced with a platelet-sparing filter, or platelets removed. Cotton&rsquo;s 2013 pilot used this; the product is no longer in routine use.</td><td>Cotton 2013 RCT</td></tr>
+<tr><td class="k">Fresh whole blood</td><td>Collected from a walking blood bank and transfused warm within hours.</td><td>Military series; not comparable to cold-stored LTOWB</td></tr>
+<tr><td class="k">Balanced components</td><td>Red cells, plasma and platelets given near 1:1:1. PROPPR set this as the standard: fewer exsanguination deaths (9.2% vs 14.6%) and more hemostasis than 1:1:2, without a significant mortality difference.</td><td>PROPPR 2015</td></tr></table></div>
+<div class="box c-amber"><span class="label">The hidden variable</span><p>In nearly every observational study the &ldquo;whole blood&rdquo; group is <em>whole blood plus components</em>, compared with components alone. In TOWAR, 31.6% of the whole-blood arm also got components, and 59.1% of the component arm got both red cells and plasma. The real comparison is often one balanced strategy against another.</p></div>
+
+</section>
+<section id="jama">
+<div class="sec-head c-amber"><span class="sec-num">02</span><h2>The JAMA Surgery meta-analysis</h2></div>
+
+<div class="stats">
+<div class="stat c-amber"><div class="v">40 studies</div><div class="k">2 RCTs, 38 cohorts</div><div class="d">49,776 adults (&ge;16 y); literature searched from January 2006 to June 30, 2025.</div></div>
+<div class="stat c-amber"><div class="v">OR 0.73</div><div class="k">Civilian 24-h mortality</div><div class="d">95% CI 0.57&ndash;0.93; 24 studies, 39,028 patients; I&sup2; 89%.</div></div>
+<div class="stat c-red"><div class="v">0.28&ndash;1.91</div><div class="k">95% prediction interval</div><div class="d">The plausible effect in a new civilian setting runs from large benefit to near-doubling of the odds of death.</div></div>
+<div class="stat c-blue"><div class="v">OR 0.99</div><div class="k">Military 24-h mortality</div><div class="d">95% CI 0.58&ndash;1.70; 5 studies, 2,171 patients.</div></div>
+</div>
+<p>Ibrahim and colleagues (University of Colorado) used restricted maximum likelihood with the Hartung&ndash;Knapp adjustment, which widens confidence intervals when studies disagree, and they reported prediction intervals, which most meta-analyses in this field have not. Those are good choices, and they deserve credit. Other pooled results: civilian 30-day mortality OR 0.76 (0.60&ndash;0.98) and 2.66 fewer units transfused (95% CI 1.35&ndash;3.96). The 4.6-point absolute risk reduction (NNT 22) assumes a control-group 24-hour mortality of 20%. One methods choice matters more than the rest: every pooled analysis used each study&rsquo;s unadjusted counts.</p>
+<p>The authors called the evidence moderate certainty and recommended &ldquo;selective&rdquo; adoption in civilian centers with better patient selection. Their own prediction interval is the strongest argument for that caution.</p>
+
+</section>
+<section id="critique">
+<div class="sec-head "><span class="sec-num">03</span><h2>Where the meta-analysis is weaker than its headline</h2></div>
+<div class="tbl"><table><tr><th style="width:38%">Claim</th><th style="width:15%">Verdict</th><th>Note</th></tr>
+<tr><td>Whole blood is associated with lower civilian mortality (OR 0.73)</td><td><span class="tag c">Needs context</span></td><td>38 of 40 studies are observational, and the primary analysis pooled each study&rsquo;s <em>unadjusted</em> counts; adjusted estimates were extracted but not used. The pooled OR is a crude comparison of sicker and less sick patients across 24 civilian studies. The I&sup2; of 87&ndash;89% says the studies are not measuring one shared effect, and three studies with ORs of 0.21&ndash;0.36 (Feinberg, Dilday, Hazelton 2022) carry much of the signal.</td></tr>
+<tr><td>Randomized evidence within the review</td><td><span class="tag c">Needs context</span></td><td>The two RCTs alone (Cotton 2013, Guyette 2022): OR 0.84, 95% CI 0.41&ndash;1.71. The authors call this underpowered, which is fair; it is also the only part of the pool free of confounding.</td></tr>
+<tr><td>Moderate-certainty evidence</td><td><span class="tag c">Needs context</span></td><td>GRADE starts observational evidence at low and lets it rise only for a large effect, a dose&ndash;response or confounding that would bias toward the null. Rating it moderate here, with crude data and a prediction interval crossing 1, is generous.</td></tr>
+<tr><td>Civilian benefit, no military benefit</td><td><span class="tag x">Correction</span></td><td>The text reports a significant test for subgroup difference (Q = 4.89, P = .03). The 24-hour forest plot reports the same test as &chi;&sup2; = 1.00, P = .32, I&sup2; = 0%. If the figure is right, the data do not show that civilian and military effects differ, and the headline contrast rests on one subgroup crossing P &lt; .05 and the other not.</td></tr>
+<tr><td>Fresh whole blood is associated with larger effects</td><td><span class="tag x">Correction</span></td><td>The Discussion lists fresh vs stored blood among factors associated with larger treatment effects. The meta-regression in the Results shows the reverse: fresh OR 0.99 (0.48&ndash;2.06), cold-stored OR 0.79 (0.65&ndash;0.95), P = .40. None of the meta-regression moderators reached significance; one (penetrating proportion, &beta; &minus;0.033, SE 0.005) is reported with P = .49, which does not fit its standard error.</td></tr>
+<tr><td>30-day mortality forest plot</td><td><span class="tag x">Correction</span></td><td>Several civilian rows carry another study&rsquo;s counts. Guyette 2022 (an 86-patient pilot RCT) appears with 280 vs 8,214 patients, the denominators listed for Hanna in the 24-hour plot; Duchesne, Feinberg, Gallaher and Hanna are shifted the same way. Dilday 2024 shows 166 deaths at 24 hours but 33 at 30 days, which cannot both be right. Auten 2015 has a point estimate (1.66) outside its own CI (0.18&ndash;0.46). The pooled 30-day OR should be treated as unverified until these rows are checked against the supplement.</td></tr>
+<tr><td>Possible overlapping cohorts</td><td><span class="tag c">Needs context</span></td><td>Dilday 2024 (166/1,190 vs 136/418) and Hazelton 2022 (167/1,180 vs 138/443) have near-identical 24-hour counts, and both are prospective multicenter studies of cold-stored whole blood (Dilday from the EAST Whole Blood Multicenter Collaborative); whether they share patients is not stated. The review excluded overlapping cohorts as a rule; if these two overlap, the same patients are counted twice among the heaviest-weighted studies.</td></tr>
+<tr><td>Search through June 30, 2025</td><td><span class="tag x">Correction</span></td><td>Misses both large randomized trials published in 2026: SWiFT (NEJM, March) and TOWAR (NEJM, May). The review lists both under future research. Neither showed benefit, and TOWAR&rsquo;s point estimate leaned the other way.</td></tr>
+<tr><td>Civilian vs military subgroups</td><td><span class="tag v">Verified</span></td><td>Only 29 of the 40 studies reported 24-hour mortality (41,199 patients); the 24 civilian and 5 military studies are those 29. Overall, 33 studies were civilian and 7 military.</td></tr>
+<tr><td>No benefit in military settings</td><td><span class="tag x">Correction</span></td><td>This rests on the same crude counts, and crude data cut both ways. Gurney 2022, the largest military study, used frequency matching and a mixed-effects model that accounted for head injury severity and immortal time, and reported an adjusted OR of 0.27 (0.13&ndash;0.58). Pooled from raw counts it became OR 1.08. Gurney, Staudt and Stallings made this point in a July 2026 letter. The authors replied that the phrase describes the pooled unadjusted estimate, not a clinical claim, and pointed to the low-certainty rating; they did not report an analysis using adjusted estimates. Military series also mostly used warm fresh whole blood in austere conditions, so neither direction transfers cleanly to cold-stored LTOWB in a civilian trauma bay.</td></tr>
+<tr><td>Article carries a correction notice</td><td><span class="tag v">Verified</span></td><td>Corrected May 13, 2026 (JAMA Surg 2026;161(5):554, doi:10.1001/jamasurg.2026.1283): the word &ldquo;reduced&rdquo; was missing from the Meaning sentence of the Key Points. No results changed.</td></tr>
+</table></div>
+</section>
+<section id="confounding">
+<div class="sec-head c-purple"><span class="sec-num">04</span><h2>Why observational studies keep finding a benefit</h2></div>
+
+<p>Two of the most-cited single-center studies show the problem plainly. In both, crude survival was identical. The advantage appeared only after statistical adjustment.</p>
+<div class="stats">
+<div class="stat c-purple"><div class="v">73% vs 74%</div><div class="k">Williams 2020, crude survival</div><div class="d">LTOWB vs components, Houston. After adjustment: OR 2.19 (1.01&ndash;4.76) for survival. The WB group arrived sicker (lactate 5.1 vs 3.5).</div></div>
+<div class="stat c-purple"><div class="v">75% vs 76%</div><div class="k">Brill 2022, crude survival</div><div class="d">1,377 patients. After logistic regression: OR 4.10 for survival. WB patients had higher ISS (27 vs 20) and lactate.</div></div>
+</div>
+<p>Adjusting for greater injury severity can legitimately unmask a benefit. It can also manufacture one. Three biases recur:</p>
+<ul class="plain">
+<li><b>Survivor (immortal-time) bias.</b> A patient must live long enough to receive whole blood, and units are limited. Patients who die in the first minutes tend to land in the component group. Torres et al. excluded deaths within 1 hour, which helps but does not remove it.</li>
+<li><b>Confounding by era and system.</b> Centers that adopt LTOWB also tend to adopt prehospital blood, faster MTP activation, REBOA and TXA protocols. Before-and-after comparisons credit all of it to the bag.</li>
+<li><b>Exposure defined as &ldquo;any whole blood.&rdquo;</b> One unit among twenty components counts as a whole-blood patient.</li>
+</ul>
+<p>The largest prospective multicenter cohort favoring whole blood, Hazelton&rsquo;s 14-center study of 1,623 patients, reported that whole-blood recipients were 48% less likely to die after adjustment for center, age, sex, mechanism and ISS. It enrolled anyone transfused during initial resuscitation, not only massive transfusion, and the abstract does not give the mortality time point. Shock index and prehospital physiology were not in that model, though the whole-blood group arrived with a higher shock index (0.98 vs 0.83).</p>
+<p>Not every large cohort found the benefit. SWAT (7 centers, 1,051 patients, prospective) found no adjusted difference overall (4-hour RR 0.90, 0.59&ndash;1.39) and a benefit only in a post hoc high-risk subgroup. A 2025 TQIP propensity-matched analysis of 4,434 patients found fewer complications with whole blood but no difference in in-hospital mortality. The 2024 EAST meta-analysis of 21 studies found no mortality association, only less red cell and plasma use.</p>
+
+</section>
+<section id="rcts">
+<div class="sec-head c-teal"><span class="sec-num">05</span><h2>The randomized evidence</h2></div>
+<div class="figure"><svg viewBox="0 0 760 330" role="img" aria-label="Effect estimates for whole blood versus components"><style>.b{font:700 11.5px Syne,sans-serif;fill:var(--text)} .s{font:500 10.5px 'IBM Plex Mono',monospace;fill:var(--text2)}</style><line x1="530" y1="20" x2="530" y2="280" stroke="var(--text3)" stroke-dasharray="4 4"/><text class="s" x="330" y="298" text-anchor="middle">0.25</text><text class="s" x="430" y="298" text-anchor="middle">0.5</text><text class="s" x="530" y="298" text-anchor="middle">1</text><text class="s" x="630" y="298" text-anchor="middle">2</text><text class="s" x="730" y="298" text-anchor="middle">4</text><text class="s" x="430" y="318" text-anchor="middle">&larr; favors whole blood</text><text class="s" x="630" y="318" text-anchor="middle">favors components &rarr;</text><text class="b" x="8" y="40">Ibrahim MA &middot; civilian, 24 h death</text><text class="s" x="300" y="40" text-anchor="end">OR</text><line x1="346" y1="36" x2="623" y2="36" stroke="var(--amber)" stroke-width="8" opacity=".18" stroke-linecap="round"/><line x1="449" y1="36" x2="520" y2="36" stroke="var(--amber)" stroke-width="2.5"/><rect x="480" y="31" width="10" height="10" fill="var(--amber)"/><text class="s" x="734" y="40" text-anchor="start"></text><text class="b" x="8" y="76">Ibrahim MA &middot; civilian, 30 d death</text><text class="s" x="300" y="76" text-anchor="end">OR</text><line x1="456" y1="72" x2="527" y2="72" stroke="var(--amber)" stroke-width="2.5"/><rect x="485" y="67" width="10" height="10" fill="var(--amber)"/><text class="s" x="734" y="76" text-anchor="start"></text><text class="b" x="8" y="112">Ibrahim MA &middot; military, 24 h death</text><text class="s" x="300" y="112" text-anchor="end">OR</text><line x1="451" y1="108" x2="607" y2="108" stroke="var(--amber)" stroke-width="2.5"/><rect x="524" y="103" width="10" height="10" fill="var(--amber)"/><text class="s" x="734" y="112" text-anchor="start"></text><text class="b" x="8" y="148">Torres 2023 &middot; TQIP, 24 h death</text><text class="s" x="300" y="148" text-anchor="end">HR</text><line x1="401" y1="144" x2="524" y2="144" stroke="var(--purple)" stroke-width="2.5"/><rect x="458" y="139" width="10" height="10" fill="var(--purple)"/><text class="s" x="734" y="148" text-anchor="start"></text><text class="b" x="8" y="184">SWAT 2023 &middot; overall, 4 h death</text><text class="s" x="300" y="184" text-anchor="end">RR</text><line x1="454" y1="180" x2="578" y2="180" stroke="var(--purple)" stroke-width="2.5"/><rect x="510" y="175" width="10" height="10" fill="var(--purple)"/><text class="s" x="734" y="184" text-anchor="start"></text><text class="b" x="8" y="220">SWiFT 2026 RCT &middot; death or MT, 24 h</text><text class="s" x="300" y="220" text-anchor="end">RR</text><line x1="498" y1="216" x2="569" y2="216" stroke="var(--teal)" stroke-width="2.5"/><rect x="528" y="211" width="10" height="10" fill="var(--teal)"/><text class="s" x="734" y="220" text-anchor="start"></text><text class="b" x="8" y="256">TOWAR 2026 RCT &middot; 30 d death</text><text class="s" x="300" y="256" text-anchor="end">aOR</text><line x1="510" y1="252" x2="612" y2="252" stroke="var(--teal)" stroke-width="2.5"/><rect x="556" y="247" width="10" height="10" fill="var(--teal)"/><text class="s" x="734" y="256" text-anchor="start"></text></svg><div class="figcap">Log scale. Amber: the JAMA Surgery meta-analysis (the faint band on the first row is its 95% prediction interval, 0.28&ndash;1.91). Purple: large observational studies. Teal: the two 2026 randomized trials. The measures differ (OR, HR, RR, a composite) and should not be pooled by eye; the picture shows direction and precision, not a new meta-analysis.</div></div>
+<div class="tbl"><table><tr><th style="width:17%">Trial</th><th style="width:22%">Design</th><th>Result</th></tr>
+<tr><td class="k">Cotton 2013</td><td>Single-center pilot, n = 107, in-hospital, modified WB</td><td>No difference in 24-h transfusion volume (primary). Less product use only after excluding severe brain injury.</td></tr>
+<tr><td class="k">Guyette 2022 (PPOWER)</td><td>Single-center cluster-randomized pilot, n = 86, prehospital through in-hospital LTOWB</td><td>28-day mortality 25.0% vs 26.1%. Lower 24-h red cell need and fewer abnormal TEG values. Stopped at 77% enrollment.</td></tr>
+<tr><td class="k">SWiFT 2026</td><td>10 English air ambulance services, n = 942 randomized; 225 in traumatic arrest on arrival excluded by design, leaving 641 in the modified ITT (primary outcome known for 616). Up to 2 units leukodepleted, platelet-rich WB vs up to 2 units each of red cells and plasma; median ISS 33</td><td>Death or massive transfusion at 24 h: 48.7% vs 47.7%, RR 1.02 (0.80&ndash;1.31); per-protocol RR 1.05. Mortality at 30 d 27.5% vs 26.0%, at 90 d 30.4% vs 27.2%. Prolonged PT on arrival more common with WB (40.7% vs 30.5%, RR 1.31), which the authors attribute to plasma in WB units being up to 21 days old vs usually &lt;5 days in thawed plasma. Thrombotic events 14.2% vs 15.9%; serious adverse events 31 vs 37. Powered for a 12-point absolute difference from an assumed 68% event rate; the observed rate was about 48%.</td></tr>
+<tr><td class="k">TOWAR 2026</td><td>US, 44 air bases cluster-randomized 2:1 in 1-month blocks, n = 1,020; up to 2 units LTOWB vs red cells and/or plasma</td><td>30-day mortality 25.9% vs 20.5%, aOR 1.24 (0.87&ndash;1.76). No difference in transfusion needs, organ failure, infection or ARDS. Storage age 15&ndash;21 vs 1&ndash;14 days: no difference (aOR 0.99).</td></tr>
+<tr><td class="k">TROOP</td><td>In-hospital, multicenter, target n = 1,100, primary outcome 6-h mortality (Bayesian)</td><td>Still enrolling. The trial that can answer the in-hospital massive-transfusion question.</td></tr></table></div>
+<div class="box c-teal"><span class="label">What the 2026 trials do and don&rsquo;t settle</span>
+<p>At the dose tested, up to two units before hospital arrival, cold-stored whole blood did no better than red cells and plasma. That is as far as the trials go. Neither was built as an equivalence trial, and both confidence intervals still allow a clinically meaningful difference in either direction. The NEJM editorial (Rowell and Rogers) makes three further points:</p>
+<ul>
+<li><strong>Lower mortality than planned for.</strong> Thirty-day mortality of 24&ndash;28% is well below the PAMPer era, so any true difference is probably smaller than either trial could detect. SWiFT assumed a 68% event rate and observed about 48%.</li>
+<li><strong>Few patients died of bleeding.</strong> In SWiFT, uncontrolled hemorrhage caused 11.5% of whole-blood deaths and 10.8% of standard-care deaths; traumatic brain injury caused 26.4% and 37.8%. In TOWAR, hemorrhage was a cause of death in 9.0% vs 7.8% of patients. A hemostatic product cannot show its worth in patients who die of something else.</li>
+<li><strong>Not the same product.</strong> SWiFT used a platelet-sparing filter and uniform, platelet-replete units. TOWAR accepted local practice, a mix of conventionally leukoreduced and non-leukoreduced units. Neither is the warm fresh whole blood behind the military data.</li>
+</ul>
+<p>Neither trial tested whole blood as the backbone of an in-hospital massive transfusion, where the mechanistic case is strongest. TROOP is the trial built for that question.</p></div>
+
+</section>
+<section id="case">
+<div class="sec-head c-teal"><span class="sec-num">06</span><h2>The case for whole blood that survives the trials</h2></div>
+
+<div class="steps">
+<div class="step c-teal"><div class="n">1</div><div><h3>Logistics</h3><p>One bag instead of three, one cooler instead of two, cold-stored platelets available where platelets otherwise aren&rsquo;t. This is the strongest argument, and it doesn&rsquo;t need a mortality benefit to justify a prehospital or rural program.</p></div></div>
+<div class="step c-teal"><div class="n">2</div><div><h3>Staying balanced</h3><p>A pooled analysis of 4,858 patients from four cohorts found that ratio drift begins to cost lives after the first cooler: with whole blood available, separation appeared beyond 6 red cell units (11&ndash;20 units: 17% vs 31% mortality in SWAT). Whole blood makes 1:1:1 the default rather than something to track.</p></div></div>
+<div class="step c-teal"><div class="n">3</div><div><h3>Less product</h3><p>Fewer units transfused is the most consistent signal across the meta-analyses (EAST and Ibrahim) and the pilot RCTs. Fewer donor exposures is a real if modest good.</p></div></div>
+<div class="step c-amber"><div class="n">4</div><div><h3>Hemostatic quality</h3><p>Less dilution from additive solution, cold-stored platelets with preserved function. Supported by laboratory and TEG data, but SWiFT&rsquo;s higher rate of prolonged PT in the whole-blood arm is a reminder that two units do not correct a consumptive coagulopathy by themselves.</p></div></div>
+</div>
+
+</section>
+<section id="safety">
+<div class="sec-head "><span class="sec-num">07</span><h2>Safety</h2></div>
+<div class="tbl"><table><tr><th style="width:38%">Claim</th><th style="width:15%">Verdict</th><th>Note</th></tr>
+<tr><td>Hemolysis in non-group O recipients</td><td><span class="tag v">Verified</span></td><td>Not seen with modest volumes of LTOWB in adult or pediatric series (Dishong 2021 review; Williams 2020 serial hemolysis panels). Most programs cap the number of uncrossmatched units before switching to type-specific product.</td></tr>
+<tr><td>RhD-positive whole blood in females of childbearing potential</td><td><span class="tag c">Needs context</span></td><td>The real trade-off. Modeled risk of fetal or neonatal death from hemolytic disease after D-alloimmunization ranges 0&ndash;6.5% depending on age and other factors, set against roughly 24% mortality from hemorrhagic shock (Yazer 2023). A 2025 JAMA Network Open guideline now covers management of alloimmunized pregnancy partly because of this practice. EAST&rsquo;s conditional recommendation explicitly says it may not apply to women of childbearing age.</td></tr>
+<tr><td>Thrombosis and organ failure</td><td><span class="tag v">Verified</span></td><td>No excess in SWiFT, TOWAR or the TQIP analysis; TQIP found fewer complications with whole blood.</td></tr>
+<tr><td>Storage age up to 21 days</td><td><span class="tag v">Verified</span></td><td>TOWAR substudy: no outcome difference between 1&ndash;14 and 15&ndash;21 day units.</td></tr>
+</table></div>
+</section>
+<section id="verdict">
+<div class="sec-head c-red"><span class="sec-num">08</span><h2>Bottom line</h2></div>
+
+<div class="box c-red"><span class="label">An honest summary</span>
+<p>Whole blood is safe, practical, and makes balanced resuscitation easier to deliver. It has not been shown to save lives compared with well-run balanced component therapy. The observational signal, which the JAMA Surgery meta-analysis condenses into an OR of 0.73, comes from studies whose crude survival rates were often identical, and from a pool so heterogeneous that the prediction interval includes harm. The two large randomized trials, both published after that meta-analysis&rsquo;s search window, found no prehospital benefit.</p>
+<p>Choose whole blood for what it reliably delivers: simpler logistics, ratio by default, cold-stored platelets, fewer exposures. Don&rsquo;t choose it expecting the survival effect in the abstract. Keep a plan for women of childbearing potential and a unit cap for uncrossmatched product. The in-hospital question waits on TROOP.</p></div>
+<div class="tbl"><table><tr><th style="width:26%">Setting</th><th>Where the evidence points</th></tr>
+<tr><td class="k" style="color:var(--red-soft)">Prehospital, short transport</td><td>Either product. Two RCTs, no difference. Pick by logistics and supply.</td></tr>
+<tr><td class="k" style="color:var(--amber)">Prehospital, long or austere</td><td>Whole blood has the stronger practical case (platelets, weight, one bag); no trial tested this setting directly.</td></tr>
+<tr><td class="k" style="color:var(--blue)">ED and OR massive transfusion</td><td>Balanced components remain the evidence-based standard (PROPPR). Whole blood is a reasonable way to deliver the same ratio; mortality effect unproven pending TROOP.</td></tr>
+<tr><td class="k" style="color:var(--purple)">ICU, ongoing bleeding</td><td>Goal-directed component therapy. No whole-blood data.</td></tr></table></div>
+<p class="xref">Related on CV: <a href="txa-poise3-audit.html">TXA in POISE-3, audited</a></p>
+
+</section>
+<section id="sources">
+<div class="sec-head c-grey"><span class="sec-num">09</span><h2>Sources</h2></div>
+<ul class="sources">
+<li>Ibrahim W, Meza Monge K, Menzel J, et al. Whole-blood vs component therapy in adult trauma: an updated systematic review and meta-analysis. <em>JAMA Surg.</em> 2026;161(5):497&ndash;506. <a href="https://doi.org/10.1001/jamasurg.2026.0197">doi:10.1001/jamasurg.2026.0197</a> (PMID 41811314). Full text and correction notice (doi:10.1001/jamasurg.2026.1283) reviewed; supplement not reviewed.</li>
+<li>Gurney JM, Staudt AM, Stallings JD. Methodological concerns in whole blood meta-analysis [letter]. <em>JAMA Surg.</em> 2026;161(9):972. <a href="https://doi.org/10.1001/jamasurg.2026.2796">doi:10.1001/jamasurg.2026.2796</a></li>
+<li>Ibrahim W, Morales Ojeda L, Idrovo JP. Methodological concerns in whole blood meta-analysis&mdash;reply. <em>JAMA Surg.</em> 2026;161(9):972&ndash;973. <a href="https://doi.org/10.1001/jamasurg.2026.2799">doi:10.1001/jamasurg.2026.2799</a></li>
+<li>Smith JE, Cardigan R, Sanderson E, et al; SWiFT Trial Group. Prehospital whole blood in traumatic hemorrhage &mdash; a randomized controlled trial. <em>N Engl J Med.</em> 2026;394(23):2305&ndash;2316. <a href="https://doi.org/10.1056/NEJMoa2516043">doi:10.1056/NEJMoa2516043</a> (PMID 41841706). Full text reviewed.</li>
+<li>Sperry JL, Guyette FX, Cotton BA, et al; TOWAR Study Group. Prehospital resuscitation with type O whole blood for trauma and hemorrhage. <em>N Engl J Med.</em> 2026;394(23):2317&ndash;2328. <a href="https://doi.org/10.1056/NEJMoa2602167">doi:10.1056/NEJMoa2602167</a> (PMID 42150044; full text PMC13313084)</li>
+<li>Rowell SE, Rogers SO. Prehospital whole blood for traumatic hemorrhage &mdash; consistent evidence from two randomized trials. <em>N Engl J Med.</em> 2026;394(23):2372&ndash;2373. <a href="https://doi.org/10.1056/NEJMe2605735">doi:10.1056/NEJMe2605735</a> (PMID 42308488; editorial, full text reviewed)</li>
+<li>Cotton BA, Podbielski J, Camp E, et al. A randomized controlled pilot trial of modified whole blood versus component therapy in severely injured patients requiring large volume transfusions. <em>Ann Surg.</em> 2013;258(4):527&ndash;533. <a href="https://doi.org/10.1097/SLA.0b013e3182a4ffa0">doi:10.1097/SLA.0b013e3182a4ffa0</a> (PMID 23979267)</li>
+<li>Guyette FX, Zenati M, Triulzi DJ, et al. Prehospital low titer group O whole blood is feasible and safe: results of a prospective randomized pilot trial. <em>J Trauma Acute Care Surg.</em> 2022;92(5):839&ndash;847. <a href="https://doi.org/10.1097/TA.0000000000003551">doi:10.1097/TA.0000000000003551</a> (PMID 35081595)</li>
+<li>Holcomb JB, Tilley BC, Baraniuk S, et al. Transfusion of plasma, platelets, and red blood cells in a 1:1:1 vs a 1:1:2 ratio and mortality in patients with severe trauma: the PROPPR randomized clinical trial. <em>JAMA.</em> 2015;313(5):471&ndash;482. <a href="https://doi.org/10.1001/jama.2015.12">doi:10.1001/jama.2015.12</a> (PMID 25647203)</li>
+<li>Meizoso JP, Cotton BA, Lawless RA, et al. Whole blood resuscitation for injured patients requiring transfusion: a systematic review, meta-analysis, and practice management guideline from the Eastern Association for the Surgery of Trauma. <em>J Trauma Acute Care Surg.</em> 2024;97(3):460&ndash;470. <a href="https://doi.org/10.1097/TA.0000000000004327">doi:10.1097/TA.0000000000004327</a> (PMID 38531812)</li>
+<li>Sperry JL, Cotton BA, Luther JF, et al; SWAT Study Group. Whole blood resuscitation and association with survival in injured patients with an elevated probability of mortality. <em>J Am Coll Surg.</em> 2023;237(2):206&ndash;219. <a href="https://doi.org/10.1097/XCS.0000000000000708">doi:10.1097/XCS.0000000000000708</a> (PMID 37039365)</li>
+<li>Torres CM, Kent A, Scantling D, et al. Association of whole blood with survival among patients presenting with severe hemorrhage in US and Canadian adult civilian trauma centers. <em>JAMA Surg.</em> 2023;158(5):532&ndash;540. <a href="https://doi.org/10.1001/jamasurg.2022.6978">doi:10.1001/jamasurg.2022.6978</a> (PMID 36652255)</li>
+<li>Hazelton JP, Ssentongo AE, Oh JS, et al. Use of cold-stored whole blood is associated with improved mortality in hemostatic resuscitation of major bleeding: a multicenter study. <em>Ann Surg.</em> 2022;276(4):579&ndash;588. <a href="https://doi.org/10.1097/SLA.0000000000005603">doi:10.1097/SLA.0000000000005603</a> (PMID 35848743; abstract only, full text not accessible)</li>
+<li>Brill JB, Tang B, Hatton G, et al. Impact of incorporating whole blood into hemorrhagic shock resuscitation: analysis of 1,377 consecutive trauma patients receiving emergency-release uncrossmatched blood products. <em>J Am Coll Surg.</em> 2022;234(4):408&ndash;418. <a href="https://doi.org/10.1097/XCS.0000000000000086">doi:10.1097/XCS.0000000000000086</a> (PMID 35290259)</li>
+<li>Williams J, Merutka N, Meyer D, et al. Safety profile and impact of low-titer group O whole blood for emergency use in trauma. <em>J Trauma Acute Care Surg.</em> 2020;88(1):87&ndash;93. <a href="https://doi.org/10.1097/TA.0000000000002498">doi:10.1097/TA.0000000000002498</a> (PMID 31464874)</li>
+<li>Campbell A, Atiya W, Attia A, et al. Analysis of outcomes after whole blood transfusion vs balanced component therapy. <em>J Am Coll Surg.</em> 2025;241(4):695&ndash;702. <a href="https://doi.org/10.1097/XCS.0000000000001440">doi:10.1097/XCS.0000000000001440</a> (PMID 40377281)</li>
+<li>Clements TW, Williams J, Cannon J, et al. When does 1:1 resuscitation really matter? An analysis of 4,858 patients from four traumatic hemorrhage studies. <em>J Trauma Acute Care Surg.</em> 2026;101(5):777&ndash;783. <a href="https://doi.org/10.1097/TA.0000000000005037">doi:10.1097/TA.0000000000005037</a> (PMID 42047640)</li>
+<li>Dishong D, Cap AP, Holcomb JB, Triulzi DJ, Yazer MH. The rebirth of the cool: a narrative review of the clinical outcomes of cold stored low titer group O whole blood recipients compared to conventional component recipients in trauma. <em>Hematology.</em> 2021;26(1):601&ndash;611. <a href="https://doi.org/10.1080/16078454.2021.1967257">doi:10.1080/16078454.2021.1967257</a> (PMID 34411495)</li>
+<li>Yazer MH, Panko G, Holcomb JB, et al. Not as &ldquo;D&rdquo;eadly as once thought &mdash; the risk of D-alloimmunization and hemolytic disease of the fetus and newborn following RhD-positive transfusion in trauma. <em>Hematology.</em> 2023;28(1):2161215. <a href="https://doi.org/10.1080/16078454.2022.2161215">doi:10.1080/16078454.2022.2161215</a> (PMID 36607150)</li>
+<li>Moise KJ, Markham KB, Spinella PC, et al. A clinical practice guideline for the management of pregnancy alloimmunized to red blood cell antigens. <em>JAMA Netw Open.</em> 2025;8(11):e2544649. <a href="https://doi.org/10.1001/jamanetworkopen.2025.44649">doi:10.1001/jamanetworkopen.2025.44649</a> (PMID 41284292)</li>
+<li>Jansen JO, Pedroza C, Novelo LL, et al. Trauma resuscitation with Low-Titer Group O Whole Blood Or Products: study protocol for a randomized clinical trial (the TROOP trial). <em>Trials.</em> 2025;26(1):266. <a href="https://doi.org/10.1186/s13063-025-08971-y">doi:10.1186/s13063-025-08971-y</a> (PMID 40753420); <a href="https://clinicaltrials.gov/study/NCT05638581">NCT05638581</a></li>
+<li>All journal citations verified against PubMed records. Trial numbers from abstracts, plus SWiFT and TOWAR full texts.</li>
+</ul>
+</section>
+<footer>The Critical Vector &middot; Direction and magnitude. Educational reference; verify against current guidelines and local protocol before applying to a patient.</footer>
+</div>
+<script src="../js/stats.js?v=2"></script>
+</body>
+</html>

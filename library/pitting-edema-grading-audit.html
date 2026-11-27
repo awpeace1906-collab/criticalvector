@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grading Pitting Edema, Audited — The Critical Vector</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0e14; --surface:#111720; --surface2:#182030;
+  --border:rgba(255,255,255,0.08);
+  --teal:#00d4aa; --teal-deep:#00d4aa; --blue:#60a5fa; --red:#e84c4c; --red-soft:#f87171; --amber:#f59e0b; --purple:#a78bfa;
+  --text:#e8edf5; --text2:#8a9ab5; --text3:#4a5670;
+  --hl:var(--amber);
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{background:var(--bg); color:var(--text); font-family:'Source Serif 4', Georgia, serif; font-size:16px; line-height:1.62; -webkit-font-smoothing:antialiased;}
+h1,h2,h3,.label,nav a,th,.tag,.stat .k,.step .n{font-family:'Syne', sans-serif;}
+.mono,.num{font-family:'IBM Plex Mono', monospace;}
+.page{max-width:900px; margin:0 auto; padding:0 24px 60px;}
+header{padding:34px 0 20px; border-bottom:1px solid var(--border);}
+.kicker{font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--hl); margin-bottom:10px;}
+h1{font-weight:800; font-size:30px; line-height:1.15; margin:0 0 10px;}
+header p.sub{font-style:italic; color:var(--text2); font-size:15.5px; margin:0 0 12px;}
+.byline{font-size:13px; color:var(--text3); margin:0;}
+.byline a, .sources a, footer a, p a, td a, li a{color:var(--teal-deep);}
+.alert{margin:20px 0; padding:14px 18px; border-radius:10px; font-size:14.5px; color:var(--text);}
+.alert.ok{background:color-mix(in srgb, var(--teal) 10%, transparent); border:1px solid color-mix(in srgb, var(--teal) 28%, transparent);}
+.alert.warn{background:color-mix(in srgb, var(--amber) 10%, transparent); border:1px solid color-mix(in srgb, var(--amber) 28%, transparent);}
+.alert.err{background:color-mix(in srgb, var(--red) 10%, transparent); border:1px solid color-mix(in srgb, var(--red) 28%, transparent);}
+nav.toc{display:flex; flex-wrap:wrap; gap:7px; padding:16px 0; border-bottom:1px solid var(--border);}
+nav.toc a{font-size:12.5px; font-weight:600; color:var(--text2); background:var(--surface); border:1px solid var(--border); padding:7px 12px; border-radius:20px; text-decoration:none; white-space:nowrap;}
+nav.toc a:hover, nav.toc a:focus-visible{color:var(--text); border-color:var(--hl); outline:none;}
+section{padding:28px 0; border-bottom:1px solid var(--border);}
+.sec-head{--hue:var(--teal); display:flex; align-items:baseline; gap:10px; padding:11px 18px; border-left:4px solid var(--hue); background:linear-gradient(90deg, color-mix(in srgb, var(--hue) 10%, transparent), transparent); border-radius:0 8px 8px 0; margin-bottom:14px;}
+.c-blue{--hue:var(--blue);} .c-red{--hue:var(--red);} .c-amber{--hue:var(--amber);} .c-purple{--hue:var(--purple);} .c-teal{--hue:var(--teal);}
+.sec-head.c-grey{border-left-color:var(--text3); background:none;}
+.sec-num{font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--text3);}
+h2{font-weight:700; font-size:20px; margin:0;}
+h3{font-size:15px; font-weight:700; margin:18px 0 6px;}
+.tagline{font-style:italic; font-size:14px; color:var(--text2); margin:0 0 12px;}
+p{margin:.75rem 0;}
+.box{--hue:var(--teal); background:var(--surface2); border:1px solid var(--border); border-left:3px solid var(--hue); border-radius:10px; padding:14px 18px; margin:14px 0;}
+.box .label{display:block; font-size:12.5px; font-weight:700; margin-bottom:4px; color:var(--hue);}
+.box p{margin:.4rem 0;}
+.tbl{overflow-x:auto; margin:14px 0;}
+table{width:100%; border-collapse:collapse; font-size:13.6px;}
+th{background:var(--surface2); color:var(--text); text-align:left; padding:9px 11px; font-weight:600; font-size:12px; border-bottom:2px solid var(--border);}
+td{padding:9px 11px; border-bottom:1px solid var(--border); vertical-align:top; line-height:1.45;}
+tr:nth-child(even) td{background:color-mix(in srgb, var(--text) 2%, transparent);}
+td.k{font-family:'Syne',sans-serif; font-weight:700; color:var(--text);}
+td.num, .num{font-family:'IBM Plex Mono', monospace; font-size:13px;}
+.tag{--hue:var(--teal); display:inline-block; font-size:10.5px; font-weight:700; padding:2px 9px; border-radius:20px; white-space:nowrap; margin-bottom:3px; background:color-mix(in srgb, var(--hue) 12%, transparent); color:var(--hue); border:1px solid color-mix(in srgb, var(--hue) 30%, transparent);}
+.tag.v{--hue:var(--teal);} .tag.c{--hue:var(--amber);} .tag.x{--hue:var(--red-soft);} .tag.u{--hue:var(--purple);} .tag.l{--hue:var(--blue);}
+.stats{display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:12px; margin:16px 0;}
+.stat{--hue:var(--teal); background:var(--surface); border:1px solid var(--border); border-left:4px solid var(--hue); border-radius:10px; padding:16px 18px;}
+.stat .v{font-family:'IBM Plex Mono', monospace; font-size:24px; font-weight:600; color:var(--hue); line-height:1.1;}
+.stat .k{font-size:12px; font-weight:700; color:var(--text); margin:6px 0 2px;}
+.stat .d{font-size:13px; color:var(--text2); line-height:1.4;}
+.steps{display:grid; gap:10px; margin:14px 0; counter-reset:s;}
+.step{--hue:var(--blue); display:grid; grid-template-columns:42px 1fr; gap:12px; background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:14px 16px;}
+.step .n{width:32px; height:32px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:14px; color:var(--hue); background:color-mix(in srgb, var(--hue) 12%, transparent); border:1px solid color-mix(in srgb, var(--hue) 30%, transparent);}
+.step h3{margin:2px 0 4px;}
+.step p{margin:.3rem 0; font-size:14.5px;}
+ul.plain, ol.plain{padding-left:1.3rem; margin:.6rem 0;} ul.plain li, ol.plain li{margin-bottom:.45rem;}
+.figure{margin:18px 0; background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:16px;}
+.figure svg{width:100%; height:auto; display:block;}
+.figcap{font-size:12.5px; color:var(--text2); font-style:italic; margin-top:8px;}
+.sources{list-style:none; padding:0; margin:0; font-size:13px; color:var(--text2);}
+.sources li{padding:8px 0; border-bottom:1px solid var(--border);}
+.sources li:last-child{border-bottom:none;}
+.xref{font-size:14px;}
+footer{padding:26px 0 0; font-size:12.5px; color:var(--text3); font-style:italic;}
+.c-blue{--hue:var(--blue)!important;} .c-red{--hue:var(--red)!important;} .c-amber{--hue:var(--amber)!important;} .c-purple{--hue:var(--purple)!important;} .c-teal{--hue:var(--teal)!important;}
+@media (max-width:600px){ h1{font-size:24px;} .page{padding:0 16px 48px;} table{font-size:12.8px;} .step{grid-template-columns:34px 1fr;} }
+@media (prefers-reduced-motion:reduce){*{transition:none !important;}}
+</style>
+<style id="cv-print">
+/* ===== CV PRINT v1.0 (per _cv-schema.html) ===== */
+@media print{
+  :root{
+    --bg:#f4f5f7; --surface:#ffffff; --surface2:#f0f2f5; --border:#d7dde3;
+    --teal:#00a688; --teal-deep:#007a63; --blue:#1d4ed8; --red:#c53030; --red-soft:#dc2626;
+    --amber:#b45309; --purple:#7c3aed;
+    --text:#0f1923; --text2:#4a5670; --text3:#6b7688;
+  }
+  *{-webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  html, body{background:#f4f5f7 !important; color:#0f1923 !important;}
+  nav.toc{display:none !important;}
+  section, .box, table, .stat, .step, .figure{break-inside:avoid;}
+  h2, .sec-head{break-after:avoid;}
+  a{color:inherit; text-decoration:none;}
+}
+</style>
+<style id="cv-sitebar-css">
+.cv-sitebar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 20px;border-bottom:1px solid rgba(127,127,127,.28);
+ font:600 12px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;letter-spacing:.03em;color:inherit}
+.cv-sitebar a{color:inherit;text-decoration:none;opacity:.85}.cv-sitebar a:hover{opacity:1;text-decoration:underline}
+.cv-sitebar .cv-sb-home{font-weight:800;opacity:1}.cv-sitebar .cv-sb-sep{opacity:.4}
+.cv-sitebar .cv-sb-meta{margin-left:auto;font-weight:500;opacity:.7}
+@media (max-width:640px){.cv-sitebar{padding:10px 16px}.cv-sitebar .cv-sb-meta{margin-left:0;flex-basis:100%}
+ table{display:block!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+ a{overflow-wrap:anywhere}}
+</style>
+</head>
+<body>
+<nav class="cv-sitebar" aria-label="The Critical Vector"><a class="cv-sb-home" href="../index.html">The Critical Vector</a><span class="cv-sb-sep">/</span><a href="../workshop.html">The Workshop</a><span class="cv-sb-meta">Published 19 Nov 2026 · R. E. Suscitate &amp; A. Systole</span></nav>
+<div class="page">
+<header><div class="kicker">The Critical Vector &middot; Content Audit &middot; Internally inconsistent; no validated standard</div>
+<h1>Pitting Edema Grades: Four Scales Wearing One Name</h1>
+<p class="sub">An EM:RAP / CorePendium graphic on grading pitting edema. The idea is sound. The numbers contradict themselves in two places, and the bigger issue is that every reference uses a different set.</p>
+<p class="byline">R. E. Suscitate &amp; A. Systole &middot; November 2026. Original post: <a href="https://www.instagram.com/emrapshow">@emrapshow</a>, &ldquo;CorePendium Media Highlight: How do you grade pitting edema?&rdquo; This page is an independent third-party evaluation, not affiliated with or endorsed by the original creator.</p></header>
+<div class="alert warn"><strong>Verdict:</strong> the 1+ panel labels itself &ldquo;2 mm&rdquo; and &ldquo;&lt;2 mm&rdquo; at once, and the 2+/3+ depth ranges leave gaps. Beyond the graphic, no grading scale for pitting edema has been validated, and published tables disagree on both depth and rebound time. Document the depth, rebound time and level of edema rather than a grade alone.</div>
+<nav class="toc"><a href="#scales">Competing scales</a><a href="#ledger">Graphic check</a><a href="#exam">How to document</a><a href="#sources">Sources</a></nav>
+<section id="scales">
+<div class="sec-head c-teal"><span class="sec-num">01</span><h2>There is no single scale</h2></div>
+<p>The post presents one version of the 1+ to 4+ scale as if it were the standard. It is one of several. Textbooks, nursing references and trial protocols assign different depths and rebound times to the same grade, and some editions of the most-used physical exam text give no numbers at all.</p><div class="figure"><svg viewBox="0 0 760 250" role="img" aria-label="Pitting edema depth and rebound times from four sources">
+<style>.t{font:600 12px 'IBM Plex Mono',monospace;fill:var(--text2)} .h{font:700 12px Syne,sans-serif;fill:var(--text)} .c{font:500 11px 'IBM Plex Mono',monospace;fill:var(--text)}</style>
+<text class="h" x="10" y="22">Source</text><text class="h" x="200" y="22">1+</text><text class="h" x="335" y="22">2+</text><text class="h" x="470" y="22">3+</text><text class="h" x="605" y="22">4+</text>
+<g>
+<rect x="190" y="38" width="125" height="40" rx="6" fill="color-mix(in srgb, var(--teal) 14%, transparent)"/><rect x="325" y="38" width="125" height="40" rx="6" fill="color-mix(in srgb, var(--teal) 22%, transparent)"/><rect x="460" y="38" width="125" height="40" rx="6" fill="color-mix(in srgb, var(--teal) 32%, transparent)"/><rect x="595" y="38" width="150" height="40" rx="6" fill="color-mix(in srgb, var(--teal) 44%, transparent)"/>
+<text class="t" x="10" y="62">This post (CorePendium)</text><text class="c" x="198" y="55">&lt;2 mm</text><text class="c" x="198" y="71">almost immediate</text><text class="c" x="333" y="55">3&ndash;4 mm</text><text class="c" x="333" y="71">&lt;15 s</text><text class="c" x="468" y="55">5&ndash;6 mm</text><text class="c" x="468" y="71">15&ndash;60 s</text><text class="c" x="603" y="55">&gt;6 mm</text><text class="c" x="603" y="71">2&ndash;3 min</text></g>
+<g>
+<rect x="190" y="90" width="125" height="40" rx="6" fill="color-mix(in srgb, var(--blue) 14%, transparent)"/><rect x="325" y="90" width="125" height="40" rx="6" fill="color-mix(in srgb, var(--blue) 22%, transparent)"/><rect x="460" y="90" width="125" height="40" rx="6" fill="color-mix(in srgb, var(--blue) 32%, transparent)"/><rect x="595" y="90" width="150" height="40" rx="6" fill="color-mix(in srgb, var(--blue) 44%, transparent)"/>
+<text class="t" x="10" y="114">Common reference table</text><text class="c" x="198" y="107">&le;2 mm</text><text class="c" x="198" y="123">rapid</text><text class="c" x="333" y="107">2&ndash;4 mm</text><text class="c" x="333" y="123">10&ndash;15 s</text><text class="c" x="468" y="107">4&ndash;6 mm</text><text class="c" x="468" y="123">&gt;1 min</text><text class="c" x="603" y="107">6&ndash;8 mm</text><text class="c" x="603" y="123">longest</text></g>
+<g>
+<rect x="190" y="142" width="125" height="40" rx="6" fill="color-mix(in srgb, var(--amber) 14%, transparent)"/><rect x="325" y="142" width="125" height="40" rx="6" fill="color-mix(in srgb, var(--amber) 22%, transparent)"/><rect x="460" y="142" width="125" height="40" rx="6" fill="color-mix(in srgb, var(--amber) 32%, transparent)"/><rect x="595" y="142" width="150" height="40" rx="6" fill="color-mix(in srgb, var(--amber) 44%, transparent)"/>
+<text class="t" x="10" y="166">Trial protocol scale</text><text class="c" x="198" y="159">barely</text><text class="c" x="198" y="175">detectable</text><text class="c" x="333" y="159">slight</text><text class="c" x="333" y="175">15 s</text><text class="c" x="468" y="159">deeper</text><text class="c" x="468" y="175">30 s</text><text class="c" x="603" y="159">&mdash;</text><text class="c" x="603" y="175">&gt;30 s</text></g>
+<g>
+<rect x="190" y="194" width="555" height="40" rx="6" fill="color-mix(in srgb, var(--purple) 16%, transparent)"/>
+<text class="t" x="10" y="218">Bates (later editions)</text><text class="c" x="198" y="218">four-point scale, &ldquo;slight&rdquo; to &ldquo;very marked&rdquo;; no depth or time given</text></g>
+</svg><div class="figcap">Same grade, different definitions. The 3+ row alone spans &ldquo;30 seconds&rdquo; to &ldquo;more than a minute.&rdquo; Common-table values follow EBM Consult; trial-protocol values follow a Cushing&rsquo;s trial protocol on ClinicalTrials.gov (NCT03621280).</div></div>
+</section>
+<section id="ledger">
+<div class="sec-head "><span class="sec-num">02</span><h2>Graphic check</h2></div>
+<div class="tbl"><table><tr><th style="width:38%">Post says</th><th style="width:15%">Verdict</th><th>Note</th></tr>
+<tr><td>1+: &ldquo;2 mm&rdquo; heading over &ldquo;Indentation &lt;2 mm&rdquo;</td><td><span class="tag x">Correction</span></td><td>The heading and the definition disagree within the same panel. Most tables write &le;2 mm.</td></tr>
+<tr><td>2+: 3&ndash;4 mm; 3+: 5&ndash;6 mm</td><td><span class="tag x">Correction</span></td><td>Leaves gaps: an indentation of 2&ndash;3 mm or 4&ndash;5 mm has no grade. Contiguous ranges (2&ndash;4, 4&ndash;6) fix it.</td></tr>
+<tr><td>4+: &gt;6 mm, rebound 2&ndash;3 minutes</td><td><span class="tag c">Needs context</span></td><td>Within the published range. Other tables give 6&ndash;8 mm, or simply &gt;30 s.</td></tr>
+<tr><td>Rebound: 2+ &lt;15 s, 3+ 15&ndash;60 s</td><td><span class="tag c">Needs context</span></td><td>One of several conventions. None has been validated against an outcome.</td></tr>
+<tr><td>The scale grades severity of edema</td><td><span class="tag c">Needs context</span></td><td>It grades a finger impression. Inter-examiner agreement for clinical pit assessment was low in the only formal reliability study (Brodovicz 2009), while ankle circumference and water displacement had ICCs of 0.93&ndash;0.97.</td></tr>
+<tr><td>Credit: CorePendium visual via @emrapshow</td><td><span class="tag v">Verified</span></td><td>Attribution is clear; the original CorePendium chapter source for the numbers is not stated.</td></tr>
+</table></div>
+</section>
+<section id="exam">
+<div class="sec-head c-blue"><span class="sec-num">03</span><h2>Examining and recording it so the next person can compare</h2></div>
+
+<div class="steps">
+<div class="step c-blue"><div class="n">1</div><div><h3>Press over bone</h3><p>Dorsum of the foot, behind the medial malleolus, and the shin. Firm thumb pressure for at least 2 seconds, then time the rebound from release.</p></div></div>
+<div class="step c-blue"><div class="n">2</div><div><h3>Write the level and both numbers</h3><p>&ldquo;Pitting to mid-shin bilaterally, ~4 mm, rebound 20 s&rdquo; carries more than &ldquo;2+&rdquo;, and survives a change of examiner or a different reference card.</p></div></div>
+<div class="step c-blue"><div class="n">3</div><div><h3>Trend with a tape measure</h3><p>Ankle circumference at a marked point took a minute and had the best agreement between examiners in Brodovicz&rsquo;s study. Use it when diuresis or a DVT question depends on change over days.</p></div></div>
+<div class="step c-blue"><div class="n">4</div><div><h3>Notice how fast the pit fills</h3><p>Henry and Altmann (1978) proposed that rapid pit recovery suggests hypoproteinemic edema, separating it from the slow recovery of venous or cardiac edema. Their exact timing threshold is not in the PubMed record and was not checked here; treat it as a prompt to send an albumin.</p></div></div>
+<div class="step c-blue"><div class="n">5</div><div><h3>Check for edema that doesn&rsquo;t pit</h3><p>Lymphedema, myxedema and lipedema pit poorly or not at all. A negative pit test does not mean no edema.</p></div></div>
+</div>
+
+</section>
+<section id="sources">
+<div class="sec-head c-grey"><span class="sec-num">04</span><h2>Sources</h2></div>
+<ul class="sources">
+<li><b>@emrapshow.</b> CorePendium media highlight, &ldquo;Grading of Pitting Edema.&rdquo; Read the original before relying on this summary.</li>
+<li>Brodovicz KG, McNaughton K, Uemura N, Meininger G, Girman CJ, Yale SH. Reliability and feasibility of methods to quantitatively assess peripheral edema. <em>Clin Med Res.</em> 2009;7(1&ndash;2):21&ndash;31. <a href="https://doi.org/10.3121/cmr.2009.819">doi:10.3121/cmr.2009.819</a> (PMID 19251582)</li>
+<li>Henry JA, Altmann P. Assessment of hypoproteinaemic oedema: a simple physical sign. <em>Br Med J.</em> 1978;1(6117):890&ndash;891. <a href="https://doi.org/10.1136/bmj.1.6117.890-a">doi:10.1136/bmj.1.6117.890-a</a> (PMID 638510; letter text not retrieved)</li>
+<li>EBM Consult. Pitting edema assessment. <a href="https://ebmconsult.com/articles/pitting-edema-assessment">ebmconsult.com</a> (secondary reference table)</li>
+<li>Open-label treatment in Cushing&rsquo;s syndrome, study protocol, pitting edema grading scale. ClinicalTrials.gov NCT03621280. <a href="https://cdn.clinicaltrials.gov/large-docs/80/NCT03621280/Prot_000.pdf">Protocol PDF</a></li>
+<li>Journal citations verified against PubMed records.</li>
+</ul>
+</section>
+<footer>The Critical Vector &middot; Direction and magnitude. Educational reference; verify against current guidelines and local protocol before applying to a patient.</footer>
+</div>
+<script src="../js/stats.js?v=2"></script>
+</body>
+</html>
